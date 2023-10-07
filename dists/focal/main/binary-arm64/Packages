@@ -35,3 +35,18 @@ MD5sum: daf51a239604b5ccef81a7e435a03f72
 Description: Simple collaboration from your desktop
  This is the unofficial port of GitHub Desktop for Linux distributions
 
+Package: zorin-pro-layouts
+Version: 1.0.0-3
+Architecture: all
+Maintainer: Aetherinox <aetherinox@proton.me>
+Depends: python3 (>=3.0)
+Priority: 0
+Section: utils
+Filename: pool/main/z/zorin-pro-layouts/zorin-pro-layouts_1.0.0-3_all.deb
+Size: 22072
+SHA256: eb210fa59ca9a98f7b61fd625883a74d7c0b3d23095f693f771583d556cbb833
+SHA1: 05959fe298ab25c98941d435abfa322328b3266d
+MD5sum: ccbd900331813a36d54106707a02f710
+Description: ZorinOS Pro Layouts
+ ZorinOS Pro layouts made available for Core and Lite users.
+
