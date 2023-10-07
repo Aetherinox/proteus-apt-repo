@@ -38,7 +38,12 @@ If you wish to remove it later, execute
 sudo add-apt-repository -r "deb [arch=amd64] https://raw.githubusercontent.com/Aetherinox/zorin-aabd-repo/master focal main"
 ```
 
-In your terminal, enter
+Next, add the `GPG` key for the developer to your apt-get keyring
+```shell
+wget -qO - https://github.com/Aetherinox.gpg | sudo apt-key add -
+```
+
+Finally, run in terminal
 ```shell
 sudo apt update
 ```
