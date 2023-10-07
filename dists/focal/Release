@@ -2,19 +2,28 @@ Origin: Aetherx
 Label: ZorinOS Repo
 Suite: stable
 Codename: focal
-Date: Sat, 07 Oct 2023 02:57:51 UTC
-Architectures: amd64
+Date: Sat, 07 Oct 2023 05:51:41 UTC
+Architectures: amd64 arm64
 Components: main
 Description: ZorinOS x64 github repository
 MD5Sum:
- 2f773877285248aedcea05b58bb2d3f9 771 main/binary-amd64/Packages
- 57456df87b7647f4e50b5997505958ac 474 main/binary-amd64/Packages.gz
+ 44a55710ab795d8b1bdab256b6102a4f 1696 main/binary-amd64/Packages
+ 01cae58efff412fb64ed8d51b52c0d24 913 main/binary-amd64/Packages.gz
  2d6ee38d577211537e5d08fe135a0c01 131 main/binary-amd64/Release
+ 83cf82fa9dee0e74d6e63a8af5ea3fd4 925 main/binary-arm64/Packages
+ cc812b02543c0c3c343e6abb00a42bf8 593 main/binary-arm64/Packages.gz
+ c9100398a40eaac516eef925d2e43037 131 main/binary-arm64/Release
 SHA1:
- 37a590ad4a328ecd0095919958e583ed5ef0a3e3 771 main/binary-amd64/Packages
- 65e836e0416661ebb9e024b14507ed6c134723d3 474 main/binary-amd64/Packages.gz
+ 23a868b5727c6b50d98ad547865d85dbcf70ec67 1696 main/binary-amd64/Packages
+ e4f4155cb68cb41014efde8e8cedc3a3258e41d5 913 main/binary-amd64/Packages.gz
  68f067650fd6715a4b1e6719e8d27f817b5c18aa 131 main/binary-amd64/Release
+ 7eba3020a9c16643aea14d2762202307929c24fa 925 main/binary-arm64/Packages
+ 1b9621fec2f7b20812c9620e51df75991b5712fa 593 main/binary-arm64/Packages.gz
+ 39ac69dded3482c9b4f484069aba909ec7562847 131 main/binary-arm64/Release
 SHA256:
- 44188236fca47cc3c1ca9286b84c2d0ac7300804dddfda19ce20a10a9214eaea 771 main/binary-amd64/Packages
- b2d81e4dc8e4f4970c1afc8206b4770cd715f9180e0462352f9a8d42a09d3c75 474 main/binary-amd64/Packages.gz
+ 06368e84c2fa4bccdeeab23587377174b187a59349d719cdbdb3f61d07ccb65f 1696 main/binary-amd64/Packages
+ 392bacdf0ea965166603efdc09985ad1cb9dae3ab1ae49a5749e4cfbd24d4e4d 913 main/binary-amd64/Packages.gz
  b6a04ccd4219aa41b3903e39980f90eaa2a4330b030de20cbb10972a5bce330d 131 main/binary-amd64/Release
+ e2ba1e63aa187698bb56e56594519668d84be5e7cb60d830aaae8255b2ea8ae3 925 main/binary-arm64/Packages
+ 2ea5057a0339a01b52b4e207315d0f648720be7d28d82ab50321dca2cc98caca 593 main/binary-arm64/Packages.gz
+ 0065feb7fba8633ec0ff3a5c9779822b0e631934d7dc17a6093d1e90288a0c65 131 main/binary-arm64/Release

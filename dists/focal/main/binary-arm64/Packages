@@ -1,0 +1,19 @@
+Package: github-desktop
+Version: 3.3.1-linux1
+Architecture: arm64
+Depends: libgtk-3-0, libnotify4, libnss3, libxtst6, xdg-utils, libatspi2.0-0, libdrm2, libgbm1, libxcb-dri3-0, kde-cli-tools | kde-runtime | trash-cli | libglib2.0-bin | gvfs-bin, libcurl3 | libcurl4, libsecret-1-0, gnome-keyring
+Recommends: pulseaudio | libasound2
+Suggests: gir1.2-gnomekeyring-1.0, libgnome-keyring0, lsb-release
+Installed-Size: 334059
+Maintainer: Brendan Forster <github@brendanforster.com>
+Homepage: https://github.com/shiftkey/desktop
+Priority: 0
+Section: utils
+Filename: pool/main/g/github-desktop/github-desktop_3.3.1-linux1_arm64.deb
+Size: 87335400
+SHA256: 6383f9b905e8a213e1fd1f0a13908e1d1fae47b227b748aa21f1e0c3d926671c
+SHA1: 3b07ca0472478dc16d48506aff1ac41a9f5ff195
+MD5sum: daf51a239604b5ccef81a7e435a03f72
+Description: Simple collaboration from your desktop
+ This is the unofficial port of GitHub Desktop for Linux distributions
+
