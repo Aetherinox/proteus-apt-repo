@@ -1,3 +1,21 @@
+Package: deb-pacman
+Version: 2.0-0
+Depends: bash, apt
+Installed-Size: 11
+Homepage: https://gitlab.com/TriVoxel/deb-pacman
+Architecture: all
+Maintainer: Caden Mitchell <tri.voxel@gmail.com>
+Priority: 0
+Section: utils
+Filename: pool/main/d/deb-pacman/deb-pacman_2.0-0_all.deb
+Size: 4288
+SHA256: 699a29cbb32d71bc79a176a61c2615a5515fb0cbbaf3bfa30dc9e9992d173536
+SHA1: f04af1481484b47e5b02362c4f7045f12b266747
+MD5sum: 618ee4f25be189fab50f7c83ba84033e
+Description: Archlinux Pacman frontend for Apt
+ Brings the interaction of Archlinux Pacman to Debian users
+ who prefer the way Pacman works over apt!
+
 Package: github-desktop
 Version: 3.3.1-linux1
 Architecture: amd64
@@ -32,4 +50,19 @@ SHA1: 713b77808a3597a305bf5aa4cb67b567c245e1f0
 MD5sum: d0435c5346c1efb207a6ce57002adc90
 Description: OCS-URL
  An install helper program for items served via OpenCollaborationServices (ocs://).
+
+Package: zorin-pro-layouts
+Version: 1.0.0-3
+Architecture: all
+Maintainer: Aetherinox <aetherinox@proton.me>
+Depends: python3 (>=3.0)
+Priority: 0
+Section: utils
+Filename: pool/main/z/zorin-pro-layouts/zorin-pro-layouts_1.0.0-3_all.deb
+Size: 22072
+SHA256: eb210fa59ca9a98f7b61fd625883a74d7c0b3d23095f693f771583d556cbb833
+SHA1: 05959fe298ab25c98941d435abfa322328b3266d
+MD5sum: ccbd900331813a36d54106707a02f710
+Description: ZorinOS Pro Layouts
+ ZorinOS Pro layouts made available for Core and Lite users.
 
