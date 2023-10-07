@@ -14,8 +14,12 @@ This is a ZorinOS apt repository that is associated to the [ZorinOS App Manager]
 <br />
 
 ## Usage
-Open `Terminal` and execute:
+First, open your `Terminal` and add the `GPG` key for the developer to your apt-get keyring
+```shell
+wget -qO - https://github.com/Aetherinox.gpg | sudo apt-key add -
+```
 
+Then execute:
 ```shell
 dpkg --print-architecture
 ```
@@ -36,11 +40,6 @@ After you've copied the line above in terminal, execute it to add the repo to yo
 If you wish to remove it later, execute
 ```shell
 sudo add-apt-repository -r "deb [arch=amd64] https://raw.githubusercontent.com/Aetherinox/zorin-aabd-repo/master focal main"
-```
-
-Next, add the `GPG` key for the developer to your apt-get keyring
-```shell
-wget -qO - https://github.com/Aetherinox.gpg | sudo apt-key add -
 ```
 
 Finally, run in terminal
