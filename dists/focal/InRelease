@@ -1,0 +1,39 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Origin: Aetherx
+Label: ZorinOS Repo
+Suite: stable
+Codename: focal
+Date: Sat, 07 Oct 2023 02:57:51 UTC
+Architectures: amd64
+Components: main
+Description: ZorinOS x64 github repository
+MD5Sum:
+ 2f773877285248aedcea05b58bb2d3f9 771 main/binary-amd64/Packages
+ 57456df87b7647f4e50b5997505958ac 474 main/binary-amd64/Packages.gz
+ 2d6ee38d577211537e5d08fe135a0c01 131 main/binary-amd64/Release
+SHA1:
+ 37a590ad4a328ecd0095919958e583ed5ef0a3e3 771 main/binary-amd64/Packages
+ 65e836e0416661ebb9e024b14507ed6c134723d3 474 main/binary-amd64/Packages.gz
+ 68f067650fd6715a4b1e6719e8d27f817b5c18aa 131 main/binary-amd64/Release
+SHA256:
+ 44188236fca47cc3c1ca9286b84c2d0ac7300804dddfda19ce20a10a9214eaea 771 main/binary-amd64/Packages
+ b2d81e4dc8e4f4970c1afc8206b4770cd715f9180e0462352f9a8d42a09d3c75 474 main/binary-amd64/Packages.gz
+ b6a04ccd4219aa41b3903e39980f90eaa2a4330b030de20cbb10972a5bce330d 131 main/binary-amd64/Release
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEEdTFUq07Y5lsZuvhpy1xMMM0NQCgFAmUgyTUACgkQy1xMMM0N
+QCj4GBAAoIqjwc5VzSf5DApDh0IzynxNa+Sk9SpIPwdHB4PMfxD9p3JyE9Ejbubs
+KRL+WtOc724dUjOzBTISBAjnwZPpv9XDLEhi8SYbRVZeF5EEPkURpVpSyMtq4O+E
+b6QDu3I+9JIODHozTYj5/PUSVPX+F0krX66rj9z88s8FwtnbliC/+PqLFiSqhrTf
+JARsqBNuqj7moB0uGG27iNQBR6DrSK+yuFDYwNkOVA2yWvcBlMTmHpEfBDoFdpGG
+nFzcvqaV4V48xQ6d0onoTk32r4Sc3mHEndFhYBcuPuUNAv/jGmaAXc6k1vm/MlEH
+mfYAz7rVfZXnftaaT7Jnp77/DJRtGwhEUIa0rvdQpR/1z/GNNaYh8t9lJXCs/6Yu
+vP019bBDTRpTwYF+rhWX6wQdwTfM2m9DCMAsqqIvjVBxk05IkH3Tug4pafjem2aS
++s1LgngbW4AXtOrOhti9b7LHkFNG+trELEc8d18NZAT5izu/eak1bpvUkwQwc7XO
+E1TD9CM3UGjzBNm1LMfFSFvk7sO+BM6l2MUKN/tVnNrMDKclgc8M+2IeirLHYStF
+1/8hziK8YRxqMutIHyb21b7CES3hjL75k/wxZrJDYwqjhIiYjitvXcZM/EYmjWHq
+61PPRWwNJ+Amp9wQF4HqjyjaDpH9qG4J1N++X8cDreF7/w1vGaA=
+=tMpT
+-----END PGP SIGNATURE-----

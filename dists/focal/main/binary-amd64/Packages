@@ -1,0 +1,16 @@
+Package: ocs-url
+Version: 3.1.0-0ubuntu1
+Architecture: amd64
+Maintainer: Akira Ohgaki <akiraohgaki@gmail.com>
+Installed-Size: 226
+Depends: libqt5svg5 (>= 5.2.0), qml-module-qtquick2 (>= 5.2.0) | qtdeclarative5-qtquick2-plugin (>= 5.2.0), qml-module-qtquick-window2 (>= 5.2.0) | qtdeclarative5-window-plugin (>= 5.2.0), qml-module-qtquick-controls (>= 5.2.0) | qtdeclarative5-controls-plugin (>= 5.2.0)
+Priority: 0
+Section: utils
+Filename: pool/main/o/ocs-url/ocs-url_3.1.0-0ubuntu1_amd64.deb
+Size: 54502
+SHA256: e4cd9c1ac342f4f448aedfafbccf65d02322d1da7cde09dd29565ca05e68be61
+SHA1: 713b77808a3597a305bf5aa4cb67b567c245e1f0
+MD5sum: d0435c5346c1efb207a6ce57002adc90
+Description: OCS-URL
+ An install helper program for items served via OpenCollaborationServices (ocs://).
+
