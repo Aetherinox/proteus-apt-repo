@@ -14,33 +14,28 @@ This is a ZorinOS apt repository that is associated to the [ZorinOS App Manager]
 <br />
 
 ## Usage
-First, open your `Terminal` and add the `GPG` key for the developer to your apt-get keyring
-```shell
-wget -qO - https://github.com/Aetherinox.gpg | sudo apt-key add -
+Information on how to utilize the packages in this repo for your own device
+
+<br />
+
+## Add Repo To Sources
+If you wish to add the Zorin repo to your list of sources, the command below will create a new file located at `/etc/apt/sources.list.d/aetherinox-zorin-apt-repo-archive.list`
+
+<br />
+
+Open `Terminal` and add the GPG key for the developer to your keyring
+```bash
+wget -qO - https://github.com/Aetherinox.gpg | sudo gpg --dearmor -o /usr/share/keyrings/aetherinox-zorin-apt-repo-archive.gpg
 ```
 
-Then execute:
+Copy the command below into your `Terminal`:
 ```shell
-dpkg --print-architecture
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/aetherinox-zorin-apt-repo-archive.gpg] https://raw.githubusercontent.com/Aetherinox/zorin-apt-repo/master $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/aetherinox-zorin-apt-repo-archive.list
 ```
 
-One of the following will be printed in terminal:
-- `amd64`
-- `arm64`
-- `i386`
+Be aware that most packages hosted in this repo are for `amd64`, so your desired package may not be available if you're running any other.
 
-Paste the result below to the right of `[arch=]`. If your terminal printed `amd64`, then leave the line below alone.
-
-```shell
-sudo add-apt-repository -y "deb [arch=amd64] https://raw.githubusercontent.com/Aetherinox/zorin-apt-repo/master focal main"
-```
-
-After you've copied the line above in terminal, execute it to add the repo to your `/etc/apt/sources.list` file.
-
-If you wish to remove it later, execute
-```shell
-sudo add-apt-repository -r "deb [arch=amd64] https://raw.githubusercontent.com/Aetherinox/zorin-aabd-repo/master focal main"
-```
+<br />
 
 Finally, run in terminal
 ```shell
