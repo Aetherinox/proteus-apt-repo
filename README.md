@@ -28,7 +28,7 @@ Open `Terminal` and add the GPG key for the developer to your keyring
 wget -qO - https://github.com/Aetherinox.gpg | sudo gpg --dearmor -o /usr/share/keyrings/aetherinox-zorin-apt-repo-archive.gpg
 ```
 
-Copy the command below into your `Terminal`:
+Then execute the command below to receive our package list:
 ```shell
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/aetherinox-zorin-apt-repo-archive.gpg] https://raw.githubusercontent.com/Aetherinox/zorin-apt-repo/master $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/aetherinox-zorin-apt-repo-archive.list
 ```
