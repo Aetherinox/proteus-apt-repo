@@ -2,27 +2,27 @@ Origin: Aetherx
 Label: ZorinOS Repo
 Suite: stable
 Codename: focal
-Date: Sat, 07 Oct 2023 13:57:02 UTC
+Date: Sat, 07 Oct 2023 19:06:52 UTC
 Architectures: amd64 arm64
 Components: main
 Description: ZorinOS x64 github repository
 MD5Sum:
- b7e9380fcb7d709a8d8e2a4709b81980 2795 main/binary-amd64/Packages
- 5270bcf3b0b67164a8e4da56f9b58e5d 1395 main/binary-amd64/Packages.gz
+ e807db404c16a219b2f4bb4f9a57d24e 5849 main/binary-amd64/Packages
+ 865d1f9a2e6fc6bed14d38cc6350816c 2465 main/binary-amd64/Packages.gz
  2d6ee38d577211537e5d08fe135a0c01 131 main/binary-amd64/Release
  fb5da75daf339222c1d6e4be833c4c21 2024 main/binary-arm64/Packages
  d964324017fd900a87f2461e1721cc1e 1093 main/binary-arm64/Packages.gz
  c9100398a40eaac516eef925d2e43037 131 main/binary-arm64/Release
 SHA1:
- 2bd5c4f0d47890a611660a4728dc24b278321db6 2795 main/binary-amd64/Packages
- e44e2245910f7141a88540a1919fc54fb7416afe 1395 main/binary-amd64/Packages.gz
+ 7a92f49d4e0729fcea1174264d2f0dc619d87ecc 5849 main/binary-amd64/Packages
+ 9266f8a16e83249c7ee048ef6503366783524019 2465 main/binary-amd64/Packages.gz
  68f067650fd6715a4b1e6719e8d27f817b5c18aa 131 main/binary-amd64/Release
  3af02613b5692959a79fd631bbcc8874d75787e2 2024 main/binary-arm64/Packages
  c685a415e9411a4a3108239839bc3a80ff6ca4c4 1093 main/binary-arm64/Packages.gz
  39ac69dded3482c9b4f484069aba909ec7562847 131 main/binary-arm64/Release
 SHA256:
- 86a8bfb1b5f2387a3b75d8cd7ce6c8a32dc20dac88e1c9a17a10b4d0185a3c56 2795 main/binary-amd64/Packages
- 1b7ae3f3141e1320203270c10a4e9bbe5819b346d21117faf4a3ad7cff7f3110 1395 main/binary-amd64/Packages.gz
+ 1fd176379d5e694d629efeb8fdd65cf8821564a86216931510433f9bc797bb4c 5849 main/binary-amd64/Packages
+ 8038a643c038c9ae3997de9fd10bc42468c88689a22dc21e535cec59861e63cc 2465 main/binary-amd64/Packages.gz
  b6a04ccd4219aa41b3903e39980f90eaa2a4330b030de20cbb10972a5bce330d 131 main/binary-amd64/Release
  73a229b305462b86d3457b7f002f26f42e17c2f27b48f2a428f5baa2fef6ad3e 2024 main/binary-arm64/Packages
  904a539a9a8ee5bfb3278d1cf828df6f6943c81f35d780d09f26c39e31815bb1 1093 main/binary-arm64/Packages.gz

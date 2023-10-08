@@ -51,6 +51,93 @@ MD5sum: d0435c5346c1efb207a6ce57002adc90
 Description: OCS-URL
  An install helper program for items served via OpenCollaborationServices (ocs://).
 
+Package: qubes-gpg-split
+Version: 2.0.58-1+focalu1
+Architecture: amd64
+Maintainer: Jason Mehring <nrgaway@gmail.com>
+Installed-Size: 119
+Depends: gnupg2, zenity, libc6 (>= 2.15)
+Homepage: http://www.qubes-os.org
+Priority: 0
+Section: utils
+Filename: pool/main/q/qubes-gpg-split/qubes-gpg-split_2.0.58-1+focalu1_amd64.deb
+Size: 25596
+SHA256: 49dc2c5283b74df42bdd1766a85b4b94e2fa1be6664a1adedf66161657c56921
+SHA1: 0fbfeb4b1022de54b18d6deb0d42c1a5caf849d1
+MD5sum: cc6bde0ef03bcc915a2ec8a96e87ac43
+Description: The Qubes service for secure gpg separation
+
+Package: qubes-gpg-split-dbgsym
+Source: qubes-gpg-split
+Version: 2.0.58-1+deb12u1
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: Jason Mehring <nrgaway@gmail.com>
+Installed-Size: 68
+Depends: qubes-gpg-split (= 2.0.58-1+deb12u1)
+Priority: 0
+Section: utils
+Filename: pool/main/q/qubes-gpg-split/qubes-gpg-split-dbgsym_2.0.58-1+deb12u1_amd64.deb
+Size: 43704
+SHA256: 7fad2f2cd20a2410c07a7ce155c3c23bfc489137fd74505881373767e6f7bce2
+SHA1: afe933c4e572c243211431d16395f15c963bfd0c
+MD5sum: caf116e7cb599887263c14a9642dfc01
+Description: debug symbols for qubes-gpg-split
+Build-Ids: af5399ea2745236f54f062b7ff2f9189325f286d b5174d7c56db93aae5427dd66263659ca701a422
+
+Package: qubes-gpg-split-tests
+Source: qubes-gpg-split
+Version: 2.0.58-1+focalu1
+Architecture: amd64
+Maintainer: Jason Mehring <nrgaway@gmail.com>
+Installed-Size: 55
+Depends: qubes-gpg-split, python3-pyatspi, dovecot-imapd, xdotool
+Homepage: http://www.qubes-os.org
+Priority: 0
+Section: utils
+Filename: pool/main/q/qubes-gpg-split/qubes-gpg-split-tests_2.0.58-1+focalu1_amd64.deb
+Size: 15260
+SHA256: 9294d289597039e5f1755908952b4c64d19695af5f78f554cdeaf8d28fa4ef9b
+SHA1: a3e1af682a36ba38b85bf86eba5834c5fb33ebe6
+MD5sum: 139a34867ba2d0bfff9f0892f9991da2
+Description: Helper files for Split GPG tests
+
+Package: qubes-thunderbird
+Version: 2.0.6-1+focalu1
+Architecture: amd64
+Maintainer: Jason Mehring <nrgaway@gmail.com>
+Installed-Size: 38
+Depends: thunderbird (>= 68.0)
+Homepage: http://www.qubes-os.org
+Priority: 0
+Section: utils
+Filename: pool/main/q/qubes-thunderbird/qubes-thunderbird_2.0.6-1+focalu1_amd64.deb
+Size: 6560
+SHA256: b9d94028db657fd6876fea5d087402b6846608abe431dca32d33af61a9e1564d
+SHA1: 4e0b36c86fd6260e334f6b73f897f9fc55fb6856
+MD5sum: 9d21187c60b07b5b1bd0505fca61ca1f
+Description: The Qubes extension for Thunderbird
+
+Package: qubes-utils
+Version: 4.1.16+focalu1
+Architecture: amd64
+Maintainer: Davíð Steinn Geirsson <david@dsg.is>
+Installed-Size: 62
+Depends: lsb-base, libc6 (>= 2.7), libxenstore3.0 (>= 3.2.0)
+Recommends: python3
+Conflicts: qubes-linux-utils
+Breaks: qubes-core-agent (<< 3.1.4)
+Homepage: https://www.qubes-os.org
+Priority: 0
+Section: utils
+Filename: pool/main/q/qubes-utils/qubes-utils_4.1.16+focalu1_amd64.deb
+Size: 18632
+SHA256: d2c70cd726969dd665dec6c17e893692b3030e485acf6b9aa5a75a9c624017c7
+SHA1: 00dd8ae9a80bb02bace797d3fc798dddf1d21fd9
+MD5sum: 0dc959fc7aa18d1279aa7a15570a95ce
+Description: Qubes Linux utilities
+ This package includes the basic qubes utilities necessary for domU.
+
 Package: zorin-pro-layouts
 Version: 1.0.0-3
 Architecture: all
