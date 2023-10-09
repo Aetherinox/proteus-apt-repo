@@ -1,3 +1,23 @@
+Package: app-outlet
+Version: 2.1.0
+License: unknown
+Vendor: Messias Junior <messiaslima.03@gmail.com>
+Architecture: amd64
+Maintainer: Messias Junior <messiaslima.03@gmail.com>
+Installed-Size: 317067
+Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
+Recommends: libappindicator3-1
+Homepage: https://app-outlet.github.io
+Priority: 0
+Section: utils
+Filename: pool/main/a/app-outlet/app-outlet_2.1.0_amd64.deb
+Size: 78258198
+SHA256: 9dcd90a9370d8b41aa255494c0b67665e850ec5c7d8c9eebb53ac533c1cb1d60
+SHA1: 5e0762a18c3cdfd08173ee084345de56beb34a6b
+MD5sum: cce3d6aea24c0cfba940e7bfbd853cf1
+Description: 
+  A Universal linux app store 
+
 Package: deb-pacman
 Version: 2.0-0
 Depends: bash, apt
