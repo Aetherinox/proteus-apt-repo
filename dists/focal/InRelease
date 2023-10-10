@@ -5,44 +5,44 @@ Origin: Aetherx
 Label: ZorinOS Repo
 Suite: stable
 Codename: focal
-Date: Sat, 07 Oct 2023 19:06:52 UTC
+Date: Mon, 09 Oct 2023 02:52:38 UTC
 Architectures: amd64 arm64
 Components: main
 Description: ZorinOS x64 github repository
 MD5Sum:
- e807db404c16a219b2f4bb4f9a57d24e 5849 main/binary-amd64/Packages
- 865d1f9a2e6fc6bed14d38cc6350816c 2465 main/binary-amd64/Packages.gz
+ e31728f2a01d71d9daff5ab4e23976b5 6538 main/binary-amd64/Packages
+ db00069f7c31203f644a1182dc00367e 2705 main/binary-amd64/Packages.gz
  2d6ee38d577211537e5d08fe135a0c01 131 main/binary-amd64/Release
  fb5da75daf339222c1d6e4be833c4c21 2024 main/binary-arm64/Packages
  d964324017fd900a87f2461e1721cc1e 1093 main/binary-arm64/Packages.gz
  c9100398a40eaac516eef925d2e43037 131 main/binary-arm64/Release
 SHA1:
- 7a92f49d4e0729fcea1174264d2f0dc619d87ecc 5849 main/binary-amd64/Packages
- 9266f8a16e83249c7ee048ef6503366783524019 2465 main/binary-amd64/Packages.gz
+ 3089988617ba8504ae17d56bab8ad7b34332f9db 6538 main/binary-amd64/Packages
+ 4ed245100ebeb1e995e7829a7c35a203c6690a6d 2705 main/binary-amd64/Packages.gz
  68f067650fd6715a4b1e6719e8d27f817b5c18aa 131 main/binary-amd64/Release
  3af02613b5692959a79fd631bbcc8874d75787e2 2024 main/binary-arm64/Packages
  c685a415e9411a4a3108239839bc3a80ff6ca4c4 1093 main/binary-arm64/Packages.gz
  39ac69dded3482c9b4f484069aba909ec7562847 131 main/binary-arm64/Release
 SHA256:
- 1fd176379d5e694d629efeb8fdd65cf8821564a86216931510433f9bc797bb4c 5849 main/binary-amd64/Packages
- 8038a643c038c9ae3997de9fd10bc42468c88689a22dc21e535cec59861e63cc 2465 main/binary-amd64/Packages.gz
+ 563c4aa1bd9ac0ccd2816f79db5f780d8a6f6d57e8a5ca1d6d14a3212407fd4a 6538 main/binary-amd64/Packages
+ 04bf3bd6aee3778a6e3b4b4d020dc9e136ba91fd8d48f1b15393eee49ff4b544 2705 main/binary-amd64/Packages.gz
  b6a04ccd4219aa41b3903e39980f90eaa2a4330b030de20cbb10972a5bce330d 131 main/binary-amd64/Release
  73a229b305462b86d3457b7f002f26f42e17c2f27b48f2a428f5baa2fef6ad3e 2024 main/binary-arm64/Packages
  904a539a9a8ee5bfb3278d1cf828df6f6943c81f35d780d09f26c39e31815bb1 1093 main/binary-arm64/Packages.gz
  0065feb7fba8633ec0ff3a5c9779822b0e631934d7dc17a6093d1e90288a0c65 131 main/binary-arm64/Release
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCgAdFiEEdTFUq07Y5lsZuvhpy1xMMM0NQCgFAmUhrE0ACgkQy1xMMM0N
-QCjK9g//RQtS2i0ltA5iijPWrjvCJCSHU8MPubFhwhcxxsoLQaQuCcZRwDMLfhD0
-QAi6zqTrjM0F1cg6x2RcxdTsFAa9k7VG8kNBgddA8zbgB1xK+iH+J3VjfT1SX65v
-Uji8HIwoo8aYzcYW8RhY1hj9jrL6aJ3jPPDZvQhSt09xfBh7WxtnwsZSo9aq5SNt
-5ppenjTo897snRE30ieBdmBxhD+ukl559g15gzyaMLo6QMTLbQaflmz+yHNp3MNv
-wXAgQ9MZ5mG7aGmtLikoatQQBhzeQPtQsThwZ7wUADEqJNLmA0v6jtVSUlW3Mj0D
-D7V45Nl5EulEyqL1DyYvl9ggZs/v4BFqCm+g5AXai6Vc7uPwN/dPgZh4L6KEHBJm
-xIRR5aKy1NpCF9azFqkUdl2fiFoEj7UpuA/V88QLPC0GS15FWxEEmvZ0/lN8DQ5Y
-EwN0qBacKKdWQMPXXejzCKrDvlCltKOTx7Ecv7h1BSCG1nne8bzpbREgBzEvp+qp
-+CRkdYWfKVv+3fGXR4x7WhT88q2OeU0PzdbiUG3ukJaqGVtFt5xpBzK92oov/oq6
-HvrG1DxfuDYuWP2Xsd92DBccKSYdhft7f9y4crDwe7IjZ5IL5/GkXgMOjIQhUh2x
-yIGUHr3w7iEQakJkux1PxE5VWePhA/wIKE0VcwTQpPyZQu1pB/4=
-=911+
+iQIzBAEBCgAdFiEEdTFUq07Y5lsZuvhpy1xMMM0NQCgFAmUjavYACgkQy1xMMM0N
+QCgxCxAAsLPCxp0s0cKawas/67DiFiiHH0MHfZXbwzj7FtnGesNXTFcfDn7MVAB2
+7admAWwA9HIlfWnI+1awk/V/ioX+XdCad0igcQAH+8R94bTADXNnpGcjclaAHuMX
+DT7IyuXTy2qd1u7MAyIiAICfSo3cN96Bz4z26fgyj4DH4t/iIMuMPBZ+1tSJsR4N
+5yXFWSU/HvAOagv/9iw1GzdBkgOFDh8cd0mx9iHPEJ5ifZD+uHNZ4WqKYkyjtgLo
+H4YWLh0J/Y8AIRtHbjTxPvg6+PUQk7uueo6kQmeqryIKPyT8/PmsR3Ws262yyszs
+DFn6/h4Q7iMdY5abSyGJXzVflRzUFr3jNmbb1WQE4KguGHf6CIIT1MlYS1cu3Tnt
+vC0lDHVxHkgNHfGF4FMXKmpWpnY6i3TrbBlvNykqyhTF/qqT8nSEASue6y/IxBiI
+ctuCp5nzv3xPCYXVi0JL40yaDmTpTxMZJ1DFbAUKWYx+Snsw5xGXBM0nbOKB1JGo
+5qK3T3W1y0LRclkwJGFE1TbIA5SaAl1fMziYarraEL/Yf3ccSu+sH2eNtkwaiPUj
+W5Eu3OFfymJzF9cOGhxABRS95we5syV0HxzMxZiI+IZ+u4RHWS3o8kK/FzMLh8KL
+QBnU+0Hqj25Ni+gcF5piOT6VQUHAyNo/yLH44Kmj+wKMgxgbEOE=
+=0jcj
 -----END PGP SIGNATURE-----
