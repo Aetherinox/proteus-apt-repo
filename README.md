@@ -11,7 +11,21 @@
 <br />
 
 ## About
-This is a Proteus apt repository that is associated to the [Proteus App Manager](https://github.com/Aetherinox/proteus-app-manager).
+This is a Proteus apt repository that is associated to the [Proteus App Manager](https://github.com/Aetherinox/proteus-app-manager). It can however, be added by any user running Ubuntu, ZorinOS, or similar Linux distributions. All packages contained within this repository are automatically updated when developers release new reivisons of their packages. The user simply needs to run `apt update` or `apt-get update` in terminal.
+
+The repository currently contains the following packages:
+```
+app-outlet
+deb-pacman
+github-desktop
+ocs-url
+qubes-gpg-split
+qubes-gpg-split-dbgsym
+qubes-gpg-split-tests
+qubes-thunderbird
+qubes-utils
+zorin-pro-layouts
+```
 
 <br />
 
