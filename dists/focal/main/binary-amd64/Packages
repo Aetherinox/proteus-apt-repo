@@ -55,6 +55,20 @@ MD5sum: 404d4a91acaf7a080541e820dcf9a730
 Description: Simple collaboration from your desktop
  This is the unofficial port of GitHub Desktop for Linux distributions
 
+Package: gitkraken-license-pro
+Version: 1.0.0-1
+Architecture: all
+Maintainer: Aetherinox <aetherinox@proton.me>
+Priority: 0
+Section: utils
+Filename: pool/main/g/gitkraken-license-pro/gitkraken-license-pro_1.0.0-1_all.deb
+Size: 5288712
+SHA256: 60d6de19c1f2edbe68d121e26ff741b7c1acfd22c0b094a692c18d55bbd66b73
+SHA1: 6c8663b459bfee71ee6bab4310037d06a57575a4
+MD5sum: 7e8b6bd23ac07cf0490ae882d4053e6c
+Description: Gitkraken License Generator
+ License generator and registration for Gitkraken Pro.
+
 Package: ocs-url
 Version: 3.1.0-0ubuntu1
 Architecture: amd64
