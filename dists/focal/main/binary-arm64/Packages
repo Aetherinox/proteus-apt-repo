@@ -42,10 +42,10 @@ Maintainer: Aetherinox <aetherinox@proton.me>
 Priority: 0
 Section: utils
 Filename: pool/main/g/gitkraken-license-pro/gitkraken-license-pro_1.0.0-1_all.deb
-Size: 5288712
-SHA256: 60d6de19c1f2edbe68d121e26ff741b7c1acfd22c0b094a692c18d55bbd66b73
-SHA1: 6c8663b459bfee71ee6bab4310037d06a57575a4
-MD5sum: 7e8b6bd23ac07cf0490ae882d4053e6c
+Size: 10808332
+SHA256: 93f901f8fa48e1c4bc21f70e9220efbc709e9edd3f9e9629ef0d1f13accfa17a
+SHA1: bd2c562ea3d1070454faee93d38d7cf52f7b5bc7
+MD5sum: 7f42c18fdb36830829bf1ce9a4f4b9b5
 Description: Gitkraken License Generator
  License generator and registration for Gitkraken Pro.
 
