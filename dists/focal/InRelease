@@ -5,44 +5,44 @@ Origin: Aetherx
 Label: ZorinOS Repo
 Suite: stable
 Codename: focal
-Date: Wed, 11 Oct 2023 16:56:41 UTC
+Date: Wed, 11 Oct 2023 17:48:47 UTC
 Architectures: amd64 arm64
 Components: main
 Description: ZorinOS x64 github repository
 MD5Sum:
- 03bec0d5ad4d9421aa7ce4f2bafa9860 7032 main/binary-amd64/Packages
- 03079b2d77f3f86af33e593f6ef10f5c 2876 main/binary-amd64/Packages.gz
+ f38cebdae5ea59a7f97cf07ab0d961c7 8247 main/binary-amd64/Packages
+ 8d7d64e090cb081338f0ab79dfd7596c 3440 main/binary-amd64/Packages.gz
  2d6ee38d577211537e5d08fe135a0c01 131 main/binary-amd64/Release
- 890a3c08a3817529ab165a0ac7ddc828 2518 main/binary-arm64/Packages
- 75912ea69f246a1cb7bdeb0a84021cbb 1265 main/binary-arm64/Packages.gz
+ 6b051af340aedd1a5cc5569bebe80a17 3733 main/binary-arm64/Packages
+ 682707bf3763f2e1e2dc78e71e83af7d 1850 main/binary-arm64/Packages.gz
  c9100398a40eaac516eef925d2e43037 131 main/binary-arm64/Release
 SHA1:
- 43cc11d0a69cc6a7f99e904aa05ee668ca67a32f 7032 main/binary-amd64/Packages
- e55f0feb4d5b1329bd964396f2595af09eae1d85 2876 main/binary-amd64/Packages.gz
+ a8be27bab0197a8fd2afdbaefc530a87cad60e3c 8247 main/binary-amd64/Packages
+ 80296c451a3567e90db6bf8d7e597dd3da6c88ba 3440 main/binary-amd64/Packages.gz
  68f067650fd6715a4b1e6719e8d27f817b5c18aa 131 main/binary-amd64/Release
- 8a0c0bfda7a31d046157b27b1fdc5e1c8a399a0f 2518 main/binary-arm64/Packages
- 76c8cf11120df08d66e24d8fafdf14c39b46099f 1265 main/binary-arm64/Packages.gz
+ 5aa22aeba88974653ef9c169511db6a5591b3650 3733 main/binary-arm64/Packages
+ 568248a79a487baca43f83577c7e2c66d1e55338 1850 main/binary-arm64/Packages.gz
  39ac69dded3482c9b4f484069aba909ec7562847 131 main/binary-arm64/Release
 SHA256:
- 8dd7ce0bbb5b985ca8a77febc095e5148e6b7991669c8c18f39c81e2f2812e0d 7032 main/binary-amd64/Packages
- 0c87e10299bd3793604cfbaa31f2ec3d3c771bd0e54b3ed9e70b37fa3950ad64 2876 main/binary-amd64/Packages.gz
+ 10bd4cb49f0232a9d261de6928044003c2b881a23e866b8179b7da469fff3c5e 8247 main/binary-amd64/Packages
+ ad25af8acaff4a6043e282bf500e49f9a96acb8ce442aab6c70cfc60f867fb59 3440 main/binary-amd64/Packages.gz
  b6a04ccd4219aa41b3903e39980f90eaa2a4330b030de20cbb10972a5bce330d 131 main/binary-amd64/Release
- 6784bf2197877fddf1f5d852d29ac54c74b7990d48fe153e5d14cefac6a832d7 2518 main/binary-arm64/Packages
- d3c49e4ea0ee9d34973e722c99c4b8c0daddd59a0f45d2d00b241616f8de1477 1265 main/binary-arm64/Packages.gz
+ efd66de49f5461d544754481315d729bfc6937dddd856aca4225b3dea88cd4b8 3733 main/binary-arm64/Packages
+ a1964d39f178e656c6cea78f5df39cec5707c9becd3215e02c0a5063d1707486 1850 main/binary-arm64/Packages.gz
  0065feb7fba8633ec0ff3a5c9779822b0e631934d7dc17a6093d1e90288a0c65 131 main/binary-arm64/Release
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCgAdFiEEdTFUq07Y5lsZuvhpy1xMMM0NQCgFAmUm08kACgkQy1xMMM0N
-QChbrRAAklUyNpICNF73pbuiE/rJhCuxTONPVEdgFdKbs0oj7bRszDRueq4u993T
-PTkUkg/xX9ZAvOZSBLW4thnh/S2CrTW4NCIKkUe+Cp4RcEvABFLOKJQ2NJxJQ+41
-2C2FAZAD88mQXMDM8trnNUERMpNJECHnbwAT9OtU6mP4gM+JCMLp9IxOKjURcL1N
-FUKzdEhFoP9QaJbz95ICO1SME83wRd9IEfv7pP/EVYorFzVzDecEitvaUDxWUGRw
-7PjdPdFjxOmmL9vXuipTS5NanfyPgsk2qReFCG5ZYVKLobkB2jirY05DBZI1iTtW
-yG+lBZS+CvhTfNU63QsI4EJNc7mZjtAPorIs3TuDvI5UBmWrZGTNorrMewdFw9le
-uYQXcJzsJcgwQgzX+p+yMidusVAETo2exx4n/ny4xAQp3Kvj4od+nyUfQZSmywc9
-XJYd5Quzi8ag9ZzAe57x2V9vtozbfQiM+gFCUcU84xgKFNCNiTqD7Tz37VR1az0B
-oF96yCparWrRm9Ud4ZOE4rw1T5/yAS+AR7jP4CqO4hOigtaZdvEdmH07wpQ8rs41
-U6MprSo0hmydz3X2QMeu+wkIKGcQPjQn8LdTZd3PaWYE2QxYCOoJ01FIhj5Ny0ZR
-/j9fq1D7qnrpvipF7Gm3xkPa5yOosQbqP6/qbBTfQFSSob0+jOM=
-=OEBE
+iQIzBAEBCgAdFiEEdTFUq07Y5lsZuvhpy1xMMM0NQCgFAmUm3/8ACgkQy1xMMM0N
+QCiyug/+MtXEl6bbQ/qTOjOMXkVLn5GQZlAkokBR738e7y9JqdfUJXYKu17bQ2Mf
+HdrARPQpHZafLOOXXIR6OxmW9mfnZKkOIwfHl0AcraioC4I2SzsTlZCeXNKi6Jy+
+qLnv6DrHlltNp2f6aO5au1rZRISVsrNVl1PJcwkpnTR93h5PArQYADU96/BFrLj/
+2hgxl6IvjIb1oqgYEqlIVmNRULZcpqtbwQilBizyfouuuYC0xUl0D4DGQ4MEHlH8
+SjSUt3lCLxiwTHZd2noHAFSzl4OsKcxsKdJWcUAmaEeFRyoC0dTDL1AjNmrpqlU2
+WaBNKjALdNwoe5r2JQaqG1Z7KUknmZavDNnh7SRfhdPVTAZLmAZuuf51LotuLpkI
+WJIzEVhvz3l/0o5b9I6UTacOUvl81VtG4E3bADYFy5a/4eTmshiTEUPKV7CTyh0d
+yb6bcbVbbokhnMIbyrXKMH6u7D/XOJMz3nB5fwQ70TPywSrM6cnASC8hBIybOVir
+QVnlECcjVaMSRj42FIGiTpDbCRQDPF/xBgJ5TOEMrV9ksQbacbg+3l0rbqnLf3pc
+7blwbvByDuTbTKhoB4ysNvpHg7jOl6dPMZrgsoAU61ceicEO1M0JLOChMF2hBr49
+FzROeESVPteWpfMHoAHGAnoyU4qWukOJK/ZEiJ2/FrsQh7j48Aw=
+=FBUj
 -----END PGP SIGNATURE-----
