@@ -1,0 +1,38 @@
+Origin: Aetherx
+Label: Ubuntu Lunar
+Suite: stable
+Codename: lunar
+Date: Fri, 13 Oct 2023 09:39:36 UTC
+Architectures: amd64 arm64 i386
+Components: main
+Description: Ubuntu (Lunar) 23.04
+MD5Sum:
+ 45852a9a429e56e56fa5d7ce802bcdb1 1308 main/binary-amd64/Packages
+ 854915f4b703793c0412394114ccbf38 801 main/binary-amd64/Packages.gz
+ a9d5d30f0f7a9a223245d9d99836af87 122 main/binary-amd64/Release
+ d8e8828bd6c5a8bc7e98f2154f98d801 1308 main/binary-arm64/Packages
+ 9b39a329b87b43ef85cdfd6b3105187f 797 main/binary-arm64/Packages.gz
+ d9617132b91617ccd37606585fa40492 122 main/binary-arm64/Release
+ d41d8cd98f00b204e9800998ecf8427e 0 main/binary-i386/Packages
+ 7029066c27ac6f5ef18d660d5741979a 20 main/binary-i386/Packages.gz
+ 118e6ad3235bcaa8753dd039ea55b321 121 main/binary-i386/Release
+SHA1:
+ 161812b3beec2d4d5ee4f540897e3db2a9b56344 1308 main/binary-amd64/Packages
+ dbcd8f770e52ab20594cca1dc1acceb5aaf73569 801 main/binary-amd64/Packages.gz
+ bd034c7bf148c436d00695e6ffd903a10d2e4963 122 main/binary-amd64/Release
+ ef193175246f960803a0a0a9c8f626cdf12e024e 1308 main/binary-arm64/Packages
+ fd1f807dafe793047e92da8459b06146dc32c5b8 797 main/binary-arm64/Packages.gz
+ 686c9dec68dd08d375eca9c91a8e3e869ea13189 122 main/binary-arm64/Release
+ da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/binary-i386/Packages
+ 46c6643f07aa7f6bfe7118de926b86defc5087c4 20 main/binary-i386/Packages.gz
+ 1eb3557be8e1a97c1ce69c096e23a103d23039ca 121 main/binary-i386/Release
+SHA256:
+ 8dad64e96a9822d2aa3412a250646bbdb9e0c5297b83397b2b75e2a1ea72189d 1308 main/binary-amd64/Packages
+ dd79917503199d1144374583faa04a2786e42b2f30c5234c8925d05b6c8b7532 801 main/binary-amd64/Packages.gz
+ f8317492785d6d3828117e68a29fdc513a916f32833b3dd6dbfffa3648cacb3e 122 main/binary-amd64/Release
+ 193ce4b7f5cc66f18ae3a8c1e0aee653156e084c815f61277d7e4bd88abf7553 1308 main/binary-arm64/Packages
+ 54ed5cdee1b4a582e8af479e81e08a92c4c2e3cc2d173c635ccc92f709804723 797 main/binary-arm64/Packages.gz
+ b3b10fa6455a3fd25a80f845518de072d88a9b395307d1c31909a47347ea8634 122 main/binary-arm64/Release
+ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/binary-i386/Packages
+ 59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2 20 main/binary-i386/Packages.gz
+ 870deaafe5520a236a0d51efe423128d0db5d3e0c97120849c627aeaa84429cb 121 main/binary-i386/Release

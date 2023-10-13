@@ -1,11 +1,11 @@
 Origin: Aetherx
-Label: Ubuntu Jammy
+Label: Ubuntu Jammy + ZorinOS v17.x
 Suite: stable
 Codename: jammy
-Date: Fri, 13 Oct 2023 09:19:32 UTC
+Date: Fri, 13 Oct 2023 09:39:24 UTC
 Architectures: amd64 arm64 i386
 Components: main
-Description: Ubuntu and ZorinOS (Jammy) 22.04 LTS
+Description: Ubuntu (Jammy) and ZorinOS v17.x 22.04 LTS
 MD5Sum:
  2cb54cb74c7dde81a0532460af8f672b 4063 main/binary-amd64/Packages
  5f5f8e1e389d8f8f6a3b6ccdc4445d4b 1850 main/binary-amd64/Packages.gz

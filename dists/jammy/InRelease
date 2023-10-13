@@ -2,13 +2,13 @@
 Hash: SHA512
 
 Origin: Aetherx
-Label: Ubuntu Jammy
+Label: Ubuntu Jammy + ZorinOS v17.x
 Suite: stable
 Codename: jammy
-Date: Fri, 13 Oct 2023 09:19:32 UTC
+Date: Fri, 13 Oct 2023 09:39:24 UTC
 Architectures: amd64 arm64 i386
 Components: main
-Description: Ubuntu and ZorinOS (Jammy) 22.04 LTS
+Description: Ubuntu (Jammy) and ZorinOS v17.x 22.04 LTS
 MD5Sum:
  2cb54cb74c7dde81a0532460af8f672b 4063 main/binary-amd64/Packages
  5f5f8e1e389d8f8f6a3b6ccdc4445d4b 1850 main/binary-amd64/Packages.gz
@@ -41,17 +41,17 @@ SHA256:
  c4061c96d8ebe72eb137860b68351153f5cd736942255e7e0086aa19679af6db 137 main/binary-i386/Release
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCgAdFiEEdTFUq07Y5lsZuvhpy1xMMM0NQCgFAmUpC6UACgkQy1xMMM0N
-QCgVUQ/+JPRaKnwfx5S/5LhXxPrWCz0bGBEftClNRGf0Nxrn4My5AJwt0JTL3NUa
-SHrqnX5Y+LpDuy2B3ufdj/gUOBmaTBaSm5NvaH5bqRCq3WIk/sF6TwW7MiZ1mw7T
-tuEnmeCK6jWyp4se7UWBZSBkiu+qLjaXG694Nldq6vRtAIBAMH9bxA6LmDAsbjeG
-E9l1tQz9zYhLdWa0UppA9qWQKfHQijXd1JN9Q/x+4m7/Zz3BwJebO++bzsHRJTKt
-eBX76ZYYaBkQaW1wMcawM96qHSWM99CNTikvOF07+SNtEndg3vptih7tHSAYQTbB
-6xIpFiZE96tji8Gxu68+OHIIzQF5KgRYi4edxnKq/iuo3cfQR5oftx5wrXNGQg7a
-Kob77WpVm60kGEeooYDfjajwCazCMWg3ZYvUtGgLSjUy28DOaQQ1i4Meuk+uedv/
-VRYtwo8ZVhaI+zBLbfL7hABInHifPrkz+UF4efZ66KbUhw2n0LNon8J6r0spOZPY
-0nQg7/641gByFrZBU55R4xjjlZKK/DYEPBlV2x4Lffb1FtLTNNskCCGaky/wKUMD
-n4hN/nBn0IKR0xVmpMzlwMwk3BL7MwxdC4K9mRMc9Wuj/t0X2yu35G79yUEskK6V
-6w6jzO6dvW8JrBm2NLgv4U0NVK9QCLoptMkqrfYnl91TY61TBpE=
-=Lepj
+iQIzBAEBCgAdFiEEdTFUq07Y5lsZuvhpy1xMMM0NQCgFAmUpEEwACgkQy1xMMM0N
+QCjVwQ//Yk/0cJ2DDXoVoB1CNamv1s/C2jSUOOxFCTPpG0V1DaaZCrEzaN5/35fd
+KMYAOu15bJJErXzGo/L6JxnC90qiizwNhXp0UcAI8FTLBAlvU7OylOZhZ0F+4FhV
+VfbAwwu0xWSS9K+N2EbCNBzB6YhrxU5X7vXErjPnTVN27gjcyYwpLV8nK13459OG
+VAU/t2MHVFdpUWYCFEYkY3Sf/TdRxLxvcYuVozf51UCPbO4/05juZsIgDlJov63f
+vr8L1S+s5klTkQoo9OFRPaKC8S4WZ0NEz65SjSwBU8hy32XkQnV56cUwQjD5/bvK
+b69B9hdxiZU8Q5EdhAS9S8c/XtRb+dEzsHozBlx9fAavBBtv9UtORefqfi+Tlkxf
+QIaiehU4yLbUO3wOoY5mcVdfL2x8PL956HAz7GHix47TQu+RyqXGSAKzaIi8P284
+qAXQYxPcz7zgCYN7L3XjZS2SNE9XQn4c6av2HW7zN3NGhIh2g50D/vHj0x4ouz7O
+selO35fbktysdfxtMCKh6Tmak/pNDEZhdbDq/fpNX3DPiqFnPNGx4qWpEwglOTtB
+mRberLVTcHUh+EElyUpCvNZGfzHNTVuaugtQdXjiECLBZjvdp6TmHTgmbc/BRnER
+49iYwZLIIxq37EN4m78bpucVzuREm+As62MRbCu9ugvV5RKSDII=
+=MkVz
 -----END PGP SIGNATURE-----

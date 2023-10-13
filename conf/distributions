@@ -1,17 +1,26 @@
 Origin: Aetherx
-Label: Ubuntu Focal
+Label: Ubuntu Focal + ZorinOS v16.x
 Suite: stable
 Codename: focal
 Architectures: amd64 arm64 i386
 Components: main
-Description: Ubuntu and ZorinOS (Focal) 20.04 LTS
+Description: Ubuntu (Focal) and ZorinOS v16.x 20.04 LTS
 SignWith: BD3DC629
 
 Origin: Aetherx
-Label: Ubuntu Jammy
+Label: Ubuntu Jammy + ZorinOS v17.x
 Suite: stable
 Codename: jammy
 Architectures: amd64 arm64 i386
 Components: main
-Description: Ubuntu and ZorinOS (Jammy) 22.04 LTS
+Description: Ubuntu (Jammy) and ZorinOS v17.x 22.04 LTS
+SignWith: BD3DC629
+
+Origin: Aetherx
+Label: Ubuntu Lunar
+Suite: stable
+Codename: lunar
+Architectures: amd64 arm64 i386
+Components: main
+Description: Ubuntu (Lunar) 23.04
 SignWith: BD3DC629
