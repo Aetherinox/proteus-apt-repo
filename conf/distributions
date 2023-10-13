@@ -1,8 +1,17 @@
 Origin: Aetherx
-Label: ZorinOS Repo
+Label: Ubuntu Focal
 Suite: stable
 Codename: focal
 Architectures: amd64 arm64 i386
 Components: main
-Description: ZorinOS x64 github repository
+Description: Ubuntu and ZorinOS (Focal) 20.04 LTS
+SignWith: BD3DC629
+
+Origin: Aetherx
+Label: Ubuntu Jammy
+Suite: stable
+Codename: jammy
+Architectures: amd64 arm64 i386
+Components: main
+Description: Ubuntu and ZorinOS (Jammy) 22.04 LTS
 SignWith: BD3DC629

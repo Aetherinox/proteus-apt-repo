@@ -50,20 +50,21 @@ Description: Gitkraken License Generator
  License generator and registration for Gitkraken Pro.
 
 Package: reprepro
-Version: 5.4.2-1
+Version: 5.3.0-1.1
 Architecture: arm64
-Maintainer: Bastian Germann <bage@debian.org>
-Installed-Size: 1294
-Depends: libarchive13 (>= 3.0.4), libbz2-1.0, libc6 (>= 2.34), libdb5.3, libgpg-error0 (>= 1.14), libgpgme11 (>= 1.2.0), liblzma5 (>= 5.1.1alpha+20120614), zlib1g (>= 1:1.2.0.2), zstd
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Bernhard R. Link <brlink@debian.org>
+Installed-Size: 1145
+Depends: libarchive13 (>= 3.0.4), libbz2-1.0, libc6 (>= 2.17), libdb5.3, libgpg-error0 (>= 1.14), libgpgme11 (>= 1.2.0), liblzma5 (>= 5.1.1alpha+20120614), zlib1g (>= 1:1.2.0.2)
 Recommends: apt (>= 0.9.4)
 Suggests: pinentry-curses, gnupg-agent, inoticoming, lzip (>= 1.11-2)
 Priority: 0
 Section: utils
-Filename: pool/main/r/reprepro/reprepro_5.4.2-1_arm64.deb
-Size: 430452
-SHA256: d131461c90fafe0a1136ccad0060d287e192e9899fe639267034e306e49791a2
-SHA1: 4ae318ad87b0150c9ac4e66c56444d6db00ab7aa
-MD5sum: e63191c4cc2e020149517e6461e3a7f7
+Filename: pool/main/r/reprepro/reprepro_5.3.0-1.1_arm64.deb
+Size: 395948
+SHA256: 7ce840af343a46702eac5ef115e47b122b6b841acf2903c9788e15f867862b96
+SHA1: 317a0a414a9716198cd1a138a722cae7e285e099
+MD5sum: 5ee93801682223e108810e48910c912d
 Description: Debian package repository producer
  reprepro is a tool to manage a repository of Debian packages
  (.deb, .udeb, .dsc, ...). It stores files either being
@@ -75,6 +76,29 @@ Description: Debian package repository producer
  signatures of the generated Package indices is supported.
  .
  This package also contains the changestool and rredtool helpers.
+
+Package: whiptail
+Source: newt
+Version: 0.52.21-4ubuntu2
+Architecture: arm64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 66
+Depends: libc6 (>= 2.17), libnewt0.52 (>= 0.52.21), libpopt0 (>= 1.14), libslang2 (>= 2.2.4)
+Multi-Arch: foreign
+Homepage: https://pagure.io/newt
+Priority: 0
+Section: utils
+Filename: pool/main/n/newt/whiptail_0.52.21-4ubuntu2_arm64.deb
+Size: 16388
+SHA256: a4a4e1489e9ed73905040ce74b04f61ffb666faec1c6e18c7ba98a48a07cdb9b
+SHA1: bb9ee3dfe67ec0530bc9bb3daf23e632927615f5
+MD5sum: 0ee48cec69169ca57256d6798d02e57c
+Description: Displays user-friendly dialog boxes from shell scripts
+ Whiptail is a "dialog" replacement using newt instead of ncurses. It
+ provides a method of displaying several different types of dialog boxes
+ from shell scripts. This allows a developer of a script to interact with
+ the user in a much friendlier manner.
+Original-Maintainer: Alastair McKinstry <mckinstry@debian.org>
 
 Package: zorin-pro-layouts
 Version: 1.0.0-3
