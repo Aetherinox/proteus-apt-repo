@@ -13,3 +13,27 @@ MD5sum: 7f42c18fdb36830829bf1ce9a4f4b9b5
 Description: Gitkraken License Generator
  License generator and registration for Gitkraken Pro.
 
+Package: php-dasprid-enum
+Source: dasprid-enum
+Version: 1.0.3-4
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: William Desportes <williamdes@wdes.fr>
+Installed-Size: 50
+Depends: php-common
+Multi-Arch: foreign
+Homepage: https://github.com/DASPRiD/Enum/
+Priority: 0
+Section: utils
+Filename: pool/main/d/dasprid-enum/php-dasprid-enum_1.0.3-4_all.deb
+Size: 10600
+SHA512: 287f13d27291da396029d661d5f33f6265b9f29ef0aaea381c76978e8c5a38601744fcf5baad9306cf7971e719bd435c9107dddecc32ba45e4c8469f2c2cc261
+SHA256: 700fbe362003978269c1fe76a32f94a192aa5946786b146d38955bf4bf074a94
+SHA1: f44fe0a9acf7eab59a1e5eed8b3b0531bca87160
+MD5sum: dea65751e5614f7c372ec54dfc218298
+Description: PHP 7.1 enum implementation
+ It is a well known fact that PHP is missing a basic enum type,
+ ignoring the rather incomplete SplEnum implementation
+ which is only available as a PECL extension.
+ This library tries to close that gap as far as PHP allows it to.
+
