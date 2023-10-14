@@ -1,28 +1,20 @@
-Package: reprepro
-Version: 5.3.1-1ubuntu1
+Package: github-desktop
+Version: 3.3.1-linux1
 Architecture: amd64
-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Installed-Size: 1172
-Depends: libarchive13 (>= 3.0.4), libbz2-1.0, libc6 (>= 2.34), libdb5.3, libgpg-error0 (>= 1.14), libgpgme11 (>= 1.2.0), liblzma5 (>= 5.1.1alpha+20120614), zlib1g (>= 1:1.2.0.2), zstd
-Recommends: apt (>= 0.9.4)
-Suggests: pinentry-curses, gnupg-agent, inoticoming, lzip (>= 1.11-2)
+Depends: libgtk-3-0, libnotify4, libnss3, libxtst6, xdg-utils, libatspi2.0-0, libdrm2, libgbm1, libxcb-dri3-0, kde-cli-tools | kde-runtime | trash-cli | libglib2.0-bin | gvfs-bin, libcurl3 | libcurl4, libsecret-1-0, gnome-keyring
+Recommends: pulseaudio | libasound2
+Suggests: gir1.2-gnomekeyring-1.0, libgnome-keyring0, lsb-release
+Installed-Size: 331775
+Maintainer: Brendan Forster <github@brendanforster.com>
+Homepage: https://github.com/shiftkey/desktop
 Priority: 0
 Section: utils
-Filename: pool/main/r/reprepro/reprepro_5.3.1-1ubuntu1_amd64.deb
-Size: 453106
-SHA256: 29b9cfe075a8e8cac04313600212b1c9a94c41e7c5b19a5e9755f8933bd1a1f9
-SHA1: 353b84966b80a2016acf1816c85259ebcf2a9989
-MD5sum: 854c224586ea990f308173c57da5e040
-Description: Debian package repository producer
- reprepro is a tool to manage a repository of Debian packages
- (.deb, .udeb, .dsc, ...). It stores files either being
- injected manually or downloaded from some other repository
- (partially) mirrored into one pool/ hierarchy.
- Managed packages and files are stored in a Berkeley DB,
- so no database server is needed.
- Checking signatures of mirrored repositories and creating
- signatures of the generated Package indices is supported.
- .
- This package also contains the changestool and rredtool helpers.
-Original-Maintainer: Bastian Germann <bage@debian.org>
+Filename: pool/main/g/github-desktop/github-desktop_3.3.1-linux1_amd64.deb
+Size: 92108864
+SHA512: 6a7a7ac0e1d398324835ca107a0d8ca614f977665995e7dd79d8ae5828fe4e197d11ae4cf57b34191150828693271e7989c8ad141b14ccdbc03b8bbe76ce44b1
+SHA256: 03e0b5bd10499408cf0a1c1c5117657a8bd97da2de3330e6936b5b5753b99df7
+SHA1: 1dea3ec550db1e2fad448aa55c3ce5f751bfe536
+MD5sum: 404d4a91acaf7a080541e820dcf9a730
+Description: Simple collaboration from your desktop
+ This is the unofficial port of GitHub Desktop for Linux distributions
 

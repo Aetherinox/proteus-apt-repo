@@ -1,6 +1,6 @@
 Archive: stable
 Component: main
 Origin: Aetherx
-Label: ZorinOS Repo
+Label: Ubuntu Focal + ZorinOS v16.x
 Architecture: arm64
-Description: ZorinOS x64 github repository
+Description: Ubuntu (Focal) and ZorinOS v16.x 20.04 LTS
