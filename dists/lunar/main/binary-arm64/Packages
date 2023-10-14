@@ -90,6 +90,29 @@ Description: QR Code Generator for PHP
  Port of QR code portion of the ZXing library. It currently only features the
  encoder part, but could later receive the decoder part as well.
 
+Package: php-code-lts-u2f-php-server
+Version: 1.2.1-2
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: William Desportes <williamdes@wdes.fr>
+Installed-Size: 47
+Depends: php-common
+Multi-Arch: foreign
+Homepage: https://github.com/code-lts/U2F-php-server#readme
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-code-lts-u2f-php-server/php-code-lts-u2f-php-server_1.2.1-2_all.deb
+Size: 13958
+SHA512: b228903711bd5a97cfee3d4e4cab77e563afb328a3f768d036acdc6a17e9da63d2268a3fb426db780d2676f5fc12a71ea1223e4267349f786303fc72aefeedff
+SHA256: 04ce50e855a6dc548d35945a8bbd5d3240f560c320ef399e8e159a9e1712f223
+SHA1: 48aeb755ddf368900e2c210084b19388dd9e921d
+MD5sum: cc644c0512e90113bc03e42c0ec19d5c
+Description: Server side handling class for FIDO U2F registration and authentication
+ This PHP library allows you to handle U2F registration and authentication.
+ FIDO's U2F enables you to add a simple unobtrusive method of 2nd factor
+ authentication, allowing users of your service and/or application
+ to link a hardware key to their account.
+
 Package: php-dasprid-enum
 Source: dasprid-enum
 Version: 1.0.3-4
