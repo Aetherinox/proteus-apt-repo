@@ -1,3 +1,24 @@
+Package: app-outlet
+Version: 2.1.0
+License: unknown
+Vendor: Messias Junior <messiaslima.03@gmail.com>
+Architecture: amd64
+Maintainer: Messias Junior <messiaslima.03@gmail.com>
+Installed-Size: 317067
+Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
+Recommends: libappindicator3-1
+Homepage: https://app-outlet.github.io
+Priority: 0
+Section: utils
+Filename: pool/main/a/app-outlet/app-outlet_2.1.0_amd64.deb
+Size: 78258198
+SHA512: f345107a838e12b6b0201a6f58db185d6fdfa20d56403fad98f26ef97bb92d1eecacbfe4102f63ce5502e763d16c2946ce04f7b9075b39e04885f87f3820fbf3
+SHA256: 9dcd90a9370d8b41aa255494c0b67665e850ec5c7d8c9eebb53ac533c1cb1d60
+SHA1: 5e0762a18c3cdfd08173ee084345de56beb34a6b
+MD5sum: cce3d6aea24c0cfba940e7bfbd853cf1
+Description: 
+  A Universal linux app store 
+
 Package: github-desktop
 Version: 3.3.1-linux1
 Architecture: amd64
@@ -33,6 +54,27 @@ MD5sum: 7f42c18fdb36830829bf1ce9a4f4b9b5
 Description: Gitkraken License Generator
  License generator and registration for Gitkraken Pro.
 
+Package: obsidian
+Version: 1.4.14
+License: UNLICENSED
+Vendor: Dynalist Inc.
+Architecture: amd64
+Maintainer: Dynalist Inc.
+Installed-Size: 263420
+Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
+Recommends: libappindicator3-1
+Homepage: https://obsidian.md
+Priority: 0
+Section: utils
+Filename: pool/main/o/obsidian/obsidian_1.4.14_amd64.deb
+Size: 73334984
+SHA512: 0630f64e0e1e2c6b1346987de9998cad95a5789fced9517fa5cd2320ffc992d2d52f75e540e842fceab2845f4198314f7006d9c80e30d2cc1e9188087b0c8fc3
+SHA256: dd29a47b8d2ac7952711ece47781b7273c876eed98f49df0632e2b77f8bed14b
+SHA1: 6589c15ef0e6da5300413916a9b5c84391a38e03
+MD5sum: ea6ead6f35aad464d43838483b1e2f14
+Description: 
+  Obsidian
+
 Package: php-bacon-qr-code
 Source: baconqrcode
 Version: 2.0.6-2
@@ -53,4 +95,27 @@ MD5sum: 55170e1291e9f3f871bb9bd303e7235c
 Description: QR Code Generator for PHP
  Port of QR code portion of the ZXing library. It currently only features the
  encoder part, but could later receive the decoder part as well.
+
+Package: php-dasprid-enum
+Source: dasprid-enum
+Version: 1.0.3-3
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: William Desportes <williamdes@wdes.fr>
+Installed-Size: 50
+Depends: php-common
+Homepage: https://github.com/DASPRiD/Enum/
+Priority: 0
+Section: utils
+Filename: pool/main/d/dasprid-enum/php-dasprid-enum_1.0.3-3_all.deb
+Size: 10520
+SHA512: 7ba4b4ff90607c480335f29ba708a8c7403fba535da13bb5a14311de61f17c50a6b5c747793e5a983f612d2801e85f3e74ba8c75dd1105f736fba8b9aa6465d2
+SHA256: a6001e48377582d034fb84a774e56f1ea71af06666de3a41e6efaf0e49249bfb
+SHA1: 692eded950b9f75f89704eb3f624470315f2817b
+MD5sum: 829f3d3d5ab45a2d9176a9135a466e83
+Description: PHP 7.1 enum implementation
+ It is a well known fact that PHP is missing a basic enum type,
+ ignoring the rather incomplete SplEnum implementation
+ which is only available as a PECL extension.
+ This library tries to close that gap as far as PHP allows it to.
 
