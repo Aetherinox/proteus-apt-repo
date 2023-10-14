@@ -1,0 +1,56 @@
+Package: github-desktop
+Version: 3.3.1-linux1
+Architecture: arm64
+Depends: libgtk-3-0, libnotify4, libnss3, libxtst6, xdg-utils, libatspi2.0-0, libdrm2, libgbm1, libxcb-dri3-0, kde-cli-tools | kde-runtime | trash-cli | libglib2.0-bin | gvfs-bin, libcurl3 | libcurl4, libsecret-1-0, gnome-keyring
+Recommends: pulseaudio | libasound2
+Suggests: gir1.2-gnomekeyring-1.0, libgnome-keyring0, lsb-release
+Installed-Size: 334059
+Maintainer: Brendan Forster <github@brendanforster.com>
+Homepage: https://github.com/shiftkey/desktop
+Priority: 0
+Section: utils
+Filename: pool/main/g/github-desktop/github-desktop_3.3.1-linux1_arm64.deb
+Size: 87335400
+SHA512: 7a6e6493c714739d121262f28144d5f45e79bbcd302559dbf1d279f142dcf6cdd3dcc3465f329782937141132ba63f26e06567d84526034ec143d0ddcc4ad511
+SHA256: 6383f9b905e8a213e1fd1f0a13908e1d1fae47b227b748aa21f1e0c3d926671c
+SHA1: 3b07ca0472478dc16d48506aff1ac41a9f5ff195
+MD5sum: daf51a239604b5ccef81a7e435a03f72
+Description: Simple collaboration from your desktop
+ This is the unofficial port of GitHub Desktop for Linux distributions
+
+Package: gitkraken-license-pro
+Version: 1.0.0-1
+Architecture: all
+Maintainer: Aetherinox <aetherinox@proton.me>
+Priority: 0
+Section: utils
+Filename: pool/main/g/gitkraken-license-pro/gitkraken-license-pro_1.0.0-1_all.deb
+Size: 10808332
+SHA512: b172291bd1d20e08a226637acd36afbe167c70aea6be272aafd22003f5e8999fce886ffa4535eb7681adbce476b54e2cf6217b2b36444b1ad9a9aa31dd4bfe8d
+SHA256: 93f901f8fa48e1c4bc21f70e9220efbc709e9edd3f9e9629ef0d1f13accfa17a
+SHA1: bd2c562ea3d1070454faee93d38d7cf52f7b5bc7
+MD5sum: 7f42c18fdb36830829bf1ce9a4f4b9b5
+Description: Gitkraken License Generator
+ License generator and registration for Gitkraken Pro.
+
+Package: php-bacon-qr-code
+Source: baconqrcode
+Version: 2.0.6-2
+Architecture: arm64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: William Desportes <williamdes@wdes.fr>
+Installed-Size: 286
+Depends: php-imagick, php-common, php-dasprid-enum (>= 1.0.3), php-dasprid-enum (<< 2~~)
+Homepage: https://github.com/Bacon/BaconQrCode/
+Priority: 0
+Section: utils
+Filename: pool/main/b/baconqrcode/php-bacon-qr-code_2.0.6-2_arm64.deb
+Size: 41368
+SHA512: 38f9915ed81e7492e5ce6b65dfefeb338513de8ba0ef25a6e6782539dee7259b41266c7585e0d82f1a1096fc088ee92cca93282541d973ad5ce43aa11ece8f98
+SHA256: 0901b9ccae97bc7228b758682b83fcceff2860f4c2c4f1a01f221bfb18c1d1aa
+SHA1: a2c12324678ccb0e183b141f2e9d2f582f0cc72b
+MD5sum: bc78c2412df75777d42789d1438cb0bc
+Description: QR Code Generator for PHP
+ Port of QR code portion of the ZXing library. It currently only features the
+ encoder part, but could later receive the decoder part as well.
+

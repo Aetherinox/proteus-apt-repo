@@ -18,3 +18,46 @@ MD5sum: 404d4a91acaf7a080541e820dcf9a730
 Description: Simple collaboration from your desktop
  This is the unofficial port of GitHub Desktop for Linux distributions
 
+Package: gitkraken-license-pro
+Version: 1.0.0-1
+Architecture: all
+Maintainer: Aetherinox <aetherinox@proton.me>
+Priority: 0
+Section: utils
+Filename: pool/main/g/gitkraken-license-pro/gitkraken-license-pro_1.0.0-1_all.deb
+Size: 10808332
+SHA512: b172291bd1d20e08a226637acd36afbe167c70aea6be272aafd22003f5e8999fce886ffa4535eb7681adbce476b54e2cf6217b2b36444b1ad9a9aa31dd4bfe8d
+SHA256: 93f901f8fa48e1c4bc21f70e9220efbc709e9edd3f9e9629ef0d1f13accfa17a
+SHA1: bd2c562ea3d1070454faee93d38d7cf52f7b5bc7
+MD5sum: 7f42c18fdb36830829bf1ce9a4f4b9b5
+Description: Gitkraken License Generator
+ License generator and registration for Gitkraken Pro.
+
+Package: reprepro
+Version: 5.4.2-1
+Architecture: amd64
+Maintainer: Bastian Germann <bage@debian.org>
+Installed-Size: 1230
+Depends: libarchive13 (>= 3.0.4), libbz2-1.0, libc6 (>= 2.34), libdb5.3, libgpg-error0 (>= 1.14), libgpgme11 (>= 1.2.0), liblzma5 (>= 5.1.1alpha+20120614), zlib1g (>= 1:1.2.0.2), zstd
+Recommends: apt (>= 0.9.4)
+Suggests: pinentry-curses, gnupg-agent, inoticoming, lzip (>= 1.11-2)
+Priority: 0
+Section: utils
+Filename: pool/main/r/reprepro/reprepro_5.4.2-1_amd64.deb
+Size: 462172
+SHA512: cc30d6ea6bae539a19a75cf27f1e59e072d0ff2af9666f70926279dadbae1b7cbdf94b79481acf5f626ed7630da7c441a862a465bf070288a0009a076cb454d6
+SHA256: f22b1172ff4779e32cb54c2b1b411350ea9398b49616dbe1a2fde8b8cf9d85bc
+SHA1: a11d53e9f075c159c961170702bf36459cc12397
+MD5sum: 5f0f7b21b8163d32ab879ed325b3d4ea
+Description: Debian package repository producer
+ reprepro is a tool to manage a repository of Debian packages
+ (.deb, .udeb, .dsc, ...). It stores files either being
+ injected manually or downloaded from some other repository
+ (partially) mirrored into one pool/ hierarchy.
+ Managed packages and files are stored in a Berkeley DB,
+ so no database server is needed.
+ Checking signatures of mirrored repositories and creating
+ signatures of the generated Package indices is supported.
+ .
+ This package also contains the changestool and rredtool helpers.
+
