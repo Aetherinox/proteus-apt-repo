@@ -1,3 +1,39 @@
+Package: dialog
+Version: 1.3-20190808-1
+Architecture: arm64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Santiago Vila <sanvila@debian.org>
+Installed-Size: 1173
+Depends: libc6 (>= 2.17), libncursesw6 (>= 6), libtinfo6 (>= 6), debianutils (>= 1.6)
+Provides: libdialog-dev
+Homepage: http://invisible-island.net/dialog/dialog.html
+Priority: 0
+Section: utils
+Filename: pool/main/d/dialog/dialog_1.3-20190808-1_arm64.deb
+Size: 220400
+SHA512: 0d35176a8b9019e2989ab28f0f8917924bd91f21f41b11a01182b9d603056605ba033bc20cd1f7812ec81b64784919fbc5bb0f5e3f1a9c7bc09c4459863c519b
+SHA256: 0ff3b7d9a415a0b1b58bc13817b7ef157cecd6c4b83217e8d76f263798c3c72a
+SHA1: aa9c3c4e9a4153fd15a6730c7d37668429b6b95f
+MD5sum: e38b8b8c23844822ff4950c1e0049d07
+Description: Displays user-friendly dialog boxes from shell scripts
+ This application provides a method of displaying several different types
+ of dialog boxes from shell scripts.  This allows a developer of a script
+ to interact with the user in a much friendlier manner.
+ .
+ The following types of boxes are at your disposal:
+  yes/no           Typical query style box with "Yes" and "No" answer buttons
+  menu             A scrolling list of menu choices with single entry selection
+  input            Query style box with text entry field
+  message          Similar to the yes/no box, but with only an "Ok" button
+  text             A scrollable text box that works like a simple file viewer
+  info             A message display that allows asynchronous script execution
+  checklist        Similar to the menu box, but allowing multiple selections
+  radiolist        Checklist style box allowing single selections
+  gauge            Typical "progress report" style box
+  tail             Allows viewing the end of files (tail) that auto updates
+  background tail  Similar to tail but runs in the background.
+  editbox          Allows editing an existing file
+
 Package: github-desktop
 Version: 3.3.1-linux1
 Architecture: arm64

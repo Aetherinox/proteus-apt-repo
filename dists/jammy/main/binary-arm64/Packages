@@ -1,3 +1,40 @@
+Package: dialog
+Version: 1.3-20211214-1
+Architecture: arm64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Santiago Vila <sanvila@debian.org>
+Installed-Size: 1194
+Depends: libc6 (>= 2.34), libncursesw6 (>= 6), libtinfo6 (>= 6), debianutils (>= 1.6)
+Provides: libdialog-dev
+Multi-Arch: foreign
+Homepage: https://invisible-island.net/dialog/dialog.html
+Priority: 0
+Section: utils
+Filename: pool/main/d/dialog/dialog_1.3-20211214-1_arm64.deb
+Size: 300238
+SHA512: a03bc0f71112c012826a6ce3863058fc49e440c2ccbd126e721cee1588527cc73f316a84e535b93327e321f49731ebab1e09b315d1f4ba6345de98eb3bfb600e
+SHA256: 9184f6741142948be0c45b1c3af51372b05cb5cc5314e6c814bec5957ff42362
+SHA1: 4c70aa8751d4699124ffec5d480c1d8497806200
+MD5sum: 27d4b2706b204d7426f32e87ae829edc
+Description: Displays user-friendly dialog boxes from shell scripts
+ This application provides a method of displaying several different types
+ of dialog boxes from shell scripts.  This allows a developer of a script
+ to interact with the user in a much friendlier manner.
+ .
+ The following types of boxes are at your disposal:
+  yes/no           Typical query style box with "Yes" and "No" answer buttons
+  menu             A scrolling list of menu choices with single entry selection
+  input            Query style box with text entry field
+  message          Similar to the yes/no box, but with only an "Ok" button
+  text             A scrollable text box that works like a simple file viewer
+  info             A message display that allows asynchronous script execution
+  checklist        Similar to the menu box, but allowing multiple selections
+  radiolist        Checklist style box allowing single selections
+  gauge            Typical "progress report" style box
+  tail             Allows viewing the end of files (tail) that auto updates
+  background tail  Similar to tail but runs in the background.
+  editbox          Allows editing an existing file
+
 Package: github-desktop
 Version: 3.3.1-linux1
 Architecture: arm64
@@ -76,4 +113,33 @@ Description: PHP 7.1 enum implementation
  ignoring the rather incomplete SplEnum implementation
  which is only available as a PECL extension.
  This library tries to close that gap as far as PHP allows it to.
+
+Package: reprepro
+Version: 5.3.0-1.4
+Architecture: arm64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Bernhard R. Link <brlink@debian.org>
+Installed-Size: 1102
+Depends: libarchive13 (>= 3.0.4), libbz2-1.0, libc6 (>= 2.34), libdb5.3, libgpg-error0 (>= 1.14), libgpgme11 (>= 1.2.0), liblzma5 (>= 5.1.1alpha+20120614), zlib1g (>= 1:1.2.0.2), zstd
+Recommends: apt (>= 0.9.4)
+Suggests: pinentry-curses, gnupg-agent, inoticoming, lzip (>= 1.11-2)
+Priority: 0
+Section: utils
+Filename: pool/main/r/reprepro/reprepro_5.3.0-1.4_arm64.deb
+Size: 448672
+SHA512: aff4d3838a2930623c4e432acef81f36909030f4ea78629ea645a78b9660a5c441685dfe2cd242d073dcb3e4c015205c98e3841804b847ebacd41b4dc82f6901
+SHA256: d6d4be3fbd46eb220008b61e047e05f63720b8bc737ece86e902dad3eb62ff2c
+SHA1: 546f3dcceb98387d37175e72dbe1a8bc3c241b50
+MD5sum: 756daacac059f9cfbda1f5fe8da60cea
+Description: Debian package repository producer
+ reprepro is a tool to manage a repository of Debian packages
+ (.deb, .udeb, .dsc, ...). It stores files either being
+ injected manually or downloaded from some other repository
+ (partially) mirrored into one pool/ hierarchy.
+ Managed packages and files are stored in a Berkeley DB,
+ so no database server is needed.
+ Checking signatures of mirrored repositories and creating
+ signatures of the generated Package indices is supported.
+ .
+ This package also contains the changestool and rredtool helpers.
 

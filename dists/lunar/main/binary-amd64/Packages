@@ -19,6 +19,43 @@ MD5sum: cce3d6aea24c0cfba940e7bfbd853cf1
 Description: 
   A Universal linux app store 
 
+Package: dialog
+Version: 1.3-20230209-1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Santiago Vila <sanvila@debian.org>
+Installed-Size: 1225
+Depends: debianutils (>= 1.6), libc6 (>= 2.34), libncursesw6 (>= 6), libtinfo6 (>= 6)
+Provides: libdialog-dev
+Multi-Arch: foreign
+Homepage: https://invisible-island.net/dialog/dialog.html
+Priority: 0
+Section: utils
+Filename: pool/main/d/dialog/dialog_1.3-20230209-1_amd64.deb
+Size: 304546
+SHA512: 984fe9457f11ae1a12c9faa2ff5da1fd96e821f2615e7b10f1b69ed3e24935427b68bfc9ac3aa80340821358c31365ecaf6b7c595abed692ea275718ebb29cf9
+SHA256: 2bf4ba1355bc92e6368d66922bb4d745d410ade68b5532074c86175de3084fea
+SHA1: 95bb7aff7d3a3157a071b3e965a427265ab0d824
+MD5sum: 93b2cdb08dec08baa372af07e0b1624f
+Description: Displays user-friendly dialog boxes from shell scripts
+ This application provides a method of displaying several different types
+ of dialog boxes from shell scripts.  This allows a developer of a script
+ to interact with the user in a much friendlier manner.
+ .
+ The following types of boxes are at your disposal:
+  yes/no           Typical query style box with "Yes" and "No" answer buttons
+  menu             A scrolling list of menu choices with single entry selection
+  input            Query style box with text entry field
+  message          Similar to the yes/no box, but with only an "Ok" button
+  text             A scrollable text box that works like a simple file viewer
+  info             A message display that allows asynchronous script execution
+  checklist        Similar to the menu box, but allowing multiple selections
+  radiolist        Checklist style box allowing single selections
+  gauge            Typical "progress report" style box
+  tail             Allows viewing the end of files (tail) that auto updates
+  background tail  Similar to tail but runs in the background.
+  editbox          Allows editing an existing file
+
 Package: github-desktop
 Version: 3.3.1-linux1
 Architecture: amd64
@@ -91,6 +128,26 @@ SHA1: 713b77808a3597a305bf5aa4cb67b567c245e1f0
 MD5sum: d0435c5346c1efb207a6ce57002adc90
 Description: OCS-URL
  An install helper program for items served via OpenCollaborationServices (ocs://).
+
+Package: php-bacon-qr-code
+Source: baconqrcode
+Version: 2.0.8-2
+Architecture: amd64
+Maintainer: William Desportes <williamdes@wdes.fr>
+Installed-Size: 287
+Depends: php-imagick, php-common, php-dasprid-enum (>= 1.0.3), php-dasprid-enum (<< 2~~)
+Homepage: https://github.com/Bacon/BaconQrCode/
+Priority: 0
+Section: utils
+Filename: pool/main/b/baconqrcode/php-bacon-qr-code_2.0.8-2_amd64.deb
+Size: 39928
+SHA512: 3ff07584388c34237f4978e5ab83fe4ad59133297192e3761ba4143131b76263f8baefd41941ee91ca57e979b97236b3596b50b00eba7f174ed65f06369cf195
+SHA256: e9354203d9fb7dfa6a877bdf26676fce0a359c58d4d8d186c294953a6c915ae9
+SHA1: 8c8699e7fdf0e9c43010947cc99f282f4f825d2e
+MD5sum: 9dce147304b148b1702b3d8f0d301ecb
+Description: QR Code Generator for PHP
+ Port of QR code portion of the ZXing library. It currently only features the
+ encoder part, but could later receive the decoder part as well.
 
 Package: reprepro
 Version: 5.4.2-1
