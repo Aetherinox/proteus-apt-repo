@@ -75,6 +75,23 @@ MD5sum: ea6ead6f35aad464d43838483b1e2f14
 Description: 
   Obsidian
 
+Package: ocs-url
+Version: 3.1.0-0ubuntu1
+Architecture: amd64
+Maintainer: Akira Ohgaki <akiraohgaki@gmail.com>
+Installed-Size: 226
+Depends: libqt5svg5 (>= 5.2.0), qml-module-qtquick2 (>= 5.2.0) | qtdeclarative5-qtquick2-plugin (>= 5.2.0), qml-module-qtquick-window2 (>= 5.2.0) | qtdeclarative5-window-plugin (>= 5.2.0), qml-module-qtquick-controls (>= 5.2.0) | qtdeclarative5-controls-plugin (>= 5.2.0)
+Priority: 0
+Section: utils
+Filename: pool/main/o/ocs-url/ocs-url_3.1.0-0ubuntu1_amd64.deb
+Size: 54502
+SHA512: 50d7b34386de698c4635fde32057700d0737f577e4f04de24309c284afdaae0130f7d19246e9b9aa130f716cc98c5d0340e3fc19e9bb61816680634e08cc8314
+SHA256: e4cd9c1ac342f4f448aedfafbccf65d02322d1da7cde09dd29565ca05e68be61
+SHA1: 713b77808a3597a305bf5aa4cb67b567c245e1f0
+MD5sum: d0435c5346c1efb207a6ce57002adc90
+Description: OCS-URL
+ An install helper program for items served via OpenCollaborationServices (ocs://).
+
 Package: php-bacon-qr-code
 Source: baconqrcode
 Version: 2.0.6-2
