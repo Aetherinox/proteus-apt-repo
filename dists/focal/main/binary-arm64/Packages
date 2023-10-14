@@ -54,6 +54,29 @@ Description: QR Code Generator for PHP
  Port of QR code portion of the ZXing library. It currently only features the
  encoder part, but could later receive the decoder part as well.
 
+Package: php-dasprid-enum
+Source: dasprid-enum
+Version: 1.0.3-3
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: William Desportes <williamdes@wdes.fr>
+Installed-Size: 50
+Depends: php-common
+Homepage: https://github.com/DASPRiD/Enum/
+Priority: 0
+Section: utils
+Filename: pool/main/d/dasprid-enum/php-dasprid-enum_1.0.3-3_all.deb
+Size: 10520
+SHA512: 7ba4b4ff90607c480335f29ba708a8c7403fba535da13bb5a14311de61f17c50a6b5c747793e5a983f612d2801e85f3e74ba8c75dd1105f736fba8b9aa6465d2
+SHA256: a6001e48377582d034fb84a774e56f1ea71af06666de3a41e6efaf0e49249bfb
+SHA1: 692eded950b9f75f89704eb3f624470315f2817b
+MD5sum: 829f3d3d5ab45a2d9176a9135a466e83
+Description: PHP 7.1 enum implementation
+ It is a well known fact that PHP is missing a basic enum type,
+ ignoring the rather incomplete SplEnum implementation
+ which is only available as a PECL extension.
+ This library tries to close that gap as far as PHP allows it to.
+
 Package: zorin-pro-layouts
 Version: 1.0.0-3
 Architecture: all
