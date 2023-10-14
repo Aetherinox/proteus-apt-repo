@@ -118,3 +118,27 @@ Description: Debian package repository producer
  .
  This package also contains the changestool and rredtool helpers.
 
+Package: whiptail
+Source: newt
+Version: 0.52.23-1ubuntu1
+Architecture: arm64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 90
+Depends: libc6 (>= 2.34), libnewt0.52 (>= 0.52.23), libpopt0 (>= 1.14), libslang2 (>= 2.2.4)
+Multi-Arch: foreign
+Homepage: https://pagure.io/newt
+Priority: 0
+Section: utils
+Filename: pool/main/n/newt/whiptail_0.52.23-1ubuntu1_arm64.deb
+Size: 17416
+SHA512: ca9a6ef3f76156dc59b0c5447a05d815f313e31dff62ab8b8e3d2de7ea9cae0aee5de9113df9751052265d93f68a139e2f947bf91823622151c2fdaf0b3ab89d
+SHA256: 675f5c28add95ce18e214e04deda5c31e9e8fdf08b1b9cc97bbf993a3837f531
+SHA1: e6429c95dc93561338e78b7ec9dc8584b1b636a4
+MD5sum: d2f5cc85523d0b29fa7e64da0f67d7c3
+Description: Displays user-friendly dialog boxes from shell scripts
+ Whiptail is a "dialog" replacement using newt instead of ncurses. It
+ provides a method of displaying several different types of dialog boxes
+ from shell scripts. This allows a developer of a script to interact with
+ the user in a much friendlier manner.
+Original-Maintainer: Alastair McKinstry <mckinstry@debian.org>
+

@@ -142,6 +142,30 @@ Description: Debian package repository producer
  This package also contains the changestool and rredtool helpers.
 Original-Maintainer: Bernhard R. Link <brlink@debian.org>
 
+Package: whiptail
+Source: newt
+Version: 0.52.21-4ubuntu2
+Architecture: arm64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 66
+Depends: libc6 (>= 2.17), libnewt0.52 (>= 0.52.21), libpopt0 (>= 1.14), libslang2 (>= 2.2.4)
+Multi-Arch: foreign
+Homepage: https://pagure.io/newt
+Priority: 0
+Section: utils
+Filename: pool/main/n/newt/whiptail_0.52.21-4ubuntu2_arm64.deb
+Size: 16388
+SHA512: c6f5644186e87680c0f43ba2171974a71990bdfc15604b89c33e203e3e8e976e7c737b8341ff609b6946ba599b5ca131ff530363eaff6c125a77ab7c063fd0d2
+SHA256: a4a4e1489e9ed73905040ce74b04f61ffb666faec1c6e18c7ba98a48a07cdb9b
+SHA1: bb9ee3dfe67ec0530bc9bb3daf23e632927615f5
+MD5sum: 0ee48cec69169ca57256d6798d02e57c
+Description: Displays user-friendly dialog boxes from shell scripts
+ Whiptail is a "dialog" replacement using newt instead of ncurses. It
+ provides a method of displaying several different types of dialog boxes
+ from shell scripts. This allows a developer of a script to interact with
+ the user in a much friendlier manner.
+Original-Maintainer: Alastair McKinstry <mckinstry@debian.org>
+
 Package: zorin-pro-layouts
 Version: 1.0.0-3
 Architecture: all
