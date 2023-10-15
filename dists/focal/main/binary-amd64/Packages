@@ -111,6 +111,23 @@ MD5sum: 7f42c18fdb36830829bf1ce9a4f4b9b5
 Description: Gitkraken License Generator
  License generator and registration for Gitkraken Pro.
 
+Package: libredirect-frontends-manager
+Version: 0.1.0
+Architecture: amd64
+Installed-Size: 18188
+Maintainer: you
+Depends: libayatana-appindicator3-1, libwebkit2gtk-4.0-37, libgtk-3-0
+Priority: 0
+Section: utils
+Filename: pool/main/libr/libredirect-frontends-manager/libredirect-frontends-manager_0.1.0_amd64.deb
+Size: 7384002
+SHA512: 99b133ac71fc6de5b9f9fadc7aa6236631be96db17ea036ae30285b147c1f69eb7e7a6be8e997eff811bed9cca85c1dca2e1d30b9b2f9cc9a66ab0e5c4b95775
+SHA256: 80497e900b5c76a5c3960f6c70449cf1c442806b012bebe0570b3ba3ba28881c
+SHA1: cadac9be566de5c53d41fa91fc71afe8b888ffa9
+MD5sum: 1e3c767b1b2dac5e7900b833d4f4aa9b
+Description: Run privacy frontends on your computer
+ (none)
+
 Package: obsidian
 Version: 1.4.14
 License: UNLICENSED
