@@ -32,6 +32,77 @@ MD5sum: 7f42c18fdb36830829bf1ce9a4f4b9b5
 Description: Gitkraken License Generator
  License generator and registration for Gitkraken Pro.
 
+Package: gnome-shell-extension-tilix-dropdown
+Version: 7-1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
+Installed-Size: 25
+Depends: gnome-shell, tilix
+Homepage: https://github.com/ivoarch/gnome-shell-TilixDropdown
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnome-shell-extension-tilix-dropdown/gnome-shell-extension-tilix-dropdown_7-1_all.deb
+Size: 5804
+SHA512: 8fffef0d83eb15554b15ba7c7c21540d737a77be299332a4d461b1e4889436572c544e2c726e657d62ba007003ae6eb97f112ef9ce0d79fb3cee357c0053e040
+SHA256: 0563bfbf324ef365f67ea2176a5d657649de4cc2ae57d36cdf9c6a4201a9b2c4
+SHA1: b0a1bb500bc41382255e893ef1b92f71dd02d557
+MD5sum: 45c7197a510347e6cf86e4fa35223f68
+Description: launch tilix in quake-mode from gnome-shell
+ Tilix (previosly known as terminix) is a graphical terminal
+ multiplexer for GNOME.
+ .
+ Quake-mode launched a quick terminal from the top similar in
+ style to the terminal found in the original quake game.
+ .
+ This extension adds a keyboard shortcut that allows you to
+ access tilix in quake-mode (default key: F10). You can also
+ configure this key in gnome-tweak-tool.
+
+Package: gnome-shell-extension-tilix-shortcut
+Version: 1.0.1-2
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Jonathan Carter <jcc@debian.org>
+Installed-Size: 26
+Depends: gnome-shell, tilix
+Homepage: https://git.bluemosh.com/bluemosh/gse-tilix-shortcut/
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnome-shell-extension-tilix-shortcut/gnome-shell-extension-tilix-shortcut_1.0.1-2_all.deb
+Size: 5452
+SHA512: adf79e3eb1f6ca86ae1f1c44f6d871d249cc788c34d40fe2520625e498eb80a3ad66f8fbf3eb28adba15098394258e7abe1058f3c18182531f763a461a13ab7f
+SHA256: 240e65ba848556467f6f606f2cb6bfc9c2d4bc6a913d398216269fd87d373106
+SHA1: 9c30610de052b467ffa1038c1056083b3dd0ab7b
+MD5sum: 3fa356d5bed1230a4831d04f87632fdd
+Description: Adds easy to use configurable keyboard shortcut for tilix
+ Configuring a system-wide default for launching a terminal in
+ GNOME is way more tedious than it needs to be.
+ .
+ This extension adds an easy method for configuring this system-wide.
+
+Package: neofetch
+Version: 7.0.0-1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Nobuhiro Iwamatsu <iwamatsu@debian.org>
+Installed-Size: 331
+Recommends: chafa
+Homepage: https://github.com/dylanaraps/neofetch
+Priority: 0
+Section: utils
+Filename: pool/main/n/neofetch/neofetch_7.0.0-1_all.deb
+Size: 77456
+SHA512: c100f75594858a089341a2da310341be0e8b6f856d3f370b78c7d94ed813d0ad5831f48fb284454c65e70f6c0439ef7e04003d1ebb359619ca745172db1caf6c
+SHA256: 196beedc24c51379466a636b4b120292280ba64e777b24426d36b08dc09eff99
+SHA1: 65df8dfba50629b04ae5bd4673ec4857bbd28b9d
+MD5sum: afb781458386f7c189497c774af4db46
+Description: Shows Linux System Information with Distribution Logo
+ Neoftech is a cross-platform and easy-to-use system information
+ command line script that collects your Linux system information
+ and display it on the terminal next to an image, it could be your
+ distributions logo or any ascii art of your choice.
+
 Package: php-code-lts-u2f-php-server
 Version: 1.2.1-2
 Architecture: all
@@ -77,6 +148,30 @@ Description: PHP 7.1 enum implementation
  ignoring the rather incomplete SplEnum implementation
  which is only available as a PECL extension.
  This library tries to close that gap as far as PHP allows it to.
+
+Package: tilix-common
+Source: tilix
+Version: 1.9.3-4build3
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
+Installed-Size: 1225
+Breaks: terminix-common (<< 1.5.4-1~)
+Replaces: terminix-common (<< 1.5.4-1~)
+Homepage: https://gnunn1.github.io/tilix-web/
+Priority: 0
+Section: utils
+Filename: pool/main/t/tilix/tilix-common_1.9.3-4build3_all.deb
+Size: 208144
+SHA512: 7dd30514b7ad9eceb27c662d5349015ecd24d7980c887df7774c063bbaac6922cd79210dee4d96c685375a39fcb7eee48891ee72fba19c60e5c5fb95895cb82e
+SHA256: e99412d59fe1d7d5c6af0ac4b1119a715539760e00fb87f0d9f61457a2ba391e
+SHA1: d03f8eb53e7c9465e60ae326a4c79f02e259dcba
+MD5sum: d2ac85a723f04988035ef6da7f2eaca0
+Description: Tiling terminal emulator - data files
+ Tilix is a feature-rich tiling terminal emulator following the
+ GNOME human interface design guidelines.
+ .
+ This package contains architecture independent data.
 
 Package: zorin-pro-layouts
 Version: 1.0.0-3

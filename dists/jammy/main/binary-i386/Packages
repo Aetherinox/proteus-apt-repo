@@ -32,6 +32,28 @@ MD5sum: 7f42c18fdb36830829bf1ce9a4f4b9b5
 Description: Gitkraken License Generator
  License generator and registration for Gitkraken Pro.
 
+Package: neofetch
+Version: 7.1.0-3
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Nobuhiro Iwamatsu <iwamatsu@debian.org>
+Installed-Size: 351
+Recommends: chafa, caca-utils, imagemagick, jp2a, libsixel-bin, w3m-img, pciutils
+Homepage: https://github.com/dylanaraps/neofetch
+Priority: 0
+Section: utils
+Filename: pool/main/n/neofetch/neofetch_7.1.0-3_all.deb
+Size: 84270
+SHA512: c6775089d03221ba73505fcd9accdaa761e7bebd16ff9696d9234dd66a0654974885832e103b3de74d587d6813b29a990e677267ac835538834f6e3452eabd3e
+SHA256: 6fe8d81504ca73856c55959d04ca71e2e8b27553de0ac375e7dd96ec2899b2ec
+SHA1: e7fca285ac5dc17ec972fb7ccf5bda5ab7106213
+MD5sum: 5700ff7061fbed459de7b7287cc5a19f
+Description: Shows Linux System Information with Distribution Logo
+ Neofetch is a cross-platform and easy-to-use system information
+ command line script that collects your Linux system information
+ and display it on the terminal next to an image, it could be your
+ distributions logo or any ascii art of your choice.
+
 Package: php-code-lts-u2f-php-server
 Version: 1.2.1-2
 Architecture: all
@@ -105,4 +127,28 @@ Description: Debian package repository producer
  signatures of the generated Package indices is supported.
  .
  This package also contains the changestool and rredtool helpers.
+
+Package: tilix-common
+Source: tilix
+Version: 1.9.4-2build1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 1422
+Breaks: terminix-common (<< 1.5.4-1~)
+Replaces: terminix-common (<< 1.5.4-1~)
+Homepage: https://gnunn1.github.io/tilix-web/
+Priority: 0
+Section: utils
+Filename: pool/main/t/tilix/tilix-common_1.9.4-2build1_all.deb
+Size: 280534
+SHA512: 662a693ee8a6a9b3b7d83075324e60d99d5d3dc664d8e3d68a6f4e4d7b2fb5847bf15821378bdbdf150d2f7c99253c0c3943ea660609060a03f18f7f6089b3c6
+SHA256: facfeb012f582e084ef6691c985bdab60d3c10b7157f6f5029b9d6ae48415211
+SHA1: 3a8f54774de4ced012db2f829d188a96db202fab
+MD5sum: 2022f980d8a773888413dc917256d6d8
+Description: Tiling terminal emulator - data files
+ Tilix is a feature-rich tiling terminal emulator following the
+ GNOME human interface design guidelines.
+ .
+ This package contains architecture independent data.
+Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
 

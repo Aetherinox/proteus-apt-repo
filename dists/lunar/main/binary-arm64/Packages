@@ -110,6 +110,29 @@ MD5sum: 7f42c18fdb36830829bf1ce9a4f4b9b5
 Description: Gitkraken License Generator
  License generator and registration for Gitkraken Pro.
 
+Package: neofetch
+Version: 7.1.0-4
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Nobuhiro Iwamatsu <iwamatsu@debian.org>
+Installed-Size: 352
+Recommends: chafa, caca-utils, imagemagick, jp2a, libsixel-bin, w3m-img, pciutils
+Multi-Arch: foreign
+Homepage: https://github.com/dylanaraps/neofetch
+Priority: 0
+Section: utils
+Filename: pool/main/n/neofetch/neofetch_7.1.0-4_all.deb
+Size: 83664
+SHA512: 4a874d8e4458753ba04066ad30a1fbb727677c863d83fc7d49a1113a7eae699ce813bef0e719bd8624f39ef67cd9b56d36dfa1b21dfd28401215c351d5c172fe
+SHA256: 19402d7f2aebebf2755a6abbb9e5024196353f574f5c10cd7ea53241f8ae748e
+SHA1: 7994978ac40672d466e93872909e6641c968a0ff
+MD5sum: fa09d71047fb62d2dd7ecdc980db7ea2
+Description: Shows Linux System Information with Distribution Logo
+ Neofetch is a cross-platform and easy-to-use system information
+ command line script that collects your Linux system information
+ and display it on the terminal next to an image, it could be your
+ distributions logo or any ascii art of your choice.
+
 Package: php-bacon-qr-code
 Source: baconqrcode
 Version: 2.0.8-2
@@ -177,6 +200,30 @@ Description: PHP 7.1 enum implementation
  which is only available as a PECL extension.
  This library tries to close that gap as far as PHP allows it to.
 
+Package: pwgen
+Version: 2.08-2build1
+Architecture: arm64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Theodore Y. Ts'o <tytso@mit.edu>
+Installed-Size: 48
+Depends: libc6 (>= 2.17)
+Multi-Arch: foreign
+Homepage: https://github.com/tytso/pwgen
+Priority: 0
+Section: utils
+Filename: pool/main/p/pwgen/pwgen_2.08-2build1_arm64.deb
+Size: 15516
+SHA512: 8aae7d150685be3c9f591edb826b99432c6a19a1964e9a277725f44607fda9a823cb1f8c979bf81e688101c8fc5ef219f63537700d6ab078e8d51f5988d6e262
+SHA256: 466dc73bd69f6b0bfc228ed39335ec5e6b7e9d116fa8c9b2d50601bc02f80113
+SHA1: eb57c0dbd35dcad0bc9ec9f03612e4dcf5170906
+MD5sum: d7ef01847dfc70a648950772eb9486dc
+Description: Automatic Password generation
+ pwgen generates random, meaningless but pronounceable passwords.
+ These passwords contain either only lowercase letters, or upper
+ and lower case mixed, or digits thrown in.
+ Uppercase letters and digits are placed in a way that eases
+ remembering their position when memorizing only the word.
+
 Package: reprepro
 Version: 5.4.2-1
 Architecture: arm64
@@ -204,6 +251,59 @@ Description: Debian package repository producer
  signatures of the generated Package indices is supported.
  .
  This package also contains the changestool and rredtool helpers.
+
+Package: tilix
+Version: 1.9.5-2
+Architecture: arm64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
+Installed-Size: 3428
+Depends: tilix-common (= 1.9.5-2), python3-nautilus, dconf-gsettings-backend | gsettings-backend, libc6 (>= 2.34), libgcc-s1 (>= 3.0), libgtkd-3-0 (>= 3.10.0), libphobos2-ldc-shared100 (>= 1:1.30.0), libvted-3-0 (>= 3.10.0), libx11-6
+Provides: x-terminal-emulator
+Homepage: https://gnunn1.github.io/tilix-web/
+Priority: 0
+Section: utils
+Filename: pool/main/t/tilix/tilix_1.9.5-2_arm64.deb
+Size: 684812
+SHA512: ef26e59d25c5ef1add918565246465b8c62b121d71156aca533cde31681c354192a3f3401e6c8778d21f239d52a6f497cd0f634b8689b6180cae024c64ae075f
+SHA256: 9b13f78ceb6a6d47842ed6faf94bf137d2e009aba96ac009dbd608c04ee055a4
+SHA1: ec5fd655c293b5a416d925c58d47465807491f39
+MD5sum: 7b9a5c953750f5b43f2ab7120b55a5e4
+Description: Tiling terminal emulator for GNOME
+ Tilix is a feature-rich tiling terminal emulator following the
+ GNOME human interface design guidelines.
+ Its many features include:
+ .
+  * Layout terminals in any fashion by splitting them horizontally or
+    vertically.
+  * Terminals can be re-arranged using drag and drop both within and
+    between windows.
+  * Terminals can be detached into a new window via drag and drop.
+  * Input can be synchronized between terminals so commands typed in
+    one terminal are replicated to the others.
+  * Supports notifications when processes are completed out of view.
+
+Package: tilix-common
+Source: tilix
+Version: 1.9.5-2
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
+Installed-Size: 1522
+Homepage: https://gnunn1.github.io/tilix-web/
+Priority: 0
+Section: utils
+Filename: pool/main/t/tilix/tilix-common_1.9.5-2_all.deb
+Size: 297882
+SHA512: 84e147cf56c52421bda47beba0871fe13286a41af2c4be8adee3204900086670b6cc0d6edbae270b07a6edfa44632ec5d9361b9425b2de90203d6a533f51341f
+SHA256: 87f816e87562f02fda6659a8dae65015b47f0309af592bcda894a19cca28e9f5
+SHA1: e838db59ecd69068185674311e28cba7cb81b1e9
+MD5sum: de776806987816769cb2fefcc3b80ccd
+Description: Tiling terminal emulator - data files
+ Tilix is a feature-rich tiling terminal emulator following the
+ GNOME human interface design guidelines.
+ .
+ This package contains architecture independent data.
 
 Package: whiptail
 Source: newt
