@@ -15,16 +15,44 @@ This is a Proteus apt repository that is associated to the [Proteus App Manager]
 
 The repository currently contains the following packages:
 ```
-app-outlet
-deb-pacman
-github-desktop
-ocs-url
-qubes-gpg-split
-qubes-gpg-split-dbgsym
-qubes-gpg-split-tests
-qubes-thunderbird
-qubes-utils
-zorin-pro-layouts
+focal|main|amd64: app-outlet 2.1.0
+focal|main|amd64: deb-get 0.3.9-1
+focal|main|amd64: dialog 1.3-20190808-1
+focal|main|amd64: freetube 0.19.1
+focal|main|amd64: github-desktop 3.3.1-linux1
+focal|main|amd64: gitkraken-license-pro 1.0.0-1
+focal|main|amd64: libredirect-frontends-manager 0.1.0
+focal|main|amd64: obsidian 1.4.14
+focal|main|amd64: ocs-url 3.1.0-0ubuntu1
+focal|main|amd64: php-bacon-qr-code 2.0.6-2
+focal|main|amd64: php-code-lts-u2f-php-server 1.2.1-2
+focal|main|amd64: php-dasprid-enum 1.0.3-3
+focal|main|amd64: pwgen 2.08-2
+focal|main|amd64: qubes-gpg-split 2.0.58-1+focalu1
+focal|main|amd64: qubes-gpg-split-tests 2.0.58-1+focalu1
+focal|main|amd64: qubes-thunderbird 2.0.6-1+focalu1
+focal|main|amd64: qubes-utils 4.1.16+focalu1
+focal|main|amd64: reprepro 5.3.0-1.3~ubuntu20.04
+focal|main|amd64: whiptail 0.52.21-4ubuntu2
+focal|main|amd64: zorin-pro-layouts 1.0.0-3
+focal|main|arm64: deb-get 0.3.9-1
+focal|main|arm64: dialog 1.3-20190808-1
+focal|main|arm64: freetube 0.19.1
+focal|main|arm64: github-desktop 3.3.1-linux1
+focal|main|arm64: gitkraken-license-pro 1.0.0-1
+focal|main|arm64: php-bacon-qr-code 2.0.6-2
+focal|main|arm64: php-code-lts-u2f-php-server 1.2.1-2
+focal|main|arm64: php-dasprid-enum 1.0.3-3
+focal|main|arm64: pwgen 2.08-2
+focal|main|arm64: reprepro 5.3.0-1.3~ubuntu20.04
+focal|main|arm64: whiptail 0.52.21-4ubuntu2
+focal|main|arm64: zorin-pro-layouts 1.0.0-3
+focal|main|i386: deb-get 0.3.9-1
+focal|main|i386: gitkraken-license-pro 1.0.0-1
+focal|main|i386: php-code-lts-u2f-php-server 1.2.1-2
+focal|main|i386: php-dasprid-enum 1.0.3-3
+focal|main|i386: zorin-pro-layouts 1.0.0-3
+
 ```
 
 <br />
