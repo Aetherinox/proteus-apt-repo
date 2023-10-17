@@ -13,62 +13,169 @@
 ## About
 This is a Proteus apt repository that is associated to the [Proteus App Manager](https://github.com/Aetherinox/proteus-app-manager). It can however, be added by any user running Ubuntu, ZorinOS, or similar Linux distributions. All packages contained within this repository are automatically updated when developers release new reivisons of their packages. The user simply needs to run `apt update` or `apt-get update` in terminal.
 
-The repository currently contains the following packages:
-```
-focal|main|amd64: app-outlet 2.1.0
-focal|main|amd64: deb-get 0.3.9-1
-focal|main|amd64: dialog 1.3-20190808-1
-focal|main|amd64: freetube 0.19.1
-focal|main|amd64: github-desktop 3.3.1-linux1
-focal|main|amd64: gitkraken-license-pro 1.0.0-1
-focal|main|amd64: gnome-shell-extension-tilix-dropdown 7-1
-focal|main|amd64: gnome-shell-extension-tilix-shortcut 1.0.1-2
-focal|main|amd64: libredirect-frontends-manager 0.1.0
-focal|main|amd64: neofetch 7.0.0-1
-focal|main|amd64: obsidian 1.4.14
-focal|main|amd64: ocs-url 3.1.0-0ubuntu1
-focal|main|amd64: php-bacon-qr-code 2.0.6-2
-focal|main|amd64: php-code-lts-u2f-php-server 1.2.1-2
-focal|main|amd64: php-dasprid-enum 1.0.3-3
-focal|main|amd64: pwgen 2.08-2
-focal|main|amd64: qubes-gpg-split 2.0.58-1+focalu1
-focal|main|amd64: qubes-gpg-split-tests 2.0.58-1+focalu1
-focal|main|amd64: qubes-thunderbird 2.0.6-1+focalu1
-focal|main|amd64: qubes-utils 4.1.16+focalu1
-focal|main|amd64: reprepro 5.3.0-1.3~ubuntu20.04
-focal|main|amd64: tilix 1.9.3-4build3
-focal|main|amd64: tilix-common 1.9.3-4build3
-focal|main|amd64: whiptail 0.52.21-4ubuntu2
-focal|main|amd64: zorin-pro-layouts 1.0.0-3
-focal|main|arm64: deb-get 0.3.9-1
-focal|main|arm64: dialog 1.3-20190808-1
-focal|main|arm64: freetube 0.19.1
-focal|main|arm64: github-desktop 3.3.1-linux1
-focal|main|arm64: gitkraken-license-pro 1.0.0-1
-focal|main|arm64: gnome-shell-extension-tilix-dropdown 7-1
-focal|main|arm64: gnome-shell-extension-tilix-shortcut 1.0.1-2
-focal|main|arm64: neofetch 7.0.0-1
-focal|main|arm64: php-bacon-qr-code 2.0.6-2
-focal|main|arm64: php-code-lts-u2f-php-server 1.2.1-2
-focal|main|arm64: php-dasprid-enum 1.0.3-3
-focal|main|arm64: pwgen 2.08-2
-focal|main|arm64: reprepro 5.3.0-1.3~ubuntu20.04
-focal|main|arm64: tilix 1.9.3-4build3
-focal|main|arm64: tilix-common 1.9.3-4build3
-focal|main|arm64: whiptail 0.52.21-4ubuntu2
-focal|main|arm64: zorin-pro-layouts 1.0.0-3
-focal|main|i386: deb-get 0.3.9-1
-focal|main|i386: gitkraken-license-pro 1.0.0-1
-focal|main|i386: gnome-shell-extension-tilix-dropdown 7-1
-focal|main|i386: gnome-shell-extension-tilix-shortcut 1.0.1-2
-focal|main|i386: neofetch 7.0.0-1
-focal|main|i386: php-code-lts-u2f-php-server 1.2.1-2
-focal|main|i386: php-dasprid-enum 1.0.3-3
-focal|main|i386: tilix-common 1.9.3-4build3
-focal|main|i386: zorin-pro-layouts 1.0.0-3
+<br />
 
+---
+
+<br />
+
+## Packages
+
+<details>
+  <summary>Focal</summary>
 
 ```
+amd64: app-outlet 2.1.0
+amd64: deb-get 0.3.9-1
+amd64: dialog 1.3-20190808-1
+amd64: freetube 0.19.1
+amd64: github-desktop 3.3.1-linux1
+amd64: gitkraken-license-pro 1.0.0-1
+amd64: gnome-shell-extension-tilix-dropdown 7-1
+amd64: gnome-shell-extension-tilix-shortcut 1.0.1-2
+amd64: libredirect-frontends-manager 0.1.0
+amd64: neofetch 7.0.0-1
+amd64: obsidian 1.4.14
+amd64: ocs-url 3.1.0-0ubuntu1
+amd64: php-bacon-qr-code 2.0.6-2
+amd64: php-code-lts-u2f-php-server 1.2.1-2
+amd64: php-dasprid-enum 1.0.3-3
+amd64: pwgen 2.08-2
+amd64: qubes-gpg-split 2.0.58-1+focalu1
+amd64: qubes-gpg-split-tests 2.0.58-1+focalu1
+amd64: qubes-thunderbird 2.0.6-1+focalu1
+amd64: qubes-utils 4.1.16+focalu1
+amd64: reprepro 5.3.0-1.3~ubuntu20.04
+amd64: tilix 1.9.3-4build3
+amd64: tilix-common 1.9.3-4build3
+amd64: whiptail 0.52.21-4ubuntu2
+amd64: zorin-pro-layouts 1.0.0-3
+arm64: deb-get 0.3.9-1
+arm64: dialog 1.3-20190808-1
+arm64: freetube 0.19.1
+arm64: github-desktop 3.3.1-linux1
+arm64: gitkraken-license-pro 1.0.0-1
+arm64: gnome-shell-extension-tilix-dropdown 7-1
+arm64: gnome-shell-extension-tilix-shortcut 1.0.1-2
+arm64: neofetch 7.0.0-1
+arm64: php-bacon-qr-code 2.0.6-2
+arm64: php-code-lts-u2f-php-server 1.2.1-2
+arm64: php-dasprid-enum 1.0.3-3
+arm64: pwgen 2.08-2
+arm64: reprepro 5.3.0-1.3~ubuntu20.04
+arm64: tilix 1.9.3-4build3
+arm64: tilix-common 1.9.3-4build3
+arm64: whiptail 0.52.21-4ubuntu2
+arm64: zorin-pro-layouts 1.0.0-3
+i386: deb-get 0.3.9-1
+i386: gitkraken-license-pro 1.0.0-1
+i386: gnome-shell-extension-tilix-dropdown 7-1
+i386: gnome-shell-extension-tilix-shortcut 1.0.1-2
+i386: neofetch 7.0.0-1
+i386: php-code-lts-u2f-php-server 1.2.1-2
+i386: php-dasprid-enum 1.0.3-3
+i386: tilix-common 1.9.3-4build3
+i386: zorin-pro-layouts 1.0.0-3
+```
+
+</details>
+
+<br />
+
+<details>
+  <summary>Jammy</summary>
+
+```
+amd64: app-outlet 2.1.0
+amd64: deb-get 0.3.9-1
+amd64: dialog 1.3-20211214-1
+amd64: freetube 0.19.1
+amd64: github-desktop 3.3.1-linux1
+amd64: gitkraken-license-pro 1.0.0-1
+amd64: libredirect-frontends-manager 0.1.0
+amd64: neofetch 7.1.0-3
+amd64: obsidian 1.4.14
+amd64: ocs-url 3.1.0-0ubuntu1
+amd64: php-bacon-qr-code 2.0.6-2
+amd64: php-code-lts-u2f-php-server 1.2.1-2
+amd64: php-dasprid-enum 1.0.3-3
+amd64: pwgen 2.08-2build1
+amd64: reprepro 5.4.2-1
+amd64: tilix 1.9.4-2build1
+amd64: tilix-common 1.9.4-2build1
+amd64: whiptail 0.52.21-5ubuntu2
+arm64: deb-get 0.3.9-1
+arm64: dialog 1.3-20211214-1
+arm64: freetube 0.19.1
+arm64: github-desktop 3.3.1-linux1
+arm64: gitkraken-license-pro 1.0.0-1
+arm64: neofetch 7.1.0-3
+arm64: php-bacon-qr-code 2.0.6-2
+arm64: php-code-lts-u2f-php-server 1.2.1-2
+arm64: php-dasprid-enum 1.0.3-3
+arm64: pwgen 2.08-2build1
+arm64: reprepro 5.4.2-1
+arm64: tilix 1.9.4-2build1
+arm64: tilix-common 1.9.4-2build1
+arm64: whiptail 0.52.21-5ubuntu2
+i386: deb-get 0.3.9-1
+i386: gitkraken-license-pro 1.0.0-1
+i386: neofetch 7.1.0-3
+i386: php-code-lts-u2f-php-server 1.2.1-2
+i386: php-dasprid-enum 1.0.3-3
+i386: reprepro 5.4.2-1
+i386: tilix-common 1.9.4-2build1
+```
+
+</details>
+
+<br />
+
+<details>
+  <summary>Lunar</summary>
+
+```
+amd64: app-outlet 2.1.0
+amd64: deb-get 0.3.9-1
+amd64: dialog 1.3-20230209-1
+amd64: freetube 0.19.1
+amd64: github-desktop 3.3.1-linux1
+amd64: gitkraken-license-pro 1.0.0-1
+amd64: libredirect-frontends-manager 0.1.0
+amd64: neofetch 7.1.0-4
+amd64: obsidian 1.4.14
+amd64: ocs-url 3.1.0-0ubuntu1
+amd64: php-bacon-qr-code 2.0.8-2
+amd64: php-code-lts-u2f-php-server 1.2.1-2
+amd64: php-dasprid-enum 1.0.3-4
+amd64: pwgen 2.08-2build1
+amd64: reprepro 5.4.2-1
+amd64: tilix 1.9.5-2
+amd64: tilix-common 1.9.5-2
+amd64: whiptail 0.52.23-1ubuntu1
+arm64: deb-get 0.3.9-1
+arm64: dialog 1.3-20230209-1
+arm64: freetube 0.19.1
+arm64: github-desktop 3.3.1-linux1
+arm64: gitkraken-license-pro 1.0.0-1
+arm64: neofetch 7.1.0-4
+arm64: php-bacon-qr-code 2.0.8-2
+arm64: php-code-lts-u2f-php-server 1.2.1-2
+arm64: php-dasprid-enum 1.0.3-4
+arm64: pwgen 2.08-2build1
+arm64: reprepro 5.4.2-1
+arm64: tilix 1.9.5-2
+arm64: tilix-common 1.9.5-2
+arm64: whiptail 0.52.23-1ubuntu1
+i386: deb-get 0.3.9-1
+i386: gitkraken-license-pro 1.0.0-1
+i386: neofetch 7.1.0-4
+i386: php-code-lts-u2f-php-server 1.2.1-2
+i386: php-dasprid-enum 1.0.3-4
+i386: tilix-common 1.9.5-2
+```
+
+</details>
 
 <br />
 
