@@ -22,7 +22,7 @@ This is a Proteus apt repository that is associated to the [Proteus App Manager]
 ## Packages
 
 <details>
-  <summary>Focal</summary>
+  <summary>20.04 (Focal) LTS</summary>
 
 ```
 amd64: app-outlet 2.1.0
@@ -83,7 +83,7 @@ i386: zorin-pro-layouts 1.0.0-3
 <br />
 
 <details>
-  <summary>Jammy</summary>
+  <summary>22.04 (Jammy) LTS</summary>
 
 ```
 amd64: app-outlet 2.1.0
@@ -92,6 +92,8 @@ amd64: dialog 1.3-20211214-1
 amd64: freetube 0.19.1
 amd64: github-desktop 3.3.1-linux1
 amd64: gitkraken-license-pro 1.0.0-1
+amd64: libapache2-mod-php8.3 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: libphp8.3-embed 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
 amd64: libredirect-frontends-manager 0.1.0
 amd64: neofetch 7.1.0-3
 amd64: obsidian 1.4.14
@@ -99,6 +101,72 @@ amd64: ocs-url 3.1.0-0ubuntu1
 amd64: php-bacon-qr-code 2.0.6-2
 amd64: php-code-lts-u2f-php-server 1.2.1-2
 amd64: php-dasprid-enum 1.0.3-3
+amd64: php8.2 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-bcmath 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-bz2 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-cgi 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-cli 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-common 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-curl 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-dba 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-dev 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-enchant 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-fpm 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-gd 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-gmp 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-imap 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-interbase 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-intl 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-ldap 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-mbstring 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-mysql 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-odbc 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-opcache 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-pgsql 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-phpdbg 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-pspell 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-readline 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-snmp 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-soap 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-sqlite3 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-sybase 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-tidy 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-xml 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-xsl 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-zip 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-bcmath 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-bz2 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-cgi 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-cli 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-common 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-curl 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-dba 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-dev 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-enchant 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-fpm 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-gd 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-gmp 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-imap 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-interbase 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-intl 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-ldap 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-mbstring 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-mysql 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-odbc 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-opcache 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-pgsql 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-phpdbg 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-pspell 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-readline 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-snmp 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-soap 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-sqlite3 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-sybase 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-tidy 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-xml 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-xsl 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.3-zip 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
 amd64: pwgen 2.08-2build1
 amd64: reprepro 5.4.2-1
 amd64: tilix 1.9.4-2build1
@@ -113,6 +181,10 @@ arm64: neofetch 7.1.0-3
 arm64: php-bacon-qr-code 2.0.6-2
 arm64: php-code-lts-u2f-php-server 1.2.1-2
 arm64: php-dasprid-enum 1.0.3-3
+arm64: php8.2 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+arm64: php8.2-xsl 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+arm64: php8.3 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+arm64: php8.3-xsl 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
 arm64: pwgen 2.08-2build1
 arm64: reprepro 5.4.2-1
 arm64: tilix 1.9.4-2build1
@@ -123,6 +195,10 @@ i386: gitkraken-license-pro 1.0.0-1
 i386: neofetch 7.1.0-3
 i386: php-code-lts-u2f-php-server 1.2.1-2
 i386: php-dasprid-enum 1.0.3-3
+i386: php8.2 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+i386: php8.2-xsl 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+i386: php8.3 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+i386: php8.3-xsl 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
 i386: reprepro 5.4.2-1
 i386: tilix-common 1.9.4-2build1
 ```
@@ -132,7 +208,7 @@ i386: tilix-common 1.9.4-2build1
 <br />
 
 <details>
-  <summary>Lunar</summary>
+  <summary>23.04 (Lunar)</summary>
 
 ```
 amd64: app-outlet 2.1.0
@@ -148,6 +224,39 @@ amd64: ocs-url 3.1.0-0ubuntu1
 amd64: php-bacon-qr-code 2.0.8-2
 amd64: php-code-lts-u2f-php-server 1.2.1-2
 amd64: php-dasprid-enum 1.0.3-4
+amd64: php8.2 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-bcmath 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-bz2 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-cgi 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-cli 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-common 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-curl 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-dba 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-dev 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-enchant 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-fpm 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-gd 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-gmp 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-imap 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-interbase 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-intl 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-ldap 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-mbstring 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-mysql 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-odbc 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-opcache 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-pgsql 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-phpdbg 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-pspell 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-readline 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-snmp 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-soap 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-sqlite3 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-sybase 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-tidy 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-xml 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-xsl 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+amd64: php8.2-zip 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
 amd64: pwgen 2.08-2build1
 amd64: reprepro 5.4.2-1
 amd64: tilix 1.9.5-2
@@ -162,6 +271,8 @@ arm64: neofetch 7.1.0-4
 arm64: php-bacon-qr-code 2.0.8-2
 arm64: php-code-lts-u2f-php-server 1.2.1-2
 arm64: php-dasprid-enum 1.0.3-4
+arm64: php8.2 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+arm64: php8.2-xsl 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
 arm64: pwgen 2.08-2build1
 arm64: reprepro 5.4.2-1
 arm64: tilix 1.9.5-2
@@ -172,6 +283,8 @@ i386: gitkraken-license-pro 1.0.0-1
 i386: neofetch 7.1.0-4
 i386: php-code-lts-u2f-php-server 1.2.1-2
 i386: php-dasprid-enum 1.0.3-4
+i386: php8.2 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+i386: php8.2-xsl 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
 i386: tilix-common 1.9.5-2
 ```
 
