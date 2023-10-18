@@ -131,6 +131,70 @@ MD5sum: 7f42c18fdb36830829bf1ce9a4f4b9b5
 Description: Gitkraken License Generator
  License generator and registration for Gitkraken Pro.
 
+Package: libapache2-mod-php8.3
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 5504
+Depends: libmagic1, media-types | mime-support, php8.3-cli, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), php8.3-opcache, tzdata, ucf, apache2-api-20120211, apache2-bin, libargon2-1 (>= 0~20171227), libc6 (>= 2.35), libpcre2-8-0 (>= 10.38), libsodium23 (>= 1.0.18), libssl3 (>= 3.0.0~~alpha1), libxml2 (>= 2.8.0), zlib1g (>= 1:1.1.4)
+Recommends: apache2
+Suggests: php-pear
+Provides: libapache2-mod-php, php-json, php8.3-json, phpapi-20230831
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/libapache2-mod-php8.3_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 1860198
+SHA512: 668dd70b7390b104b88a161856a61dbdb20eee6d9a58520383bd797b8b376f4aa47b1ebbe860d0a45d7447b19c0b1420b4ce14d705213da2b777550fe047306d
+SHA256: c7a944e99484f42c42788e4ba136d31e8fa6d99cda1cc9b7a1c9b302bb1cf03d
+SHA1: ce95a1d7be8de45ef26dc85caa7fd04e5f600d56
+MD5sum: 6150f16fa8620678facd5cde5b211e5c
+Description: server-side, HTML-embedded scripting language (Apache 2 module)
+ This package provides the PHP module for the Apache 2 webserver (as
+ found in the apache2-mpm-prefork package).  Please note that this package
+ ONLY works with Apache's prefork MPM, as it is not compiled thread-safe.
+ .
+ The following extensions are built in: Core date filter hash json libxml
+ openssl pcre random Reflection session sodium SPL standard zlib.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: libphp8.3-embed
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 5502
+Depends: libmagic1, media-types | mime-support, php8.3-cli, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), php8.3-opcache, tzdata, ucf, libargon2-1 (>= 0~20171227), libc6 (>= 2.35), libpcre2-8-0 (>= 10.38), libsodium23 (>= 1.0.18), libssl3 (>= 3.0.0~~alpha1), libxml2 (>= 2.8.0), zlib1g (>= 1:1.1.4)
+Suggests: php-pear
+Provides: libphp-embed, php-json, php8.3-json, phpapi-20230831
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/libphp8.3-embed_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 1860148
+SHA512: 57421ffe654f66f71a40c354953ffa483fbca94b4dac86de4ea3a376d4cb52f98b6955197537cc9918ecbc1c265e5c6b5369754db9d6d7490c1f8e232eefa953
+SHA256: 7c55647c19626f51dba521c82e29c238778b911c59ba928e0808a7e257712ddb
+SHA1: 5edb129f59a19b4306ec971c9bdf13b6697c444f
+MD5sum: 0389ebf45036404cf5df68cd5f2f4bdc
+Description: HTML-embedded scripting language (Embedded SAPI library)
+ This package provides the library /usr/lib/libphp8.3.so which can
+ be used by application developers to embed PHP scripting functionality.
+ .
+ The following extensions are built in: Core date filter hash json libxml
+ openssl pcntl pcre random Reflection session sodium SPL standard zlib.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ WARNING: The embed SAPI is experimental and there's no guarantee that
+ the API/ABI will be kept compatible even between minor releases.  You
+ have been warned.
+
 Package: libredirect-frontends-manager
 Version: 0.1.0
 Architecture: amd64
@@ -274,6 +338,1646 @@ Description: PHP 7.1 enum implementation
  ignoring the rather incomplete SplEnum implementation
  which is only available as a PECL extension.
  This library tries to close that gap as far as PHP allows it to.
+
+Package: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: all
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 69
+Depends: libapache2-mod-php8.2 | php8.2-fpm | php8.2-cgi, php8.2-common
+Provides: php
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_all.deb
+Size: 34902
+SHA512: 9c2c18203c69d930bd0a3fd152ab459ab330131aadcd205fb04e6c09c3c4e06ded86f80cdabbecddb0e191facc007333f606fc460e074f6ad629007e08b01a27
+SHA256: a07bdf2b5251315d9dc8cdc9f9c4dc5a0623b9ad58a186748922d0e7ed2d8cf3
+SHA1: b23c504a8eb6f0fb36a3b2de73391a9c7b65d323
+MD5sum: 49537ce83accfd77210b5b1e4dadcbd0
+Description: server-side, HTML-embedded scripting language (metapackage)
+ This package is a metapackage that, when installed, guarantees that you
+ have at least one of the four server-side versions of the PHP interpreter
+ installed. Removing this package won't remove PHP from your system, however
+ it may remove other packages that depend on this one.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-bcmath
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 68
+Depends: php-common (>= 1:81~), ucf, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.14)
+Provides: php-bcmath
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-bcmath_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 16454
+SHA512: 6b56e024fb5f727a357b392869351e84e813c8f8f0cca7215ca4e876eff29035205c2dd17422b54bc6eaf2d7a449a4fab444d5a66e348efe9a27e2f19a151711
+SHA256: f2a577ffec2aa3ae811b2be52f959a859405583fc9e49df22db176d690f838f1
+SHA1: 2aa547d80ba8858ea8dc0f076a5f680c41c42f53
+MD5sum: d7cde8667773fcb2d9f9e3b57958bd9c
+Description: Bcmath module for PHP
+ This package provides the Bcmath module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-bz2
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 60
+Depends: php-common (>= 1:81~), ucf, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), libbz2-1.0, libc6 (>= 2.14)
+Provides: php-bz2
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-bz2_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 11462
+SHA512: 31f152fd83f7f0b98a5a86abafbb03a55db50497594f46bc7c297498f0064765f6ade2752692ea49c9ffd20af3a869cd18f1bc6cbedb25f1c7d100e85ab90564
+SHA256: 5a02c28ba48fa825fef4589adff8ab05b0e347eeff7d7c8b1f97c624350c77fb
+SHA1: e0fef039da888e52fef5ae81633a536d8e09fe76
+MD5sum: 2c64f46b2a88ea03b9deeb5e651900d6
+Description: bzip2 module for PHP
+ This package provides the bzip2 module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-cgi
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 10883
+Depends: libmagic1, media-types | mime-support, php8.2-cli, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), php8.2-opcache, tzdata, ucf, libargon2-1 (>= 0~20171227), libc6 (>= 2.35), libpcre2-8-0 (>= 10.38), libsodium23 (>= 1.0.18), libssl3 (>= 3.0.0~~alpha1), libxml2 (>= 2.8.0), zlib1g (>= 1:1.1.4)
+Suggests: php-pear
+Provides: php-cgi, php-json, php8.2-json, phpapi-20220829
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-cgi_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 1836518
+SHA512: c7d177d727ff8cdda2f27390391e277365d545e9073d4e36401204f5c2c67b082f33e7e5157ebc4107c7b8608f36f3f38cbfb36c2cc9f09f236afadec399a6b9
+SHA256: f3f883afd2707b44affef84d9a0caccbbb97989a36d4c3f0f8d1cd8bd4c40b7b
+SHA1: bcb11b7246de926cf769612f6ccacb2eaf5b4ec7
+MD5sum: ed5a32a86cf79c6cfc5b54cd556e72dd
+Description: server-side, HTML-embedded scripting language (CGI binary)
+ This package provides the /usr/lib/cgi-bin/php CGI interpreter built
+ for use in Apache 2 with mod_actions, or any other CGI httpd that
+ supports a similar mechanism.  Note that MOST users probably
+ want the php8.2-fpm package.
+ .
+ The following extensions are built in: Core date filter hash json libxml
+ openssl pcntl pcre random Reflection session sodium SPL standard zlib.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-cli
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 5605
+Depends: libedit2 (>= 2.11-20080614-4), libmagic1, media-types | mime-support, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), php8.2-opcache, php8.2-readline, tzdata, ucf, libargon2-1 (>= 0~20171227), libc6 (>= 2.35), libpcre2-8-0 (>= 10.38), libsodium23 (>= 1.0.18), libssl3 (>= 3.0.0~~alpha1), libxml2 (>= 2.8.0), zlib1g (>= 1:1.1.4)
+Suggests: php-pear
+Provides: php-cli, php-json, php8.2-json, phpapi-20220829
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-cli_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 1884824
+SHA512: 09ec01a400c4168a2d0bb63819d7c235410d557a5ab26327da2d15525de1c22eb7565e2a0d2ddb74c9f41aae523290a51e68d86721c7fc18a543d0748318c91f
+SHA256: 703f552536afbac413ef4f4477da3268284db98be6c582b5889a613e9014ce56
+SHA1: 19f78469a70efd64dc0f94dc726e09cf08fceeb6
+MD5sum: 80bbfbf93b00e2680638593fd795c86e
+Description: command-line interpreter for the PHP scripting language
+ This package provides the /usr/bin/php8.2 command interpreter, useful for
+ testing PHP scripts from a shell or performing general shell scripting tasks.
+ .
+ The following extensions are built in: Core date filter hash json libxml
+ openssl pcntl pcre random Reflection session sodium SPL standard zlib.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-common
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 8468
+Depends: php-common (>= 1:81~), ucf, libc6 (>= 2.34), libffi8 (>= 3.4), libssl3 (>= 3.0.0~~alpha1)
+Breaks: gforge-common (<< 6), php7.0-curl (<< 7.0.33-1~), php7.2-sodium (<< 7.2.12~)
+Provides: php-calendar, php-ctype, php-exif, php-ffi, php-fileinfo, php-ftp, php-iconv, php-pdo, php-phar, php-posix, php-shmop, php-sockets, php-sysvmsg, php-sysvsem, php-sysvshm, php-tokenizer, php8.2-calendar, php8.2-ctype, php8.2-exif, php8.2-ffi, php8.2-fileinfo, php8.2-ftp, php8.2-gettext, php8.2-iconv, php8.2-pdo, php8.2-phar, php8.2-posix, php8.2-shmop, php8.2-sockets, php8.2-sysvmsg, php8.2-sysvsem, php8.2-sysvshm, php8.2-tokenizer
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-common_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 720718
+SHA512: 9cacf16a9ef14f1560cd99ad2ae96d3a4ace4480b62450d7b579416e0bb87ef5fa83df11c77f66f2920ee4ba8a5c430d75b23a111ca6ff24a0ab0e0312db823e
+SHA256: 8d199b36cbeb30c121db0028b9107bb7f0a139850cb8c1d9e1fc6488c9eb4c05
+SHA1: 0423446f394ac97d207a7cd746b637720102a390
+MD5sum: 5b5199b33b806553657805b65d9fd966
+Description: documentation, examples and common module for PHP
+ This package provides the documentation, examples and common module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-curl
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 152
+Depends: php-common (>= 1:81~), ucf, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.14), libcurl4 (>= 7.63.0)
+Breaks: php7.0-curl (<< 7.0.33-1~)
+Provides: php-curl
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-curl_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 40304
+SHA512: fad3bf7553d3d57d7751743562a217bf6a562ea65570f55ab44db64acbfe60d56a65a4730d297c8167cebc2a2c6d0c9c87f1ae79082fb1bfe45bec252d8f49c1
+SHA256: 8cc11ce1fce1079be74ec3187d728a52ed00a2619ada20242c72e20722134df6
+SHA1: 1fd4d6456ffe4561e79b03be59b8e83ac046c9ed
+MD5sum: 739fa2de2df5834ab79b5dcea4df4976
+Description: CURL module for PHP
+ This package provides the CURL module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-dba
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 101
+Depends: php-common (>= 1:81~), ucf, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.33), libdb5.3, liblmdb0 (>= 0.9.7), libqdbm14 (>= 1.8.74)
+Provides: php-dba
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-dba_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 26168
+SHA512: 03e83533cf3cff5be9eed427d2fe0e9e46b19602d81c7fee0c7bc0a415e7a0e3ef42d6c03910fa6876057d0612eca4641f8e0c49674661c9c1f13a2b45aac64e
+SHA256: 4104d1f8952ae5f86e763700a4a0e6facb180329dcdf1026445b169cccc5a5e2
+SHA1: 0eb289d6179055445dba6525cff80ae0947ddfa8
+MD5sum: f17f6487139cd61e7b4f4dbc7cfadd92
+Description: DBA module for PHP
+ This package provides the DBA module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-dev
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 5403
+Depends: autoconf (>= 2.63), automake (>= 1.11), libpcre2-dev (>= 10.30), libssl-dev, php8.2-cli (>= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), pkg-config, shtool, libtool (>= 2.4.6-0.1~)
+Recommends: pkg-php-tools
+Suggests: dh-php
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-dev_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 515166
+SHA512: 11b25aba98abd715bb110d39728dd893ef90a426cdba109c42cc08345998bcc496010a5ce92047411bf6d9698135aab4a6b6ce1a046cd3ba1a23379dbf2420b0
+SHA256: f6ce51c11a67307c7376b1e07d35f99b2d3b750df375872c2906c58240eae454
+SHA1: dbbe91cb8496330612172155845d9cb5f7124281
+MD5sum: 8ac298268bf6d037dad77bdcfd718a36
+Description: Files for PHP8.2 module development
+ This package provides the files from the PHP8.2 source needed for compiling
+ additional modules.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-enchant
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 56
+Depends: php-common (>= 1:81~), ucf, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.14), libenchant-2-2 (>= 2.2.3)
+Provides: php-enchant
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-enchant_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 10182
+SHA512: 2ec40e9aec3907e31d2a93b877622792bc8f6daa1b12ffebfdcb8e7fb85850060f25ca011ed8874cc61c8c897199201ed87403d9c8b4bc0221472194c3d41b41
+SHA256: 240905beb15a92b3736bbb97f11f20670d21a7200fddeb28991c49be2795d9f0
+SHA1: 80e2edfd5664ac7f201f4a54b85b1b14cd9b4105
+MD5sum: c6eb41b09a089cb4cd1caedfa4652a09
+Description: Enchant module for PHP
+ This package provides the Enchant module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-fpm
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 5629
+Depends: libmagic1, media-types | mime-support, php8.2-cli, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), php8.2-opcache, procps, systemd | systemd-tmpfiles, tzdata, ucf, libacl1 (>= 2.2.23), libapparmor1 (>= 2.7.0~beta1+bzr1772), libargon2-1 (>= 0~20171227), libc6 (>= 2.35), libpcre2-8-0 (>= 10.38), libsodium23 (>= 1.0.18), libssl3 (>= 3.0.0~~alpha1), libsystemd0, libxml2 (>= 2.8.0), zlib1g (>= 1:1.1.4)
+Suggests: php-pear
+Provides: php-fpm, php-json, php8.2-json, phpapi-20220829
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-fpm_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 1892288
+SHA512: 16b350b38a77f37082af1eec517fa84f18cc435beaf4559c1cc5262f9373f3fe53144ee0a8a1df3ad05d6fdb1f26f6f398a5832e68f424fc65c6c0910d08c49f
+SHA256: a809b760933abc51f918d77c3d3fb068a5301b150314aad9f2bfd20a0bb91f5a
+SHA1: 7a445657e569001c07b60d582a17d0d91b451d37
+MD5sum: 023be8830a42ab90990d13111f9cfc6e
+Description: server-side, HTML-embedded scripting language (FPM-CGI binary)
+ This package provides the Fast Process Manager interpreter that runs
+ as a daemon and receives Fast/CGI requests.  Note that MOST Apache users
+ probably want the libapache2-mod-php8.2 package.
+ .
+ The following extensions are built in: Core date filter hash json libxml
+ openssl pcre random Reflection session sodium SPL standard zlib.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-gd
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 140
+Depends: php-common (>= 1:81~), ucf, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.4), libgd3 (>= 2.3.3)
+Provides: php-gd
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-gd_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 32868
+SHA512: cb9d89830345881c18e4598a9f7529ee529e8d78e77df2297f8ad7b4cd904a9f9d7af9535cd2b41181a42fe7d53fd37d82af3fbed96707acf41bae3426ad66a6
+SHA256: 798b3b6773164deac4c93feb68812ca9139df10b005772365bd9f837ac2d4420
+SHA1: 87683c62793ffd17ea14aedc4eb30d7ba526dee8
+MD5sum: ae0b74f79afa862eda580b05b5850162
+Description: GD module for PHP
+ This package provides the GD module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-gmp
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 100
+Depends: php-common (>= 1:81~), ucf, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.4), libgmp10 (>= 2:6.2.1+dfsg)
+Provides: php-gmp
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-gmp_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 23082
+SHA512: 23f11f4967ba153eea87f5c22367ca51bffd7d117bb3e8d530fb3ecd4f9b6bb6626e5475513fb12b45ee0a61c6f3eb741cb557f9eac66bac87b4a23a960d177a
+SHA256: 3068d730fd18c7c11f5ac1def315bfe8c2b1a2de1876c15adf34c3d7f5791b8b
+SHA1: c5d7acf8a7920615448e1887441eaf9397a4935b
+MD5sum: b5163cf7e58950fb0cde25cdd3a10271
+Description: GMP module for PHP
+ This package provides the GMP module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-imap
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 140
+Depends: php-common (>= 1:81~), ucf, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), libc-client2007e, libc6 (>= 2.14)
+Provides: php-imap
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-imap_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 36996
+SHA512: a1950292dc56712d4f6e0b70d6f204ab9d8f1d1d3aedf92d7ba16fa4bc533eb8efac49eade3d77976efd0aa664c84b9bf4e2e9ec2e520e0972679aba228f424d
+SHA256: 4758f0cd1aec5b99f16d00ffa7cc6d068cea7ba1d12e58fa0fe0a53ea2e43fa1
+SHA1: c546986fd7e8c5b2dd7bdfdf4032f1feebeac2df
+MD5sum: 5c1299294de905c2065711ae97f6f41b
+Description: IMAP module for PHP
+ This package provides the IMAP module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-interbase
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 72
+Depends: php-common (>= 1:81~), ucf, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.34), libfbclient2 (>= 2.5.0.25784~ReleaseCandidate1.ds2)
+Provides: php-pdo-firebird, php8.2-pdo-firebird
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-interbase_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 16538
+SHA512: 9632121cb4c8270242c07013ba4a49efd1d5edd9371cda7b321b9525ffce490086b9636e6ccae7f7629001291bbeacc2fcbf5bf88f81e226ece8f20b9cf344c1
+SHA256: 6f89cf38b2376cd1316b6739c33a4a8e6e891c84af933c9f3b4710b3d2ee5f5e
+SHA1: 4b0ae246566d147cef95cfc9cc5f6017f50f0b0c
+MD5sum: 2aa79d2e2253dba41558c7407336e972
+Description: Interbase module for PHP
+ This package provides the Interbase module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-intl
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 604
+Depends: php-common (>= 1:81~), ucf, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.14), libgcc-s1 (>= 3.0), libicu70 (>= 70.1-1~)
+Provides: php-intl
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-intl_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 160418
+SHA512: e65515274dbd623f0cdc6478874edd4ca49c6818232371196a69112e0d04c24993ceb4d2385536cbe7fa08f9499b7ef7ca5f1e8b7f0de0325400a303d81bdc89
+SHA256: 159fe123272303dcaa1f01ce0e35ecc1d53a571080071fe75b10e2e148aad220
+SHA1: 4695e71b7c48cd48ddb0fbfe5058ab4587ce78ee
+MD5sum: 5d9aad44b47dd95d211c63284400f944
+Description: Internationalisation module for PHP
+ This package provides the Internationalisation module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-ldap
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 128
+Depends: php-common (>= 1:81~), ucf, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.14), libldap-2.5-0 (>= 2.5.4)
+Provides: php-ldap
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-ldap_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 34346
+SHA512: c234e5a305c195566e3dab2b2514d8d0b0cf645ff9320f05257d0e0ea3bc932e7b80bd1b9f786c78c34c02927bcbb7b3214eca9e3a14df02f14e197ea9a608d9
+SHA256: 88a2c96e04c59e1f3ac2c6f7fc2e3c51753d7224be8cc4550833abbdfc035ebd
+SHA1: 6b40494097716008570bf978e96b5badfedb24a5
+MD5sum: e62d30a62ebd182f5eb1071f9020285a
+Description: LDAP module for PHP
+ This package provides the LDAP module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-mbstring
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 1198
+Depends: php-common (>= 1:81~), ucf, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.14), libonig5 (>= 6.8.1)
+Provides: php-mbstring
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-mbstring_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 536658
+SHA512: 587dcfe03cd0eaca06e2f3daa48e5c39d2c88ad7adf0a95445dc6a47ced16f15fbebbcc03540acb95548e26d7b447c199e9b7e22632a1213489c9ce7d34c02e1
+SHA256: 2fcf597b573236f1269c478f452334661a9bc680296e0aff5e2b5036603c639e
+SHA1: 487f57c38af7805d638972e81f2e057796b8afdb
+MD5sum: 01a73fefd06a654c1ed9c3a0bed191e9
+Description: MBSTRING module for PHP
+ This package provides the MBSTRING module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-mysql
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 455
+Depends: php-common (>= 1:81~), ucf, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.15)
+Provides: php-mysqli, php-mysqlnd, php-pdo-mysql, php8.2-mysqli, php8.2-mysqlnd, php8.2-pdo-mysql
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-mysql_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 131366
+SHA512: 83e71da30cf12bbb2432a5eeb7eadbaf349ef5c22d5c2b6ec548ebe7d72dc4aa6669497a2efa4daf091c189a67411428d8c47606f89b5a4cd789eac0ea598a39
+SHA256: 6558324623eb63c8903d4504d38f32f8c58e6bf8d7aabecd2818b2441416a8a5
+SHA1: d514dfbc34d37e69990ba8e133b89f6666c9bebf
+MD5sum: 80c46651518e867895cf73dec28075db
+Description: MySQL module for PHP
+ This package provides the MySQL module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-odbc
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 144
+Depends: php-common (>= 1:81~), ucf, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.14), libodbc2 (>= 2.3.1)
+Provides: php-odbc, php-pdo-odbc, php8.2-pdo-odbc
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-odbc_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 36458
+SHA512: e2879545553608ec84e8bb45e591920a0aeb375775f503330eb0061755bab4f1ddaa8a429bf9ee4aa778695dbb456083fbf1ef84f2a1d03d33b8fd80ea26c22b
+SHA256: 6d3463e8b85f981350698186ea9c7f968bae819ad43ab09fce13c6da70ffaa85
+SHA1: 825a9ac2b096dc82b70aee1c29314b334085e1f8
+MD5sum: 606515c91ea92d0ca7e2eadac6d8e07d
+Description: ODBC module for PHP
+ This package provides the ODBC module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-opcache
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 1025
+Depends: php-common (>= 1:81~), ucf, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.34), libgcc-s1 (>= 3.3)
+Provides: php-opcache
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-opcache_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 369434
+SHA512: 90f2f4c4bb7513c978e6a01b60daf318c47596cbb4a1d736eb768ef4f0cda20ef6a57f799be1a44f360eaa939158a20fc1b8ecd56640c7aab13f80b5754e492e
+SHA256: abe2d361b7b1586bdf99219421c7a38b53c3763e3cf925a4bcc3319f88b9d785
+SHA1: c9943ad4bff02c12c33831723dd57d9c3d8ac0f6
+MD5sum: 5143c163730434ca5f3bffbc09e0b45d
+Description: Zend OpCache module for PHP
+ This package provides the Zend OpCache module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-pgsql
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 224
+Depends: php-common (>= 1:81~), ucf, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.14), libpq5 (>= 9.3~)
+Provides: php-pdo-pgsql, php-pgsql, php8.2-pdo-pgsql
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-pgsql_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 64296
+SHA512: 27e8c18baea443cccb1abbfadf9c1bbe1dee4d9a173398267f1f1e278daa529137e87b9463a7afafba4e4e61d6795e8bcbf1f7a9012b24a2bdcc729b44a9832b
+SHA256: 701eda6f23da2ce8e07ec7720b7c0e534ef90f0e9fd71a432023106765751d3b
+SHA1: a5b9be8e658b45cd313494137921b11f0e4f2b7a
+MD5sum: 85bdbf4a3989207dc484ebc2c05725f7
+Description: PostgreSQL module for PHP
+ This package provides the PostgreSQL module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-phpdbg
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 5633
+Depends: libmagic1, media-types | mime-support, php8.2-cli, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), php8.2-opcache, tzdata, ucf, libargon2-1 (>= 0~20171227), libc6 (>= 2.35), libpcre2-8-0 (>= 10.38), libsodium23 (>= 1.0.18), libssl3 (>= 3.0.0~~alpha1), libxml2 (>= 2.8.0), zlib1g (>= 1:1.1.4)
+Recommends: php-readline
+Provides: php-json, php-phpdbg, php8.2-json, phpapi-20220829
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-phpdbg_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 1902568
+SHA512: ff574bc8b7f0cacc7d85f26175222c3e93038edb83cb2cc37bde3c8128290e2bde35aafefa5738f7dbd1894f7d802aacbd9600dff0653ad0130686bc2492c758
+SHA256: 4490c4cca91c8cf54cffcf7319ceede528e84dda1c4d3d05b54169822cfb2b0d
+SHA1: 42cebebf2bed6ec6bb7ffcd7f0f00d481f99433d
+MD5sum: d942e8cac0a0f3f228cf6a6b9f520768
+Description: server-side, HTML-embedded scripting language (PHPDBG binary)
+ This package provides the /usr/bin/phpdbg command interpreter, useful for
+ stepthrough debugging of PHP code.
+ .
+ The following extensions are built in: Core date filter hash json libxml
+ openssl pcntl pcre random Reflection session sodium SPL standard zlib.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-pspell
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 56
+Depends: php-common (>= 1:81~), ucf, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), libaspell15 (>= 0.60.8), libc6 (>= 2.4)
+Provides: php-pspell
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-pspell_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 9408
+SHA512: 532aa6905cd05c43a8e0aad9f4462b2e509b23423ba91ad484a630920b8a01c11ea2b0bf72701e2fa95794a5becd0f7f3b671b928ecc8506d2930c7ad0698c9f
+SHA256: 8e78659b259bd184ef68cbb5095afd90c775078592ef4d3c4a2967f14c359c70
+SHA1: 840f0cc2b65be7cc8e125b8cc6b9fd05c1e92222
+MD5sum: 650a0ed9765fbd6769938c7b9c1ab751
+Description: pspell module for PHP
+ This package provides the pspell module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-readline
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 68
+Depends: php-common (>= 1:81~), ucf, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.34), libedit2 (>= 3.1-20160903-0)
+Provides: php-readline
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-readline_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 13544
+SHA512: 31eef07e9c18c9b2f8be3eac1b2e91879d8338bceb15c5bf0928aad97c90a52da9d7229b75c6f147525857c0c54be7fec3157d5be2feb5bad9dd711b66221360
+SHA256: 475b42880caa50da735413821a8a46f5213a2d891a0819f5f0a2e2c502707dff
+SHA1: 8a0e94efcd4810023096dbe154ac53b1e545a794
+MD5sum: 8100021bc751521ee01a33c0d06774f4
+Description: readline module for PHP
+ This package provides the readline module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-snmp
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 96
+Depends: php-common (>= 1:81~), ucf, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.14), libsnmp40 (>= 5.9.1+dfsg)
+Recommends: snmp
+Provides: php-snmp
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-snmp_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 23556
+SHA512: a6eb52057ec4fcb6d019aad11d8129772728c83ae111226d0fac28af383fdbdd3b713f3029d6bf92538310de565280cd0309927b85538cfeafb01e5a8ca8d1fa
+SHA256: 68c5bb07cd86711241fc40091ecefdc1b5106cd5d648b906f1cfbf422dfebe19
+SHA1: 1f560dd8f733438653f030c3ecfbeeaec4538afa
+MD5sum: c01f341d064293cc58b643f808f2a963
+Description: SNMP module for PHP
+ This package provides the SNMP module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-soap
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 360
+Depends: php-common (>= 1:81~), ucf, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.33), libxml2 (>= 2.7.4)
+Provides: php-soap
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-soap_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 133760
+SHA512: 2a7af2e1ac9ee9ed1fb095d7a11a24931cb7eff9d279398817921faf3ee466f362898c989cb92f772453dcadca4cf5eb5a8f0da9d9ea7a9fadafbaeb6207e43d
+SHA256: 895759a9b2e57788a38726be267007771bfdcaefe550877789b4ca7186733a5d
+SHA1: 89c3f5c5a90ed7aabbb6d616434f57faaf7e41be
+MD5sum: b48c7a3e71293f3ac3ce14cd0e67e848
+Description: SOAP module for PHP
+ This package provides the SOAP module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-sqlite3
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 140
+Depends: php-common (>= 1:81~), ucf, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.14), libsqlite3-0 (>= 3.14.0)
+Provides: php-pdo-sqlite, php-sqlite3, php8.2-pdo-sqlite
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-sqlite3_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 33708
+SHA512: b3515b1c573e86e616822776c353d7d2fbe7318625e33b62188a14ff57f30e684413ea68fbebd45651cf1a951c5cacb220fe4045d2606d923afdb0c65884dd45
+SHA256: 70dbaf67ed036195790074b16da8955e985db3fc617fd644aa1dc84a5ffd3390
+SHA1: e4df2ad3a196123b0958cf53c3ba35913469e1d3
+MD5sum: ad15605e74f93fce3f3590dc1a8e3c1c
+Description: SQLite3 module for PHP
+ This package provides the SQLite3 module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-sybase
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 64
+Depends: php-common (>= 1:81~), ucf, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.14), libsybdb5 (>= 0.63)
+Provides: php-pdo-dblib, php8.2-pdo-dblib
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-sybase_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 13022
+SHA512: 04d42cb48589ff6ed205d8cf8c384405e1f13ba67c5d7e34724b06915ebece281684b6e2615025d8de1711283bef74c4e415b1796462207e2ed13076bcf9e5ad
+SHA256: 093c2605ab1e0d986365e6179245f898e8a8b946a8d902bdf6a8e6e6144b4627
+SHA1: 68e45e6ac1a1ce16d59e5bbfd8942183bf72afc2
+MD5sum: 0b77cc69b63f6d3c371dcdc32ad8a5c7
+Description: Sybase module for PHP
+ This package provides the Sybase module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-tidy
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 92
+Depends: php-common (>= 1:81~), ucf, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.14), libtidy5deb1 (>= 1:5.2.0)
+Provides: php-tidy
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-tidy_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 21300
+SHA512: aa54a9ffff62474ab2580007d9d6657b3190a92b2ade25f5fefb71ece425f4623c574a51548a14f252dad319935575c5724558b871718c3610f426f26a0d068a
+SHA256: a00e3da9121324a6431bcd4ab8d5e077fa76c1f0ba5516eeaed4d8c9c2b4a30b
+SHA1: 577d1f8658c809c0aa7cef9fb786686f1aeede62
+MD5sum: 265dd829bfadf2f3b42396613890c05f
+Description: tidy module for PHP
+ This package provides the tidy module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-xml
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 485
+Depends: php-common (>= 1:81~), ucf, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.33), libxml2 (>= 2.9.0), libxslt1.1 (>= 1.1.25)
+Breaks: php8.2-xsl (<< 7.0.3-6~)
+Replaces: php8.2-xsl (<< 7.0.3-6~)
+Provides: php-dom, php-simplexml, php-xml, php-xmlreader, php-xmlwriter, php-xsl, php8.2-dom, php8.2-simplexml, php8.2-xmlreader, php8.2-xmlwriter, php8.2-xsl
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-xml_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 122704
+SHA512: 21d6564bc12a8f56a13b621f36820b584da373bb104b061a2cb9705fe17020182f01b6e676d0e8347b5314b795ef3ecb26e95000dd5bebc68ec05e07b81b3cc7
+SHA256: 3d828648098e0fa20481ae4ec6abb65d3d67c189d26d60821f5d03cdd8bc2a9f
+SHA1: cd72a3f0a7d6ac66578cbbd532dfe10acde9afb5
+MD5sum: 93837dd36c45b137c5b9adce13b018ce
+Description: DOM, SimpleXML, XML, and XSL module for PHP
+ This package provides the DOM, SimpleXML, XML, and XSL module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-xsl
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: all
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 66
+Depends: php8.2-common, php8.2-xml
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-xsl_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_all.deb
+Size: 34554
+SHA512: d6fac41ced3160e77afd5d1ea666db6defdeaaba23788d184e0ecf80dcc804449411a1ea8cfbc4145c69e384a721fa3331db414ba12af5a68adf9d2e08725997
+SHA256: 7ed4a7f20680055db1309da754a0accf06f1d882e73ddd24bc04ff008d9583db
+SHA1: 5f38a33b0920b4c1d841f552297186b24c15df63
+MD5sum: b33c5d73adab8646d82bddb0f54f1873
+Description: XSL module for PHP (dummy)
+ This package is a transitional dummy package and can be safely
+ removed.
+
+Package: php8.2-zip
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 124
+Depends: php-common (>= 1:81~), ucf, php8.2-common (= 8.2.11-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.33), libzip4 (>= 1.7.0)
+Provides: php-zip
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-zip_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 29546
+SHA512: 2a81e1623a803e72aeb3462dd30cd1f09a90feb1bb770b0b03d7f5da33981830e8173d0ededcfe8d4d903d95c96a70d54605f17739d32b35130dd7ffc111fe6d
+SHA256: e6926709bf49cfc09ea5ac99ba316dc8526ee5b5ffc0ec2dd1622adc20bc9bcd
+SHA1: 2af77bb1c860ae0c0acfc9754753de9c25de605d
+MD5sum: 0011c5a5f16e4e9f73b8b3aea797306f
+Description: Zip module for PHP
+ This package provides the Zip module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: all
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 61
+Depends: libapache2-mod-php8.3 | php8.3-fpm | php8.3-cgi, php8.3-common
+Provides: php
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_all.deb
+Size: 27016
+SHA512: 32d8c1b3a8ebe6d6b0848dd5db80a995c4c5d2598210ad33038e055c4661b10197136db3ac33d2caaa3ec495638a1d0cfcd778113aa4756cb226b2db876af423
+SHA256: 89c915f90b0505304066c1934a9ab9abaad95a472e38bda1b96581e82bb36c5b
+SHA1: a2945236b2c518a54be104ee6837113d9fb5732d
+MD5sum: 14727982c0b13fe902c73bb62ff7d022
+Description: server-side, HTML-embedded scripting language (metapackage)
+ This package is a metapackage that, when installed, guarantees that you
+ have at least one of the four server-side versions of the PHP interpreter
+ installed. Removing this package won't remove PHP from your system, however
+ it may remove other packages that depend on this one.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-bcmath
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 72
+Depends: php-common (>= 1:81~), ucf, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.14)
+Provides: php-bcmath
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-bcmath_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 16804
+SHA512: dc03002e2ffb72e2a0e02dae1facb47a283f0eae6c96409d8fd516f9215a3aaefb097eec023a216174163eaceac69fa37d9c4fbfa79efa2b6f814803558ddea9
+SHA256: c3c6cfd52a63764cdd15f7b1fd69b349f38e7d1a8ee38b8f7fcbfa9b443e6ad2
+SHA1: 477e3169e4cf0b292acea359bab59b450cec4bf6
+MD5sum: 9691b8cb0c8ec383f82a602d68a673df
+Description: Bcmath module for PHP
+ This package provides the Bcmath module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-bz2
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 60
+Depends: php-common (>= 1:81~), ucf, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), libbz2-1.0, libc6 (>= 2.14)
+Provides: php-bz2
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-bz2_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 11454
+SHA512: 7fa136d490654c3c6988d4a5fefada070eaf3b01c98f433dc2e87560841be999b560ad01f2f878d747b13cdb8eea4098ce2023bd2eb85a310331cd2187dbea7e
+SHA256: fb330b2b05a14f54c5d3bd0dc5a61962711baa4b62aa71452b44295010bead1f
+SHA1: 650a8a1b41efbb705dbc6dedfa555668c6a751dc
+MD5sum: b90d7fc2bb7d7746c0f8f2085f70b3cd
+Description: bzip2 module for PHP
+ This package provides the bzip2 module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-cgi
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 11065
+Depends: libmagic1, media-types | mime-support, php8.3-cli, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), php8.3-opcache, tzdata, ucf, libargon2-1 (>= 0~20171227), libc6 (>= 2.35), libpcre2-8-0 (>= 10.38), libsodium23 (>= 1.0.18), libssl3 (>= 3.0.0~~alpha1), libxml2 (>= 2.8.0), zlib1g (>= 1:1.1.4)
+Suggests: php-pear
+Provides: php-cgi, php-json, php8.3-json, phpapi-20230831
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-cgi_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 1871882
+SHA512: 5814d56441f72bc282ebd6128db5163aeaea1bbd52931759de4e3d74aeec52fde17bde68a4cfe18c0220f09d35159d258162e0afcae24c3f239bcb77c152030d
+SHA256: 63753f0046edd1e693af7aef254e75aa6eebb8c3b9abe491b7b8b5bf4ccb6aef
+SHA1: a3bf06fcddb4ad8a10c39b65a23c818515065249
+MD5sum: 493bbb7f4cf072205b42667d558feb84
+Description: server-side, HTML-embedded scripting language (CGI binary)
+ This package provides the /usr/lib/cgi-bin/php CGI interpreter built
+ for use in Apache 2 with mod_actions, or any other CGI httpd that
+ supports a similar mechanism.  Note that MOST users probably
+ want the php8.3-fpm package.
+ .
+ The following extensions are built in: Core date filter hash json libxml
+ openssl pcntl pcre random Reflection session sodium SPL standard zlib.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-cli
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 5696
+Depends: libedit2 (>= 2.11-20080614-4), libmagic1, media-types | mime-support, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), php8.3-opcache, php8.3-readline, tzdata, ucf, libargon2-1 (>= 0~20171227), libc6 (>= 2.35), libpcre2-8-0 (>= 10.38), libsodium23 (>= 1.0.18), libssl3 (>= 3.0.0~~alpha1), libxml2 (>= 2.8.0), zlib1g (>= 1:1.1.4)
+Suggests: php-pear
+Provides: php-cli, php-json, php8.3-json, phpapi-20230831
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-cli_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 1921346
+SHA512: 5d375b29e9c6bf2f2c34559c2163553577b4133f729471dfdcc9738a77e4f1c5dcce9c4779d92012eca6417a1cdfee5b12019979a43c7038324b4162b1c4121f
+SHA256: 3e2d80875e7374da4936ab0340a0db2fcca6d198be5171251ecaffa0b69714fe
+SHA1: 389a30c0af5b57f2bbf6e83a76cd3fdead61d0af
+MD5sum: d9d1431cbcfadc0e7c4073063edec82a
+Description: command-line interpreter for the PHP scripting language
+ This package provides the /usr/bin/php8.3 command interpreter, useful for
+ testing PHP scripts from a shell or performing general shell scripting tasks.
+ .
+ The following extensions are built in: Core date filter hash json libxml
+ openssl pcntl pcre random Reflection session sodium SPL standard zlib.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-common
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 9387
+Depends: php-common (>= 1:81~), ucf, libc6 (>= 2.34), libffi8 (>= 3.4), libssl3 (>= 3.0.0~~alpha1)
+Breaks: gforge-common (<< 6), php7.0-curl (<< 7.0.33-1~), php7.2-sodium (<< 7.2.12~)
+Provides: php-calendar, php-ctype, php-exif, php-ffi, php-fileinfo, php-ftp, php-iconv, php-pdo, php-phar, php-posix, php-shmop, php-sockets, php-sysvmsg, php-sysvsem, php-sysvshm, php-tokenizer, php8.3-calendar, php8.3-ctype, php8.3-exif, php8.3-ffi, php8.3-fileinfo, php8.3-ftp, php8.3-gettext, php8.3-iconv, php8.3-pdo, php8.3-phar, php8.3-posix, php8.3-shmop, php8.3-sockets, php8.3-sysvmsg, php8.3-sysvsem, php8.3-sysvshm, php8.3-tokenizer
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-common_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 751902
+SHA512: 0c0a4fa1f05996c65f42d0e017263920c327408f25f7e3731c7ad43136b4c71ccb66caccfc30bd35f790a0e77d2846c6bd09527981cd71c20f013b91426d72ed
+SHA256: e9becf55ef9600c5ffea6eb8ff3e461b02656f9b4c8f02044e6f65d4af8814df
+SHA1: 6ea7842666d40553323c6322dc6699e7d1bd0209
+MD5sum: 852d57170e112c19c2fb7692bd886273
+Description: documentation, examples and common module for PHP
+ This package provides the documentation, examples and common module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-curl
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 152
+Depends: php-common (>= 1:81~), ucf, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.14), libcurl4 (>= 7.63.0)
+Breaks: php7.0-curl (<< 7.0.33-1~)
+Provides: php-curl
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-curl_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 40452
+SHA512: aef63c4aa067eaa8ea7306182e147127ac9b2e14939c6907faa64d347bfce54656562da039378a726226eb0dda66e603c09ebd21500e7b11f7ebd782d13d3ed0
+SHA256: 80655d85b02582f2af1a0a9326226e263f4c19361ac8e4f045a187c3948cf1fd
+SHA1: 3fc064ea8cb86474a8d8810b2af0457698c5e7d0
+MD5sum: 6bbe1d9f21c55cc40e8a68d6dbf5d85e
+Description: CURL module for PHP
+ This package provides the CURL module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-dba
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 100
+Depends: php-common (>= 1:81~), ucf, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.33), libdb5.3, liblmdb0 (>= 0.9.7), libqdbm14 (>= 1.8.74)
+Provides: php-dba
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-dba_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 26574
+SHA512: a017a789c0af8f73e6c2c6c6ca287cd2e215a9c064adeca9a55770da223b462d7d5cac16e65094f489c7e64dc94f21cf4c1b31f09a7a8a1f8778695db70c459f
+SHA256: facfa7ec72d54bb723aa699f3f356eb9edc5392322f1751e55572a44b26dd63a
+SHA1: 924827d064064a0a8fade83fda9a67da8f532cbb
+MD5sum: 143bb5450a066aff4e85ff5d9aeb657b
+Description: DBA module for PHP
+ This package provides the DBA module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-dev
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 5506
+Depends: autoconf (>= 2.63), automake (>= 1.11), libpcre2-dev (>= 10.30), libssl-dev, php8.3-cli (>= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), pkg-config, shtool, libtool (>= 2.4.6-0.1~)
+Recommends: pkg-php-tools
+Suggests: dh-php
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-dev_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 525734
+SHA512: 5154e2b071f8d67a07d8c697c0057efb46644510adeafd99470c55daa6a5387b35902b3429e0536ac3bb3d422a7bbc8299f1d76c02603e4bcfb815290b063e2c
+SHA256: 39350a8cffdfd86824e05a3fa8131de20f1d9ff22c8611d8ff6422ee16a2774b
+SHA1: 967f3cb5dee74348dfe1574d28459804ce6b8e88
+MD5sum: 27ddf8efc4f48177cafba6b8771e7c60
+Description: Files for PHP8.3 module development
+ This package provides the files from the PHP8.3 source needed for compiling
+ additional modules.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-enchant
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 56
+Depends: php-common (>= 1:81~), ucf, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.14), libenchant-2-2 (>= 2.2.3)
+Provides: php-enchant
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-enchant_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 10168
+SHA512: b95dddb5efeecebd2a6f87241b216f2866eacfd6acf518217d588c81950ef8c6290672417255316b62e1eb05dd69b1517e9d0b1e45224ade7a65ca83bf91e9d8
+SHA256: 3bae45274e4b56ed01c68048a115daac18ac3cc1d9386fca5651ed81738d57e3
+SHA1: d9e9f828a38f6fbae6b36d8fe177555be7a7d546
+MD5sum: 005749dce391af2873d5ca81967c3266
+Description: Enchant module for PHP
+ This package provides the Enchant module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-fpm
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 5722
+Depends: libmagic1, media-types | mime-support, php8.3-cli, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), php8.3-opcache, procps, systemd | systemd-tmpfiles, tzdata, ucf, libacl1 (>= 2.2.23), libapparmor1 (>= 2.7.0~beta1+bzr1772), libargon2-1 (>= 0~20171227), libc6 (>= 2.35), libpcre2-8-0 (>= 10.38), libsodium23 (>= 1.0.18), libssl3 (>= 3.0.0~~alpha1), libsystemd0, libxml2 (>= 2.8.0), zlib1g (>= 1:1.1.4)
+Suggests: php-pear
+Provides: php-fpm, php-json, php8.3-json, phpapi-20230831
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-fpm_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 1928328
+SHA512: 8f53de1fe581612dd3195080536e911758c2332ebc0b0a32dffa90d4d62ab3b8ffaf5b47501cdefe80f222502fff8e101a37b2004a4f3355e66e947e865fea2b
+SHA256: f41f485e9c8a65abfd2ff1b18c1b3203919ecbe3f2f7c0790d04ff78a10a351a
+SHA1: eee5e1cb880951a12a37a3cc0da71356cfdf1b32
+MD5sum: 97d18879bf86e03595a8fbcdabd11eaa
+Description: server-side, HTML-embedded scripting language (FPM-CGI binary)
+ This package provides the Fast Process Manager interpreter that runs
+ as a daemon and receives Fast/CGI requests.  Note that MOST Apache users
+ probably want the libapache2-mod-php8.3 package.
+ .
+ The following extensions are built in: Core date filter hash json libxml
+ openssl pcre random Reflection session sodium SPL standard zlib.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-gd
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 140
+Depends: php-common (>= 1:81~), ucf, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.4), libgd3 (>= 2.3.3)
+Provides: php-gd
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-gd_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 32908
+SHA512: b98c7cf5a8cba0b64dfa80a408391871f9d7fd86ef90fa9ef5608a61c82dcf4eeecd067c65d4e8f78ff9f4ebfce56ae8bda52bbe4a747c66478ef41b78dcc741
+SHA256: 31b9d8c5999000ac8045345330c6ff4cc5fe396a2a13a821b0258fffd1eb9e81
+SHA1: 1f52d273b38020b4f8271c3098899dfa888ee62c
+MD5sum: 688a2da254866e51d006e104f0389200
+Description: GD module for PHP
+ This package provides the GD module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-gmp
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 100
+Depends: php-common (>= 1:81~), ucf, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.4), libgmp10 (>= 2:6.2.1+dfsg)
+Provides: php-gmp
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-gmp_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 23102
+SHA512: 79a958929f1a06d2cf133953c78782fd4cae304cc9b7e75dcfdfefb162771c7a69b1cb125c7489a03faebacfeb8254110553035548bf4b74b1f258a2fe9fbe6f
+SHA256: 17452f02d3c9389c73ca9a864bf380cc7da23e5cbd7f9268e5a13deb5c833bc4
+SHA1: 84894d6e12a86ffbe1452e1d39b926da36ca5355
+MD5sum: d788f3c208c8347da124858fbed5fb50
+Description: GMP module for PHP
+ This package provides the GMP module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-imap
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 140
+Depends: php-common (>= 1:81~), ucf, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), libc-client2007e, libc6 (>= 2.14)
+Provides: php-imap
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-imap_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 36494
+SHA512: 379c1913301f8ae610615b8668eefb861d35a1e24c9c15e3ab6e7b50fbb66dd45297ddd79c73a871d2008c00a5692201e7e2570ef46fca50c23bacc5fd29ef00
+SHA256: 0911165abe099a92aa4c332e23db428ff699fbf65344d1abc8ff118dcc8536f9
+SHA1: 715018ff8908736ec9d0303475a1b81a77952004
+MD5sum: eb8a82cd3ccfca25ed8c6c6eef637084
+Description: IMAP module for PHP
+ This package provides the IMAP module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-interbase
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 72
+Depends: php-common (>= 1:81~), ucf, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.34), libfbclient2 (>= 2.5.0.25784~ReleaseCandidate1.ds2)
+Provides: php-pdo-firebird, php8.3-pdo-firebird
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-interbase_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 16396
+SHA512: 62200818c41503b6dfbccc8623a58449c0ced3fa48861a5b287641e801294cf53c82b77a1f6bb6775427f764a7bb86089873efcc7034fedbe98acb9fb0fc5acb
+SHA256: 69e188f8ffc2d6e4a0a858266a306303b4ee270307dc16f74e2088e78da28e6d
+SHA1: 8cb94e2539d1f123211032f28a6c112394a3e327
+MD5sum: afb3b3a2cc61b7c9b2fdf113d8ce0e7d
+Description: Interbase module for PHP
+ This package provides the Interbase module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-intl
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 612
+Depends: php-common (>= 1:81~), ucf, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.14), libgcc-s1 (>= 3.0), libicu70 (>= 70.1-1~)
+Provides: php-intl
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-intl_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 161530
+SHA512: c3687959a9ca2d6474baa6cc863d4af8ba51aa80c96bd1d9f40d69cec9637b622bc7899106bbce754be128a622cfaf9deb54b95f491fe29da1473f0bc2823a7e
+SHA256: 88612959a85dbe8c88ab2e821a7a573368f5e6ea45a1319652f6571ac3955b6e
+SHA1: b0ca0974d58a5735b432e588a17caaa243b8da3a
+MD5sum: 845a5100db8aad28c2bc6bc2b997072b
+Description: Internationalisation module for PHP
+ This package provides the Internationalisation module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-ldap
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 132
+Depends: php-common (>= 1:81~), ucf, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.14), libldap-2.5-0 (>= 2.5.4)
+Provides: php-ldap
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-ldap_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 34606
+SHA512: 874501732ce65b438aaf894cd6894320e44550cdfe9a179e7e12a34641e16004fbf06ff717cd02950d4208d7f53f13c849c5584af0fdfed36d30ea61f05380c7
+SHA256: 8175a403beed314c7a571c19e53efa43341e02ff4da10a051ed60bbef679c056
+SHA1: 0c9baf8132f0740f1a445d417d78e076a0ce5bc3
+MD5sum: d65895bedd77c5e4c597a6e976627778
+Description: LDAP module for PHP
+ This package provides the LDAP module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-mbstring
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 1210
+Depends: php-common (>= 1:81~), ucf, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.14), libonig5 (>= 6.8.1)
+Provides: php-mbstring
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-mbstring_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 538732
+SHA512: 13b189052be18b8b063085eb8be6c64d5759960a05e92c690760e1950283f760e910a30a3723a7541ceb22d4fa4a40cd1cc5ac04c29aa718ee6bf2a7b0164b64
+SHA256: 6da677e7f1d909166df8e5f853b3731a3fe7d71c4c5cf5defc0126e07d2e33af
+SHA1: a144b6f21944afbe097f52ad0945a95aee709882
+MD5sum: 7f29c0fba23b4f607400ac3c64e7544c
+Description: MBSTRING module for PHP
+ This package provides the MBSTRING module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-mysql
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 455
+Depends: php-common (>= 1:81~), ucf, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.15)
+Provides: php-mysqli, php-mysqlnd, php-pdo-mysql, php8.3-mysqli, php8.3-mysqlnd, php8.3-pdo-mysql
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-mysql_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 130630
+SHA512: 4580b475ebac9a7066809624c083ed2380c16f7a1f2bb569a9d084992e37196cef73357ef1f3a8f58d4be22042a512af3c2f1c7d4a924277c8cbdaec001b3a27
+SHA256: 73e41e7333ca14fece4cbb2551fa061c50b6f82b1dcfb4cf626b07545e912396
+SHA1: ddf059846a92bac598fd8c1d49b9f1d49662722a
+MD5sum: 81f26c7e5650db122b4130b2fb35dd94
+Description: MySQL module for PHP
+ This package provides the MySQL module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-odbc
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 144
+Depends: php-common (>= 1:81~), ucf, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.14), libodbc2 (>= 2.3.1)
+Provides: php-odbc, php-pdo-odbc, php8.3-pdo-odbc
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-odbc_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 36460
+SHA512: 3fff975428482ccabb66565e1e28babd38ea8f58c33eff8f1f606936c319f7e73bade779e894063a6e80076274f358af32ba848367f27fa1d7c88ffd63ece97f
+SHA256: 80080e4d07b4646d0ed4c28707d596ebb385ea24e04c7bd80f0825ada0d4be02
+SHA1: 49cdd450aa4a504b4b02fdb7f448e7ab2b5745a9
+MD5sum: e74f27bb92b3b54e0fc428b29267b9c3
+Description: ODBC module for PHP
+ This package provides the ODBC module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-opcache
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 1024
+Depends: php-common (>= 1:81~), ucf, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.34), libgcc-s1 (>= 3.3)
+Provides: php-opcache
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-opcache_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 369840
+SHA512: 87fd76506b5d30f6dfd0ecf364e1a88c563787fbddc8e7900c614d6c5ce0ded5f143cbe709a790a5edac08ac0f8191b50972f5827dff2e702e360123bd54d2af
+SHA256: 7fd3e9d77952e31b02e98ecb0810b2b92d10f992f4cf8949af6499f866c23811
+SHA1: be6ad15e8c147bb196b594a55fcda6a27ce3eea7
+MD5sum: f21fa6ab7bfb580149cd8eddea09703a
+Description: Zend OpCache module for PHP
+ This package provides the Zend OpCache module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-pgsql
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 228
+Depends: php-common (>= 1:81~), ucf, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.14), libpq5 (>= 14~beta2)
+Provides: php-pdo-pgsql, php-pgsql, php8.3-pdo-pgsql
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-pgsql_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 65368
+SHA512: dad3870d5737aa23d65c167898db0792bc678ce115753dfba74334a9c16c6348a4246a929c099f5f0bc05465afa61f464eeebcce4619dfde8eb935ce812c5db2
+SHA256: d2f376db3cac396eefb5c30a4144c2d7c7c527e8f818e65abafec0c6bbcc27cf
+SHA1: ee9a95c6f390e9bdc44d9e8e17294543358d3238
+MD5sum: fb52015b4d431558069f8aa27a64d8ee
+Description: PostgreSQL module for PHP
+ This package provides the PostgreSQL module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-phpdbg
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 5724
+Depends: libmagic1, media-types | mime-support, php8.3-cli, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), php8.3-opcache, tzdata, ucf, libargon2-1 (>= 0~20171227), libc6 (>= 2.35), libpcre2-8-0 (>= 10.38), libsodium23 (>= 1.0.18), libssl3 (>= 3.0.0~~alpha1), libxml2 (>= 2.8.0), zlib1g (>= 1:1.1.4)
+Recommends: php-readline
+Provides: php-json, php-phpdbg, php8.3-json, phpapi-20230831
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-phpdbg_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 1943816
+SHA512: 381e1315af4d44a288e9d2338d0745cd9859cc5144ebe48b98f3e735a66867a335aa4b12a6357dc10df670774fadab8c610ca3b3ea6ec4fe6ccb3b835a1ad940
+SHA256: b533b7d2b48cb272e199de3f8c98384b7f856531b6bf54fa17d901735da265ec
+SHA1: 31f21d4965eaf287423f4f6369eb1b8c727194f2
+MD5sum: 618f37c93affbccf47b13d19a675f0d3
+Description: server-side, HTML-embedded scripting language (PHPDBG binary)
+ This package provides the /usr/bin/phpdbg command interpreter, useful for
+ stepthrough debugging of PHP code.
+ .
+ The following extensions are built in: Core date filter hash json libxml
+ openssl pcntl pcre random Reflection session sodium SPL standard zlib.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-pspell
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 56
+Depends: php-common (>= 1:81~), ucf, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), libaspell15 (>= 0.60.8), libc6 (>= 2.4)
+Provides: php-pspell
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-pspell_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 9392
+SHA512: 33080d2b86f50b72af5837d8ac8a01a84f85e8a848594a424fb64de66fd7ed2d951b8c9c77fffc38428213f594b7ad2782b11a8f5b4bfb5ec6ead1c30b30ac71
+SHA256: 65caab767f9422b618bc07ebb5a89dece731ff1c9d08501ee5225dad86936a01
+SHA1: 0e2b793a21722dd01461afadd3466942681a2df2
+MD5sum: e433287c764de5bdba807136fefae772
+Description: pspell module for PHP
+ This package provides the pspell module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-readline
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 68
+Depends: php-common (>= 1:81~), ucf, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.34), libedit2 (>= 3.1-20160903-0)
+Provides: php-readline
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-readline_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 13524
+SHA512: e3bc60783928302139bd6445afee5836f87aadfae16747d5bde958d20aa61663fe128b4c29fc11086fb44ef5efd13c83985220ec6ba2cc8c1aab33ae263db529
+SHA256: 34ed3f73b703409f619968ce757314e4de682a7bdebc398b643abf44bd7f38ea
+SHA1: ec751c5caa828eaa0053ef95ef608f433fd19677
+MD5sum: 13ea6c57687969066106bf623a177fb2
+Description: readline module for PHP
+ This package provides the readline module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-snmp
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 96
+Depends: php-common (>= 1:81~), ucf, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.14), libsnmp40 (>= 5.9.1+dfsg)
+Recommends: snmp
+Provides: php-snmp
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-snmp_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 23580
+SHA512: 6dd7c28c043fbbd12e80a3e1eda8bb895c582cc567fa9dd244a9378efb0a843ca5e88e42d4fc2b9ca28c510e60af54b6c38d25a7eda3dee24cea828e7164dd06
+SHA256: f80fa0234572ada139d8718dfa30cdb0650d40edb61c82df08e53400da051a2d
+SHA1: f3d90ba3de0b24c204b79c7f936b8e13f6a2f9c8
+MD5sum: 20feeafce92e799e840f8b91c3680772
+Description: SNMP module for PHP
+ This package provides the SNMP module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-soap
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 360
+Depends: php-common (>= 1:81~), ucf, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.33), libxml2 (>= 2.7.4)
+Provides: php-soap
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-soap_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 133884
+SHA512: efb11ee7cfd0314cbc5144264422056204069c761026d1e040b4dbdd52c7516546e1afb182fc0cbde71482b70c53ed402c7823f398be2b0fc9d542de68a3e8aa
+SHA256: 7b272906dff61ddbcd6bed169beb9d7a7f7b0ed4d4ce136da914391003130756
+SHA1: 1b91ed326ad92f57965840f0eec58c1fc3f1bb00
+MD5sum: 4d509ff2e7807ec048e78eeb362cc3fc
+Description: SOAP module for PHP
+ This package provides the SOAP module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-sqlite3
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 144
+Depends: php-common (>= 1:81~), ucf, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.14), libsqlite3-0 (>= 3.14.0)
+Provides: php-pdo-sqlite, php-sqlite3, php8.3-pdo-sqlite
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-sqlite3_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 35032
+SHA512: 7be02bbb2783744e5efeaf6eb9a9ec0c77a89081ad984caaed0fe3071ee14694c8ccafba3073088506658c5413965a9bd2c99b52cfaad561de3dba8627569f01
+SHA256: 67df1aa83f01700bf2713559ce9edb502feba01ef4f21a66d602d44b070ba11e
+SHA1: 9856bdfb300d2c352ae650206da4a97ee5ec1d78
+MD5sum: bef7dfdbf764610e4bf3a4b358e33154
+Description: SQLite3 module for PHP
+ This package provides the SQLite3 module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-sybase
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 64
+Depends: php-common (>= 1:81~), ucf, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.14), libsybdb5 (>= 0.63)
+Provides: php-pdo-dblib, php8.3-pdo-dblib
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-sybase_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 13006
+SHA512: e43bd9e45f734bfb45880dd6dab10090f9f9231b0a56c55978f47ee0a39fb79f8e87c3e59f34589097682f9e2d7d14aa8432ab7764fdac04b11788ea40777174
+SHA256: 717ebfb6ba154b070b87c4c99a584fb2440084b8008002e6c21347c980faf257
+SHA1: 79865ecff2a73ce1d9e1db5fb6708eb7d40f2a62
+MD5sum: 62ab5bbd80d036fba3c5ee19d710ecee
+Description: Sybase module for PHP
+ This package provides the Sybase module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-tidy
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 92
+Depends: php-common (>= 1:81~), ucf, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.14), libtidy5deb1 (>= 1:5.2.0)
+Provides: php-tidy
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-tidy_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 21330
+SHA512: eed4c676bc74cd11102e42e3ee8a71a87224fe75fed5e948a522f88f6d4829ef766df3bc887668e6467d9f58b7da5d268363416ba1cf12a8a14688e28c5d60b6
+SHA256: 76b62c8e0f62babfd60b5be33197f2b7b800162d05d24fdde8030e60dc0a8073
+SHA1: 18baa4200b6d6dcaa426c29fb1f4f9010ff81a94
+MD5sum: 7ac3391f17d703cbd0b4622976fe087f
+Description: tidy module for PHP
+ This package provides the tidy module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-xml
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 505
+Depends: php-common (>= 1:81~), ucf, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.33), libxml2 (>= 2.9.0), libxslt1.1 (>= 1.1.25)
+Breaks: php8.3-xsl (<< 7.0.3-6~)
+Replaces: php8.3-xsl (<< 7.0.3-6~)
+Provides: php-dom, php-simplexml, php-xml, php-xmlreader, php-xmlwriter, php-xsl, php8.3-dom, php8.3-simplexml, php8.3-xmlreader, php8.3-xmlwriter, php8.3-xsl
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-xml_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 127698
+SHA512: 5815cb7f5a9a244bd6b73f0e9df610c13fd40d6e9599cb979d7d89e67051a8b97709fe07bfd81c1aad4f34291a0df932ba7404f74aee7704011855168718979d
+SHA256: 805b0a604c9657e1d135769b7fb50134df89eae081ee8141040f4d2ac01b4607
+SHA1: fcce8f7baee2f1a834851cdad74682c130792d94
+MD5sum: 27c59d7e9cc31c10ff60aca0a092a51e
+Description: DOM, SimpleXML, XML, and XSL module for PHP
+ This package provides the DOM, SimpleXML, XML, and XSL module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-xsl
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: all
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 58
+Depends: php8.3-common, php8.3-xml
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-xsl_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_all.deb
+Size: 26670
+SHA512: b99e7c5ce2bc81ba9c125bde6122bb01e1dfa027852013e4b113bed380b202b968ba52016c6716ca57eaabe9388cc2815e44904f3b07c74b4591f3557a1498c9
+SHA256: 68193bae118adea429f6a1c34dc67a0f8cae4ddcb43bc20922c79ba873fd54d1
+SHA1: 84a97f243e5511f483e8fb3f7dfd4cf720205363
+MD5sum: 1314c2c7b87125785293a3082688aca4
+Description: XSL module for PHP (dummy)
+ This package is a transitional dummy package and can be safely
+ removed.
+
+Package: php8.3-zip
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: amd64
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 132
+Depends: php-common (>= 1:81~), ucf, php8.3-common (= 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1), libc6 (>= 2.33), libzip4 (>= 1.7.0)
+Provides: php-zip
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-zip_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 30320
+SHA512: d5a4d3c6268766765d1c623537f2e7996d13a753be162f761d92bf32d7beaf011a77bcf8e039289c3751ddf1a98d9fb138febd37e95e7af83bd6692c5af4fd32
+SHA256: e57c45757c6678535ecab0342d8017546fdb0ab5c633be1ba7bcff274d818225
+SHA1: 6853ef8d1a79e012bf7e03c27423207f07613dd0
+MD5sum: 0d5bb669d36d9f349987a34de66e3bf2
+Description: Zip module for PHP
+ This package provides the Zip module(s) for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
 
 Package: pwgen
 Version: 2.08-2build1

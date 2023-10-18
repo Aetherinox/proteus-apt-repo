@@ -199,6 +199,98 @@ Description: PHP 7.1 enum implementation
  which is only available as a PECL extension.
  This library tries to close that gap as far as PHP allows it to.
 
+Package: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: all
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 69
+Depends: libapache2-mod-php8.2 | php8.2-fpm | php8.2-cgi, php8.2-common
+Provides: php
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_all.deb
+Size: 34902
+SHA512: 9c2c18203c69d930bd0a3fd152ab459ab330131aadcd205fb04e6c09c3c4e06ded86f80cdabbecddb0e191facc007333f606fc460e074f6ad629007e08b01a27
+SHA256: a07bdf2b5251315d9dc8cdc9f9c4dc5a0623b9ad58a186748922d0e7ed2d8cf3
+SHA1: b23c504a8eb6f0fb36a3b2de73391a9c7b65d323
+MD5sum: 49537ce83accfd77210b5b1e4dadcbd0
+Description: server-side, HTML-embedded scripting language (metapackage)
+ This package is a metapackage that, when installed, guarantees that you
+ have at least one of the four server-side versions of the PHP interpreter
+ installed. Removing this package won't remove PHP from your system, however
+ it may remove other packages that depend on this one.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-xsl
+Source: php8.2
+Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: all
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 66
+Depends: php8.2-common, php8.2-xml
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-xsl_8.2.11-1+ubuntu22.04.1+deb.sury.org+1_all.deb
+Size: 34554
+SHA512: d6fac41ced3160e77afd5d1ea666db6defdeaaba23788d184e0ecf80dcc804449411a1ea8cfbc4145c69e384a721fa3331db414ba12af5a68adf9d2e08725997
+SHA256: 7ed4a7f20680055db1309da754a0accf06f1d882e73ddd24bc04ff008d9583db
+SHA1: 5f38a33b0920b4c1d841f552297186b24c15df63
+MD5sum: b33c5d73adab8646d82bddb0f54f1873
+Description: XSL module for PHP (dummy)
+ This package is a transitional dummy package and can be safely
+ removed.
+
+Package: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: all
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 61
+Depends: libapache2-mod-php8.3 | php8.3-fpm | php8.3-cgi, php8.3-common
+Provides: php
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_all.deb
+Size: 27016
+SHA512: 32d8c1b3a8ebe6d6b0848dd5db80a995c4c5d2598210ad33038e055c4661b10197136db3ac33d2caaa3ec495638a1d0cfcd778113aa4756cb226b2db876af423
+SHA256: 89c915f90b0505304066c1934a9ab9abaad95a472e38bda1b96581e82bb36c5b
+SHA1: a2945236b2c518a54be104ee6837113d9fb5732d
+MD5sum: 14727982c0b13fe902c73bb62ff7d022
+Description: server-side, HTML-embedded scripting language (metapackage)
+ This package is a metapackage that, when installed, guarantees that you
+ have at least one of the four server-side versions of the PHP interpreter
+ installed. Removing this package won't remove PHP from your system, however
+ it may remove other packages that depend on this one.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-xsl
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1
+Architecture: all
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 58
+Depends: php8.3-common, php8.3-xml
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-xsl_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_all.deb
+Size: 26670
+SHA512: b99e7c5ce2bc81ba9c125bde6122bb01e1dfa027852013e4b113bed380b202b968ba52016c6716ca57eaabe9388cc2815e44904f3b07c74b4591f3557a1498c9
+SHA256: 68193bae118adea429f6a1c34dc67a0f8cae4ddcb43bc20922c79ba873fd54d1
+SHA1: 84a97f243e5511f483e8fb3f7dfd4cf720205363
+MD5sum: 1314c2c7b87125785293a3082688aca4
+Description: XSL module for PHP (dummy)
+ This package is a transitional dummy package and can be safely
+ removed.
+
 Package: pwgen
 Version: 2.08-2build1
 Architecture: arm64
