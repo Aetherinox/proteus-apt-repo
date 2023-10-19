@@ -19,6 +19,27 @@ MD5sum: cce3d6aea24c0cfba940e7bfbd853cf1
 Description: 
   A Universal linux app store 
 
+Package: bitwarden
+Version: 2023.9.3
+License: GPL-3.0
+Vendor: Bitwarden Inc. <hello@bitwarden.com>
+Architecture: amd64
+Maintainer: Bitwarden Inc. <hello@bitwarden.com>
+Installed-Size: 270218
+Depends: libnotify4, libxtst6, libnss3, libsecret-1-0, libxss1
+Recommends: libappindicator3-1
+Homepage: https://bitwarden.com
+Priority: 0
+Section: utils
+Filename: pool/main/b/bitwarden/bitwarden_2023.9.3_amd64.deb
+Size: 73934484
+SHA512: ce6fbab351ab537cc1199dd7f658cfee7d1a6cd9887cf0bbf62a0b374295b4dac822a59c5995e79e94194be55af4fd9e2fa56c82d125cf25ea9fb15a42ca435c
+SHA256: 741c0893b2fc6b6ff00736c886a0c9ad40b6692305fb6ca41026143824388ee5
+SHA1: dc3e08d9a6813feca0584a3b273623c1cd48d6e6
+MD5sum: 909341b1c75c93c025804dca599b9ace
+Description: A secure and free password manager for all of your devices.
+  A secure and free password manager for all of your devices.
+
 Package: deb-get
 Version: 0.3.9-1
 Architecture: all
