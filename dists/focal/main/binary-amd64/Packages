@@ -117,22 +117,22 @@ Description:
   A private YouTube client
 
 Package: github-desktop
-Version: 3.3.1-linux1
+Version: 3.3.3-linux2
 Architecture: amd64
 Depends: libgtk-3-0, libnotify4, libnss3, libxtst6, xdg-utils, libatspi2.0-0, libdrm2, libgbm1, libxcb-dri3-0, kde-cli-tools | kde-runtime | trash-cli | libglib2.0-bin | gvfs-bin, libcurl3 | libcurl4, libsecret-1-0, gnome-keyring
 Recommends: pulseaudio | libasound2
 Suggests: gir1.2-gnomekeyring-1.0, libgnome-keyring0, lsb-release
-Installed-Size: 331775
+Installed-Size: 331834
 Maintainer: Brendan Forster <github@brendanforster.com>
 Homepage: https://github.com/shiftkey/desktop
 Priority: 0
 Section: utils
-Filename: pool/main/g/github-desktop/github-desktop_3.3.1-linux1_amd64.deb
-Size: 92108864
-SHA512: 6a7a7ac0e1d398324835ca107a0d8ca614f977665995e7dd79d8ae5828fe4e197d11ae4cf57b34191150828693271e7989c8ad141b14ccdbc03b8bbe76ce44b1
-SHA256: 03e0b5bd10499408cf0a1c1c5117657a8bd97da2de3330e6936b5b5753b99df7
-SHA1: 1dea3ec550db1e2fad448aa55c3ce5f751bfe536
-MD5sum: 404d4a91acaf7a080541e820dcf9a730
+Filename: pool/main/g/github-desktop/github-desktop_3.3.3-linux2_amd64.deb
+Size: 92138360
+SHA512: b06938df15d6ed91e5469a3d8943edb1c4d8e3ebb0f2a24c80ab06a98b0be31a250d9b4550ae0f3e9c8acc6600388e73a80a0dc852fa727c8366a5bbf192c3d4
+SHA256: dd252a4686243f8fea17ff6cf96d23db951658deda258fcbacbcc30fa83d1dbf
+SHA1: d77560a4f11a71c6122fde05b699af679cd5ccce
+MD5sum: abb63bb36f66fb067eee8b3e5c326696
 Description: Simple collaboration from your desktop
  This is the unofficial port of GitHub Desktop for Linux distributions
 
