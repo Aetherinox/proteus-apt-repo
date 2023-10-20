@@ -19,6 +19,22 @@ MD5sum: cce3d6aea24c0cfba940e7bfbd853cf1
 Description: 
   A Universal linux app store 
 
+Package: apt-url
+Version: 1.0.0-1
+Architecture: all
+Depends: apt-move (>=4.0)
+Maintainer: Aetherinox <aetherinox@proton.me>
+Priority: 0
+Section: admin
+Filename: pool/main/a/apt-url/apt-url_1.0.0-1_all.deb
+Size: 2102
+SHA512: 50499f5811ba0b570b4dac4510cfe7e3218266556493a8e1a043e5d832c517083b579e84eaf45f6dea8b2a90e23721d67d404fecead11da09c52911ef243f24b
+SHA256: f5d817b99125d05f1f2c49eed1a67a169111264d11475d4fa07da7f1f4ca6562
+SHA1: 51183804eeb83ccb90d9165c68e5145ed49bc943
+MD5sum: 055db603cc8ec1f31d61571ff48c289a
+Description: Fetches URLs for specified packages.
+ Provides the download URL for a specified package.
+
 Package: bitwarden
 Version: 2023.9.3
 License: GPL-3.0
