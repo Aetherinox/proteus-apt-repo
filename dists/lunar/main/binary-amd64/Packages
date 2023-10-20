@@ -64,6 +64,32 @@ MD5sum: 055db603cc8ec1f31d61571ff48c289a
 Description: Fetches URLs for specified packages.
  Provides the download URL for a specified package.
 
+Package: apt-utils
+Source: apt
+Version: 2.6.0ubuntu0.1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 664
+Depends: apt (= 2.6.0ubuntu0.1), libapt-pkg6.0 (>= 2.6.0ubuntu0.1), libc6 (>= 2.34), libdb5.3, libgcc-s1 (>= 3.3.1), libstdc++6 (>= 11)
+Priority: 0
+Section: utils
+Filename: pool/main/a/apt/apt-utils_2.6.0ubuntu0.1_amd64.deb
+Size: 215108
+SHA512: d6cd1e88a024710dc18bf58fd04ab170a12f544b5882a6dc613be16fc0f64489a261fb4c72a6782a9d57c820d8aab8845217fb72bd5645d1a7041eb36e1be301
+SHA256: 51f9db96a13e575b24040847b020d35f5996dcdea6b230a9f6b0b2fc67620318
+SHA1: 681d8058f69f07da03f88b6ceabbd4d1e92b7814
+MD5sum: ca2af5d8138b013a2ddb32384e9eb0ad
+Description: package management related utility programs
+ This package contains some less used commandline utilities related
+ to package management with APT.
+ .
+  * apt-extracttemplates is used by debconf to prompt for configuration
+    questions before installation.
+  * apt-ftparchive is used to create Packages and other index files
+    needed to publish an archive of Debian packages
+  * apt-sortpkgs is a Packages/Sources file normalizer.
+Original-Maintainer: APT Development Team <deity@lists.debian.org>
+
 Package: bitwarden
 Version: 2023.9.3
 License: GPL-3.0
@@ -196,6 +222,39 @@ SHA1: bd2c562ea3d1070454faee93d38d7cf52f7b5bc7
 MD5sum: 7f42c18fdb36830829bf1ce9a4f4b9b5
 Description: Gitkraken License Generator
  License generator and registration for Gitkraken Pro.
+
+Package: gpg
+Source: gnupg2
+Version: 2.2.40-1.1ubuntu1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 1119
+Depends: gpgconf (= 2.2.40-1.1ubuntu1), libassuan0 (>= 2.5.0), libbz2-1.0, libc6 (>= 2.34), libgcrypt20 (>= 1.10.0), libgpg-error0 (>= 1.42), libreadline8 (>= 6.0), libsqlite3-0 (>= 3.7.15), zlib1g (>= 1:1.1.4)
+Recommends: gnupg (= 2.2.40-1.1ubuntu1)
+Breaks: gnupg (<< 2.1.21-4)
+Replaces: gnupg (<< 2.1.21-4)
+Multi-Arch: foreign
+Homepage: https://www.gnupg.org/
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnupg2/gpg_2.2.40-1.1ubuntu1_amd64.deb
+Size: 522906
+SHA512: 7a46b38442eb7d0401348b4593d91a8a5aff408328a01ce1b159379e703cb8ee631d0a1de6e6ab4faeec3c7111e3b2364b48345c35af60e4c87f7805bf34d6ee
+SHA256: 154473411e72fe3a67531a00b898465cc920e6111f6dfe26cfa3918ca2956df8
+SHA1: 740fb5a1d7ad37c4435d1dfa7641b4438b07c025
+MD5sum: 6fc6029e93e59ae68a33a2c64120e5d9
+Description: GNU Privacy Guard -- minimalist public key operations
+ GnuPG is GNU's tool for secure communication and data storage.
+ It can be used to encrypt data and to create digital signatures.
+ It includes an advanced key management facility and is compliant
+ with the proposed OpenPGP Internet standard as described in RFC4880.
+ .
+ This package contains /usr/bin/gpg itself, and is useful on its own
+ only for public key operations (encryption, signature verification,
+ listing OpenPGP certificates, etc).  If you want full capabilities
+ (including secret key operations, network access, etc), please
+ install the "gnupg" package, which pulls in the full suite of tools.
+Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>
 
 Package: libredirect-frontends-manager
 Version: 0.1.0
@@ -1266,6 +1325,45 @@ Description: Tiling terminal emulator - data files
  GNOME human interface design guidelines.
  .
  This package contains architecture independent data.
+
+Package: wget
+Version: 1.21.3-1ubuntu1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 932
+Depends: libc6 (>= 2.34), libidn2-0 (>= 0.6), libpcre2-8-0 (>= 10.22), libpsl5 (>= 0.16.0), libssl3 (>= 3.0.0~~alpha1), libuuid1 (>= 2.16), zlib1g (>= 1:1.1.4)
+Recommends: ca-certificates
+Conflicts: wget-ssl
+Multi-Arch: foreign
+Homepage: https://www.gnu.org/software/wget/
+Priority: 0
+Section: utils
+Filename: pool/main/w/wget/wget_1.21.3-1ubuntu1_amd64.deb
+Size: 334280
+SHA512: bed09ed02ebe8a6be4d1cb5a1c7e43a218b6e6921a078cb994ecd554abf40fc5759004aae71cfc0b00cc9d7d6912a3cfb8eebb8a9cfe791b8da7df17b192adde
+SHA256: f4bfb999409f99037c52ffa557fef3e8b02c9c128db9c2cccd89c491ff77a8b9
+SHA1: d621e3fae26ec9b5b218515cb02b7b687f338463
+MD5sum: 3f9eb1194ce2a6db593999c694fb9e86
+Description: retrieves files from the web
+ Wget is a network utility to retrieve files from the web
+ using HTTP(S) and FTP, the two most widely used internet
+ protocols. It works non-interactively, so it will work in
+ the background, after having logged off. The program supports
+ recursive retrieval of web-authoring pages as well as FTP
+ sites -- you can use Wget to make mirrors of archives and
+ home pages or to travel the web like a WWW robot.
+ .
+ Wget works particularly well with slow or unstable connections
+ by continuing to retrieve a document until the document is fully
+ downloaded. Re-getting files from where it left off works on
+ servers (both HTTP and FTP) that support it. Both HTTP and FTP
+ retrievals can be time stamped, so Wget can see if the remote
+ file has changed since the last retrieval and automatically
+ retrieve the new version if it has.
+ .
+ Wget supports proxy servers; this can lighten the network load,
+ speed up retrieval, and provide access behind firewalls.
+Original-Maintainer: Noël Köthe <noel@debian.org>
 
 Package: whiptail
 Source: newt
