@@ -2,5 +2,5 @@ incoming/
 .env
 sources-*.list
 logs/
-apt-url
+/apt-url
 proteus-git.sh

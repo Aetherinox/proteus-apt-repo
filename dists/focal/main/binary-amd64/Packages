@@ -19,6 +19,51 @@ MD5sum: cce3d6aea24c0cfba940e7bfbd853cf1
 Description: 
   A Universal linux app store 
 
+Package: apt-move
+Version: 4.2.27-5ubuntu2
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 134
+Depends: bc, dash, libapt-pkg6.0 (>= 1.9~), libc6 (>= 2.4), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)
+Recommends: apt
+Homepage: http://sourceforge.net/projects/apt-move/
+Priority: 0
+Section: utils
+Filename: pool/main/a/apt-move/apt-move_4.2.27-5ubuntu2_amd64.deb
+Size: 36312
+SHA512: a5838f9b4675fb47c89f8e0d113210ec7ec9b97218d77816f13c25931abc86027cb36c4acac19d1b355575ad177b1a43bca03cc9811caa80ac09faf2135afa32
+SHA256: 18e1af0245301ced93e8c04b0e4e1202c087539a84a521fe3fe51cb3030789cd
+SHA1: 29f76b4e1617426e226a5f05e04bf5ebf637f80c
+MD5sum: 1f7d5956562c09eb630bf3f0076250fb
+Description: maintain Debian packages in a package pool
+ apt-move is used to move a collection of Debian package files into a
+ proper archive hierarchy as is used in the official Debian archive. It
+ is intended as a tool to help manage the apt-get(8) file cache, but
+ could be configured to work with any collection of Debian packages.
+ .
+ Running apt-move periodically will assist in managing the resulting
+ partial mirror by optionally removing obsolete packages, and creating
+ valid local Packages.gz files. It can also build a partial or complete
+ local mirror of a Debian binary distribution (including an
+ ``installed-packages only'' mirror).
+Original-Maintainer: Debian QA Group <packages@qa.debian.org>
+
+Package: apt-url
+Version: 1.0.0-1
+Architecture: all
+Depends: apt-move (>=4.0)
+Maintainer: Aetherinox <aetherinox@proton.me>
+Priority: 0
+Section: admin
+Filename: pool/main/a/apt-url/apt-url_1.0.0-1_all.deb
+Size: 2102
+SHA512: 50499f5811ba0b570b4dac4510cfe7e3218266556493a8e1a043e5d832c517083b579e84eaf45f6dea8b2a90e23721d67d404fecead11da09c52911ef243f24b
+SHA256: f5d817b99125d05f1f2c49eed1a67a169111264d11475d4fa07da7f1f4ca6562
+SHA1: 51183804eeb83ccb90d9165c68e5145ed49bc943
+MD5sum: 055db603cc8ec1f31d61571ff48c289a
+Description: Fetches URLs for specified packages.
+ Provides the download URL for a specified package.
+
 Package: bitwarden
 Version: 2023.9.3
 License: GPL-3.0

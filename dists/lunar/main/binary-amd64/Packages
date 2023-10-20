@@ -19,6 +19,35 @@ MD5sum: cce3d6aea24c0cfba940e7bfbd853cf1
 Description: 
   A Universal linux app store 
 
+Package: apt-move
+Version: 4.2.27-6
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian QA Group <packages@qa.debian.org>
+Installed-Size: 134
+Depends: bc, dash, libapt-pkg6.0 (>= 1.9~), libc6 (>= 2.4), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)
+Recommends: apt
+Homepage: http://sourceforge.net/projects/apt-move/
+Priority: 0
+Section: utils
+Filename: pool/main/a/apt-move/apt-move_4.2.27-6_amd64.deb
+Size: 36584
+SHA512: 6bb01a4fb841b99dc8042f51db90dc43f2469840fd31731d835dc0f1181300778df1eceb9606830fd3fadb4fd9b587455719bfdcaa25b48d320c2268f9341b7d
+SHA256: 39c59aff8855261faa194e43108a7ea22f25ab5146215191ad57b795a81c1272
+SHA1: 239764d6520ba84769c91cba3eec2d65e7e7da35
+MD5sum: 521d8838791d74bdfab348b7565e73e6
+Description: maintain Debian packages in a package pool
+ apt-move is used to move a collection of Debian package files into a
+ proper archive hierarchy as is used in the official Debian archive. It
+ is intended as a tool to help manage the apt-get(8) file cache, but
+ could be configured to work with any collection of Debian packages.
+ .
+ Running apt-move periodically will assist in managing the resulting
+ partial mirror by optionally removing obsolete packages, and creating
+ valid local Packages.gz files. It can also build a partial or complete
+ local mirror of a Debian binary distribution (including an
+ ``installed-packages only'' mirror).
+
 Package: apt-url
 Version: 1.0.0-1
 Architecture: all
