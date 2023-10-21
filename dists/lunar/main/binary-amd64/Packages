@@ -290,6 +290,92 @@ MD5sum: 7f42c18fdb36830829bf1ce9a4f4b9b5
 Description: Gitkraken License Generator
  License generator and registration for Gitkraken Pro.
 
+Package: gnome-keyring
+Version: 42.1-1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
+Installed-Size: 3036
+Depends: dconf-gsettings-backend | gsettings-backend, init-system-helpers (>= 1.52), libc6 (>= 2.34), libgck-1-0 (>= 3.3.90), libgcr-base-3-1 (>= 3.28.0), libgcrypt20 (>= 1.10.0), libglib2.0-0 (>= 2.41.1), libsystemd0, gcr (>= 3.4), default-dbus-session-bus | dbus-session-bus, p11-kit (>= 0.16), pinentry-gnome3
+Recommends: libpam-gnome-keyring, gnome-keyring-pkcs11
+Breaks: gnome-session (<< 3.20.0)
+Multi-Arch: foreign
+Homepage: https://wiki.gnome.org/GnomeKeyring
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnome-keyring/gnome-keyring_42.1-1_amd64.deb
+Size: 653612
+SHA512: c1ef55d87c2575993e3059e0c78f1781a476f486ef986a746764354d510b1f60970fe11d0c2b72c19434030925732a527676407276aaba48309e4ae89ffc1630
+SHA256: 9f3dcc5ca84b6baf9dd5bdd7cbdaed16050f3a9bf9cb21a85ce974badd33a3fe
+SHA1: 8d2a1ee1818f92ec66cd03844ae8922ca1c13252
+MD5sum: 8500e7fc41f207744d39bd919a33df66
+Description: GNOME keyring services (daemon and tools)
+ gnome-keyring is a daemon in the session, similar to ssh-agent,
+ and other applications can use it to store passwords and other
+ sensitive information.
+ .
+ The program can manage several keyrings, each with its own master
+ password, and there is also a session keyring which is never stored to
+ disk, but forgotten when the session ends.
+
+Package: gnome-keysign
+Version: 1.3.0-2
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Sascha Steinbiss <satta@debian.org>
+Installed-Size: 1276
+Depends: magic-wormhole, python3-future, python3-qrcode, python3-requests, python3-twisted, python3:any, avahi-daemon, python3-bluetooth, python3-cairo, python3-dbus, python3-gi, python3-gi-cairo, python3-gpg, gir1.2-glib-2.0, gir1.2-gtk-3.0, gir1.2-gstreamer-1.0, gir1.2-gst-plugins-base-1.0, gstreamer1.0-plugins-bad, gstreamer1.0-plugins-good, gstreamer1.0-x, gstreamer1.0-gtk3
+Homepage: https://github.com/gnome-keysign/gnome-keysign
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnome-keysign/gnome-keysign_1.3.0-2_all.deb
+Size: 177884
+SHA512: f82fee23a0f93b77660a81108d6746a568611d4e0e7a6e145013a69b284dc656b73dfa6f5c00dd7f685b726a8e6fc699a786ff44d48c6a15a438b08569dab962
+SHA256: d3d37aaea7ebcce27a8f6d46ed34de0c6d3a13e27490342579789da73fdcf450
+SHA1: 6105d525f9cb5ff119a20f74e89429bb8c4657a7
+MD5sum: 742b2718a18b8dc4302ab7489857bbed
+Description: easy signing of OpenPGP keys over the local network
+ GNOME Keysign is a tool for signing OpenPGP keys.
+ .
+ Its purpose is to ease signing other peoples' keys. It is similar to caff,
+ PIUS, or monkeysign. In fact, it is influenced a lot by these tools and
+ either reimplements ideas or reuses code. Consider either of the above
+ mentioned tools when you need a much more mature codebase.
+ .
+ In contrast to caff or monkeysign, this tool enables you to sign a key
+ without contacting a key server. It downloads an authenticated copy of the
+ key from the other party. For now, the key is authenticated by its fingerprint
+ which is securely transferred via a QR code. Alternatively, the user may type
+ the fingerprint manually, assuming that it has been transferred securely via
+ the audible channel.
+ .
+ After having obtained an authentic copy of the key, its UIDs are signed. The
+ signatures are then encrypted and sent via email. In contrast to monkeysign,
+ xdg-email is used to pop up a pre-filled email composer windows of the mail
+ client the user has configured to use. This greatly reduces complexity as no
+ SMTP configuration needs to be obtained and gives the user a well known
+ interface.
+
+Package: gnome-shell-extension-manager
+Version: 0.4.0-1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
+Installed-Size: 428
+Depends: libadwaita-1-0 (>= 1.2~alpha), libc6 (>= 2.34), libglib2.0-0 (>= 2.65.1), libgtk-4-1 (>= 4.6.0), libjson-glib-1.0-0 (>= 1.5.2), libsoup-3.0-0 (>= 3.0.3), libtext-engine-0.1-0 (>= 0.1.1), dconf-gsettings-backend | gsettings-backend, gjs, gnome-shell, unzip
+Homepage: https://github.com/mjakeman/extension-manager
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnome-shell-extension-manager/gnome-shell-extension-manager_0.4.0-1_amd64.deb
+Size: 81004
+SHA512: afe913084b57b2901341db0175fe9eb8d9e848e00da0502a7f11ff5919e8dcf8f4efcd0f7cc183a6540b4fb9eb6c878e0cfe99144482470276a5a4cc51da49c2
+SHA256: ec71779a6d6decb3f9c4f69e461f4d8b6d3775f1e35c0f355643e70d96820a0e
+SHA1: 5f1d8093034a4c155993222c4e74477bfb01e965
+MD5sum: 93ab71def7c96b3e230530cd69d795ad
+Description: Utility for managing GNOME Shell Extensions
+ The GNOME shell extension manager is a tool for helping you manage your
+ installed GNOME shell extensions.
+
 Package: gpg
 Source: gnupg2
 Version: 2.2.40-1.1ubuntu1
@@ -323,6 +409,502 @@ Description: GNU Privacy Guard -- minimalist public key operations
  install the "gnupg" package, which pulls in the full suite of tools.
 Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>
 
+Package: gpgconf
+Source: gnupg2
+Version: 2.2.40-1.1ubuntu1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 241
+Depends: libassuan0 (>= 2.5.0), libc6 (>= 2.34), libgcrypt20 (>= 1.10.0), libgpg-error0 (>= 1.42), libreadline8 (>= 6.0)
+Breaks: gnupg (<< 2.1.21-4), gnupg-agent (<< 2.1.21-4)
+Replaces: gnupg (<< 2.1.21-4), gnupg-agent (<< 2.1.21-4)
+Multi-Arch: foreign
+Homepage: https://www.gnupg.org/
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnupg2/gpgconf_2.2.40-1.1ubuntu1_amd64.deb
+Size: 96298
+SHA512: 1f2ee1c85e60623c0cedcb6b6d8fe244a2bf0fd8f187294e40e5e0f42f6aaa821fa873f4b9672d3ddff14d7eecc47354395dfea0cd0fc15db2684df84a98bddf
+SHA256: 1636276f2fbefdb7a1028d17ad18a935c00a7ed12b1b495bd4c17c446f70e367
+SHA1: 0152d9b448841ca0215aa191385bbc283adbbf20
+MD5sum: f985d7f89bfd3ae4d3193409bf4f995f
+Description: GNU privacy guard - core configuration utilities
+ GnuPG is GNU's tool for secure communication and data storage.
+ .
+ This package contains core utilities used by different tools in the
+ suite offered by GnuPG.  It can be used to programmatically edit
+ config files for tools in the GnuPG suite, to launch or terminate
+ per-user daemons (if installed), etc.
+Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>
+
+Package: gpgv
+Source: gnupg2
+Version: 2.2.40-1.1ubuntu1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 300
+Depends: libbz2-1.0, libc6 (>= 2.34), libgcrypt20 (>= 1.10.0), libgpg-error0 (>= 1.42), zlib1g (>= 1:1.1.4)
+Suggests: gnupg
+Breaks: gnupg2 (<< 2.0.21-2), gpgv2 (<< 2.1.11-7+exp1), python-debian (<< 0.1.29)
+Replaces: gnupg2 (<< 2.0.21-2), gpgv2 (<< 2.1.11-7+exp1)
+Multi-Arch: foreign
+Homepage: https://www.gnupg.org/
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnupg2/gpgv_2.2.40-1.1ubuntu1_amd64.deb
+Size: 139852
+SHA512: 4dc709fdc04ad21ada1b2bd8c47a7f50799acd006ab2069ec80768dcfc7f4157d0af3029364770982b4925f4b93aa5eefe96f2414c1c9126d8282dbfea6c8729
+SHA256: 1e3970b8ae0cc74e2cfe4df5a75a07a7adc83bb83e9380eaf36d15108a291106
+SHA1: 9164e0f2d2f02da756554defa040d18fbd917603
+MD5sum: 113451952e2077df5b8fe923e5fc56ca
+Description: GNU privacy guard - signature verification tool
+ GnuPG is GNU's tool for secure communication and data storage.
+ .
+ gpgv is actually a stripped-down version of gpg which is only able
+ to check signatures. It is somewhat smaller than the fully-blown gpg
+ and uses a different (and simpler) way to check that the public keys
+ used to make the signature are valid. There are no configuration
+ files and only a few options are implemented.
+Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>
+
+Package: keyutils
+Version: 1.6.3-2
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Christian Kastner <ckk@debian.org>
+Installed-Size: 169
+Depends: libc6 (>= 2.34), libkeyutils1 (>= 1.6.3)
+Multi-Arch: foreign
+Homepage: https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git
+Priority: 0
+Section: utils
+Filename: pool/main/k/keyutils/keyutils_1.6.3-2_amd64.deb
+Size: 56350
+SHA512: e73453a6bed15b3a6963db9ff54cc770eb3c0506870155ce8b679997ba1e583e60ccade45e09281e33418802c4b9ae6268ba7616547ec52b63bc719d8443b84d
+SHA256: ba329cc12797e1bcbd21de9aea7d84454b4cb5d17e305d23956ee1da07fab1c6
+SHA1: 4c1d0518fab5030cd22eb89a8127a5ec77b824d0
+MD5sum: 1c5a0c428a7900246c47467042df4b31
+Description: Linux Key Management Utilities
+ Keyutils is a set of utilities for managing the key retention facility in the
+ kernel, which can be used by filesystems, block devices and more to gain and
+ retain the authorization and encryption keys required to perform secure
+ operations.
+
+Package: kgpg
+Version: 4:22.12.3-0ubuntu1
+Architecture: amd64
+Maintainer: Kubuntu Developers <kubuntu-devel@lists.ubuntu.com>
+Installed-Size: 8835
+Depends: gnupg, kio, libc6 (>= 2.34), libgcc-s1 (>= 3.3.1), libkf5akonadicontact5abi1 (>= 4:17.07.70+git20170625), libkf5akonadicore-bin, libkf5akonadicore5abi2 (>= 4:19.08.3), libkf5archive5 (>= 5.90.0~), libkf5codecs5 (>= 5.90.0~), libkf5configcore5 (>= 4.98.0), libkf5configgui5 (>= 4.97.0), libkf5configwidgets5 (>= 5.23.0), libkf5contacts5 (>= 4:5.69.0), libkf5coreaddons5 (>= 5.90.0~), libkf5crash5 (>= 5.90.0~), libkf5dbusaddons5 (>= 5.90.0~), libkf5i18n5 (>= 5.90.0~), libkf5jobwidgets5 (>= 5.90.0~), libkf5kiocore5 (>= 5.98.0), libkf5kiofilewidgets5 (>= 5.90.0~), libkf5kiogui5 (>= 5.90.0~), libkf5kiowidgets5 (>= 5.90.0~), libkf5notifications5 (>= 5.90.0~), libkf5service-bin, libkf5service5 (>= 5.90.0~), libkf5textwidgets5 (>= 5.90.0~), libkf5widgetsaddons5 (>= 5.90.0~), libkf5windowsystem5 (>= 5.90.0~), libkf5xmlgui5 (>= 5.90.0~), libqt5core5a (>= 5.15.2~), libqt5dbus5 (>= 5.15.2~), libqt5gui5 (>= 5.15.2~) | libqt5gui5-gles (>= 5.15.2~), libqt5network5 (>= 5.15.2~), libqt5printsupport5 (>= 5.15.2~), libqt5widgets5 (>= 5.15.2~), libstdc++6 (>= 5)
+Homepage: https://apps.kde.org/en/kgpg
+Priority: 0
+Section: utils
+Filename: pool/main/k/kgpg/kgpg_22.12.3-0ubuntu1_amd64.deb
+Size: 3211454
+SHA512: 41786c5539d65e3476f1422e8e9b1debacf33258f410becaf8898fd64e7ef79b329d730682ba43e4034d2a148e58f77b4d6e5c95c6c5e1fc049dce538fcabdf8
+SHA256: f26b41afa4dd0703fcadfbcf33bff019a3b1d2072ae261b04a16aa38925e3000
+SHA1: 7d96b67335d34a3dd4edd4a280f733b7b9f226fc
+MD5sum: 0a647153b467684467cdc3fc2f19fd4f
+Description: graphical front end for GNU Privacy Guard
+ Kgpg manages cryptographic keys for the GNU Privacy Guard, and can encrypt,
+ decrypt, sign, and verify files.  It features a simple editor for applying
+ cryptography to short pieces of text, and can also quickly apply cryptography
+ to the contents of the clipboard.
+ .
+ This package is part of the KDE Utilities module.
+Original-Maintainer: Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
+
+Package: libnginx-mod-http-auth-pam
+Source: nginx
+Version: 1.22.0-1ubuntu3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 48
+Depends: nginx-common (= 1.22.0-1ubuntu3), libc6 (>= 2.14), libpam0g (>= 0.99.7.1)
+Recommends: nginx
+Homepage: https://nginx.org
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/libnginx-mod-http-auth-pam_1.22.0-1ubuntu3_amd64.deb
+Size: 16902
+SHA512: cb2303a19ee9a34934937424775b07a6ce17ded5b09a66f0f806d2660abc8a771cab3ec8116537816a962532162b50aef8c410c211c4af3fff66c2293feed8a4
+SHA256: 2cd87437b7f97d6b8b85c901c4abab268b39b2e60060e451b3e574c8d4369e76
+SHA1: 415415859c1dfdbfda1df04d4a6bdaebc84a212a
+MD5sum: ae4fdbce5f6f530a855cfe88b0d7f50c
+Description: PAM authentication module for Nginx
+ The nginx_http_auth_pam module enables authentication using PAM.
+ .
+ The module uses PAM as a backend for simple http authentication. It
+ also allows setting the pam service name to allow more fine grained control.
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+
+Package: libnginx-mod-http-cache-purge
+Source: nginx
+Version: 1.22.0-1ubuntu3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 56
+Depends: nginx-common (= 1.22.0-1ubuntu3), libc6 (>= 2.14)
+Recommends: nginx
+Homepage: https://nginx.org
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/libnginx-mod-http-cache-purge_1.22.0-1ubuntu3_amd64.deb
+Size: 19262
+SHA512: 122b53e1b8d9c866495f0612cf73c869282ea8b4c193444e74271b11cfdedf9a4312cf4a4dac0d9252e87178e082c119b9a198cb7ad32c7fc06e340e2052e647
+SHA256: fdc5983ad221079f77036206aeb39ae8469bdea7a005752ae7dad01c97b31421
+SHA1: d02f3a8157a6d9f6e02acab57a6085e638395a42
+MD5sum: f9e2d302cf9bf3dc0c04ef34ed433faf
+Description: Purge content from Nginx caches
+ Cache Purge module adds purging capabilities to Nginx. It allows purging
+ content from caches used by all of Nginx proxy modules, like FastCGI, Proxy,
+ SCGI and uWSGI.
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+
+Package: libnginx-mod-http-dav-ext
+Source: nginx
+Version: 1.22.0-1ubuntu3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 69
+Depends: nginx-common (= 1.22.0-1ubuntu3), libc6 (>= 2.33), libxml2 (>= 2.7.4)
+Recommends: nginx
+Homepage: https://nginx.org
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/libnginx-mod-http-dav-ext_1.22.0-1ubuntu3_amd64.deb
+Size: 24564
+SHA512: dcb01740aeb27069ccf426f47e3118c4361a15bfff4ec09b1c3f0d176eec9eb4e4a4c0b582fc9d9feea1cb427988719ec561516cd61e29b537bbbf25701a89c2
+SHA256: fe422e89e9b8885bda5557541740c33285f6b5b8aaf2500662f6d79682bed39f
+SHA1: bd6cdde48f8e2da23cc10a3b3bbf0cb9ed48408e
+MD5sum: bc68b9b5b5a1914290f65606d2a4134a
+Description: WebDAV missing commands support for Nginx
+ WebDAV Ext module complements the Nginx WebDAV module to provide a full
+ WebDAV support.
+ .
+ WebDAV Ext provides the missing PROPFIND & OPTIONS methods.
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+
+Package: libnginx-mod-http-echo
+Source: nginx
+Version: 1.22.0-1ubuntu3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 78
+Depends: nginx-common (= 1.22.0-1ubuntu3), libc6 (>= 2.14)
+Recommends: nginx
+Homepage: https://nginx.org
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/libnginx-mod-http-echo_1.22.0-1ubuntu3_amd64.deb
+Size: 28938
+SHA512: 942ef10ea5027db483b2748def1ec036fa7e708d6e690ea907a414defc8a8914411165be3474a2f7981af2dcd3870cdad8eb431c9e7fb21bbae427d029816cc9
+SHA256: 8a9cf76b18f62be57e3ec4f3b811f1b893d8c4d2428f276eea2b44383554d306
+SHA1: 21d806e1533d4168e8e8ad754b2dfa95c83eae2e
+MD5sum: 8876396cffa52efadd16da3e41e0afa5
+Description: Bring echo and more shell style goodies to Nginx
+ Echo module wraps lots of Nginx internal APIs for streaming input and output,
+ parallel/sequential subrequests, timers and sleeping, as well as various meta
+ data accessing.
+ .
+ Basically it provides various utilities that help testing and debugging of
+ other modules by trivially emulating different kinds of faked subrequest
+ locations.
+ .
+ People will also find it useful in real-world applications that need to:
+ .
+ 1. Serve static contents directly from memory.
+ 2. Wrap the upstream response with custom header and footer (kinda like the
+    addition module but with contents read directly from the config file and
+    Nginx variables).
+ 3. Merge contents of various "Nginx locations" (i.e., subrequests) together in
+    a single main request (using echo_location and its friends).
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+
+Package: libnginx-mod-http-fancyindex
+Source: nginx
+Version: 1.22.0-1ubuntu3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 65
+Depends: nginx-common (= 1.22.0-1ubuntu3), libc6 (>= 2.33)
+Suggests: nginx
+Homepage: https://nginx.org
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/libnginx-mod-http-fancyindex_1.22.0-1ubuntu3_amd64.deb
+Size: 22940
+SHA512: c2e49ae9c4af492a89610721dbbe1854a5c59a5f170522ddf450c8b275fff386aad1ba4c9b8cf2a20bc9ef7213823e74dbb5024bef8155e2c2c2ec29ed8e3ca8
+SHA256: 9071f6ba01e79932724f88bfd284c3eeb068ccb236aaec723b66913a9f39dad0
+SHA1: d8bbfcb5dd44c1cc63ff310639b1da8e3f1e1c1c
+MD5sum: 9bb7e88cc9971d954619b0fc09ea58d1
+Description: Fancy indexes module for the Nginx
+ The Fancy Index module makes possible the generation of file listings, like
+ the built-in autoindex module does, but adding a touch of style by introducing
+ ways to customize the result.
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+
+Package: libnginx-mod-http-geoip
+Source: nginx
+Version: 1.22.0-1ubuntu3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 57
+Depends: nginx-common (= 1.22.0-1ubuntu3), libc6 (>= 2.14), libgeoip1 (>= 1.6.12)
+Recommends: nginx
+Homepage: https://nginx.org
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/libnginx-mod-http-geoip_1.22.0-1ubuntu3_amd64.deb
+Size: 18120
+SHA512: 1d8dd093a4f3a0ec416b1a0e5ae62a8d35d5d906a52e5b918d2bba78f941b3909235a0949c125b2c359a242f306ce581c8fb6cc64df275f7c3d59acf92f2574d
+SHA256: 497a83d38eb25321ac6285d3ee0538de0630ff79090d5584f4c39ea7a9f6dcf9
+SHA1: 23c8369e6f2d868b8f1a433fa4a5965aac44cf5b
+MD5sum: 2915d89d3c1074fad5448cdfc80c56b4
+Description: GeoIP HTTP module for Nginx
+ The ngx_http_geoip module creates variables with values depending on the
+ client IP address, using the precompiled MaxMind databases.
+ .
+ Those variables include country, region, city, latitude, longitude, postal
+ code, etc.
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+
+Package: libnginx-mod-http-headers-more-filter
+Source: nginx
+Version: 1.22.0-1ubuntu3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 65
+Depends: nginx-common (= 1.22.0-1ubuntu3), libc6 (>= 2.14)
+Recommends: nginx
+Homepage: https://nginx.org
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/libnginx-mod-http-headers-more-filter_1.22.0-1ubuntu3_amd64.deb
+Size: 22482
+SHA512: b66faada4a0e7bac35bb83b6f24c5e98f56512c305fe3f2207ff03428bcdcc1ab0c0387c0da8c3e7c09e1edc99a79b7364cb5bac8bd01e8db3fde290668f6dd5
+SHA256: 4d7afc3cf529d8b59c5610c518aee084e9fd7b949d01210074ae2ccfd5431055
+SHA1: f3dc044bcec246556e452e4b2ca3cb9c1c74e9ad
+MD5sum: db8ee4a2a93faaaf354a0ab50d17ca6e
+Description: Set and clear input and output headers for Nginx
+ The Headers More module allows you to add, set, or clear any output or input
+ header that you specify.
+ .
+ This is an enhanced version of the standard headers module because it provides
+ more utilities like resetting or clearing "builtin headers" like Content-Type,
+ Content-Length, and Server.
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+
+Package: libnginx-mod-http-ndk
+Source: nginx
+Version: 1.22.0-1ubuntu3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 47
+Depends: nginx-common (= 1.22.0-1ubuntu3)
+Recommends: nginx
+Homepage: https://nginx.org
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/libnginx-mod-http-ndk_1.22.0-1ubuntu3_amd64.deb
+Size: 14038
+SHA512: b8c1420c6730b4a6628c4d32e23b3b1c39401cb8e2c0062c2dab0bc0e3d3164422ebbb8a120809a036bbd04e93d1dca5d6f10569076a0904d99de99c0cceee20
+SHA256: 8eccdf1f043b6991d2eaef9bdbcbfb5dc657b472ef99b077bf1f3b184df32f7a
+SHA1: 786f127970d03fd89f2b5219cdfd9c40ce85ee52
+MD5sum: 8891dc974c1c70462e29ec77e7548abc
+Description: Nginx Development Kit module
+ The NDK is an Nginx module that is designed to extend the core functionality of
+ the excellent Nginx webserver in a way that can be used as a basis of other
+ Nginx modules.
+ .
+ It has functions and macros to deal with generic tasks that don't currently
+ have generic code as part of the core distribution. The NDK itself adds few
+ features that are seen from a user's point of view - it's just designed to help
+ reduce the code that Nginx module developers need to write.
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+
+Package: libnginx-mod-http-perl
+Source: nginx
+Version: 1.22.0-1ubuntu3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 105
+Depends: nginx-common (= 1.22.0-1ubuntu3), perl (>= 5.36.0-7), perlapi-5.36.0, libc6 (>= 2.34), libperl5.36 (>= 5.36.0)
+Recommends: nginx
+Replaces: nginx-extras (<< 1.9.14-1)
+Homepage: https://nginx.org
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/libnginx-mod-http-perl_1.22.0-1ubuntu3_amd64.deb
+Size: 30708
+SHA512: 03de6dd13761b610ce3b8ac6aa2d2f6dc41f607d2eeeb103b592fe379139b3a642e4abc32e150ec967d626279be2980178a9016ad9638322adbe9d4b02f68e5f
+SHA256: 50f7686f95ea5dae1c380dfee33c9edccafd0edc1154bd410ed67cea070fde5d
+SHA1: b35169e27b5dac294f9b6f86b89c7d7ba4bac127
+MD5sum: 9379c2d8f855e744e67fb2f0f5bdf533
+Description: Perl module for Nginx
+ Embed Perl runtime into nginx.
+ .
+ The ngx_http_perl module is used to implement location and variable handlers
+ in Perl and insert Perl calls into SSI.
+ .
+ Note that this module is marked experimental.
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+
+Package: libnginx-mod-http-subs-filter
+Source: nginx
+Version: 1.22.0-1ubuntu3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 52
+Depends: nginx-common (= 1.22.0-1ubuntu3), libc6 (>= 2.14)
+Recommends: nginx
+Homepage: https://nginx.org
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/libnginx-mod-http-subs-filter_1.22.0-1ubuntu3_amd64.deb
+Size: 20132
+SHA512: e482d52b5a92da593ccd4532e561d7a422a0fb8444a38c46f11193d6d4cc2eb590264b7142f24fa3410c4efcd18fb276cfeec06706166f6801805b9be23bd3d0
+SHA256: 30087f3dd26329a70386825616198ae5481e15d39c23f60416f809859fad834b
+SHA1: 10d47d3c0e3c3a0ab00f622a24f26e4731fbf84a
+MD5sum: 7f2d0f65ba0406bffdad529b3665af3e
+Description: Substitution filter module for Nginx
+ Subsitution Nginx module can do both regular expression and fixed string
+ substitutions on response bodies. The module is quite different from Nginx's
+ native Substitution module. It scans the output chains buffer and
+ matches string line by line, just like Apache's mod_substitute.
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+
+Package: libnginx-mod-http-uploadprogress
+Source: nginx
+Version: 1.22.0-1ubuntu3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 69
+Depends: nginx-common (= 1.22.0-1ubuntu3), libc6 (>= 2.14)
+Recommends: nginx
+Homepage: https://nginx.org
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/libnginx-mod-http-uploadprogress_1.22.0-1ubuntu3_amd64.deb
+Size: 23970
+SHA512: f210b7a14b15fe8c5130afc9db019b6347a86275ef5e9e7dca90e5a6ca15ce749175b97040b14c1a8cefa72afa65e27aa1c050fc3fc35a826b9b5027a8a98916
+SHA256: a936286e49475ea3bcbbeeb37ab6ec00e46b2a53ca188dbda456aa0c4e2ed860
+SHA1: a38a9c1fd6e792ddad99f08aef796bbc235beb96
+MD5sum: ff29e5e78e6bf8adc66b9da77424a8f3
+Description: Upload progress system for Nginx
+ Upload progress module is an implementation of an upload progress system, that
+ monitors RFC1867 POST uploads as they are transmitted to upstream servers.
+ .
+ It works by tracking the uploads proxied by Nginx to upstream servers without
+ analysing the uploaded content and offers a web API to report upload progress
+ in Javscript, Json or any other format.
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+
+Package: libnginx-mod-http-upstream-fair
+Source: nginx
+Version: 1.22.0-1ubuntu3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 52
+Depends: nginx-common (= 1.22.0-1ubuntu3), libc6 (>= 2.4)
+Recommends: nginx
+Homepage: https://nginx.org
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/libnginx-mod-http-upstream-fair_1.22.0-1ubuntu3_amd64.deb
+Size: 20306
+SHA512: 56a86943ffe8174c845828fc085643adff76c6ab3dfd707cfe30751b91198bd501987c4ca94830a7e5de23fd1c7efb7c6da1d7d3ecc41901a91ec20fc47bdb18
+SHA256: b9fc4afbb0e85cb08c06eb5f012ecc5630303d5841ad06766fbc9103976f93d3
+SHA1: 7a40cb133b59c393066f3ab9e9c78ae5c0f91381
+MD5sum: ca4c0a6db6378dffab9b7c857ca41424
+Description: Nginx Upstream Fair Proxy Load Balancer
+ The Nginx fair proxy balancer enhances the standard round-robin load balancer
+ provided with Nginx so that it tracks busy backend servers and adjusts
+ balancing accordingly.
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+
+Package: libnginx-mod-nchan
+Source: nginx
+Version: 1.22.0-1ubuntu3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 662
+Depends: nginx-common (= 1.22.0-1ubuntu3), libc6 (>= 2.29)
+Recommends: nginx
+Homepage: https://nginx.org
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/libnginx-mod-nchan_1.22.0-1ubuntu3_amd64.deb
+Size: 248456
+SHA512: 987baf6f0d5d7187cbbecd20ebcbd51bdba8b1dd289444141d66937bd1b587f3c98c91a6134ffd25b167d5dcbc7467b4c5a7ba3c7bbfcb90c128709932df1c40
+SHA256: 750aaf3ecd987117645a067f99a147d50ef82e4c7878970d9cb219e141242d93
+SHA1: 07dfb010a64cae8636e1cd0b5a5ff2aff9a2d2f1
+MD5sum: ce220d4d09771455b152396f1566d822
+Description: Fast, flexible pub/sub server for Nginx
+ Nchan is a scalable, flexible pub/sub server for the modern web, It can be
+ configured as a standalone server, or as a shim between your application and
+ tens, thousands, or millions of live subscribers. It can buffer messages in
+ memory, on-disk, or via Redis. All connections are handled asynchronously and
+ distributed among any number of worker processes. It can also scale to many
+ nginx server instances with Redis.
+ .
+ Full documentation available at https://nchan.slact.net
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+
+Package: libnginx-mod-rtmp
+Source: nginx
+Version: 1.22.0-1ubuntu3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 364
+Depends: nginx-common (= 1.22.0-1ubuntu3), libc6 (>= 2.33)
+Recommends: nginx
+Homepage: https://nginx.org
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/libnginx-mod-rtmp_1.22.0-1ubuntu3_amd64.deb
+Size: 138674
+SHA512: 3470386c5520d9b2cd3003225c7c509e84216bfd49a3cf14537dd7ffca6fd411c4ea17d26cca91455bacfddda16179388f8840e8e2e167f55eb688569e9f5d4a
+SHA256: 33f376a5ffb72c9681ad52a5d3d6e7f5ece408122fda39059b83fe856e880262
+SHA1: b069a5bffecf22b4c824eda779a7f9aafaffa9f5
+MD5sum: 8f57782823dd1862be5a8ee938d4f691
+Description: RTMP support for Nginx
+ The nginx RTMP module is a fully-featured streaming solution implemented in
+ nginx.
+ .
+ It provides the following features:
+  - Live streaming with RTMP, HLS and MPEG-DASH;
+  - RTMP Video on Demand from local or HTTP sources;
+  - Stream relay support via a push or pull model;
+  - Integrated stream recording;
+  - and more.
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+
+Package: libnginx-mod-stream-geoip
+Source: nginx
+Version: 1.22.0-1ubuntu3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 53
+Depends: nginx-common (= 1.22.0-1ubuntu3), libc6 (>= 2.14), libgeoip1 (>= 1.6.12), libnginx-mod-stream (= 1.22.0-1ubuntu3)
+Recommends: nginx
+Homepage: https://nginx.org
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/libnginx-mod-stream-geoip_1.22.0-1ubuntu3_amd64.deb
+Size: 9166
+SHA512: b61f31acd94c3fba516f61de25cb1c6a71394fc922049e6c99cbb30ddd59dd9bfd5305aac8cd466ff9d5e355021a97d0e983f0fd0813c42fe838cf2f2ae8c0dc
+SHA256: c6fdeb518467b538930d80e884687a6c4886e81b5d246264e5c79aa737e39d71
+SHA1: e2572b024a41095ec2dae66d47f5bfa68f035d6e
+MD5sum: 2713af94a6496d813be9c1c4996aea98
+Description: GeoIP Stream module for Nginx
+ The ngx_stream_geoip module creates variables with values depending on the
+ client IP address, using the precompiled MaxMind databases.
+ .
+ Those variables include country, region, city, latitude, longitude, postal
+ code, etc.
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+
 Package: libredirect-frontends-manager
 Version: 0.1.0
 Architecture: amd64
@@ -339,6 +921,110 @@ SHA1: cadac9be566de5c53d41fa91fc71afe8b888ffa9
 MD5sum: 1e3c767b1b2dac5e7900b833d4f4aa9b
 Description: Run privacy frontends on your computer
  (none)
+
+Package: lsb-base
+Source: lsb
+Version: 11.6
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian sysvinit maintainers <debian-init-diversity@chiark.greenend.org.uk>
+Installed-Size: 12
+Depends: sysvinit-utils (>= 3.05-4~)
+Multi-Arch: foreign
+Homepage: https://wiki.linuxfoundation.org/lsb/start
+Priority: 0
+Section: utils
+Filename: pool/main/l/lsb/lsb-base_11.6_all.deb
+Size: 4606
+SHA512: f6f3d11d2d1c45f3b924e30904f81503eb3cb9a6f669e8707f39e0546e885825c337c422326889b54f1b2a47de7ee42b47f3b30b8c0e4c63d632f19270fe0724
+SHA256: 08a563e3c1984acdb295f12b77b4ec18d2ccf52fd03280a5bea29e506a3350ee
+SHA1: cb308555e4894ca7cf00b660b14f0f133b98ad20
+MD5sum: e7f8698020dddda56f2e2f41f2723f57
+Description: transitional package for Linux Standard Base init script functionality
+ This is an empty package; it's needed only because of Provides: not being
+ supported in debootstrap.  It can be safely removed.
+
+Package: mysql-client
+Source: mysql-8.0
+Version: 8.0.34-0ubuntu0.23.04.1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 35
+Depends: mysql-client-8.0
+Homepage: http://dev.mysql.com/
+Priority: 0
+Section: utils
+Filename: pool/main/m/mysql-8.0/mysql-client_8.0.34-0ubuntu0.23.04.1_all.deb
+Size: 9350
+SHA512: 9b4d7e0768598390bf436edd994a0ffd9611a96ceceea705b89d5d676f10cf98eddd3b67fbf6f8ea225bb5d7e6ddeb5c5f9f0b099abb38e660df8ec4a7ba6cf9
+SHA256: 9a3f38b476fa7cffda37cf30062d366493291110c9354f005fa7b05562f596fb
+SHA1: 9165bf502187c5f32e9a3841a781e240c7317c01
+MD5sum: 6b205502fcf5a5f7d71818a80825b2cd
+Description: MySQL database client (metapackage depending on the latest version)
+ This is an empty package that depends on the current "best" version of
+ mysql-client (currently mysql-client-8.0), as determined by the MySQL
+ maintainers.  Install this package if in doubt about which MySQL version
+ you want, as this is the one considered to be in the best shape by the
+ Maintainers.
+Original-Maintainer: Debian MySQL Maintainers <pkg-mysql-maint@lists.alioth.debian.org>
+
+Package: mysql-common
+Source: mysql-defaults (1.1.0)
+Version: 5.8+1.1.0
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian MySQL Maintainers <pkg-mysql-maint@lists.alioth.debian.org>
+Installed-Size: 33
+Conflicts: mariadb-server-5.5, mysql-common-5.6, mysql-server-5.5, percona-xtradb-cluster-common-5.5
+Breaks: mariadb-common (<< 10.0.20-3~)
+Replaces: mariadb-server-5.5, mysql-common-5.6, mysql-server-5.5, percona-xtradb-cluster-common-5.5
+Provides: mysql-common-5.6
+Multi-Arch: foreign
+Priority: 0
+Section: utils
+Filename: pool/main/m/mysql-defaults/mysql-common_5.8+1.1.0_all.deb
+Size: 6626
+SHA512: a00cec37c6eedba5c7473472228b57ff4f44c0f3de8ae886e79c5418f891850bacfa3ce137a711c5a30dc057c3ce705f254f14e91a1c222b8ebe5dea1985a90a
+SHA256: b4acd67f91c663d0beba4eb5949bc74e59cb463227702ed104046467b3f992b5
+SHA1: 367caa2c93465ed37af280a9bdd68c4850992d5a
+MD5sum: db3b441066cee108645beb98d2ebe593
+Description: MySQL database common files, e.g. /etc/mysql/my.cnf
+ MySQL is a fast, stable and true multi-user, multi-threaded SQL database
+ server. SQL (Structured Query Language) is the most popular database query
+ language in the world. The main goals of MySQL are speed, robustness and
+ ease of use.
+ .
+ This package includes files needed by all versions of the client library,
+ e.g. /etc/mysql/my.cnf.
+
+Package: mysql-server
+Source: mysql-8.0
+Version: 8.0.34-0ubuntu0.23.04.1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 35
+Depends: mysql-server-8.0
+Homepage: http://dev.mysql.com/
+Priority: 0
+Section: utils
+Filename: pool/main/m/mysql-8.0/mysql-server_8.0.34-0ubuntu0.23.04.1_all.deb
+Size: 9460
+SHA512: f3c606116cbd3d4aa94a6ffdd5d1de3b89ae7bc53d28746c4c4349a366101de9b42d1504c720299684f0b01ea369eccc0d14979edf778a19fac4fb47ebe7cf97
+SHA256: 1c617a3b30c97dfb2075134cd493eb5b1cfbba47cfed9e0889600e6008988912
+SHA1: 5aa6b48fa55609a3703be3783bad89e939aa77a5
+MD5sum: 57d8c24292b0631ed154b73f7fcfe593
+Description: MySQL database server (metapackage depending on the latest version)
+ This is an empty package that depends on the current "best" version of
+ mysql-server (currently mysql-server-8.0), as determined by the MySQL
+ maintainers. Install this package if in doubt about which MySQL
+ version you need. That will install the version recommended by the
+ package maintainers.
+ .
+ MySQL is a fast, stable and true multi-user, multi-threaded SQL database
+ server. SQL (Structured Query Language) is the most popular database query
+ language in the world. The main goals of MySQL are speed, robustness and
+ ease of use.
+Original-Maintainer: Debian MySQL Maintainers <pkg-mysql-maint@lists.alioth.debian.org>
 
 Package: neofetch
 Version: 7.1.0-4
@@ -362,6 +1048,560 @@ Description: Shows Linux System Information with Distribution Logo
  command line script that collects your Linux system information
  and display it on the terminal next to an image, it could be your
  distributions logo or any ascii art of your choice.
+
+Package: network-manager
+Version: 1.42.4-1ubuntu2
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 7420
+Depends: libaudit1 (>= 1:2.2.1), libbluetooth3 (>= 4.91), libc6 (>= 2.34), libcurl3-gnutls (>= 7.24.0), libglib2.0-0 (>= 2.68.0), libgnutls30 (>= 3.7.2), libjansson4 (>= 2.14), libmm-glib0 (>= 1.4.0), libndp0 (>= 1.2), libnewt0.52 (>= 0.52.23), libnm0 (= 1.42.4-1ubuntu2), libpsl5 (>= 0.13.0), libreadline8 (>= 6.0), libselinux1 (>= 3.1~), libsystemd0 (>= 209), libteamdctl0 (>= 1.9), libudev1 (>= 183), isc-dhcp-client, default-dbus-system-bus | dbus-system-bus, udev, adduser, polkitd | policykit-1
+Recommends: ppp, dnsmasq-base, modemmanager, network-manager-pptp, wireless-regdb, wpasupplicant, libpam-systemd
+Suggests: avahi-autoipd, libteam-utils, iptables
+Breaks: ppp (>= 2.4.9-2~), ppp (<< 2.4.9-1+~)
+Homepage: https://wiki.gnome.org/Projects/NetworkManager
+Priority: 0
+Section: utils
+Filename: pool/main/n/network-manager/network-manager_1.42.4-1ubuntu2_amd64.deb
+Size: 2264450
+SHA512: 45e34794ec78d1ae6f5a8e838819411a08930f99b1d3705c4ad13483ae5ed43f5599e02f9f0ccbbba3cf3475472b9a2bc7354597f6746a119c0e220f0e7180e6
+SHA256: 710b28f4902f07b7a1a683dd980da51ac1db4c768c92a368956582237e8fc707
+SHA1: 452c56adbd65b74270b7ed3de465ff399d6bbc96
+MD5sum: 43dbe1557ca55130759ca366c335614b
+Description: network management framework (daemon and userspace tools)
+ NetworkManager is a system network service that manages your network devices
+ and connections, attempting to keep active network connectivity when
+ available. It manages ethernet, Wi-Fi, mobile broadband (WWAN), and PPPoE
+ devices, and provides VPN integration with a variety of different VPN
+ services.
+ .
+ This package provides the userspace daemons and a command line interface to
+ interact with NetworkManager.
+ .
+ Optional dependencies:
+  * avahi-autoipd: Used for IPv4LL, a protocol for automatic Link-Local IP
+    address configuration.
+  * ppp: Required for establishing dial-up connections (e.g. via GSM).
+  * dnsmasq-base/iptables: Required for creating Ad-hoc connections and
+    connection sharing.
+  * libteam-utils: Network Team driver allows multiple network interfaces to be
+    teamed together and act like a single one. This process is called "ethernet
+    bonding", "channel teaming" or "link aggregation".
+Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
+
+Package: network-manager-config-connectivity-ubuntu
+Source: network-manager
+Version: 1.42.4-1ubuntu2
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 23
+Depends: network-manager (>= 1.42.4-1ubuntu2)
+Multi-Arch: foreign
+Homepage: https://wiki.gnome.org/Projects/NetworkManager
+Priority: 0
+Section: utils
+Filename: pool/main/n/network-manager/network-manager-config-connectivity-ubuntu_1.42.4-1ubuntu2_all.deb
+Size: 2238
+SHA512: 8fdfe9d4f067c4982cea27c44dd5b6fa15d722843173b94bb575aef9a6e74bc7ef9cd39b1f9298b53bc5d517ac990ab6690f7b88cb6a4e8cec64f08e117fa3e3
+SHA256: d480fce9d0c2f4f4e38a04a2d2fdff8ae04379041192351403b0662a1645bc45
+SHA1: 374422d969bd55f87925b7660f226ed748ad662d
+MD5sum: 270b94c8f420cae3806fd7c47b822932
+Description: NetworkManager configuration to enable connectivity checking
+ This package contains a configuration file which enables NetworkManager's
+ connectivity checking functionality.
+ .
+ NetworkManager will try to connect to an Ubuntu server to determine the
+ connection status.
+ .
+ This is particularly useful for captive portal detection.
+ .
+ No user data is transmitted in the connectivity checks, but merely contacting
+ the Ubuntu connectivity check servers reveals that the user is running an
+ Ubuntu(-based) operating system with NetworkManager.
+Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
+
+Package: network-manager-dev
+Source: network-manager
+Version: 1.42.4-1ubuntu2
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 2375
+Multi-Arch: foreign
+Homepage: https://wiki.gnome.org/Projects/NetworkManager
+Priority: 0
+Section: utils
+Filename: pool/main/n/network-manager/network-manager-dev_1.42.4-1ubuntu2_all.deb
+Size: 217770
+SHA512: 5cd9d63dc99cce4cbee25e13dd87d13b4ad7504d139e8d3c537b2378680785e648efce4d48bd379ecde6d00dad39926890524b3f84fa7c163d2d4b89ad3b4d30
+SHA256: 224172c434821401e4197091fd45c5a37be9c8e68a7ed670d05c6aa745b57392
+SHA1: 1947fa4d164dcb4bc0ab115b7c86e664c6d6053f
+MD5sum: 8194e79f300338a1b2ab5f6a70770180
+Description: network management framework (development files)
+ This package provides documentation of the NetworkManager D-Bus API, the
+ configuration formats and command line utilities.
+ It also provides D-Bus introspection files.
+Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
+
+Package: network-manager-gnome
+Source: network-manager-applet
+Version: 1.30.0-2ubuntu1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 2136
+Depends: libatk1.0-0 (>= 1.12.4), libayatana-appindicator3-1 (>= 0.4.90), libc6 (>= 2.34), libcairo2 (>= 1.2.4), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.43.2), libgtk-3-0 (>= 3.21.6), libjansson4 (>= 2.14), libmm-glib0 (>= 0.7.991), libnm0 (>= 1.16.0), libnma0 (>= 1.8.36), libpango-1.0-0 (>= 1.14.0), libpangocairo-1.0-0 (>= 1.14.0), libsecret-1-0 (>= 0.18), libselinux1 (>= 3.1~), dconf-gsettings-backend | gsettings-backend, network-manager, gnome-shell | policykit-1-gnome | polkit-1-auth-agent, default-dbus-session-bus | dbus-session-bus
+Recommends: gnome-shell | notification-daemon, gnome-keyring, humanity-icon-theme, mobile-broadband-provider-info, iso-codes
+Suggests: network-manager-openconnect-gnome, network-manager-openvpn-gnome, network-manager-vpnc-gnome, network-manager-pptp-gnome
+Breaks: libnma-common (<< 1.10.4)
+Replaces: libnma-common (<< 1.10.4)
+Homepage: https://www.gnome.org/projects/NetworkManager/
+Priority: 0
+Section: utils
+Filename: pool/main/n/network-manager-applet/network-manager-gnome_1.30.0-2ubuntu1_amd64.deb
+Size: 317944
+SHA512: e920ba2ba1e7b34509b3e29264d639300202fa94498b90ae8b5c7716721fca9a038710604dbf383091880a03ca241d299d54df716febaafea2f495cbc24a37b8
+SHA256: 472d845a18b36f4c056de68ddf65c900acbe1432d5ebae4be7c59c6922976252
+SHA1: 6bc28d38075939ccb1acdfafa28e35c46c57db7a
+MD5sum: 50b210895a76f6ece0ae7f8e629a0130
+Description: network management framework (GNOME frontend)
+ NetworkManager is a system network service that manages your network devices
+ and connections, attempting to keep active network connectivity when
+ available. It manages ethernet, WiFi, mobile broadband (WWAN), and PPPoE
+ devices, and provides VPN integration with a variety of different VPN
+ services.
+ .
+ This package contains a systray applet for GNOME's notification area but it
+ also works for other desktop environments which provide a systray like KDE
+ or Xfce.
+ It displays the available networks and allows users to easily switch between
+ them. For encrypted networks it will prompt the user for the key/passphrase
+ and it can optionally store them in the gnome-keyring.
+Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
+
+Package: network-manager-openvpn
+Version: 1.10.2-2
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
+Installed-Size: 276
+Depends: libc6 (>= 2.34), libglib2.0-0 (>= 2.35.9), libnm0 (>= 1.7.0), network-manager, openvpn, adduser
+Homepage: https://www.gnome.org/projects/NetworkManager/
+Priority: 0
+Section: utils
+Filename: pool/main/n/network-manager-openvpn/network-manager-openvpn_1.10.2-2_amd64.deb
+Size: 57126
+SHA512: 04579c54aee6bb729c5b3181bc85e430d1f8b956ee09283e3b1ead612b9183a6fd2fbf090ce66d711d4c4d013b3c8bc7ca3f9d4c0c1cff4d56436f4830291d3e
+SHA256: 7730c69c798e1594a68d431b57c987b548e63ecf4ac8bade729c43406ca87e41
+SHA1: a510de58fabf452379d6eba474195f5cea797baf
+MD5sum: 17000b4ebd5a7c08a984edbf5aedfb85
+Description: network management framework (OpenVPN plugin core)
+ NetworkManager is a system network service that manages your network devices
+ and connections, attempting to keep active network connectivity when
+ available. It manages ethernet, Wi-Fi, mobile broadband (WWAN), and PPPoE
+ devices, and provides VPN integration with a variety of different VPN
+ services.
+ .
+ This package provides a VPN plugin for OpenVPN.
+
+Package: network-manager-openvpn-gnome
+Source: network-manager-openvpn
+Version: 1.10.2-2
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
+Installed-Size: 486
+Depends: libc6 (>= 2.34), libglib2.0-0 (>= 2.34), libgtk-3-0 (>= 3.4), libgtk-4-1 (>= 4.0.0), libnm0 (>= 1.7.0), libnma-gtk4-0 (>= 1.8.34), libnma0 (>= 1.8.0), libsecret-1-0 (>= 0.18), network-manager-openvpn (= 1.10.2-2)
+Homepage: https://www.gnome.org/projects/NetworkManager/
+Priority: 0
+Section: utils
+Filename: pool/main/n/network-manager-openvpn/network-manager-openvpn-gnome_1.10.2-2_amd64.deb
+Size: 66594
+SHA512: 20647a03f399765a7be707239d8f2ed3b2d20f5e1f173b15d9c88678900ddec8e22c6f0fff02189d1fd0c608ec7266f21f25f7262d2a2115f65689f2e63ace42
+SHA256: ec633ff917b1f77f23f0444d4131736792bd30f2c829d40ad1a604dc128eb583
+SHA1: 10620218dfdb4e514212ead38be74ba3399edd8d
+MD5sum: de6366d2c64c5497c1a863890b05ff7d
+Description: network management framework (OpenVPN plugin GNOME GUI)
+ NetworkManager is a system network service that manages your network devices
+ and connections, attempting to keep active network connectivity when
+ available. It manages ethernet, Wi-Fi, mobile broadband (WWAN), and PPPoE
+ devices, and provides VPN integration with a variety of different VPN
+ services.
+ .
+ This package provides the GNOME bits of NetworkManager's OpenVPN plugin.
+
+Package: network-manager-pptp
+Version: 1.2.12-1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
+Installed-Size: 212
+Depends: libc6 (>= 2.34), libglib2.0-0 (>= 2.34), libnm0 (>= 1.2.0), ppp (<< 2.4.9-2~), ppp (>= 2.4.9-1+~), network-manager, pptp-linux
+Homepage: https://www.gnome.org/projects/NetworkManager/
+Priority: 0
+Section: utils
+Filename: pool/main/n/network-manager-pptp/network-manager-pptp_1.2.12-1_amd64.deb
+Size: 33154
+SHA512: 9792d6f4a12432dffbffbb0b9a886ac9eaf17312bcd20d4dc9fb1148c5c4c45c89825f3e2862a044c0dc47750f1d3316595bcb928e25bb26489936833dece6d2
+SHA256: c48ced7ddbd75019bc83eda3f20975b66915c7f7dac90e1175eb41357ecadfb4
+SHA1: a2d85a752b0657a11a6e0a4ff90594809d657fa2
+MD5sum: 8ad0caab7a4eea2a2de3721289363a76
+Description: network management framework (PPTP plugin core)
+ NetworkManager is a system network service that manages your network devices
+ and connections, attempting to keep active network connectivity when
+ available. It manages ethernet, Wi-Fi, mobile broadband (WWAN), and PPPoE
+ devices, and provides VPN integration with a variety of different VPN
+ services.
+ .
+ This package provides a VPN plugin for PPTP, commonly used for connecting
+ to Microsoft VPN servers.
+
+Package: network-manager-pptp-gnome
+Source: network-manager-pptp
+Version: 1.2.12-1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
+Installed-Size: 177
+Depends: libc6 (>= 2.34), libglib2.0-0 (>= 2.34), libgtk-3-0 (>= 3.4), libgtk-4-1 (>= 4.0.0), libnm0 (>= 1.2.0), libnma-gtk4-0 (>= 1.8.34), libnma0 (>= 1.2.0), libsecret-1-0 (>= 0.18), network-manager-pptp (= 1.2.12-1)
+Homepage: https://www.gnome.org/projects/NetworkManager/
+Priority: 0
+Section: utils
+Filename: pool/main/n/network-manager-pptp/network-manager-pptp-gnome_1.2.12-1_amd64.deb
+Size: 28018
+SHA512: eb292ab9df3486163435dad283fa924606f4a3155dfb73047cb95e605249770350cbaa9cf9063ff90866127ba46f8ecce2ee86895cdf843eb7e83fecb48f9352
+SHA256: aae8566283c573c251380dae067065b7d47ba35bea6a6461efec290f94d374bc
+SHA1: 0561846de39d369669d189fcf9246678c62be23b
+MD5sum: ce8e2f6d8170fa9f677b52b9f7ea28e0
+Description: network management framework (PPTP plugin GNOME GUI)
+ NetworkManager is a system network service that manages your network devices
+ and connections, attempting to keep active network connectivity when
+ available. It manages ethernet, Wi-Fi, mobile broadband (WWAN), and PPPoE
+ devices, and provides VPN integration with a variety of different VPN
+ services.
+ .
+ This package provides the GNOME bits of NetworkManager's PPTP plugin.
+
+Package: networkd-dispatcher
+Version: 2.2.3-1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Julian Andres Klode <jak@debian.org>
+Installed-Size: 67
+Depends: dbus, gir1.2-glib-2.0, python3-dbus, python3-gi, python3:any
+Suggests: iw | wireless-tools
+Homepage: https://gitlab.com/craftyguy/networkd-dispatcher
+Priority: 0
+Section: utils
+Filename: pool/main/n/networkd-dispatcher/networkd-dispatcher_2.2.3-1_all.deb
+Size: 14902
+SHA512: 8b2895d4426102f3fa6a7a73c9d7c45694259cdb742a12f2444dfef55a84a69ff77c999f0bde3738b59143d418a9e8c63342263f29731990d0fd505b979d391d
+SHA256: f52101d25eca31410dfa482dc58f7b2bf3cef3792e4c660bab5cecb6fcc38e0c
+SHA1: 727534985cd855227c4d104b1a74df209f2e27b3
+MD5sum: 155408b835b31b5fc1bd46e06f07dffa
+Description: Dispatcher service for systemd-networkd connection status changes
+ Networkd-dispatcher is a dispatcher daemon for systemd-networkd
+ connection status changes. It is similar to NetworkManager-dispatcher,
+ but is much more limited in the types of events it supports due to the
+ limited nature of systemd-networkd.
+
+Package: nginx
+Version: 1.22.0-1ubuntu3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 24
+Depends: nginx-core (<< 1.22.0-1ubuntu3.1~) | nginx-full (<< 1.22.0-1ubuntu3.1~) | nginx-light (<< 1.22.0-1ubuntu3.1~) | nginx-extras (<< 1.22.0-1ubuntu3.1~), nginx-core (>= 1.22.0-1ubuntu3) | nginx-full (>= 1.22.0-1ubuntu3) | nginx-light (>= 1.22.0-1ubuntu3) | nginx-extras (>= 1.22.0-1ubuntu3)
+Breaks: libnginx-mod-http-lua (<< 1.18.0-6ubuntu5)
+Homepage: https://nginx.org
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/nginx_1.22.0-1ubuntu3_amd64.deb
+Size: 3966
+SHA512: b27c32febf490f9ad13160440e80daa848e68d6ba555840f7e6e452d3cdf29d57f17585b55db9e03ead5875cc3876de35fe6509ca7fea9bcdb7a2f5128abef2a
+SHA256: 9e172ed6b66b797f7deec137533a792514284cd567325ad8b57d0cd1f21f1456
+SHA1: fbd7e194d09d88283e369323774d18689020900b
+MD5sum: ceea2596d8c3dd475e17852a6e23f57d
+Description: small, powerful, scalable web/proxy server
+ Nginx ("engine X") is a high-performance web and reverse proxy server
+ created by Igor Sysoev. It can be used both as a standalone web server
+ and as a proxy to reduce the load on back-end HTTP or mail servers.
+ .
+ This is a dependency package to install either nginx-core (by default),
+ nginx-full, nginx-light or nginx-extras.
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+
+Package: nginx-common
+Source: nginx
+Version: 1.22.0-1ubuntu3
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 263
+Depends: lsb-base (>= 3.0-6), debconf (>= 0.5) | debconf-2.0
+Suggests: fcgiwrap, nginx-doc, ssl-cert
+Multi-Arch: foreign
+Homepage: https://nginx.org
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/nginx-common_1.22.0-1ubuntu3_all.deb
+Size: 47148
+SHA512: 6fab64974885d4b9214d35037dde3c02621b4506687a43754783962055afcbbd943eb62bcb1172e36118db660df19c49eb7b8045ab152c12c3554a7b503b769d
+SHA256: 472295d69bed84d45dca97a9821bc426bc329616130d07a6b5cc91b5aa62f7af
+SHA1: 1591f042ba6655e2e5064de1bbb74bd6ccfe1bb5
+MD5sum: d07b1f392b125a2f73b9ce77216134ff
+Description: small, powerful, scalable web/proxy server - common files
+ Nginx ("engine X") is a high-performance web and reverse proxy server
+ created by Igor Sysoev. It can be used both as a standalone web server
+ and as a proxy to reduce the load on back-end HTTP or mail servers.
+ .
+ This package contains base configuration files used by all versions of
+ nginx.
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+
+Package: nginx-confgen
+Version: 2.1-1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Jordi Mallach <jordi@debian.org>
+Installed-Size: 52
+Depends: libc6 (>= 2.34)
+Homepage: https://dev.yorhel.nl/nginx-confgen
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx-confgen/nginx-confgen_2.1-1_amd64.deb
+Size: 18352
+SHA512: a61cafab341ca4240a168a126b5bb3243d8fafdabd6139f951ac2824fd2a0042fae24fe7d221f24c7f2cf698bdd2e0d2eb059f203c272b97308b196a73f5c13b
+SHA256: 1b59b6be78f329af08e680ca06999fdc6cad2a1b0db02ebc27eda00693bbf316
+SHA1: 2a02d72f055d56f7a11867cf201e8d01ee2e65da
+MD5sum: 6e5f5bdc19df1cb4ed0fcf6e7e0df6ea
+Description: nginx configuration file macro language and preprocessor
+ This is a preprocessor and macro system for nginx(-like) configuration
+ files. It can be used to do pre-processing for nginx configuration files
+ (and other configuration files with a similar syntax). It has support for
+ "compile-time" macro expansion and variable interpolation, which should
+ make it less tedious to maintain large and complex configurations.
+
+Package: nginx-core
+Source: nginx
+Version: 1.22.0-1ubuntu3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 1274
+Depends: libnginx-mod-http-image-filter (= 1.22.0-1ubuntu3), libnginx-mod-http-xslt-filter (= 1.22.0-1ubuntu3), libnginx-mod-http-geoip2 (= 1.22.0-1ubuntu3), libnginx-mod-mail (= 1.22.0-1ubuntu3), libnginx-mod-stream (= 1.22.0-1ubuntu3), libnginx-mod-stream-geoip2 (= 1.22.0-1ubuntu3), nginx-common (= 1.22.0-1ubuntu3), iproute2, libc6 (>= 2.34), libcrypt1 (>= 1:4.1.0), libpcre3, libssl3 (>= 3.0.0), zlib1g (>= 1:1.1.4)
+Suggests: nginx-doc (= 1.22.0-1ubuntu3)
+Conflicts: nginx-extras, nginx-light
+Breaks: nginx (<< 1.4.5-1), nginx-full (<< 1.18.0-1)
+Replaces: nginx-full (<< 1.18.0-1)
+Provides: httpd, httpd-cgi, nginx
+Homepage: https://nginx.org
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/nginx-core_1.22.0-1ubuntu3_amd64.deb
+Size: 492556
+SHA512: 2730eec2101f808b35853f29d9b5025690e98a50523648b05dc496a38027be3864972e2e4834cc9256c844c298fe9eded9ed8064627cbd9f987c960ec8e29444
+SHA256: 807229a4b1fc508ce53d83e527a9f77aa197cdff751bc877f81094ada8c40331
+SHA1: 4eb07a1f75bf149f3726b05065eb5b1799a83b98
+MD5sum: 175fbdc8db682dab7f5da840584180fe
+Description: nginx web/proxy server (standard version)
+ Nginx ("engine X") is a high-performance web and reverse proxy server
+ created by Igor Sysoev. It can be used both as a standalone web server
+ and as a proxy to reduce the load on back-end HTTP or mail servers.
+ .
+ This package provides a version of nginx identical to that of nginx-full,
+ but without any third-party modules, and only modules in the original
+ nginx code base.
+ .
+ STANDARD HTTP MODULES: Core, Access, Auth Basic, Auto Index, Browser, Empty
+ GIF, FastCGI, Geo, Limit Connections, Limit Requests, Map, Memcached, Proxy,
+ Referer, Rewrite, SCGI, Split Clients, UWSGI.
+ .
+ OPTIONAL HTTP MODULES: Addition, Auth Request, Charset, WebDAV, Gunzip,
+ Gzip, Gzip Precompression, Headers, HTTP/2, Image Filter, Index, Log, Real IP,
+ Slice, SSI, SSL, SSL Preread, Stub Status, Substitution, Thread Pool,
+ Upstream, User ID, XSLT.
+ .
+ THIRD PARTY HTTP MODULES: GeoIP2
+ .
+ OPTIONAL MAIL MODULES: Mail Core, Auth HTTP, Proxy, SSL, IMAP, POP3, SMTP.
+ .
+ OPTIONAL STREAM MODULES: Stream Core
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+
+Package: nginx-dev
+Source: nginx
+Version: 1.22.0-1ubuntu3
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 726
+Depends: debhelper-compat (= 13), dpkg-dev (>= 1.15.5), libgd-dev, libgeoip-dev, libpcre3-dev, libperl-dev, libssl-dev, libxslt1-dev, po-debconf, quilt, zlib1g-dev, nginx-core (<< 1.22.0-1ubuntu3.1~) | nginx-light (<< 1.22.0-1ubuntu3.1~) | nginx-extras (<< 1.22.0-1ubuntu3.1~), nginx-core (>= 1.22.0-1ubuntu3) | nginx-light (>= 1.22.0-1ubuntu3) | nginx-extras (>= 1.22.0-1ubuntu3)
+Homepage: https://nginx.org
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/nginx-dev_1.22.0-1ubuntu3_all.deb
+Size: 103824
+SHA512: c02d08b7063def8c87ec390e007693360d82312b8c7d3c5f80dec327c5d9baa7c4568a33bbc741a73c1598574a383243befc808fd54452d4fb86083a705a10f1
+SHA256: 9375cf11b955899c35bcb37f8ae5d81e0dc2ceed76a0e4efe9e158e24be5fde9
+SHA1: 8c596a41ab7ef56cd61248fb33f04aa4c0fde3f7
+MD5sum: 0c480ecf4ad0bae1cbe808361a810760
+Description: nginx web/proxy server - development headers
+ Nginx ("engine X") is a high-performance web and reverse proxy server
+ created by Igor Sysoev. It can be used both as a standalone web server
+ and as a proxy to reduce the load on back-end HTTP or mail servers.
+ .
+ This package provides development headers and necessary config scripts
+ for the nginx web/proxy server, useful to develop and link third party
+ additions to the Debian nginx web/proxy server packages.
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+
+Package: nginx-doc
+Source: nginx
+Version: 1.22.0-1ubuntu3
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 59
+Multi-Arch: foreign
+Homepage: https://nginx.org
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/nginx-doc_1.22.0-1ubuntu3_all.deb
+Size: 21290
+SHA512: 67a1392f2ba9d3502efe9ec6834faedfc75f969f4d8023dfc0c4bb8b1f53009fcc8ceda0a965a0f79441027fdee588dbc035415f740e3702701f3ea04effb1c0
+SHA256: fbede2b51c501d6b1ab7269f3c67c813488f66b4cea5995ab8657ab0882274c9
+SHA1: e7154f96f14f06da28bb219d1033415c73052aa2
+MD5sum: bedb8e3ed55a0ddb677e25e8c2221d72
+Description: small, powerful, scalable web/proxy server - documentation
+ Nginx ("engine X") is a high-performance web and reverse proxy server
+ created by Igor Sysoev. It can be used both as a standalone web server
+ and as a proxy to reduce the load on back-end HTTP or mail servers.
+ .
+ This package provides extra documentation to help unleash the power of Nginx.
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+
+Package: nginx-extras
+Source: nginx
+Version: 1.22.0-1ubuntu3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 1317
+Depends: libnginx-mod-http-auth-pam (= 1.22.0-1ubuntu3), libnginx-mod-http-cache-purge (= 1.22.0-1ubuntu3), libnginx-mod-http-dav-ext (= 1.22.0-1ubuntu3), libnginx-mod-http-echo (= 1.22.0-1ubuntu3), libnginx-mod-http-fancyindex (= 1.22.0-1ubuntu3), libnginx-mod-http-geoip (= 1.22.0-1ubuntu3), libnginx-mod-http-geoip2 (= 1.22.0-1ubuntu3), libnginx-mod-http-headers-more-filter (= 1.22.0-1ubuntu3), libnginx-mod-http-image-filter (= 1.22.0-1ubuntu3), libnginx-mod-http-perl (= 1.22.0-1ubuntu3), libnginx-mod-http-subs-filter (= 1.22.0-1ubuntu3), libnginx-mod-http-uploadprogress (= 1.22.0-1ubuntu3), libnginx-mod-http-upstream-fair (= 1.22.0-1ubuntu3), libnginx-mod-http-xslt-filter (= 1.22.0-1ubuntu3), libnginx-mod-mail (= 1.22.0-1ubuntu3), libnginx-mod-nchan (= 1.22.0-1ubuntu3), libnginx-mod-stream (= 1.22.0-1ubuntu3), libnginx-mod-stream-geoip (= 1.22.0-1ubuntu3), libnginx-mod-stream-geoip2 (= 1.22.0-1ubuntu3), nginx-common (= 1.22.0-1ubuntu3), iproute2, libc6 (>= 2.34), libcrypt1 (>= 1:4.1.0), libpcre3, libssl3 (>= 3.0.0), zlib1g (>= 1:1.1.4)
+Suggests: nginx-doc (= 1.22.0-1ubuntu3)
+Conflicts: nginx-core, nginx-light
+Breaks: libnginx-mod-http-lua (<< 1.18.0-6ubuntu5), nginx (<< 1.4.5-1)
+Provides: httpd, httpd-cgi, nginx
+Homepage: https://nginx.org
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/nginx-extras_1.22.0-1ubuntu3_amd64.deb
+Size: 507188
+SHA512: 499fd8fcdef1ee0e59f160f6eaa1ec9f57e19558c80b4bfbe20699ec45f8d64127689bd3100498bbae42b371580eb1f67d32b5aa78000baab192784278f50ada
+SHA256: 43dec1fb32bbdd0b346f9d868bbb5614cfa8f4215974a1a63b9abd551cd8b39b
+SHA1: 8cd14c701406baa4a00a0b6d3c9d5b2c2f8a6682
+MD5sum: c8380fdd2168b5c15f2adbfdd80122d4
+Description: nginx web/proxy server (extended version)
+ Nginx ("engine X") is a high-performance web and reverse proxy server
+ created by Igor Sysoev. It can be used both as a standalone web server
+ and as a proxy to reduce the load on back-end HTTP or mail servers.
+ .
+ This package provides a version of nginx with the standard modules, plus
+ extra features and modules such as the Perl module, which allows the
+ addition of Perl in configuration files.
+ .
+ STANDARD HTTP MODULES: Core, Access, Auth Basic, Auto Index, Browser, Empty
+ GIF, FastCGI, Geo, Limit Connections, Limit Requests, Map, Memcached, Proxy,
+ Referer, Rewrite, SCGI, Split Clients, UWSGI.
+ .
+ OPTIONAL HTTP MODULES: Addition, Auth Request, Charset, WebDAV, FLV, GeoIP,
+ Gunzip, Gzip, Gzip Precompression, Headers, HTTP/2, Image Filter, Index, Log,
+ MP4, Embedded Perl, Random Index, Real IP, Slice, Secure Link, SSI, SSL,
+ SSL Preread, Stub Status, Substitution, Thread Pool, Upstream, User ID, XSLT.
+ .
+ OPTIONAL MAIL MODULES: Mail Core, Auth HTTP, Proxy, SSL, IMAP, POP3, SMTP.
+ .
+ OPTIONAL STREAM MODULES: Stream, GeoIP, GeoIP2
+ .
+ THIRD PARTY MODULES: Auth PAM, Cache Purge, DAV Ext, Echo, Fancy Index,
+ GeoIP2, Headers More, Embedded Lua, HTTP Substitutions, Nchan, Upload Progress,
+ Upstream Fair Queue.
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+
+Package: nginx-full
+Source: nginx
+Version: 1.22.0-1ubuntu3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 24
+Depends: libnginx-mod-http-auth-pam, libnginx-mod-http-dav-ext, libnginx-mod-http-echo, libnginx-mod-http-geoip2, libnginx-mod-http-subs-filter, libnginx-mod-http-upstream-fair, libnginx-mod-stream-geoip2, nginx-core (>= 1.22.0-1ubuntu3), nginx-core (<< 1.22.0-1ubuntu3.1~)
+Suggests: nginx-doc (= 1.22.0-1ubuntu3)
+Breaks: nginx (<< 1.4.5-1)
+Provides: httpd, httpd-cgi, nginx
+Homepage: https://nginx.org
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/nginx-full_1.22.0-1ubuntu3_amd64.deb
+Size: 4436
+SHA512: 4b2ea924e01635b458e5ad6eabb7601e54d94ca627b0e0c95e926d74b8516c127d4f39b6b10bcfcb366e920533e6fc774620fb406608f8c8aeb5a98efa1d69c8
+SHA256: 86cbc7a3e8ecf69e32234ff06d6d3beb6bfa39cf8a2d2cdf2ef3d44a5e403524
+SHA1: 7e66da87af50474e6343bd306cf0d58a8f8a7163
+MD5sum: 111198a94f3c771d4fed95de81f13330
+Description: nginx web/proxy server (standard version with 3rd parties)
+ Nginx ("engine X") is a high-performance web and reverse proxy server
+ created by Igor Sysoev. It can be used both as a standalone web server
+ and as a proxy to reduce the load on back-end HTTP or mail servers.
+ .
+ This metapackage provides a version of nginx with the complete set of
+ standard modules included (but omitting some of those included in
+ nginx-extras).
+ .
+ STANDARD HTTP MODULES: Core, Access, Auth Basic, Auto Index, Browser, Empty
+ GIF, FastCGI, Geo, Limit Connections, Limit Requests, Map, Memcached, Proxy,
+ Referer, Rewrite, SCGI, Split Clients, UWSGI.
+ .
+ OPTIONAL HTTP MODULES: Addition, Auth Request, Charset, WebDAV, GeoIP2, Gunzip,
+ Gzip, Gzip Precompression, Headers, HTTP/2, Image Filter, Index, Log, Real IP,
+ Slice, SSI, SSL, Stream, SSL Preread, Stub Status, Substitution, Thread  Pool,
+ Upstream, User ID, XSLT.
+ .
+ OPTIONAL MAIL MODULES: Mail Core, Auth HTTP, Proxy, SSL, IMAP, POP3, SMTP.
+ .
+ OPTIONAL STREAM MODULES: Stream Core
+ .
+ THIRD PARTY MODULES: Auth PAM, DAV Ext, Echo, GeoIP2, HTTP Substitutions
+ Upstream Fair Queue.
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+
+Package: nginx-light
+Source: nginx
+Version: 1.22.0-1ubuntu3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 1205
+Depends: libnginx-mod-http-echo (= 1.22.0-1ubuntu3), libnginx-mod-http-geoip2 (= 1.22.0-1ubuntu3), nginx-common (= 1.22.0-1ubuntu3), iproute2, libc6 (>= 2.34), libcrypt1 (>= 1:4.1.0), libpcre3, libssl3 (>= 3.0.0), zlib1g (>= 1:1.1.4)
+Suggests: nginx-doc (= 1.22.0-1ubuntu3)
+Conflicts: nginx-core, nginx-extras
+Breaks: nginx (<< 1.4.5-1)
+Provides: httpd, httpd-cgi, nginx
+Homepage: https://nginx.org
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/nginx-light_1.22.0-1ubuntu3_amd64.deb
+Size: 465120
+SHA512: 059e4181bd09dd524f315f15b363abed446c6b0d935b80bd1967ee7fd489f96ba0faeabfce2773a1e32ed2c3895f63ccf73c130a0291121994822ee41c414c21
+SHA256: 741dd74200b1fd90946db1077fc6ca8f3be4ea543ce993b57460c3ff89dac49b
+SHA1: a475d3bb242ee44e02862315fabb997a4752195e
+MD5sum: 937512bf92b80dbc9085b8bf455811b1
+Description: nginx web/proxy server (basic version)
+ Nginx ("engine X") is a high-performance web and reverse proxy server
+ created by Igor Sysoev. It can be used both as a standalone web server
+ and as a proxy to reduce the load on back-end HTTP or mail servers.
+ .
+ This package provides a very light version of nginx with only the
+ minimal set of features and modules.
+ .
+ STANDARD HTTP MODULES: Core, Access, Auth Basic, Auto Index, Empty GIF,
+ FastCGI, Map, Proxy, Rewrite, SCGI, uWSGI.
+ .
+ OPTIONAL HTTP MODULES: Auth Request, Charset, Gzip, Gzip Precompression,
+ Headers, HTTP/2, Index, Log, Real IP, Slice, SSI, SSL, Stub Status, Thread
+ Pool, WebDAV, Upstream.
+ .
+ THIRD PARTY MODULES: Echo, GeoIP2
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
 
 Package: obsidian
 Version: 1.4.16
@@ -400,6 +1640,89 @@ SHA1: 713b77808a3597a305bf5aa4cb67b567c245e1f0
 MD5sum: d0435c5346c1efb207a6ce57002adc90
 Description: OCS-URL
  An install helper program for items served via OpenCollaborationServices (ocs://).
+
+Package: open-vm-tools
+Version: 2:12.1.5-3ubuntu0.23.04.2
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 3107
+Pre-Depends: init-system-helpers (>= 1.54~)
+Depends: libc6 (>= 2.34), libdrm2 (>= 2.4.3), libfuse3-3 (>= 3.2.3), libgcc-s1 (>= 3.3), libglib2.0-0 (>= 2.32.0), libmspack0 (>= 0.4), libssl3 (>= 3.0.0), libtirpc3 (>= 1.0.2), libudev1 (>= 183), libxml2 (>= 2.7.4), libxmlsec1 (>= 1.2.31), libxmlsec1-openssl (>= 1.2.31), pciutils, iproute2, lsb-release
+Recommends: ethtool, zerofree, fuse3
+Suggests: open-vm-tools-desktop, cloud-init, open-vm-tools-containerinfo, open-vm-tools-salt-minion
+Breaks: open-vm-tools-sdmp (<< 2:12.1.0-2~)
+Replaces: open-vm-tools-sdmp (<< 2:12.1.0-2~)
+Homepage: https://github.com/vmware/open-vm-tools
+Priority: 0
+Section: utils
+Filename: pool/main/o/open-vm-tools/open-vm-tools_12.1.5-3ubuntu0.23.04.2_amd64.deb
+Size: 733510
+SHA512: 761371fa4d5713bfa920e0b4d0b23337582c2e2679344b1320de04622db9e2ccae9f9a7a83cc82457c9e13b0b7ceedc2545fe0650bcdb5e57ad92b0b8725904a
+SHA256: a6f3174c4688d67738c63cd6c28a59242d99911eae614bf458ad7f2ae1cdc828
+SHA1: 62fadb336b3e429c0fed0b7ec191dbbd1cbd6c6d
+MD5sum: 2d4df8ed12ece8fbb433d5fa6017eec1
+Description: Open VMware Tools for virtual machines hosted on VMware (CLI)
+ The Open Virtual Machine Tools (open-vm-tools) project is an open source
+ implementation of VMware Tools. It is a suite of virtualization utilities and
+ drivers to improve the functionality, user experience and administration of
+ VMware virtual machines.
+ .
+ This package contains only the core user-space programs and libraries.
+Original-Maintainer: Bernd Zeimetz <bzed@debian.org>
+
+Package: open-vm-tools-desktop
+Source: open-vm-tools
+Version: 2:12.1.5-3ubuntu0.23.04.2
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 486
+Depends: libatkmm-1.6-1v5 (>= 2.28.3), libc6 (>= 2.34), libcairomm-1.0-1v5 (>= 1.14.4), libdrm2 (>= 2.4.3), libgcc-s1 (>= 3.3.1), libglib2.0-0 (>= 2.16.0), libglibmm-2.4-1v5 (>= 2.66.6), libgtk-3-0 (>= 3.19.12), libgtkmm-3.0-1v5 (>= 3.24.7), libice6 (>= 1:1.0.0), libsigc++-2.0-0v5 (>= 2.8.0), libsm6, libstdc++6 (>= 5.2), libtirpc3 (>= 1.0.2), libudev1 (>= 183), libx11-6 (>= 2:1.4.99.1), libxext6, libxi6, libxinerama1 (>= 2:1.1.4), libxrandr2 (>= 2:1.2.0), libxtst6, open-vm-tools (= 2:12.1.5-3ubuntu0.23.04.2), fuse3, kmod
+Recommends: xauth, xserver-xorg-video-vmware
+Suggests: xdg-utils
+Homepage: https://github.com/vmware/open-vm-tools
+Priority: 0
+Section: utils
+Filename: pool/main/o/open-vm-tools/open-vm-tools-desktop_12.1.5-3ubuntu0.23.04.2_amd64.deb
+Size: 135672
+SHA512: 121f05db609c2d7760c01e053a75d0d2ae7c8c4a7365f73df28bd2aef6e9faa1211c3a5f048eed465ec0a4a85c951282bacb679b5086a3b57c5b2d5534df7c41
+SHA256: 1ccdc9011130008f92450f6707fda71be45bede5ba9d6ed8e36fec16a5e77225
+SHA1: 6ebdc5558f8d0e088504368a635f32f2ce0142b5
+MD5sum: f3dadc96438274534f9e08c115d35608
+Description: Open VMware Tools for virtual machines hosted on VMware (GUI)
+ The Open Virtual Machine Tools (open-vm-tools) project is an open source
+ implementation of VMware Tools. It is a suite of virtualization utilities and
+ drivers to improve the functionality, user experience and administration of
+ VMware virtual machines.
+ .
+ This package contains the user-space programs and libraries that are essential
+ for improved user experience of VMware virtual machines.
+Modaliases: vmwgfx(pci:v000015ADd00000405sv*sd*bc*sc*i*)
+Original-Maintainer: Bernd Zeimetz <bzed@debian.org>
+
+Package: open-vm-tools-dev
+Source: open-vm-tools
+Version: 2:12.1.5-3ubuntu0.23.04.2
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 4150
+Depends: open-vm-tools (= 2:12.1.5-3ubuntu0.23.04.2)
+Homepage: https://github.com/vmware/open-vm-tools
+Priority: 0
+Section: utils
+Filename: pool/main/o/open-vm-tools/open-vm-tools-dev_12.1.5-3ubuntu0.23.04.2_amd64.deb
+Size: 538632
+SHA512: 4edbf3fa31eebfaf150dc51d5251ec43ad6235247fccf84f552135385004fe4a085f053603beb98e1dc7d9d246595613096423ad67a6c6aa9ecb7a1a1f1422a0
+SHA256: f6532cfe26972407295c5c0b2e01c88ff3ed95d5d573038bf9172badbfad3bf0
+SHA1: 025a31f2e644d4b63c09fb25719d5d729ba41498
+MD5sum: 33746e44196108a10ba31919fe4e95eb
+Description: Open VMware Tools for virtual machines hosted on VMware (development)
+ The Open Virtual Machine Tools (open-vm-tools) project is an open source
+ implementation of VMware Tools. It is a suite of virtualization utilities and
+ drivers to improve the functionality, user experience and administration of
+ VMware virtual machines.
+ .
+ This package contains the development files.
+Original-Maintainer: Bernd Zeimetz <bzed@debian.org>
 
 Package: php-bacon-qr-code
 Source: baconqrcode

@@ -115,6 +115,148 @@ MD5sum: 7f42c18fdb36830829bf1ce9a4f4b9b5
 Description: Gitkraken License Generator
  License generator and registration for Gitkraken Pro.
 
+Package: gnome-keysign
+Version: 1.3.0-2
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Sascha Steinbiss <satta@debian.org>
+Installed-Size: 1276
+Depends: magic-wormhole, python3-future, python3-qrcode, python3-requests, python3-twisted, python3:any, avahi-daemon, python3-bluetooth, python3-cairo, python3-dbus, python3-gi, python3-gi-cairo, python3-gpg, gir1.2-glib-2.0, gir1.2-gtk-3.0, gir1.2-gstreamer-1.0, gir1.2-gst-plugins-base-1.0, gstreamer1.0-plugins-bad, gstreamer1.0-plugins-good, gstreamer1.0-x, gstreamer1.0-gtk3
+Homepage: https://github.com/gnome-keysign/gnome-keysign
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnome-keysign/gnome-keysign_1.3.0-2_all.deb
+Size: 177884
+SHA512: f82fee23a0f93b77660a81108d6746a568611d4e0e7a6e145013a69b284dc656b73dfa6f5c00dd7f685b726a8e6fc699a786ff44d48c6a15a438b08569dab962
+SHA256: d3d37aaea7ebcce27a8f6d46ed34de0c6d3a13e27490342579789da73fdcf450
+SHA1: 6105d525f9cb5ff119a20f74e89429bb8c4657a7
+MD5sum: 742b2718a18b8dc4302ab7489857bbed
+Description: easy signing of OpenPGP keys over the local network
+ GNOME Keysign is a tool for signing OpenPGP keys.
+ .
+ Its purpose is to ease signing other peoples' keys. It is similar to caff,
+ PIUS, or monkeysign. In fact, it is influenced a lot by these tools and
+ either reimplements ideas or reuses code. Consider either of the above
+ mentioned tools when you need a much more mature codebase.
+ .
+ In contrast to caff or monkeysign, this tool enables you to sign a key
+ without contacting a key server. It downloads an authenticated copy of the
+ key from the other party. For now, the key is authenticated by its fingerprint
+ which is securely transferred via a QR code. Alternatively, the user may type
+ the fingerprint manually, assuming that it has been transferred securely via
+ the audible channel.
+ .
+ After having obtained an authentic copy of the key, its UIDs are signed. The
+ signatures are then encrypted and sent via email. In contrast to monkeysign,
+ xdg-email is used to pop up a pre-filled email composer windows of the mail
+ client the user has configured to use. This greatly reduces complexity as no
+ SMTP configuration needs to be obtained and gives the user a well known
+ interface.
+
+Package: lsb-base
+Source: lsb
+Version: 11.6
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian sysvinit maintainers <debian-init-diversity@chiark.greenend.org.uk>
+Installed-Size: 12
+Depends: sysvinit-utils (>= 3.05-4~)
+Multi-Arch: foreign
+Homepage: https://wiki.linuxfoundation.org/lsb/start
+Priority: 0
+Section: utils
+Filename: pool/main/l/lsb/lsb-base_11.6_all.deb
+Size: 4606
+SHA512: f6f3d11d2d1c45f3b924e30904f81503eb3cb9a6f669e8707f39e0546e885825c337c422326889b54f1b2a47de7ee42b47f3b30b8c0e4c63d632f19270fe0724
+SHA256: 08a563e3c1984acdb295f12b77b4ec18d2ccf52fd03280a5bea29e506a3350ee
+SHA1: cb308555e4894ca7cf00b660b14f0f133b98ad20
+MD5sum: e7f8698020dddda56f2e2f41f2723f57
+Description: transitional package for Linux Standard Base init script functionality
+ This is an empty package; it's needed only because of Provides: not being
+ supported in debootstrap.  It can be safely removed.
+
+Package: mysql-client
+Source: mysql-8.0
+Version: 8.0.34-0ubuntu0.23.04.1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 35
+Depends: mysql-client-8.0
+Homepage: http://dev.mysql.com/
+Priority: 0
+Section: utils
+Filename: pool/main/m/mysql-8.0/mysql-client_8.0.34-0ubuntu0.23.04.1_all.deb
+Size: 9350
+SHA512: 9b4d7e0768598390bf436edd994a0ffd9611a96ceceea705b89d5d676f10cf98eddd3b67fbf6f8ea225bb5d7e6ddeb5c5f9f0b099abb38e660df8ec4a7ba6cf9
+SHA256: 9a3f38b476fa7cffda37cf30062d366493291110c9354f005fa7b05562f596fb
+SHA1: 9165bf502187c5f32e9a3841a781e240c7317c01
+MD5sum: 6b205502fcf5a5f7d71818a80825b2cd
+Description: MySQL database client (metapackage depending on the latest version)
+ This is an empty package that depends on the current "best" version of
+ mysql-client (currently mysql-client-8.0), as determined by the MySQL
+ maintainers.  Install this package if in doubt about which MySQL version
+ you want, as this is the one considered to be in the best shape by the
+ Maintainers.
+Original-Maintainer: Debian MySQL Maintainers <pkg-mysql-maint@lists.alioth.debian.org>
+
+Package: mysql-common
+Source: mysql-defaults (1.1.0)
+Version: 5.8+1.1.0
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian MySQL Maintainers <pkg-mysql-maint@lists.alioth.debian.org>
+Installed-Size: 33
+Conflicts: mariadb-server-5.5, mysql-common-5.6, mysql-server-5.5, percona-xtradb-cluster-common-5.5
+Breaks: mariadb-common (<< 10.0.20-3~)
+Replaces: mariadb-server-5.5, mysql-common-5.6, mysql-server-5.5, percona-xtradb-cluster-common-5.5
+Provides: mysql-common-5.6
+Multi-Arch: foreign
+Priority: 0
+Section: utils
+Filename: pool/main/m/mysql-defaults/mysql-common_5.8+1.1.0_all.deb
+Size: 6626
+SHA512: a00cec37c6eedba5c7473472228b57ff4f44c0f3de8ae886e79c5418f891850bacfa3ce137a711c5a30dc057c3ce705f254f14e91a1c222b8ebe5dea1985a90a
+SHA256: b4acd67f91c663d0beba4eb5949bc74e59cb463227702ed104046467b3f992b5
+SHA1: 367caa2c93465ed37af280a9bdd68c4850992d5a
+MD5sum: db3b441066cee108645beb98d2ebe593
+Description: MySQL database common files, e.g. /etc/mysql/my.cnf
+ MySQL is a fast, stable and true multi-user, multi-threaded SQL database
+ server. SQL (Structured Query Language) is the most popular database query
+ language in the world. The main goals of MySQL are speed, robustness and
+ ease of use.
+ .
+ This package includes files needed by all versions of the client library,
+ e.g. /etc/mysql/my.cnf.
+
+Package: mysql-server
+Source: mysql-8.0
+Version: 8.0.34-0ubuntu0.23.04.1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 35
+Depends: mysql-server-8.0
+Homepage: http://dev.mysql.com/
+Priority: 0
+Section: utils
+Filename: pool/main/m/mysql-8.0/mysql-server_8.0.34-0ubuntu0.23.04.1_all.deb
+Size: 9460
+SHA512: f3c606116cbd3d4aa94a6ffdd5d1de3b89ae7bc53d28746c4c4349a366101de9b42d1504c720299684f0b01ea369eccc0d14979edf778a19fac4fb47ebe7cf97
+SHA256: 1c617a3b30c97dfb2075134cd493eb5b1cfbba47cfed9e0889600e6008988912
+SHA1: 5aa6b48fa55609a3703be3783bad89e939aa77a5
+MD5sum: 57d8c24292b0631ed154b73f7fcfe593
+Description: MySQL database server (metapackage depending on the latest version)
+ This is an empty package that depends on the current "best" version of
+ mysql-server (currently mysql-server-8.0), as determined by the MySQL
+ maintainers. Install this package if in doubt about which MySQL
+ version you need. That will install the version recommended by the
+ package maintainers.
+ .
+ MySQL is a fast, stable and true multi-user, multi-threaded SQL database
+ server. SQL (Structured Query Language) is the most popular database query
+ language in the world. The main goals of MySQL are speed, robustness and
+ ease of use.
+Original-Maintainer: Debian MySQL Maintainers <pkg-mysql-maint@lists.alioth.debian.org>
+
 Package: neofetch
 Version: 7.1.0-4
 Architecture: all
@@ -137,6 +279,159 @@ Description: Shows Linux System Information with Distribution Logo
  command line script that collects your Linux system information
  and display it on the terminal next to an image, it could be your
  distributions logo or any ascii art of your choice.
+
+Package: network-manager-config-connectivity-ubuntu
+Source: network-manager
+Version: 1.42.4-1ubuntu2
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 23
+Depends: network-manager (>= 1.42.4-1ubuntu2)
+Multi-Arch: foreign
+Homepage: https://wiki.gnome.org/Projects/NetworkManager
+Priority: 0
+Section: utils
+Filename: pool/main/n/network-manager/network-manager-config-connectivity-ubuntu_1.42.4-1ubuntu2_all.deb
+Size: 2238
+SHA512: 8fdfe9d4f067c4982cea27c44dd5b6fa15d722843173b94bb575aef9a6e74bc7ef9cd39b1f9298b53bc5d517ac990ab6690f7b88cb6a4e8cec64f08e117fa3e3
+SHA256: d480fce9d0c2f4f4e38a04a2d2fdff8ae04379041192351403b0662a1645bc45
+SHA1: 374422d969bd55f87925b7660f226ed748ad662d
+MD5sum: 270b94c8f420cae3806fd7c47b822932
+Description: NetworkManager configuration to enable connectivity checking
+ This package contains a configuration file which enables NetworkManager's
+ connectivity checking functionality.
+ .
+ NetworkManager will try to connect to an Ubuntu server to determine the
+ connection status.
+ .
+ This is particularly useful for captive portal detection.
+ .
+ No user data is transmitted in the connectivity checks, but merely contacting
+ the Ubuntu connectivity check servers reveals that the user is running an
+ Ubuntu(-based) operating system with NetworkManager.
+Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
+
+Package: network-manager-dev
+Source: network-manager
+Version: 1.42.4-1ubuntu2
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 2375
+Multi-Arch: foreign
+Homepage: https://wiki.gnome.org/Projects/NetworkManager
+Priority: 0
+Section: utils
+Filename: pool/main/n/network-manager/network-manager-dev_1.42.4-1ubuntu2_all.deb
+Size: 217770
+SHA512: 5cd9d63dc99cce4cbee25e13dd87d13b4ad7504d139e8d3c537b2378680785e648efce4d48bd379ecde6d00dad39926890524b3f84fa7c163d2d4b89ad3b4d30
+SHA256: 224172c434821401e4197091fd45c5a37be9c8e68a7ed670d05c6aa745b57392
+SHA1: 1947fa4d164dcb4bc0ab115b7c86e664c6d6053f
+MD5sum: 8194e79f300338a1b2ab5f6a70770180
+Description: network management framework (development files)
+ This package provides documentation of the NetworkManager D-Bus API, the
+ configuration formats and command line utilities.
+ It also provides D-Bus introspection files.
+Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
+
+Package: networkd-dispatcher
+Version: 2.2.3-1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Julian Andres Klode <jak@debian.org>
+Installed-Size: 67
+Depends: dbus, gir1.2-glib-2.0, python3-dbus, python3-gi, python3:any
+Suggests: iw | wireless-tools
+Homepage: https://gitlab.com/craftyguy/networkd-dispatcher
+Priority: 0
+Section: utils
+Filename: pool/main/n/networkd-dispatcher/networkd-dispatcher_2.2.3-1_all.deb
+Size: 14902
+SHA512: 8b2895d4426102f3fa6a7a73c9d7c45694259cdb742a12f2444dfef55a84a69ff77c999f0bde3738b59143d418a9e8c63342263f29731990d0fd505b979d391d
+SHA256: f52101d25eca31410dfa482dc58f7b2bf3cef3792e4c660bab5cecb6fcc38e0c
+SHA1: 727534985cd855227c4d104b1a74df209f2e27b3
+MD5sum: 155408b835b31b5fc1bd46e06f07dffa
+Description: Dispatcher service for systemd-networkd connection status changes
+ Networkd-dispatcher is a dispatcher daemon for systemd-networkd
+ connection status changes. It is similar to NetworkManager-dispatcher,
+ but is much more limited in the types of events it supports due to the
+ limited nature of systemd-networkd.
+
+Package: nginx-common
+Source: nginx
+Version: 1.22.0-1ubuntu3
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 263
+Depends: lsb-base (>= 3.0-6), debconf (>= 0.5) | debconf-2.0
+Suggests: fcgiwrap, nginx-doc, ssl-cert
+Multi-Arch: foreign
+Homepage: https://nginx.org
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/nginx-common_1.22.0-1ubuntu3_all.deb
+Size: 47148
+SHA512: 6fab64974885d4b9214d35037dde3c02621b4506687a43754783962055afcbbd943eb62bcb1172e36118db660df19c49eb7b8045ab152c12c3554a7b503b769d
+SHA256: 472295d69bed84d45dca97a9821bc426bc329616130d07a6b5cc91b5aa62f7af
+SHA1: 1591f042ba6655e2e5064de1bbb74bd6ccfe1bb5
+MD5sum: d07b1f392b125a2f73b9ce77216134ff
+Description: small, powerful, scalable web/proxy server - common files
+ Nginx ("engine X") is a high-performance web and reverse proxy server
+ created by Igor Sysoev. It can be used both as a standalone web server
+ and as a proxy to reduce the load on back-end HTTP or mail servers.
+ .
+ This package contains base configuration files used by all versions of
+ nginx.
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+
+Package: nginx-dev
+Source: nginx
+Version: 1.22.0-1ubuntu3
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 726
+Depends: debhelper-compat (= 13), dpkg-dev (>= 1.15.5), libgd-dev, libgeoip-dev, libpcre3-dev, libperl-dev, libssl-dev, libxslt1-dev, po-debconf, quilt, zlib1g-dev, nginx-core (<< 1.22.0-1ubuntu3.1~) | nginx-light (<< 1.22.0-1ubuntu3.1~) | nginx-extras (<< 1.22.0-1ubuntu3.1~), nginx-core (>= 1.22.0-1ubuntu3) | nginx-light (>= 1.22.0-1ubuntu3) | nginx-extras (>= 1.22.0-1ubuntu3)
+Homepage: https://nginx.org
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/nginx-dev_1.22.0-1ubuntu3_all.deb
+Size: 103824
+SHA512: c02d08b7063def8c87ec390e007693360d82312b8c7d3c5f80dec327c5d9baa7c4568a33bbc741a73c1598574a383243befc808fd54452d4fb86083a705a10f1
+SHA256: 9375cf11b955899c35bcb37f8ae5d81e0dc2ceed76a0e4efe9e158e24be5fde9
+SHA1: 8c596a41ab7ef56cd61248fb33f04aa4c0fde3f7
+MD5sum: 0c480ecf4ad0bae1cbe808361a810760
+Description: nginx web/proxy server - development headers
+ Nginx ("engine X") is a high-performance web and reverse proxy server
+ created by Igor Sysoev. It can be used both as a standalone web server
+ and as a proxy to reduce the load on back-end HTTP or mail servers.
+ .
+ This package provides development headers and necessary config scripts
+ for the nginx web/proxy server, useful to develop and link third party
+ additions to the Debian nginx web/proxy server packages.
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+
+Package: nginx-doc
+Source: nginx
+Version: 1.22.0-1ubuntu3
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 59
+Multi-Arch: foreign
+Homepage: https://nginx.org
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/nginx-doc_1.22.0-1ubuntu3_all.deb
+Size: 21290
+SHA512: 67a1392f2ba9d3502efe9ec6834faedfc75f969f4d8023dfc0c4bb8b1f53009fcc8ceda0a965a0f79441027fdee588dbc035415f740e3702701f3ea04effb1c0
+SHA256: fbede2b51c501d6b1ab7269f3c67c813488f66b4cea5995ab8657ab0882274c9
+SHA1: e7154f96f14f06da28bb219d1033415c73052aa2
+MD5sum: bedb8e3ed55a0ddb677e25e8c2221d72
+Description: small, powerful, scalable web/proxy server - documentation
+ Nginx ("engine X") is a high-performance web and reverse proxy server
+ created by Igor Sysoev. It can be used both as a standalone web server
+ and as a proxy to reduce the load on back-end HTTP or mail servers.
+ .
+ This package provides extra documentation to help unleash the power of Nginx.
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
 
 Package: php-code-lts-u2f-php-server
 Version: 1.2.1-2
