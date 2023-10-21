@@ -6,6 +6,7 @@
     {"type":"directory","name":".data","contents":[
       {"type":"file","name":"tree.html"},
       {"type":"file","name":"tree.json"},
+      {"type":"file","name":"tree.md"},
       {"type":"file","name":"tree.txt"}
     ]},
     {"type":"directory","name":"db","contents":[
@@ -1009,5 +1010,5 @@
     {"type":"file","name":"yarn.lock"}
   ]}
 ,
-  {"type":"report","directories":125,"files":759}
+  {"type":"report","directories":125,"files":760}
 ]
