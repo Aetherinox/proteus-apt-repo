@@ -2535,6 +2535,57 @@ Description: gettext languages with plural rules
  example script is provided at
  /usr/share/doc/php-gettext-languages/examples/export-plural-rules.
 
+Package: php-gmagick
+Version: 2.0.6~rc1+1.1.7~rc3-11
+Architecture: arm64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP PECL Maintainers <team+php-pecl@tracker.debian.org>
+Installed-Size: 14
+Pre-Depends: php-common (>= 2:69~)
+Depends: php8.1-gmagick
+Recommends: ghostscript, ttf-dejavu-core
+Conflicts: php-imagick
+Homepage: http://pecl.php.net/package/gmagick
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-gmagick/php-gmagick_2.0.6~rc1+1.1.7~rc3-11_arm64.deb
+Size: 3546
+SHA512: ba7c38dfdd07cef330b8240f096c6b2c5a94e074698561472498369865286e023c0befe235d144a53ac4d2c1b9bd440cf638aecf8b79f885522ac991210c18dc
+SHA256: 853d5278a8c0b434f94856f438c2e796e40af7f347174ef9772604c1e9ed91b6
+SHA1: ea7f42fa40928f4cf9e881210f3532979a29b137
+MD5sum: 67a004d8bb56c7dc7a6a00168f95e0fb
+Description: Provides a wrapper to the GraphicsMagick library
+ Gmagick is a php extension to create, modify and obtain meta
+ information of images using the GraphicsMagick API.
+ .
+ This is empty package that depends on default PHP version.
+
+Package: php-gmagick-all-dev
+Source: php-gmagick
+Version: 2.0.6~rc1+1.1.7~rc3-11
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP PECL Maintainers <team+php-pecl@tracker.debian.org>
+Installed-Size: 14
+Pre-Depends: php-common (>= 2:69~)
+Depends: php8.1-gmagick (>= 2.0.6~rc1+1.1.7~rc3-11~), php-all-dev
+Recommends: ghostscript, ttf-dejavu-core
+Conflicts: php-imagick
+Homepage: http://pecl.php.net/package/gmagick
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-gmagick/php-gmagick-all-dev_2.0.6~rc1+1.1.7~rc3-11_all.deb
+Size: 3580
+SHA512: d0d98f0b7b65f40d84a04eedb635fdf56d9245df06da10abc63fbaf1103bad20629bde348057b57ca82e6df77261c071d87eba6e90cabcf780436c041383d0f2
+SHA256: 4da04a3161ab242445fc3af6a78a4137f8ac6469884264c48af9b7ebd8702d54
+SHA1: 1e4ff984c0c06cde77edb79b1cc6c042b8706cf9
+MD5sum: 5b07de3cc0618fd4412a4bccedc3e704
+Description: Provides a wrapper to the GraphicsMagick library
+ Gmagick is a php extension to create, modify and obtain meta
+ information of images using the GraphicsMagick API.
+ .
+ This is empty package that depends on all PHP versions.
+
 Package: php-gmp
 Source: php-defaults (92ubuntu1)
 Version: 2:8.1+92ubuntu1
@@ -2793,6 +2844,31 @@ Description: LDAP module for PHP [default]
  PHP version (currently 8.1).
 Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
 
+Package: php-mailparse
+Version: 3.1.4+2.1.7~dev20160128-1
+Architecture: arm64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP PECL Maintainers <team+php-pecl@tracker.debian.org>
+Installed-Size: 12
+Pre-Depends: php-common (>= 2:69~)
+Depends: php8.1-mailparse, php-mbstring
+Homepage: http://pecl.php.net/package/mailparse
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-mailparse/php-mailparse_3.1.4+2.1.7~dev20160128-1_arm64.deb
+Size: 3060
+SHA512: 13a449329159e4e493ebaef3aa8afaa1a98e90f9f4e03ecd15fa0bde243ed4cde4db02c71e8c0d5aef4ef0670e551e688b0c067b13c65d588e04ac6aaec106e9
+SHA256: 33d58d7ee059dbbae739cc2d651d8a119c677246357f1bef45bc436304e8b1bb
+SHA1: bdc4141a5b8450d911df3df7696a7260e970fef9
+MD5sum: d9f6b3c2490f844dc8dc4ad971133831
+Description: Email message manipulation for PHP
+ Mailparse is an extension for parsing and working with email
+ messages.
+ .
+ It can deal with rfc822 and rfc2045 (MIME) compliant messages.
+ .
+ This is empty package that depends on default PHP version.
+
 Package: php-maxminddb
 Version: 1.11.0-5
 Architecture: arm64
@@ -2868,6 +2944,36 @@ Description: PHP bindings for the libmcrypt library
  .
  This is empty package that depends on default PHP version.
 
+Package: php-memcache
+Version: 8.0+4.0.5.2+3.0.9~20170802.e702b5f9+-8
+Architecture: arm64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP PECL Maintainers <team+php-pecl@tracker.debian.org>
+Installed-Size: 25
+Pre-Depends: php-common (>= 2:69~)
+Depends: php8.1-memcache
+Suggests: memcached
+Homepage: https://github.com/websupport-sk/pecl-memcache
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-memcache/php-memcache_8.0+4.0.5.2+3.0.9~20170802.e702b5f9+-8_arm64.deb
+Size: 14082
+SHA512: edc1c6133ede7fc6a4cfa9d1041faa4cf99accf892d9f85cf42f3088c3aab3473dcb51b4679a486bbc8a6f1517b6447a5a3b1d856b2ca8bf317dc15fa6988e36
+SHA256: 332522b43622ea5100a623fd0c5b7f69308f8016c0b2c39e71b954b5b8babc55
+SHA1: ccd5f5a2383eee005894a96a428f261e0cd9fef9
+MD5sum: cd43ae5e0d728f2197cbd52dcf4cf110
+Description: memcache extension module for PHP
+ Memcached is a caching daemon designed especially for dynamic web applications
+ to decrease database load by storing objects in memory.
+ .
+ This extension allows you to work with memcached through handy OO and
+ procedural interfaces in your php5 applications.
+ .
+ This is an updated version for PHP 7 with non-blocking I/O taken from
+ https://github.com/websupport-sk/pecl-memcache
+ .
+ This is empty package that depends on default PHP version.
+
 Package: php-memcached
 Version: 3.1.5+2.2.0-14.1
 Architecture: arm64
@@ -2891,6 +2997,51 @@ Description: memcached extension module for PHP, uses libmemcached
  .
  This extension uses libmemcached library to provide API for
  communicating with memcached servers.
+
+Package: php-mongodb
+Version: 1.15.0+1.11.1+1.9.2+1.7.5-1
+Architecture: arm64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP PECL Maintainers <team+php-pecl@tracker.debian.org>
+Installed-Size: 20
+Pre-Depends: php-common (>= 2:69~)
+Depends: ucf, php8.1-mongodb
+Homepage: https://pecl.php.net/package/mongodb
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-mongodb/php-mongodb_1.15.0+1.11.1+1.9.2+1.7.5-1_arm64.deb
+Size: 4804
+SHA512: 681cab0b1f7048e4d4ebbb13761682a210be8573ad072cb68a61b47a75f8d545e0dd8bbba17b2cd9551e8a89bbd2bbabdd32bba8012eb46fa471808ac0c7a373
+SHA256: 22c0452f505a9db74e4a3515dcc5c6773a65894f6e01a448f0e856e7df055f11
+SHA1: 0b604bd378cffb586612198a0195775caed9b042
+MD5sum: 16802ed08f267986d74ce8ff4c561ea4
+Description: MongoDB driver for PHP
+ The purpose of this driver is to provide exceptionally thin glue
+ between MongoDB and PHP, implementing only fundemental and
+ performance-critical components necessary to build a fully-functional
+ MongoDB driver.
+ .
+ This is empty package that depends on default PHP version.
+
+Package: php-msgpack
+Version: 2.2.0~rc1+2.1.2+0.5.7-6
+Architecture: arm64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP PECL Maintainers <team+php-pecl@tracker.debian.org>
+Installed-Size: 11
+Pre-Depends: php-common (>= 2:69~)
+Depends: php8.1-msgpack
+Homepage: http://pecl.php.net/package/msgpack
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-msgpack/php-msgpack_2.2.0~rc1+2.1.2+0.5.7-6_arm64.deb
+Size: 2236
+SHA512: ceb860b01f376fe48bd8ad66448ced6fd6008325a85089f6bd2e8b6ff2dfe29dfed59c74cd117acb54e39afcaed84c3b352e689b88a477b529b5052bbfdbe3b1
+SHA256: 34944a86bbf1e0ec688eb97358ceb39b7a1aea032a5f6e3511cffbdc086dc3e7
+SHA1: 45bfb1e30709c7bdbdcd1a476dadd20fda0a19a0
+MD5sum: 0531d8751c0918b5aa5914e7a608e5cf
+Description: PHP extension for interfacing with MessagePack
+ This extension provide API for communicating with MessagePack serialization.
 
 Package: php-mysql
 Source: php-defaults (92ubuntu1)
@@ -3572,6 +3723,44 @@ Description: PHP UUID extension
  .
  This is empty package that depends on default PHP version.
 
+Package: php-xdebug
+Source: xdebug
+Version: 3.2.0+3.1.6+2.9.8+2.8.1+2.5.5-3
+Architecture: arm64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP PECL Maintainers <team+php-pecl@tracker.debian.org>
+Installed-Size: 16
+Pre-Depends: php-common (>= 2:69~)
+Depends: ucf, php8.1-xdebug
+Homepage: https://xdebug.org/
+Priority: 0
+Section: utils
+Filename: pool/main/x/xdebug/php-xdebug_3.2.0+3.1.6+2.9.8+2.8.1+2.5.5-3_arm64.deb
+Size: 3416
+SHA512: ede8f69acf1dbc870fbf9578e7edebd6eb27a3a9f7687f7d87fbd4e15f74f7d002f982cb724ecbdb8fab360c7fa8bc6ab230911f546a7a2258b7348c00de7bfa
+SHA256: e2387f4c46d9a5f101810bb1770a2e9aeedee5035ed6d5262048185a498e82f6
+SHA1: 376050a4b5656bfe32d5829cef2d710fbc2cdc14
+MD5sum: 2cead27066a87d362bda8e09f4c44323
+Description: Xdebug Module for PHP
+ The Xdebug extension helps you debugging your script by providing a lot of
+ valuable debug information. The debug information that Xdebug can provide
+ includes the following:
+ .
+    * stack traces and function traces in error messages with:
+       - full parameter display for user defined functions
+       - function name, file name and line indications
+       - support for member functions
+    * memory allocation
+    * protection for infinite recursions
+ .
+ Xdebug also provides:
+ .
+    * profiling information for PHP scripts
+    * script execution analysis
+    * capabilities to debug your scripts interactively with a debug client
+ .
+ This is empty package that depends on default PHP version.
+
 Package: php-xml
 Source: php-defaults (92ubuntu1)
 Version: 2:8.1+92ubuntu1
@@ -3598,6 +3787,35 @@ Description: DOM, SimpleXML, WDDX, XML, and XSL module for PHP [default]
  PHP version (currently 8.1).
 Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
 
+Package: php-xmlrpc
+Version: 3:1.0.0~rc3-6
+Architecture: arm64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP PECL Maintainers <team+php-pecl@tracker.debian.org>
+Installed-Size: 11
+Pre-Depends: php-common (>= 2:69~)
+Depends: php8.1-xmlrpc
+Homepage: https://pecl.php.net/package/xmlrpc
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-xmlrpc/php-xmlrpc_1.0.0~rc3-6_arm64.deb
+Size: 2730
+SHA512: 1b2b7c1816c4f81b92dadb6e77167adf0151bf65c8542d797ec77ef33e1aba0d0dc1a60c8163a724bb75849add3611723437a67213063b518f1e589b8819b6a8
+SHA256: a7a0432095159a38d443bacc5e235c325e6719d4c9d86d42d380ba48a915d6e6
+SHA1: 7ec8699c4d17acff1506aeccb6b23a8b8417dbfe
+MD5sum: db4857e30741bcb661d7402b50ee1c41
+Description: XML-RPC servers and clients functions for PHP
+ These functions can be used to write XML-RPC servers and clients. You can find
+ more information about XML-RPC at http://www.xmlrpc.com/, and more
+ documentation on this extension and its functions at
+ http://xmlrpc-epi.sourceforge.net/.
+ .
+ The extension is unbundled from php-src as of PHP 8.0.0, because the underlying
+ libxmlrpc has obviously been abandoned. It is recommended to reevaluate using
+ this extension.
+ .
+ This is empty package that depends on default PHP version.
+
 Package: php-yac
 Version: 2.3.1+0.9.2-5
 Architecture: arm64
@@ -3620,6 +3838,29 @@ Description: YAC (Yet Another Cache) for PHP
  The Yet Another Cache (YAC) is a shared memory user data cache for
  PHP, which provides framework for caching user variables locally.
  This framework completes the missing parts of the Zend OpCache.
+ .
+ This is empty package that depends on default PHP version.
+
+Package: php-yaml
+Version: 2.2.2+2.1.0+2.0.4+1.3.2-6
+Architecture: arm64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP PECL Maintainers <team+php-pecl@tracker.debian.org>
+Installed-Size: 10
+Pre-Depends: php-common (>= 2:69~)
+Depends: php8.1-yaml
+Homepage: http://pecl.php.net/package/Yaml
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-yaml/php-yaml_2.2.2+2.1.0+2.0.4+1.3.2-6_arm64.deb
+Size: 1852
+SHA512: d939f6eb595d4c4ad1d490265b18ceaa614475d430dcdcbc082a3cc4a8e6d32485091f2d6332e8c5989089b98e09491f0d8b80295b5e520a1e1242b56a8faa90
+SHA256: 45f2e285226ecfa86e7f51274655d594f7d83fca2728eae0223ba033935005e0
+SHA1: b5e7b37394a28bafa25ab931e813b6d67618011a
+MD5sum: 33d076285b8686dfd4ad1c0a5b941f92
+Description: YAML-1.1 parser and emitter for PHP
+ PHP extension adding support for YAML 1.1 (YAML Ain't Markup
+ Language) serialization using the LibYAML library.
  .
  This is empty package that depends on default PHP version.
 

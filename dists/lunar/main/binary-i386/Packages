@@ -1145,6 +1145,32 @@ Description: gettext languages with plural rules
  example script is provided at
  /usr/share/doc/php-gettext-languages/examples/export-plural-rules.
 
+Package: php-gmagick-all-dev
+Source: php-gmagick
+Version: 2.0.6~rc1+1.1.7~rc3-11
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP PECL Maintainers <team+php-pecl@tracker.debian.org>
+Installed-Size: 14
+Pre-Depends: php-common (>= 2:69~)
+Depends: php8.1-gmagick (>= 2.0.6~rc1+1.1.7~rc3-11~), php-all-dev
+Recommends: ghostscript, ttf-dejavu-core
+Conflicts: php-imagick
+Homepage: http://pecl.php.net/package/gmagick
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-gmagick/php-gmagick-all-dev_2.0.6~rc1+1.1.7~rc3-11_all.deb
+Size: 3580
+SHA512: d0d98f0b7b65f40d84a04eedb635fdf56d9245df06da10abc63fbaf1103bad20629bde348057b57ca82e6df77261c071d87eba6e90cabcf780436c041383d0f2
+SHA256: 4da04a3161ab242445fc3af6a78a4137f8ac6469884264c48af9b7ebd8702d54
+SHA1: 1e4ff984c0c06cde77edb79b1cc6c042b8706cf9
+MD5sum: 5b07de3cc0618fd4412a4bccedc3e704
+Description: Provides a wrapper to the GraphicsMagick library
+ Gmagick is a php extension to create, modify and obtain meta
+ information of images using the GraphicsMagick API.
+ .
+ This is empty package that depends on all PHP versions.
+
 Package: php-gmp
 Source: php-defaults (92ubuntu1)
 Version: 2:8.1+92ubuntu1
