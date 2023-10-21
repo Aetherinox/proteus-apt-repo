@@ -480,6 +480,32 @@ Description: PHP 7.1 enum implementation
  which is only available as a PECL extension.
  This library tries to close that gap as far as PHP allows it to.
 
+Package: php-zip
+Source: php-defaults (92ubuntu1)
+Version: 2:8.1+92ubuntu1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 14
+Depends: php-common, php8.1-zip
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-zip_8.1+92ubuntu1_all.deb
+Size: 1830
+SHA512: 92638950fba642b1b596bf007c229ec1a8d3a24d9f3668b57082e0ec8c927c712740845992d5d27047b5453b4e5c394fd171792bbb282c7004d139bc804dd621
+SHA256: 8610e88b30ae3934f964a3b06ca771355f45dd7d3432303f225b4bbf8d05a821
+SHA1: 7467451bbadb027ce6fb7a98339df1d9985cf841
+MD5sum: 66512442d8ade4dc1b46ab6a123e7fe1
+Description: Zip module for PHP [default]
+ This package provides a Zip module for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Debian's default
+ PHP version (currently 8.1).
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+
 Package: php8.2
 Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
 Architecture: all

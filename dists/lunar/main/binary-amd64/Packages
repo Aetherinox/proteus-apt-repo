@@ -1791,6 +1791,55 @@ Description: PHP 7.1 enum implementation
  which is only available as a PECL extension.
  This library tries to close that gap as far as PHP allows it to.
 
+Package: php-zip
+Source: php-defaults (92ubuntu1)
+Version: 2:8.1+92ubuntu1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 14
+Depends: php-common, php8.1-zip
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-zip_8.1+92ubuntu1_all.deb
+Size: 1830
+SHA512: 92638950fba642b1b596bf007c229ec1a8d3a24d9f3668b57082e0ec8c927c712740845992d5d27047b5453b4e5c394fd171792bbb282c7004d139bc804dd621
+SHA256: 8610e88b30ae3934f964a3b06ca771355f45dd7d3432303f225b4bbf8d05a821
+SHA1: 7467451bbadb027ce6fb7a98339df1d9985cf841
+MD5sum: 66512442d8ade4dc1b46ab6a123e7fe1
+Description: Zip module for PHP [default]
+ This package provides a Zip module for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Debian's default
+ PHP version (currently 8.1).
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+
+Package: php-zmq
+Version: 1.1.3-24
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP PECL Maintainers <team+php-pecl@tracker.debian.org>
+Installed-Size: 22
+Pre-Depends: php-common (>= 2:69~)
+Depends: php8.1-zmq
+Homepage: http://pecl.php.net/package/zmq
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-zmq/php-zmq_1.1.3-24_amd64.deb
+Size: 6236
+SHA512: ef4bbd951de5e608018ff526870be39b2d800f8bd918a31a3394fa45890db6da5b1c0d358cf6377bda13ac3d747c9cf93377f041c0a775a07dee1f5013fb634a
+SHA256: b70d0a6bed47e8a7b1de114784a9acade97d4fb997e9e42022229a285bde49b3
+SHA1: 8db27c9c9d64efcc56950605880007edce785c8b
+MD5sum: 3cd7118db703c5cd081de3f7a8640300
+Description: ZeroMQ messaging bindings for PHP
+ ZeroMQ is a software library that lets you quickly design and
+ implement a fast message-based applications.
+ .
+ This is empty package that depends on default PHP version.
+
 Package: php8.2
 Version: 8.2.11-1+ubuntu22.04.1+deb.sury.org+1
 Architecture: all
