@@ -1,13 +1,12 @@
 [
   {"type":"directory","name":".","contents":[
+    {"type":"directory","name":".app","contents":[
+      {"type":"file","name":"app.json"},
+      {"type":"file","name":"tree.html"},
+      {"type":"file","name":"tree.json"}
+    ]},
     {"type":"directory","name":"conf","contents":[
       {"type":"file","name":"distributions"}
-    ]},
-    {"type":"directory","name":".data","contents":[
-      {"type":"file","name":"tree.html"},
-      {"type":"file","name":"tree.json"},
-      {"type":"file","name":"tree.md"},
-      {"type":"file","name":"tree.txt"}
     ]},
     {"type":"directory","name":"db","contents":[
       {"type":"file","name":"checksums.db"},
@@ -559,11 +558,6 @@
       {"type":"file","name":"proteus-git-21102023.log"},
       {"type":"fifo","name":"proteus-git-21102023.log.pipe"}
     ]},
-    {"type":"directory","name":"manifest","contents":[
-      {"type":"directory","name":"proteus-git","contents":[
-        {"type":"file","name":"manifest.json"}
-      ]}
-    ]},
     {"type":"directory","name":"node_modules","contents":[
       {"type":"file","name":".yarn-integrity"}
     ]},
@@ -1010,5 +1004,5 @@
     {"type":"file","name":"yarn.lock"}
   ]}
 ,
-  {"type":"report","directories":125,"files":760}
+  {"type":"report","directories":123,"files":758}
 ]

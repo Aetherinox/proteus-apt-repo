@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `10.21.2023 10:33:35`
+Last generated on `10.21.2023 10:41:03`
 
 <br />
 
@@ -9,13 +9,11 @@ Last generated on `10.21.2023 10:33:35`
 
 ```
 .
+├── .app
+│   ├── app.json
+│   └── tree.html
 ├── conf
 │   └── distributions
-├── .data
-│   ├── tree.html
-│   ├── tree.json
-│   ├── tree.md
-│   └── tree.txt
 ├── db
 │   ├── checksums.db
 │   ├── contents.cache.db
@@ -516,9 +514,6 @@ Last generated on `10.21.2023 10:33:35`
 │   ├── proteus-git-20231020.log.pipe
 │   ├── proteus-git-21102023.log
 │   └── proteus-git-21102023.log.pipe
-├── manifest
-│   └── proteus-git
-│       └── manifest.json
 ├── node_modules
 │   └── .yarn-integrity
 ├── pool
@@ -894,5 +889,5 @@ Last generated on `10.21.2023 10:33:35`
 ├── README.md
 └── yarn.lock
 
-125 directories, 760 files
+123 directories, 757 files
 ```
