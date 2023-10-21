@@ -173,6 +173,30 @@ Description: Script to "manage" .deb installs from 3rd party vendors/projects
  apt-get functionality for .debs officially published by 3rd party vendors and
  projects.
 
+Package: debconf
+Version: 1.5.82
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debconf Developers <debconf-devel@lists.alioth.debian.org>
+Installed-Size: 491
+Recommends: apt-utils, debconf-i18n
+Suggests: debconf-doc, debconf-kde-helper, debconf-utils, libgtk3-perl, libnet-ldap-perl, libterm-readline-gnu-perl, perl, whiptail | dialog
+Conflicts: debconf-tiny, whiptail-utf8 (<= 0.50.17-13)
+Replaces: debconf-tiny
+Provides: debconf-2.0
+Multi-Arch: foreign
+Priority: 0
+Section: utils
+Filename: pool/main/d/debconf/debconf_1.5.82_all.deb
+Size: 125328
+SHA512: 71ae085dd64c0d511a3a3d2b2fd8d4cb1a9ca2e8381248c508964d74e4daf286c1a439c5765c9494f869fb360b051be98f091bdddd5dab60790b50f33b5b597a
+SHA256: 737d5a8ba2bfe2984617d7817d6a5deece4e07faf509b00c08a277dbf9d6b0be
+SHA1: 3baf5a3040f244e3024d106ce401f5ed8e33f746
+MD5sum: c13d2e3c922f14d81401fa2de1d5c1b4
+Description: Debian configuration management system
+ Debconf is a configuration management system for debian packages. Packages
+ use Debconf to ask questions when they are installed.
+
 Package: dialog
 Version: 1.3-20230209-1
 Architecture: amd64
