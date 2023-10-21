@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `10.21.2023 13:20:10`
+Last generated on `10.21.2023 13:21:49`
 
 <br />
 
@@ -121,6 +121,52 @@ Last generated on `10.21.2023 13:20:10`
 │   │       │   ├── nginx-common_1.22.0-1ubuntu3_all.deb
 │   │       │   ├── nginx-dev_1.22.0-1ubuntu3_all.deb
 │   │       │   ├── nginx-doc_1.22.0-1ubuntu3_all.deb
+│   │       │   ├── php_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-all-dev_92ubuntu1_all.deb
+│   │       │   ├── php-amqplib_3.5.1-1ubuntu1_all.deb
+│   │       │   ├── php-apcu-all-dev_5.1.22+4.0.11-2_all.deb
+│   │       │   ├── php-ast-all-dev_1.1.0-2_all.deb
+│   │       │   ├── php-bcmath_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-brick-math_0.10.0-1_all.deb
+│   │       │   ├── php-brick-varexporter_0.3.8-1_all.deb
+│   │       │   ├── php-bz2_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-cas_1.6.0-1_all.deb
+│   │       │   ├── php-cgi_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-cli_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-code-lts-u2f-php-server_1.2.1-2_all.deb
+│   │       │   ├── php-common_92ubuntu1_all.deb
+│   │       │   ├── php-crypt-gpg_1.6.7-2_all.deb
+│   │       │   ├── php-curl_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-db_1.11.0-0.2_all.deb
+│   │       │   ├── php-dev_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-ds-all-dev_1.4.0-5_all.deb
+│   │       │   ├── php-email-validator_3.2.5-1_all.deb
+│   │       │   ├── php-embed_4.4.7-1_all.deb
+│   │       │   ├── php-enchant_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-faker_1.20.0+dfsg-1_all.deb
+│   │       │   ├── php-fpm_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-fxsl_1.1.1-6_all.deb
+│   │       │   ├── php-gd_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-gettext-languages_2.9.0-2_all.deb
+│   │       │   ├── php-gmp_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-gnupg-all-dev_1.5.1-3_all.deb
+│   │       │   ├── php-imap_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-interbase_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-intl_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-ldap_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-mbstring_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-mysql_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-odbc_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-pgsql_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-phpdbg_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-pspell_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-readline_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-snmp_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-soap_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-sqlite3_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-sybase_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-tidy_8.1+92ubuntu1_all.deb
+│   │       │   ├── php-xml_8.1+92ubuntu1_all.deb
 │   │       │   └── php-zip_8.1+92ubuntu1_all.deb
 │   │       ├── amd64
 │   │       │   ├── apt-move_4.2.27-6_amd64.deb
@@ -149,6 +195,7 @@ Last generated on `10.21.2023 13:20:10`
 │   │       │   ├── libnginx-mod-nchan_1.22.0-1ubuntu3_amd64.deb
 │   │       │   ├── libnginx-mod-rtmp_1.22.0-1ubuntu3_amd64.deb
 │   │       │   ├── libnginx-mod-stream-geoip_1.22.0-1ubuntu3_amd64.deb
+│   │       │   ├── lz4_1.9.4-1_amd64.deb
 │   │       │   ├── network-manager_1.42.4-1ubuntu2_amd64.deb
 │   │       │   ├── network-manager-gnome_1.30.0-2ubuntu1_amd64.deb
 │   │       │   ├── network-manager-openvpn_1.10.2-2_amd64.deb
@@ -164,6 +211,36 @@ Last generated on `10.21.2023 13:20:10`
 │   │       │   ├── open-vm-tools_12.1.5-3ubuntu0.23.04.2_amd64.deb
 │   │       │   ├── open-vm-tools-desktop_12.1.5-3ubuntu0.23.04.2_amd64.deb
 │   │       │   ├── open-vm-tools-dev_12.1.5-3ubuntu0.23.04.2_amd64.deb
+│   │       │   ├── php-amqp_1.11.0-5_amd64.deb
+│   │       │   ├── php-apcu_5.1.22+4.0.11-2_amd64.deb
+│   │       │   ├── php-ast_1.1.0-2_amd64.deb
+│   │       │   ├── php-bacon-qr-code_2.0.8-2_amd64.deb
+│   │       │   ├── php-ds_1.4.0-5_amd64.deb
+│   │       │   ├── php-excimer_1.0.4-2_amd64.deb
+│   │       │   ├── php-gearman_2.1.0+1.1.2-12_amd64.deb
+│   │       │   ├── php-gnupg_1.5.1-3_amd64.deb
+│   │       │   ├── php-http_4.2.3-3.1ubuntu1_amd64.deb
+│   │       │   ├── php-igbinary_3.2.13-1ubuntu1_amd64.deb
+│   │       │   ├── php-imagick_3.7.0-4_amd64.deb
+│   │       │   ├── php-maxminddb_1.11.0-5_amd64.deb
+│   │       │   ├── php-mcrypt_1.0.5-4_amd64.deb
+│   │       │   ├── php-memcached_3.1.5+2.2.0-14.1_amd64.deb
+│   │       │   ├── php-oauth_2.0.7+1.2.3-16_amd64.deb
+│   │       │   ├── php-pcov_1.0.11-5_amd64.deb
+│   │       │   ├── php-ps_1.4.4+1.3.7-7_amd64.deb
+│   │       │   ├── php-psr_1.2.0-5_amd64.deb
+│   │       │   ├── php-raphf_2.0.1+1.1.2-14_amd64.deb
+│   │       │   ├── php-redis_5.3.5+4.3.0-5.1_amd64.deb
+│   │       │   ├── php-rrd_2.0.3+1.1.3-7_amd64.deb
+│   │       │   ├── php-smbclient_1.0.6-8_amd64.deb
+│   │       │   ├── php-solr_2.6.0+2.4.0-3_amd64.deb
+│   │       │   ├── php-ssh2_1.3.1+0.13-7_amd64.deb
+│   │       │   ├── php-stomp_2.0.3-2_amd64.deb
+│   │       │   ├── php-tideways_5.0.4-16_amd64.deb
+│   │       │   ├── php-uopz_7.1.1+6.1.2-7_amd64.deb
+│   │       │   ├── php-uploadprogress_2.0.2+1.1.4-8_amd64.deb
+│   │       │   ├── php-uuid_1.2.0-12_amd64.deb
+│   │       │   ├── php-yac_2.3.1+0.9.2-5_amd64.deb
 │   │       │   ├── php-zmq_1.1.3-24_amd64.deb
 │   │       │   └── wget_1.21.3-1ubuntu1_amd64.deb
 │   │       └── arm64
@@ -193,6 +270,7 @@ Last generated on `10.21.2023 13:20:10`
 │   │           ├── libnginx-mod-nchan_1.22.0-1ubuntu3_arm64.deb
 │   │           ├── libnginx-mod-rtmp_1.22.0-1ubuntu3_arm64.deb
 │   │           ├── libnginx-mod-stream-geoip_1.22.0-1ubuntu3_arm64.deb
+│   │           ├── lz4_1.9.4-1_arm64.deb
 │   │           ├── network-manager_1.42.4-1ubuntu2_arm64.deb
 │   │           ├── network-manager-gnome_1.30.0-2ubuntu1_arm64.deb
 │   │           ├── network-manager-openvpn_1.10.2-2_arm64.deb
@@ -208,6 +286,36 @@ Last generated on `10.21.2023 13:20:10`
 │   │           ├── open-vm-tools_12.1.5-3ubuntu0.23.04.2_arm64.deb
 │   │           ├── open-vm-tools-desktop_12.1.5-3ubuntu0.23.04.2_arm64.deb
 │   │           ├── open-vm-tools-dev_12.1.5-3ubuntu0.23.04.2_arm64.deb
+│   │           ├── php-amqp_1.11.0-5_arm64.deb
+│   │           ├── php-apcu_5.1.22+4.0.11-2_arm64.deb
+│   │           ├── php-ast_1.1.0-2_arm64.deb
+│   │           ├── php-bacon-qr-code_2.0.8-1_arm64.deb
+│   │           ├── php-ds_1.4.0-5_arm64.deb
+│   │           ├── php-excimer_1.0.4-2_arm64.deb
+│   │           ├── php-gearman_2.1.0+1.1.2-12_arm64.deb
+│   │           ├── php-gnupg_1.5.1-3_arm64.deb
+│   │           ├── php-http_4.2.3-3.1ubuntu1_arm64.deb
+│   │           ├── php-igbinary_3.2.13-1ubuntu1_arm64.deb
+│   │           ├── php-imagick_3.7.0-4_arm64.deb
+│   │           ├── php-maxminddb_1.11.0-5_arm64.deb
+│   │           ├── php-mcrypt_1.0.5-4_arm64.deb
+│   │           ├── php-memcached_3.1.5+2.2.0-14.1_arm64.deb
+│   │           ├── php-oauth_2.0.7+1.2.3-16_arm64.deb
+│   │           ├── php-pcov_1.0.11-5_arm64.deb
+│   │           ├── php-ps_1.4.4+1.3.7-7_arm64.deb
+│   │           ├── php-psr_1.2.0-5_arm64.deb
+│   │           ├── php-raphf_2.0.1+1.1.2-14_arm64.deb
+│   │           ├── php-redis_5.3.5+4.3.0-5.1_arm64.deb
+│   │           ├── php-rrd_2.0.3+1.1.3-7_arm64.deb
+│   │           ├── php-smbclient_1.0.6-8_arm64.deb
+│   │           ├── php-solr_2.6.0+2.4.0-3_arm64.deb
+│   │           ├── php-ssh2_1.3.1+0.13-7_arm64.deb
+│   │           ├── php-stomp_2.0.3-2_arm64.deb
+│   │           ├── php-tideways_5.0.4-16_arm64.deb
+│   │           ├── php-uopz_7.1.1+6.1.2-7_arm64.deb
+│   │           ├── php-uploadprogress_2.0.2+1.1.4-8_arm64.deb
+│   │           ├── php-uuid_1.2.0-12_arm64.deb
+│   │           ├── php-yac_2.3.1+0.9.2-5_arm64.deb
 │   │           ├── php-zmq_1.1.3-24_arm64.deb
 │   │           └── wget_1.21.3-1ubuntu1_arm64.deb
 │   ├── focal
@@ -598,8 +706,11 @@ Last generated on `10.21.2023 13:20:10`
 │       │       ├── kgpg_22.12.3-0ubuntu1_amd64.deb
 │       │       └── kgpg_22.12.3-0ubuntu1_arm64.deb
 │       ├── l
-│       │   └── lsb
-│       │       └── lsb-base_11.6_all.deb
+│       │   ├── lsb
+│       │   │   └── lsb-base_11.6_all.deb
+│       │   └── lz4
+│       │       ├── lz4_1.9.4-1_amd64.deb
+│       │       └── lz4_1.9.4-1_arm64.deb
 │       ├── libr
 │       │   └── libredirect-frontends-manager
 │       │       └── libredirect-frontends-manager_0.1.0_amd64.deb
@@ -841,10 +952,150 @@ Last generated on `10.21.2023 13:20:10`
 │       │   │   ├── php8.3-xsl_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_all.deb
 │       │   │   ├── php8.3-zip_8.3.0~rc3-1+ubuntu20.04.1+deb.sury.org+1_amd64.deb
 │       │   │   └── php8.3-zip_8.3.0~rc3-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│       │   ├── php-amqp
+│       │   │   ├── php-amqp_1.11.0-5_amd64.deb
+│       │   │   └── php-amqp_1.11.0-5_arm64.deb
+│       │   ├── php-amqplib
+│       │   │   └── php-amqplib_3.5.1-1ubuntu1_all.deb
+│       │   ├── php-apcu
+│       │   │   ├── php-apcu_5.1.22+4.0.11-2_amd64.deb
+│       │   │   ├── php-apcu_5.1.22+4.0.11-2_arm64.deb
+│       │   │   └── php-apcu-all-dev_5.1.22+4.0.11-2_all.deb
+│       │   ├── php-ast
+│       │   │   ├── php-ast_1.1.0-2_amd64.deb
+│       │   │   ├── php-ast_1.1.0-2_arm64.deb
+│       │   │   └── php-ast-all-dev_1.1.0-2_all.deb
+│       │   ├── php-brick-math
+│       │   │   └── php-brick-math_0.10.0-1_all.deb
+│       │   ├── php-brick-varexporter
+│       │   │   └── php-brick-varexporter_0.3.8-1_all.deb
+│       │   ├── php-cas
+│       │   │   └── php-cas_1.6.0-1_all.deb
 │       │   ├── php-code-lts-u2f-php-server
 │       │   │   └── php-code-lts-u2f-php-server_1.2.1-2_all.deb
+│       │   ├── php-crypt-gpg
+│       │   │   └── php-crypt-gpg_1.6.7-2_all.deb
+│       │   ├── php-db
+│       │   │   └── php-db_1.11.0-0.2_all.deb
 │       │   ├── php-defaults
+│       │   │   ├── php_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-all-dev_92ubuntu1_all.deb
+│       │   │   ├── php-bcmath_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-bz2_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-cgi_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-cli_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-common_92ubuntu1_all.deb
+│       │   │   ├── php-curl_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-dev_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-enchant_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-fpm_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-gd_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-gmp_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-imap_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-interbase_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-intl_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-ldap_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-mbstring_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-mysql_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-odbc_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-pgsql_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-phpdbg_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-pspell_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-readline_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-snmp_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-soap_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-sqlite3_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-sybase_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-tidy_8.1+92ubuntu1_all.deb
+│       │   │   ├── php-xml_8.1+92ubuntu1_all.deb
 │       │   │   └── php-zip_8.1+92ubuntu1_all.deb
+│       │   ├── php-ds
+│       │   │   ├── php-ds_1.4.0-5_amd64.deb
+│       │   │   ├── php-ds_1.4.0-5_arm64.deb
+│       │   │   └── php-ds-all-dev_1.4.0-5_all.deb
+│       │   ├── php-email-validator
+│       │   │   └── php-email-validator_3.2.5-1_all.deb
+│       │   ├── php-embed
+│       │   │   └── php-embed_4.4.7-1_all.deb
+│       │   ├── php-excimer
+│       │   │   ├── php-excimer_1.0.4-2_amd64.deb
+│       │   │   └── php-excimer_1.0.4-2_arm64.deb
+│       │   ├── php-faker
+│       │   │   └── php-faker_1.20.0+dfsg-1_all.deb
+│       │   ├── php-fxsl
+│       │   │   └── php-fxsl_1.1.1-6_all.deb
+│       │   ├── php-gearman
+│       │   │   ├── php-gearman_2.1.0+1.1.2-12_amd64.deb
+│       │   │   └── php-gearman_2.1.0+1.1.2-12_arm64.deb
+│       │   ├── php-gettext-languages
+│       │   │   └── php-gettext-languages_2.9.0-2_all.deb
+│       │   ├── php-gnupg
+│       │   │   ├── php-gnupg_1.5.1-3_amd64.deb
+│       │   │   ├── php-gnupg_1.5.1-3_arm64.deb
+│       │   │   └── php-gnupg-all-dev_1.5.1-3_all.deb
+│       │   ├── php-igbinary
+│       │   │   ├── php-igbinary_3.2.13-1ubuntu1_amd64.deb
+│       │   │   └── php-igbinary_3.2.13-1ubuntu1_arm64.deb
+│       │   ├── php-imagick
+│       │   │   ├── php-imagick_3.7.0-4_amd64.deb
+│       │   │   └── php-imagick_3.7.0-4_arm64.deb
+│       │   ├── php-maxminddb
+│       │   │   ├── php-maxminddb_1.11.0-5_amd64.deb
+│       │   │   └── php-maxminddb_1.11.0-5_arm64.deb
+│       │   ├── php-mcrypt
+│       │   │   ├── php-mcrypt_1.0.5-4_amd64.deb
+│       │   │   └── php-mcrypt_1.0.5-4_arm64.deb
+│       │   ├── php-memcached
+│       │   │   ├── php-memcached_3.1.5+2.2.0-14.1_amd64.deb
+│       │   │   └── php-memcached_3.1.5+2.2.0-14.1_arm64.deb
+│       │   ├── php-oauth
+│       │   │   ├── php-oauth_2.0.7+1.2.3-16_amd64.deb
+│       │   │   └── php-oauth_2.0.7+1.2.3-16_arm64.deb
+│       │   ├── php-pcov
+│       │   │   ├── php-pcov_1.0.11-5_amd64.deb
+│       │   │   └── php-pcov_1.0.11-5_arm64.deb
+│       │   ├── php-pecl-http
+│       │   │   ├── php-http_4.2.3-3.1ubuntu1_amd64.deb
+│       │   │   └── php-http_4.2.3-3.1ubuntu1_arm64.deb
+│       │   ├── php-ps
+│       │   │   ├── php-ps_1.4.4+1.3.7-7_amd64.deb
+│       │   │   └── php-ps_1.4.4+1.3.7-7_arm64.deb
+│       │   ├── php-psr
+│       │   │   ├── php-psr_1.2.0-5_amd64.deb
+│       │   │   └── php-psr_1.2.0-5_arm64.deb
+│       │   ├── php-raphf
+│       │   │   ├── php-raphf_2.0.1+1.1.2-14_amd64.deb
+│       │   │   └── php-raphf_2.0.1+1.1.2-14_arm64.deb
+│       │   ├── php-redis
+│       │   │   ├── php-redis_5.3.5+4.3.0-5.1_amd64.deb
+│       │   │   └── php-redis_5.3.5+4.3.0-5.1_arm64.deb
+│       │   ├── php-rrd
+│       │   │   ├── php-rrd_2.0.3+1.1.3-7_amd64.deb
+│       │   │   └── php-rrd_2.0.3+1.1.3-7_arm64.deb
+│       │   ├── php-smbclient
+│       │   │   ├── php-smbclient_1.0.6-8_amd64.deb
+│       │   │   └── php-smbclient_1.0.6-8_arm64.deb
+│       │   ├── php-solr
+│       │   │   ├── php-solr_2.6.0+2.4.0-3_amd64.deb
+│       │   │   └── php-solr_2.6.0+2.4.0-3_arm64.deb
+│       │   ├── php-ssh2
+│       │   │   ├── php-ssh2_1.3.1+0.13-7_amd64.deb
+│       │   │   └── php-ssh2_1.3.1+0.13-7_arm64.deb
+│       │   ├── php-stomp
+│       │   │   ├── php-stomp_2.0.3-2_amd64.deb
+│       │   │   └── php-stomp_2.0.3-2_arm64.deb
+│       │   ├── php-uopz
+│       │   │   ├── php-uopz_7.1.1+6.1.2-7_amd64.deb
+│       │   │   └── php-uopz_7.1.1+6.1.2-7_arm64.deb
+│       │   ├── php-uploadprogress
+│       │   │   ├── php-uploadprogress_2.0.2+1.1.4-8_amd64.deb
+│       │   │   └── php-uploadprogress_2.0.2+1.1.4-8_arm64.deb
+│       │   ├── php-uuid
+│       │   │   ├── php-uuid_1.2.0-12_amd64.deb
+│       │   │   └── php-uuid_1.2.0-12_arm64.deb
+│       │   ├── php-yac
+│       │   │   ├── php-yac_2.3.1+0.9.2-5_amd64.deb
+│       │   │   └── php-yac_2.3.1+0.9.2-5_arm64.deb
 │       │   ├── php-zmq
 │       │   │   ├── php-zmq_1.1.3-24_amd64.deb
 │       │   │   └── php-zmq_1.1.3-24_arm64.deb
@@ -874,6 +1125,9 @@ Last generated on `10.21.2023 13:20:10`
 │       │       ├── reprepro_5.4.2-1_arm64.deb
 │       │       └── reprepro_5.4.2-1_i386.deb
 │       ├── t
+│       │   ├── tideways
+│       │   │   ├── php-tideways_5.0.4-16_amd64.deb
+│       │   │   └── php-tideways_5.0.4-16_arm64.deb
 │       │   └── tilix
 │       │       ├── tilix_1.9.3-4build3_amd64.deb
 │       │       ├── tilix_1.9.3-4build3_arm64.deb
@@ -893,10 +1147,36 @@ Last generated on `10.21.2023 13:20:10`
 │               └── zorin-pro-layouts_1.0.0-3_all.deb
 ├── apt-url
 ├── .gitignore
+├── php-gmagick_2.0.6~rc1+1.1.7~rc3-11_amd64.deb
+├── php-gmagick_2.0.6~rc1+1.1.7~rc3-11_amd64.deb.1
+├── php-gmagick_2.0.6~rc1+1.1.7~rc3-11_arm64.deb
+├── php-gmagick-all-dev_2.0.6~rc1+1.1.7~rc3-11_all.deb
+├── php-gmagick-all-dev_2.0.6~rc1+1.1.7~rc3-11_all.deb.1
+├── php-mailparse_3.1.4+2.1.7~dev20160128-1_amd64.deb
+├── php-mailparse_3.1.4+2.1.7~dev20160128-1_amd64.deb.1
+├── php-mailparse_3.1.4+2.1.7~dev20160128-1_arm64.deb
+├── php-memcache_8.0+4.0.5.2+3.0.9~20170802.e702b5f9+-8_amd64.deb
+├── php-memcache_8.0+4.0.5.2+3.0.9~20170802.e702b5f9+-8_amd64.deb.1
+├── php-memcache_8.0+4.0.5.2+3.0.9~20170802.e702b5f9+-8_arm64.deb
+├── php-mongodb_1.15.0+1.11.1+1.9.2+1.7.5-1_amd64.deb
+├── php-mongodb_1.15.0+1.11.1+1.9.2+1.7.5-1_amd64.deb.1
+├── php-mongodb_1.15.0+1.11.1+1.9.2+1.7.5-1_arm64.deb
+├── php-msgpack_2.2.0~rc1+2.1.2+0.5.7-6_amd64.deb
+├── php-msgpack_2.2.0~rc1+2.1.2+0.5.7-6_amd64.deb.1
+├── php-msgpack_2.2.0~rc1+2.1.2+0.5.7-6_arm64.deb
+├── php-xdebug_3.2.0+3.1.6+2.9.8+2.8.1+2.5.5-3_amd64.deb
+├── php-xdebug_3.2.0+3.1.6+2.9.8+2.8.1+2.5.5-3_amd64.deb.1
+├── php-xdebug_3.2.0+3.1.6+2.9.8+2.8.1+2.5.5-3_arm64.deb
+├── php-xmlrpc_1.0.0~rc3-6_amd64.deb
+├── php-xmlrpc_1.0.0~rc3-6_amd64.deb.1
+├── php-xmlrpc_1.0.0~rc3-6_arm64.deb
+├── php-yaml_2.2.2+2.1.0+2.0.4+1.3.2-6_amd64.deb
+├── php-yaml_2.2.2+2.1.0+2.0.4+1.3.2-6_amd64.deb.1
+├── php-yaml_2.2.2+2.1.0+2.0.4+1.3.2-6_arm64.deb
 ├── proteus-git.sh
 ├── README.md
 ├── tree.md
 └── yarn.lock
 
-125 directories, 764 files
+166 directories, 1003 files
 ```
