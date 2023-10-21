@@ -2,7 +2,6 @@
   {"type":"directory","name":".","contents":[
     {"type":"directory","name":".app","contents":[
       {"type":"file","name":"app.json"},
-      {"type":"file","name":"tree.html"},
       {"type":"file","name":"tree.json"}
     ]},
     {"type":"directory","name":"conf","contents":[
@@ -1001,6 +1000,7 @@
     {"type":"file","name":".gitignore"},
     {"type":"file","name":"proteus-git.sh"},
     {"type":"file","name":"README.md"},
+    {"type":"file","name":"tree.md"},
     {"type":"file","name":"yarn.lock"}
   ]}
 ,
