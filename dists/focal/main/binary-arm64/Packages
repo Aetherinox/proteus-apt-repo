@@ -1,19 +1,20 @@
 Package: apt-move
-Version: 4.2.27-5ubuntu2
+Version: 4.2.27-6
 Architecture: arm64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian QA Group <packages@qa.debian.org>
 Installed-Size: 130
 Depends: bc, dash, libapt-pkg6.0 (>= 1.9~), libc6 (>= 2.17), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)
 Recommends: apt
 Homepage: http://sourceforge.net/projects/apt-move/
 Priority: 0
 Section: utils
-Filename: pool/main/a/apt-move/apt-move_4.2.27-5ubuntu2_arm64.deb
-Size: 35760
-SHA512: 5182cfbc1bbbc3355bed0bb13a77889087862b42d60d24963bcdf451b90b8d330346bf980b640fd236952990d17ade9f487fb39e909093013c1ca7a785ee7132
-SHA256: 7451a239e818da2b591d1bf5de5023cb47692dd6f900e63e9e3dec6bf9294f74
-SHA1: bbd7552c890f739a519bc95a5ea123eeab0da27c
-MD5sum: 01276cfc8c9ce8c858d42249b9b0466c
+Filename: pool/main/a/apt-move/apt-move_4.2.27-6_arm64.deb
+Size: 36040
+SHA512: ccda9501957980e6bf9a701e4f6dbb0fb2d541f09930d4741bf429758458e164e6fba617ef7897cc148dc62331712771ab2bdd056598fc97f48306551b2a5f3d
+SHA256: f44381ccc4789d01c6733c1e925a45eb507f6a93dc8c9e4f928e9855bde8e295
+SHA1: 18b93445c7b575ff0d8c9531ad3fc16c77c04246
+MD5sum: a8f56ad9a285c1ca60dd460e4dac2662
 Description: maintain Debian packages in a package pool
  apt-move is used to move a collection of Debian package files into a
  proper archive hierarchy as is used in the official Debian archive. It
@@ -25,7 +26,6 @@ Description: maintain Debian packages in a package pool
  valid local Packages.gz files. It can also build a partial or complete
  local mirror of a Debian binary distribution (including an
  ``installed-packages only'' mirror).
-Original-Maintainer: Debian QA Group <packages@qa.debian.org>
 
 Package: apt-url
 Version: 1.0.0-2
