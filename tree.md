@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `10.21.2023 15:48:22`
+Last generated on `10.21.2023 21:03:30`
 
 <br />
 
@@ -96,9 +96,7 @@ Last generated on `10.21.2023 15:48:22`
 │   │   ├── deb-get_0.3.9-1_all.deb
 │   │   ├── freetube_0.19.1_amd64.deb
 │   │   ├── freetube_0.19.1_arm64.deb
-│   │   ├── GitHubDesktop-linux-amd64-3.3.1-linux1.deb
 │   │   ├── GitHubDesktop-linux-amd64-3.3.3-linux2.deb
-│   │   ├── GitHubDesktop-linux-arm64-3.3.1-linux1.deb
 │   │   ├── GitHubDesktop-linux-arm64-3.3.3-linux2.deb
 │   │   ├── gitkraken-license-pro_1.0.0-1.deb
 │   │   ├── libredirect-frontends-manager_0.1.0_amd64.deb
@@ -171,8 +169,10 @@ Last generated on `10.21.2023 15:48:22`
 │   │       │   ├── php-xml_8.1+92ubuntu1_all.deb
 │   │       │   └── php-zip_8.1+92ubuntu1_all.deb
 │   │       ├── amd64
+│   │       │   ├── app-outlet_2.1.0_amd64.deb
 │   │       │   ├── apt-move_4.2.27-6_amd64.deb
 │   │       │   ├── apt-utils_2.6.0ubuntu0.1_amd64.deb
+│   │       │   ├── Bitwarden-2023.9.3-amd64.deb
 │   │       │   ├── dialog_1.3-20230209-1_amd64.deb
 │   │       │   ├── gnome-keyring_42.1-1_amd64.deb
 │   │       │   ├── gnome-shell-extension-manager_0.4.0-1_amd64.deb
@@ -210,6 +210,7 @@ Last generated on `10.21.2023 15:48:22`
 │   │       │   ├── nginx-extras_1.22.0-1ubuntu3_amd64.deb
 │   │       │   ├── nginx-full_1.22.0-1ubuntu3_amd64.deb
 │   │       │   ├── nginx-light_1.22.0-1ubuntu3_amd64.deb
+│   │       │   ├── obsidian_1.4.16_amd64.deb
 │   │       │   ├── open-vm-tools_12.1.5-3ubuntu0.23.04.2_amd64.deb
 │   │       │   ├── open-vm-tools-desktop_12.1.5-3ubuntu0.23.04.2_amd64.deb
 │   │       │   ├── open-vm-tools-dev_12.1.5-3ubuntu0.23.04.2_amd64.deb
@@ -1190,11 +1191,14 @@ Last generated on `10.21.2023 15:48:22`
 │           └── zorin-pro-layouts
 │               └── zorin-pro-layouts_1.0.0-3_all.deb
 ├── apt-url
+├── GitHubDesktop-linux-amd64-3.3.3-linux2.deb
+├── GitHubDesktop-linux-arm64-3.3.3-linux2.deb
 ├── .gitignore
 ├── proteus-git.sh
 ├── README.md
+├── secrets.sh
 ├── tree.md
 └── yarn.lock
 
-175 directories, 1012 files
+175 directories, 1016 files
 ```

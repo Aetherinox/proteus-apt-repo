@@ -112,9 +112,7 @@
         {"type":"file","name":"deb-get_0.3.9-1_all.deb"},
         {"type":"file","name":"freetube_0.19.1_amd64.deb"},
         {"type":"file","name":"freetube_0.19.1_arm64.deb"},
-        {"type":"file","name":"GitHubDesktop-linux-amd64-3.3.1-linux1.deb"},
         {"type":"file","name":"GitHubDesktop-linux-amd64-3.3.3-linux2.deb"},
-        {"type":"file","name":"GitHubDesktop-linux-arm64-3.3.1-linux1.deb"},
         {"type":"file","name":"GitHubDesktop-linux-arm64-3.3.3-linux2.deb"},
         {"type":"file","name":"gitkraken-license-pro_1.0.0-1.deb"},
         {"type":"file","name":"libredirect-frontends-manager_0.1.0_amd64.deb"},
@@ -189,8 +187,10 @@
             {"type":"file","name":"php-zip_8.1+92ubuntu1_all.deb"}
           ]},
           {"type":"directory","name":"amd64","contents":[
+            {"type":"file","name":"app-outlet_2.1.0_amd64.deb"},
             {"type":"file","name":"apt-move_4.2.27-6_amd64.deb"},
             {"type":"file","name":"apt-utils_2.6.0ubuntu0.1_amd64.deb"},
+            {"type":"file","name":"Bitwarden-2023.9.3-amd64.deb"},
             {"type":"file","name":"dialog_1.3-20230209-1_amd64.deb"},
             {"type":"file","name":"gnome-keyring_42.1-1_amd64.deb"},
             {"type":"file","name":"gnome-shell-extension-manager_0.4.0-1_amd64.deb"},
@@ -228,6 +228,7 @@
             {"type":"file","name":"nginx-extras_1.22.0-1ubuntu3_amd64.deb"},
             {"type":"file","name":"nginx-full_1.22.0-1ubuntu3_amd64.deb"},
             {"type":"file","name":"nginx-light_1.22.0-1ubuntu3_amd64.deb"},
+            {"type":"file","name":"obsidian_1.4.16_amd64.deb"},
             {"type":"file","name":"open-vm-tools_12.1.5-3ubuntu0.23.04.2_amd64.deb"},
             {"type":"file","name":"open-vm-tools-desktop_12.1.5-3ubuntu0.23.04.2_amd64.deb"},
             {"type":"file","name":"open-vm-tools-dev_12.1.5-3ubuntu0.23.04.2_amd64.deb"},
@@ -1355,12 +1356,15 @@
       ]}
     ]},
     {"type":"file","name":"apt-url"},
+    {"type":"file","name":"GitHubDesktop-linux-amd64-3.3.3-linux2.deb"},
+    {"type":"file","name":"GitHubDesktop-linux-arm64-3.3.3-linux2.deb"},
     {"type":"file","name":".gitignore"},
     {"type":"file","name":"proteus-git.sh"},
     {"type":"file","name":"README.md"},
+    {"type":"file","name":"secrets.sh"},
     {"type":"file","name":"tree.md"},
     {"type":"file","name":"yarn.lock"}
   ]}
 ,
-  {"type":"report","directories":175,"files":1012}
+  {"type":"report","directories":175,"files":1016}
 ]
