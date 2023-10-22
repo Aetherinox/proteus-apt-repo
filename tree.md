@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `10.21.2023 21:16:03`
+Last generated on `10.22.2023 05:40:41`
 
 <br />
 
@@ -174,6 +174,8 @@ Last generated on `10.21.2023 21:16:03`
 │   │       │   ├── apt-utils_2.6.0ubuntu0.1_amd64.deb
 │   │       │   ├── Bitwarden-2023.9.3-amd64.deb
 │   │       │   ├── dialog_1.3-20230209-1_amd64.deb
+│   │       │   ├── freetube_0.19.1_amd64.deb
+│   │       │   ├── GitHubDesktop-linux-amd64-3.3.3-linux2.deb
 │   │       │   ├── gnome-keyring_42.1-1_amd64.deb
 │   │       │   ├── gnome-shell-extension-manager_0.4.0-1_amd64.deb
 │   │       │   ├── gpg_2.2.40-1.1ubuntu1_amd64.deb
@@ -258,6 +260,8 @@ Last generated on `10.21.2023 21:16:03`
 │   │           ├── apt-move_4.2.27-6_arm64.deb
 │   │           ├── apt-utils_2.6.0ubuntu0.1_arm64.deb
 │   │           ├── dialog_1.3-20230209-1_arm64.deb
+│   │           ├── freetube_0.19.1_arm64.deb
+│   │           ├── GitHubDesktop-linux-arm64-3.3.3-linux2.deb
 │   │           ├── gnome-keyring_42.1-1_arm64.deb
 │   │           ├── gnome-shell-extension-manager_0.4.0-1_arm64.deb
 │   │           ├── gpg_2.2.40-1.1ubuntu1_arm64.deb
@@ -643,7 +647,8 @@ Last generated on `10.21.2023 21:16:03`
 │   ├── proteus-git-20231020.log
 │   ├── proteus-git-20231020.log.pipe
 │   ├── proteus-git-21102023.log
-│   └── proteus-git-21102023.log.pipe
+│   ├── proteus-git-22102023.log
+│   └── proteus-git-22102023.log.pipe
 ├── node_modules
 │   └── .yarn-integrity
 ├── pool
@@ -1191,8 +1196,6 @@ Last generated on `10.21.2023 21:16:03`
 │           └── zorin-pro-layouts
 │               └── zorin-pro-layouts_1.0.0-3_all.deb
 ├── apt-url
-├── GitHubDesktop-linux-amd64-3.3.3-linux2.deb
-├── GitHubDesktop-linux-arm64-3.3.3-linux2.deb
 ├── .gitignore
 ├── proteus-git.sh
 ├── README.md
@@ -1200,5 +1203,5 @@ Last generated on `10.21.2023 21:16:03`
 ├── tree.md
 └── yarn.lock
 
-175 directories, 1016 files
+175 directories, 1019 files
 ```

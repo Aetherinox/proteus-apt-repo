@@ -192,6 +192,8 @@
             {"type":"file","name":"apt-utils_2.6.0ubuntu0.1_amd64.deb"},
             {"type":"file","name":"Bitwarden-2023.9.3-amd64.deb"},
             {"type":"file","name":"dialog_1.3-20230209-1_amd64.deb"},
+            {"type":"file","name":"freetube_0.19.1_amd64.deb"},
+            {"type":"file","name":"GitHubDesktop-linux-amd64-3.3.3-linux2.deb"},
             {"type":"file","name":"gnome-keyring_42.1-1_amd64.deb"},
             {"type":"file","name":"gnome-shell-extension-manager_0.4.0-1_amd64.deb"},
             {"type":"file","name":"gpg_2.2.40-1.1ubuntu1_amd64.deb"},
@@ -277,6 +279,8 @@
             {"type":"file","name":"apt-move_4.2.27-6_arm64.deb"},
             {"type":"file","name":"apt-utils_2.6.0ubuntu0.1_arm64.deb"},
             {"type":"file","name":"dialog_1.3-20230209-1_arm64.deb"},
+            {"type":"file","name":"freetube_0.19.1_arm64.deb"},
+            {"type":"file","name":"GitHubDesktop-linux-arm64-3.3.3-linux2.deb"},
             {"type":"file","name":"gnome-keyring_42.1-1_arm64.deb"},
             {"type":"file","name":"gnome-shell-extension-manager_0.4.0-1_arm64.deb"},
             {"type":"file","name":"gpg_2.2.40-1.1ubuntu1_arm64.deb"},
@@ -685,7 +689,8 @@
       {"type":"file","name":"proteus-git-20231020.log"},
       {"type":"fifo","name":"proteus-git-20231020.log.pipe"},
       {"type":"file","name":"proteus-git-21102023.log"},
-      {"type":"fifo","name":"proteus-git-21102023.log.pipe"}
+      {"type":"file","name":"proteus-git-22102023.log"},
+      {"type":"fifo","name":"proteus-git-22102023.log.pipe"}
     ]},
     {"type":"directory","name":"node_modules","contents":[
       {"type":"file","name":".yarn-integrity"}
@@ -1356,8 +1361,6 @@
       ]}
     ]},
     {"type":"file","name":"apt-url"},
-    {"type":"file","name":"GitHubDesktop-linux-amd64-3.3.3-linux2.deb"},
-    {"type":"file","name":"GitHubDesktop-linux-arm64-3.3.3-linux2.deb"},
     {"type":"file","name":".gitignore"},
     {"type":"file","name":"proteus-git.sh"},
     {"type":"file","name":"README.md"},
@@ -1366,5 +1369,5 @@
     {"type":"file","name":"yarn.lock"}
   ]}
 ,
-  {"type":"report","directories":175,"files":1016}
+  {"type":"report","directories":175,"files":1019}
 ]
