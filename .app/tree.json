@@ -684,6 +684,11 @@
       {"type":"file","name":"sources-php8.3-lunar-amd64.list"}
     ]},
     {"type":"directory","name":"logs","contents":[
+      {"type":"directory","name":"logs","contents":[
+        {"type":"directory","name":"repos","contents":[
+          {"type":"file","name":"lunar.log"}
+        ]}
+      ]},
       {"type":"file","name":"proteus-git-20102023.log"},
       {"type":"fifo","name":"proteus-git-20102023.log.pipe"},
       {"type":"file","name":"proteus-git-20231020.log"},
@@ -709,8 +714,6 @@
             {"type":"file","name":"apt-utils_2.6.0ubuntu0.1_arm64.deb"}
           ]},
           {"type":"directory","name":"apt-move","contents":[
-            {"type":"file","name":"apt-move_4.2.27-5ubuntu2_amd64.deb"},
-            {"type":"file","name":"apt-move_4.2.27-5ubuntu2_arm64.deb"},
             {"type":"file","name":"apt-move_4.2.27-6_amd64.deb"},
             {"type":"file","name":"apt-move_4.2.27-6_arm64.deb"}
           ]},
@@ -1369,5 +1372,5 @@
     {"type":"file","name":"yarn.lock"}
   ]}
 ,
-  {"type":"report","directories":175,"files":1019}
+  {"type":"report","directories":177,"files":1018}
 ]
