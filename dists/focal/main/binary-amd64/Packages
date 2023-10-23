@@ -1,3 +1,39 @@
+Package: adduser
+Version: 3.118ubuntu2
+Architecture: all
+Maintainer: Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 624
+Depends: passwd, debconf (>= 0.5) | debconf-2.0
+Suggests: liblocale-gettext-perl, perl, ecryptfs-utils (>= 67-1)
+Multi-Arch: foreign
+Priority: 0
+Section: utils
+Filename: pool/main/a/adduser/adduser_3.118ubuntu2_all.deb
+Size: 162792
+SHA512: 354b02811da38569be2a147957295aff7590964578a75367f0972ae5d19cea1ff63981a4e8e82c8e20ca1812ac0577482ab8f9cf73c69d6d0ae7c91545ad49ce
+SHA256: 5f7ea9d1d52a2a9c349468f89d160230e21c8542faed1b1a97c23bce873e17b4
+SHA1: 0a54d46fda725aeeb740b2dd94bc70a33c1e4145
+MD5sum: 56dad661bb4f005db0c2ac8e3d9b1600
+Description: add and remove users and groups
+ This package includes the 'adduser' and 'deluser' commands for creating
+ and removing users.
+ .
+  - 'adduser' creates new users and groups and adds existing users to
+    existing groups;
+  - 'deluser' removes users and groups and removes users from a given
+    group.
+ .
+ Adding users with 'adduser' is much easier than adding them manually.
+ Adduser will choose appropriate UID and GID values, create a home
+ directory, copy skeletal user configuration, and automate setting
+ initial values for the user's password, real name and so on.
+ .
+ Deluser can back up and remove users' home directories
+ and mail spool or all the files they own on the system.
+ .
+ A custom script can be executed after each of the commands.
+Original-Maintainer: Debian Adduser Developers <adduser@packages.debian.org>
+
 Package: app-outlet
 Version: 2.1.0
 License: unknown
@@ -196,6 +232,72 @@ MD5sum: 7f42c18fdb36830829bf1ce9a4f4b9b5
 Description: Gitkraken License Generator
  License generator and registration for Gitkraken Pro.
 
+Package: gnome-keyring
+Version: 3.36.0-1ubuntu1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 3712
+Depends: dconf-gsettings-backend | gsettings-backend, libc6 (>= 2.14), libcap-ng0 (>= 0.7.9), libgck-1-0 (>= 3.3.90), libgcr-base-3-1 (>= 3.28.0), libgcrypt20 (>= 1.8.0), libglib2.0-0 (>= 2.43.2), gcr (>= 3.4), default-dbus-session-bus | dbus-session-bus, p11-kit (>= 0.16), libcap2-bin, pinentry-gnome3
+Recommends: libpam-gnome-keyring, gnome-keyring-pkcs11
+Breaks: gnome-session (<< 3.20.0)
+Multi-Arch: foreign
+Homepage: https://wiki.gnome.org/GnomeKeyring
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnome-keyring/gnome-keyring_3.36.0-1ubuntu1_amd64.deb
+Size: 613412
+SHA512: 9f032795539022710c72265539529b5e789223ab46fb32dc1160dfcee07032d4bbc37caa1b8dcb440e8d3c86cad3351c2f9a635a20f6be9cb7c443e6f53cb79a
+SHA256: 57f09e8b7abb37109de2ddd31489c6597baaa90ae5a331ceb8d2d1ca55bc8714
+SHA1: 8bbe6f0d586a3f02bdb89734135d20b68aea8260
+MD5sum: 4874b89ebe2849e454de2aff58bb5bd9
+Description: GNOME keyring services (daemon and tools)
+ gnome-keyring is a daemon in the session, similar to ssh-agent,
+ and other applications can use it to store passwords and other
+ sensitive information.
+ .
+ The program can manage several keyrings, each with its own master
+ password, and there is also a session keyring which is never stored to
+ disk, but forgotten when the session ends.
+Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
+
+Package: gnome-keysign
+Version: 1.2.0-2
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Sascha Steinbiss <satta@debian.org>
+Installed-Size: 1262
+Depends: magic-wormhole, python3-future, python3-qrcode, python3-requests, python3-twisted, python3:any, avahi-daemon, python3-bluetooth, python3-cairo, python3-dbus, python3-gi, python3-gi-cairo, python3-gpg, gir1.2-glib-2.0, gir1.2-gtk-3.0, gir1.2-gstreamer-1.0, gir1.2-gst-plugins-base-1.0, gstreamer1.0-plugins-bad, gstreamer1.0-plugins-good, gstreamer1.0-x, gstreamer1.0-gtk3
+Homepage: https://github.com/gnome-keysign/gnome-keysign
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnome-keysign/gnome-keysign_1.2.0-2_all.deb
+Size: 183504
+SHA512: 60addce07f218c62645a6f39f80063e244bf44f334f2e4ad7eb97e8090e4320ba57b1028a673616a42fbc7bc914caf6c8d14c3d861284bed413196c0edc9e49f
+SHA256: 9fac3a149473457925ec7a4c3710b656671b4fd794f174739f613a16fc7d3f4e
+SHA1: 6fbe34c8c01e38c27f0975d08979ada3cb33acd9
+MD5sum: e6226c5f5f495302e50a6550837e3e1b
+Description: easy signing of OpenPGP keys over the local network
+ GNOME Keysign is a tool for signing OpenPGP keys.
+ .
+ Its purpose is to ease signing other peoples' keys. It is similar to caff,
+ PIUS, or monkeysign. In fact, it is influenced a lot by these tools and
+ either reimplements ideas or reuses code. Consider either of the above
+ mentioned tools when you need a much more mature codebase.
+ .
+ In contrast to caff or monkeysign, this tool enables you to sign a key
+ without contacting a key server. It downloads an authenticated copy of the
+ key from the other party. For now, the key is authenticated by its fingerprint
+ which is securely transferred via a QR code. Alternatively, the user may type
+ the fingerprint manually, assuming that it has been transferred securely via
+ the audible channel.
+ .
+ After having obtained an authentic copy of the key, its UIDs are signed. The
+ signatures are then encrypted and sent via email. In contrast to monkeysign,
+ xdg-email is used to pop up a pre-filled email composer windows of the mail
+ client the user has configured to use. This greatly reduces complexity as no
+ SMTP configuration needs to be obtained and gives the user a well known
+ interface.
+
 Package: gnome-shell-extension-tilix-dropdown
 Version: 7-1
 Architecture: all
@@ -244,6 +346,232 @@ Description: Adds easy to use configurable keyboard shortcut for tilix
  GNOME is way more tedious than it needs to be.
  .
  This extension adds an easy method for configuring this system-wide.
+
+Package: gpg
+Source: gnupg2
+Version: 2.2.19-3ubuntu2
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 1135
+Depends: gpgconf (= 2.2.19-3ubuntu2), libassuan0 (>= 2.5.0), libbz2-1.0, libc6 (>= 2.25), libgcrypt20 (>= 1.8.0), libgpg-error0 (>= 1.35), libreadline8 (>= 6.0), libsqlite3-0 (>= 3.7.15), zlib1g (>= 1:1.1.4)
+Recommends: gnupg (= 2.2.19-3ubuntu2)
+Breaks: gnupg (<< 2.1.21-4)
+Replaces: gnupg (<< 2.1.21-4)
+Multi-Arch: foreign
+Homepage: https://www.gnupg.org/
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnupg2/gpg_2.2.19-3ubuntu2_amd64.deb
+Size: 482096
+SHA512: 815aa70ad4fda94b86d1819c247915d1ebb79c6767ec7ae7b3b42dbed650e32693f0803762f300c0c0ff95113c0c72dce926b4e6bf9a95e2491e6a217845de71
+SHA256: 08cb0075b5bd23aca773643633b053ee6c57c3668dde9d1ef253c7ec5b03d33d
+SHA1: c554eff64112f588040a521f180da282fe9fa8e0
+MD5sum: 3163acbdc9014376af98ea7d1b009bde
+Description: GNU Privacy Guard -- minimalist public key operations
+ GnuPG is GNU's tool for secure communication and data storage.
+ It can be used to encrypt data and to create digital signatures.
+ It includes an advanced key management facility and is compliant
+ with the proposed OpenPGP Internet standard as described in RFC4880.
+ .
+ This package contains /usr/bin/gpg itself, and is useful on its own
+ only for public key operations (encryption, signature verification,
+ listing OpenPGP certificates, etc).  If you want full capabilities
+ (including secret key operations, network access, etc), please
+ install the "gnupg" package, which pulls in the full suite of tools.
+Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>
+
+Package: gpg-agent
+Source: gnupg2
+Version: 2.2.19-3ubuntu2
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 911
+Depends: gpgconf (= 2.2.19-3ubuntu2), pinentry-curses | pinentry, init-system-helpers (>= 1.52), libassuan0 (>= 2.5.1), libc6 (>= 2.25), libgcrypt20 (>= 1.8.0), libgpg-error0 (>= 1.35), libnpth0 (>= 0.90)
+Recommends: gnupg (= 2.2.19-3ubuntu2)
+Suggests: dbus-user-session, libpam-systemd, pinentry-gnome3, scdaemon
+Breaks: gnupg-agent (<< 2.1.21-4)
+Replaces: gnupg-agent (<< 2.1.21-4)
+Provides: gnupg-agent
+Multi-Arch: foreign
+Homepage: https://www.gnupg.org/
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnupg2/gpg-agent_2.2.19-3ubuntu2_amd64.deb
+Size: 232000
+SHA512: ede93e6dbac822ee394996f5549071907f26a6ef63fced205da0c028628afd0aa3e0e58b24a284bdafadd41d7c25e7b70fe46f7a08e0ef7daf9fde347d8d7792
+SHA256: 77b20da218aaa13e880bcc56bd1bca4fc99d367d4f94a20ed180764fc79d752d
+SHA1: 0d1a18ce368c6df71969e67b97251f2b93e34f9c
+MD5sum: 106a0047ba2f5e9f6458cd36f51bf831
+Description: GNU privacy guard - cryptographic agent
+ GnuPG is GNU's tool for secure communication and data storage.
+ It can be used to encrypt data and to create digital signatures.
+ It includes an advanced key management facility and is compliant
+ with the proposed OpenPGP Internet standard as described in RFC4880.
+ .
+ This package contains the agent program gpg-agent which handles all
+ secret key material for OpenPGP and S/MIME use.  The agent also
+ provides a passphrase cache, which is used by pre-2.1 versions of
+ GnuPG for OpenPGP operations.  Without this package, trying to do
+ secret-key operations with any part of the modern GnuPG suite will
+ fail.
+Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>
+
+Package: gpg-wks-client
+Source: gnupg2
+Version: 2.2.19-3ubuntu2
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 275
+Depends: dirmngr (= 2.2.19-3ubuntu2), gpg (= 2.2.19-3ubuntu2), gpg-agent (= 2.2.19-3ubuntu2), libassuan0 (>= 2.5.0), libc6 (>= 2.25), libgcrypt20 (>= 1.8.0), libgpg-error0 (>= 1.35)
+Recommends: gnupg (= 2.2.19-3ubuntu2)
+Multi-Arch: foreign
+Homepage: https://www.gnupg.org/
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnupg2/gpg-wks-client_2.2.19-3ubuntu2_amd64.deb
+Size: 97660
+SHA512: 8677db48798c953c08e2ce0b31bd9b2901952f13eac60e74cfebdafb0662c8f9df491c522a5f71a4162bfd9bb2020f1d354fe966082187f3dfb229a69f3ea958
+SHA256: 4b7b070759e1cc18525dd9b2ff40500ee6c65f0606560a0711e672305b3a1aca
+SHA1: 74eba40c611ca5845664f81dda3dcbf42189b043
+MD5sum: 50b0401485cb9b57bfdd9d06f4226411
+Description: GNU privacy guard - Web Key Service client
+ GnuPG is GNU's tool for secure communication and data storage.
+ It can be used to encrypt data and to create digital signatures.
+ It includes an advanced key management facility and is compliant
+ with the proposed OpenPGP Internet standard as described in RFC4880.
+ .
+ This package provides the GnuPG client for the Web Key Service
+ protocol.
+ .
+ A Web Key Service is a service that allows users to upload keys per
+ mail to be verified over https as described in
+ https://tools.ietf.org/html/draft-koch-openpgp-webkey-service
+ .
+ For more information see: https://wiki.gnupg.org/WKS
+Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>
+
+Package: gpg-wks-server
+Source: gnupg2
+Version: 2.2.19-3ubuntu2
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 255
+Depends: gpg (= 2.2.19-3ubuntu2), gpg-agent (= 2.2.19-3ubuntu2), libc6 (>= 2.25), libgcrypt20 (>= 1.8.0), libgpg-error0 (>= 1.35)
+Recommends: gnupg (= 2.2.19-3ubuntu2)
+Multi-Arch: foreign
+Homepage: https://www.gnupg.org/
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnupg2/gpg-wks-server_2.2.19-3ubuntu2_amd64.deb
+Size: 90268
+SHA512: 82fc54e12a7c0613b5a4adac91387bf914a4421ff33d18a12497882af6760fc67de05ba36db375ce5c51d4fa25a8b2fcd7ab76fe3017e6373ed87a6c2228c644
+SHA256: d83035fe09270583c345c509a6804a98c8856f84335a50a5ae6aa15c0057eefd
+SHA1: 0b53b14b336f4abdcb3ed6003be06ae9ed973e30
+MD5sum: c3b1c606c2872062765bd6cc25e72e3b
+Description: GNU privacy guard - Web Key Service server
+ GnuPG is GNU's tool for secure communication and data storage.
+ It can be used to encrypt data and to create digital signatures.
+ It includes an advanced key management facility and is compliant
+ with the proposed OpenPGP Internet standard as described in RFC4880.
+ .
+ This package provides the GnuPG server for the Web Key Service
+ protocol.
+ .
+ A Web Key Service is a service that allows users to upload keys per
+ mail to be verified over https as described in
+ https://tools.ietf.org/html/draft-koch-openpgp-webkey-service
+ .
+ For more information see: https://wiki.gnupg.org/WKS
+Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>
+
+Package: gpgconf
+Source: gnupg2
+Version: 2.2.19-3ubuntu2
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 409
+Depends: libassuan0 (>= 2.5.0), libc6 (>= 2.25), libgcrypt20 (>= 1.8.0), libgpg-error0 (>= 1.35), libreadline8 (>= 6.0)
+Breaks: gnupg (<< 2.1.21-4), gnupg-agent (<< 2.1.21-4)
+Replaces: gnupg (<< 2.1.21-4), gnupg-agent (<< 2.1.21-4)
+Multi-Arch: foreign
+Homepage: https://www.gnupg.org/
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnupg2/gpgconf_2.2.19-3ubuntu2_amd64.deb
+Size: 123744
+SHA512: 1633d7af7c0de270fa97c49073ac40e978f0ce2639a02d0678324c6913e2dbd5fbada3d8284c006918b3eb73520b5341d98440d7821a334022ed35be412981c3
+SHA256: 557c2f1900efac07102f594b08bab271ce1b827d06efe6de7bcbad76fda5a5bb
+SHA1: fa4fca51a4635ce12c12a1ca7ce5cc37824aaaff
+MD5sum: 92af05b10e7d80062b4cb1a85d3fac4e
+Description: GNU privacy guard - core configuration utilities
+ GnuPG is GNU's tool for secure communication and data storage.
+ .
+ This package contains core utilities used by different tools in the
+ suite offered by GnuPG.  It can be used to programmatically edit
+ config files for tools in the GnuPG suite, to launch or terminate
+ per-user daemons (if installed), etc.
+Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>
+
+Package: gpgsm
+Source: gnupg2
+Version: 2.2.19-3ubuntu2
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 568
+Depends: gpgconf (= 2.2.19-3ubuntu2), libassuan0 (>= 2.5.0), libc6 (>= 2.25), libgcrypt20 (>= 1.8.0), libgpg-error0 (>= 1.35), libksba8 (>= 1.3.4), libreadline8 (>= 6.0)
+Recommends: gnupg (= 2.2.19-3ubuntu2)
+Breaks: gnupg2 (<< 2.1.10-2)
+Replaces: gnupg2 (<< 2.1.10-2)
+Multi-Arch: foreign
+Homepage: https://www.gnupg.org/
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnupg2/gpgsm_2.2.19-3ubuntu2_amd64.deb
+Size: 216812
+SHA512: 1b1fc97343ea319587d0d627a106aa159b73095a22173c03d79543518112a2168e16a64bb119dda0570aa75f1e0a9aabd482d14f761a1bef521b3e559749499c
+SHA256: ed7f2f431aba977e4ac8bbd37d9506b14b6aa6725624ac0b3f44a19de28e493d
+SHA1: bfd85b06b3ff879b978ee6843c4f67f4f12d171f
+MD5sum: 1aaee910238836db197dacee74af3e5f
+Description: GNU privacy guard - S/MIME version
+ GnuPG is GNU's tool for secure communication and data storage.
+ It can be used to encrypt data and to create digital signatures.
+ It includes an advanced key management facility and is compliant
+ with the proposed OpenPGP Internet standard as described in RFC4880.
+ .
+ This package contains the gpgsm program. gpgsm is a tool to provide
+ digital encryption and signing services on X.509 certificates and the
+ CMS protocol. gpgsm includes complete certificate management.
+Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>
+
+Package: gpgv
+Source: gnupg2
+Version: 2.2.19-3ubuntu2
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 499
+Depends: libbz2-1.0, libc6 (>= 2.25), libgcrypt20 (>= 1.8.0), libgpg-error0 (>= 1.35), zlib1g (>= 1:1.1.4)
+Suggests: gnupg
+Breaks: gnupg2 (<< 2.0.21-2), gpgv2 (<< 2.1.11-7+exp1), python-debian (<< 0.1.29)
+Replaces: gnupg2 (<< 2.0.21-2), gpgv2 (<< 2.1.11-7+exp1)
+Multi-Arch: foreign
+Homepage: https://www.gnupg.org/
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnupg2/gpgv_2.2.19-3ubuntu2_amd64.deb
+Size: 199804
+SHA512: 1efeebfe022c0c349b5eb8ac76dea67ab2b06de0a7896d85656ea0042be911078703914ef5130781ffe51221451ce620b6f378553a34358308ef91857501c9f7
+SHA256: b80d4f0b3f4dc31d5464e3f98418b2e430fed532a97280edc3818ba2eb251e8a
+SHA1: 847a7b463f6e2789869c7a44bb78243479760021
+MD5sum: 966d2a9459d888a8807ceee4464b7795
+Description: GNU privacy guard - signature verification tool
+ GnuPG is GNU's tool for secure communication and data storage.
+ .
+ gpgv is actually a stripped-down version of gpg which is only able
+ to check signatures. It is somewhat smaller than the fully-blown gpg
+ and uses a different (and simpler) way to check that the public keys
+ used to make the signature are valid. There are no configuration
+ files and only a few options are implemented.
+Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>
 
 Package: libapache2-mod-php8.2
 Source: php8.2
@@ -306,6 +634,59 @@ Description: server-side, HTML-embedded scripting language (Apache 2 module)
  PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
  open source general-purpose scripting language that is especially suited
  for web development and can be embedded into HTML.
+
+Package: libgpg-error-dev
+Source: libgpg-error
+Version: 1.37-1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>
+Installed-Size: 474
+Depends: libgpg-error0 (= 1.37-1)
+Homepage: https://www.gnupg.org/related_software/libgpg-error/
+Priority: 0
+Section: utils
+Filename: pool/main/libg/libgpg-error/libgpg-error-dev_1.37-1_amd64.deb
+Size: 108760
+SHA512: 4b085ca5f926eb365d40eb4f4e23d5b34893498ccb77dfbed83d603b9604c7e409bcd4387060a61308b214052e463a72603634fe49316ea545841d462c90cd6a
+SHA256: f1c5e21c12050caa474517546835e26723fec5efead1d25e84feb1acfdc580d2
+SHA1: 150bfd34201143b27af69d3e25b4fc5d3f93b2de
+MD5sum: 006f0c8ea381697c634475ce8da21f05
+Description: GnuPG development runtime library (developer tools)
+ Library that defines common error values, messages, and common
+ runtime functionality for all GnuPG components.  Among these are GPG,
+ GPGSM, GPGME, GPG-Agent, libgcrypt, pinentry, SmartCard Daemon and
+ possibly more in the future.
+ .
+ It will likely be renamed "gpgrt" in the future.
+ .
+ This package contains the headers and other files needed to compile
+ against this library.
+
+Package: libgpgme11
+Source: gpgme1.0
+Version: 1.13.1-7ubuntu2
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>
+Installed-Size: 355
+Depends: gnupg (>= 2.1.21-4) | gpg, libassuan0 (>= 2.4.2), libc6 (>= 2.15), libgpg-error0 (>= 1.24)
+Recommends: dirmngr, gpg-agent, gpg-wks-client, gpgsm
+Multi-Arch: same
+Homepage: https://www.gnupg.org/related_software/gpgme/
+Priority: 0
+Section: utils
+Filename: pool/main/g/gpgme1.0/libgpgme11_1.13.1-7ubuntu2_amd64.deb
+Size: 120900
+SHA512: d3dd21544860dc1fca627cc3c42477c9b29a63fa229cc27bec27937b1f096400c9c6775c57386288155ad998de9f29eeb0acae9d98e373bcd9369d4133faf208
+SHA256: e8fc81b7852004a50e4f8ed33ecce609d4dea3a074b8556f6860bfd6ff23acf9
+SHA1: e04fcdd9f16bcee10cd337fbd9fc519989cadfc8
+MD5sum: cdd5a780f4e5f1ba12e2c460bb7af761
+Description: GPGME - GnuPG Made Easy (library)
+ GPGME is a wrapper library which provides a C API to access some of the
+ GnuPG functions, such as encrypt, decrypt, sign, verify, ...
+ .
+ This package contains the library.
 
 Package: libphp8.2-embed
 Source: php8.2
