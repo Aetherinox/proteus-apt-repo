@@ -255,6 +255,25 @@ Description: Linux Standard Base init script functionality
  logging and other purposes.
 Original-Maintainer: Debian sysvinit maintainers <debian-init-diversity@chiark.greenend.org.uk>
 
+Package: makedeb-beta
+Version: 16.1.0-beta1
+Priority: 0
+Section: utils
+Filename: pool/main/m/makedeb-beta/makedeb-beta_16.1.0-beta1_arm64.deb
+Size: 1464930
+SHA512: 4f26f13083337756c97a3ff8629fc23837fabc8fa58906b5ba627be26a2f3629a3137169aa69ea7d38b56f713f97b8528df7a3ecd472c4b3b2373e99aa56cf6d
+SHA256: 289eb27caa22eb655406e134d7e6350dd584d7e5a94bf72767b5f1ce9449f9c1
+SHA1: bac15b006739eeb81d5bef8f9583303bdf54ceeb
+MD5sum: fb63f565d00219d43ac387a01f0779e8
+Description: A simplicity-focused packaging tool for Debian archives
+Architecture: arm64
+License: GPL3
+Maintainer: Hunter Wittenborn <hunter@hunterwittenborn.com>
+Homepage: https://github.com/makedeb/makedeb
+Depends: apt, binutils, build-essential, curl, fakeroot, file, gettext, gawk, libarchive-tools, lsb-release, zstd
+Conflicts: makedeb
+Provides: makedeb (= 16.1.0)
+
 Package: mysql-client
 Source: mysql-8.0
 Version: 8.0.34-0ubuntu0.22.04.1
