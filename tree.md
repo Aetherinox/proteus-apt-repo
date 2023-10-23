@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `10.23.2023 01:38:58`
+Last generated on `10.23.2023 06:03:08`
 
 <br />
 
@@ -181,12 +181,34 @@ Last generated on `10.23.2023 01:38:58`
 │   │   │           ├── php8.3-xml_8.3.0~rc3-1+ubuntu20.04.1+deb.sury.org+1_amd64.deb
 │   │   │           ├── php8.3-xsl_8.3.0~rc3-1+ubuntu20.04.1+deb.sury.org+1_all.deb
 │   │   │           └── php8.3-zip_8.3.0~rc3-1+ubuntu20.04.1+deb.sury.org+1_amd64.deb
+│   │   ├── adduser_3.118ubuntu2_all.deb
 │   │   ├── apt-move_4.2.27-5ubuntu2_amd64.deb
 │   │   ├── apt-move_4.2.27-5ubuntu2_arm64.deb
 │   │   ├── dialog_1.3-20190808-1_amd64.deb
 │   │   ├── dialog_1.3-20190808-1_arm64.deb
+│   │   ├── gnome-keyring_3.36.0-1ubuntu1_amd64.deb
+│   │   ├── gnome-keyring_3.36.0-1ubuntu1_arm64.deb
+│   │   ├── gnome-keysign_1.2.0-2_all.deb
 │   │   ├── gnome-shell-extension-tilix-dropdown_7-1_all.deb
 │   │   ├── gnome-shell-extension-tilix-shortcut_1.0.1-2_all.deb
+│   │   ├── gpg_2.2.19-3ubuntu2_amd64.deb
+│   │   ├── gpg_2.2.19-3ubuntu2_arm64.deb
+│   │   ├── gpg-agent_2.2.19-3ubuntu2_amd64.deb
+│   │   ├── gpg-agent_2.2.19-3ubuntu2_arm64.deb
+│   │   ├── gpgconf_2.2.19-3ubuntu2_amd64.deb
+│   │   ├── gpgconf_2.2.19-3ubuntu2_arm64.deb
+│   │   ├── gpgsm_2.2.19-3ubuntu2_amd64.deb
+│   │   ├── gpgsm_2.2.19-3ubuntu2_arm64.deb
+│   │   ├── gpgv_2.2.19-3ubuntu2_amd64.deb
+│   │   ├── gpgv_2.2.19-3ubuntu2_arm64.deb
+│   │   ├── gpg-wks-client_2.2.19-3ubuntu2_amd64.deb
+│   │   ├── gpg-wks-client_2.2.19-3ubuntu2_arm64.deb
+│   │   ├── gpg-wks-server_2.2.19-3ubuntu2_amd64.deb
+│   │   ├── gpg-wks-server_2.2.19-3ubuntu2_arm64.deb
+│   │   ├── libgpg-error-dev_1.37-1_amd64.deb
+│   │   ├── libgpg-error-dev_1.37-1_arm64.deb
+│   │   ├── libgpgme11_1.13.1-7ubuntu2_amd64.deb
+│   │   ├── libgpgme11_1.13.1-7ubuntu2_arm64.deb
 │   │   ├── neofetch_7.0.0-1_all.deb
 │   │   ├── php-bacon-qr-code_2.0.6-2_amd64.deb
 │   │   ├── php-bacon-qr-code_2.0.6-2_arm64.deb
@@ -641,14 +663,12 @@ Last generated on `10.23.2023 01:38:58`
 │   └── sources-php8.3-lunar-amd64.list
 ├── logs
 │   ├── repos
+│   │   ├── focal.log
 │   │   └── lunar.log
 │   ├── proteus-git-20102023.log
-│   ├── proteus-git-20102023.log.pipe
 │   ├── proteus-git-20231020.log
-│   ├── proteus-git-20231020.log.pipe
 │   ├── proteus-git-21102023.log
 │   ├── proteus-git-22102023.log
-│   ├── proteus-git-22102023.log.pipe
 │   ├── proteus-git-23102023.log
 │   └── proteus-git-23102023.log.pipe
 ├── node_modules
@@ -657,6 +677,7 @@ Last generated on `10.23.2023 01:38:58`
 │   └── main
 │       ├── a
 │       │   ├── adduser
+│       │   │   ├── adduser_3.118ubuntu2_all.deb
 │       │   │   ├── adduser_3.118ubuntu5_all.deb
 │       │   │   └── adduser_3.129ubuntu1_all.deb
 │       │   ├── app-outlet
@@ -706,10 +727,13 @@ Last generated on `10.23.2023 01:38:58`
 │       │   ├── gitkraken-license-pro
 │       │   │   └── gitkraken-license-pro_1.0.0-1_all.deb
 │       │   ├── gnome-keyring
+│       │   │   ├── gnome-keyring_3.36.0-1ubuntu1_amd64.deb
+│       │   │   ├── gnome-keyring_3.36.0-1ubuntu1_arm64.deb
 │       │   │   ├── gnome-keyring_40.0-3ubuntu3_amd64.deb
 │       │   │   ├── gnome-keyring_42.1-1_amd64.deb
 │       │   │   └── gnome-keyring_42.1-1_arm64.deb
 │       │   ├── gnome-keysign
+│       │   │   ├── gnome-keysign_1.2.0-2_all.deb
 │       │   │   ├── gnome-keysign_1.2.0-3_all.deb
 │       │   │   └── gnome-keysign_1.3.0-2_all.deb
 │       │   ├── gnome-shell-extension-manager
@@ -720,16 +744,33 @@ Last generated on `10.23.2023 01:38:58`
 │       │   │   └── gnome-shell-extension-tilix-dropdown_7-1_all.deb
 │       │   ├── gnome-shell-extension-tilix-shortcut
 │       │   │   └── gnome-shell-extension-tilix-shortcut_1.0.1-2_all.deb
-│       │   └── gnupg2
-│       │       ├── gpg_2.2.27-3ubuntu2.1_amd64.deb
-│       │       ├── gpg_2.2.40-1.1ubuntu1_amd64.deb
-│       │       ├── gpg_2.2.40-1.1ubuntu1_arm64.deb
-│       │       ├── gpgconf_2.2.27-3ubuntu2.1_amd64.deb
-│       │       ├── gpgconf_2.2.40-1.1ubuntu1_amd64.deb
-│       │       ├── gpgconf_2.2.40-1.1ubuntu1_arm64.deb
-│       │       ├── gpgv_2.2.27-3ubuntu2.1_amd64.deb
-│       │       ├── gpgv_2.2.40-1.1ubuntu1_amd64.deb
-│       │       └── gpgv_2.2.40-1.1ubuntu1_arm64.deb
+│       │   ├── gnupg2
+│       │   │   ├── gpg_2.2.19-3ubuntu2_amd64.deb
+│       │   │   ├── gpg_2.2.19-3ubuntu2_arm64.deb
+│       │   │   ├── gpg_2.2.27-3ubuntu2.1_amd64.deb
+│       │   │   ├── gpg_2.2.40-1.1ubuntu1_amd64.deb
+│       │   │   ├── gpg_2.2.40-1.1ubuntu1_arm64.deb
+│       │   │   ├── gpg-agent_2.2.19-3ubuntu2_amd64.deb
+│       │   │   ├── gpg-agent_2.2.19-3ubuntu2_arm64.deb
+│       │   │   ├── gpgconf_2.2.19-3ubuntu2_amd64.deb
+│       │   │   ├── gpgconf_2.2.19-3ubuntu2_arm64.deb
+│       │   │   ├── gpgconf_2.2.27-3ubuntu2.1_amd64.deb
+│       │   │   ├── gpgconf_2.2.40-1.1ubuntu1_amd64.deb
+│       │   │   ├── gpgconf_2.2.40-1.1ubuntu1_arm64.deb
+│       │   │   ├── gpgsm_2.2.19-3ubuntu2_amd64.deb
+│       │   │   ├── gpgsm_2.2.19-3ubuntu2_arm64.deb
+│       │   │   ├── gpgv_2.2.19-3ubuntu2_amd64.deb
+│       │   │   ├── gpgv_2.2.19-3ubuntu2_arm64.deb
+│       │   │   ├── gpgv_2.2.27-3ubuntu2.1_amd64.deb
+│       │   │   ├── gpgv_2.2.40-1.1ubuntu1_amd64.deb
+│       │   │   ├── gpgv_2.2.40-1.1ubuntu1_arm64.deb
+│       │   │   ├── gpg-wks-client_2.2.19-3ubuntu2_amd64.deb
+│       │   │   ├── gpg-wks-client_2.2.19-3ubuntu2_arm64.deb
+│       │   │   ├── gpg-wks-server_2.2.19-3ubuntu2_amd64.deb
+│       │   │   └── gpg-wks-server_2.2.19-3ubuntu2_arm64.deb
+│       │   └── gpgme1.0
+│       │       ├── libgpgme11_1.13.1-7ubuntu2_amd64.deb
+│       │       └── libgpgme11_1.13.1-7ubuntu2_arm64.deb
 │       ├── k
 │       │   ├── keyutils
 │       │   │   ├── keyutils_1.6.1-2ubuntu3_amd64.deb
@@ -747,6 +788,10 @@ Last generated on `10.23.2023 01:38:58`
 │       │       ├── lz4_1.9.3-2build2_amd64.deb
 │       │       ├── lz4_1.9.4-1_amd64.deb
 │       │       └── lz4_1.9.4-1_arm64.deb
+│       ├── libg
+│       │   └── libgpg-error
+│       │       ├── libgpg-error-dev_1.37-1_amd64.deb
+│       │       └── libgpg-error-dev_1.37-1_arm64.deb
 │       ├── libr
 │       │   └── libredirect-frontends-manager
 │       │       └── libredirect-frontends-manager_0.1.0_amd64.deb
@@ -1339,5 +1384,5 @@ Last generated on `10.23.2023 01:38:58`
 ├── tree.md
 └── yarn.lock
 
-180 directories, 1150 files
+183 directories, 1192 files
 ```
