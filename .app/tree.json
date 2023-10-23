@@ -552,11 +552,6 @@
             {"type":"file","name":"libnginx-mod-rtmp_1.22.0-1ubuntu3_amd64.deb"},
             {"type":"file","name":"libnginx-mod-stream-geoip_1.22.0-1ubuntu3_amd64.deb"},
             {"type":"file","name":"lz4_1.9.4-1_amd64.deb"},
-            {"type":"file","name":"makedeb-beta_16.1.0-beta1_amd64_bionic.deb"},
-            {"type":"file","name":"makedeb-beta_16.1.0-beta1_amd64_bullseye.deb"},
-            {"type":"file","name":"makedeb-beta_16.1.0-beta1_amd64_focal.deb"},
-            {"type":"file","name":"makedeb-beta_16.1.0-beta1_amd64_jammy.deb"},
-            {"type":"file","name":"makedeb-beta_16.1.0-beta1_amd64_kinetic.deb"},
             {"type":"file","name":"network-manager_1.42.4-1ubuntu2_amd64.deb"},
             {"type":"file","name":"network-manager-gnome_1.30.0-2ubuntu1_amd64.deb"},
             {"type":"file","name":"network-manager-openvpn_1.10.2-2_amd64.deb"},
@@ -643,11 +638,6 @@
             {"type":"file","name":"libnginx-mod-rtmp_1.22.0-1ubuntu3_arm64.deb"},
             {"type":"file","name":"libnginx-mod-stream-geoip_1.22.0-1ubuntu3_arm64.deb"},
             {"type":"file","name":"lz4_1.9.4-1_arm64.deb"},
-            {"type":"file","name":"makedeb-beta_16.1.0-beta1_arm64_bionic.deb"},
-            {"type":"file","name":"makedeb-beta_16.1.0-beta1_arm64_bullseye.deb"},
-            {"type":"file","name":"makedeb-beta_16.1.0-beta1_arm64_focal.deb"},
-            {"type":"file","name":"makedeb-beta_16.1.0-beta1_arm64_jammy.deb"},
-            {"type":"file","name":"makedeb-beta_16.1.0-beta1_arm64_kinetic.deb"},
             {"type":"file","name":"network-manager_1.42.4-1ubuntu2_arm64.deb"},
             {"type":"file","name":"network-manager-gnome_1.30.0-2ubuntu1_arm64.deb"},
             {"type":"file","name":"network-manager-openvpn_1.10.2-2_arm64.deb"},
@@ -888,10 +878,6 @@
           ]}
         ]},
         {"type":"directory","name":"m","contents":[
-          {"type":"directory","name":"makedeb-beta","contents":[
-            {"type":"file","name":"makedeb-beta_16.1.0-beta1_amd64.deb"},
-            {"type":"file","name":"makedeb-beta_16.1.0-beta1_arm64.deb"}
-          ]},
           {"type":"directory","name":"mysql-8.0","contents":[
             {"type":"file","name":"mysql-client_8.0.34-0ubuntu0.22.04.1_all.deb"},
             {"type":"file","name":"mysql-client_8.0.34-0ubuntu0.23.04.1_all.deb"},
@@ -1571,5 +1557,5 @@
     {"type":"file","name":"yarn.lock"}
   ]}
 ,
-  {"type":"report","directories":184,"files":1204}
+  {"type":"report","directories":183,"files":1192}
 ]
