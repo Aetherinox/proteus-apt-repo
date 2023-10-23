@@ -913,25 +913,6 @@ Description: Fast LZ compression algorithm library - tool
  .
  This package contains files that is tool using liblz4.
 
-Package: makedeb-beta
-Version: 16.1.0-beta1
-Priority: 0
-Section: utils
-Filename: pool/main/m/makedeb-beta/makedeb-beta_16.1.0-beta1_arm64.deb
-Size: 1466826
-SHA512: 6e68083b3a812278abb216c9a7d9e565bcc3794bddc5a9b899c69e3065b1fb7030b99ff6dbb6d9beb5042a0155542aab7e24e8f1dad0e2b24b3a2a4bfe6dc967
-SHA256: d8d0b7bf62ca1f9539b3fdaea18172af5076ca4992430843dd53b71d9a387ef3
-SHA1: db37996a90afe1f29991802ab1121afe9f2c3387
-MD5sum: 6f484805050d985da8e9e7f8b60d939c
-Description: A simplicity-focused packaging tool for Debian archives
-Architecture: arm64
-License: GPL3
-Maintainer: Hunter Wittenborn <hunter@hunterwittenborn.com>
-Homepage: https://github.com/makedeb/makedeb
-Depends: apt, binutils, build-essential, curl, fakeroot, file, gettext, gawk, libarchive-tools, lsb-release, zstd
-Conflicts: makedeb
-Provides: makedeb (= 16.1.0)
-
 Package: mysql-client
 Source: mysql-8.0
 Version: 8.0.34-0ubuntu0.23.04.1
