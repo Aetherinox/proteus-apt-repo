@@ -10,6 +10,23 @@
 <br />
 <br />
 
+## Status
+Time of last package update for each release
+
+<br />
+
+| Codename | Last Update |
+| --- | --- |
+| Focal | ![Focal](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FAetherinox%2Fproteus-apt-repo%2Fmain%2F.app%2Ffocal.json&query=last_update&style=for-the-badge&label=last%20update&color=e65a0b)  |
+| Jammy | ![Jammy](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FAetherinox%2Fproteus-apt-repo%2Fmain%2F.app%2Fjammy.json&query=last_update&style=for-the-badge&label=last%20update&color=0b7ae6 )  |
+| Lunar | ![Lunar](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FAetherinox%2Fproteus-apt-repo%2Fmain%2F.app%2Flunar.json&query=last_update&style=for-the-badge&label=last%20update&color=e60b51)  |
+
+<br />
+
+---
+
+<br />
+
 ## About
 This is a Proteus apt repository that is associated to the [Proteus App Manager](https://github.com/Aetherinox/proteus-app-manager). It can however, be added by any user running Ubuntu, ZorinOS, or similar Linux distributions. All packages contained within this repository are automatically updated when developers release new reivisons of their packages. The user simply needs to run `apt update` or `apt-get update` in terminal.
 
