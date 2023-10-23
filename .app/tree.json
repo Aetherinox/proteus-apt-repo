@@ -1,7 +1,7 @@
 [
   {"type":"directory","name":".","contents":[
     {"type":"directory","name":".app","contents":[
-      {"type":"file","name":"app.json"},
+      {"type":"file","name":"lunar.json"},
       {"type":"file","name":"tree.json"}
     ]},
     {"type":"directory","name":"conf","contents":[
