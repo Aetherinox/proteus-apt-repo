@@ -1779,6 +1779,25 @@ Description: Open VMware Tools for virtual machines hosted on VMware (developmen
  This package contains the development files.
 Original-Maintainer: Bernd Zeimetz <bzed@debian.org>
 
+Package: opengist
+Version: 1.5.2
+Architecture: amd64
+Maintainer: Thomas Miceli <thomiceli@github.com>
+Homepage: https://github.com/thomiceli/opengist
+Priority: 0
+Section: utils
+Filename: pool/main/o/opengist/opengist_1.5.2_amd64.deb
+Size: 6092826
+SHA512: 08b0cc12b298b52ccbe6319728d9e66aad134506303c31cf3a761a55de246d55ac3d0a6711046db114bbf8c463c5c9c20b83b23d26e3e0a569f7bfa4a41e3100
+SHA256: 323f48d4ebdfca0bca04e7fb31095291580f09272a65dea57be52ee55c804bc3
+SHA1: 2aa6a44e816d8b130eee6428d53f1e9f57b45d37
+MD5sum: 3fb25d85556c3350abba1d78f97db06e
+Description: Self-hosted pastebin powered by Git, open-source alternative to Github
+ Gist. Opengist is a self-hosted pastebin powered by Git. All snippets are
+ stored in a Git repository and can be read and/or modified using standard Git
+ commands, or with the web interface. It is similar to GitHub Gist, but 
+ open-source and could be self-hosted.
+
 Package: php
 Source: php-defaults (93+ubuntu22.04.1+deb.sury.org+2)
 Version: 2:8.2+93+ubuntu22.04.1+deb.sury.org+2
