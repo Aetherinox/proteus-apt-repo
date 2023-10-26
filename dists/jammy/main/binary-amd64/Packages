@@ -2679,7 +2679,7 @@ Description: PHP wrapper around the gpgme library
  This PHP extension provides methods to interact with gnupg.
 
 Package: php-grpc
-Version: 1.51.1+really.1.50.2-1+ubuntu22.04.1+deb.sury.org+1
+Version: 1.59.1-1+ubuntu22.04.1+deb.sury.org+1
 Architecture: amd64
 Maintainer: Debian PHP PECL Maintainers <team+php-pecl@tracker.debian.org>
 Installed-Size: 9
@@ -2688,12 +2688,12 @@ Depends: php8.2-grpc
 Homepage: http://pecl.php.net/package/grpc
 Priority: 0
 Section: utils
-Filename: pool/main/p/php-grpc/php-grpc_1.51.1+really.1.50.2-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
-Size: 2566
-SHA512: 8d3e083c197fb308bf5c1eba4025f9f1f0701811ff9aa02a7c8606678aedf5e3b3e55e73fbfb539b7a97bf8c09b3dfd34977886289436eb96e616c7cb0f8dab8
-SHA256: 9bf370462d9b92c30b8759414136bd6c793f16375105ddca072be2d86de67441
-SHA1: d8a6d12ca94616e12eb1b23c46f843d06701b4d0
-MD5sum: a6879867d77be5af9c0403956780d8a1
+Filename: pool/main/p/php-grpc/php-grpc_1.59.1-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+Size: 2582
+SHA512: 7759a776403dd6dbb5ffbf2815f51e318075cc30d83916120157aa839e457cd50809ad779df042a78a545662ec5a930b251ffa108968db27438076bd6277633f
+SHA256: 7db351c77c33dc5d55710f7953cdb5c08168833edd55252f74c1eb851a0cccd3
+SHA1: 0aaa9b8b3573640d6ba68bec9d0467e25e4b9035
+MD5sum: 1fd242a5e2d7dac969a95ed546297d6c
 Description: High performance, open source, general RPC framework for PHP
  Remote Procedure Calls (RPCs) provide a useful abstraction for building
  distributed applications and services. The libraries in this repository provide
