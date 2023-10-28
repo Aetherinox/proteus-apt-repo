@@ -606,6 +606,26 @@ Description: Shows Linux System Information with Distribution Logo
  and display it on the terminal next to an image, it could be your
  distributions logo or any ascii art of your choice.
 
+Package: opengist
+Version: 1.5.2
+Architecture: arm64
+Maintainer: Thomas Miceli <thomiceli@github.com>
+Depends: adduser
+Homepage: https://github.com/thomiceli/opengist
+Priority: 0
+Section: utils
+Filename: pool/main/o/opengist/opengist_1.5.2_arm64.deb
+Size: 5511330
+SHA512: 52157d55c832aab9b6f7ce222be4def3f9dbefe4c3272c6f290eee549c3c7f295a52d95e19187b5b8a65e3fbab40defef04d5f5e7c7195f4937e3fe5f46a0ff6
+SHA256: 5c8e0964e5e500acc0d85f1ce1955cf22f9abf5210b48392301b262ee922ac1d
+SHA1: 0d10f74823bb56712fc35bc4062b530907631feb
+MD5sum: 2e0a49414526407ea556ecac5a328b17
+Description: Self-hosted pastebin powered by Git, open-source alternative to Github
+ Gist. Opengist is a self-hosted pastebin powered by Git. All snippets are
+ stored in a Git repository and can be read and/or modified using standard Git
+ commands, or with the web interface. It is similar to GitHub Gist, but 
+ open-source and could be self-hosted.
+
 Package: php-bacon-qr-code
 Source: baconqrcode
 Version: 2.0.6-2

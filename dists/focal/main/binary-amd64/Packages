@@ -840,11 +840,11 @@ Homepage: https://github.com/thomiceli/opengist
 Priority: 0
 Section: utils
 Filename: pool/main/o/opengist/opengist_1.5.2_amd64.deb
-Size: 6111378
-SHA512: 13ca08091e0ebf669f8f56e84cc4d4628508890630be13197c33fb33ad61a376bf50304ee88b5b9961ec16d5ec6ef3866ad0f9864369131030426db1c1562368
-SHA256: 32ca6fcd2440033cc94a1a9c6086500b49e895b2e698f4209c472d4e40da1c1f
-SHA1: 3176fda10a7ce6f09f83ff5623f4bcbbceb5d98b
-MD5sum: 7f39ee3980724978c9a4e61c36602a83
+Size: 6110748
+SHA512: 3f63bd7f144aecfc8cee36b8c381eb5d79a7b6a3dcf4e9826a6e0e93ca7f927d1f90de742ca5e8a93426bffa301a38d6f3c98658a08141c5627f921349559809
+SHA256: 78320d04e00198d02447e76a94a9f2384f00102acf6d1f71e391789ea20ccabe
+SHA1: dfbcf4734e24eae2f1ad44caf6b89d2e1ee79218
+MD5sum: 5145a531e56505aba9dd491d3253cb33
 Description: Self-hosted pastebin powered by Git, open-source alternative to Github
  Gist. Opengist is a self-hosted pastebin powered by Git. All snippets are
  stored in a Git repository and can be read and/or modified using standard Git
