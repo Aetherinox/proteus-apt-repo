@@ -1756,15 +1756,16 @@ Package: opengist
 Version: 1.5.2
 Architecture: amd64
 Maintainer: Thomas Miceli <thomiceli@github.com>
+Depends: adduser
 Homepage: https://github.com/thomiceli/opengist
 Priority: 0
 Section: utils
 Filename: pool/main/o/opengist/opengist_1.5.2_amd64.deb
-Size: 6106706
-SHA512: 2a7858d1b8cc7eb55ee7fb6e4af0a446e0699304c6887acaab55b52dcc1ef4c1a122d30f0e0fe695ac4950569dfa843c16dd40a402dc47116c54168b96a05ade
-SHA256: 1b24f769c6401a847431c2994001c42fb0a4b00cd313147c79a7f9b0f99ec267
-SHA1: 2919d1d0be95cf7aed97afff276bfd27596e3212
-MD5sum: 543b0cab7da37145201aaa1b0189f230
+Size: 6111378
+SHA512: 13ca08091e0ebf669f8f56e84cc4d4628508890630be13197c33fb33ad61a376bf50304ee88b5b9961ec16d5ec6ef3866ad0f9864369131030426db1c1562368
+SHA256: 32ca6fcd2440033cc94a1a9c6086500b49e895b2e698f4209c472d4e40da1c1f
+SHA1: 3176fda10a7ce6f09f83ff5623f4bcbbceb5d98b
+MD5sum: 7f39ee3980724978c9a4e61c36602a83
 Description: Self-hosted pastebin powered by Git, open-source alternative to Github
  Gist. Opengist is a self-hosted pastebin powered by Git. All snippets are
  stored in a Git repository and can be read and/or modified using standard Git

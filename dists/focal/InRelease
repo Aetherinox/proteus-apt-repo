@@ -5,13 +5,13 @@ Origin: Aetherx
 Label: Ubuntu Focal + ZorinOS v16.x
 Suite: stable
 Codename: focal
-Date: Tue, 24 Oct 2023 22:12:17 UTC
+Date: Sat, 28 Oct 2023 04:09:28 UTC
 Architectures: amd64 arm64 i386
 Components: main
 Description: Ubuntu (Focal) and ZorinOS v16.x 20.04 LTS
 MD5Sum:
- ead656094b59cd74a7c88a695138369e 133261 main/binary-amd64/Packages
- ac076cc6a4838ecc7ba1930ad98304ac 36224 main/binary-amd64/Packages.gz
+ 244503273130169b8394aedd0664508d 133278 main/binary-amd64/Packages
+ 04d1cb6fe596bb40c94de7ae3746320d 36233 main/binary-amd64/Packages.gz
  f443fcf28908eec942ba5f3580fcfc96 160 main/binary-amd64/Release
  0a1e3e54b902504dbcb812bb4697f336 43045 main/binary-arm64/Packages
  f8df3a97117d825ddf4e7bd4deddd330 15517 main/binary-arm64/Packages.gz
@@ -23,8 +23,8 @@ MD5Sum:
  7029066c27ac6f5ef18d660d5741979a 20 main/source/Sources.gz
  5b68ad4815abf168d19afa79ed0c9884 161 main/source/Release
 SHA1:
- 96e7fa4e68ffb54f31670ad5aa7198691983b0d1 133261 main/binary-amd64/Packages
- 50642668337ab55dbc6945900e0302acad0ec2c5 36224 main/binary-amd64/Packages.gz
+ a99c5d71abc0dc6f6b202044f2847f97f81c959a 133278 main/binary-amd64/Packages
+ e43ec5008cf299172fa2279338f0c92c88f5d920 36233 main/binary-amd64/Packages.gz
  d59f8db32968b1e0e52ece6cb3a843821088038f 160 main/binary-amd64/Release
  279f80b88ecb4a68916c381fdceb6b8129c8889d 43045 main/binary-arm64/Packages
  028f6a7da20e52017abb53e85fe465f3554ada45 15517 main/binary-arm64/Packages.gz
@@ -36,8 +36,8 @@ SHA1:
  46c6643f07aa7f6bfe7118de926b86defc5087c4 20 main/source/Sources.gz
  fcbe34ba4f60810ba525c22e80b0c904ba553966 161 main/source/Release
 SHA256:
- 42bcf4261ed1cc2bc51ab39ad3613abcf1228189cb37c48b49c25b80ff3a47a4 133261 main/binary-amd64/Packages
- 818c4895851e742457af3407411652268708f159246d60eea807b4469eb77201 36224 main/binary-amd64/Packages.gz
+ ae83bda8a0c3e64471bcdbc12f4c9e7c81c06a4bc644a607db21b7650a012286 133278 main/binary-amd64/Packages
+ ee87a5a57d8fa0f094df7e14a893b21182a291b2157c42f053b2937042e948a2 36233 main/binary-amd64/Packages.gz
  377e593ad09cd2bd72400c3caf001378988bbffc7b96f03714d22f2cf25dadc1 160 main/binary-amd64/Release
  a3e3dabacaa3d0a3f1cf8698972098123d2d9b463d5f2349f5a0bba7332d04ce 43045 main/binary-arm64/Packages
  74c05045407a584bee7cfd0584924ee3bf0e2d4d249485a0d19565424fd8542a 15517 main/binary-arm64/Packages.gz
@@ -49,8 +49,8 @@ SHA256:
  59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2 20 main/source/Sources.gz
  ccd945635f5df1177d79db93e5d6c327f29045de4451ed213f652570a28caa5d 161 main/source/Release
 SHA512:
- 5fa778fabe8f5fa2cc3f0f78ab65f6ad22cbd5e25d1ec1acad3807b9becfda1efab62681d99006c31454ff7b264697d59ac7f10cb42d925128af646d4c4eb1d1 133261 main/binary-amd64/Packages
- 2e42a7c007fef1aa6d9e800919bd06dc290e226ed383894bbef10c2d3bebf40029bb026a92f73ad36d9bcec1b2abdfb1a986226d5a04df3d8249389c7a90ad61 36224 main/binary-amd64/Packages.gz
+ aea5807b8ebbddded74fb2c86ed7fa8870aee5d4b0427b84a14c568016b7c26d1700d79ce49ef2b011f7310d8c5c7d6ce8d6f419fc2f43f27c1f2ce80ab57c80 133278 main/binary-amd64/Packages
+ 90f580b2bc9a70c0cd695dbc9265e26af98530714e3249023c3bfca08eb818536f15fb0a4dfb84baabef2019b476bb8c20f3e9db3f9e205776683cc9bcd7e5e9 36233 main/binary-amd64/Packages.gz
  7121697ee9bb9f18d67212a0763f37f3181d19f422cedad8f1bd34e7351c8236b8ddf7a1993cc24fb09d22535943487b96dd4934cb2a6a4716c4681a4217e5b0 160 main/binary-amd64/Release
  733646ce4247383714f5926e91ea77c0f726583849dfcaf2ba2af45fc2071d209e40fad0a1fb7cfe61da150429191782f1d60c25a0224285101a413fdca44792 43045 main/binary-arm64/Packages
  a89e3365eadca38707d9af1bcc1284670090bd9b99eda33398e895e69f013187f852253815bc6e1f673c3ac3b44b1df0c8b1c709e3740f051784bfefa4946ef6 15517 main/binary-arm64/Packages.gz
@@ -63,17 +63,17 @@ SHA512:
  a467f3bf416d965e380aaf4e878bf57fa3351a04f9c698054d27f6690c2229d578aea87e3f785765e543c7c43de552cbdb4d19669817966feedb49c8eef77024 161 main/source/Release
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCgAdFiEEdTFUq07Y5lsZuvhpy1xMMM0NQCgFAmU4QUEACgkQy1xMMM0N
-QCiswRAAhecKxG8QasMeTcdC8Z96FFMjXPTOLLaawgx14dt+PqRpACu1Zy8S/+YH
-iTdHzax6HDKTsshi6wLargvRqTMNnd8GXMNdupSrc0QwIc5TiwAVPQYfKg6EQuL8
-RpVXIEuE/dZexxj6UBHfrNts2llPK4pbBBXpa+L09XJY1XCWgw7YRswuQV+ZX2fD
-16jbiRxlk9kVUMvdpn1VPoPmja1mRVUofpfmJRA8Ri3EfcpnBXjnOm9OCaa1QemR
-orbvBG7+fldbDyNGA1sFzOCN0TiUq8dIHTLJR2y0vXu4wmB9qhKPf0guLG6/y4zD
-tOM9lPT4SY7ADJ9WmVEymZm8DFQ2aem2eYQvVcvCHg0DSJWJBdU1byjDQom6R+xq
-DldgjWC4N9qUKPCkDIM4hksghgzhDQdCKVvCju+Hl05DC9ALitm/ckZJYK5YvDTi
-zliU+kazG7BbAeINB07tZJaqPt6uC5yZrqB/NF3b1fZU7hQuMY1nVZFu/l20Uhu3
-44q5bCpgTdo+D9T/0s0Q01zhAINfStTDI3N/oYecn6j7dx8TnhsZdw5693GAIM7w
-DLcKavi7K2ycRqsQDEcvltwOx8qlN4hjUi3OBmLsretaAniZg2+0PmHs6vQpmQ2Y
-Qak/mgQWc33pnjupfYFauAz0Pd0pYo9xIXN+9TaRXH5ZacWDUQY=
-=eOuU
+iQIzBAEBCgAdFiEEdTFUq07Y5lsZuvhpy1xMMM0NQCgFAmU8iXkACgkQy1xMMM0N
+QChGbg/9F0PbcLbT3U1wWphU8UTlIDozT3JqcZdcnjZFZpz/VJ1RK8ZEEL56ySvd
+0WQDe7936gUJrriCLuCVnFYQctZaN/4BPTrOZkUj5X/9Qr72WhKpNBiEM91fG6IO
+iXm2j62f+SBTM5J0btu46fDzb9L9Zx8m04O9BJA3bc2l6KoFFkzhwYvJYrW5s/+v
+KMMhGHdPSyJi2a/4ESka/0BoUi3X5xdweAEml0MUKr68bj5ESqsNVEnybMesRHLL
+zuZZHW4PWvJl8WKWOvg8/pOSSxjZuiNZ7y6aIC3MebWyihvf4TZFQ15QUrEfNSqr
+joZyNSn+q+C4Tcb+SsoWah+7vZ9N3SJbFi7hKYbAjRwsSkCxdK+I4JAGcpyIng1a
+cPRJiB3RTyleiCwt8SkNgPCBbTZV/KCYwTQHo80DYbfE+F/Wbo3zFNKWHTdxR3+2
+we/Ux0psBUftr4+vSNFhy/MftIPHMTZgRZZdMdTgaZ0DmldxUldRSf6zgR4TeV4a
+y/grYpXwVU5+CnC4bSNhMzaEsrV6BXr/CPKJH9t+dvWjPzcV16W+TZBnDrbx0HSb
+PScgcOy7lT6tZz+2+c9umjN8wxYdWbFgPdQ83RWT+mt7g/nP4Jri39Y9cH9VJioa
+JU1gz0yO8sxSot6cypUgNV4IAA6tR0BEj6Me36kOOav45883ocQ=
+=uAYV
 -----END PGP SIGNATURE-----
