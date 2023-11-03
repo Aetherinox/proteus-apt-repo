@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `11.02.2023 21:11:21`
+Last generated on `11.02.2023 21:21:09`
 
 <br />
 
@@ -90,23 +90,166 @@ Last generated on `11.02.2023 21:11:21`
 │       └── readme
 │           └── banner.jpg
 ├── incoming
-│   └── autodownloader
-│       └── focal
+│   └── proteus-git
+│       └── jammy
 │           ├── all
-│           │   └── adduser_3.118ubuntu2_all.deb
+│           │   ├── adduser_3.118ubuntu5_all.deb
+│           │   ├── gnome-keysign_1.2.0-3_all.deb
+│           │   ├── lsb-base_11.1.0ubuntu4_all.deb
+│           │   ├── mysql-client_8.0.34-0ubuntu0.22.04.1_all.deb
+│           │   ├── mysql-client_8.0.35-0ubuntu0.22.04.1_all.deb
+│           │   ├── mysql-common_5.8+1.0.8_all.deb
+│           │   ├── mysql-server_8.0.34-0ubuntu0.22.04.1_all.deb
+│           │   ├── mysql-server_8.0.35-0ubuntu0.22.04.1_all.deb
+│           │   ├── networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+│           │   ├── network-manager-config-connectivity-ubuntu_1.36.6-0ubuntu2_all.deb
+│           │   ├── network-manager-dev_1.36.6-0ubuntu2_all.deb
+│           │   ├── nginx-common_1.18.0-6ubuntu14.4_all.deb
+│           │   ├── nginx-doc_1.18.0-6ubuntu14.4_all.deb
+│           │   ├── php_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-all-dev_93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-amqplib_3.1.2-1_all.deb
+│           │   ├── php-apcu-all-dev_5.1.22+4.0.11-2+ubuntu22.04.1+deb.sury.org+1_all.deb
+│           │   ├── php-ast-all-dev_1.1.0-1+ubuntu22.04.1+deb.sury.org+1_all.deb
+│           │   ├── php-bcmath_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-bz2_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-cas_1.3.8-1_all.deb
+│           │   ├── php-cgi_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-cli_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-code-lts-u2f-php-server_1.2.1-2_all.deb
+│           │   ├── php-common_93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-crypt-gpg_1.6.7-2_all.deb
+│           │   ├── php-curl_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-db_1.10.0-1build4_all.deb
+│           │   ├── php-dev_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-ds-all-dev_1.4.0-5+ubuntu22.04.1+deb.sury.org+1_all.deb
+│           │   ├── php-email-validator_3.1.2-1_all.deb
+│           │   ├── php-enchant_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-fpm_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-fxsl_1.1.1-6_all.deb
+│           │   ├── php-gd_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-gettext-languages_2.6.0-2_all.deb
+│           │   ├── php-gmagick-all-dev_2.0.6~rc1++-1+ubuntu22.04.1+deb.sury.org+1_all.deb
+│           │   ├── php-gmp_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-gnupg-all-dev_1.5.1-3+ubuntu22.04.1+deb.sury.org+1_all.deb
+│           │   ├── php-imap_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-interbase_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-intl_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-ldap_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-mbstring_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-mysql_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-odbc_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-pgsql_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-phpdbg_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-pspell_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-readline_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-snmp_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-soap_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-sqlite3_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-sybase_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-tidy_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-xml_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   └── php-zip_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
 │           ├── amd64
-│           │   ├── apt-move_4.2.27-5ubuntu2_amd64.deb
-│           │   ├── apt-utils_2.0.9_amd64.deb
-│           │   └── dialog_1.3-20190808-1_amd64.deb
+│           │   ├── app-outlet_2.1.0_amd64.deb
+│           │   ├── apt-move_4.2.27-6_amd64.deb
+│           │   ├── apt-utils_2.4.10_amd64.deb
+│           │   ├── Bitwarden-2023.9.3-amd64.deb
+│           │   ├── dialog_1.3-20211214-1_amd64.deb
+│           │   ├── freetube_0.19.1_amd64.deb
+│           │   ├── GitHubDesktop-linux-amd64-3.3.3-linux2.deb
+│           │   ├── gnome-keyring_40.0-3ubuntu3_amd64.deb
+│           │   ├── gnome-shell-extension-manager_0.3.0-0ubuntu2.1_amd64.deb
+│           │   ├── gpg_2.2.27-3ubuntu2.1_amd64.deb
+│           │   ├── gpgconf_2.2.27-3ubuntu2.1_amd64.deb
+│           │   ├── gpgv_2.2.27-3ubuntu2.1_amd64.deb
+│           │   ├── keyutils_1.6.1-2ubuntu3_amd64.deb
+│           │   ├── kgpg_21.12.3-0ubuntu1_amd64.deb
+│           │   ├── libnginx-mod-http-auth-pam_1.18.0-6ubuntu14.4_amd64.deb
+│           │   ├── libnginx-mod-http-cache-purge_1.18.0-6ubuntu14.4_amd64.deb
+│           │   ├── libnginx-mod-http-dav-ext_1.18.0-6ubuntu14.4_amd64.deb
+│           │   ├── libnginx-mod-http-echo_1.18.0-6ubuntu14.4_amd64.deb
+│           │   ├── libnginx-mod-http-fancyindex_1.18.0-6ubuntu14.4_amd64.deb
+│           │   ├── libnginx-mod-http-geoip_1.18.0-6ubuntu14.4_amd64.deb
+│           │   ├── libnginx-mod-http-headers-more-filter_1.18.0-6ubuntu14.4_amd64.deb
+│           │   ├── libnginx-mod-http-ndk_1.18.0-6ubuntu14.4_amd64.deb
+│           │   ├── libnginx-mod-http-perl_1.18.0-6ubuntu14.4_amd64.deb
+│           │   ├── libnginx-mod-http-subs-filter_1.18.0-6ubuntu14.4_amd64.deb
+│           │   ├── libnginx-mod-http-uploadprogress_1.18.0-6ubuntu14.4_amd64.deb
+│           │   ├── libnginx-mod-http-upstream-fair_1.18.0-6ubuntu14.4_amd64.deb
+│           │   ├── libnginx-mod-nchan_1.18.0-6ubuntu14.4_amd64.deb
+│           │   ├── libnginx-mod-rtmp_1.18.0-6ubuntu14.4_amd64.deb
+│           │   ├── libnginx-mod-stream-geoip_1.18.0-6ubuntu14.4_amd64.deb
+│           │   ├── lz4_1.9.3-2build2_amd64.deb
+│           │   ├── makedeb-beta_16.1.0-beta1_amd64_jammy.deb
+│           │   ├── network-manager_1.36.6-0ubuntu2_amd64.deb
+│           │   ├── network-manager-gnome_1.24.0-1ubuntu3_amd64.deb
+│           │   ├── network-manager-openvpn_1.8.18-1_amd64.deb
+│           │   ├── network-manager-openvpn-gnome_1.8.18-1_amd64.deb
+│           │   ├── network-manager-pptp_1.2.10-1_amd64.deb
+│           │   ├── network-manager-pptp-gnome_1.2.10-1_amd64.deb
+│           │   ├── nginx_1.18.0-6ubuntu14.4_amd64.deb
+│           │   ├── nginx-confgen_2.0-1_amd64.deb
+│           │   ├── nginx-core_1.18.0-6ubuntu14.4_amd64.deb
+│           │   ├── nginx-extras_1.18.0-6ubuntu14.4_amd64.deb
+│           │   ├── nginx-full_1.18.0-6ubuntu14.4_amd64.deb
+│           │   ├── nginx-light_1.18.0-6ubuntu14.4_amd64.deb
+│           │   ├── obsidian_1.4.16_amd64.deb
+│           │   ├── open-vm-tools_12.1.5-3~ubuntu0.22.04.3_amd64.deb
+│           │   ├── open-vm-tools-desktop_12.1.5-3~ubuntu0.22.04.3_amd64.deb
+│           │   ├── open-vm-tools-dev_12.1.5-3~ubuntu0.22.04.3_amd64.deb
+│           │   ├── php-amqp_1.11.0-5+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-apcu_5.1.22+4.0.11-2+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-ast_1.1.0-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-bacon-qr-code_2.0.6-2_amd64.deb
+│           │   ├── php-decimal_1.4.0-5+ubuntu22.04.1+deb.sury.org+2_amd64.deb
+│           │   ├── php-ds_1.4.0-5+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-excimer_1.0.4-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-gearman_2.1.0++-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-gmagick_2.0.6~rc1++-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-gnupg_1.5.1-3+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-grpc_1.59.1-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-http_4.2.3-3+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-igbinary_3.2.14-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-imagick_3.7.0-3+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-inotify_3.0.0++-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-mailparse_3.1.4++-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-maxminddb_1.11.0-4+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-mcrypt_1.0.6-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-memcache_8.2-2+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-memcached_3.2.0++-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-mongodb_1.16.2-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-msgpack_2.2.0~rc2-2+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-oauth_2.0.7++-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-pcov_1.0.11-5+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-ps_1.4.4++-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-psr_1.2.0-5+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-raphf_2.0.1++-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-redis_6.0.1-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-rrd_2.0.3++-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-smbclient_1.1.1-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-solr_2.6.0++-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-ssh2_1.4-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-stomp_2.0.3-2+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-tideways_5.0.4-14+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-uopz_7.1.1++-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-uploadprogress_2.0.2++-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-uuid_1.2.0-12+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-xdebug_3.2.1++-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-xmlrpc_1.0.0~rc3-5+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-yac_2.3.1++-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-yaml_2.2.3-2+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── php-zmq_1.1.3-24+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   └── wget_1.21.2-2ubuntu1_amd64.deb
 │           └── arm64
+│               ├── freetube_0.19.1_arm64.deb
+│               ├── GitHubDesktop-linux-arm64-3.3.3-linux2.deb
+│               └── makedeb-beta_16.1.0-beta1_arm64_jammy.deb
 ├── logs
+│   ├── repos
+│   │   └── jammy.log
 │   ├── proteus-git-02112023.log
-│   ├── proteus-git-02112023.log.pipe
-│   ├── proteus-git-22102023.log
-│   ├── proteus-git-22102023.log.pipe
-│   ├── proteus-git-24102023.log
-│   ├── proteus-git-26102023.log
-│   └── proteus-git-27102023.log
+│   └── proteus-git-02112023.log.pipe
 ├── node_modules
 │   └── .yarn-integrity
 ├── pool
@@ -236,10 +379,10 @@ Last generated on `11.02.2023 21:11:21`
 │       │   │   ├── makedeb-beta_16.1.0-beta1_amd64.deb
 │       │   │   └── makedeb-beta_16.1.0-beta1_arm64.deb
 │       │   ├── mysql-8.0
-│       │   │   ├── mysql-client_8.0.34-0ubuntu0.22.04.1_all.deb
 │       │   │   ├── mysql-client_8.0.34-0ubuntu0.23.04.1_all.deb
-│       │   │   ├── mysql-server_8.0.34-0ubuntu0.22.04.1_all.deb
-│       │   │   └── mysql-server_8.0.34-0ubuntu0.23.04.1_all.deb
+│       │   │   ├── mysql-client_8.0.35-0ubuntu0.22.04.1_all.deb
+│       │   │   ├── mysql-server_8.0.34-0ubuntu0.23.04.1_all.deb
+│       │   │   └── mysql-server_8.0.35-0ubuntu0.22.04.1_all.deb
 │       │   └── mysql-defaults
 │       │       ├── mysql-common_5.8+1.0.8_all.deb
 │       │       └── mysql-common_5.8+1.1.0_all.deb
@@ -825,5 +968,5 @@ Last generated on `11.02.2023 21:11:21`
 ├── tree.md
 └── yarn.lock
 
-162 directories, 653 files
+163 directories, 795 files
 ```
