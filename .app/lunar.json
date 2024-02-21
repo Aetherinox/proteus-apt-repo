@@ -1,9 +1,9 @@
 {
     "name":             "Proteus Apt Git",
-    "version":          "1.0.0.0",
+    "version":          "1.1.0.0",
     "author":           "Aetherinox",
     "description":      "Internal system to Proteus App Manager which grabs debian packages.",
     "url":              "https://github.com/Aetherinox/proteus-git",
-    "last_update":      "02.20.2024 17:56:05",
-    "last_update_ts":   "1708480565"
+    "last_update":      "Running ............",
+    "last_update_ts":   "1708543540"
 }
