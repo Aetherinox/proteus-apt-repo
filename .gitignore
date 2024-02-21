@@ -2,8 +2,9 @@ incoming/
 .env
 sources-*.list
 logs/
-/apt-url
+apt-url
+.gpg/*.gpg
+.gpg/*.asc
 /proteus-git.sh
 /secrets.sh
-.gpg/
 node_modules/
