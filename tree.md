@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `02.20.2024 17:56:05`
+Last generated on `02.21.2024 11:04:44`
 
 <br />
 
@@ -19,6 +19,7 @@ Last generated on `02.20.2024 17:56:05`
 ├── db
 │   ├── checksums.db
 │   ├── contents.cache.db
+│   ├── lockfile
 │   ├── packagenames.db
 │   ├── packages.db
 │   ├── references.db
@@ -90,7 +91,7 @@ Last generated on `02.20.2024 17:56:05`
 │       └── readme
 │           └── banner.jpg
 ├── .gpg
-│   └── aetherx_priv.gpg
+│   └── README.md
 ├── incoming
 │   └── proteus-git
 │       └── lunar
@@ -156,9 +157,12 @@ Last generated on `02.20.2024 17:56:05`
 │           │   ├── php-xml_8.1+92ubuntu1_all.deb
 │           │   └── php-zip_8.1+92ubuntu1_all.deb
 │           ├── amd64
+│           │   ├── app-outlet_2.1.0_amd64.deb
 │           │   ├── apt-move_4.2.27-6_amd64.deb
 │           │   ├── apt-utils_2.6.0ubuntu0.1_amd64.deb
 │           │   ├── dialog_1.3-20230209-1_amd64.deb
+│           │   ├── freetube_0.19.1_amd64.deb
+│           │   ├── GitHubDesktop-linux-amd64-3.3.8-linux2.deb
 │           │   ├── gnome-keyring_42.1-1_amd64.deb
 │           │   ├── gnome-shell-extension-manager_0.4.0-1_amd64.deb
 │           │   ├── gpg_2.2.40-1.1ubuntu1_amd64.deb
@@ -194,13 +198,13 @@ Last generated on `02.20.2024 17:56:05`
 │           │   ├── nginx-extras_1.22.0-1ubuntu3_amd64.deb
 │           │   ├── nginx-full_1.22.0-1ubuntu3_amd64.deb
 │           │   ├── nginx-light_1.22.0-1ubuntu3_amd64.deb
+│           │   ├── obsidian_1.5.3_amd64.deb
 │           │   ├── open-vm-tools_12.1.5-3ubuntu0.23.04.3_amd64.deb
 │           │   ├── open-vm-tools-desktop_12.1.5-3ubuntu0.23.04.3_amd64.deb
 │           │   ├── open-vm-tools-dev_12.1.5-3ubuntu0.23.04.3_amd64.deb
 │           │   ├── php-amqp_1.11.0-5_amd64.deb
 │           │   ├── php-apcu_5.1.22+4.0.11-2_amd64.deb
 │           │   ├── php-ast_1.1.0-2_amd64.deb
-│           │   ├── php-bacon-qr-code_2.0.8-2_amd64.deb
 │           │   ├── php-ds_1.4.0-5_amd64.deb
 │           │   ├── php-excimer_1.0.4-2_amd64.deb
 │           │   ├── php-gearman_2.1.0+1.1.2-12_amd64.deb
@@ -238,12 +242,14 @@ Last generated on `02.20.2024 17:56:05`
 │           │   ├── php-zmq_1.1.3-24_amd64.deb
 │           │   └── wget_1.21.3-1ubuntu1_amd64.deb
 │           └── arm64
+│               ├── freetube_0.19.1_arm64.deb
+│               └── GitHubDesktop-linux-arm64-3.3.8-linux2.deb
 ├── logs
-│   ├── proteus-git-02112023.log
+│   ├── repos
+│   │   └── lunar.log
 │   ├── proteus-git-20022024.log
-│   └── proteus-git-20022024.log.pipe
-├── node_modules
-│   └── .yarn-integrity
+│   ├── proteus-git-21022024.log
+│   └── proteus-git-21022024.log.pipe
 ├── pool
 │   └── main
 │       ├── a
@@ -294,7 +300,9 @@ Last generated on `02.20.2024 17:56:05`
 │       ├── g
 │       │   ├── github-desktop
 │       │   │   ├── github-desktop_3.3.3-linux2_amd64.deb
-│       │   │   └── github-desktop_3.3.3-linux2_arm64.deb
+│       │   │   ├── github-desktop_3.3.3-linux2_arm64.deb
+│       │   │   ├── github-desktop_3.3.8-linux2_amd64.deb
+│       │   │   └── github-desktop_3.3.8-linux2_arm64.deb
 │       │   ├── gitkraken-license-pro
 │       │   │   └── gitkraken-license-pro_1.0.0-1_all.deb
 │       │   ├── gnome-keyring
@@ -491,7 +499,8 @@ Last generated on `02.20.2024 17:56:05`
 │       │       └── nginx-confgen_2.1-1_arm64.deb
 │       ├── o
 │       │   ├── obsidian
-│       │   │   └── obsidian_1.4.16_amd64.deb
+│       │   │   ├── obsidian_1.4.16_amd64.deb
+│       │   │   └── obsidian_1.5.3_amd64.deb
 │       │   ├── ocs-url
 │       │   │   └── ocs-url_3.1.0-0ubuntu1_amd64.deb
 │       │   ├── opengist
@@ -953,12 +962,25 @@ Last generated on `02.20.2024 17:56:05`
 │       └── z
 │           └── zorin-pro-layouts
 │               └── zorin-pro-layouts_1.0.0-3_all.deb
+├── adduser_3.129ubuntu1_all.deb
+├── app-outlet_2.1.0_amd64.deb.1
+├── app-outlet_2.1.0_amd64.deb.2
+├── freetube_0.19.1_amd64.deb
+├── freetube_0.19.1_amd64.deb.1
+├── freetube_0.19.1_arm64.deb
+├── freetube_0.19.1_arm64.deb.1
+├── GitHubDesktop-linux-amd64-3.3.8-linux2.deb.1
+├── GitHubDesktop-linux-amd64-3.3.8-linux2.deb.2
+├── GitHubDesktop-linux-arm64-3.3.8-linux2.deb.1
+├── GitHubDesktop-linux-arm64-3.3.8-linux2.deb.2
 ├── .gitignore
+├── obsidian_1.5.3_amd64.deb.1
+├── obsidian_1.5.3_amd64.deb.2
 ├── proteus-git.sh
 ├── README.md
 ├── secrets.sh
 ├── tree.md
-└── yarn.lock
+└── wget-log
 
-164 directories, 787 files
+164 directories, 809 files
 ```
