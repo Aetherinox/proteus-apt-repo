@@ -256,22 +256,22 @@ Description:
   A private YouTube client
 
 Package: github-desktop
-Version: 3.3.3-linux2
+Version: 3.3.8-linux2
 Architecture: amd64
 Depends: libgtk-3-0, libnotify4, libnss3, libxtst6, xdg-utils, libatspi2.0-0, libdrm2, libgbm1, libxcb-dri3-0, kde-cli-tools | kde-runtime | trash-cli | libglib2.0-bin | gvfs-bin, libcurl3 | libcurl4, libsecret-1-0, gnome-keyring
 Recommends: pulseaudio | libasound2
 Suggests: gir1.2-gnomekeyring-1.0, libgnome-keyring0, lsb-release
-Installed-Size: 331834
+Installed-Size: 337293
 Maintainer: Brendan Forster <github@brendanforster.com>
 Homepage: https://github.com/shiftkey/desktop
 Priority: 0
 Section: utils
-Filename: pool/main/g/github-desktop/github-desktop_3.3.3-linux2_amd64.deb
-Size: 92138360
-SHA512: b06938df15d6ed91e5469a3d8943edb1c4d8e3ebb0f2a24c80ab06a98b0be31a250d9b4550ae0f3e9c8acc6600388e73a80a0dc852fa727c8366a5bbf192c3d4
-SHA256: dd252a4686243f8fea17ff6cf96d23db951658deda258fcbacbcc30fa83d1dbf
-SHA1: d77560a4f11a71c6122fde05b699af679cd5ccce
-MD5sum: abb63bb36f66fb067eee8b3e5c326696
+Filename: pool/main/g/github-desktop/github-desktop_3.3.8-linux2_amd64.deb
+Size: 94652532
+SHA512: ce6638b9b1b12967dca6c5aebdb1b5b56e906b0ec4a57ad0d83c6dfa13d605ffdebf74b55a5e096c970bad0452ac92abf70767bc256a732ac5b9cbe3911bf707
+SHA256: 317b4421512c7791803c6bb13077052c9fccd34f653d19d7ea1fa48f9525486f
+SHA1: d5b0775bd8e259d853330d1784590b7af6222f90
+MD5sum: c211261b2413198adf321923a1905aae
 Description: Simple collaboration from your desktop
  This is the unofficial port of GitHub Desktop for Linux distributions
 
@@ -1632,23 +1632,23 @@ Description: nginx web/proxy server (basic version)
 Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
 
 Package: obsidian
-Version: 1.4.16
+Version: 1.5.3
 License: UNLICENSED
 Vendor: Dynalist Inc.
 Architecture: amd64
 Maintainer: Dynalist Inc.
-Installed-Size: 263421
+Installed-Size: 263897
 Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
 Recommends: libappindicator3-1
 Homepage: https://obsidian.md
 Priority: 0
 Section: utils
-Filename: pool/main/o/obsidian/obsidian_1.4.16_amd64.deb
-Size: 73362498
-SHA512: 3b691188a05e20e0d1792a6b135076d3dabe33106e541ae4614703fdea44bcb64fc52bbd62808325c381f28348e37cbde0e3d072e4e1b077fb2b9728c43edb05
-SHA256: 7af0647fdc5a0a70840c9b71742c573e39990dde9e1dcd73479c4ca4aa38d74d
-SHA1: 44acf0c3753dd12c84ec6e2a72f2e3e956ea6044
-MD5sum: 1f9c258494f5270c1c7b0c480750e3d7
+Filename: pool/main/o/obsidian/obsidian_1.5.3_amd64.deb
+Size: 73415050
+SHA512: 1d60cd8c1c0f1eff3f8937a4a3117b13fadbc0311a4c490510262e4335927bd4826e895cbefdaf2e1172f45a39608cf102dc1c950c384a3015c387ebe2fb26cf
+SHA256: 15053618d0a4c3230dcd73cf798fe4a52f670b1b2f740b5e799de2e03c777cb2
+SHA1: 645acf9f9cba333ed89e72653ea930c4ae5b6c7f
+MD5sum: c7ec005090171c47c4a20ee4719431d2
 Description: 
   Obsidian
 
