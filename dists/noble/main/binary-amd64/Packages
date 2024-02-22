@@ -1,0 +1,48 @@
+Package: opengist
+Version: 1.6.1
+Architecture: amd64
+Maintainer: Thomas Miceli <thomiceli@github.com>
+Depends: adduser
+Homepage: https://github.com/Aetherinox/debian-opengist
+Priority: 0
+Section: utils
+Filename: pool/main/o/opengist/opengist_1.6.1_amd64.deb
+Size: 18483130
+SHA512: 7528117dd2b5d3398de1aaa085d3d02f3f23afb756f2464a1ff5ed03e539e395b9a440d6273218c2e82aead9f00e76081eb2db3ff25ec85d45fa70515c2071bc
+SHA256: 3d44e945ca35cdccf82a87a05c13a79de2a972c51da745d16c6808cb28f9ed8f
+SHA1: 1b91bbdc91bc8a8614bbfb2aec1095a00d84a0d5
+MD5sum: 031e9b6352c9ae6c9979f45b6c99650a
+Description: Self-hosted pastebin powered by Git, open-source alternative to Github
+ Gist. Opengist is a self-hosted pastebin powered by Git. All snippets are
+ stored in a Git repository and can be read and/or modified using standard Git
+ commands, or with the web interface. It is similar to GitHub Gist, but 
+ open-source and could be self-hosted.
+
+Package: reprepro
+Version: 5.4.2-1
+Architecture: amd64
+Maintainer: Bastian Germann <bage@debian.org>
+Installed-Size: 1230
+Depends: libarchive13 (>= 3.0.4), libbz2-1.0, libc6 (>= 2.34), libdb5.3, libgpg-error0 (>= 1.14), libgpgme11 (>= 1.2.0), liblzma5 (>= 5.1.1alpha+20120614), zlib1g (>= 1:1.2.0.2), zstd
+Recommends: apt (>= 0.9.4)
+Suggests: pinentry-curses, gnupg-agent, inoticoming, lzip (>= 1.11-2)
+Priority: 0
+Section: utils
+Filename: pool/main/r/reprepro/reprepro_5.4.2-1_amd64.deb
+Size: 462172
+SHA512: cc30d6ea6bae539a19a75cf27f1e59e072d0ff2af9666f70926279dadbae1b7cbdf94b79481acf5f626ed7630da7c441a862a465bf070288a0009a076cb454d6
+SHA256: f22b1172ff4779e32cb54c2b1b411350ea9398b49616dbe1a2fde8b8cf9d85bc
+SHA1: a11d53e9f075c159c961170702bf36459cc12397
+MD5sum: 5f0f7b21b8163d32ab879ed325b3d4ea
+Description: Debian package repository producer
+ reprepro is a tool to manage a repository of Debian packages
+ (.deb, .udeb, .dsc, ...). It stores files either being
+ injected manually or downloaded from some other repository
+ (partially) mirrored into one pool/ hierarchy.
+ Managed packages and files are stored in a Berkeley DB,
+ so no database server is needed.
+ Checking signatures of mirrored repositories and creating
+ signatures of the generated Package indices is supported.
+ .
+ This package also contains the changestool and rredtool helpers.
+
