@@ -1656,19 +1656,19 @@ Description: Open VMware Tools for virtual machines hosted on VMware (developmen
 Original-Maintainer: Bernd Zeimetz <bzed@debian.org>
 
 Package: opengist
-Version: 1.5.2
+Version: 1.6.1
 Architecture: arm64
 Maintainer: Thomas Miceli <thomiceli@github.com>
 Depends: adduser
-Homepage: https://github.com/thomiceli/opengist
+Homepage: https://github.com/Aetherinox/debian-opengist
 Priority: 0
 Section: utils
-Filename: pool/main/o/opengist/opengist_1.5.2_arm64.deb
-Size: 5511330
-SHA512: 52157d55c832aab9b6f7ce222be4def3f9dbefe4c3272c6f290eee549c3c7f295a52d95e19187b5b8a65e3fbab40defef04d5f5e7c7195f4937e3fe5f46a0ff6
-SHA256: 5c8e0964e5e500acc0d85f1ce1955cf22f9abf5210b48392301b262ee922ac1d
-SHA1: 0d10f74823bb56712fc35bc4062b530907631feb
-MD5sum: 2e0a49414526407ea556ecac5a328b17
+Filename: pool/main/o/opengist/opengist_1.6.1_arm64.deb
+Size: 17169340
+SHA512: 349685da15894366da9d4321130f51dbecae51cac081bb3fd4b531308f381a1a40a9b5b00006dcfa0604df74aa645bfdabf6304b3632b68c8c344c04a8c02b28
+SHA256: 0c1c31f8ff4d0cf5fad24b037080e867661fe6d032c978c67210d9560b782416
+SHA1: 9a797271c7f56d9730f09293d616a189c5a6bf8e
+MD5sum: aaaed5726cd5fda416b7bd13b9be8b01
 Description: Self-hosted pastebin powered by Git, open-source alternative to Github
  Gist. Opengist is a self-hosted pastebin powered by Git. All snippets are
  stored in a Git repository and can be read and/or modified using standard Git

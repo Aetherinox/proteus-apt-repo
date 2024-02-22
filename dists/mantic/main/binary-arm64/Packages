@@ -1,3 +1,23 @@
+Package: opengist
+Version: 1.6.1
+Architecture: arm64
+Maintainer: Thomas Miceli <thomiceli@github.com>
+Depends: adduser
+Homepage: https://github.com/Aetherinox/debian-opengist
+Priority: 0
+Section: utils
+Filename: pool/main/o/opengist/opengist_1.6.1_arm64.deb
+Size: 17169340
+SHA512: 349685da15894366da9d4321130f51dbecae51cac081bb3fd4b531308f381a1a40a9b5b00006dcfa0604df74aa645bfdabf6304b3632b68c8c344c04a8c02b28
+SHA256: 0c1c31f8ff4d0cf5fad24b037080e867661fe6d032c978c67210d9560b782416
+SHA1: 9a797271c7f56d9730f09293d616a189c5a6bf8e
+MD5sum: aaaed5726cd5fda416b7bd13b9be8b01
+Description: Self-hosted pastebin powered by Git, open-source alternative to Github
+ Gist. Opengist is a self-hosted pastebin powered by Git. All snippets are
+ stored in a Git repository and can be read and/or modified using standard Git
+ commands, or with the web interface. It is similar to GitHub Gist, but 
+ open-source and could be self-hosted.
+
 Package: reprepro
 Version: 5.4.2-1
 Architecture: arm64
