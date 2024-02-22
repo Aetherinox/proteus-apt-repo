@@ -1906,7 +1906,7 @@ app_run_tree_update()
     ##--------------------------------------------------------------------------
 
     duration=$SECONDS
-    elapsed="$(($duration / 60))m and $(( $duration % 60 ))s"
+    elapsed="$(($duration / 60))m $(( $duration % 60 ))s"
 
     ##--------------------------------------------------------------------------
     #   .app folder > create .json
@@ -2043,7 +2043,7 @@ app_start()
     ##--------------------------------------------------------------------------
 
     duration=$SECONDS
-    elapsed="$(($duration / 60)) minutes and $(( $duration % 60 )) seconds elapsed."
+    elapsed="$(($duration / 60)) minutes $(( $duration % 60 )) seconds elapsed."
 
     printf "%-57s %-15s\n\n\n\n" "${TIME}      ${elapsed}" | tee -a "${LOGS_FILE}" >/dev/null
 
