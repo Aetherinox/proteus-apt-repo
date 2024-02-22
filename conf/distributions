@@ -27,3 +27,13 @@ Components: main
 Description: Ubuntu (Lunar) 23.04
 SignWith: BD3DC629
 Log: repos/lunar.log
+
+Origin: Aetherx
+Label: Ubuntu Mantic
+Suite: stable
+Codename: mantic
+Architectures: amd64 arm64 i386 source
+Components: main
+Description: Ubuntu (Mantic) 23.10
+SignWith: BD3DC629
+Log: repos/mantic.log
