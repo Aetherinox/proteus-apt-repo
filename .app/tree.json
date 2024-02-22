@@ -130,7 +130,8 @@
       {"type":"directory","name":"repos","contents":[
         {"type":"file","name":"lunar.log"}
       ]},
-      {"type":"file","name":"proteus-git-21022024.log"}
+      {"type":"file","name":"proteus-git-21022024.log"},
+      {"type":"fifo","name":"proteus-git-21022024.log.pipe"}
     ]},
     {"type":"directory","name":"pool","contents":[
       {"type":"directory","name":"main","contents":[
@@ -980,5 +981,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":164,"files":653}
+  {"type":"report","directories":164,"files":654}
 ]
