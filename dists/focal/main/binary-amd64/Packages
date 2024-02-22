@@ -832,19 +832,19 @@ Description: OCS-URL
  An install helper program for items served via OpenCollaborationServices (ocs://).
 
 Package: opengist
-Version: 1.5.2
+Version: 1.6.1
 Architecture: amd64
 Maintainer: Thomas Miceli <thomiceli@github.com>
 Depends: adduser
-Homepage: https://github.com/thomiceli/opengist
+Homepage: https://github.com/Aetherinox/debian-opengist
 Priority: 0
 Section: utils
-Filename: pool/main/o/opengist/opengist_1.5.2_amd64.deb
-Size: 6110748
-SHA512: 3f63bd7f144aecfc8cee36b8c381eb5d79a7b6a3dcf4e9826a6e0e93ca7f927d1f90de742ca5e8a93426bffa301a38d6f3c98658a08141c5627f921349559809
-SHA256: 78320d04e00198d02447e76a94a9f2384f00102acf6d1f71e391789ea20ccabe
-SHA1: dfbcf4734e24eae2f1ad44caf6b89d2e1ee79218
-MD5sum: 5145a531e56505aba9dd491d3253cb33
+Filename: pool/main/o/opengist/opengist_1.6.1_amd64.deb
+Size: 18483130
+SHA512: 7528117dd2b5d3398de1aaa085d3d02f3f23afb756f2464a1ff5ed03e539e395b9a440d6273218c2e82aead9f00e76081eb2db3ff25ec85d45fa70515c2071bc
+SHA256: 3d44e945ca35cdccf82a87a05c13a79de2a972c51da745d16c6808cb28f9ed8f
+SHA1: 1b91bbdc91bc8a8614bbfb2aec1095a00d84a0d5
+MD5sum: 031e9b6352c9ae6c9979f45b6c99650a
 Description: Self-hosted pastebin powered by Git, open-source alternative to Github
  Gist. Opengist is a self-hosted pastebin powered by Git. All snippets are
  stored in a Git repository and can be read and/or modified using standard Git
