@@ -1,39 +1,49 @@
 Origin: Aetherx
-Label: Ubuntu Focal + ZorinOS v16.x
+Label: Focal Fossa 20.04 LTS & ZorinOS v16
 Suite: stable
 Codename: focal
 Architectures: amd64 arm64 i386 source
 Components: main
-Description: Ubuntu (Focal) and ZorinOS v16.x 20.04 LTS
+Description: Ubuntu 20.04 (Focal Fossa) LTS & ZorinOS v16
 SignWith: BD3DC629
 Log: repos/focal.log
 
 Origin: Aetherx
-Label: Ubuntu Jammy + ZorinOS v17.x
+Label: Jammy Jellyfish 22.04 LTS & ZorinOS v17
 Suite: stable
 Codename: jammy
 Architectures: amd64 arm64 i386 source
 Components: main
-Description: Ubuntu (Jammy) and ZorinOS v17.x 22.04 LTS
+Description: Ubuntu 22.04 (Jammy Jellyfish) LTS & ZorinOS v17
 SignWith: BD3DC629
 Log: repos/jammy.log
 
 Origin: Aetherx
-Label: Ubuntu Lunar
+Label: Lunar Lobster 23.04
 Suite: stable
 Codename: lunar
 Architectures: amd64 arm64 i386 source
 Components: main
-Description: Ubuntu (Lunar) 23.04
+Description: Ubuntu 23.04 (Lunar Lobster)
 SignWith: BD3DC629
 Log: repos/lunar.log
 
 Origin: Aetherx
-Label: Ubuntu Mantic
+Label: Mantic Minotaur 23.10
 Suite: stable
 Codename: mantic
 Architectures: amd64 arm64 i386 source
 Components: main
-Description: Ubuntu (Mantic) 23.10
+Description: Ubuntu 23.10 (Mantic)
 SignWith: BD3DC629
 Log: repos/mantic.log
+
+Origin: Aetherx
+Label: Noble Numbat 24.04 LTS
+Suite: stable
+Codename: noble
+Architectures: amd64 arm64 i386 source
+Components: main
+Description: Ubuntu 24.04 (Noble Numbat)
+SignWith: BD3DC629
+Log: repos/noble.log
