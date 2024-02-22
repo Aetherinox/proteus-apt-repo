@@ -102,20 +102,20 @@ Description: Fetches URLs for specified packages.
 
 Package: apt-utils
 Source: apt
-Version: 2.4.10
+Version: 2.4.11
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: APT Development Team <deity@lists.debian.org>
-Installed-Size: 788
-Depends: apt (= 2.4.10), libapt-pkg6.0 (>= 2.4.10), libc6 (>= 2.34), libdb5.3, libgcc-s1 (>= 3.3.1), libstdc++6 (>= 11)
+Installed-Size: 792
+Depends: apt (= 2.4.11), libapt-pkg6.0 (>= 2.4.11), libc6 (>= 2.34), libdb5.3, libgcc-s1 (>= 3.3.1), libstdc++6 (>= 11)
 Priority: 0
 Section: utils
-Filename: pool/main/a/apt/apt-utils_2.4.10_amd64.deb
-Size: 210646
-SHA512: e91aeebefa98b5c7b93df3d6559b40bbb71f1c548417af7eff15ada5d6cd9367c6949e5444039097c399078e1ce11c22e2c464aa6fffa821496bc493231ed8d2
-SHA256: 9dc460f92d4868396a743b0777bb423f10cea0e43eb346340764c8020240202e
-SHA1: d55520f0faac2eb64dd0ca8f2981cea93a656c2b
-MD5sum: 489b8b5351f4bd81b78198501f404ad6
+Filename: pool/main/a/apt/apt-utils_2.4.11_amd64.deb
+Size: 210608
+SHA512: 77143d73b9d1a1a64f1c378fea8b8aa5f6ced9e12b0ebadef30e47455ed796325da5540e1f9604975c83d0628d025e23a0f2219e343b853b40c0806bb58b1c71
+SHA256: ca5ec9542cd0848b8e62e008f01892e24a4308e15d446812cf8374298ab5911f
+SHA1: e33f929df21c708137017c4b106507d90637b0d4
+MD5sum: 62ddfd5837a43f92e61805d78fe5bac4
 Description: package management related utility programs
  This package contains some less used commandline utilities related
  to package management with APT.
@@ -1030,7 +1030,7 @@ Provides: makedeb (= 16.1.0)
 
 Package: mysql-client
 Source: mysql-8.0
-Version: 8.0.35-0ubuntu0.22.04.1
+Version: 8.0.36-0ubuntu0.22.04.1
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 35
@@ -1038,12 +1038,12 @@ Depends: mysql-client-8.0
 Homepage: http://dev.mysql.com/
 Priority: 0
 Section: utils
-Filename: pool/main/m/mysql-8.0/mysql-client_8.0.35-0ubuntu0.22.04.1_all.deb
+Filename: pool/main/m/mysql-8.0/mysql-client_8.0.36-0ubuntu0.22.04.1_all.deb
 Size: 9354
-SHA512: eecd0951c8d66d0a58da5c38b9964e588b6bd451621a17924036fe3b278a2a79884c6ec3588a1486174b73ea7d7a011ac4239394e3eb57ece3ecbfecb99502e4
-SHA256: 04b0f901e9eaeac851c5f22aa7410a69caee535c5bcdcd9c6384b3ce352a433d
-SHA1: 092d125aa6dcbac6cc10d6599e86e7e5dd2f9a83
-MD5sum: b3809cc38ceedb9301d29af20508b7d4
+SHA512: 3119ea9593e73afbb0dab30a59579e04e03f13d5544a787a0e021dd462e4d28e6a3f8b385c014e75adaada25977272f21dce64e2c5f92224a64f83deef33110f
+SHA256: dd8cec8c409fbf1ec074974dbae0b1fc8867ccd5237ee283e0bfee8c102b9e28
+SHA1: d45c1c27fe44c7c32ea4fc468a339b73e36f2392
+MD5sum: 68ac1ae3b7084267abf4fe12bcf3787e
 Description: MySQL database client (metapackage depending on the latest version)
  This is an empty package that depends on the current "best" version of
  mysql-client (currently mysql-client-8.0), as determined by the MySQL
@@ -1083,7 +1083,7 @@ Description: MySQL database common files, e.g. /etc/mysql/my.cnf
 
 Package: mysql-server
 Source: mysql-8.0
-Version: 8.0.35-0ubuntu0.22.04.1
+Version: 8.0.36-0ubuntu0.22.04.1
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 35
@@ -1091,12 +1091,12 @@ Depends: mysql-server-8.0
 Homepage: http://dev.mysql.com/
 Priority: 0
 Section: utils
-Filename: pool/main/m/mysql-8.0/mysql-server_8.0.35-0ubuntu0.22.04.1_all.deb
-Size: 9464
-SHA512: 24aac41f11dcabb78a631a7817faaf6d39daa30121af80826da07bb230e47101dd60ecef2856613af81b003e7c3600802dabe87c1efbbe85ba99a0a0499f4f87
-SHA256: 857b9efb3ad62455dade3136a31ce5007bbdff0af06f1b01ea626d98045b5074
-SHA1: 4ae77309a657fafec44c5eb301d15ae2a7591d89
-MD5sum: 8d29593ee4573d760c28337e4ac6efac
+Filename: pool/main/m/mysql-8.0/mysql-server_8.0.36-0ubuntu0.22.04.1_all.deb
+Size: 9460
+SHA512: a6cecb50be593b8b2be03c6184a49f2d93af6fd81f1800318fcac2949acefbcb3c0c1a0ea8fc6f137a32ab3900ef5e75f65c5f1a079f7bc8b92ea11422bc9c27
+SHA256: 7deefb96564c64f620d1d7a405585cce16344f6c4c2909653047b8fd742806f9
+SHA1: dbbbe83b6cb6e37d836905fbf6c6c4ef7f9e6a22
+MD5sum: 9132fabf84bdfd9d6b8d4d19f19b79e4
 Description: MySQL database server (metapackage depending on the latest version)
  This is an empty package that depends on the current "best" version of
  mysql-server (currently mysql-server-8.0), as determined by the MySQL
@@ -1697,10 +1697,10 @@ Description: OCS-URL
  An install helper program for items served via OpenCollaborationServices (ocs://).
 
 Package: open-vm-tools
-Version: 2:12.1.5-3~ubuntu0.22.04.3
+Version: 2:12.3.5-3~ubuntu0.22.04.1
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Installed-Size: 3141
+Installed-Size: 3160
 Pre-Depends: init-system-helpers (>= 1.54~)
 Depends: libc6 (>= 2.34), libdrm2 (>= 2.4.3), libfuse3-3 (>= 3.2.3), libgcc-s1 (>= 3.3), libglib2.0-0 (>= 2.31.8), libmspack0 (>= 0.4), libssl3 (>= 3.0.0~~alpha1), libtirpc3 (>= 1.0.2), libudev1 (>= 183), libxml2 (>= 2.7.4), libxmlsec1 (>= 1.2.33), libxmlsec1-openssl (>= 1.2.33), pciutils, iproute2, lsb-release
 Recommends: ethtool, zerofree, fuse3
@@ -1710,12 +1710,12 @@ Replaces: open-vm-tools-sdmp (<< 2:12.1.0-2~)
 Homepage: https://github.com/vmware/open-vm-tools
 Priority: 0
 Section: utils
-Filename: pool/main/o/open-vm-tools/open-vm-tools_12.1.5-3~ubuntu0.22.04.3_amd64.deb
-Size: 741120
-SHA512: 6e7afee6337132c571003fbfa6f71e5148ff89d411ec4826b25001e1d03cd99d47f3d6474d218c9de674455fe07621c39f2ce976a77a481d2056bfce1ceffd18
-SHA256: 9caa33c3ffb11a1eaab3fa717e2ae3741eba885ffcdc932a95075b8a7d2af0d4
-SHA1: 97754c4bbab0992e26396caaa239f775ae5384d5
-MD5sum: 6be252a35f59fbd43bd59f1d28d88602
+Filename: pool/main/o/open-vm-tools/open-vm-tools_12.3.5-3~ubuntu0.22.04.1_amd64.deb
+Size: 746380
+SHA512: 551bee2a4370b5c70ac933b10905c2393af97712ac4f5afbd7c797f966792371012f177379b1f71b80d15237980b0961b70400104548bb256541386c909d0d65
+SHA256: a099857a937855dc6ff9132df12deca83896625c18f6ea9b974cf25b4ef5a238
+SHA1: 96cddef779d2b3f732738acd8f380fa19badbebf
+MD5sum: ae344aa73b5ae9c96d08fcc2d5fb0467
 Description: Open VMware Tools for virtual machines hosted on VMware (CLI)
  The Open Virtual Machine Tools (open-vm-tools) project is an open source
  implementation of VMware Tools. It is a suite of virtualization utilities and
@@ -1727,22 +1727,22 @@ Original-Maintainer: Bernd Zeimetz <bzed@debian.org>
 
 Package: open-vm-tools-desktop
 Source: open-vm-tools
-Version: 2:12.1.5-3~ubuntu0.22.04.3
+Version: 2:12.3.5-3~ubuntu0.22.04.1
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Installed-Size: 504
-Depends: libatkmm-1.6-1v5 (>= 2.28.2), libc6 (>= 2.34), libcairomm-1.0-1v5 (>= 1.12.0), libdrm2 (>= 2.4.3), libgcc-s1 (>= 3.3.1), libglib2.0-0 (>= 2.16.0), libglibmm-2.4-1v5 (>= 2.66.2), libgtk-3-0 (>= 3.19.12), libgtkmm-3.0-1v5 (>= 3.24.5), libice6 (>= 1:1.0.0), libsigc++-2.0-0v5 (>= 2.8.0), libsm6, libstdc++6 (>= 5.2), libtirpc3 (>= 1.0.2), libudev1 (>= 183), libx11-6 (>= 2:1.4.99.1), libxext6, libxi6, libxinerama1 (>= 2:1.1.4), libxrandr2 (>= 2:1.2.0), libxtst6, open-vm-tools (= 2:12.1.5-3~ubuntu0.22.04.3), fuse3, kmod
+Installed-Size: 506
+Depends: libatkmm-1.6-1v5 (>= 2.28.2), libc6 (>= 2.34), libcairomm-1.0-1v5 (>= 1.12.0), libdrm2 (>= 2.4.3), libgcc-s1 (>= 3.3.1), libglib2.0-0 (>= 2.16.0), libglibmm-2.4-1v5 (>= 2.66.2), libgtk-3-0 (>= 3.19.12), libgtkmm-3.0-1v5 (>= 3.24.5), libice6 (>= 1:1.0.0), libsigc++-2.0-0v5 (>= 2.8.0), libsm6, libstdc++6 (>= 5.2), libtirpc3 (>= 1.0.2), libudev1 (>= 183), libx11-6 (>= 2:1.4.99.1), libxext6, libxi6, libxinerama1 (>= 2:1.1.4), libxrandr2 (>= 2:1.2.0), libxtst6, open-vm-tools (= 2:12.3.5-3~ubuntu0.22.04.1), fuse3, kmod
 Recommends: xauth, xserver-xorg-video-vmware
 Suggests: xdg-utils
 Homepage: https://github.com/vmware/open-vm-tools
 Priority: 0
 Section: utils
-Filename: pool/main/o/open-vm-tools/open-vm-tools-desktop_12.1.5-3~ubuntu0.22.04.3_amd64.deb
-Size: 139354
-SHA512: 1c0d93465dd6129cff0a84cf76e4e386c5663fe4a9d38cca7f5c22501afa9ef004b2b685edf3764c0b7ff1871ccd1310644945db6c982594ffc4c02569f7ec50
-SHA256: dff25c657c1252fdb4feef2f415c47af68299b610acb25d753af995dae7251fa
-SHA1: 8d3a155ea3fa21cb075ed003b85a1a1bafca0463
-MD5sum: c31a13714885cc5275bb392f703aaa7a
+Filename: pool/main/o/open-vm-tools/open-vm-tools-desktop_12.3.5-3~ubuntu0.22.04.1_amd64.deb
+Size: 139302
+SHA512: 6e1eeacb82265894294fbb1314a75af1914797f0aba80a571fb87c68488c28fb2d733bc19060e3775507357e4d9e2f878f728b30d886d4ff8559156c74f2d9c3
+SHA256: 41e81a34618806f1994bbfd45ac3a783e5e9507c706b8a2027c74be3c773435a
+SHA1: b3afe53adb7e3e1766714b46b0cdeb00864babc5
+MD5sum: 604adf0d43a55b9774321b118fe9738e
 Description: Open VMware Tools for virtual machines hosted on VMware (GUI)
  The Open Virtual Machine Tools (open-vm-tools) project is an open source
  implementation of VMware Tools. It is a suite of virtualization utilities and
@@ -1756,20 +1756,20 @@ Original-Maintainer: Bernd Zeimetz <bzed@debian.org>
 
 Package: open-vm-tools-dev
 Source: open-vm-tools
-Version: 2:12.1.5-3~ubuntu0.22.04.3
+Version: 2:12.3.5-3~ubuntu0.22.04.1
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Installed-Size: 4128
-Depends: open-vm-tools (= 2:12.1.5-3~ubuntu0.22.04.3)
+Installed-Size: 4154
+Depends: open-vm-tools (= 2:12.3.5-3~ubuntu0.22.04.1)
 Homepage: https://github.com/vmware/open-vm-tools
 Priority: 0
 Section: utils
-Filename: pool/main/o/open-vm-tools/open-vm-tools-dev_12.1.5-3~ubuntu0.22.04.3_amd64.deb
-Size: 536468
-SHA512: f4a94b5d505aac7e459f2eae0cf4286ffa5f939e2c0af6020817a66939fd25409dd9c2af0f88030c17f408b350c0e1147141a1d465ce668821ac1e837ced0f71
-SHA256: 5140939e7440c5da6cfe2ea9e275521278f2cfa83f8700d76e23b88864f73ec3
-SHA1: b442d2fc2f47c6902c74a2f5706deb1072a8f625
-MD5sum: 0e46c54130bbb949e2e0aef31c122f13
+Filename: pool/main/o/open-vm-tools/open-vm-tools-dev_12.3.5-3~ubuntu0.22.04.1_amd64.deb
+Size: 539768
+SHA512: b441fbf26e88a7bd93724e78f0a6e0846745eb7660750fcffd8e1640101c64a5f8964457d08b130e9a6ef0483ddcf6b516cbd0b0ca8a706cd9c6ae244565e5f4
+SHA256: 452ec837f92d96e60698ef0ead686c3522666710e93de4902aa71d195772d7b5
+SHA1: d4ba6ff5f1e4827fbb0ac5a833dd26e351aba3bb
+MD5sum: 7cf1928173392efb8a42289766369894
 Description: Open VMware Tools for virtual machines hosted on VMware (development)
  The Open Virtual Machine Tools (open-vm-tools) project is an open source
  implementation of VMware Tools. It is a suite of virtualization utilities and

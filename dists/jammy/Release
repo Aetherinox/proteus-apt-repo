@@ -1,14 +1,14 @@
 Origin: Aetherx
-Label: Ubuntu Jammy + ZorinOS v17.x
+Label: Jammy Jellyfish 22.04 LTS & ZorinOS v17
 Suite: stable
 Codename: jammy
-Date: Thu, 22 Feb 2024 02:48:38 UTC
+Date: Thu, 22 Feb 2024 08:01:34 UTC
 Architectures: amd64 arm64 i386
 Components: main
-Description: Ubuntu (Jammy) and ZorinOS v17.x 22.04 LTS
+Description: Ubuntu 22.04 (Jammy Jellyfish) LTS & ZorinOS v17
 MD5Sum:
- 9dd0d28ac4e1cf9c0d6ed8b01c1a2752 270845 main/binary-amd64/Packages
- d917712fd3baf39b7ceb9f21ac6802dc 76153 main/binary-amd64/Packages.gz
+ 1b065120ddc40b2d0b9eb8bdbe0e775f 270845 main/binary-amd64/Packages
+ 73d35fbf29f73a0cd9911e3c2bedb34b 76145 main/binary-amd64/Packages.gz
  5984084b34a9c03bd231fe6de8f737f4 160 main/binary-amd64/Release
  afd16bb7acb515587aad3aa5212a741d 87709 main/binary-arm64/Packages
  c0a776b82a4f19eede055ab51729f028 26831 main/binary-arm64/Packages.gz
@@ -20,8 +20,8 @@ MD5Sum:
  7029066c27ac6f5ef18d660d5741979a 20 main/source/Sources.gz
  a343835485798cee4b165a93bd76e01d 161 main/source/Release
 SHA1:
- b7bf574e6e19b51ea4616eaf6998c7585d90cac5 270845 main/binary-amd64/Packages
- 8691ff118feb2a96207b265949cd57310fbd421d 76153 main/binary-amd64/Packages.gz
+ 136d5778c46224f00d902eb48e72eba88569881b 270845 main/binary-amd64/Packages
+ e62c7adb6e4733693a93388e281c6afe05f45b39 76145 main/binary-amd64/Packages.gz
  4b1a7d805873d747b6b6611e0153e610e58f92d3 160 main/binary-amd64/Release
  d0b3a32703166b379ef1bce979a74a1a7421eca7 87709 main/binary-arm64/Packages
  3f8fa91f0bd8fe5c194421bd03431a803d982662 26831 main/binary-arm64/Packages.gz
@@ -33,8 +33,8 @@ SHA1:
  46c6643f07aa7f6bfe7118de926b86defc5087c4 20 main/source/Sources.gz
  b4d551768643f5525adc1dffe69ca668534ab136 161 main/source/Release
 SHA256:
- 2525dafeab963e2014d58d648df769d089bcc1a3281569afaba5336d2f578b0c 270845 main/binary-amd64/Packages
- f30ecce665a196151682bc67555a8b3ed1afc0220449ffc2e83f4e0bd2cc95cb 76153 main/binary-amd64/Packages.gz
+ 6370f7a05feb17af5998c3574694b26dba7fd143806c95bfc5abbc8b883e4b85 270845 main/binary-amd64/Packages
+ 33040fb479c6d2ca84bcf69b85f0b4fe8ebf383ef4a5ef4df635edb996ec9784 76145 main/binary-amd64/Packages.gz
  44e1d634c08339e31164975041e1d78856380adee1cb81876ce72e52a035455b 160 main/binary-amd64/Release
  71af4d786c63f3c65397334d4b5cc3561cfd167978e5d107eddc26a5aa01b98f 87709 main/binary-arm64/Packages
  75125831ecfcb54731f76595d562e6b621d6c5718c183cf637954eea385d59c9 26831 main/binary-arm64/Packages.gz
@@ -46,8 +46,8 @@ SHA256:
  59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2 20 main/source/Sources.gz
  0c31fdcf6065670f0e8130772e612bca55f3b2e53051cd9767681685ee26d51c 161 main/source/Release
 SHA512:
- 44f2a284faf9f40e9b2951736515376eaa2c1f4bde18caeddbc47a3de218a73975a4a3767632a3a146126aa6eb17d9b5eaa205ca7c725923d88ac31b98f02d87 270845 main/binary-amd64/Packages
- 4d2de567bc3e213ef77c94e8485baf4a5d36075dc06792859a09a8350a0ea8eda6e86c3d1801f2a78248f27b6019961ec09856b4b183d65d31023b2a45b4d636 76153 main/binary-amd64/Packages.gz
+ ca1677ebbec816b1a50d37347e15fbe119343a21286ea15ab6eecf7359722279456d82ed83848d411c62b4d11c185f412683133b2a791888dd191e1199c525c8 270845 main/binary-amd64/Packages
+ 9498014988f46258b917b21abb5e94834fb3a6f6b0ba69e14ee52cfc8071ceed4895ed4a6bb4711692ef75b7f912177a1536a7070b6f9e62967f85b9a00e1fca 76145 main/binary-amd64/Packages.gz
  1f179951afa8a2b41470908fd9b504d2bda3e9bdeb0551ef598e8300d07e92eeb704561d12eef3a0e59164b5d0d49d1a6545cdc321250093ca79ec1536ff6568 160 main/binary-amd64/Release
  bd5032f7242fd79336d1a23a3239b811c3588e26a98b6d7bc189c26aa5aee54bd29682ce066a38870160eb9e4f4a4c2de57655149a387a08a44a2e7e31eeb6ec 87709 main/binary-arm64/Packages
  de2d129da3f0445c59158df9de164ef8de7d31020555702c5c4014500b62a058e03d7294a7c8114942fad20afc801bf653dbaf61a3435e3dad90e755fd6a63a2 26831 main/binary-arm64/Packages.gz

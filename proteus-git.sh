@@ -1846,8 +1846,6 @@ app_run_gh_start()
     #   .app folder
     ##--------------------------------------------------------------------------
 
-    echo "A"
-
     local manifest_dir=$app_dir/.app/
     mkdir -p            $manifest_dir
 
@@ -1855,58 +1853,39 @@ app_run_gh_start()
     #   .app folder > create .json
     ##--------------------------------------------------------------------------
 
-    echo "B"
-
 tee $manifest_dir/$app_repo_dist_sel.json >/dev/null <<EOF
 {
     "name":             "${app_title}",
     "version":          "$(get_version)",
     "author":           "${app_repo_author}",
     "description":      "${app_about}",
+    "distrib":          "${app_repo_dist_sel}",
     "url":              "${app_repo_url}",
-    "last_update":      "Running ............",
+    "last_duration":    "Not Finished",
+    "last_update":      "Running ...............",
     "last_update_ts":   "${DATE_TS}"
 }
 EOF
 
-    echo "C"
-
     app_run_github_precheck
 
-    echo "D"
-
     git branch -m $app_repo_branch
-
-    echo "E"
-
     git add --all
-
-    echo "F"
-
     git add -u
 
-    echo "G"
-
     sleep 1
-
-    echo "H"
 
     local app_repo_commit="[S] auto-update [ $app_repo_dist_sel ] @ $NOW"
 
-    echo "I"
-    echo $app_repo_commit
+    echo -e "  ${WHITE}Starting commit ${FUCHSIA}${app_repo_commit}${WHITE}${NORMAL}"
 
-    git commit -S -m "$app_repo_commit"
-
-    echo "J"
+    git commit -S -m "[S] auto-update [ jammy ] @ 02.22.2024 00:29:44"
 
     sleep 1
 
-    echo "K"
-
+    echo -e "  ${WHITE}Starting push ${FUCHSIA}${app_repo_branch}${WHITE}${NORMAL}"
     git push -u origin $app_repo_branch
 
-        echo "L"
 }
 
 ##--------------------------------------------------------------------------
