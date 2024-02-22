@@ -22,6 +22,7 @@ Time of last package update for each release
 | Focal | ![Focal](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FAetherinox%2Fproteus-apt-repo%2Fmain%2F.app%2Ffocal.json&query=last_update&style=for-the-badge&label=last%20update&color=e65a0b)  |
 | Jammy | ![Jammy](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FAetherinox%2Fproteus-apt-repo%2Fmain%2F.app%2Fjammy.json&query=last_update&style=for-the-badge&label=last%20update&color=0b7ae6 )  |
 | Lunar | ![Lunar](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FAetherinox%2Fproteus-apt-repo%2Fmain%2F.app%2Flunar.json&query=last_update&style=for-the-badge&label=last%20update&color=e60b51)  |
+| Mantic | ![Mantic](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FAetherinox%2Fproteus-apt-repo%2Fmain%2F.app%2Fmantic.json&query=last_update&style=for-the-badge&label=last%20update&color=e60b51)  |
 
 </div>
 
