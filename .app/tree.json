@@ -4,6 +4,7 @@
       {"type":"file","name":"focal.json"},
       {"type":"file","name":"jammy.json"},
       {"type":"file","name":"lunar.json"},
+      {"type":"file","name":"mantic.json"},
       {"type":"file","name":"tree.json"}
     ]},
     {"type":"directory","name":"conf","contents":[
@@ -96,6 +97,32 @@
         {"type":"file","name":"InRelease"},
         {"type":"file","name":"Release"},
         {"type":"file","name":"Release.gpg"}
+      ]},
+      {"type":"directory","name":"mantic","contents":[
+        {"type":"directory","name":"main","contents":[
+          {"type":"directory","name":"binary-amd64","contents":[
+            {"type":"file","name":"Packages"},
+            {"type":"file","name":"Packages.gz"},
+            {"type":"file","name":"Release"}
+          ]},
+          {"type":"directory","name":"binary-arm64","contents":[
+            {"type":"file","name":"Packages"},
+            {"type":"file","name":"Packages.gz"},
+            {"type":"file","name":"Release"}
+          ]},
+          {"type":"directory","name":"binary-i386","contents":[
+            {"type":"file","name":"Packages"},
+            {"type":"file","name":"Packages.gz"},
+            {"type":"file","name":"Release"}
+          ]},
+          {"type":"directory","name":"source","contents":[
+            {"type":"file","name":"Release"},
+            {"type":"file","name":"Sources.gz"}
+          ]}
+        ]},
+        {"type":"file","name":"InRelease"},
+        {"type":"file","name":"Release"},
+        {"type":"file","name":"Release.gpg"}
       ]}
     ]},
     {"type":"directory","name":"docs","contents":[
@@ -109,6 +136,18 @@
       {"type":"file","name":"README.md"}
     ]},
     {"type":"directory","name":"incoming","contents":[
+      {"type":"directory","name":"all"},
+      {"type":"directory","name":"amd64","contents":[
+        {"type":"file","name":"opengist_1.6.1_amd64.deb"},
+        {"type":"file","name":"reprepro_5.4.2-1_amd64.deb"}
+      ]},
+      {"type":"directory","name":"arm64","contents":[
+        {"type":"file","name":"opengist_1.6.1_arm64.deb"},
+        {"type":"file","name":"reprepro_5.4.2-1_arm64.deb"}
+      ]},
+      {"type":"directory","name":"i386","contents":[
+        {"type":"file","name":"reprepro_5.4.2-1_i386.deb"}
+      ]},
       {"type":"directory","name":"proteus-git","contents":[
         {"type":"directory","name":"lunar","contents":[
           {"type":"directory","name":"all"},
@@ -128,7 +167,10 @@
     ]},
     {"type":"directory","name":"logs","contents":[
       {"type":"directory","name":"repos","contents":[
-        {"type":"file","name":"lunar.log"}
+        {"type":"file","name":"focal.log"},
+        {"type":"file","name":"jammy.log"},
+        {"type":"file","name":"lunar.log"},
+        {"type":"file","name":"mantic.log"}
       ]},
       {"type":"file","name":"proteus-git-21022024.log"},
       {"type":"fifo","name":"proteus-git-21022024.log.pipe"}
@@ -440,8 +482,8 @@
             {"type":"file","name":"ocs-url_3.1.0-0ubuntu1_amd64.deb"}
           ]},
           {"type":"directory","name":"opengist","contents":[
-            {"type":"file","name":"opengist_1.5.2_amd64.deb"},
-            {"type":"file","name":"opengist_1.5.2_arm64.deb"}
+            {"type":"file","name":"opengist_1.6.1_amd64.deb"},
+            {"type":"file","name":"opengist_1.6.1_arm64.deb"}
           ]},
           {"type":"directory","name":"open-vm-tools","contents":[
             {"type":"file","name":"open-vm-tools_12.1.5-3~ubuntu0.22.04.3_amd64.deb"},
@@ -981,5 +1023,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":164,"files":654}
+  {"type":"report","directories":174,"files":677}
 ]
