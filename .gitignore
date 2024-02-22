@@ -5,6 +5,5 @@ logs/
 apt-url
 .gpg/*.gpg
 .gpg/*.asc
-/proteus-git.sh
 /secrets.sh
 node_modules/
