@@ -915,7 +915,7 @@ Description: Fast LZ compression algorithm library - tool
 
 Package: mysql-client
 Source: mysql-8.0
-Version: 8.0.34-0ubuntu0.23.04.1
+Version: 8.0.35-0ubuntu0.23.04.1
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 35
@@ -923,12 +923,12 @@ Depends: mysql-client-8.0
 Homepage: http://dev.mysql.com/
 Priority: 0
 Section: utils
-Filename: pool/main/m/mysql-8.0/mysql-client_8.0.34-0ubuntu0.23.04.1_all.deb
-Size: 9350
-SHA512: 9b4d7e0768598390bf436edd994a0ffd9611a96ceceea705b89d5d676f10cf98eddd3b67fbf6f8ea225bb5d7e6ddeb5c5f9f0b099abb38e660df8ec4a7ba6cf9
-SHA256: 9a3f38b476fa7cffda37cf30062d366493291110c9354f005fa7b05562f596fb
-SHA1: 9165bf502187c5f32e9a3841a781e240c7317c01
-MD5sum: 6b205502fcf5a5f7d71818a80825b2cd
+Filename: pool/main/m/mysql-8.0/mysql-client_8.0.35-0ubuntu0.23.04.1_all.deb
+Size: 9362
+SHA512: ce3a6df19c105c6fff18cb84989485c2614c01db10a46d62c23cbdc85506e1b0a9b507525c244bb1372416f7dc8a48e5a722464d92121a17ef35cf2854069bbc
+SHA256: 6917a72257a84ed127dded8faefb9c1e09e13f76c907ff7ee225781a1adc430a
+SHA1: ab4196a583004cced33d10c624f800015b4cbd04
+MD5sum: 0b9b3ba144a54079bf9c11f10baa68a4
 Description: MySQL database client (metapackage depending on the latest version)
  This is an empty package that depends on the current "best" version of
  mysql-client (currently mysql-client-8.0), as determined by the MySQL
@@ -968,7 +968,7 @@ Description: MySQL database common files, e.g. /etc/mysql/my.cnf
 
 Package: mysql-server
 Source: mysql-8.0
-Version: 8.0.34-0ubuntu0.23.04.1
+Version: 8.0.35-0ubuntu0.23.04.1
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 35
@@ -976,12 +976,12 @@ Depends: mysql-server-8.0
 Homepage: http://dev.mysql.com/
 Priority: 0
 Section: utils
-Filename: pool/main/m/mysql-8.0/mysql-server_8.0.34-0ubuntu0.23.04.1_all.deb
-Size: 9460
-SHA512: f3c606116cbd3d4aa94a6ffdd5d1de3b89ae7bc53d28746c4c4349a366101de9b42d1504c720299684f0b01ea369eccc0d14979edf778a19fac4fb47ebe7cf97
-SHA256: 1c617a3b30c97dfb2075134cd493eb5b1cfbba47cfed9e0889600e6008988912
-SHA1: 5aa6b48fa55609a3703be3783bad89e939aa77a5
-MD5sum: 57d8c24292b0631ed154b73f7fcfe593
+Filename: pool/main/m/mysql-8.0/mysql-server_8.0.35-0ubuntu0.23.04.1_all.deb
+Size: 9470
+SHA512: 08f56c2bac63b8d40cd8186f2149790d571267fd00975a09d38fae622441beafbca6f1772986892cf36041504a7da66deb090e1f296ac19fc19b0f5f1f88bf5a
+SHA256: 54b5faceb52e61e36fa21abd4b603b4edbbadcb5c807647003b8fea968452753
+SHA1: 42906b0e834a683ee350310b9dfc2691e69bc5f4
+MD5sum: a42bb926c164f0aeb691b9e330db54c4
 Description: MySQL database server (metapackage depending on the latest version)
  This is an empty package that depends on the current "best" version of
  mysql-server (currently mysql-server-8.0), as determined by the MySQL
