@@ -3,7 +3,9 @@
     "version":          "1.1.0.0",
     "author":           "Aetherinox",
     "description":      "Internal system to Proteus App Manager which grabs debian packages.",
+    "distrib":          "jammy",
     "url":              "https://github.com/Aetherinox/proteus-git",
-    "last_update":      "Running ............",
+    "last_duration":    "21m and 16s",
+    "last_update":      "02.22.2024 00:53:14",
     "last_update_ts":   "1708588394"
 }
