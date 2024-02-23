@@ -22,23 +22,6 @@ if [ -f secrets.sh ]; then
 fi
 
 ##--------------------------------------------------------------------------
-#   requite git
-##--------------------------------------------------------------------------
-
-# require git
-if ! [ -x "$(command -v git)" ]; then
-    sudo apt-get update -y -q >/dev/null 2>&1
-    sudo apt-get install git -y -qq >/dev/null 2>&1
-fi
-
-##--------------------------------------------------------------------------
-#   ensure we dont have any hanging applications
-##--------------------------------------------------------------------------
-
-# sudo pkill -f -9 apt-move
-# sudo pkill -f -9 apt-url
-
-##--------------------------------------------------------------------------
 #   vars > colors
 #
 #   tput setab  [1-7]       – Set a background color using ANSI escape
@@ -340,13 +323,27 @@ else
 fi
 
 ##--------------------------------------------------------------------------
+#   requite packages before anything begins
+##--------------------------------------------------------------------------
+
+# require git
+if ! [ -x "$(command -v git)" ]; then
+    echo -e "  ${GREYL}Installing package ${MAGENTA}Git${WHITE}"
+    sudo apt-get update -y -q >/dev/null 2>&1
+    sudo apt-get install git -y -qq >/dev/null 2>&1
+
+    echo -e "  ${GREYL}Installing package ${MAGENTA}GPG${WHITE}"
+    sudo apt-get update -y -q >/dev/null 2>&1
+    sudo apt-get install gpg -y -qq >/dev/null 2>&1
+fi
+
+##--------------------------------------------------------------------------
 #   upload to github > precheck
 ##--------------------------------------------------------------------------
 
 app_run_github_precheck( )
 {
-
-    echo -e "  ${GREYL}Registering Github Config Entries${WHITE}"
+    echo -e "  ${GREYL}Configuring git config${WHITE}"
 
     git config --global credential.helper store
 
@@ -363,11 +360,10 @@ app_run_github_precheck( )
     git config --global init.defaultBranch ${app_repo_branch}
     git config --global user.name ${GITHUB_NAME}
     git config --global user.email ${GITHUB_EMAIL}
-    ##git config --global pull.rebase true
 }
 
 ##--------------------------------------------------------------------------
-#   check > secrets file doesnt exist
+#   secrets.sh file missing -- abort
 ##--------------------------------------------------------------------------
 
 if ! [ -f secrets.sh ]; then
@@ -390,7 +386,7 @@ if ! [ -f secrets.sh ]; then
 fi
 
 ##--------------------------------------------------------------------------
-#   check > gpg key added to .gitignore
+#   check if GPG key defined in git config user.signingKey
 ##--------------------------------------------------------------------------
 
 checkgit_signing=$( git config --global --get-all user.signingKey )
@@ -424,6 +420,11 @@ if [ -z "${checkgit_signing}" ]; then
 
     sleep 2
 
+    ##--------------------------------------------------------------------------
+    #   run the same check as above to double confirm that user.signingKey
+    #   has been defined.
+    ##--------------------------------------------------------------------------
+
     checkgit_signing=$( git config --global --get-all user.signingKey )
     if [ -z "${checkgit_signing}" ]; then
         echo
@@ -440,7 +441,7 @@ fi
 ##--------------------------------------------------------------------------
 #   check > GPG key
 #
-#   GPG_KEY comes from export GPG_KEY in secrets.sh
+#   you must define GPG_KEY in the secrets.sh file
 ##--------------------------------------------------------------------------
 
 if [ -z "${GPG_KEY}" ]; then
@@ -470,6 +471,10 @@ fi
 #       - GITLAB_PA_TOKEN
 #
 #   Do not rename them, these are the globals recognized by LastVersion
+#   
+#   This is required for LastVersion when checking if specific github repos
+#   have updates to any packages. Failure to provide an API key means
+#   that you will be rate limited.
 ##--------------------------------------------------------------------------
 
 if [ -z "${GITHUB_API_TOKEN}" ] && [ -z "${GITLAB_PA_TOKEN}" ]; then
@@ -525,13 +530,75 @@ get_version_compare_gt()
 }
 
 ##--------------------------------------------------------------------------
-#   options
+#   func > test
 #
-#       -d      developer mode
-#       -h      help menu
-#       -n      developer: null run
-#       -s      silent mode | logging disabled
-#       -t      theme
+#   development function, not used in normal operations,
+#   has no specific purpose other than to drop code in here and test with
+#
+#   Execute with:
+#       proteus-git.sh --test
+##--------------------------------------------------------------------------
+
+app_test( )
+{
+    printf '%-57s' "    |--- Running Test"
+    echo
+
+    ##--------------------------------------------------------------------------
+    #   modify gpg.conf
+    #
+    #   first check if GPG installed (usually on Ubuntu it is)
+    #   then modify user's gpg-agent.conf file
+    ##--------------------------------------------------------------------------
+
+    gpgconfig_file="/home/${USER}/.gnupg/gpg-agent.conf"
+
+    if ! [ -x "$(command -v gpg)" ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
+        printf '%-57s' "    |--- Installing GPG"
+        sleep 1
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            sudo apt-get update -y -q >> /dev/null 2>&1
+            sudo apt-get install gpg -y -qq >> /dev/null 2>&1
+        fi
+        echo -e "[ ${STATUS_OK} ]"
+        sleep 1
+    fi
+
+sudo tee ${gpgconfig_file} << EOF > /dev/null
+enable-putty-support
+enable-ssh-support
+use-standard-socket
+default-cache-ttl-ssh 60
+max-cache-ttl-ssh 120
+default-cache-ttl 28800 # gpg key cache time
+max-cache-ttl 28800 # max gpg key cache time
+pinentry-program "/usr/bin/pinentry"
+allow-loopback-pinentry
+allow-preset-passphrase
+pinentry-timeout 0
+EOF
+
+    printf '%-57s' "    |--- Set ownership to ${USER}"
+    sleep 1
+    if [ -z "${OPT_DEV_NULLRUN}" ]; then
+        sudo chgrp ${USER} ${gpgconfig_file} >> $LOGS_FILE 2>&1
+        sudo chown ${USER} ${gpgconfig_file} >> $LOGS_FILE 2>&1
+    fi
+    echo -e "[ ${STATUS_OK} ]"
+
+    printf '%-57s' "    |--- Restart GPG Agent"
+    sleep 1
+    gpgconf --kill gpg-agent
+    echo -e "[ ${STATUS_OK} ]"
+
+    exit 0
+    sleep 0.2
+}
+
+##--------------------------------------------------------------------------
+#   Display Usage Help
+#
+#   activate using ./proteus-git.sh --help or -h
 ##--------------------------------------------------------------------------
 
 opt_usage()
@@ -559,6 +626,13 @@ opt_usage()
     exit 1
 }
 
+##--------------------------------------------------------------------------
+#   command-line options
+#
+#   reminder that any functions which need executed must be defined BEFORE
+#   this point. Bash sucks like that.
+##--------------------------------------------------------------------------
+
 while [ $# -gt 0 ]; do
   case "$1" in
     -d|--dev)
@@ -575,6 +649,14 @@ while [ $# -gt 0 ]; do
 
                 exit 1
             fi
+            ;;
+
+    -s*|--setup*)
+            app_setup
+            ;;
+
+    -t*|--test*)
+            app_test
             ;;
 
     -g*|--githubOnly*)
@@ -633,6 +715,7 @@ done
 
 ##--------------------------------------------------------------------------
 #   vars > active repo branch
+#   typically "main"
 ##--------------------------------------------------------------------------
 
 app_repo_branch_sel=$( [[ -n "$OPT_BRANCH" ]] && echo "$OPT_BRANCH" || echo "$app_repo_branch"  )
@@ -646,6 +729,8 @@ app_repo_dist_sel=$( [[ -n "$OPT_DISTRIBUTION" ]] && echo "$OPT_DISTRIBUTION" ||
 
 ##--------------------------------------------------------------------------
 #   line > comment
+#
+#   allows for lines to be commented out
 #
 #   comment REGEX FILE [COMMENT-MARK]
 #   comment "skip-grant-tables" "/etc/mysql/my.cnf"
@@ -662,6 +747,8 @@ line_comment()
 ##--------------------------------------------------------------------------
 #   line > uncomment
 #
+#   allows for lines to be uncommented
+#
 #   uncomment REGEX FILE [COMMENT-MARK]
 #   uncomment "skip-grant-tables" "/etc/mysql/my.cnf"
 ##--------------------------------------------------------------------------
@@ -676,6 +763,8 @@ line_uncomment()
 
 ##--------------------------------------------------------------------------
 #   func > logs > begin
+#
+#   sets the script up to provide logging to the /logs/ folder
 ##--------------------------------------------------------------------------
 
 Logs_Begin()
@@ -725,6 +814,9 @@ Logs_Begin()
 
 ##--------------------------------------------------------------------------
 #   func > logs > finish
+#
+#   stop logging system. Mainly kills the pipe otherwise you can't access
+#   the file.
 ##--------------------------------------------------------------------------
 
 Logs_Finish()
@@ -800,6 +892,8 @@ spin()
 
 ##--------------------------------------------------------------------------
 #   func > spinner > halt
+#
+#   destroy text spinner process id
 ##--------------------------------------------------------------------------
 
 spinner_halt()
@@ -813,6 +907,22 @@ spinner_halt()
 
 ##--------------------------------------------------------------------------
 #   func > cli selection menu
+#
+#   allows for prompting user with questions and to select their desired
+#   choice.
+#
+#   echo -e "  ${BOLD}${FUCHSIA}ATTENTION  ${WHITE}This is a question${NORMAL}"
+#
+#   export CHOICES=( "Choice 1" "Choice 2" )
+#   cli_options
+#   case $? in
+#       0 )
+#           bChoiceProteus=true
+#       ;;
+#       1 )
+#           bChoiceSqlSecure=true
+#       ;;
+#   esac
 ##--------------------------------------------------------------------------
 
 cli_options()
@@ -876,6 +986,18 @@ cli_options()
 #   func > cli question
 #
 #   used for command-line to prompt the user with a question
+#
+#   if cli_question "  Install the above packages?"; then
+#       sleep 0.5
+#
+#       for key in "${!pendinstall[@]}"
+#       do
+#           app_name="${pendinstall[${key}]}"
+#           app_func="${app_functions[$app_name]}"
+#
+#           $app_func "${app_name}" "${app_func}"
+#       done
+#   fi
 ##--------------------------------------------------------------------------
 
 cli_question( )
@@ -924,6 +1046,9 @@ cli_question( )
 #
 #   opening urls in bash can be wonky as hell. just doing it the manual
 #   way to ensure a browser gets opened.
+#
+#   example
+#       open_url "http://127.0.0.1"
 ##--------------------------------------------------------------------------
 
 open_url()
@@ -934,6 +1059,9 @@ open_url()
 
 ##--------------------------------------------------------------------------
 #   func > cmd title
+#
+#   example
+#       title "First Time Setup ..."
 ##--------------------------------------------------------------------------
 
 title()
@@ -944,6 +1072,9 @@ title()
 
 ##--------------------------------------------------------------------------
 #   func > begin action
+#
+#   example
+#       begin "Updating from branch main"
 ##--------------------------------------------------------------------------
 
 begin()
@@ -1007,9 +1138,21 @@ exit()
 #       export PATH="/home/aetherinox/bin:$PATH"
 ##--------------------------------------------------------------------------
 
-envpath_add()
+envpath_add_proteus()
 {
     local file_env=/etc/profile.d/proteus-git.sh
+    if [ "$2" = "force" ] || ! echo $PATH | $(which egrep) -q "(^|:)$1($|:)" ; then
+        if [ "$2" = "after" ] ; then
+            echo 'export PATH="$PATH:'$1'"' | sudo tee $file_env > /dev/null
+        else
+            echo 'export PATH="'$1':$PATH"' | sudo tee $file_env > /dev/null
+        fi
+    fi
+}
+
+envpath_add_lastversion()
+{
+    local file_env=/etc/profile.d/lastversion.sh
     if [ "$2" = "force" ] || ! echo $PATH | $(which egrep) -q "(^|:)$1($|:)" ; then
         if [ "$2" = "after" ] ; then
             echo 'export PATH="$PATH:'$1'"' | sudo tee $file_env > /dev/null
@@ -1024,6 +1167,8 @@ envpath_add()
 #
 #   updates the /home/USER/bin/proteus file which allows proteus to be
 #   ran from anywhere.
+#
+#   activate using ./proteus-git --update or -u
 ##--------------------------------------------------------------------------
 
 app_update()
@@ -1080,6 +1225,28 @@ if [ "$OPT_UPDATE" = true ]; then
 fi
 
 ##--------------------------------------------------------------------------
+#   .git folder doesnt exist
+##--------------------------------------------------------------------------
+
+if [ ! -d .git ]; then
+    echo
+    echo
+    echo -e "  ${ORANGE}Error${WHITE}"
+    echo -e "  "
+    echo -e "  ${WHITE}Folder ${YELLOW}.git${NORMAL} does not exist."
+    echo -e "  ${WHITE}Must clone the ${YELLOW}proteus-apt-repo${NORMAL} first."
+    echo
+    echo
+
+    app_run_github_precheck
+
+    git init --initial-branch=${app_repo_branch}
+    git add .;git commit -m'Proteus-Git Setup'
+    git remote add origin https://github.com/Aetherinox/proteus-apt-repo.git
+    git pull origin ${app_repo_branch} --allow-unrelated-histories
+fi
+
+##--------------------------------------------------------------------------
 #   func > first time setup
 #
 #   this is the default func executed when script is launched to make sure
@@ -1120,6 +1287,7 @@ app_setup()
     local bMissingRepo=false
     local bMissingReprepro=false
     local bGPGLoaded=false
+    local bMissingLastVersion=false
 
     # require whiptail
     if ! [ -x "$(command -v apt-move)" ]; then
@@ -1149,6 +1317,11 @@ app_setup()
     # require reprepro
     if ! [ -x "$(command -v reprepro)" ]; then
         bMissingReprepro=true
+    fi
+
+    # require lastversion
+    if ! [ -x "$(command -v lastversion)" ]; then
+        bMissingLastVersion=true
     fi
 
     ##--------------------------------------------------------------------------
@@ -1194,6 +1367,8 @@ app_setup()
     ##--------------------------------------------------------------------------
     #   find a gpg key that can be imported
     #   maybe later add a loop to check for multiple.
+    #
+    #   PATH GPG_KEY missing from secrets.sh
     ##--------------------------------------------------------------------------
 
     if [ -z "${GPG_KEY}" ]; then
@@ -1213,6 +1388,11 @@ app_setup()
         trap "kill -9 $app_pid 2> /dev/null" `seq 0 15`
         kill $app_pid
         set -m
+
+    ##--------------------------------------------------------------------------
+    #   no gpg key registered with gpg command line via gpg --list-secret-keys
+    ##--------------------------------------------------------------------------
+
     else
         gpg_id=$( gpg --list-secret-keys --keyid-format=long | grep $GPG_KEY )
         if [[ $? == 0 ]]; then 
@@ -1248,9 +1428,9 @@ app_setup()
     ##--------------------------------------------------------------------------
     #   missing gpg key after searching numerous places, including .gpg folder
     #
-    #   bGPGLoaded      true if one of two conditions are met
+    #   bGPGLoaded      TRUE if either condition is met:
     #                   1. gpg --list-keys KEY_ID found
-    #                   2. found a .gpg file in the ./gpg folder
+    #                   2. found .gpg file in ./gpg folder
     ##--------------------------------------------------------------------------
 
     if [ "$bGPGLoaded" = false ]; then
@@ -1278,15 +1458,14 @@ app_setup()
         set -m
     fi
 
-
     ##--------------------------------------------------------------------------
     #   missing curl
     ##--------------------------------------------------------------------------
 
     if [ "$bMissingCurl" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing curl package" | tee -a "${LOGS_FILE}" >/dev/null
-
         printf '%-50s %-5s' "    |--- Adding curl package" ""
+
         sleep 0.5
     
         if [ -z "${OPT_DEV_NULLRUN}" ]; then
@@ -1304,8 +1483,8 @@ app_setup()
 
     if [ "$bMissingWget" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing wget package" | tee -a "${LOGS_FILE}" >/dev/null
-
         printf '%-50s %-5s' "    |--- Adding wget package" ""
+
         sleep 0.5
 
         if [ -z "${OPT_DEV_NULLRUN}" ]; then
@@ -1323,8 +1502,8 @@ app_setup()
 
     if [ "$bMissingTree" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing tree package" | tee -a "${LOGS_FILE}" >/dev/null
-
         printf '%-50s %-5s' "    |--- Adding tree package" ""
+
         sleep 0.5
 
         if [ -z "${OPT_DEV_NULLRUN}" ]; then
@@ -1344,8 +1523,8 @@ app_setup()
 
     if [ "$bMissingGPG" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Adding ${app_repo_author} GPG key: [https://github.com/${app_repo_author}.gpg]" | tee -a "${LOGS_FILE}" >/dev/null
-
         printf '%-50s %-5s' "    |--- Adding github.com/${app_repo_author}.gpg" ""
+
         sleep 0.5
 
         if [ -z "${OPT_DEV_NULLRUN}" ]; then
@@ -1356,7 +1535,6 @@ app_setup()
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-
     ##--------------------------------------------------------------------------
     #   missing google chrome
     #
@@ -1365,8 +1543,8 @@ app_setup()
 
     if [ "$bMissingGChrome" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Registering Chrome: /etc/apt/sources.list.d/google-chrome.list" | tee -a "${LOGS_FILE}" >/dev/null
-
         printf '%-50s %-5s' "    |--- Registering Chrome" ""
+
         sleep 0.5
 
         sudo install -d -m 0755 /etc/apt/keyrings
@@ -1380,11 +1558,11 @@ app_setup()
         echo 'Package: * Pin: origin dl.google.com Pin-Priority: 1000' | sudo tee /etc/apt/preferences.d/google-chrome >/dev/null
 
         sleep 0.5
+
         echo -e "[ ${STATUS_OK} ]"
-
         printf "%-50s %-5s\n" "${TIME}      Updating user repo list with apt-get update" | tee -a "${LOGS_FILE}" >/dev/null
-
         printf '%-50s %-5s' "    |--- Updating repo list" ""
+
         sleep 0.5
 
         if [ -z "${OPT_DEV_NULLRUN}" ]; then
@@ -1405,8 +1583,8 @@ app_setup()
 
     if [ "$bMissingMFirefox" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Registering Mozilla: /etc/apt/sources.list.d/mozilla.list" | tee -a "${LOGS_FILE}" >/dev/null
-
         printf '%-50s %-5s' "    |--- Registering Mozilla" ""
+
         sleep 0.5
 
         sudo install -d -m 0755 /etc/apt/keyrings
@@ -1420,11 +1598,11 @@ app_setup()
         echo 'Package: * Pin: origin packages.mozilla.org Pin-Priority: 1000' | sudo tee /etc/apt/preferences.d/mozilla >/dev/null
 
         sleep 0.5
+
         echo -e "[ ${STATUS_OK} ]"
-
         printf "%-50s %-5s\n" "${TIME}      Updating user repo list with apt-get update" | tee -a "${LOGS_FILE}" >/dev/null
-
         printf '%-50s %-5s' "    |--- Updating repo list" ""
+
         sleep 0.5
 
         if [ -z "${OPT_DEV_NULLRUN}" ]; then
@@ -1441,8 +1619,8 @@ app_setup()
 
     if [ "$bMissingRepo" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Registering ${app_repo_apt}: https://raw.githubusercontent.com/${app_repo_author}/${app_repo_apt}/${app_repo_branch}" | tee -a "${LOGS_FILE}" >/dev/null
-
         printf '%-50s %-5s' "    |--- Registering ${app_repo_apt}" ""
+
         sleep 0.5
 
         if [ -z "${OPT_DEV_NULLRUN}" ]; then
@@ -1450,11 +1628,11 @@ app_setup()
         fi
 
         sleep 0.5
+
         echo -e "[ ${STATUS_OK} ]"
-
         printf "%-50s %-5s\n" "${TIME}      Updating user repo list with apt-get update" | tee -a "${LOGS_FILE}" >/dev/null
-
         printf '%-50s %-5s' "    |--- Updating repo list" ""
+        
         sleep 0.5
 
         if [ -z "${OPT_DEV_NULLRUN}" ]; then
@@ -1466,13 +1644,13 @@ app_setup()
     fi
 
     ##--------------------------------------------------------------------------
-    #   install proteus-git in /home/$USER/bin/proteus-git
+    #   install proteus-git binary in /home/$USER/bin/proteus-git
     ##--------------------------------------------------------------------------
 
     if ! [ -f "$app_file_proteus" ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing ${app_title}" | tee -a "${LOGS_FILE}" >/dev/null
-
         printf '%-50s %-5s' "    |--- Installing ${app_title}" ""
+
         sleep 0.5
 
         if [ -z "${OPT_DEV_NULLRUN}" ]; then
@@ -1489,15 +1667,14 @@ app_setup()
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-
     ##--------------------------------------------------------------------------
     #   missing apt-move
     ##--------------------------------------------------------------------------
 
     if [ "$bMissingAptMove" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing apt-move package" | tee -a "${LOGS_FILE}" >/dev/null
-
         printf '%-50s %-5s' "    |--- Adding apt-move package" ""
+
         sleep 0.5
 
         if [ -z "${OPT_DEV_NULLRUN}" ]; then
@@ -1515,8 +1692,8 @@ app_setup()
 
     if [ "$bMissingAptUrl" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing apt-url package" | tee -a "${LOGS_FILE}" >/dev/null
-
         printf '%-50s %-5s' "    |--- Adding apt-url package" ""
+
         sleep 0.5
 
         if [ -z "${OPT_DEV_NULLRUN}" ]; then
@@ -1528,15 +1705,14 @@ app_setup()
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-
     ##--------------------------------------------------------------------------
     #   missing reprepro
     ##--------------------------------------------------------------------------
 
     if [ "$bMissingReprepro" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing reprepro package" | tee -a "${LOGS_FILE}" >/dev/null
-
         printf '%-50s %-5s' "    |--- Adding reprepro package" ""
+
         sleep 0.5
 
         if [ -z "${OPT_DEV_NULLRUN}" ]; then
@@ -1552,35 +1728,95 @@ app_setup()
     #   add env path /home/$USER/bin/
     ##--------------------------------------------------------------------------
 
-    envpath_add '$HOME/bin'
+    envpath_add_proteus '$HOME/bin'
+
+    ##--------------------------------------------------------------------------
+    #   missing lastversion
+    ##--------------------------------------------------------------------------
+
+    if [ "$bMissingLastVersion" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
+        printf "%-50s %-5s\n" "${TIME}      Installing LastVersion" | tee -a "${LOGS_FILE}" >/dev/null
+        printf '%-50s %-5s' "    |--- Adding LastVersion package" ""
+
+        sleep 0.5
+
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            sudo apt-get update -y -q >> /dev/null 2>&1
+            sudo apt-get install python3-pip python3-venv -y -qq >> /dev/null 2>&1
+
+            #wget https://github.com/dvershinin/lastversion/archive/refs/tags/v3.5.0.zip
+            #mkdir /home/${USER}/Packages/
+            #unzip v3.5.0.zip -d /home/${USER}/Packages/lastversion
+
+            ##--------------------------------------------------------------------------
+            #   Uninstall with
+            #       pip uninstall lastversion
+            ##--------------------------------------------------------------------------
+
+            pip install lastversion --break-system-packages
+            cp /home/${USER}/.local/bin/lastversion /home/${USER}/bin/
+            sudo touch /etc/profile.d/lastversion.sh
+            echo 'export PATH="$HOME/bin:$PATH"' | sudo tee /etc/profile.d/lastversion.sh
+            source $HOME/.bashrc
+            source $HOME/.profile
+        fi
+
+        sleep 0.5
+        echo -e "[ ${STATUS_OK} ]"
+    fi
+
+    ##--------------------------------------------------------------------------
+    #   modify gpg-agent.conf
+    #
+    #   first check if GPG installed (usually on Ubuntu it is)
+    #   then modify user's gpg-agent.conf file
+    ##--------------------------------------------------------------------------
+
+    gpgconfig_file="/home/${USER}/.gnupg/gpg-agent.conf"
+
+    if ! [ -x "$(command -v gpg)" ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
+        printf '%-57s' "    |--- Installing GPG"
+        sleep 1
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            sudo apt-get update -y -q >> /dev/null 2>&1
+            sudo apt-get install gpg -y -qq >> /dev/null 2>&1
+        fi
+        echo -e "[ ${STATUS_OK} ]"
+        sleep 1
+    fi
+
+sudo tee ${gpgconfig_file} << EOF > /dev/null
+enable-putty-support
+enable-ssh-support
+use-standard-socket
+default-cache-ttl-ssh 60
+max-cache-ttl-ssh 120
+default-cache-ttl 28800 # gpg key cache time
+max-cache-ttl 28800 # max gpg key cache time
+pinentry-program "/usr/bin/pinentry"
+allow-loopback-pinentry
+allow-preset-passphrase
+pinentry-timeout 0
+EOF
+
+    printf '%-57s' "    |--- Set ownership to ${USER}"
+    sleep 1
+    if [ -z "${OPT_DEV_NULLRUN}" ]; then
+        sudo chgrp ${USER} ${gpgconfig_file} >> $LOGS_FILE 2>&1
+        sudo chown ${USER} ${gpgconfig_file} >> $LOGS_FILE 2>&1
+    fi
+    echo -e "[ ${STATUS_OK} ]"
+
+    printf '%-57s' "    |--- Restart GPG Agent"
+    sleep 1
+    gpgconf --kill gpg-agent
+    echo -e "[ ${STATUS_OK} ]"
+
 
     sleep 0.5
 
 }
 app_setup
-
-##--------------------------------------------------------------------------
-#   .git folder doesnt exist
-##--------------------------------------------------------------------------
-
-if [ ! -d .git ]; then
-
-    echo
-    echo
-    echo -e "  ${ORANGE}Error${WHITE}"
-    echo -e "  "
-    echo -e "  ${WHITE}Folder ${YELLOW}.git${NORMAL} does not exist."
-    echo -e "  ${WHITE}Must clone the ${YELLOW}proteus-apt-repo${NORMAL} first."
-    echo
-    echo
-
-    app_run_github_precheck
-
-    git init --initial-branch=${app_repo_branch}
-    git add .;git commit -m'Proteus-Git Setup'
-    git remote add origin https://github.com/Aetherinox/proteus-apt-repo.git
-    git pull origin ${app_repo_branch} --allow-unrelated-histories
-fi
 
 ##--------------------------------------------------------------------------
 #   output some logging
@@ -1808,6 +2044,9 @@ app_run_dl_aptsrc()
 
 ##--------------------------------------------------------------------------
 #   app > run > github
+#
+#   check github repos and download any updates that will be added to our
+#   apt repo.
 ##--------------------------------------------------------------------------
 
 app_run_dl_gh()
@@ -1928,37 +2167,7 @@ app_run_dl_gh()
 }
 
 ##--------------------------------------------------------------------------
-#   upload to github
-##--------------------------------------------------------------------------
-
-app_run_gh_end()
-{
-    app_run_github_precheck
-
-    echo
-    echo -e " ${BLUE}-------------------------------------------------------------------------${NORMAL}"
-    echo
-    echo -e "  ${GREYL}Updating Github: $app_repo_branch${WHITE}"
-    echo
-    echo -e " ${BLUE}-------------------------------------------------------------------------${NORMAL}"
-    echo
-
-    git branch -m $app_repo_branch
-    git add --all
-    git add -u
-
-    sleep 1
-
-    local app_repo_commit="[E] auto-update [ $app_repo_dist_sel ] @ $NOW"
-    git commit -S -m "$app_repo_commit"
-
-    sleep 1
-
-    git push -u origin $app_repo_branch
-}
-
-##--------------------------------------------------------------------------
-#   start github process
+#   Github > Start
 ##--------------------------------------------------------------------------
 
 app_run_gh_start()
@@ -2008,6 +2217,38 @@ EOF
     echo -e "  ${WHITE}Starting push ${FUCHSIA}${app_repo_branch}${WHITE}${NORMAL}"
     git push -u origin $app_repo_branch
 
+}
+
+##--------------------------------------------------------------------------
+#   Github > End
+#
+#   push all packages / upload to proteus apt repo
+##--------------------------------------------------------------------------
+
+app_run_gh_end()
+{
+    app_run_github_precheck
+
+    echo
+    echo -e " ${BLUE}-------------------------------------------------------------------------${NORMAL}"
+    echo
+    echo -e "  ${GREYL}Updating Github: $app_repo_branch${WHITE}"
+    echo
+    echo -e " ${BLUE}-------------------------------------------------------------------------${NORMAL}"
+    echo
+
+    git branch -m $app_repo_branch
+    git add --all
+    git add -u
+
+    sleep 1
+
+    local app_repo_commit="[E] auto-update [ $app_repo_dist_sel ] @ $NOW"
+    git commit -S -m "$app_repo_commit"
+
+    sleep 1
+
+    git push -u origin $app_repo_branch
 }
 
 ##--------------------------------------------------------------------------
