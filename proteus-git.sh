@@ -149,7 +149,6 @@ lst_packages=(
     'dialog'
     'firefox'
     'flatpak'
-    'google-chrome-stable'
     'gnome-keyring'
     'gnome-keysign'
     'gnome-shell-extension-manager'
