@@ -1408,20 +1408,35 @@ app_setup()
             echo
             echo -e "  ${ORANGE}Error${WHITE}"
             echo -e "  "
-            echo -e "  ${WHITE}Specified GPG key ${YELLOW}${GPG_KEY}${NORMAL} is not imported into GPG."
+            echo -e "  ${WHITE}Specified GPG key ${YELLOW}${GPG_KEY}${NORMAL} not found in GnuPG key store."
             echo -e "  ${WHITE}Searching ${YELLOW}$app_dir/.gpg/${NORMAL} for a GPG key to import."
             echo
             echo
 
-            printf "  Press any key to continue ... ${NORMAL}"
-            read -n 1 -s -r -p ""
-            echo
+            sleep 1
 
             if [ -f $app_dir/.gpg/*.gpg ]; then
                 gpg_file=$app_dir/.gpg/*.gpg
                 gpg --import $gpg_file
                 bGPGLoaded=true
+
+                echo
+                echo -e "  ${WHITE}Found ${YELLOW}$app_dir/.gpg/${gpg_file}${NORMAL} to import."
+                echo
+            else
+                echo
+                echo -e "  ${WHITE}No GPG keys found to import. ${RED}Aborting${NORMAL}"
+                echo
+
+                set +m
+                trap "kill -9 $app_pid 2> /dev/null" `seq 0 15`
+                kill $app_pid
+                set -m
             fi
+
+            printf "  Press any key to continue ... ${NORMAL}"
+            read -n 1 -s -r -p ""
+            echo
         fi
     fi
 
@@ -1559,9 +1574,7 @@ app_setup()
 
         sleep 0.5
 
-        echo -e "[ ${STATUS_OK} ]"
         printf "%-50s %-5s\n" "${TIME}      Updating user repo list with apt-get update" | tee -a "${LOGS_FILE}" >/dev/null
-        printf '%-50s %-5s' "    |--- Updating repo list" ""
 
         sleep 0.5
 
@@ -1599,9 +1612,7 @@ app_setup()
 
         sleep 0.5
 
-        echo -e "[ ${STATUS_OK} ]"
         printf "%-50s %-5s\n" "${TIME}      Updating user repo list with apt-get update" | tee -a "${LOGS_FILE}" >/dev/null
-        printf '%-50s %-5s' "    |--- Updating repo list" ""
 
         sleep 0.5
 
@@ -1629,9 +1640,7 @@ app_setup()
 
         sleep 0.5
 
-        echo -e "[ ${STATUS_OK} ]"
         printf "%-50s %-5s\n" "${TIME}      Updating user repo list with apt-get update" | tee -a "${LOGS_FILE}" >/dev/null
-        printf '%-50s %-5s' "    |--- Updating repo list" ""
         
         sleep 0.5
 
@@ -1756,9 +1765,15 @@ app_setup()
             pip install lastversion --break-system-packages
             cp /home/${USER}/.local/bin/lastversion /home/${USER}/bin/
             sudo touch /etc/profile.d/lastversion.sh
+
+            envpath_add_lastversion '$HOME/bin'
+
             echo 'export PATH="$HOME/bin:$PATH"' | sudo tee /etc/profile.d/lastversion.sh
-            source $HOME/.bashrc
-            source $HOME/.profile
+
+            . ~/.bashrc
+            . ~/.profile
+
+            source $HOME/.profile # not executing for some reason
         fi
 
         sleep 0.5
