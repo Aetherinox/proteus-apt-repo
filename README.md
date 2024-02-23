@@ -1054,27 +1054,27 @@ Information on how to utilize the packages in this repo for your own device
 <br />
 
 ## Add Repo To Sources
-If you wish to add the Proteus repo to your list of sources, the command below will create a new file located at `/etc/apt/sources.list.d/aetherinox-proteus-apt-repo-archive.list`
+If you wish to add the Proteus repo to your list of sources, the command below will create a new file located at `/etc/apt/sources.list.d/aetherinox-proteus-archive.list`
 
 <br />
 
 Open `Terminal` and add the GPG key to your keyring
 ```bash
-wget -qO - https://github.com/Aetherinox.gpg | sudo gpg --dearmor -o /usr/share/keyrings/aetherinox-proteus-apt-repo-archive.gpg
+wget -qO - https://github.com/Aetherinox.gpg | sudo gpg --dearmor -o /usr/share/keyrings/aetherinox-proteus-archive.gpg
 ```
 
 <br />
 
 Fetch the repo package list:
 ```shell
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/aetherinox-proteus-apt-repo-archive.gpg] https://raw.githubusercontent.com/Aetherinox/proteus-apt-repo/master $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/aetherinox-proteus-apt-repo-archive.list
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/aetherinox-proteus-archive.gpg] https://raw.githubusercontent.com/Aetherinox/proteus-apt-repo/master $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/aetherinox-proteus-archive.list
 ```
 
 <br />
 
 (Optional): To test if the correct GPG key was added:
 ```shell
-gpg -n -q --import --import-options import-show /usr/share/keyrings/aetherinox-proteus-apt-repo-archive.gpg | awk '/pub/{getline; gsub(/^ +| +$/,""); if($0 == "BCA07641EE3FCD7BC5585281488D518ABD3DC629") print "\nGPG fingerprint matches ("$0").\n"; else print "\GPG verification failed: Fngerprint ("$0") does not match the expected one.\n"}'
+gpg -n -q --import --import-options import-show /usr/share/keyrings/aetherinox-proteus-archive.gpg | awk '/pub/{getline; gsub(/^ +| +$/,""); if($0 == "BCA07641EE3FCD7BC5585281488D518ABD3DC629") print "\nGPG fingerprint matches ("$0").\n"; else print "\GPG verification failed: Fngerprint ("$0") does not match the expected one.\n"}'
 ```
 
 <br />
