@@ -149,6 +149,7 @@ lst_packages=(
     'dialog'
     'firefox'
     'flatpak'
+    'google-chrome-stable'
     'gnome-keyring'
     'gnome-keysign'
     'gnome-shell-extension-manager'
@@ -1399,6 +1400,8 @@ app_setup()
     #   missing mozilla repo
     #
     #   add mozilla source repo so that firefox can be downloaded using apt-get
+    #   instructions via:
+    #       https://support.mozilla.org/en-US/kb/install-firefox-linux#w_install-firefox-deb-package-for-debian-based-distributions
     ##--------------------------------------------------------------------------
 
     if [ "$bMissingMFirefox" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
@@ -1999,7 +2002,7 @@ EOF
 
     echo -e "  ${WHITE}Starting commit ${FUCHSIA}${app_repo_commit}${WHITE}${NORMAL}"
 
-    git commit -S -m "[S] auto-update [ jammy ] @ 02.22.2024 00:29:44"
+    git commit -S -m "[S] auto-update [ $app_repo_dist_sel ] @ 02.22.2024 00:29:44"
 
     sleep 1
 
