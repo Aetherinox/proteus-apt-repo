@@ -1039,17 +1039,24 @@ If you wish to add the Proteus repo to your list of sources, the command below w
 
 <br />
 
-Open `Terminal` and add the GPG key for the developer to your keyring
+Open `Terminal` and add the GPG key to your keyring
 ```bash
 wget -qO - https://github.com/Aetherinox.gpg | sudo gpg --dearmor -o /usr/share/keyrings/aetherinox-proteus-apt-repo-archive.gpg
 ```
 
-Then execute the command below to receive our package list:
+<br />
+
+Fetch the repo package list:
 ```shell
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/aetherinox-proteus-apt-repo-archive.gpg] https://raw.githubusercontent.com/Aetherinox/proteus-apt-repo/master $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/aetherinox-proteus-apt-repo-archive.list
 ```
 
-Be aware that most packages hosted in this repo are for `amd64`, so your desired package may not be available if you're running any other.
+<br />
+
+(Optional): To test if the correct GPG key was added:
+```shell
+gpg -n -q --import --import-options import-show /usr/share/keyrings/aetherinox-proteus-apt-repo-archive.gpg | awk '/pub/{getline; gsub(/^ +| +$/,""); if($0 == "BCA07641EE3FCD7BC5585281488D518ABD3DC629") print "\nGPG fingerprint matches ("$0").\n"; else print "\GPG verification failed: Fngerprint ("$0") does not match the expected one.\n"}'
+```
 
 <br />
 
@@ -1074,10 +1081,14 @@ To see which repo is distributing a package, enter:
 apt policy <package>
 ```
 
+<br />
+
 An example would be
 ```shell
 apt policy ocs-url
 ```
+
+<br />
 
 Which outputs the following:
 ```
@@ -1090,17 +1101,23 @@ ocs-url:
         100 /var/lib/dpkg/status
 ```
 
+<br />
+
 Or you can use
 ```shell
 apt-cache showpkg ocs-url
 ```
+
+<br />
 
 To see a full list of your registered repos and info about them:
 ```shell
 apt-cache policy 
 ```
 
-To view a list of packages being distributed by the repo
+<br />
+
+To view a list of packages being distributed by this repo
 ```shell
 grep -h -P -o "^Package: \K.*" /var/lib/apt/lists/*proteus-apt-repo*_Packages | sort -u 
 ```
