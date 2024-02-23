@@ -126,6 +126,39 @@ Description: package management related utility programs
     needed to publish an archive of Debian packages
   * apt-sortpkgs is a Packages/Sources file normalizer.
 
+Package: argon2
+Version: 0~20171227-0.3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Luca Bruno <lucab@debian.org>
+Installed-Size: 55
+Depends: libc6 (>= 2.34)
+Multi-Arch: foreign
+Homepage: https://github.com/P-H-C/phc-winner-argon2
+Priority: 0
+Section: utils
+Filename: pool/main/a/argon2/argon2_0~20171227-0.3_amd64.deb
+Size: 20168
+SHA512: e06db7fca9de8b3369cd0cad597608d46b910504f93833f3907038e54dccf0f96facb8aa532e1533d877c05314f0f619a2b9a4d2188b200b0556177703c36776
+SHA256: 2dd549abd5fb363964c9481c11171322a2d0c2478953850001544aa427fc1aff
+SHA1: 97e405b0acc40914e4ac2e8f3fa0ed605df0cf10
+MD5sum: 319aaf958339ec25f108e402d6414048
+Description: memory-hard hashing function - utility
+ Argon2 is a password-hashing function that can be used to hash passwords
+ for credential storage, key derivation, or other applications.
+ .
+ There are two main versions of Argon2: Argon2i and Argon2d.
+ Argon2i is the safest against side-channel attacks, while Argon2d provides
+ the highest resistance against GPU cracking attacks.
+ .
+ Argon2i and Argon2d are parametrized by:
+  * A time cost, which defines the amount of computation realized and
+    therefore the execution time, given in number of iterations
+  * A memory cost, which defines the memory usage, given in kibibytes
+  * A parallelism degree, which defines the number of parallel threads
+ .
+ This package contains the argon2 tool for hashing data on the command-line.
+
 Package: bitwarden
 Version: 2023.9.3
 License: GPL-3.0
@@ -202,6 +235,66 @@ Description: Displays user-friendly dialog boxes from shell scripts
   tail             Allows viewing the end of files (tail) that auto updates
   background tail  Similar to tail but runs in the background.
   editbox          Allows editing an existing file
+
+Package: firefox
+Version: 1:1snap1-0ubuntu2
+Architecture: amd64
+Maintainer: Ubuntu Mozilla Team <ubuntu-mozillateam@lists.ubuntu.com>
+Installed-Size: 255
+Pre-Depends: debconf, snapd
+Depends: debconf (>= 0.5) | debconf-2.0
+Breaks: firefox-dbg (<< 1:1snap1), firefox-dev (<< 1:1snap1), firefox-geckodriver (<< 1:1snap1), firefox-mozsymbols (<< 1:1snap1)
+Replaces: firefox-dbg (<< 1:1snap1), firefox-dev (<< 1:1snap1), firefox-geckodriver (<< 1:1snap1), firefox-mozsymbols (<< 1:1snap1)
+Provides: gnome-www-browser, iceweasel, www-browser, x-www-browser
+Priority: 0
+Section: utils
+Filename: pool/main/f/firefox/firefox_1snap1-0ubuntu2_amd64.deb
+Size: 72292
+SHA512: 35cb18af47666668b77357132f7786946fe2f90abba2fc5abd55f73124de672645a07ac97a6e12ca66b77d892f07356f3a69d8c321b5b657b39419b146681f2a
+SHA256: ddccd2ef5cc7291364ab4998e57d684aac993488ae561bb67ed31ddb617659cc
+SHA1: ec27ebd8fca2d918add69c94f1163b593fd4fb66
+MD5sum: 4cfb8522595425213edbd3440dfaab6c
+Description: Transitional package - firefox -> firefox snap
+ This is a transitional dummy package. It can safely be removed.
+ .
+ firefox is now replaced by the firefox snap.
+
+Package: flatpak
+Version: 1.14.4-1~flatpak1~22.04.1
+Architecture: amd64
+Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
+Installed-Size: 5467
+Depends: adduser, default-dbus-system-bus | dbus-system-bus, fuse3, libappstream4 (>= 0.10.0), libarchive13 (>= 3.0.4), libc6 (>= 2.34), libcap2 (>= 1:2.10), libcurl3-gnutls (>= 7.16.2), libdconf1 (>= 0.26.0), libfuse3-3 (>= 3.2.3), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.67.3+git20210214), libjson-glib-1.0-0 (>= 1.5.2), libmalcontent-0-0 (>= 0.6.0), libostree-1-1 (>= 2020.8), libpolkit-agent-1-0 (>= 0.105), libpolkit-gobject-1-0 (>= 0.101), libseccomp2 (>= 2.5.2), libsystemd0, libxau6 (>= 1:1.0.9), libxml2 (>= 2.7.4), libzstd1 (>= 1.4.0)
+Recommends: ca-certificates, desktop-file-utils, hicolor-icon-theme, gtk-update-icon-cache, libpam-systemd, p11-kit, polkitd | policykit-1, shared-mime-info, xdg-desktop-portal (>= 1.6), xdg-desktop-portal-gtk (>= 1.6) | xdg-desktop-portal-backend, xdg-user-dirs
+Suggests: avahi-daemon, malcontent-gui
+Conflicts: xdg-app
+Replaces: xdg-app
+Homepage: https://flatpak.org/
+Priority: 0
+Section: utils
+Filename: pool/main/f/flatpak/flatpak_1.14.4-1~flatpak1~22.04.1_amd64.deb
+Size: 1448378
+SHA512: 6bbb2d2c0340e1a392fafddf4dd62855797cf0b39463d7a6db27b1b330997e9e5ad0d7c9741a59816a39be22aeb874849e7cfbf78c460eea744cafbe0bc7cc41
+SHA256: f291aee006efdcd2df9410130910eee10aa0279c19385941208b12915fd0577f
+SHA1: fbc00a014c80c832515440dbd00e4c28ff3bb993
+MD5sum: e0a0446565d76d49d2c3bf79d5358ed9
+Description: Application deployment framework for desktop apps
+ Flatpak installs, manages and runs sandboxed desktop application bundles.
+ Application bundles run partially isolated from the wider system, using
+ containerization techniques such as namespaces to prevent direct access
+ to system resources. Resources from outside the sandbox can be accessed
+ via "portal" services, which are responsible for access control; for
+ example, the Documents portal displays an "Open" dialog outside the
+ sandbox, then allows the application to access only the selected file.
+ .
+ Each application uses a specified "runtime", or set of libraries, which is
+ available as /usr inside its sandbox. This can be used to run application
+ bundles with multiple, potentially incompatible sets of dependencies within
+ the same desktop environment.
+ .
+ This package contains the services and executables needed to install and
+ launch sandboxed applications, and the portal services needed to provide
+ limited access to resources outside the sandbox.
 
 Package: freetube
 Version: 0.19.1
@@ -5566,6 +5659,56 @@ Description: Debian package repository producer
  signatures of the generated Package indices is supported.
  .
  This package also contains the changestool and rredtool helpers.
+
+Package: snap
+Version: 2013-11-29-11
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>
+Installed-Size: 2691
+Depends: libc6 (>= 2.29)
+Homepage: https://github.com/KorfLab/SNAP
+Priority: 0
+Section: utils
+Filename: pool/main/s/snap/snap_2013-11-29-11_amd64.deb
+Size: 376936
+SHA512: 6d55d25a6610e0fb79a8d023978fdaa5c1e4bfa7d1e590ff122c6b241c0c0fada1c0ac26cfb0b60a5485ab4a2b8f61dda9ab69c92e8044da291e1985ecd4a2ca
+SHA256: 0e4682fdc02b70fe5c17cd08e61bde2bb54491ae10663b824b886c12830e4e7f
+SHA1: c1604ca2526706840ba42fdec6f7331dd621f3c2
+MD5sum: c84d99e8e4edb4ca6df8e5d948ce3b2b
+Description: location of genes from DNA sequence with hidden markov model
+ SNAP is a general purpose gene finding program suitable for both eukaryotic
+ and prokaryotic genomes. SNAP is an acroynm for Semi-HMM-based Nucleic Acid
+ Parser.
+
+Package: snapd
+Version: 2.58+22.04.1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 100049
+Depends: adduser, apparmor (>= 2.10.95-0ubuntu2.2), ca-certificates, openssh-client, squashfs-tools, systemd, udev, libc6 (>= 2.34), libfuse3-3 (>= 3.2.3), liblzma5 (>= 5.1.1alpha+20110809), liblzo2-2 (>= 2.02), libudev1 (>= 183), zlib1g (>= 1:1.1.4), default-dbus-session-bus | dbus-session-bus
+Recommends: gnupg, fuse3 (>= 3.10.5-1) | fuse
+Suggests: zenity | kdialog
+Conflicts: snap (<< 2013-11-29-1ubuntu1)
+Breaks: snap-confine (<< 2.23), snapd-xdg-open (<= 0.0.0), ubuntu-core-launcher (<< 2.22), ubuntu-snappy (<< 1.9), ubuntu-snappy-cli (<< 1.9)
+Replaces: snap-confine (<< 2.23), snapd-xdg-open (<= 0.0.0), ubuntu-core-launcher (<< 2.22), ubuntu-snappy (<< 1.9), ubuntu-snappy-cli (<< 1.9)
+Built-Using: apparmor (= 3.0.4-2ubuntu2), libcap2 (= 1:2.44-1build3), libseccomp (= 2.5.3-2ubuntu2)
+Homepage: https://github.com/snapcore/snapd
+Priority: 0
+Section: utils
+Filename: pool/main/s/snapd/snapd_2.58+22.04.1_amd64.deb
+Size: 23841840
+SHA512: a1ef6f5682a7e21ebb604161f57144003b57edab71bbb8825f8a50509fa9bff7607cc8709080d5fc330fcea3f5b688853416802137ad66f4286673dd76acb3a2
+SHA256: 1fd668baf737fb8714779a5e9db5acd737778c3b54e3625576ddef8f07e99cd9
+SHA1: a62c76c509a748f106b5359b7f1ac69e36fca850
+MD5sum: 76c39f67513e840178d5d27b954e60f5
+Description: Daemon and tooling that enable snap packages
+ Install, configure, refresh and remove snap packages. Snaps are
+ 'universal' packages that work across many different Linux systems,
+ enabling secure distribution of the latest apps and utilities for
+ cloud, servers, desktops and the internet of things.
+ .
+ Start with 'snap list' to see installed snaps.
 
 Package: tilix
 Version: 1.9.4-2build1
