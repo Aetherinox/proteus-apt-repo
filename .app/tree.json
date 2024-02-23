@@ -232,12 +232,15 @@
             {"type":"file","name":"php-zip_8.2+93ubuntu1_all.deb"}
           ]},
           {"type":"directory","name":"amd64","contents":[
+            {"type":"file","name":"app-outlet_2.1.0_amd64.deb"},
             {"type":"file","name":"apt-move_4.2.27-6_amd64.deb"},
             {"type":"file","name":"apt-utils_2.7.3_amd64.deb"},
             {"type":"file","name":"argon2_0~20190702+dfsg-3_amd64.deb"},
             {"type":"file","name":"dialog_1.3-20230209-1_amd64.deb"},
             {"type":"file","name":"firefox_1snap1-0ubuntu3_amd64.deb"},
             {"type":"file","name":"flatpak_1.14.4-2_amd64.deb"},
+            {"type":"file","name":"freetube_0.19.1_amd64.deb"},
+            {"type":"file","name":"GitHubDesktop-linux-amd64-3.3.8-linux2.deb"},
             {"type":"file","name":"gnome-keyring_42.1-1_amd64.deb"},
             {"type":"file","name":"gnome-shell-extension-manager_0.4.2-1_amd64.deb"},
             {"type":"file","name":"gpg_2.2.40-1.1ubuntu1_amd64.deb"},
@@ -270,6 +273,7 @@
             {"type":"file","name":"nginx_1.24.0-1ubuntu1_amd64.deb"},
             {"type":"file","name":"nginx-confgen_2.1-1_amd64.deb"},
             {"type":"file","name":"nginx-extras_1.24.0-1ubuntu1_amd64.deb"},
+            {"type":"file","name":"obsidian_1.5.8_amd64.deb"},
             {"type":"file","name":"open-vm-tools_12.3.5-3~ubuntu0.23.10.1_amd64.deb"},
             {"type":"file","name":"open-vm-tools-desktop_12.3.5-3~ubuntu0.23.10.1_amd64.deb"},
             {"type":"file","name":"open-vm-tools-dev_12.3.5-3~ubuntu0.23.10.1_amd64.deb"},
@@ -316,7 +320,10 @@
             {"type":"file","name":"snapd_2.60.4+23.10.1_amd64.deb"},
             {"type":"file","name":"wget_1.21.3-1ubuntu1_amd64.deb"}
           ]},
-          {"type":"directory","name":"arm64"}
+          {"type":"directory","name":"arm64","contents":[
+            {"type":"file","name":"freetube_0.19.1_arm64.deb"},
+            {"type":"file","name":"GitHubDesktop-linux-arm64-3.3.8-linux2.deb"}
+          ]}
         ]}
       ]}
     ]},
@@ -704,7 +711,8 @@
         {"type":"directory","name":"o","contents":[
           {"type":"directory","name":"obsidian","contents":[
             {"type":"file","name":"obsidian_1.4.16_amd64.deb"},
-            {"type":"file","name":"obsidian_1.5.3_amd64.deb"}
+            {"type":"file","name":"obsidian_1.5.3_amd64.deb"},
+            {"type":"file","name":"obsidian_1.5.8_amd64.deb"}
           ]},
           {"type":"directory","name":"ocs-url","contents":[
             {"type":"file","name":"ocs-url_3.1.0-0ubuntu1_amd64.deb"}
@@ -1342,5 +1350,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":195,"files":953}
+  {"type":"report","directories":195,"files":960}
 ]
