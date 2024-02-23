@@ -136,9 +136,12 @@ lst_github=(
 
 lst_packages=(
     'adduser'
+    'argon2'
     'apt-move'
     'apt-utils'
     'dialog'
+    'firefox'
+    'flatpak'
     'gnome-keyring'
     'gnome-keysign'
     'gnome-shell-extension-manager'
@@ -280,6 +283,8 @@ lst_packages=(
     'php-zip'
     'php-zmq'
     'php'
+    'snap'
+    'snapd'
     'wget'
 )
 
@@ -427,6 +432,8 @@ fi
 
 ##--------------------------------------------------------------------------
 #   check > GPG key
+#
+#   GPG_KEY comes from export GPG_KEY in secrets.sh
 ##--------------------------------------------------------------------------
 
 if [ -z "${GPG_KEY}" ]; then
@@ -450,16 +457,22 @@ fi
 
 ##--------------------------------------------------------------------------
 #   check > Github / Gitlab API tokens
+#
+#   Must use the values
+#       - GITHUB_API_TOKEN
+#       - GITLAB_PA_TOKEN
+#
+#   Do not rename them, these are the globals recognized by LastVersion
 ##--------------------------------------------------------------------------
 
-if [ -z "${GITHUB_API_TOKEN}" ] && [ -z "${GITLAB_API_TOKEN}" ]; then
+if [ -z "${GITHUB_API_TOKEN}" ] && [ -z "${GITLAB_PA_TOKEN}" ]; then
     echo
     echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Missing ${YELLOW}API Tokens${WHITE}${NORMAL}"
     echo -e "  ${BOLD}${WHITE}Must create a ${FUCHSIA}secrets.sh${WHITE} file and define an API token${NORMAL}"
     echo -e "  ${BOLD}${WHITE}for either Github or Gitlab.${NORMAL}"
     echo
     echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GITHUB_API_TOKEN=${WHITE}XXXXXXX${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GITLAB_API_TOKEN=${WHITE}XXXXXXX${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GITLAB_PA_TOKEN=${WHITE}XXXXXXX${NORMAL}"
     echo
     echo -e "  ${BOLD}${WHITE}Without supplying this, you will be rate limited.${NORMAL}"
     echo -e "  ${BOLD}${WHITE}on queries using ${YELLOW}LastVersion${WHITE}${NORMAL}"
@@ -1089,19 +1102,21 @@ app_setup()
 
     clear
 
-    local bMissingAptmove=false
+    local bMissingAptMove=false
     local bMissingAptUrl=false
     local bMissingCurl=false
     local bMissingWget=false
     local bMissingTree=false
     local bMissingGPG=false
+    local bMissingGChrome=false
+    local bMissingMFirefox=false
     local bMissingRepo=false
     local bMissingReprepro=false
     local bGPGLoaded=false
 
     # require whiptail
     if ! [ -x "$(command -v apt-move)" ]; then
-        bMissingAptmove=true
+        bMissingAptMove=true
     fi
 
     # require whiptail
@@ -1141,6 +1156,18 @@ app_setup()
     fi
 
     ##--------------------------------------------------------------------------
+    #   Missing browsers .list (google chrome, firefox)
+    ##--------------------------------------------------------------------------
+
+    if ! [ -f "/etc/apt/sources.list.d/google-chrome.list" ]; then
+        bMissingGChrome=true
+    fi
+
+    if ! [ -f "/etc/apt/sources.list.d/mozilla.list" ]; then
+        bMissingMFirefox=true
+    fi
+
+    ##--------------------------------------------------------------------------
     #   Missing proteus-apt-repo .list
     ##--------------------------------------------------------------------------
 
@@ -1150,7 +1177,7 @@ app_setup()
 
     # Check if contains title
     # If so, called from another function
-    if [ "$bMissingAptmove" = true ] || [ "$bMissingAptUrl" = true ] || [ "$bMissingCurl" = true ] || [ "$bMissingWget" = true ] || [ "$bMissingTree" = true ] || [ "$bMissingGPG" = true ] || [ "$bMissingRepo" = true ] || [ "$bMissingReprepro" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
+    if [ "$bMissingAptMove" = true ] || [ "$bMissingAptUrl" = true ] || [ "$bMissingCurl" = true ] || [ "$bMissingWget" = true ] || [ "$bMissingTree" = true ] || [ "$bMissingGPG" = true ] ||  [ "$bMissingGChrome" = true ]  || [ "$bMissingMFirefox" = true ] || [ "$bMissingRepo" = true ] || [ "$bMissingReprepro" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         echo
         title "Addressing Dependencies ..."
         echo
@@ -1158,42 +1185,92 @@ app_setup()
     fi
 
     ##--------------------------------------------------------------------------
-    #   missing apt-move
+    #   find a gpg key that can be imported
+    #   maybe later add a loop to check for multiple.
     ##--------------------------------------------------------------------------
 
-    if [ "$bMissingAptmove" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
-        printf "%-50s %-5s\n" "${TIME}      Installing apt-move package" | tee -a "${LOGS_FILE}" >/dev/null
+    if [ -z "${GPG_KEY}" ]; then
+        echo
+        echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}GPG Key not specified${NORMAL}"
+        echo -e "  ${BOLD}${WHITE}Must create a ${FUCHSIA}secrets.sh${WHITE} file and define your GPG key.${NORMAL}"
+        echo
+        echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GPG_KEY=${WHITE}XXXXXXXX${NORMAL}"
+        echo
 
-        printf '%-50s %-5s' "    |--- Adding apt-move package" ""
-        sleep 0.5
+        printf "  Press any key to abort ... ${NORMAL}"
+        read -n 1 -s -r -p ""
+        echo
+        echo
 
-        if [ -z "${OPT_DEV_NULLRUN}" ]; then
-            sudo apt-get update -y -q >> /dev/null 2>&1
-            sudo apt-get install apt-move -y -qq >> /dev/null 2>&1
+        set +m
+        trap "kill -9 $app_pid 2> /dev/null" `seq 0 15`
+        kill $app_pid
+        set -m
+    else
+        gpg_id=$( gpg --list-secret-keys --keyid-format=long | grep $GPG_KEY )
+        if [[ $? == 0 ]]; then 
+            echo
+            echo -e "  ${WHITE}GPG key ${GREEN}${GPG_KEY}${NORMAL} found."
+            echo
+
+            bGPGLoaded=true
+
+            sleep 5
+        else
+            echo
+            echo
+            echo -e "  ${ORANGE}Error${WHITE}"
+            echo -e "  "
+            echo -e "  ${WHITE}Specified GPG key ${YELLOW}${GPG_KEY}${NORMAL} is not imported into GPG."
+            echo -e "  ${WHITE}Searching ${YELLOW}$app_dir/.gpg/${NORMAL} for a GPG key to import."
+            echo
+            echo
+
+            printf "  Press any key to continue ... ${NORMAL}"
+            read -n 1 -s -r -p ""
+            echo
+
+            if [ -f $app_dir/.gpg/*.gpg ]; then
+                gpg_file=$app_dir/.gpg/*.gpg
+                gpg --import $gpg_file
+                bGPGLoaded=true
+            fi
         fi
-
-        sleep 0.5
-        echo -e "[ ${STATUS_OK} ]"
     fi
 
     ##--------------------------------------------------------------------------
-    #   missing apt-url
+    #   missing gpg key after searching numerous places, including .gpg folder
+    #
+    #   bGPGLoaded      true if one of two conditions are met
+    #                   1. gpg --list-keys KEY_ID found
+    #                   2. found a .gpg file in the ./gpg folder
     ##--------------------------------------------------------------------------
 
-    if [ "$bMissingAptUrl" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
-        printf "%-50s %-5s\n" "${TIME}      Installing apt-url package" | tee -a "${LOGS_FILE}" >/dev/null
+    if [ "$bGPGLoaded" = false ]; then
+        echo
+        echo
+        echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Private GPG key not found${NORMAL}"
+        echo
+        echo -e "  ${WHITE}You must have a private GPG key imported to use this program.${NORMAL}"
+        echo -e "  ${WHITE}Your private GPG key is used to sign commits and the deb package${NORMAL}"
+        echo -e "  ${WHITE}repositories that you upload.${NORMAL}"
+        echo
+        echo -e "  ${WHITE}You must either add a private .gpg keyfile to the folder:${NORMAL}"
+        echo -e "       ${YELLOW}$app_dir/.gpg/${NORMAL}"
+        echo -e "  ${WHITE}Or manually import a GPG key to your system's GPG keyring${NORMAL}"
+        echo
 
-        printf '%-50s %-5s' "    |--- Adding apt-url package" ""
-        sleep 0.5
+        printf "  Press any key to abort ... ${NORMAL}"
+        read -n 1 -s -r -p ""
+        echo
+        echo
 
-        if [ -z "${OPT_DEV_NULLRUN}" ]; then
-            sudo apt-get update -y -q >> /dev/null 2>&1
-            sudo apt-get install apt-url -y -qq >> /dev/null 2>&1
-        fi
-
-        sleep 0.5
-        echo -e "[ ${STATUS_OK} ]"
+        set +m
+        trap "kill -9 $app_pid 2> /dev/null" `seq 0 15`
+        kill $app_pid
+        set -m
     fi
+
 
     ##--------------------------------------------------------------------------
     #   missing curl
@@ -1253,90 +1330,9 @@ app_setup()
     fi
 
     ##--------------------------------------------------------------------------
-    #   find a gpg key that can be imported
-    #   maybe later add a loop to check for multiple.
-    ##--------------------------------------------------------------------------
-
-    if [ -z "${GPG_KEY}" ]; then
-        echo
-        echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}GPG Key not specified${NORMAL}"
-        echo -e "  ${BOLD}${WHITE}Must create a ${FUCHSIA}secrets.sh${WHITE} file and define your GPG key.${NORMAL}"
-        echo
-        echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GPG_KEY=${WHITE}XXXXXXXX${NORMAL}"
-        echo
-
-        printf "  Press any key to abort ... ${NORMAL}"
-        read -n 1 -s -r -p ""
-        echo
-        echo
-
-        set +m
-        trap "kill -9 $app_pid 2> /dev/null" `seq 0 15`
-        kill $app_pid
-        set -m
-    else
-        gpg_id=$( gpg --list-secret-keys --keyid-format=long | grep $GPG_KEY )
-        if [[ $? == 0 ]]; then 
-            echo
-            echo -e "  ${WHITE}GPG key ${GREEN}${GPG_KEY}${NORMAL} found."
-            echo
-
-            bGPGLoaded=true
-
-            sleep 5
-        else
-            echo
-            echo
-            echo -e "  ${ORANGE}Error${WHITE}"
-            echo -e "  "
-            echo -e "  ${WHITE}Specified GPG key ${YELLOW}${GPG_KEY}${NORMAL} is not imported into GPG."
-            echo -e "  ${WHITE}Searching ${YELLOW}$app_dir/.gpg/${NORMAL} for a GPG key to import."
-            echo
-            echo
-
-            printf "  Press any key to continue ... ${NORMAL}"
-            read -n 1 -s -r -p ""
-            echo
-
-            if [ -f $app_dir/.gpg/*.gpg ]; then
-                gpg_file=$app_dir/.gpg/*.gpg
-                gpg --import $gpg_file
-                bGPGLoaded=true
-            fi
-        fi
-    fi
-
-    ##--------------------------------------------------------------------------
-    #   missing gpg key after searching numerous places, including .gpg folder
-    ##--------------------------------------------------------------------------
-
-    if [ "$bGPGLoaded" = false ]; then
-        echo
-        echo
-        echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Private GPG key not found${NORMAL}"
-        echo
-        echo -e "  ${WHITE}You must have a private GPG key imported to use this program.${NORMAL}"
-        echo -e "  ${WHITE}Your private GPG key is used to sign commits and the deb package${NORMAL}"
-        echo -e "  ${WHITE}repositories that you upload.${NORMAL}"
-        echo
-        echo -e "  ${WHITE}You must either add a private .gpg keyfile to the folder:${NORMAL}"
-        echo -e "       ${YELLOW}$app_dir/.gpg/${NORMAL}"
-        echo -e "  ${WHITE}Or manually import a GPG key to your system's GPG keyring${NORMAL}"
-        echo
-
-        printf "  Press any key to abort ... ${NORMAL}"
-        read -n 1 -s -r -p ""
-        echo
-        echo
-
-        set +m
-        trap "kill -9 $app_pid 2> /dev/null" `seq 0 15`
-        kill $app_pid
-        set -m
-    fi
-
-    ##--------------------------------------------------------------------------
-    #   missing gpg
+    #   missing gpg trusted file
+    #
+    #   bMissingGPG     File /usr/share/keyrings/${app_repo_apt_pkg}.gpg not found
     ##--------------------------------------------------------------------------
 
     if [ "$bMissingGPG" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
@@ -1347,6 +1343,83 @@ app_setup()
 
         if [ -z "${OPT_DEV_NULLRUN}" ]; then
             sudo wget -qO - "https://github.com/${app_repo_author}.gpg" | sudo gpg --batch --yes --dearmor -o "/usr/share/keyrings/${app_repo_apt_pkg}.gpg" >/dev/null
+        fi
+
+        sleep 0.5
+        echo -e "[ ${STATUS_OK} ]"
+    fi
+
+
+    ##--------------------------------------------------------------------------
+    #   missing google chrome
+    #
+    #   add google source repo so that chrome can be downloaded using apt-get
+    ##--------------------------------------------------------------------------
+
+    if [ "$bMissingGChrome" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
+        printf "%-50s %-5s\n" "${TIME}      Registering Chrome: /etc/apt/sources.list.d/google-chrome.list" | tee -a "${LOGS_FILE}" >/dev/null
+
+        printf '%-50s %-5s' "    |--- Registering Chrome" ""
+        sleep 0.5
+
+        sudo install -d -m 0755 /etc/apt/keyrings
+
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            sudo wget -qO - "https://dl-ssl.google.com/linux/linux_signing_key.pub" | sudo gpg --batch --yes --dearmor -o "/etc/apt/keyrings/dl.google.com.gpg" >/dev/null
+            echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/dl.google.com.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list >/dev/null
+        fi
+
+        # change priority
+        echo 'Package: * Pin: origin dl.google.com Pin-Priority: 1000' | sudo tee /etc/apt/preferences.d/google-chrome >/dev/null
+
+        sleep 0.5
+        echo -e "[ ${STATUS_OK} ]"
+
+        printf "%-50s %-5s\n" "${TIME}      Updating user repo list with apt-get update" | tee -a "${LOGS_FILE}" >/dev/null
+
+        printf '%-50s %-5s' "    |--- Updating repo list" ""
+        sleep 0.5
+
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            sudo apt-get update -y -q >/dev/null
+        fi
+
+        sleep 0.5
+        echo -e "[ ${STATUS_OK} ]"
+    fi
+
+    ##--------------------------------------------------------------------------
+    #   missing mozilla repo
+    #
+    #   add mozilla source repo so that firefox can be downloaded using apt-get
+    ##--------------------------------------------------------------------------
+
+    if [ "$bMissingMFirefox" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
+        printf "%-50s %-5s\n" "${TIME}      Registering Mozilla: /etc/apt/sources.list.d/mozilla.list" | tee -a "${LOGS_FILE}" >/dev/null
+
+        printf '%-50s %-5s' "    |--- Registering Mozilla" ""
+        sleep 0.5
+
+        sudo install -d -m 0755 /etc/apt/keyrings
+        sudo wget -qO - "https://packages.mozilla.org/apt/repo-signing-key.gpg" | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
+
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" | sudo tee /etc/apt/sources.list.d/mozilla.list >/dev/null
+        fi
+
+        # change priority
+        echo 'Package: * Pin: origin packages.mozilla.org Pin-Priority: 1000' | sudo tee /etc/apt/preferences.d/mozilla >/dev/null
+
+        sleep 0.5
+        echo -e "[ ${STATUS_OK} ]"
+
+        printf "%-50s %-5s\n" "${TIME}      Updating user repo list with apt-get update" | tee -a "${LOGS_FILE}" >/dev/null
+
+        printf '%-50s %-5s' "    |--- Updating repo list" ""
+        sleep 0.5
+
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            sudo apt-get update -y -q >/dev/null
         fi
 
         sleep 0.5
@@ -1406,6 +1479,46 @@ app_setup()
         sleep 0.5
         echo -e "[ ${STATUS_OK} ]"
     fi
+
+
+    ##--------------------------------------------------------------------------
+    #   missing apt-move
+    ##--------------------------------------------------------------------------
+
+    if [ "$bMissingAptMove" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
+        printf "%-50s %-5s\n" "${TIME}      Installing apt-move package" | tee -a "${LOGS_FILE}" >/dev/null
+
+        printf '%-50s %-5s' "    |--- Adding apt-move package" ""
+        sleep 0.5
+
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            sudo apt-get update -y -q >> /dev/null 2>&1
+            sudo apt-get install apt-move -y -qq >> /dev/null 2>&1
+        fi
+
+        sleep 0.5
+        echo -e "[ ${STATUS_OK} ]"
+    fi
+
+    ##--------------------------------------------------------------------------
+    #   missing apt-url
+    ##--------------------------------------------------------------------------
+
+    if [ "$bMissingAptUrl" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
+        printf "%-50s %-5s\n" "${TIME}      Installing apt-url package" | tee -a "${LOGS_FILE}" >/dev/null
+
+        printf '%-50s %-5s' "    |--- Adding apt-url package" ""
+        sleep 0.5
+
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            sudo apt-get update -y -q >> /dev/null 2>&1
+            sudo apt-get install apt-url -y -qq >> /dev/null 2>&1
+        fi
+
+        sleep 0.5
+        echo -e "[ ${STATUS_OK} ]"
+    fi
+
 
     ##--------------------------------------------------------------------------
     #   missing reprepro
@@ -1906,7 +2019,7 @@ app_run_tree_update()
     ##--------------------------------------------------------------------------
 
     duration=$SECONDS
-    elapsed="$(($duration / 60))m $(( $duration % 60 ))s"
+    elapsed="$(($duration / 60))m and $(( $duration % 60 ))s"
 
     ##--------------------------------------------------------------------------
     #   .app folder > create .json
@@ -2043,7 +2156,7 @@ app_start()
     ##--------------------------------------------------------------------------
 
     duration=$SECONDS
-    elapsed="$(($duration / 60)) minutes $(( $duration % 60 )) seconds elapsed."
+    elapsed="$(($duration / 60)) minutes and $(( $duration % 60 )) seconds elapsed."
 
     printf "%-57s %-15s\n\n\n\n" "${TIME}      ${elapsed}" | tee -a "${LOGS_FILE}" >/dev/null
 
