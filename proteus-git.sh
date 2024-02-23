@@ -32,6 +32,13 @@ if ! [ -x "$(command -v git)" ]; then
 fi
 
 ##--------------------------------------------------------------------------
+#   ensure we dont have any hanging applications
+##--------------------------------------------------------------------------
+
+sudo pkill -f -9 apt-move
+sudo pkill -f -9 apt-url
+
+##--------------------------------------------------------------------------
 #   vars > colors
 #
 #   tput setab  [1-7]       – Set a background color using ANSI escape
@@ -1974,7 +1981,7 @@ tee $manifest_dir/$app_repo_dist_sel.json >/dev/null <<EOF
     "description":      "${app_about}",
     "distrib":          "${app_repo_dist_sel}",
     "url":              "${app_repo_url}",
-    "last_duration":    "Not Finished",
+    "last_duration":    "Incomplete",
     "last_update":      "Running ...............",
     "last_update_ts":   "${DATE_TS}"
 }
