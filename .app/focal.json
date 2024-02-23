@@ -5,7 +5,7 @@
     "description":      "Internal system to Proteus App Manager which grabs debian packages.",
     "distrib":          "focal",
     "url":              "https://github.com/Aetherinox/proteus-git",
-    "last_duration":    "11m 13s",
-    "last_update":      "02.21.2024 19:00:58",
-    "last_update_ts":   "1708570858"
+    "last_duration":    "15m 11s",
+    "last_update":      "02.23.2024 08:15:53",
+    "last_update_ts":   "1708676153"
 }
