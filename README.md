@@ -8,6 +8,25 @@
 </div>
 
 <br />
+
+This apt repository works in a similar manner to other official repos such as http://xx.archive.ubuntu.com/ubuntu. To utilize this repository, you will add this repo to your Ubuntu sources list, which will then allow you to install packages just as you normally would using `apt` or `apt-get`.
+
+<br />
+
+This repo includes several types of packages:
+- Official ubuntu packages
+- Github hosted linux packages that are normally installed manually, but can now be accessed by `apt`
+- Access to different versions of packages not available using the traditional method, without the need to manually find them.
+
+<br />
+
+Packages in this repo are automatically fetched and constantly checked for updates using several servers that remain online.
+
+<br />
+
+View the instructions below to add this repo to your sources list, and how to install packages from this repo.
+
+<br />
 <br />
 
 ## Status
