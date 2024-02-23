@@ -41,6 +41,27 @@ Description: add and remove users and groups
  easier and more stable to write and maintain.
 Original-Maintainer: Debian Adduser Developers <adduser@packages.debian.org>
 
+Package: app-outlet
+Version: 2.1.0
+License: unknown
+Vendor: Messias Junior <messiaslima.03@gmail.com>
+Architecture: amd64
+Maintainer: Messias Junior <messiaslima.03@gmail.com>
+Installed-Size: 317067
+Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
+Recommends: libappindicator3-1
+Homepage: https://app-outlet.github.io
+Priority: 0
+Section: utils
+Filename: pool/main/a/app-outlet/app-outlet_2.1.0_amd64.deb
+Size: 78258198
+SHA512: f345107a838e12b6b0201a6f58db185d6fdfa20d56403fad98f26ef97bb92d1eecacbfe4102f63ce5502e763d16c2946ce04f7b9075b39e04885f87f3820fbf3
+SHA256: 9dcd90a9370d8b41aa255494c0b67665e850ec5c7d8c9eebb53ac533c1cb1d60
+SHA1: 5e0762a18c3cdfd08173ee084345de56beb34a6b
+MD5sum: cce3d6aea24c0cfba940e7bfbd853cf1
+Description: 
+  A Universal linux app store 
+
 Package: apt-move
 Version: 4.2.27-6
 Architecture: amd64
@@ -226,6 +247,47 @@ Description: Application deployment framework for desktop apps
  This package contains the services and executables needed to install and
  launch sandboxed applications, and the portal services needed to provide
  limited access to resources outside the sandbox.
+
+Package: freetube
+Version: 0.19.1
+License: AGPL-3.0-or-later
+Vendor: PrestonN <FreeTubeApp@protonmail.com>
+Architecture: amd64
+Maintainer: PrestonN <FreeTubeApp@protonmail.com>
+Installed-Size: 234625
+Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
+Recommends: libappindicator3-1
+Homepage: https://github.com/FreeTubeApp/FreeTube#readme
+Priority: 0
+Section: utils
+Filename: pool/main/f/freetube/freetube_0.19.1_amd64.deb
+Size: 67679340
+SHA512: 01c73ebcd7fc6aa7158633b81fb1117869acb5c72a58c80ed15f420e2d85c3aa882e83f008fe9091df6d02cc4c8a7d0939ef2ffda364219a8310b5e452a6e735
+SHA256: 75a4441b8a5ec3cf5937fa867391554dad6bf118a99496af1dfc6b8dc2437ef6
+SHA1: 20200252c4340a61e7ec2f21652dba16d6e1d6db
+MD5sum: 43a2e6e8cb4877a29edb444ef30e8ede
+Description: 
+  A private YouTube client
+
+Package: github-desktop
+Version: 3.3.8-linux2
+Architecture: amd64
+Depends: libgtk-3-0, libnotify4, libnss3, libxtst6, xdg-utils, libatspi2.0-0, libdrm2, libgbm1, libxcb-dri3-0, kde-cli-tools | kde-runtime | trash-cli | libglib2.0-bin | gvfs-bin, libcurl3 | libcurl4, libsecret-1-0, gnome-keyring
+Recommends: pulseaudio | libasound2
+Suggests: gir1.2-gnomekeyring-1.0, libgnome-keyring0, lsb-release
+Installed-Size: 337293
+Maintainer: Brendan Forster <github@brendanforster.com>
+Homepage: https://github.com/shiftkey/desktop
+Priority: 0
+Section: utils
+Filename: pool/main/g/github-desktop/github-desktop_3.3.8-linux2_amd64.deb
+Size: 94652532
+SHA512: ce6638b9b1b12967dca6c5aebdb1b5b56e906b0ec4a57ad0d83c6dfa13d605ffdebf74b55a5e096c970bad0452ac92abf70767bc256a732ac5b9cbe3911bf707
+SHA256: 317b4421512c7791803c6bb13077052c9fccd34f653d19d7ea1fa48f9525486f
+SHA1: d5b0775bd8e259d853330d1784590b7af6222f90
+MD5sum: c211261b2413198adf321923a1905aae
+Description: Simple collaboration from your desktop
+ This is the unofficial port of GitHub Desktop for Linux distributions
 
 Package: gnome-keyring
 Version: 42.1-1
@@ -1513,6 +1575,27 @@ Description: nginx web/proxy server (basic version)
  .
  THIRD PARTY MODULES: Echo.
 Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+
+Package: obsidian
+Version: 1.5.8
+License: UNLICENSED
+Vendor: Dynalist Inc.
+Architecture: amd64
+Maintainer: Dynalist Inc.
+Installed-Size: 283615
+Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
+Recommends: libappindicator3-1
+Homepage: https://obsidian.md
+Priority: 0
+Section: utils
+Filename: pool/main/o/obsidian/obsidian_1.5.8_amd64.deb
+Size: 78625030
+SHA512: f5308bd94a80d70e1eb74862f54dc8ce5a0818544c2fd329f3fd7818d6748ecdbeac710ac4438d677e742c955161a7a5513afbe99303e54ba20ee65da3c62bd0
+SHA256: 46675f643a24fb94d763eb03001090d3f500f1c6b3a354d11639f23ee268489b
+SHA1: af79fa906526d2be1b7ad0dadf696ca63f068d93
+MD5sum: 7153ea50aaf7e5b405e975dae1ec91ad
+Description: 
+  Obsidian
 
 Package: open-vm-tools
 Version: 2:12.3.5-3~ubuntu0.23.10.1

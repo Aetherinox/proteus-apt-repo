@@ -41,6 +41,47 @@ Description: add and remove users and groups
  easier and more stable to write and maintain.
 Original-Maintainer: Debian Adduser Developers <adduser@packages.debian.org>
 
+Package: freetube
+Version: 0.19.1
+License: AGPL-3.0-or-later
+Vendor: PrestonN <FreeTubeApp@protonmail.com>
+Architecture: arm64
+Maintainer: PrestonN <FreeTubeApp@protonmail.com>
+Installed-Size: 239779
+Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
+Recommends: libappindicator3-1
+Homepage: https://github.com/FreeTubeApp/FreeTube#readme
+Priority: 0
+Section: utils
+Filename: pool/main/f/freetube/freetube_0.19.1_arm64.deb
+Size: 63756828
+SHA512: c182aa2e7a97210f61f8a4db43b41468424a2e2970c740e86156ce562fc663b160ec81ac215b0d3af6e76fd6d25ada1c3b7ebcee525d35794c4ba05ddf72eb08
+SHA256: 11a6a364c9182688bab210f0ec09c302dd60074f66bc8b8352e285016549ca27
+SHA1: fae809d74ca2af7abc38ec96738a74166aebbad0
+MD5sum: c30bd6084f0dc738ba3623fff62f9699
+Description: 
+  A private YouTube client
+
+Package: github-desktop
+Version: 3.3.8-linux2
+Architecture: arm64
+Depends: libgtk-3-0, libnotify4, libnss3, libxtst6, xdg-utils, libatspi2.0-0, libdrm2, libgbm1, libxcb-dri3-0, kde-cli-tools | kde-runtime | trash-cli | libglib2.0-bin | gvfs-bin, libcurl3 | libcurl4, libsecret-1-0, gnome-keyring
+Recommends: pulseaudio | libasound2
+Suggests: gir1.2-gnomekeyring-1.0, libgnome-keyring0, lsb-release
+Installed-Size: 339358
+Maintainer: Brendan Forster <github@brendanforster.com>
+Homepage: https://github.com/shiftkey/desktop
+Priority: 0
+Section: utils
+Filename: pool/main/g/github-desktop/github-desktop_3.3.8-linux2_arm64.deb
+Size: 88474884
+SHA512: ee0e4977add80a5d745309289c91f365bd1e8ebf0c71ed04fd208e2df94c6fc41182ced4779c3067499c5076e846ac1497b637309a183347f32182989e1c2519
+SHA256: 179f751dedb67eec9f8ec9717674bc37939ba44237f6b71f9339b090a72fe7f3
+SHA1: 4bc6fa930266ee3c595fa555c42a8950b57f29b9
+MD5sum: 13f32a936a74def48c2548dec5a81d1a
+Description: Simple collaboration from your desktop
+ This is the unofficial port of GitHub Desktop for Linux distributions
+
 Package: gnome-keysign
 Version: 1.3.0-2
 Architecture: all

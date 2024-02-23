@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `02.22.2024 19:23:37`
+Last generated on `02.22.2024 21:40:48`
 
 <br />
 
@@ -202,12 +202,15 @@ Last generated on `02.22.2024 19:23:37`
 │           │   ├── php-xml_8.2+93ubuntu1_all.deb
 │           │   └── php-zip_8.2+93ubuntu1_all.deb
 │           ├── amd64
+│           │   ├── app-outlet_2.1.0_amd64.deb
 │           │   ├── apt-move_4.2.27-6_amd64.deb
 │           │   ├── apt-utils_2.7.3_amd64.deb
 │           │   ├── argon2_0~20190702+dfsg-3_amd64.deb
 │           │   ├── dialog_1.3-20230209-1_amd64.deb
 │           │   ├── firefox_1snap1-0ubuntu3_amd64.deb
 │           │   ├── flatpak_1.14.4-2_amd64.deb
+│           │   ├── freetube_0.19.1_amd64.deb
+│           │   ├── GitHubDesktop-linux-amd64-3.3.8-linux2.deb
 │           │   ├── gnome-keyring_42.1-1_amd64.deb
 │           │   ├── gnome-shell-extension-manager_0.4.2-1_amd64.deb
 │           │   ├── gpg_2.2.40-1.1ubuntu1_amd64.deb
@@ -240,6 +243,7 @@ Last generated on `02.22.2024 19:23:37`
 │           │   ├── nginx_1.24.0-1ubuntu1_amd64.deb
 │           │   ├── nginx-confgen_2.1-1_amd64.deb
 │           │   ├── nginx-extras_1.24.0-1ubuntu1_amd64.deb
+│           │   ├── obsidian_1.5.8_amd64.deb
 │           │   ├── open-vm-tools_12.3.5-3~ubuntu0.23.10.1_amd64.deb
 │           │   ├── open-vm-tools-desktop_12.3.5-3~ubuntu0.23.10.1_amd64.deb
 │           │   ├── open-vm-tools-dev_12.3.5-3~ubuntu0.23.10.1_amd64.deb
@@ -286,6 +290,8 @@ Last generated on `02.22.2024 19:23:37`
 │           │   ├── snapd_2.60.4+23.10.1_amd64.deb
 │           │   └── wget_1.21.3-1ubuntu1_amd64.deb
 │           └── arm64
+│               ├── freetube_0.19.1_arm64.deb
+│               └── GitHubDesktop-linux-arm64-3.3.8-linux2.deb
 ├── logs
 │   ├── repos
 │   │   └── mantic.log
@@ -601,7 +607,8 @@ Last generated on `02.22.2024 19:23:37`
 │       ├── o
 │       │   ├── obsidian
 │       │   │   ├── obsidian_1.4.16_amd64.deb
-│       │   │   └── obsidian_1.5.3_amd64.deb
+│       │   │   ├── obsidian_1.5.3_amd64.deb
+│       │   │   └── obsidian_1.5.8_amd64.deb
 │       │   ├── ocs-url
 │       │   │   └── ocs-url_3.1.0-0ubuntu1_amd64.deb
 │       │   ├── opengist
@@ -1157,5 +1164,5 @@ Last generated on `02.22.2024 19:23:37`
 ├── secrets.sh
 └── tree.md
 
-195 directories, 953 files
+195 directories, 960 files
 ```
