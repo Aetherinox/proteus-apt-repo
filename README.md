@@ -9,7 +9,7 @@
 
 <br />
 
-This apt repository works in a similar manner to other official repos such as http://xx.archive.ubuntu.com/ubuntu. To utilize this repository, you will add this repo to your Ubuntu sources list, which will then allow you to install packages just as you normally would using `apt` or `apt-get`.
+This apt repository works similarly to other official repos such as http://xx.archive.ubuntu.com/ubuntu. To utilize this repository, you will add this repo to your Ubuntu sources list, which will then allow you to install packages just as you normally would using `apt` or `apt-get`.
 
 <br />
 
