@@ -136,43 +136,43 @@ Description: Displays user-friendly dialog boxes from shell scripts
   editbox          Allows editing an existing file
 
 Package: freetube
-Version: 0.19.1
+Version: 0.20.0
 License: AGPL-3.0-or-later
 Vendor: PrestonN <FreeTubeApp@protonmail.com>
 Architecture: arm64
 Maintainer: PrestonN <FreeTubeApp@protonmail.com>
-Installed-Size: 239779
+Installed-Size: 268268
 Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
 Recommends: libappindicator3-1
 Homepage: https://github.com/FreeTubeApp/FreeTube#readme
 Priority: 0
 Section: utils
-Filename: pool/main/f/freetube/freetube_0.19.1_arm64.deb
-Size: 63756828
-SHA512: c182aa2e7a97210f61f8a4db43b41468424a2e2970c740e86156ce562fc663b160ec81ac215b0d3af6e76fd6d25ada1c3b7ebcee525d35794c4ba05ddf72eb08
-SHA256: 11a6a364c9182688bab210f0ec09c302dd60074f66bc8b8352e285016549ca27
-SHA1: fae809d74ca2af7abc38ec96738a74166aebbad0
-MD5sum: c30bd6084f0dc738ba3623fff62f9699
+Filename: pool/main/f/freetube/freetube_0.20.0_arm64.deb
+Size: 69527988
+SHA512: 8d972c1cf3858ec40d070fa925dfe213a33f1da63f31e46f6373a796d91c9a98061cb74532d6b28d98719a7e67942c3b871eb17134e018a6e9e7ce792f1ea950
+SHA256: 25efcea433e0e6d0e1995746e01e2d1af0763bb69a4d8640f33d8680ad659afa
+SHA1: 450c3ad4391dc0cc20eda49e2c8f20f6abe5465c
+MD5sum: 66c90cc5e7bac0f5e9f8e8d2225bc855
 Description: 
   A private YouTube client
 
 Package: github-desktop
-Version: 3.3.3-linux2
+Version: 3.3.18-linux1
 Architecture: arm64
 Depends: libgtk-3-0, libnotify4, libnss3, libxtst6, xdg-utils, libatspi2.0-0, libdrm2, libgbm1, libxcb-dri3-0, kde-cli-tools | kde-runtime | trash-cli | libglib2.0-bin | gvfs-bin, libcurl3 | libcurl4, libsecret-1-0, gnome-keyring
 Recommends: pulseaudio | libasound2
 Suggests: gir1.2-gnomekeyring-1.0, libgnome-keyring0, lsb-release
-Installed-Size: 334114
+Installed-Size: 353412
 Maintainer: Brendan Forster <github@brendanforster.com>
 Homepage: https://github.com/shiftkey/desktop
 Priority: 0
 Section: utils
-Filename: pool/main/g/github-desktop/github-desktop_3.3.3-linux2_arm64.deb
-Size: 87366284
-SHA512: 2a303911514e284e65728069ca901152aa4cd0e55ebaca33636c546fff84a37d28cdb154652f29de34a85269e6bd7c629b97215eaa7cefcc7ca9fed31e6168cd
-SHA256: 2635ba8006d7b25aad2589632014869c6540b9efeaa7b7cade3cc3d211c031e1
-SHA1: b477b9fb07866d8ee0c9f294161723c12d1732fc
-MD5sum: bdf307ddff767e82c763cf0f3862c2d2
+Filename: pool/main/g/github-desktop/github-desktop_3.3.18-linux1_arm64.deb
+Size: 90769476
+SHA512: 9278b559bc90616340dfc904d96b75393fb156fe74018d7db3952f7f4e34f2d0fec5d2e8d70e3350f08e87bbcb70c6f4ace4564c19730863f3c7eefe5714ea86
+SHA256: f159b64956491b8118de66813879f9274b566f768b300a98b88f46328682b3c4
+SHA1: e3c78b9889b3bb532f96ca6085d967b854d26ed6
+MD5sum: 315566794c2331f19c39e2ea4088ea0b
 Description: Simple collaboration from your desktop
  This is the unofficial port of GitHub Desktop for Linux distributions
 
@@ -276,7 +276,7 @@ Provides: makedeb (= 16.1.0)
 
 Package: mysql-client
 Source: mysql-8.0
-Version: 8.0.35-0ubuntu0.22.04.1
+Version: 8.0.37-0ubuntu0.22.04.3
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 35
@@ -284,12 +284,12 @@ Depends: mysql-client-8.0
 Homepage: http://dev.mysql.com/
 Priority: 0
 Section: utils
-Filename: pool/main/m/mysql-8.0/mysql-client_8.0.35-0ubuntu0.22.04.1_all.deb
+Filename: pool/main/m/mysql-8.0/mysql-client_8.0.37-0ubuntu0.22.04.3_all.deb
 Size: 9354
-SHA512: eecd0951c8d66d0a58da5c38b9964e588b6bd451621a17924036fe3b278a2a79884c6ec3588a1486174b73ea7d7a011ac4239394e3eb57ece3ecbfecb99502e4
-SHA256: 04b0f901e9eaeac851c5f22aa7410a69caee535c5bcdcd9c6384b3ce352a433d
-SHA1: 092d125aa6dcbac6cc10d6599e86e7e5dd2f9a83
-MD5sum: b3809cc38ceedb9301d29af20508b7d4
+SHA512: 75305ae14d8731d9d577cd8ebe0128be9c2203cdfb25ffec63c1a0b98200790198cfed3385853bc7704c94183ec5d1b4196b5c74f421679b73599a9e88325304
+SHA256: 559ea6ded4674c73fc911f79912042a30d9f2e64dbc4fe9d0a45f0eb72e0608b
+SHA1: 632cc637cc74e1b306d0c1c4f263205d09395bf0
+MD5sum: f40c25de7eb36b8f56a67f57f5b2dc7c
 Description: MySQL database client (metapackage depending on the latest version)
  This is an empty package that depends on the current "best" version of
  mysql-client (currently mysql-client-8.0), as determined by the MySQL
@@ -329,7 +329,7 @@ Description: MySQL database common files, e.g. /etc/mysql/my.cnf
 
 Package: mysql-server
 Source: mysql-8.0
-Version: 8.0.35-0ubuntu0.22.04.1
+Version: 8.0.37-0ubuntu0.22.04.3
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 35
@@ -337,12 +337,12 @@ Depends: mysql-server-8.0
 Homepage: http://dev.mysql.com/
 Priority: 0
 Section: utils
-Filename: pool/main/m/mysql-8.0/mysql-server_8.0.35-0ubuntu0.22.04.1_all.deb
-Size: 9464
-SHA512: 24aac41f11dcabb78a631a7817faaf6d39daa30121af80826da07bb230e47101dd60ecef2856613af81b003e7c3600802dabe87c1efbbe85ba99a0a0499f4f87
-SHA256: 857b9efb3ad62455dade3136a31ce5007bbdff0af06f1b01ea626d98045b5074
-SHA1: 4ae77309a657fafec44c5eb301d15ae2a7591d89
-MD5sum: 8d29593ee4573d760c28337e4ac6efac
+Filename: pool/main/m/mysql-8.0/mysql-server_8.0.37-0ubuntu0.22.04.3_all.deb
+Size: 9462
+SHA512: ec346c74e241bcf831a940105bc38b4f1c2122abc5c8448dfbe3c8cea46718f909de152c7bf80b9c5f7f045fae48141f4d86ec356b26c0920338e67e4c87ceb1
+SHA256: 57aef398f5ec0f6772fe575278626796074a138f74f6a1ae8617ec5bbc8c6a1e
+SHA1: 410e3981555e776a36350a13e0b01a25ffcd7e7b
+MD5sum: 7af4099d5c051e15c7cce393c7a014ef
 Description: MySQL database server (metapackage depending on the latest version)
  This is an empty package that depends on the current "best" version of
  mysql-server (currently mysql-server-8.0), as determined by the MySQL
