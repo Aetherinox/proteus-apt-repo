@@ -1368,11 +1368,12 @@
     ]}
   ]},
     {"type":"file","name":".gitignore"},
+    {"type":"file","name":"obsidian_1.6.3_amd64.deb"},
     {"type":"file","name":"proteus-git.sh"},
     {"type":"file","name":"README.md"},
     {"type":"file","name":"secrets.sh"},
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":198,"files":976}
+  {"type":"report","directories":198,"files":977}
 ]
