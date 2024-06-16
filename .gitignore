@@ -2,8 +2,14 @@ incoming/
 .env
 sources-*.list
 logs/
+*-log
+*.log
+
 apt-url
+
 .gpg/*.gpg
 .gpg/*.asc
+
 /secrets.sh
+
 node_modules/

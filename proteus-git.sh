@@ -2,33 +2,40 @@
 PATH="/bin:/usr/bin:/sbin:/usr/sbin:/home/$USER/bin"
 echo 
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   @author :           aetherinox
 #   @script :           Proteus Apt Git
-#   @when   :           2024-02-20 18:33:03
+#   @when   :           2024-06-15 19:50:31
 #   @url    :           https://github.com/Aetherinox/proteus-git
 #
 #   requires chmod +x proteus_git.sh
 #
-##--------------------------------------------------------------------------
+#   This requires you to have the following files in your home directory:
+#       ~/.pat_github       Not required if using Gitlab
+#       ~/.pat_gitlab       Not required if using Github
+#       ~/.passwd
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   Deprecated: This method is being deprecated in favor of clevis encrypted
+#   secrets.
+#
 #   load secrets file to handle Github rate limiting via a PAF.
 #   managed via https://github.com/settings/tokens?type=beta
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 if [ -f secrets.sh ]; then
 . ./secrets.sh
 fi
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   vars > colors
 #
 #   tput setab  [1-7]       – Set a background color using ANSI escape
 #   tput setb   [1-7]       – Set a background color
 #   tput setaf  [1-7]       – Set a foreground color using ANSI escape
 #   tput setf   [1-7]       – Set a foreground color
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 BLACK=$(tput setaf 0)
 RED=$(tput setaf 1)
@@ -52,9 +59,9 @@ BLINK=$(tput blink)
 REVERSE=$(tput smso)
 UNDERLINE=$(tput smul)
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   vars > status messages
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 STATUS_MISS="${BOLD}${GREYL} MISS ${NORMAL}"
 STATUS_SKIP="${BOLD}${GREYL} SKIP ${NORMAL}"
@@ -62,9 +69,35 @@ STATUS_OK="${BOLD}${GREEN}  OK  ${NORMAL}"
 STATUS_FAIL="${BOLD}${RED} FAIL ${NORMAL}"
 STATUS_HALT="${BOLD}${YELLOW} HALT ${NORMAL}"
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   load secrets through Clevis
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+if [ -f ~/.pat_github ]; then
+    CSI_PAT_GITHUB=$(cat ~/.pat_github | clevis decrypt 2>/dev/null)
+else
+    echo -e "  ${RED}${BLINK}Warning${NORMAL} ......... ~/.pat_github missing${WHITE}"
+fi
+
+if [ -f ~/.pat_gitlab ]; then
+    CSI_PAT_GITLAB=$(cat ~/.pat_gitlab | clevis decrypt 2>/dev/null)
+else
+    echo -e "  ${RED}${BLINK}Warning${NORMAL} ......... ~/.pat_gitlab missing${WHITE}"
+fi
+
+if [ -f ~/.passwd ]; then
+    CSI_SUDO_PASSWD=$(cat ~/.passwd | clevis decrypt 2>/dev/null)
+else
+    echo -e "  ${RED}${BLINK}Warning${NORMAL} ......... ~/.passwd missing${WHITE}"
+fi
+
+echo "$CSI_SUDO_PASSWD" | echo | sudo -S su
+
+echo ${CSI_PAT_GITLAB}
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   vars > app
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 sys_arch=$(dpkg --print-architecture)
 sys_code=$(lsb_release -cs)
@@ -93,9 +126,9 @@ app_pid=$BASHPID
 app_queue_url=()
 app_i=0
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   exports
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 export DATE=$(date '+%d%m%Y')
 export DATE_TS=$(date +%s)
@@ -107,9 +140,9 @@ export LOGS_DIR="$app_dir/logs"
 export LOGS_FILE="$LOGS_DIR/proteus-git-${DATE}.log"
 export SECONDS=0
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   lists > github repos
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 lst_github=(
     'obsidianmd/obsidian-releases'
@@ -120,15 +153,19 @@ lst_github=(
     'makedeb/makedeb'
 )
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   list > packages
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 lst_packages=(
     'adduser'
     'argon2'
     'apt-move'
     'apt-utils'
+    'clevis'
+    'clevis-dracut'
+    'clevis-udisks2'
+    'clevis-tpm2'
     'dialog'
     'firefox'
     'flatpak'
@@ -138,6 +175,7 @@ lst_packages=(
     'gpg'
     'gpgconf'
     'gpgv'
+    'jose'
     'keyutils'
     'kgpg'
     'libnginx-mod-http-auth-pam'
@@ -278,9 +316,9 @@ lst_packages=(
     'wget'
 )
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   list > architectures
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 lst_arch=(
     'all'
@@ -288,11 +326,11 @@ lst_arch=(
     'arm64'
 )
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   distro
 #
 #   returns distro information.
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 # freedesktop.org and systemd
 if [ -f /etc/os-release ]; then
@@ -322,11 +360,20 @@ else
     OS_VER=$(uname -r)
 fi
 
-##--------------------------------------------------------------------------
-#   requite packages before anything begins
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   clevis required to decrypt tokens
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-# require git
+if ! [ -x "$(command -v clevis)" ]; then
+    echo -e "  ${GREYL}Installing package ${MAGENTA}Clevis${WHITE}"
+    sudo apt-get update -y -q >/dev/null 2>&1
+    sudo apt-get install clevis clevis-dracut clevis-udisks2 clevis-tpm2 -y -qq >/dev/null 2>&1
+fi
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   requite packages before anything begins
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
 if ! [ -x "$(command -v git)" ]; then
     echo -e "  ${GREYL}Installing package ${MAGENTA}Git${WHITE}"
     sudo apt-get update -y -q >/dev/null 2>&1
@@ -337,9 +384,9 @@ if ! [ -x "$(command -v git)" ]; then
     sudo apt-get install gpg -y -qq >/dev/null 2>&1
 fi
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   upload to github > precheck
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 app_run_github_precheck( )
 {
@@ -362,9 +409,9 @@ app_run_github_precheck( )
     git config --global user.email ${GITHUB_EMAIL}
 }
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   secrets.sh file missing -- abort
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 if ! [ -f secrets.sh ]; then
     echo
@@ -385,9 +432,9 @@ if ! [ -f secrets.sh ]; then
     set -m
 fi
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   check if GPG key defined in git config user.signingKey
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 checkgit_signing=$( git config --global --get-all user.signingKey )
 if [ -z "${checkgit_signing}" ]; then
@@ -420,10 +467,10 @@ if [ -z "${checkgit_signing}" ]; then
 
     sleep 2
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   run the same check as above to double confirm that user.signingKey
     #   has been defined.
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     checkgit_signing=$( git config --global --get-all user.signingKey )
     if [ -z "${checkgit_signing}" ]; then
@@ -438,11 +485,11 @@ if [ -z "${checkgit_signing}" ]; then
     fi
 fi
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   check > GPG key
 #
 #   you must define GPG_KEY in the secrets.sh file
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 if [ -z "${GPG_KEY}" ]; then
     echo
@@ -463,11 +510,11 @@ if [ -z "${GPG_KEY}" ]; then
     set -m
 fi
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   check > Github / Gitlab API tokens
 #
 #   Must use the values
-#       - GITHUB_API_TOKEN
+#       - CSI_PAT_GITHUB
 #       - GITLAB_PA_TOKEN
 #
 #   Do not rename them, these are the globals recognized by LastVersion
@@ -475,9 +522,9 @@ fi
 #   This is required for LastVersion when checking if specific github repos
 #   have updates to any packages. Failure to provide an API key means
 #   that you will be rate limited.
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-if [ -z "${GITHUB_API_TOKEN}" ] && [ -z "${GITLAB_PA_TOKEN}" ]; then
+if [ -z "${CSI_PAT_GITHUB}" ] && [ -z "${GITLAB_PA_TOKEN}" ]; then
     echo
     echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Missing ${YELLOW}API Tokens${WHITE}${NORMAL}"
     echo -e "  ${BOLD}${WHITE}Must create a ${FUCHSIA}secrets.sh${WHITE} file and define an API token${NORMAL}"
@@ -501,14 +548,14 @@ if [ -z "${GITHUB_API_TOKEN}" ] && [ -z "${GITLAB_PA_TOKEN}" ]; then
     set -m
 fi
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   func > get version
 #
 #   returns current version of app
 #   converts to human string.
 #       e.g.    "1" "2" "4" "0"
 #               1.2.4.0
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 get_version()
 {
@@ -517,19 +564,19 @@ get_version()
     echo ${ver_str}
 }
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   func > version > compare greater than
 #
 #   this function compares two versions and determines if an update may
 #   be available. or the user is running a lesser version of a program.
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 get_version_compare_gt()
 {
     test "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1";
 }
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   func > test
 #
 #   development function, not used in normal operations,
@@ -537,19 +584,19 @@ get_version_compare_gt()
 #
 #   Execute with:
 #       proteus-git.sh --test
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 app_test( )
 {
     printf '%-57s' "    |--- Running Test"
     echo
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   modify gpg.conf
     #
     #   first check if GPG installed (usually on Ubuntu it is)
     #   then modify user's gpg-agent.conf file
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     gpgconfig_file="/home/${USER}/.gnupg/gpg-agent.conf"
 
@@ -595,11 +642,11 @@ EOF
     sleep 0.2
 }
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   Display Usage Help
 #
 #   activate using ./proteus-git.sh --help or -h
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 opt_usage()
 {
@@ -626,12 +673,12 @@ opt_usage()
     exit 1
 }
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   command-line options
 #
 #   reminder that any functions which need executed must be defined BEFORE
 #   this point. Bash sucks like that.
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 while [ $# -gt 0 ]; do
   case "$1" in
@@ -713,28 +760,28 @@ while [ $# -gt 0 ]; do
   shift
 done
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   vars > active repo branch
 #   typically "main"
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 app_repo_branch_sel=$( [[ -n "$OPT_BRANCH" ]] && echo "$OPT_BRANCH" || echo "$app_repo_branch"  )
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   distribution
 #   jammy, lunar, focal, noble, etc
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 app_repo_dist_sel=$( [[ -n "$OPT_DISTRIBUTION" ]] && echo "$OPT_DISTRIBUTION" || echo "$sys_code"  )
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   line > comment
 #
 #   allows for lines to be commented out
 #
 #   comment REGEX FILE [COMMENT-MARK]
 #   comment "skip-grant-tables" "/etc/mysql/my.cnf"
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 line_comment()
 {
@@ -744,14 +791,14 @@ line_comment()
     sudo sed -ri "s:^([ ]*)($regx):\\1$mark\\2:" "$targ"
 }
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   line > uncomment
 #
 #   allows for lines to be uncommented
 #
 #   uncomment REGEX FILE [COMMENT-MARK]
 #   uncomment "skip-grant-tables" "/etc/mysql/my.cnf"
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 line_uncomment()
 {
@@ -761,11 +808,11 @@ line_uncomment()
     sudo sed -ri "s:^([ ]*)[$mark]+[ ]?([ ]*$regx):\\1\\2:" "$targ"
 }
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   func > logs > begin
 #
 #   sets the script up to provide logging to the /logs/ folder
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 Logs_Begin()
 {
@@ -812,12 +859,12 @@ Logs_Begin()
     fi
 }
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   func > logs > finish
 #
 #   stop logging system. Mainly kills the pipe otherwise you can't access
 #   the file.
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 Logs_Finish()
 {
@@ -845,17 +892,17 @@ Logs_Finish()
     printf "%-50s %-15s\n\n\n\n" "${TIME}      ${elapsed}" | tee -a "${LOGS_FILE}" >/dev/null
 }
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   Begin Logging
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 Logs_Begin
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   Cache Sudo Password
 #
 #   require normal user sudo authentication for certain actions
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 if [[ $EUID -ne 0 ]]; then
     sudo -k # make sure to ask for password on next sudo
@@ -871,9 +918,9 @@ else
     fi
 fi
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   func > spinner animation
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 spin()
 {
@@ -890,11 +937,11 @@ spin()
     done
 }
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   func > spinner > halt
 #
 #   destroy text spinner process id
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 spinner_halt()
 {
@@ -905,7 +952,7 @@ spinner_halt()
     fi
 }
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   func > cli selection menu
 #
 #   allows for prompting user with questions and to select their desired
@@ -923,7 +970,7 @@ spinner_halt()
 #           bChoiceSqlSecure=true
 #       ;;
 #   esac
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 cli_options()
 {
@@ -982,7 +1029,7 @@ cli_options()
     done
 }
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   func > cli question
 #
 #   used for command-line to prompt the user with a question
@@ -998,7 +1045,7 @@ cli_options()
 #           $app_func "${app_name}" "${app_func}"
 #       done
 #   fi
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 cli_question( )
 {
@@ -1041,7 +1088,7 @@ cli_question( )
     done
 }
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   func > open url
 #
 #   opening urls in bash can be wonky as hell. just doing it the manual
@@ -1049,7 +1096,7 @@ cli_question( )
 #
 #   example
 #       open_url "http://127.0.0.1"
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 open_url()
 {
@@ -1057,12 +1104,12 @@ open_url()
    xdg-open $URL || firefox $URL || sensible-browser $URL || x-www-browser $URL || gnome-open $URL
 }
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   func > cmd title
 #
 #   example
 #       title "First Time Setup ..."
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 title()
 {
@@ -1070,12 +1117,12 @@ title()
     sleep 0.3
 }
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   func > begin action
 #
 #   example
 #       begin "Updating from branch main"
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 begin()
 {
@@ -1095,13 +1142,13 @@ begin()
     sleep 0.3
 }
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   func > finish action
 #
 #   this func supports opening a url at the end of the installation
 #   however the command needs to have
 #       finish "${1}"
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 finish()
 {
@@ -1116,9 +1163,9 @@ finish()
     fi
 }
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   func > exit action
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 exit()
 {
@@ -1126,7 +1173,7 @@ exit()
     clear
 }
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   func > env path (add)
 #
 #   creates a new file inside /etc/profile.d/ which includes the new
@@ -1136,7 +1183,7 @@ exit()
 #   anywhere with an entry similar to:
 #
 #       export PATH="/home/aetherinox/bin:$PATH"
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 envpath_add_proteus()
 {
@@ -1162,14 +1209,14 @@ envpath_add_lastversion()
     fi
 }
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   func > app update
 #
 #   updates the /home/USER/bin/proteus file which allows proteus to be
 #   ran from anywhere.
 #
 #   activate using ./proteus-git --update or -u
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 app_update()
 {
@@ -1213,20 +1260,20 @@ app_update()
     finish
 }
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   func > app update
 #
 #   updates the /home/USER/bin/proteus file which allows proteus to be
 #   ran from anywhere.
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 if [ "$OPT_UPDATE" = true ]; then
     app_update ${app_repo_branch_sel}
 fi
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   .git folder doesnt exist
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 if [ ! -d .git ]; then
     echo
@@ -1246,7 +1293,7 @@ if [ ! -d .git ]; then
     git pull origin ${app_repo_branch} --allow-unrelated-histories
 fi
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   func > first time setup
 #
 #   this is the default func executed when script is launched to make sure
@@ -1269,7 +1316,7 @@ fi
 #   contains two files
 #       -   trusted gpg key:        aetherinox-proteus-apt-repo-archive.gpg
 #       -   source .list:           /etc/apt/sources.list.d/aetherinox*list
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 app_setup()
 {
@@ -1324,20 +1371,20 @@ app_setup()
         bMissingLastVersion=true
     fi
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   Missing proteus-apt-repo gpg key
     #
     #   NOTE:   apt-key has been deprecated
     #           sudo add-apt-repository -y "deb [arch=amd64] https://raw.githubusercontent.com/${app_repo_author}/${app_repo_apt}/master focal main" >> $LOGS_FILE 2>&1
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     if ! [ -f "/usr/share/keyrings/${app_repo_apt_pkg}.gpg" ]; then
         bMissingGPG=true
     fi
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   Missing browsers .list (google chrome, firefox)
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     if ! [ -f "/etc/apt/sources.list.d/google-chrome.list" ]; then
         bMissingGChrome=true
@@ -1347,9 +1394,9 @@ app_setup()
         bMissingMFirefox=true
     fi
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   Missing proteus-apt-repo .list
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     if ! [ -f "/etc/apt/sources.list.d/${app_repo_apt_pkg}.list" ]; then
         bMissingRepo=true
@@ -1364,12 +1411,12 @@ app_setup()
         sleep 1
     fi
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   find a gpg key that can be imported
     #   maybe later add a loop to check for multiple.
     #
     #   PATH GPG_KEY missing from secrets.sh
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     if [ -z "${GPG_KEY}" ]; then
         echo
@@ -1389,9 +1436,9 @@ app_setup()
         kill $app_pid
         set -m
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   no gpg key registered with gpg command line via gpg --list-secret-keys
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     else
         gpg_id=$( gpg --list-secret-keys --keyid-format=long | grep $GPG_KEY )
@@ -1440,13 +1487,13 @@ app_setup()
         fi
     fi
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   missing gpg key after searching numerous places, including .gpg folder
     #
     #   bGPGLoaded      TRUE if either condition is met:
     #                   1. gpg --list-keys KEY_ID found
     #                   2. found .gpg file in ./gpg folder
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     if [ "$bGPGLoaded" = false ]; then
         echo
@@ -1473,9 +1520,9 @@ app_setup()
         set -m
     fi
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   missing curl
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     if [ "$bMissingCurl" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing curl package" | tee -a "${LOGS_FILE}" >/dev/null
@@ -1492,9 +1539,9 @@ app_setup()
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   missing wget
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     if [ "$bMissingWget" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing wget package" | tee -a "${LOGS_FILE}" >/dev/null
@@ -1511,9 +1558,9 @@ app_setup()
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   missing tree
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     if [ "$bMissingTree" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing tree package" | tee -a "${LOGS_FILE}" >/dev/null
@@ -1530,11 +1577,11 @@ app_setup()
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   missing gpg trusted file
     #
     #   bMissingGPG     File /usr/share/keyrings/${app_repo_apt_pkg}.gpg not found
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     if [ "$bMissingGPG" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Adding ${app_repo_author} GPG key: [https://github.com/${app_repo_author}.gpg]" | tee -a "${LOGS_FILE}" >/dev/null
@@ -1550,11 +1597,11 @@ app_setup()
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   missing google chrome
     #
     #   add google source repo so that chrome can be downloaded using apt-get
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     if [ "$bMissingGChrome" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Registering Chrome: /etc/apt/sources.list.d/google-chrome.list" | tee -a "${LOGS_FILE}" >/dev/null
@@ -1586,13 +1633,13 @@ app_setup()
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   missing mozilla repo
     #
     #   add mozilla source repo so that firefox can be downloaded using apt-get
     #   instructions via:
     #       https://support.mozilla.org/en-US/kb/install-firefox-linux#w_install-firefox-deb-package-for-debian-based-distributions
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     if [ "$bMissingMFirefox" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Registering Mozilla: /etc/apt/sources.list.d/mozilla.list" | tee -a "${LOGS_FILE}" >/dev/null
@@ -1624,9 +1671,9 @@ app_setup()
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   missing proteus apt repo
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     if [ "$bMissingRepo" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Registering ${app_repo_apt}: https://raw.githubusercontent.com/${app_repo_author}/${app_repo_apt}/${app_repo_branch}" | tee -a "${LOGS_FILE}" >/dev/null
@@ -1652,9 +1699,9 @@ app_setup()
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   install proteus-git binary in /home/$USER/bin/proteus-git
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     if ! [ -f "$app_file_proteus" ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing ${app_title}" | tee -a "${LOGS_FILE}" >/dev/null
@@ -1676,9 +1723,9 @@ app_setup()
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   missing apt-move
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     if [ "$bMissingAptMove" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing apt-move package" | tee -a "${LOGS_FILE}" >/dev/null
@@ -1695,9 +1742,9 @@ app_setup()
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   missing apt-url
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     if [ "$bMissingAptUrl" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing apt-url package" | tee -a "${LOGS_FILE}" >/dev/null
@@ -1714,9 +1761,9 @@ app_setup()
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   missing reprepro
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     if [ "$bMissingReprepro" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing reprepro package" | tee -a "${LOGS_FILE}" >/dev/null
@@ -1733,15 +1780,15 @@ app_setup()
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   add env path /home/$USER/bin/
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     envpath_add_proteus '$HOME/bin'
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   missing lastversion
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     if [ "$bMissingLastVersion" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing LastVersion" | tee -a "${LOGS_FILE}" >/dev/null
@@ -1757,10 +1804,10 @@ app_setup()
             #mkdir /home/${USER}/Packages/
             #unzip v3.5.0.zip -d /home/${USER}/Packages/lastversion
 
-            ##--------------------------------------------------------------------------
+            # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
             #   Uninstall with
             #       pip uninstall lastversion
-            ##--------------------------------------------------------------------------
+            # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
             pip install lastversion --break-system-packages
             cp /home/${USER}/.local/bin/lastversion /home/${USER}/bin/
@@ -1780,12 +1827,12 @@ app_setup()
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   modify gpg-agent.conf
     #
     #   first check if GPG installed (usually on Ubuntu it is)
     #   then modify user's gpg-agent.conf file
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     gpgconfig_file="/home/${USER}/.gnupg/gpg-agent.conf"
 
@@ -1833,9 +1880,9 @@ EOF
 }
 app_setup
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   output some logging
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 [ -n "${OPT_DEV_ENABLE}" ] && printf "%-50s %-5s\n" "${TIME}      Notice: Dev Mode Enabled" | tee -a "${LOGS_FILE}" >/dev/null
 [ -z "${OPT_DEV_ENABLE}" ] && printf "%-50s %-5s\n" "${TIME}      Notice: Dev Mode Disabled" | tee -a "${LOGS_FILE}" >/dev/null
@@ -1843,7 +1890,7 @@ app_setup
 [ -n "${OPT_DEV_NULLRUN}" ] && printf "%-50s %-5s\n\n" "${TIME}      Notice: Dev Option: 'No Actions' Enabled" | tee -a "${LOGS_FILE}" >/dev/null
 [ -z "${OPT_DEV_NULLRUN}" ] && printf "%-50s %-5s\n\n" "${TIME}      Notice: Dev Option: 'No Actions' Disabled" | tee -a "${LOGS_FILE}" >/dev/null
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   associated app urls
 #
 #   when certain apps are installed, we may want to open a browser window
@@ -1851,16 +1898,16 @@ app_setup
 #   resources for that app.
 #
 #   not all apps have to have a website, as that would get annoying.
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 declare -A get_docs_uri
 get_docs_uri=(
     ["$app_dialog"]='http://url.here'
 )
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   header
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 show_header()
 {
@@ -1896,25 +1943,25 @@ show_header()
     printf "%-50s %-5s\n" "${TIME}      Waiting for user input ..." | tee -a "${LOGS_FILE}" >/dev/null
 }
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   app > run > apt source packages
 #
 #   updates apt source packages for the distro being used
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 app_run_dl_aptsrc()
 {
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   sort alphabetically
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     IFS=$'\n' lst_pkgs_sorted=($(sort <<<"${lst_packages[*]}"))
     unset IFS
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   add countdown to the num of packages to install
     #   add +1 so we're not hitting 0
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     count=${#lst_pkgs_sorted[@]}
     (( count++ ))
@@ -1924,9 +1971,9 @@ app_run_dl_aptsrc()
 
     mkdir -p ${app_dir_storage}/{all,amd64,arm64}
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   loop sorted packages
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     for i in "${!lst_pkgs_sorted[@]}"; do
         pkg=${lst_pkgs_sorted[$i]}
@@ -1939,7 +1986,7 @@ app_run_dl_aptsrc()
             #   package:arch
             local pkg_arch="$pkg:$arch"
 
-            ##--------------------------------------------------------------------------
+            # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
             #   download "package:arch"
             #   
             #   originally apt-get download was utilized, however it has a weird bug
@@ -1953,7 +2000,7 @@ app_run_dl_aptsrc()
             #   http://us.archive.ubuntu.com/ubuntu/pool/universe/d/<package>/<package>_1.x.x-x_<arch>.deb
             #   app_url=$(sudo ./apt-url "$pkg_arch" | tail -n 1 )
             #   
-            ##--------------------------------------------------------------------------
+            # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
             #   <package>_1.x.x-x_<arch>.deb
             query=$( sudo apt-url "$pkg_arch" )
@@ -1969,9 +2016,9 @@ app_run_dl_aptsrc()
 
             if [[ -f "$app_dir/$app_filename" ]]; then
 
-                ##--------------------------------------------------------------------------
+                # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
                 #   architecture > all
-                ##--------------------------------------------------------------------------
+                # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
                 if [[ "$arch" == "all" ]] && [[ $app_filename == *all.deb ]]; then
                     printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL} ${YELLOW}[ $count ]${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
@@ -1990,9 +2037,9 @@ app_run_dl_aptsrc()
 
                     echo
 
-                ##--------------------------------------------------------------------------
+                # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
                 #   architecture > amd64
-                ##--------------------------------------------------------------------------
+                # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
                 elif [[ "$arch" == "amd64" ]] && [[ $app_filename == *amd64.deb ]]; then
                     printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL} ${YELLOW}[ $count ]${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
@@ -2012,9 +2059,9 @@ app_run_dl_aptsrc()
 
                     echo
 
-                ##--------------------------------------------------------------------------
+                # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
                 #   architecture > arm64
-                ##--------------------------------------------------------------------------
+                # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
                 elif [[ "$arch" == "arm64" ]] && [[ $app_filename == *arm64.deb ]]; then
                     printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL} ${YELLOW}[ $count ]${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
@@ -2034,12 +2081,12 @@ app_run_dl_aptsrc()
 
                     echo
 
-                ##--------------------------------------------------------------------------
+                # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
                 #   certain packages will output an *amd64 or *arm64 file when calling
                 #   the "all" architecture, which means you'll have double the files.
                 #
                 #   delete the left-over files since we already have them.
-                ##--------------------------------------------------------------------------
+                # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
                 else
                     rm "$app_dir/$app_filename"
@@ -2057,12 +2104,12 @@ app_run_dl_aptsrc()
 
 }
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   app > run > github
 #
 #   check github repos and download any updates that will be added to our
 #   apt repo.
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 app_run_dl_gh()
 {
@@ -2181,23 +2228,23 @@ app_run_dl_gh()
     done
 }
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   Github > Start
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 app_run_gh_start()
 {
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   .app folder
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     local manifest_dir=$app_dir/.app/
     mkdir -p            $manifest_dir
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   .app folder > create .json
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 tee $manifest_dir/$app_repo_dist_sel.json >/dev/null <<EOF
 {
@@ -2230,15 +2277,15 @@ EOF
     sleep 1
 
     echo -e "  ${WHITE}Starting push ${FUCHSIA}${app_repo_branch}${WHITE}${NORMAL}"
-    git push https://${GITHUB_API_TOKEN}@github.com/${GITHUB_NAME}/${app_repo_apt}
+    git push https://${CSI_PAT_GITHUB}@github.com/${GITHUB_NAME}/${app_repo_apt}
 
 }
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   Github > End
 #
 #   push all packages / upload to proteus apt repo
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 app_run_gh_end()
 {
@@ -2266,29 +2313,29 @@ app_run_gh_end()
     git push -u origin $app_repo_branch
 }
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   update tree
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 app_run_tree_update()
 {
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   .app folder
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     local manifest_dir=$app_dir/.app/
     mkdir -p            $manifest_dir
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   duration elapsed
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     duration=$SECONDS
     elapsed="$(($duration / 60))m $(( $duration % 60 ))s"
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   .app folder > create .json
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 tee $manifest_dir/$app_repo_dist_sel.json >/dev/null <<EOF
 {
@@ -2304,9 +2351,9 @@ tee $manifest_dir/$app_repo_dist_sel.json >/dev/null <<EOF
 }
 EOF
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   tree
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     tree_output=$( tree -a -I ".git" --dirsfirst )
     tree -a -I ".git" --dirsfirst -J > $manifest_dir/tree.json
@@ -2314,9 +2361,9 @@ EOF
     #   useful for Gitea with HTML rendering plugin, not useful for Github
     #   tree -a --dirsfirst -I '.git' -H https://github.com/${app_repo_author}/${app_repo}/src/branch/$app_repo_branch/ -o $app_dir/.data/tree.html
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   tree.md content
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 tee $app_dir/tree.md >/dev/null <<EOF
 # Repo Tree
@@ -2334,24 +2381,24 @@ $tree_output
 EOF
 }
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   Start App
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 app_start()
 {
 
     show_header
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   set seconds for duration
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     export SECONDS=0
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   pull all changes from github
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     git_pull=$( git pull origin $app_repo_branch )
 
@@ -2361,17 +2408,17 @@ app_start()
     echo -e " ${BLUE}-------------------------------------------------------------------------${NORMAL}"
     echo
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   check for reprepro
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     if [ -x "$(command -v reprepro)" ]; then
         bRep=true
     fi
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   reprepro missing
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     if [ -z "${bRep}" ]; then
         echo
@@ -2394,9 +2441,9 @@ app_start()
         set -m
     fi
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   run
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     if [ -n "${OPT_ONLY_GIT}" ]; then
         app_run_gh_start
@@ -2416,9 +2463,9 @@ app_start()
         app_run_gh_end
     fi
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   duration elapsed
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     duration=$SECONDS
     elapsed="$(($duration / 60)) minutes and $(( $duration % 60 )) seconds elapsed."
@@ -2435,9 +2482,9 @@ app_start()
 
     sleep 10
 
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   close logs, kill spinner, and finish process
-    ##--------------------------------------------------------------------------
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     finish
     Logs_Finish
