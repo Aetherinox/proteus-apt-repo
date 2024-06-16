@@ -102,20 +102,20 @@ Description: Fetches URLs for specified packages.
 
 Package: apt-utils
 Source: apt
-Version: 2.4.11
+Version: 2.4.12
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: APT Development Team <deity@lists.debian.org>
 Installed-Size: 792
-Depends: apt (= 2.4.11), libapt-pkg6.0 (>= 2.4.11), libc6 (>= 2.34), libdb5.3, libgcc-s1 (>= 3.3.1), libstdc++6 (>= 11)
+Depends: apt (= 2.4.12), libapt-pkg6.0 (>= 2.4.12), libc6 (>= 2.34), libdb5.3, libgcc-s1 (>= 3.3.1), libstdc++6 (>= 11)
 Priority: 0
 Section: utils
-Filename: pool/main/a/apt/apt-utils_2.4.11_amd64.deb
-Size: 210608
-SHA512: 77143d73b9d1a1a64f1c378fea8b8aa5f6ced9e12b0ebadef30e47455ed796325da5540e1f9604975c83d0628d025e23a0f2219e343b853b40c0806bb58b1c71
-SHA256: ca5ec9542cd0848b8e62e008f01892e24a4308e15d446812cf8374298ab5911f
-SHA1: e33f929df21c708137017c4b106507d90637b0d4
-MD5sum: 62ddfd5837a43f92e61805d78fe5bac4
+Filename: pool/main/a/apt/apt-utils_2.4.12_amd64.deb
+Size: 210628
+SHA512: d94d9350d86d1b5b9c293d950fb78880428d9914ea5753d71d9978263b40e31f806fedcf5822f48e35f3e73fa7937a7c9542ae7042ec7252ff586a130e21e615
+SHA256: dc3dba6a7c75ea8a7635f3082a7872fd903f9d69afd0b63e2c73a904348c25e7
+SHA1: fdca537feaa0bcfd386a24f78e27dcacc2334873
+MD5sum: 9efe230c741267d460f8c71218321b1f
 Description: package management related utility programs
  This package contains some less used commandline utilities related
  to package management with APT.
@@ -160,23 +160,23 @@ Description: memory-hard hashing function - utility
  This package contains the argon2 tool for hashing data on the command-line.
 
 Package: bitwarden
-Version: 2023.9.3
+Version: 2024.6.1
 License: GPL-3.0
 Vendor: Bitwarden Inc. <hello@bitwarden.com>
 Architecture: amd64
 Maintainer: Bitwarden Inc. <hello@bitwarden.com>
-Installed-Size: 270218
+Installed-Size: 298245
 Depends: libnotify4, libxtst6, libnss3, libsecret-1-0, libxss1
 Recommends: libappindicator3-1
 Homepage: https://bitwarden.com
 Priority: 0
 Section: utils
-Filename: pool/main/b/bitwarden/bitwarden_2023.9.3_amd64.deb
-Size: 73934484
-SHA512: ce6fbab351ab537cc1199dd7f658cfee7d1a6cd9887cf0bbf62a0b374295b4dac822a59c5995e79e94194be55af4fd9e2fa56c82d125cf25ea9fb15a42ca435c
-SHA256: 741c0893b2fc6b6ff00736c886a0c9ad40b6692305fb6ca41026143824388ee5
-SHA1: dc3e08d9a6813feca0584a3b273623c1cd48d6e6
-MD5sum: 909341b1c75c93c025804dca599b9ace
+Filename: pool/main/b/bitwarden/bitwarden_2024.6.1_amd64.deb
+Size: 80671526
+SHA512: 11bc9c2e37ff178494d2a535d6aafd12bcbe9b7c7e52e629fbe20d39f195de1cf0bc974f837e6d0eda8e22a847660c5b36208544f4d04cdd401ee43a98cad7f5
+SHA256: 524d9f8bd26d13a4aecfbf5639eb50306bc8c2ab99b715d1e0fe53ead7424d91
+SHA1: ae7ceccb83c1832b720bb5640ea49f2a819fefb5
+MD5sum: e2f8ee858eb034adaefd09268282c447
 Description: A secure and free password manager for all of your devices.
   A secure and free password manager for all of your devices.
 
@@ -260,24 +260,24 @@ Description: Transitional package - firefox -> firefox snap
  firefox is now replaced by the firefox snap.
 
 Package: flatpak
-Version: 1.14.4-1~flatpak1~22.04.1
+Version: 1.14.6-1~flatpak1~22.04.1
 Architecture: amd64
 Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
-Installed-Size: 5467
+Installed-Size: 5476
 Depends: adduser, default-dbus-system-bus | dbus-system-bus, fuse3, libappstream4 (>= 0.10.0), libarchive13 (>= 3.0.4), libc6 (>= 2.34), libcap2 (>= 1:2.10), libcurl3-gnutls (>= 7.16.2), libdconf1 (>= 0.26.0), libfuse3-3 (>= 3.2.3), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.67.3+git20210214), libjson-glib-1.0-0 (>= 1.5.2), libmalcontent-0-0 (>= 0.6.0), libostree-1-1 (>= 2020.8), libpolkit-agent-1-0 (>= 0.105), libpolkit-gobject-1-0 (>= 0.101), libseccomp2 (>= 2.5.2), libsystemd0, libxau6 (>= 1:1.0.9), libxml2 (>= 2.7.4), libzstd1 (>= 1.4.0)
-Recommends: ca-certificates, desktop-file-utils, hicolor-icon-theme, gtk-update-icon-cache, libpam-systemd, p11-kit, polkitd | policykit-1, shared-mime-info, xdg-desktop-portal (>= 1.6), xdg-desktop-portal-gtk (>= 1.6) | xdg-desktop-portal-backend, xdg-user-dirs
+Recommends: ca-certificates, desktop-file-utils, hicolor-icon-theme, gtk-update-icon-cache, libpam-systemd, p11-kit, polkitd, shared-mime-info, xdg-desktop-portal (>= 1.6), xdg-desktop-portal-gtk (>= 1.6) | xdg-desktop-portal-backend, xdg-user-dirs
 Suggests: avahi-daemon, malcontent-gui
 Conflicts: xdg-app
 Replaces: xdg-app
 Homepage: https://flatpak.org/
 Priority: 0
 Section: utils
-Filename: pool/main/f/flatpak/flatpak_1.14.4-1~flatpak1~22.04.1_amd64.deb
-Size: 1448378
-SHA512: 6bbb2d2c0340e1a392fafddf4dd62855797cf0b39463d7a6db27b1b330997e9e5ad0d7c9741a59816a39be22aeb874849e7cfbf78c460eea744cafbe0bc7cc41
-SHA256: f291aee006efdcd2df9410130910eee10aa0279c19385941208b12915fd0577f
-SHA1: fbc00a014c80c832515440dbd00e4c28ff3bb993
-MD5sum: e0a0446565d76d49d2c3bf79d5358ed9
+Filename: pool/main/f/flatpak/flatpak_1.14.6-1~flatpak1~22.04.1_amd64.deb
+Size: 1450078
+SHA512: 198d2b8aec1d3229190b830f4c049b410ed03a7fd158b2a3febe30144661cf37d7c616e3a485e841f6c6dcb50af18a6fff573a3149ce25fe25d002dd39b42d75
+SHA256: 1ea8f8e05b2a6a22287e8c4dc482c9b682be9efd7fdf75c6672f2401a8546759
+SHA1: e2b5b0809759c3d03f232fa3b7e777013d433d37
+MD5sum: 5290bd01455db172f476cfb2a10a05c2
 Description: Application deployment framework for desktop apps
  Flatpak installs, manages and runs sandboxed desktop application bundles.
  Application bundles run partially isolated from the wider system, using
@@ -297,43 +297,43 @@ Description: Application deployment framework for desktop apps
  limited access to resources outside the sandbox.
 
 Package: freetube
-Version: 0.19.1
+Version: 0.20.0
 License: AGPL-3.0-or-later
 Vendor: PrestonN <FreeTubeApp@protonmail.com>
 Architecture: amd64
 Maintainer: PrestonN <FreeTubeApp@protonmail.com>
-Installed-Size: 234625
+Installed-Size: 261677
 Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
 Recommends: libappindicator3-1
 Homepage: https://github.com/FreeTubeApp/FreeTube#readme
 Priority: 0
 Section: utils
-Filename: pool/main/f/freetube/freetube_0.19.1_amd64.deb
-Size: 67679340
-SHA512: 01c73ebcd7fc6aa7158633b81fb1117869acb5c72a58c80ed15f420e2d85c3aa882e83f008fe9091df6d02cc4c8a7d0939ef2ffda364219a8310b5e452a6e735
-SHA256: 75a4441b8a5ec3cf5937fa867391554dad6bf118a99496af1dfc6b8dc2437ef6
-SHA1: 20200252c4340a61e7ec2f21652dba16d6e1d6db
-MD5sum: 43a2e6e8cb4877a29edb444ef30e8ede
+Filename: pool/main/f/freetube/freetube_0.20.0_amd64.deb
+Size: 73896480
+SHA512: c58ce017bc5e5d1a06ee24bb0991758df37ec8e4b7cb920cc4117e01e4f0ca7f8c00b06311f46c750475249f11c09968eae6a1387c3347bdac5cc4b892caa699
+SHA256: 5a848ff7a9e77a1d285954bf9821fe16021a13180fac852913602936592a7fe2
+SHA1: 6f6a46a3005fc4b7e0dd13fec637cec639d890ee
+MD5sum: 814252cbb000cd1653417b34fe5b856e
 Description: 
   A private YouTube client
 
 Package: github-desktop
-Version: 3.3.3-linux2
+Version: 3.3.18-linux1
 Architecture: amd64
 Depends: libgtk-3-0, libnotify4, libnss3, libxtst6, xdg-utils, libatspi2.0-0, libdrm2, libgbm1, libxcb-dri3-0, kde-cli-tools | kde-runtime | trash-cli | libglib2.0-bin | gvfs-bin, libcurl3 | libcurl4, libsecret-1-0, gnome-keyring
 Recommends: pulseaudio | libasound2
 Suggests: gir1.2-gnomekeyring-1.0, libgnome-keyring0, lsb-release
-Installed-Size: 331834
+Installed-Size: 351854
 Maintainer: Brendan Forster <github@brendanforster.com>
 Homepage: https://github.com/shiftkey/desktop
 Priority: 0
 Section: utils
-Filename: pool/main/g/github-desktop/github-desktop_3.3.3-linux2_amd64.deb
-Size: 92138360
-SHA512: b06938df15d6ed91e5469a3d8943edb1c4d8e3ebb0f2a24c80ab06a98b0be31a250d9b4550ae0f3e9c8acc6600388e73a80a0dc852fa727c8366a5bbf192c3d4
-SHA256: dd252a4686243f8fea17ff6cf96d23db951658deda258fcbacbcc30fa83d1dbf
-SHA1: d77560a4f11a71c6122fde05b699af679cd5ccce
-MD5sum: abb63bb36f66fb067eee8b3e5c326696
+Filename: pool/main/g/github-desktop/github-desktop_3.3.18-linux1_amd64.deb
+Size: 97408628
+SHA512: 2b7558828e3840fe7ff3447cdf46d3290e2ae82c486c94f6616830b3dca99227f4097e566e963ec4e77b351a1fa3d4d7b3e910216ba86280510529f35541a3c9
+SHA256: 05755785c29e3e3f3b99a698d53d54d0b96e402eba066f5042264220e742b63b
+SHA1: 4cc723f03dc5d7977bd0cab27bd600764fe6d632
+MD5sum: f5f72e825d8ffa4ff91e39c731cef06e
 Description: Simple collaboration from your desktop
  This is the unofficial port of GitHub Desktop for Linux distributions
 
@@ -1123,7 +1123,7 @@ Provides: makedeb (= 16.1.0)
 
 Package: mysql-client
 Source: mysql-8.0
-Version: 8.0.36-0ubuntu0.22.04.1
+Version: 8.0.37-0ubuntu0.22.04.3
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 35
@@ -1131,12 +1131,12 @@ Depends: mysql-client-8.0
 Homepage: http://dev.mysql.com/
 Priority: 0
 Section: utils
-Filename: pool/main/m/mysql-8.0/mysql-client_8.0.36-0ubuntu0.22.04.1_all.deb
+Filename: pool/main/m/mysql-8.0/mysql-client_8.0.37-0ubuntu0.22.04.3_all.deb
 Size: 9354
-SHA512: 3119ea9593e73afbb0dab30a59579e04e03f13d5544a787a0e021dd462e4d28e6a3f8b385c014e75adaada25977272f21dce64e2c5f92224a64f83deef33110f
-SHA256: dd8cec8c409fbf1ec074974dbae0b1fc8867ccd5237ee283e0bfee8c102b9e28
-SHA1: d45c1c27fe44c7c32ea4fc468a339b73e36f2392
-MD5sum: 68ac1ae3b7084267abf4fe12bcf3787e
+SHA512: 75305ae14d8731d9d577cd8ebe0128be9c2203cdfb25ffec63c1a0b98200790198cfed3385853bc7704c94183ec5d1b4196b5c74f421679b73599a9e88325304
+SHA256: 559ea6ded4674c73fc911f79912042a30d9f2e64dbc4fe9d0a45f0eb72e0608b
+SHA1: 632cc637cc74e1b306d0c1c4f263205d09395bf0
+MD5sum: f40c25de7eb36b8f56a67f57f5b2dc7c
 Description: MySQL database client (metapackage depending on the latest version)
  This is an empty package that depends on the current "best" version of
  mysql-client (currently mysql-client-8.0), as determined by the MySQL
@@ -1176,7 +1176,7 @@ Description: MySQL database common files, e.g. /etc/mysql/my.cnf
 
 Package: mysql-server
 Source: mysql-8.0
-Version: 8.0.36-0ubuntu0.22.04.1
+Version: 8.0.37-0ubuntu0.22.04.3
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 35
@@ -1184,12 +1184,12 @@ Depends: mysql-server-8.0
 Homepage: http://dev.mysql.com/
 Priority: 0
 Section: utils
-Filename: pool/main/m/mysql-8.0/mysql-server_8.0.36-0ubuntu0.22.04.1_all.deb
-Size: 9460
-SHA512: a6cecb50be593b8b2be03c6184a49f2d93af6fd81f1800318fcac2949acefbcb3c0c1a0ea8fc6f137a32ab3900ef5e75f65c5f1a079f7bc8b92ea11422bc9c27
-SHA256: 7deefb96564c64f620d1d7a405585cce16344f6c4c2909653047b8fd742806f9
-SHA1: dbbbe83b6cb6e37d836905fbf6c6c4ef7f9e6a22
-MD5sum: 9132fabf84bdfd9d6b8d4d19f19b79e4
+Filename: pool/main/m/mysql-8.0/mysql-server_8.0.37-0ubuntu0.22.04.3_all.deb
+Size: 9462
+SHA512: ec346c74e241bcf831a940105bc38b4f1c2122abc5c8448dfbe3c8cea46718f909de152c7bf80b9c5f7f045fae48141f4d86ec356b26c0920338e67e4c87ceb1
+SHA256: 57aef398f5ec0f6772fe575278626796074a138f74f6a1ae8617ec5bbc8c6a1e
+SHA1: 410e3981555e776a36350a13e0b01a25ffcd7e7b
+MD5sum: 7af4099d5c051e15c7cce393c7a014ef
 Description: MySQL database server (metapackage depending on the latest version)
  This is an empty package that depends on the current "best" version of
  mysql-server (currently mysql-server-8.0), as determined by the MySQL
@@ -1752,23 +1752,23 @@ Description: nginx web/proxy server (basic version)
 Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
 
 Package: obsidian
-Version: 1.4.16
+Version: 1.6.3
 License: UNLICENSED
 Vendor: Dynalist Inc.
 Architecture: amd64
 Maintainer: Dynalist Inc.
-Installed-Size: 263421
+Installed-Size: 288043
 Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
 Recommends: libappindicator3-1
 Homepage: https://obsidian.md
 Priority: 0
 Section: utils
-Filename: pool/main/o/obsidian/obsidian_1.4.16_amd64.deb
-Size: 73362498
-SHA512: 3b691188a05e20e0d1792a6b135076d3dabe33106e541ae4614703fdea44bcb64fc52bbd62808325c381f28348e37cbde0e3d072e4e1b077fb2b9728c43edb05
-SHA256: 7af0647fdc5a0a70840c9b71742c573e39990dde9e1dcd73479c4ca4aa38d74d
-SHA1: 44acf0c3753dd12c84ec6e2a72f2e3e956ea6044
-MD5sum: 1f9c258494f5270c1c7b0c480750e3d7
+Filename: pool/main/o/obsidian/obsidian_1.6.3_amd64.deb
+Size: 79185280
+SHA512: 66cd4ec5a2100288584c0195a8b487bcc3ff35ff8356c1776cee7e316588478c06386792a99ee4040922841ea013b58218c220ceb6a85c221609d599570a4046
+SHA256: 2f71096cfe73ac7158da5f334f7b1539376ec21d49ac064908dc460c7b33b1b6
+SHA1: 8e409ae865f6787d6c70c9cfc4fc61297c4a9f34
+MD5sum: da588ad67a3747aa46c890fffa836861
 Description: 
   Obsidian
 
@@ -5682,26 +5682,26 @@ Description: location of genes from DNA sequence with hidden markov model
  Parser.
 
 Package: snapd
-Version: 2.58+22.04.1
+Version: 2.63+22.04
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Installed-Size: 100049
-Depends: adduser, apparmor (>= 2.10.95-0ubuntu2.2), ca-certificates, openssh-client, squashfs-tools, systemd, udev, libc6 (>= 2.34), libfuse3-3 (>= 3.2.3), liblzma5 (>= 5.1.1alpha+20110809), liblzo2-2 (>= 2.02), libudev1 (>= 183), zlib1g (>= 1:1.1.4), default-dbus-session-bus | dbus-session-bus
-Recommends: gnupg, fuse3 (>= 3.10.5-1) | fuse
+Installed-Size: 101484
+Depends: adduser, apparmor (>= 2.10.95-0ubuntu2.2), ca-certificates, fuse3 (>= 3.10.5-1) | fuse, openssh-client, squashfs-tools, systemd, udev, default-dbus-session-bus | dbus-session-bus, libc6 (>= 2.34), libfuse3-3 (>= 3.2.3), liblzma5 (>= 5.1.1alpha+20120614), liblzo2-2 (>= 2.02), libudev1 (>= 183), zlib1g (>= 1:1.1.4)
+Recommends: gnupg
 Suggests: zenity | kdialog
 Conflicts: snap (<< 2013-11-29-1ubuntu1)
 Breaks: snap-confine (<< 2.23), snapd-xdg-open (<= 0.0.0), ubuntu-core-launcher (<< 2.22), ubuntu-snappy (<< 1.9), ubuntu-snappy-cli (<< 1.9)
 Replaces: snap-confine (<< 2.23), snapd-xdg-open (<= 0.0.0), ubuntu-core-launcher (<< 2.22), ubuntu-snappy (<< 1.9), ubuntu-snappy-cli (<< 1.9)
-Built-Using: apparmor (= 3.0.4-2ubuntu2), libcap2 (= 1:2.44-1build3), libseccomp (= 2.5.3-2ubuntu2)
+Built-Using: apparmor (= 3.0.4-2ubuntu2.4), libcap2 (= 1:2.44-1ubuntu0.22.04.1), libseccomp (= 2.5.3-2ubuntu2)
 Homepage: https://github.com/snapcore/snapd
 Priority: 0
 Section: utils
-Filename: pool/main/s/snapd/snapd_2.58+22.04.1_amd64.deb
-Size: 23841840
-SHA512: a1ef6f5682a7e21ebb604161f57144003b57edab71bbb8825f8a50509fa9bff7607cc8709080d5fc330fcea3f5b688853416802137ad66f4286673dd76acb3a2
-SHA256: 1fd668baf737fb8714779a5e9db5acd737778c3b54e3625576ddef8f07e99cd9
-SHA1: a62c76c509a748f106b5359b7f1ac69e36fca850
-MD5sum: 76c39f67513e840178d5d27b954e60f5
+Filename: pool/main/s/snapd/snapd_2.63+22.04_amd64.deb
+Size: 25878908
+SHA512: b1e21702bb1a98e0cb98333f60eaf43fc8c1a2ca4d23290dbd31269b28ea89803b9f04d0dca50ce9242d27945fccbfda634bff24489c6b8a163996f7b27f52ff
+SHA256: 8aab4d534dfe860432d374c6aadcde394965c03e027a153d0b4eb4e45d32bb1d
+SHA1: 848d71782ad9c923515643e6dba5ca029f6190aa
+MD5sum: 2a669b3147e6db7775528d001925b29d
 Description: Daemon and tooling that enable snap packages
  Install, configure, refresh and remove snap packages. Snaps are
  'universal' packages that work across many different Linux systems,
