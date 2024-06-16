@@ -75,12 +75,14 @@ STATUS_HALT="${BOLD}${YELLOW} HALT ${NORMAL}"
 
 if [ -f ~/.pat_github ]; then
     CSI_PAT_GITHUB=$(cat ~/.secrets/.pat_github | clevis decrypt 2>/dev/null)
+    export GITHUB_API_TOKEN=${CSI_PAT_GITHUB}
 else
     echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.pat_github missing${WHITE}"
 fi
 
 if [ -f ~/.pat_gitlab ]; then
     CSI_PAT_GITLAB=$(cat ~/.secrets/.pat_gitlab | clevis decrypt 2>/dev/null)
+    export GITLAB_PA_TOKEN=${CSI_PAT_GITLAB}
 else
     echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.pat_gitlab missing${WHITE}"
 fi
