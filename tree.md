@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `06.15.2024 22:28:20`
+Last generated on `06.15.2024 22:32:37`
 
 <br />
 
@@ -1179,10 +1179,11 @@ Last generated on `06.15.2024 22:28:20`
 │           └── zorin-pro-layouts
 │               └── zorin-pro-layouts_1.0.0-3_all.deb
 ├── .gitignore
+├── obsidian_1.6.3_amd64.deb
 ├── proteus-git.sh
 ├── README.md
 ├── secrets.sh
 └── tree.md
 
-198 directories, 976 files
+198 directories, 977 files
 ```
