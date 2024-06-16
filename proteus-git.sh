@@ -2230,7 +2230,7 @@ EOF
     sleep 1
 
     echo -e "  ${WHITE}Starting push ${FUCHSIA}${app_repo_branch}${WHITE}${NORMAL}"
-    git push -u origin $app_repo_branch https://${GITHUB_NAME}:${GITHUB_API_TOKEN}@github.com/${GITHUB_NAME}/${app_repo_apt}
+    git push -u origin $app_repo_branch https://${GITHUB_API_TOKEN}@github.com/${GITHUB_NAME}/${app_repo_apt}
 
 }
 
