@@ -2225,12 +2225,12 @@ EOF
 
     echo -e "  ${WHITE}Starting commit ${FUCHSIA}${app_repo_commit}${WHITE}${NORMAL}"
 
-    git commit -S -m "[S] auto-update [ $app_repo_dist_sel ] @ 02.22.2024 00:29:44"
+    git commit -S -m "$app_repo_commit"
 
     sleep 1
 
     echo -e "  ${WHITE}Starting push ${FUCHSIA}${app_repo_branch}${WHITE}${NORMAL}"
-    git push -u origin $app_repo_branch
+    git push -u https://${GITHUB_NAME}:${GITHUB_API_TOKEN}@${app_repo_apt} origin $app_repo_branch
 
 }
 
