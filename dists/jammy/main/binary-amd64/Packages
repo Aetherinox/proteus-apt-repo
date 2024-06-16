@@ -180,6 +180,99 @@ MD5sum: e2f8ee858eb034adaefd09268282c447
 Description: A secure and free password manager for all of your devices.
   A secure and free password manager for all of your devices.
 
+Package: clevis
+Version: 18-1ubuntu1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 85
+Depends: libc6 (>= 2.34), libjansson4 (>= 2.7), libjose0 (>= 10), libssl3 (>= 3.0.0~~alpha1), cracklib-runtime, curl, jose, libpwquality-tools, luksmeta
+Recommends: cryptsetup-bin
+Homepage: https://github.com/latchset/clevis
+Priority: 0
+Section: utils
+Filename: pool/main/c/clevis/clevis_18-1ubuntu1_amd64.deb
+Size: 23288
+SHA512: d33b7f071c9cef94ba4ada62bb0e1d4f31e0789a7e4e991910b00e1aeb662b81b2c0c8bddc277d4c61b2025142e883c64c53631e33a69c31f990a28a32936f1e
+SHA256: 56b0074179ef2e484d8e6eb48a31eddf6cdd6eae8ff3eaf34dbba6d7eee5d119
+SHA1: 676ee7db0489037ce7eabfc819029c70d47998c3
+MD5sum: 7a283717c1f92fb0e52cc8260edaf674
+Description: automated encryption framework
+ Clevis is a plugable framework for automated decryption. It can be used
+ to provide automated decryption of data or even automated unlocking of
+ LUKS volumes.
+ .
+ It supports tang and shamir secret sharing (SSS).
+Original-Maintainer: Christoph Biedl <debian.axhn@manchmal.in-ulm.de>
+
+Package: clevis-dracut
+Source: clevis
+Version: 18-1ubuntu1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 26
+Depends: clevis-systemd (= 18-1ubuntu1), dracut, dracut-network
+Homepage: https://github.com/latchset/clevis
+Priority: 0
+Section: utils
+Filename: pool/main/c/clevis/clevis-dracut_18-1ubuntu1_amd64.deb
+Size: 3110
+SHA512: 53605c1d3183caa1a5a07676d7459bbeb0e129e441ad4b77908c2b6a4a069658a3976593f36b30faab7bc84b8794e8ecc261833bd4caf60c8d3c194480e769d8
+SHA256: a0a8218db73f043a62ad784c37349dac89092035789668036e3559d4be674a0f
+SHA1: 4a90db72ade3fb4c8ae6a6912b74e66c01a94a04
+MD5sum: a4a1e667e062df50ef3838d23ee09319
+Description: Clevis integration for dracut
+ Clevis is a plugable framework for automated decryption. This package
+ provides integration for dracut to automatically unlock LUKS encrypted
+ block devices in early boot.
+Original-Maintainer: Christoph Biedl <debian.axhn@manchmal.in-ulm.de>
+
+Package: clevis-tpm2
+Source: clevis
+Version: 18-1ubuntu1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 29
+Depends: clevis (= 18-1ubuntu1), tpm2-tools
+Recommends: cryptsetup-bin
+Homepage: https://github.com/latchset/clevis
+Priority: 0
+Section: utils
+Filename: pool/main/c/clevis/clevis-tpm2_18-1ubuntu1_amd64.deb
+Size: 7190
+SHA512: 8b8a600603f1ae88a5aed2b71bfd31986db007b402634ed8d67c972defd4c5f3cf9a4ba4b5fbf201b2609bee933a263bc27a813167b4ff3559b9db2bc2d62c92
+SHA256: fa07d07b139a709abb124a168030679729dbd6d6331ec1a009630807cc35a4cc
+SHA1: 8a79a7dd80812bb8136f205b5136906c0d73e00d
+MD5sum: e50ba125306189ba67f85be49d1c984c
+Description: automated encryption framework, TPM2 support
+ Clevis is a plugable framework for automated decryption. It can be used
+ to provide automated decryption of data or even automated unlocking of
+ LUKS volumes.
+ .
+ This package provides the TPM2 pin.
+Original-Maintainer: Christoph Biedl <debian.axhn@manchmal.in-ulm.de>
+
+Package: clevis-udisks2
+Source: clevis
+Version: 18-1ubuntu1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 48
+Depends: libaudit1 (>= 1:2.7.8), libc6 (>= 2.34), libcryptsetup12 (>= 2:2.0), libglib2.0-0 (>= 2.35.8), libjansson4 (>= 2.0.1), libluksmeta0 (>= 8), libudisks2-0 (>= 2.0.0), adduser, clevis-luks (= 18-1ubuntu1), libblockdev-crypto2, udisks2
+Homepage: https://github.com/latchset/clevis
+Priority: 0
+Section: utils
+Filename: pool/main/c/clevis/clevis-udisks2_18-1ubuntu1_amd64.deb
+Size: 10194
+SHA512: 4b670fde7663955aa5846e7e15a662526fddf707f036eb0ac5bdbc8e26c9d9310fd7d31c4e7da6b945ea0e4ed7a26a69110becf253250c8a6c9547c304c7a10b
+SHA256: 4b98dd346e75caa95c466da955611fc43e8bd19c0ea4eff718fa07eac51c81eb
+SHA1: 7fe2e81580f7f1bbf8f7598a48abe2173016dc76
+MD5sum: c0aa6f7f1107e8e0e9a74531af02b598
+Description: UDisks2/Storaged integration for clevis
+ Clevis is a plugable framework for automated decryption. This package
+ provides automatic unlocking LUKS encrypted block devices in desktop
+ environments that use UDisks2 or storaged.
+Original-Maintainer: Christoph Biedl <debian.axhn@manchmal.in-ulm.de>
+
 Package: deb-get
 Version: 0.3.9-1
 Architecture: all
@@ -528,6 +621,35 @@ Description: GNU privacy guard - signature verification tool
  used to make the signature are valid. There are no configuration
  files and only a few options are implemented.
 Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>
+
+Package: jose
+Version: 11-2
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Christoph Biedl <debian.axhn@manchmal.in-ulm.de>
+Installed-Size: 134
+Depends: libc6 (>= 2.34), libjansson4 (>= 2.10), libjose0 (>= 10)
+Homepage: https://github.com/latchset/jose
+Priority: 0
+Section: utils
+Filename: pool/main/j/jose/jose_11-2_amd64.deb
+Size: 49948
+SHA512: e1a25f357fe4a92f4be2a847dfbe5ecd45604b4804ef628f4d0ee066d5f129e22191199199e06873d83bd25f3f2d2536584b3293fbe34f0fa1cbad8ad91d540b
+SHA256: e172250c9326a98189aceaed9fa33c709f88ae8d813d430b3322e7ba81edc1fa
+SHA1: 4373862ab443b8bbd16b9c170ea68e8e007a6741
+MD5sum: 0bd751c535d06e0bd404711e2b47b73c
+Description: C implementation of Javascript Object Signing and Encryption standards
+ José is a C-language implementation of the Javascript Object Signing
+ and Encryption standards. Specifically, José aims towards implementing
+ the following standards:
+ .
+   RFC 7515 - JSON Web Signature (JWS)
+   RFC 7516 - JSON Web Encryption (JWE)
+   RFC 7517 - JSON Web Key (JWK)
+   RFC 7518 - JSON Web Algorithms (JWA)
+   RFC 7519 - JSON Web Token (JWT)
+   RFC 7520 - Examples of ... JOSE
+   RFC 7638 - JSON Web Key (JWK) Thumbprint
 
 Package: keyutils
 Version: 1.6.1-2ubuntu3

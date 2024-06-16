@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `06.15.2024 21:20:05`
+Last generated on `06.15.2024 21:57:04`
 
 <br />
 
@@ -198,6 +198,10 @@ Last generated on `06.15.2024 21:20:05`
 │           │   ├── apt-utils_2.4.12_amd64.deb
 │           │   ├── argon2_0~20171227-0.3_amd64.deb
 │           │   ├── Bitwarden-2024.6.1-amd64.deb
+│           │   ├── clevis_18-1ubuntu1_amd64.deb
+│           │   ├── clevis-dracut_18-1ubuntu1_amd64.deb
+│           │   ├── clevis-tpm2_18-1ubuntu1_amd64.deb
+│           │   ├── clevis-udisks2_18-1ubuntu1_amd64.deb
 │           │   ├── dialog_1.3-20211214-1_amd64.deb
 │           │   ├── firefox_1snap1-0ubuntu2_amd64.deb
 │           │   ├── flatpak_1.14.6-1~flatpak1~22.04.1_amd64.deb
@@ -208,6 +212,7 @@ Last generated on `06.15.2024 21:20:05`
 │           │   ├── gpg_2.2.27-3ubuntu2.1_amd64.deb
 │           │   ├── gpgconf_2.2.27-3ubuntu2.1_amd64.deb
 │           │   ├── gpgv_2.2.27-3ubuntu2.1_amd64.deb
+│           │   ├── jose_11-2_amd64.deb
 │           │   ├── keyutils_1.6.1-2ubuntu3_amd64.deb
 │           │   ├── kgpg_21.12.3-0ubuntu1_amd64.deb
 │           │   ├── libnginx-mod-http-auth-pam_1.18.0-6ubuntu14.4_amd64.deb
@@ -329,6 +334,12 @@ Last generated on `06.15.2024 21:20:05`
 │       │   └── bitwarden
 │       │       ├── bitwarden_2023.9.3_amd64.deb
 │       │       └── bitwarden_2024.6.1_amd64.deb
+│       ├── c
+│       │   └── clevis
+│       │       ├── clevis_18-1ubuntu1_amd64.deb
+│       │       ├── clevis-dracut_18-1ubuntu1_amd64.deb
+│       │       ├── clevis-tpm2_18-1ubuntu1_amd64.deb
+│       │       └── clevis-udisks2_18-1ubuntu1_amd64.deb
 │       ├── d
 │       │   ├── dasprid-enum
 │       │   │   ├── php-dasprid-enum_1.0.3-3_all.deb
@@ -414,6 +425,9 @@ Last generated on `06.15.2024 21:20:05`
 │       │   └── gpgme1.0
 │       │       ├── libgpgme11_1.13.1-7ubuntu2_amd64.deb
 │       │       └── libgpgme11_1.13.1-7ubuntu2_arm64.deb
+│       ├── j
+│       │   └── jose
+│       │       └── jose_11-2_amd64.deb
 │       ├── k
 │       │   ├── keyutils
 │       │   │   ├── keyutils_1.6.1-2ubuntu3_amd64.deb
@@ -1168,8 +1182,7 @@ Last generated on `06.15.2024 21:20:05`
 ├── proteus-git.sh
 ├── README.md
 ├── secrets.sh
-├── tree.md
-└── wget-log
+└── tree.md
 
-194 directories, 967 files
+198 directories, 976 files
 ```
