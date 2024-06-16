@@ -142,11 +142,6 @@ export SECONDS=0
 
 lst_github=(
     'obsidianmd/obsidian-releases'
-    'AppOutlet/AppOutlet'
-    'bitwarden/clients'
-    'shiftkey/desktop'
-    'FreeTubeApp/FreeTube'
-    'makedeb/makedeb'
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -163,8 +158,6 @@ lst_packages=(
 
 lst_arch=(
     'all'
-    'amd64'
-    'arm64'
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
