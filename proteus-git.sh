@@ -11,9 +11,9 @@ echo
 #   requires chmod +x proteus_git.sh
 #
 #   This requires you to have the following files in your home directory:
-#       ~/.pat_github       Not required if using Gitlab
-#       ~/.pat_gitlab       Not required if using Github
-#       ~/.passwd
+#       ~/secrets/.pat_github       Not required if using Gitlab
+#       ~/secrets/.pat_gitlab       Not required if using Github
+#       ~/secrets/.passwd
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -74,26 +74,22 @@ STATUS_HALT="${BOLD}${YELLOW} HALT ${NORMAL}"
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 if [ -f ~/.pat_github ]; then
-    CSI_PAT_GITHUB=$(cat ~/.pat_github | clevis decrypt 2>/dev/null)
+    CSI_PAT_GITHUB=$(cat ~/secrets/.pat_github | clevis decrypt 2>/dev/null)
 else
-    echo -e "  ${RED}${BLINK}Warning${NORMAL} ......... ~/.pat_github missing${WHITE}"
+    echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/secrets/.pat_github missing${WHITE}"
 fi
 
 if [ -f ~/.pat_gitlab ]; then
-    CSI_PAT_GITLAB=$(cat ~/.pat_gitlab | clevis decrypt 2>/dev/null)
+    CSI_PAT_GITLAB=$(cat ~/secrets/.pat_gitlab | clevis decrypt 2>/dev/null)
 else
-    echo -e "  ${RED}${BLINK}Warning${NORMAL} ......... ~/.pat_gitlab missing${WHITE}"
+    echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/secrets/.pat_gitlab missing${WHITE}"
 fi
 
 if [ -f ~/.passwd ]; then
-    CSI_SUDO_PASSWD=$(cat ~/.passwd | clevis decrypt 2>/dev/null)
+    CSI_SUDO_PASSWD=$(cat ~/secrets/.passwd | clevis decrypt 2>/dev/null)
 else
-    echo -e "  ${RED}${BLINK}Warning${NORMAL} ......... ~/.passwd missing${WHITE}"
+    echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/secrets/.passwd missing${WHITE}"
 fi
-
-echo "$CSI_SUDO_PASSWD" | echo | sudo -S su
-
-echo ${CSI_PAT_GITLAB}
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   vars > app
@@ -515,7 +511,7 @@ fi
 #
 #   Must use the values
 #       - CSI_PAT_GITHUB
-#       - GITLAB_PA_TOKEN
+#       - CSI_PAT_GITLAB
 #
 #   Do not rename them, these are the globals recognized by LastVersion
 #   
@@ -524,7 +520,7 @@ fi
 #   that you will be rate limited.
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-if [ -z "${CSI_PAT_GITHUB}" ] && [ -z "${GITLAB_PA_TOKEN}" ]; then
+if [ -z "${CSI_PAT_GITHUB}" ] && [ -z "${CSI_PAT_GITLAB}" ]; then
     echo
     echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Missing ${YELLOW}API Tokens${WHITE}${NORMAL}"
     echo -e "  ${BOLD}${WHITE}Must create a ${FUCHSIA}secrets.sh${WHITE} file and define an API token${NORMAL}"

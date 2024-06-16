@@ -228,6 +228,10 @@
             {"type":"file","name":"apt-utils_2.4.12_amd64.deb"},
             {"type":"file","name":"argon2_0~20171227-0.3_amd64.deb"},
             {"type":"file","name":"Bitwarden-2024.6.1-amd64.deb"},
+            {"type":"file","name":"clevis_18-1ubuntu1_amd64.deb"},
+            {"type":"file","name":"clevis-dracut_18-1ubuntu1_amd64.deb"},
+            {"type":"file","name":"clevis-tpm2_18-1ubuntu1_amd64.deb"},
+            {"type":"file","name":"clevis-udisks2_18-1ubuntu1_amd64.deb"},
             {"type":"file","name":"dialog_1.3-20211214-1_amd64.deb"},
             {"type":"file","name":"firefox_1snap1-0ubuntu2_amd64.deb"},
             {"type":"file","name":"flatpak_1.14.6-1~flatpak1~22.04.1_amd64.deb"},
@@ -238,6 +242,7 @@
             {"type":"file","name":"gpg_2.2.27-3ubuntu2.1_amd64.deb"},
             {"type":"file","name":"gpgconf_2.2.27-3ubuntu2.1_amd64.deb"},
             {"type":"file","name":"gpgv_2.2.27-3ubuntu2.1_amd64.deb"},
+            {"type":"file","name":"jose_11-2_amd64.deb"},
             {"type":"file","name":"keyutils_1.6.1-2ubuntu3_amd64.deb"},
             {"type":"file","name":"kgpg_21.12.3-0ubuntu1_amd64.deb"},
             {"type":"file","name":"libnginx-mod-http-auth-pam_1.18.0-6ubuntu14.4_amd64.deb"},
@@ -376,6 +381,14 @@
             {"type":"file","name":"bitwarden_2024.6.1_amd64.deb"}
         ]}
       ]},
+        {"type":"directory","name":"c","contents":[
+          {"type":"directory","name":"clevis","contents":[
+            {"type":"file","name":"clevis_18-1ubuntu1_amd64.deb"},
+            {"type":"file","name":"clevis-dracut_18-1ubuntu1_amd64.deb"},
+            {"type":"file","name":"clevis-tpm2_18-1ubuntu1_amd64.deb"},
+            {"type":"file","name":"clevis-udisks2_18-1ubuntu1_amd64.deb"}
+        ]}
+      ]},
         {"type":"directory","name":"d","contents":[
           {"type":"directory","name":"dasprid-enum","contents":[
             {"type":"file","name":"php-dasprid-enum_1.0.3-3_all.deb"},
@@ -479,6 +492,11 @@
           {"type":"directory","name":"gpgme1.0","contents":[
             {"type":"file","name":"libgpgme11_1.13.1-7ubuntu2_amd64.deb"},
             {"type":"file","name":"libgpgme11_1.13.1-7ubuntu2_arm64.deb"}
+        ]}
+      ]},
+        {"type":"directory","name":"j","contents":[
+          {"type":"directory","name":"jose","contents":[
+            {"type":"file","name":"jose_11-2_amd64.deb"}
         ]}
       ]},
         {"type":"directory","name":"k","contents":[
@@ -1353,9 +1371,8 @@
     {"type":"file","name":"proteus-git.sh"},
     {"type":"file","name":"README.md"},
     {"type":"file","name":"secrets.sh"},
-    {"type":"file","name":"tree.md"},
-    {"type":"file","name":"wget-log"}
+    {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":194,"files":967}
+  {"type":"report","directories":198,"files":976}
 ]
