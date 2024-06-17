@@ -54,27 +54,51 @@ fi
 #   tput setf   [1-7]       – Set a foreground color
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-BLACK=$(tput setaf 0)
-RED=$(tput setaf 1)
-ORANGE=$(tput setaf 208)
-GREEN=$(tput setaf 2)
-YELLOW=$(tput setaf 156)
-LIME_YELLOW=$(tput setaf 190)
-POWDER_BLUE=$(tput setaf 153)
-BLUE=$(tput setaf 4)
-MAGENTA=$(tput setaf 5)
-CYAN=$(tput setaf 6)
-WHITE=$(tput setaf 7)
-GREYL=$(tput setaf 242)
-DEV=$(tput setaf 157)
-DEVGREY=$(tput setaf 243)
-FUCHSIA=$(tput setaf 198)
-PINK=$(tput setaf 200)
-BOLD=$(tput bold)
-NORMAL=$(tput sgr0)
-BLINK=$(tput blink)
-REVERSE=$(tput smso)
-UNDERLINE=$(tput smul)
+if [[ $- == *i* ]]
+    BLACK="\e[1;30m"
+    RED="\e[1;91m"
+    ORANGE="\e[33m"
+    GREEN="\e[1;92m"
+    YELLOW="\e[1;93m"
+    LIME_YELLOW="\e[1;93m"
+    POWDER_BLUE="\e[1;34m"
+    BLUE="\e[1;34m"
+    MAGENTA="\e[1;34m"
+    CYAN="\e[1;96m"
+    WHITE="\e[97m"
+    GREYL="\e[1;30m"
+    DEV="\e[1;34m"
+    DEVGREY="\e[37m"
+    FUCHSIA="\e[1;35m"
+    PINK="\e[1;34m"
+    BOLD="\e[1m"
+    NORMAL="\e[0m"
+    BLINK="\e[5m"
+    REVERSE="\e[7m"
+    UNDERLINE="\e[4m"
+then
+    BLACK=$(tput setaf 0)
+    RED=$(tput setaf 1)
+    ORANGE=$(tput setaf 208)
+    GREEN=$(tput setaf 2)
+    YELLOW=$(tput setaf 156)
+    LIME_YELLOW=$(tput setaf 190)
+    POWDER_BLUE=$(tput setaf 153)
+    BLUE=$(tput setaf 4)
+    MAGENTA=$(tput setaf 5)
+    CYAN=$(tput setaf 6)
+    WHITE=$(tput setaf 7)
+    GREYL=$(tput setaf 242)
+    DEV=$(tput setaf 157)
+    DEVGREY=$(tput setaf 243)
+    FUCHSIA=$(tput setaf 198)
+    PINK=$(tput setaf 200)
+    BOLD=$(tput bold)
+    NORMAL=$(tput sgr0)
+    BLINK=$(tput blink)
+    REVERSE=$(tput smso)
+    UNDERLINE=$(tput smul)
+fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   vars > status messages
