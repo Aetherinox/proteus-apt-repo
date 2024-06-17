@@ -2,11 +2,8 @@
 PATH="/bin:/usr/bin:/sbin:/usr/sbin:/home/$USER/bin"
 echo 
 
-HOME=${HOME:-/home/aetherinox}
-export HOME
-
+HOME=/home/aetherinox
 PATH_BACKUP=/server/proteus
-export PATH_BACKUP
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   @author :           aetherinox
@@ -49,15 +46,6 @@ source ${PATH_BACKUP}/secrets.sh
 fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   Fixes tput error when running script as service / timer
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-if [ "${TERM:-}" = "" ]; then
-  echo "Setting TERM to dumb"
-  TERM="dumb"
-fi
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   vars > colors
 #
 #   tput setab  [1-7]       – Set a background color using ANSI escape
@@ -66,7 +54,29 @@ fi
 #   tput setf   [1-7]       – Set a foreground color
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-if [[ $- == *i* ]]; then
+if [[ $- == *i* ]]
+    BLACK="\e[1;30m"
+    RED="\e[1;91m"
+    ORANGE="\e[33m"
+    GREEN="\e[1;92m"
+    YELLOW="\e[1;93m"
+    LIME_YELLOW="\e[1;93m"
+    POWDER_BLUE="\e[1;34m"
+    BLUE="\e[1;34m"
+    MAGENTA="\e[1;34m"
+    CYAN="\e[1;96m"
+    WHITE="\e[97m"
+    GREYL="\e[1;30m"
+    DEV="\e[1;34m"
+    DEVGREY="\e[37m"
+    FUCHSIA="\e[1;35m"
+    PINK="\e[1;34m"
+    BOLD="\e[1m"
+    NORMAL="\e[0m"
+    BLINK="\e[5m"
+    REVERSE="\e[7m"
+    UNDERLINE="\e[4m"
+then
     BLACK=$(tput setaf 0)
     RED=$(tput setaf 1)
     ORANGE=$(tput setaf 208)
@@ -104,16 +114,12 @@ STATUS_HALT="${BOLD}${YELLOW} HALT ${NORMAL}"
 #   load secrets through Clevis
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-clevis decrypt
-
 if [ -f ${HOME}/.secrets/.pat_github ]; then
     CSI_PAT_GITHUB=$(cat ${HOME}/.secrets/.pat_github | clevis decrypt 2>/dev/null)
     export GITHUB_API_TOKEN=${CSI_PAT_GITHUB}
 else
     echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.pat_github missing${WHITE}"
 fi
-
-echo $CSI_PAT_GITHUB
 
 if [ -f ${HOME}/.secrets/.pat_gitlab ]; then
     CSI_PAT_GITLAB=$(cat ${HOME}/.secrets/.pat_gitlab | clevis decrypt 2>/dev/null)
@@ -173,28 +179,30 @@ export LOGS_DIR="$app_dir/logs"
 export LOGS_FILE="$LOGS_DIR/proteus-git-${DATE}.log"
 export SECONDS=0
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   lists > github repos
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 lst_github=(
     'makedeb/makedeb'
 )
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   list > packages
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 lst_packages=(
     'adduser'
 )
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   list > architectures
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 lst_arch=(
     'all'
+    'amd64'
+    'arm64'
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -386,7 +394,7 @@ fi
 #
 #   Must use the values
 #       - CSI_PAT_GITHUB
-#       - CSI_PAT_GITLAB
+#       - GITLAB_PA_TOKEN
 #
 #   Do not rename them, these are the globals recognized by LastVersion
 #   
@@ -845,67 +853,59 @@ spinner_halt()
 
 cli_options()
 {
-    if [[ $- == *i* ]]; then
-        opts_show()
-        {
-            local it=$( echo $1 )
-            for i in ${!CHOICES[*]}; do
-                if [[ "$i" == "$it" ]]; then
-                    if [[ $- == *i* ]]; then
-                        tput rev
-                    fi
-                    printf '\e[1;33m'
-                    printf '%4d. \e[1m\e[33m %s\t\e[0m\n' $i "${LIME_YELLOW}  ${CHOICES[$i]}  "
-                    if [[ $- == *i* ]]; then
-                        tput sgr0
-                    fi
-                else
-                    printf '\e[1;33m'
-                    printf '%4d. \e[1m\e[33m %s\t\e[0m\n' $i "${LIME_YELLOW}  ${CHOICES[$i]}  "
-                fi
-                if [[ $- == *i* ]]; then
-                    tput cuf 2
-                fi
-            done
-        }
+    opts_show()
+    {
+        local it=$( echo $1 )
+        for i in ${!CHOICES[*]}; do
+            if [[ "$i" == "$it" ]]; then
+                tput rev
+                printf '\e[1;33m'
+                printf '%4d. \e[1m\e[33m %s\t\e[0m\n' $i "${LIME_YELLOW}  ${CHOICES[$i]}  "
+                tput sgr0
+            else
+                printf '\e[1;33m'
+                printf '%4d. \e[1m\e[33m %s\t\e[0m\n' $i "${LIME_YELLOW}  ${CHOICES[$i]}  "
+            fi
+            tput cuf 2
+        done
+    }
 
-        tput civis
-        it=0
-        tput cuf 2
+    tput civis
+    it=0
+    tput cuf 2
+
+    opts_show $it
+
+    while true; do
+        read -rsn1 key
+        local escaped_char=$( printf "\u1b" )
+        if [[ $key == $escaped_char ]]; then
+            read -rsn2 key
+        fi
+
+        tput cuu ${#CHOICES[@]} && tput ed
+        tput sc
+
+        case $key in
+            '[A' | '[C' )
+                it=$(($it-1));;
+            '[D' | '[B')
+                it=$(($it+1));;
+            '' )
+                return $it && exit;;
+        esac
+
+        local min_len=0
+        local farr_len=$(( ${#CHOICES[@]}-1))
+        if [[ "$it" -lt "$min_len" ]]; then
+            it=$(( ${#CHOICES[@]}-1 ))
+        elif [[ "$it" -gt "$farr_len"  ]]; then
+            it=0
+        fi
 
         opts_show $it
 
-        while true; do
-            read -rsn1 key
-            local escaped_char=$( printf "\u1b" )
-            if [[ $key == $escaped_char ]]; then
-                read -rsn2 key
-            fi
-
-            tput cuu ${#CHOICES[@]} && tput ed
-            tput sc
-
-            case $key in
-                '[A' | '[C' )
-                    it=$(($it-1));;
-                '[D' | '[B')
-                    it=$(($it+1));;
-                '' )
-                    return $it && exit;;
-            esac
-
-            local min_len=0
-            local farr_len=$(( ${#CHOICES[@]}-1))
-            if [[ "$it" -lt "$min_len" ]]; then
-                it=$(( ${#CHOICES[@]}-1 ))
-            elif [[ "$it" -gt "$farr_len"  ]]; then
-                it=0
-            fi
-
-            opts_show $it
-
-        done
-    fi
+    done
 }
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
