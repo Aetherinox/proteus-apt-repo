@@ -2,9 +2,6 @@
 PATH="/bin:/usr/bin:/sbin:/usr/sbin:/home/$USER/bin"
 echo 
 
-HOME=/home/aetherinox
-PATH_BACKUP=/server/proteus
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   @author :           aetherinox
 #   @script :           Proteus Apt Git
@@ -41,17 +38,8 @@ PATH_BACKUP=/server/proteus
 #   managed via https://github.com/settings/tokens?type=beta
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-if [ -f ${PATH_BACKUP}/secrets.sh ]; then
-source ${PATH_BACKUP}/secrets.sh
-fi
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   Fixes tput error when running script as service / timer
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-if [ "${TERM:-}" = "" ]; then
-  echo "Setting TERM to dumb"
-  TERM="dumb"
+if [ -f secrets.sh ]; then
+. ./secrets.sh
 fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -63,29 +51,27 @@ fi
 #   tput setf   [1-7]       – Set a foreground color
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-if [[ $- == *i* ]]; then
-    BLACK=$(tput setaf 0)
-    RED=$(tput setaf 1)
-    ORANGE=$(tput setaf 208)
-    GREEN=$(tput setaf 2)
-    YELLOW=$(tput setaf 156)
-    LIME_YELLOW=$(tput setaf 190)
-    POWDER_BLUE=$(tput setaf 153)
-    BLUE=$(tput setaf 4)
-    MAGENTA=$(tput setaf 5)
-    CYAN=$(tput setaf 6)
-    WHITE=$(tput setaf 7)
-    GREYL=$(tput setaf 242)
-    DEV=$(tput setaf 157)
-    DEVGREY=$(tput setaf 243)
-    FUCHSIA=$(tput setaf 198)
-    PINK=$(tput setaf 200)
-    BOLD=$(tput bold)
-    NORMAL=$(tput sgr0)
-    BLINK=$(tput blink)
-    REVERSE=$(tput smso)
-    UNDERLINE=$(tput smul)
-fi
+BLACK=$(tput setaf 0)
+RED=$(tput setaf 1)
+ORANGE=$(tput setaf 208)
+GREEN=$(tput setaf 2)
+YELLOW=$(tput setaf 156)
+LIME_YELLOW=$(tput setaf 190)
+POWDER_BLUE=$(tput setaf 153)
+BLUE=$(tput setaf 4)
+MAGENTA=$(tput setaf 5)
+CYAN=$(tput setaf 6)
+WHITE=$(tput setaf 7)
+GREYL=$(tput setaf 242)
+DEV=$(tput setaf 157)
+DEVGREY=$(tput setaf 243)
+FUCHSIA=$(tput setaf 198)
+PINK=$(tput setaf 200)
+BOLD=$(tput bold)
+NORMAL=$(tput sgr0)
+BLINK=$(tput blink)
+REVERSE=$(tput smso)
+UNDERLINE=$(tput smul)
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   vars > status messages
@@ -101,22 +87,22 @@ STATUS_HALT="${BOLD}${YELLOW} HALT ${NORMAL}"
 #   load secrets through Clevis
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-if [ -f ${HOME}/.secrets/.pat_github ]; then
-    CSI_PAT_GITHUB=$(cat ${HOME}/.secrets/.pat_github | clevis decrypt 2>/dev/null)
+if [ -f ~/.pat_github ]; then
+    CSI_PAT_GITHUB=$(cat ~/.secrets/.pat_github | clevis decrypt 2>/dev/null)
     export GITHUB_API_TOKEN=${CSI_PAT_GITHUB}
 else
     echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.pat_github missing${WHITE}"
 fi
 
-if [ -f ${HOME}/.secrets/.pat_gitlab ]; then
-    CSI_PAT_GITLAB=$(cat ${HOME}/.secrets/.pat_gitlab | clevis decrypt 2>/dev/null)
+if [ -f ~/.pat_gitlab ]; then
+    CSI_PAT_GITLAB=$(cat ~/.secrets/.pat_gitlab | clevis decrypt 2>/dev/null)
     export GITLAB_PA_TOKEN=${CSI_PAT_GITLAB}
 else
     echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.pat_gitlab missing${WHITE}"
 fi
 
-if [ -f ${HOME}/.secrets/.passwd ]; then
-    CSI_SUDO_PASSWD=$(cat ${HOME}/.secrets/.passwd | clevis decrypt 2>/dev/null)
+if [ -f ~/.passwd ]; then
+    CSI_SUDO_PASSWD=$(cat ~/.secrets/.passwd | clevis decrypt 2>/dev/null)
 else
     echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.passwd missing${WHITE}"
 fi
@@ -156,6 +142,8 @@ app_i=0
 #   exports
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+echo $HOME;
+
 export DATE=$(date '+%d%m%Y')
 export DATE_TS=$(date +%s)
 export YEAR=$(date +'%Y')
@@ -171,11 +159,6 @@ export SECONDS=0
 ##--------------------------------------------------------------------------
 
 lst_github=(
-    'obsidianmd/obsidian-releases'
-    'AppOutlet/AppOutlet'
-    'bitwarden/clients'
-    'shiftkey/desktop'
-    'FreeTubeApp/FreeTube'
     'makedeb/makedeb'
 )
 
@@ -185,161 +168,6 @@ lst_github=(
 
 lst_packages=(
     'adduser'
-    'argon2'
-    'apt-move'
-    'apt-utils'
-    'clevis'
-    'clevis-dracut'
-    'clevis-udisks2'
-    'clevis-tpm2'
-    'dialog'
-    'firefox'
-    'flatpak'
-    'gnome-keyring'
-    'gnome-keysign'
-    'gnome-shell-extension-manager'
-    'gpg'
-    'gpgconf'
-    'gpgv'
-    'jose'
-    'keyutils'
-    'kgpg'
-    'libnginx-mod-http-auth-pam'
-    'libnginx-mod-http-cache-purge'
-    'libnginx-mod-http-dav-ext'
-    'libnginx-mod-http-echo'
-    'libnginx-mod-http-fancyindex'
-    'libnginx-mod-http-geoip'
-    'libnginx-mod-http-headers-more-filter'
-    'libnginx-mod-http-ndk'
-    'libnginx-mod-http-perl'
-    'libnginx-mod-http-subs-filter'
-    'libnginx-mod-http-uploadprogress'
-    'libnginx-mod-http-upstream-fair'
-    'libnginx-mod-nchan'
-    'libnginx-mod-rtmp'
-    'libnginx-mod-stream-geoip'
-    'lsb-base'
-    'lz4'
-    'mysql-client'
-    'mysql-common'
-    'mysql-server'
-    'network-manager-config-connectivity-ubuntu'
-    'network-manager-dev'
-    'network-manager-gnome'
-    'network-manager-openvpn-gnome'
-    'network-manager-openvpn'
-    'network-manager-pptp-gnome'
-    'network-manager-pptp'
-    'network-manager'
-    'networkd-dispatcher'
-    'nginx-common'
-    'nginx-confgen'
-    'nginx-core'
-    'nginx-dev'
-    'nginx-doc'
-    'nginx-extras'
-    'nginx-full'
-    'nginx-light'
-    'nginx'
-    'open-vm-tools-desktop'
-    'open-vm-tools-dev'
-    'open-vm-tools'
-    'php-all-dev'
-    'php-amqp'
-    'php-amqplib'
-    'php-apcu-all-dev'
-    'php-apcu'
-    'php-ast-all-dev'
-    'php-ast'
-    'php-bacon-qr-code'
-    'php-bcmath'
-    'php-brick-math'
-    'php-brick-varexporter'
-    'php-bz2'
-    'php-cas'
-    'php-cgi'
-    'php-cli'
-    'php-code-lts-u2f-php-server'
-    'php-common'
-    'php-crypt-gpg'
-    'php-curl'
-    'php-db'
-    'php-dba'
-    'php-decimal'
-    'php-dev'
-    'php-ds-all-dev'
-    'php-ds'
-    'php-email-validator'
-    'php-embed'
-    'php-enchant'
-    'php-excimer'
-    'php-faker'
-    'php-fpm'
-    'php-fxsl'
-    'php-gd'
-    'php-gearman'
-    'php-gettext-languages'
-    'php-gmagick-all-dev'
-    'php-gmagick'
-    'php-gmp'
-    'php-gnupg-all-dev'
-    'php-gnupg'
-    'php-gnupg'
-    'php-grpc'
-    'php-http'
-    'php-igbinary'
-    'php-imagick'
-    'php-imap'
-    'php-inotify'
-    'php-interbase'
-    'php-intl'
-    'php-ldap'
-    'php-mailparse'
-    'php-maxminddb'
-    'php-mbstring'
-    'php-mcrypt'
-    'php-memcache'
-    'php-memcached'
-    'php-mongodb'
-    'php-msgpack'
-    'php-mysql'
-    'php-oauth'
-    'php-odbc'
-    'php-pcov'
-    'php-pgsql'
-    'php-phpdbg'
-    'php-ps'
-    'php-pspell'
-    'php-psr'
-    'php-raphf'
-    'php-readline'
-    'php-redis'
-    'php-rrd'
-    'php-smbclient'
-    'php-snmp'
-    'php-soap'
-    'php-solr'
-    'php-sqlite3'
-    'php-ssh2'
-    'php-stomp'
-    'php-sybase'
-    'php-tideways'
-    'php-tidy'
-    'php-uopz'
-    'php-uploadprogress'
-    'php-uuid'
-    'php-xdebug'
-    'php-xml'
-    'php-xmlrpc'
-    'php-yac'
-    'php-yaml'
-    'php-zip'
-    'php-zmq'
-    'php'
-    'snap'
-    'snapd'
-    'wget'
 )
 
 ##--------------------------------------------------------------------------
@@ -348,8 +176,6 @@ lst_packages=(
 
 lst_arch=(
     'all'
-    'amd64'
-    'arm64'
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -439,7 +265,7 @@ app_run_github_precheck( )
 #   secrets.sh file missing -- abort
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-if ! [ -f ${PATH_BACKUP}/secrets.sh ]; then
+if ! [ -f secrets.sh ]; then
     echo
     echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}secrets.sh file not found${NORMAL}"
     echo -e "  ${BOLD}${WHITE}Must create a ${FUCHSIA}secrets.sh${WHITE} file.${NORMAL}"
@@ -1000,67 +826,59 @@ spinner_halt()
 
 cli_options()
 {
-    if [[ $- == *i* ]]; then
-        opts_show()
-        {
-            local it=$( echo $1 )
-            for i in ${!CHOICES[*]}; do
-                if [[ "$i" == "$it" ]]; then
-                    if [[ $- == *i* ]]; then
-                        tput rev
-                    fi
-                    printf '\e[1;33m'
-                    printf '%4d. \e[1m\e[33m %s\t\e[0m\n' $i "${LIME_YELLOW}  ${CHOICES[$i]}  "
-                    if [[ $- == *i* ]]; then
-                        tput sgr0
-                    fi
-                else
-                    printf '\e[1;33m'
-                    printf '%4d. \e[1m\e[33m %s\t\e[0m\n' $i "${LIME_YELLOW}  ${CHOICES[$i]}  "
-                fi
-                if [[ $- == *i* ]]; then
-                    tput cuf 2
-                fi
-            done
-        }
+    opts_show()
+    {
+        local it=$( echo $1 )
+        for i in ${!CHOICES[*]}; do
+            if [[ "$i" == "$it" ]]; then
+                tput rev
+                printf '\e[1;33m'
+                printf '%4d. \e[1m\e[33m %s\t\e[0m\n' $i "${LIME_YELLOW}  ${CHOICES[$i]}  "
+                tput sgr0
+            else
+                printf '\e[1;33m'
+                printf '%4d. \e[1m\e[33m %s\t\e[0m\n' $i "${LIME_YELLOW}  ${CHOICES[$i]}  "
+            fi
+            tput cuf 2
+        done
+    }
 
-        tput civis
-        it=0
-        tput cuf 2
+    tput civis
+    it=0
+    tput cuf 2
+
+    opts_show $it
+
+    while true; do
+        read -rsn1 key
+        local escaped_char=$( printf "\u1b" )
+        if [[ $key == $escaped_char ]]; then
+            read -rsn2 key
+        fi
+
+        tput cuu ${#CHOICES[@]} && tput ed
+        tput sc
+
+        case $key in
+            '[A' | '[C' )
+                it=$(($it-1));;
+            '[D' | '[B')
+                it=$(($it+1));;
+            '' )
+                return $it && exit;;
+        esac
+
+        local min_len=0
+        local farr_len=$(( ${#CHOICES[@]}-1))
+        if [[ "$it" -lt "$min_len" ]]; then
+            it=$(( ${#CHOICES[@]}-1 ))
+        elif [[ "$it" -gt "$farr_len"  ]]; then
+            it=0
+        fi
 
         opts_show $it
 
-        while true; do
-            read -rsn1 key
-            local escaped_char=$( printf "\u1b" )
-            if [[ $key == $escaped_char ]]; then
-                read -rsn2 key
-            fi
-
-            tput cuu ${#CHOICES[@]} && tput ed
-            tput sc
-
-            case $key in
-                '[A' | '[C' )
-                    it=$(($it-1));;
-                '[D' | '[B')
-                    it=$(($it+1));;
-                '' )
-                    return $it && exit;;
-            esac
-
-            local min_len=0
-            local farr_len=$(( ${#CHOICES[@]}-1))
-            if [[ "$it" -lt "$min_len" ]]; then
-                it=$(( ${#CHOICES[@]}-1 ))
-            elif [[ "$it" -gt "$farr_len"  ]]; then
-                it=0
-            fi
-
-            opts_show $it
-
-        done
-    fi
+    done
 }
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
