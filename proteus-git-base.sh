@@ -11,23 +11,9 @@ echo
 #   requires chmod +x proteus_git.sh
 #
 #   This requires you to have the following files in your home directory:
-#       ~/secrets/.pat_github       Not required if using Gitlab
-#       ~/secrets/.pat_gitlab       Not required if using Github
-#       ~/secrets/.passwd
-#
-#   LastVersion requires that two env variables be exported when running
-#   that app, otherwise you will be rate-limited by Github and Gitlab.
-#       export GITHUB_API_TOKEN=${CSI_PAT_GITHUB}
-#       export GITLAB_PA_TOKEN=${CSI_PAT_GITLAB}
-#
-#   DO NOT change the name of the above env variables otherwise it will
-#   not work.
-#       - GITHUB_API_TOKEN
-#       - GITLAB_PA_TOKEN
-#
-#   This script requires a minimum Reprepro version or it will cause
-#   database errors:
-#       - v5.4.2
+#       ~/.pat_github       Not required if using Gitlab
+#       ~/.pat_gitlab       Not required if using Github
+#       ~/.passwd
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -88,24 +74,26 @@ STATUS_HALT="${BOLD}${YELLOW} HALT ${NORMAL}"
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 if [ -f ~/.pat_github ]; then
-    CSI_PAT_GITHUB=$(cat ~/.secrets/.pat_github | clevis decrypt 2>/dev/null)
-    export GITHUB_API_TOKEN=${CSI_PAT_GITHUB}
+    CSI_PAT_GITHUB=$(cat ~/.pat_github | clevis decrypt 2>/dev/null)
 else
-    echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.pat_github missing${WHITE}"
+    echo -e "  ${RED}${BLINK}Warning${NORMAL} ......... ~/.pat_github missing${WHITE}"
 fi
 
 if [ -f ~/.pat_gitlab ]; then
-    CSI_PAT_GITLAB=$(cat ~/.secrets/.pat_gitlab | clevis decrypt 2>/dev/null)
-    export GITLAB_PA_TOKEN=${CSI_PAT_GITLAB}
+    CSI_PAT_GITLAB=$(cat ~/.pat_gitlab | clevis decrypt 2>/dev/null)
 else
-    echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.pat_gitlab missing${WHITE}"
+    echo -e "  ${RED}${BLINK}Warning${NORMAL} ......... ~/.pat_gitlab missing${WHITE}"
 fi
 
 if [ -f ~/.passwd ]; then
-    CSI_SUDO_PASSWD=$(cat ~/.secrets/.passwd | clevis decrypt 2>/dev/null)
+    CSI_SUDO_PASSWD=$(cat ~/.passwd | clevis decrypt 2>/dev/null)
 else
-    echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.passwd missing${WHITE}"
+    echo -e "  ${RED}${BLINK}Warning${NORMAL} ......... ~/.passwd missing${WHITE}"
 fi
+
+echo "$CSI_SUDO_PASSWD" | echo | sudo -S su
+
+echo ${CSI_PAT_GITLAB}
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   vars > app
@@ -142,8 +130,6 @@ app_i=0
 #   exports
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-echo $HOME;
-
 export DATE=$(date '+%d%m%Y')
 export DATE_TS=$(date +%s)
 export YEAR=$(date +'%Y')
@@ -154,28 +140,190 @@ export LOGS_DIR="$app_dir/logs"
 export LOGS_FILE="$LOGS_DIR/proteus-git-${DATE}.log"
 export SECONDS=0
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   lists > github repos
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 lst_github=(
+    'obsidianmd/obsidian-releases'
+    'AppOutlet/AppOutlet'
+    'bitwarden/clients'
+    'shiftkey/desktop'
+    'FreeTubeApp/FreeTube'
     'makedeb/makedeb'
 )
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   list > packages
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 lst_packages=(
     'adduser'
+    'argon2'
+    'apt-move'
+    'apt-utils'
+    'clevis'
+    'clevis-dracut'
+    'clevis-udisks2'
+    'clevis-tpm2'
+    'dialog'
+    'firefox'
+    'flatpak'
+    'gnome-keyring'
+    'gnome-keysign'
+    'gnome-shell-extension-manager'
+    'gpg'
+    'gpgconf'
+    'gpgv'
+    'jose'
+    'keyutils'
+    'kgpg'
+    'libnginx-mod-http-auth-pam'
+    'libnginx-mod-http-cache-purge'
+    'libnginx-mod-http-dav-ext'
+    'libnginx-mod-http-echo'
+    'libnginx-mod-http-fancyindex'
+    'libnginx-mod-http-geoip'
+    'libnginx-mod-http-headers-more-filter'
+    'libnginx-mod-http-ndk'
+    'libnginx-mod-http-perl'
+    'libnginx-mod-http-subs-filter'
+    'libnginx-mod-http-uploadprogress'
+    'libnginx-mod-http-upstream-fair'
+    'libnginx-mod-nchan'
+    'libnginx-mod-rtmp'
+    'libnginx-mod-stream-geoip'
+    'lsb-base'
+    'lz4'
+    'mysql-client'
+    'mysql-common'
+    'mysql-server'
+    'network-manager-config-connectivity-ubuntu'
+    'network-manager-dev'
+    'network-manager-gnome'
+    'network-manager-openvpn-gnome'
+    'network-manager-openvpn'
+    'network-manager-pptp-gnome'
+    'network-manager-pptp'
+    'network-manager'
+    'networkd-dispatcher'
+    'nginx-common'
+    'nginx-confgen'
+    'nginx-core'
+    'nginx-dev'
+    'nginx-doc'
+    'nginx-extras'
+    'nginx-full'
+    'nginx-light'
+    'nginx'
+    'open-vm-tools-desktop'
+    'open-vm-tools-dev'
+    'open-vm-tools'
+    'php-all-dev'
+    'php-amqp'
+    'php-amqplib'
+    'php-apcu-all-dev'
+    'php-apcu'
+    'php-ast-all-dev'
+    'php-ast'
+    'php-bacon-qr-code'
+    'php-bcmath'
+    'php-brick-math'
+    'php-brick-varexporter'
+    'php-bz2'
+    'php-cas'
+    'php-cgi'
+    'php-cli'
+    'php-code-lts-u2f-php-server'
+    'php-common'
+    'php-crypt-gpg'
+    'php-curl'
+    'php-db'
+    'php-dba'
+    'php-decimal'
+    'php-dev'
+    'php-ds-all-dev'
+    'php-ds'
+    'php-email-validator'
+    'php-embed'
+    'php-enchant'
+    'php-excimer'
+    'php-faker'
+    'php-fpm'
+    'php-fxsl'
+    'php-gd'
+    'php-gearman'
+    'php-gettext-languages'
+    'php-gmagick-all-dev'
+    'php-gmagick'
+    'php-gmp'
+    'php-gnupg-all-dev'
+    'php-gnupg'
+    'php-gnupg'
+    'php-grpc'
+    'php-http'
+    'php-igbinary'
+    'php-imagick'
+    'php-imap'
+    'php-inotify'
+    'php-interbase'
+    'php-intl'
+    'php-ldap'
+    'php-mailparse'
+    'php-maxminddb'
+    'php-mbstring'
+    'php-mcrypt'
+    'php-memcache'
+    'php-memcached'
+    'php-mongodb'
+    'php-msgpack'
+    'php-mysql'
+    'php-oauth'
+    'php-odbc'
+    'php-pcov'
+    'php-pgsql'
+    'php-phpdbg'
+    'php-ps'
+    'php-pspell'
+    'php-psr'
+    'php-raphf'
+    'php-readline'
+    'php-redis'
+    'php-rrd'
+    'php-smbclient'
+    'php-snmp'
+    'php-soap'
+    'php-solr'
+    'php-sqlite3'
+    'php-ssh2'
+    'php-stomp'
+    'php-sybase'
+    'php-tideways'
+    'php-tidy'
+    'php-uopz'
+    'php-uploadprogress'
+    'php-uuid'
+    'php-xdebug'
+    'php-xml'
+    'php-xmlrpc'
+    'php-yac'
+    'php-yaml'
+    'php-zip'
+    'php-zmq'
+    'php'
+    'snap'
+    'snapd'
+    'wget'
 )
 
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   list > architectures
-##--------------------------------------------------------------------------
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 lst_arch=(
     'all'
+    'amd64'
+    'arm64'
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -367,7 +515,7 @@ fi
 #
 #   Must use the values
 #       - CSI_PAT_GITHUB
-#       - CSI_PAT_GITLAB
+#       - GITLAB_PA_TOKEN
 #
 #   Do not rename them, these are the globals recognized by LastVersion
 #   
@@ -376,7 +524,7 @@ fi
 #   that you will be rate limited.
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-if [ -z "${CSI_PAT_GITHUB}" ] && [ -z "${CSI_PAT_GITLAB}" ]; then
+if [ -z "${CSI_PAT_GITHUB}" ] && [ -z "${GITLAB_PA_TOKEN}" ]; then
     echo
     echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Missing ${YELLOW}API Tokens${WHITE}${NORMAL}"
     echo -e "  ${BOLD}${WHITE}Must create a ${FUCHSIA}secrets.sh${WHITE} file and define an API token${NORMAL}"
