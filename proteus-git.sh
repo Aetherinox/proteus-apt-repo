@@ -2,6 +2,12 @@
 PATH="/bin:/usr/bin:/sbin:/usr/sbin:/home/$USER/bin"
 echo 
 
+HOME=${HOME:-/home/aetherinox}
+export HOME
+
+PATH_BACKUP=/server/proteus
+export PATH_BACKUP
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   @author :           aetherinox
 #   @script :           Proteus Apt Git
@@ -14,6 +20,20 @@ echo
 #       ~/secrets/.pat_github       Not required if using Gitlab
 #       ~/secrets/.pat_gitlab       Not required if using Github
 #       ~/secrets/.passwd
+#
+#   LastVersion requires that two env variables be exported when running
+#   that app, otherwise you will be rate-limited by Github and Gitlab.
+#       export GITHUB_API_TOKEN=${CSI_PAT_GITHUB}
+#       export GITLAB_PA_TOKEN=${CSI_PAT_GITLAB}
+#
+#   DO NOT change the name of the above env variables otherwise it will
+#   not work.
+#       - GITHUB_API_TOKEN
+#       - GITLAB_PA_TOKEN
+#
+#   This script requires a minimum Reprepro version or it will cause
+#   database errors:
+#       - v5.4.2
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -24,8 +44,17 @@ echo
 #   managed via https://github.com/settings/tokens?type=beta
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-if [ -f secrets.sh ]; then
-. ./secrets.sh
+if [ -f ${PATH_BACKUP}/secrets.sh ]; then
+source ${PATH_BACKUP}/secrets.sh
+fi
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   Fixes tput error when running script as service / timer
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+if [ "${TERM:-}" = "" ]; then
+  echo "Setting TERM to dumb"
+  TERM="dumb"
 fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -37,27 +66,29 @@ fi
 #   tput setf   [1-7]       – Set a foreground color
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-BLACK=$(tput setaf 0)
-RED=$(tput setaf 1)
-ORANGE=$(tput setaf 208)
-GREEN=$(tput setaf 2)
-YELLOW=$(tput setaf 156)
-LIME_YELLOW=$(tput setaf 190)
-POWDER_BLUE=$(tput setaf 153)
-BLUE=$(tput setaf 4)
-MAGENTA=$(tput setaf 5)
-CYAN=$(tput setaf 6)
-WHITE=$(tput setaf 7)
-GREYL=$(tput setaf 242)
-DEV=$(tput setaf 157)
-DEVGREY=$(tput setaf 243)
-FUCHSIA=$(tput setaf 198)
-PINK=$(tput setaf 200)
-BOLD=$(tput bold)
-NORMAL=$(tput sgr0)
-BLINK=$(tput blink)
-REVERSE=$(tput smso)
-UNDERLINE=$(tput smul)
+if [[ $- == *i* ]]; then
+    BLACK=$(tput setaf 0)
+    RED=$(tput setaf 1)
+    ORANGE=$(tput setaf 208)
+    GREEN=$(tput setaf 2)
+    YELLOW=$(tput setaf 156)
+    LIME_YELLOW=$(tput setaf 190)
+    POWDER_BLUE=$(tput setaf 153)
+    BLUE=$(tput setaf 4)
+    MAGENTA=$(tput setaf 5)
+    CYAN=$(tput setaf 6)
+    WHITE=$(tput setaf 7)
+    GREYL=$(tput setaf 242)
+    DEV=$(tput setaf 157)
+    DEVGREY=$(tput setaf 243)
+    FUCHSIA=$(tput setaf 198)
+    PINK=$(tput setaf 200)
+    BOLD=$(tput bold)
+    NORMAL=$(tput sgr0)
+    BLINK=$(tput blink)
+    REVERSE=$(tput smso)
+    UNDERLINE=$(tput smul)
+fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   vars > status messages
@@ -73,22 +104,26 @@ STATUS_HALT="${BOLD}${YELLOW} HALT ${NORMAL}"
 #   load secrets through Clevis
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-if [ -f ~/.pat_github ]; then
-    CSI_PAT_GITHUB=$(cat ~/.secrets/.pat_github | clevis decrypt 2>/dev/null)
+clevis decrypt
+
+if [ -f ${HOME}/.secrets/.pat_github ]; then
+    CSI_PAT_GITHUB=$(cat ${HOME}/.secrets/.pat_github | clevis decrypt 2>/dev/null)
     export GITHUB_API_TOKEN=${CSI_PAT_GITHUB}
 else
     echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.pat_github missing${WHITE}"
 fi
 
-if [ -f ~/.pat_gitlab ]; then
-    CSI_PAT_GITLAB=$(cat ~/.secrets/.pat_gitlab | clevis decrypt 2>/dev/null)
+echo $CSI_PAT_GITHUB
+
+if [ -f ${HOME}/.secrets/.pat_gitlab ]; then
+    CSI_PAT_GITLAB=$(cat ${HOME}/.secrets/.pat_gitlab | clevis decrypt 2>/dev/null)
     export GITLAB_PA_TOKEN=${CSI_PAT_GITLAB}
 else
     echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.pat_gitlab missing${WHITE}"
 fi
 
-if [ -f ~/.passwd ]; then
-    CSI_SUDO_PASSWD=$(cat ~/.secrets/.passwd | clevis decrypt 2>/dev/null)
+if [ -f ${HOME}/.secrets/.passwd ]; then
+    CSI_SUDO_PASSWD=$(cat ${HOME}/.secrets/.passwd | clevis decrypt 2>/dev/null)
 else
     echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.passwd missing${WHITE}"
 fi
@@ -138,25 +173,25 @@ export LOGS_DIR="$app_dir/logs"
 export LOGS_FILE="$LOGS_DIR/proteus-git-${DATE}.log"
 export SECONDS=0
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+##--------------------------------------------------------------------------
 #   lists > github repos
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+##--------------------------------------------------------------------------
 
 lst_github=(
-    'obsidianmd/obsidian-releases'
+    'makedeb/makedeb'
 )
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+##--------------------------------------------------------------------------
 #   list > packages
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+##--------------------------------------------------------------------------
 
 lst_packages=(
     'adduser'
 )
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+##--------------------------------------------------------------------------
 #   list > architectures
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+##--------------------------------------------------------------------------
 
 lst_arch=(
     'all'
@@ -249,7 +284,7 @@ app_run_github_precheck( )
 #   secrets.sh file missing -- abort
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-if ! [ -f secrets.sh ]; then
+if ! [ -f ${PATH_BACKUP}/secrets.sh ]; then
     echo
     echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}secrets.sh file not found${NORMAL}"
     echo -e "  ${BOLD}${WHITE}Must create a ${FUCHSIA}secrets.sh${WHITE} file.${NORMAL}"
@@ -810,59 +845,67 @@ spinner_halt()
 
 cli_options()
 {
-    opts_show()
-    {
-        local it=$( echo $1 )
-        for i in ${!CHOICES[*]}; do
-            if [[ "$i" == "$it" ]]; then
-                tput rev
-                printf '\e[1;33m'
-                printf '%4d. \e[1m\e[33m %s\t\e[0m\n' $i "${LIME_YELLOW}  ${CHOICES[$i]}  "
-                tput sgr0
-            else
-                printf '\e[1;33m'
-                printf '%4d. \e[1m\e[33m %s\t\e[0m\n' $i "${LIME_YELLOW}  ${CHOICES[$i]}  "
-            fi
-            tput cuf 2
-        done
-    }
+    if [[ $- == *i* ]]; then
+        opts_show()
+        {
+            local it=$( echo $1 )
+            for i in ${!CHOICES[*]}; do
+                if [[ "$i" == "$it" ]]; then
+                    if [[ $- == *i* ]]; then
+                        tput rev
+                    fi
+                    printf '\e[1;33m'
+                    printf '%4d. \e[1m\e[33m %s\t\e[0m\n' $i "${LIME_YELLOW}  ${CHOICES[$i]}  "
+                    if [[ $- == *i* ]]; then
+                        tput sgr0
+                    fi
+                else
+                    printf '\e[1;33m'
+                    printf '%4d. \e[1m\e[33m %s\t\e[0m\n' $i "${LIME_YELLOW}  ${CHOICES[$i]}  "
+                fi
+                if [[ $- == *i* ]]; then
+                    tput cuf 2
+                fi
+            done
+        }
 
-    tput civis
-    it=0
-    tput cuf 2
-
-    opts_show $it
-
-    while true; do
-        read -rsn1 key
-        local escaped_char=$( printf "\u1b" )
-        if [[ $key == $escaped_char ]]; then
-            read -rsn2 key
-        fi
-
-        tput cuu ${#CHOICES[@]} && tput ed
-        tput sc
-
-        case $key in
-            '[A' | '[C' )
-                it=$(($it-1));;
-            '[D' | '[B')
-                it=$(($it+1));;
-            '' )
-                return $it && exit;;
-        esac
-
-        local min_len=0
-        local farr_len=$(( ${#CHOICES[@]}-1))
-        if [[ "$it" -lt "$min_len" ]]; then
-            it=$(( ${#CHOICES[@]}-1 ))
-        elif [[ "$it" -gt "$farr_len"  ]]; then
-            it=0
-        fi
+        tput civis
+        it=0
+        tput cuf 2
 
         opts_show $it
 
-    done
+        while true; do
+            read -rsn1 key
+            local escaped_char=$( printf "\u1b" )
+            if [[ $key == $escaped_char ]]; then
+                read -rsn2 key
+            fi
+
+            tput cuu ${#CHOICES[@]} && tput ed
+            tput sc
+
+            case $key in
+                '[A' | '[C' )
+                    it=$(($it-1));;
+                '[D' | '[B')
+                    it=$(($it+1));;
+                '' )
+                    return $it && exit;;
+            esac
+
+            local min_len=0
+            local farr_len=$(( ${#CHOICES[@]}-1))
+            if [[ "$it" -lt "$min_len" ]]; then
+                it=$(( ${#CHOICES[@]}-1 ))
+            elif [[ "$it" -gt "$farr_len"  ]]; then
+                it=0
+            fi
+
+            opts_show $it
+
+        done
+    fi
 }
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
