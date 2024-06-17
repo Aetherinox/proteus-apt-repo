@@ -2,6 +2,9 @@
 PATH="/bin:/usr/bin:/sbin:/usr/sbin:/home/$USER/bin"
 echo 
 
+HOME=/home/aetherinox
+PATH_BACKUP=/server/proteus
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   @author :           aetherinox
 #   @script :           Proteus Apt Git
@@ -24,8 +27,8 @@ echo
 #   managed via https://github.com/settings/tokens?type=beta
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-if [ -f secrets.sh ]; then
-. ./secrets.sh
+if [ -f ${PATH_BACKUP}/secrets.sh ]; then
+source ${PATH_BACKUP}/secrets.sh
 fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -73,27 +76,25 @@ STATUS_HALT="${BOLD}${YELLOW} HALT ${NORMAL}"
 #   load secrets through Clevis
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-if [ -f ~/.pat_github ]; then
-    CSI_PAT_GITHUB=$(cat ~/.pat_github | clevis decrypt 2>/dev/null)
+if [ -f ${HOME}/.secrets/.pat_github ]; then
+    CSI_PAT_GITHUB=$(cat ${HOME}/.secrets/.pat_github | clevis decrypt 2>/dev/null)
+    export GITHUB_API_TOKEN=${CSI_PAT_GITHUB}
 else
-    echo -e "  ${RED}${BLINK}Warning${NORMAL} ......... ~/.pat_github missing${WHITE}"
+    echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.pat_github missing${WHITE}"
 fi
 
-if [ -f ~/.pat_gitlab ]; then
-    CSI_PAT_GITLAB=$(cat ~/.pat_gitlab | clevis decrypt 2>/dev/null)
+if [ -f ${HOME}/.secrets/.pat_gitlab ]; then
+    CSI_PAT_GITLAB=$(cat ${HOME}/.secrets/.pat_gitlab | clevis decrypt 2>/dev/null)
+    export GITLAB_PA_TOKEN=${CSI_PAT_GITLAB}
 else
-    echo -e "  ${RED}${BLINK}Warning${NORMAL} ......... ~/.pat_gitlab missing${WHITE}"
+    echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.pat_gitlab missing${WHITE}"
 fi
 
-if [ -f ~/.passwd ]; then
-    CSI_SUDO_PASSWD=$(cat ~/.passwd | clevis decrypt 2>/dev/null)
+if [ -f ${HOME}/.secrets/.passwd ]; then
+    CSI_SUDO_PASSWD=$(cat ${HOME}/.secrets/.passwd | clevis decrypt 2>/dev/null)
 else
-    echo -e "  ${RED}${BLINK}Warning${NORMAL} ......... ~/.passwd missing${WHITE}"
+    echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.passwd missing${WHITE}"
 fi
-
-echo "$CSI_SUDO_PASSWD" | echo | sudo -S su
-
-echo ${CSI_PAT_GITLAB}
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   vars > app
@@ -145,11 +146,6 @@ export SECONDS=0
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 lst_github=(
-    'obsidianmd/obsidian-releases'
-    'AppOutlet/AppOutlet'
-    'bitwarden/clients'
-    'shiftkey/desktop'
-    'FreeTubeApp/FreeTube'
     'makedeb/makedeb'
 )
 
@@ -159,161 +155,6 @@ lst_github=(
 
 lst_packages=(
     'adduser'
-    'argon2'
-    'apt-move'
-    'apt-utils'
-    'clevis'
-    'clevis-dracut'
-    'clevis-udisks2'
-    'clevis-tpm2'
-    'dialog'
-    'firefox'
-    'flatpak'
-    'gnome-keyring'
-    'gnome-keysign'
-    'gnome-shell-extension-manager'
-    'gpg'
-    'gpgconf'
-    'gpgv'
-    'jose'
-    'keyutils'
-    'kgpg'
-    'libnginx-mod-http-auth-pam'
-    'libnginx-mod-http-cache-purge'
-    'libnginx-mod-http-dav-ext'
-    'libnginx-mod-http-echo'
-    'libnginx-mod-http-fancyindex'
-    'libnginx-mod-http-geoip'
-    'libnginx-mod-http-headers-more-filter'
-    'libnginx-mod-http-ndk'
-    'libnginx-mod-http-perl'
-    'libnginx-mod-http-subs-filter'
-    'libnginx-mod-http-uploadprogress'
-    'libnginx-mod-http-upstream-fair'
-    'libnginx-mod-nchan'
-    'libnginx-mod-rtmp'
-    'libnginx-mod-stream-geoip'
-    'lsb-base'
-    'lz4'
-    'mysql-client'
-    'mysql-common'
-    'mysql-server'
-    'network-manager-config-connectivity-ubuntu'
-    'network-manager-dev'
-    'network-manager-gnome'
-    'network-manager-openvpn-gnome'
-    'network-manager-openvpn'
-    'network-manager-pptp-gnome'
-    'network-manager-pptp'
-    'network-manager'
-    'networkd-dispatcher'
-    'nginx-common'
-    'nginx-confgen'
-    'nginx-core'
-    'nginx-dev'
-    'nginx-doc'
-    'nginx-extras'
-    'nginx-full'
-    'nginx-light'
-    'nginx'
-    'open-vm-tools-desktop'
-    'open-vm-tools-dev'
-    'open-vm-tools'
-    'php-all-dev'
-    'php-amqp'
-    'php-amqplib'
-    'php-apcu-all-dev'
-    'php-apcu'
-    'php-ast-all-dev'
-    'php-ast'
-    'php-bacon-qr-code'
-    'php-bcmath'
-    'php-brick-math'
-    'php-brick-varexporter'
-    'php-bz2'
-    'php-cas'
-    'php-cgi'
-    'php-cli'
-    'php-code-lts-u2f-php-server'
-    'php-common'
-    'php-crypt-gpg'
-    'php-curl'
-    'php-db'
-    'php-dba'
-    'php-decimal'
-    'php-dev'
-    'php-ds-all-dev'
-    'php-ds'
-    'php-email-validator'
-    'php-embed'
-    'php-enchant'
-    'php-excimer'
-    'php-faker'
-    'php-fpm'
-    'php-fxsl'
-    'php-gd'
-    'php-gearman'
-    'php-gettext-languages'
-    'php-gmagick-all-dev'
-    'php-gmagick'
-    'php-gmp'
-    'php-gnupg-all-dev'
-    'php-gnupg'
-    'php-gnupg'
-    'php-grpc'
-    'php-http'
-    'php-igbinary'
-    'php-imagick'
-    'php-imap'
-    'php-inotify'
-    'php-interbase'
-    'php-intl'
-    'php-ldap'
-    'php-mailparse'
-    'php-maxminddb'
-    'php-mbstring'
-    'php-mcrypt'
-    'php-memcache'
-    'php-memcached'
-    'php-mongodb'
-    'php-msgpack'
-    'php-mysql'
-    'php-oauth'
-    'php-odbc'
-    'php-pcov'
-    'php-pgsql'
-    'php-phpdbg'
-    'php-ps'
-    'php-pspell'
-    'php-psr'
-    'php-raphf'
-    'php-readline'
-    'php-redis'
-    'php-rrd'
-    'php-smbclient'
-    'php-snmp'
-    'php-soap'
-    'php-solr'
-    'php-sqlite3'
-    'php-ssh2'
-    'php-stomp'
-    'php-sybase'
-    'php-tideways'
-    'php-tidy'
-    'php-uopz'
-    'php-uploadprogress'
-    'php-uuid'
-    'php-xdebug'
-    'php-xml'
-    'php-xmlrpc'
-    'php-yac'
-    'php-yaml'
-    'php-zip'
-    'php-zmq'
-    'php'
-    'snap'
-    'snapd'
-    'wget'
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
