@@ -14,9 +14,23 @@ PATH_BACKUP=/server/proteus
 #   requires chmod +x proteus_git.sh
 #
 #   This requires you to have the following files in your home directory:
-#       ~/.pat_github       Not required if using Gitlab
-#       ~/.pat_gitlab       Not required if using Github
-#       ~/.passwd
+#       ~/secrets/.pat_github       Not required if using Gitlab
+#       ~/secrets/.pat_gitlab       Not required if using Github
+#       ~/secrets/.passwd
+#
+#   LastVersion requires that two env variables be exported when running
+#   that app, otherwise you will be rate-limited by Github and Gitlab.
+#       export GITHUB_API_TOKEN=${CSI_PAT_GITHUB}
+#       export GITLAB_PA_TOKEN=${CSI_PAT_GITLAB}
+#
+#   DO NOT change the name of the above env variables otherwise it will
+#   not work.
+#       - GITHUB_API_TOKEN
+#       - GITLAB_PA_TOKEN
+#
+#   This script requires a minimum Reprepro version or it will cause
+#   database errors:
+#       - v5.4.2
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -254,7 +268,7 @@ app_run_github_precheck( )
 #   secrets.sh file missing -- abort
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-if ! [ -f secrets.sh ]; then
+if ! [ -f ${PATH_BACKUP}/secrets.sh ]; then
     echo
     echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}secrets.sh file not found${NORMAL}"
     echo -e "  ${BOLD}${WHITE}Must create a ${FUCHSIA}secrets.sh${WHITE} file.${NORMAL}"
@@ -365,7 +379,7 @@ fi
 #   that you will be rate limited.
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-if [ -z "${CSI_PAT_GITHUB}" ] && [ -z "${GITLAB_PA_TOKEN}" ]; then
+if [ -z "${CSI_PAT_GITHUB}" ] && [ -z "${CSI_PAT_GITLAB}" ]; then
     echo
     echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Missing ${YELLOW}API Tokens${WHITE}${NORMAL}"
     echo -e "  ${BOLD}${WHITE}Must create a ${FUCHSIA}secrets.sh${WHITE} file and define an API token${NORMAL}"
