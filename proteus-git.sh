@@ -54,51 +54,27 @@ fi
 #   tput setf   [1-7]       – Set a foreground color
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-if [[ $- == *i* ]]
-    BLACK="\e[1;30m"
-    RED="\e[1;91m"
-    ORANGE="\e[33m"
-    GREEN="\e[1;92m"
-    YELLOW="\e[1;93m"
-    LIME_YELLOW="\e[1;93m"
-    POWDER_BLUE="\e[1;34m"
-    BLUE="\e[1;34m"
-    MAGENTA="\e[1;34m"
-    CYAN="\e[1;96m"
-    WHITE="\e[97m"
-    GREYL="\e[1;30m"
-    DEV="\e[1;34m"
-    DEVGREY="\e[37m"
-    FUCHSIA="\e[1;35m"
-    PINK="\e[1;34m"
-    BOLD="\e[1m"
-    NORMAL="\e[0m"
-    BLINK="\e[5m"
-    REVERSE="\e[7m"
-    UNDERLINE="\e[4m"
-then
-    BLACK=$(tput setaf 0)
-    RED=$(tput setaf 1)
-    ORANGE=$(tput setaf 208)
-    GREEN=$(tput setaf 2)
-    YELLOW=$(tput setaf 156)
-    LIME_YELLOW=$(tput setaf 190)
-    POWDER_BLUE=$(tput setaf 153)
-    BLUE=$(tput setaf 4)
-    MAGENTA=$(tput setaf 5)
-    CYAN=$(tput setaf 6)
-    WHITE=$(tput setaf 7)
-    GREYL=$(tput setaf 242)
-    DEV=$(tput setaf 157)
-    DEVGREY=$(tput setaf 243)
-    FUCHSIA=$(tput setaf 198)
-    PINK=$(tput setaf 200)
-    BOLD=$(tput bold)
-    NORMAL=$(tput sgr0)
-    BLINK=$(tput blink)
-    REVERSE=$(tput smso)
-    UNDERLINE=$(tput smul)
-fi
+BLACK=$(tput setaf 0)
+RED=$(tput setaf 1)
+ORANGE=$(tput setaf 208)
+GREEN=$(tput setaf 2)
+YELLOW=$(tput setaf 156)
+LIME_YELLOW=$(tput setaf 190)
+POWDER_BLUE=$(tput setaf 153)
+BLUE=$(tput setaf 4)
+MAGENTA=$(tput setaf 5)
+CYAN=$(tput setaf 6)
+WHITE=$(tput setaf 7)
+GREYL=$(tput setaf 242)
+DEV=$(tput setaf 157)
+DEVGREY=$(tput setaf 243)
+FUCHSIA=$(tput setaf 198)
+PINK=$(tput setaf 200)
+BOLD=$(tput bold)
+NORMAL=$(tput sgr0)
+BLINK=$(tput blink)
+REVERSE=$(tput smso)
+UNDERLINE=$(tput smul)
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   vars > status messages
@@ -300,6 +276,11 @@ if ! [ -f ${PATH_BACKUP}/secrets.sh ]; then
     echo -e "  ${BOLD}${WHITE}GPG key and Github Personal Token.${NORMAL}"
     echo
 
+    printf "  Press any key to abort ... ${NORMAL}"
+    read -n 1 -s -r -p ""
+    echo
+    echo
+
     set +m
     trap "kill -9 $app_pid 2> /dev/null" `seq 0 15`
     kill $app_pid
@@ -373,6 +354,11 @@ if [ -z "${GPG_KEY}" ]; then
     echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GPG_KEY=${WHITE}XXXXXXXX${NORMAL}"
     echo
 
+    printf "  Press any key to abort ... ${NORMAL}"
+    read -n 1 -s -r -p ""
+    echo
+    echo
+
     set +m
     trap "kill -9 $app_pid 2> /dev/null" `seq 0 15`
     kill $app_pid
@@ -404,6 +390,11 @@ if [ -z "${CSI_PAT_GITHUB}" ] && [ -z "${CSI_PAT_GITLAB}" ]; then
     echo
     echo -e "  ${BOLD}${WHITE}Without supplying this, you will be rate limited.${NORMAL}"
     echo -e "  ${BOLD}${WHITE}on queries using ${YELLOW}LastVersion${WHITE}${NORMAL}"
+    echo
+
+    printf "  Press any key to abort ... ${NORMAL}"
+    read -n 1 -s -r -p ""
+    echo
     echo
 
     set +m
@@ -441,6 +432,190 @@ get_version_compare_gt()
 }
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   func > test
+#
+#   development function, not used in normal operations,
+#   has no specific purpose other than to drop code in here and test with
+#
+#   Execute with:
+#       proteus-git.sh --test
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+app_test( )
+{
+    printf '%-57s' "    |--- Running Test"
+    echo
+
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    #   modify gpg.conf
+    #
+    #   first check if GPG installed (usually on Ubuntu it is)
+    #   then modify user's gpg-agent.conf file
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+    gpgconfig_file="/home/${USER}/.gnupg/gpg-agent.conf"
+
+    if ! [ -x "$(command -v gpg)" ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
+        printf '%-57s' "    |--- Installing GPG"
+        sleep 1
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            sudo apt-get update -y -q >> /dev/null 2>&1
+            sudo apt-get install gpg -y -qq >> /dev/null 2>&1
+        fi
+        echo -e "[ ${STATUS_OK} ]"
+        sleep 1
+    fi
+
+sudo tee ${gpgconfig_file} << EOF > /dev/null
+enable-putty-support
+enable-ssh-support
+use-standard-socket
+default-cache-ttl-ssh 60
+max-cache-ttl-ssh 120
+default-cache-ttl 28800 # gpg key cache time
+max-cache-ttl 28800 # max gpg key cache time
+pinentry-program "/usr/bin/pinentry"
+allow-loopback-pinentry
+allow-preset-passphrase
+pinentry-timeout 0
+EOF
+
+    printf '%-57s' "    |--- Set ownership to ${USER}"
+    sleep 1
+    if [ -z "${OPT_DEV_NULLRUN}" ]; then
+        sudo chgrp ${USER} ${gpgconfig_file} >> $LOGS_FILE 2>&1
+        sudo chown ${USER} ${gpgconfig_file} >> $LOGS_FILE 2>&1
+    fi
+    echo -e "[ ${STATUS_OK} ]"
+
+    printf '%-57s' "    |--- Restart GPG Agent"
+    sleep 1
+    gpgconf --kill gpg-agent
+    echo -e "[ ${STATUS_OK} ]"
+
+    exit 0
+    sleep 0.2
+}
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   Display Usage Help
+#
+#   activate using ./proteus-git.sh --help or -h
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+opt_usage()
+{
+    echo
+    printf "  ${BLUE}${app_title}${NORMAL}\n" 1>&2
+    printf "  ${GREYL}${gui_about}${NORMAL}\n" 1>&2
+    echo
+    printf '  %-5s %-40s\n' "Usage:" "" 1>&2
+    printf '  %-5s %-40s\n' "    " "${0} [${GREYL}options${NORMAL}]" 1>&2
+    printf '  %-5s %-40s\n\n' "    " "${0} [${GREYL}-h${NORMAL}] [${GREYL}-d${NORMAL}] [${GREYL}-n${NORMAL}] [${GREYL}-s${NORMAL}] [${GREYL}-t THEME${NORMAL}] [${GREYL}-v${NORMAL}]" 1>&2
+    printf '  %-5s %-40s\n' "Options:" "" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-d, --dev" "dev mode" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-h, --help" "show help menu" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-g, --githubOnly" "only update github packages" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-s, --sourceOnly" "only update apt source packages" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-n, --nullrun" "dev: null run" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "" "simulate app installs (no changes)" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-q, --quiet" "quiet mode which disables logging" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-u, --update" "update ${app_file_proteus} executable" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "    --branch" "branch to update from" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-v, --version" "current version of app manager" 1>&2
+    echo
+    echo
+    exit 1
+}
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   command-line options
+#
+#   reminder that any functions which need executed must be defined BEFORE
+#   this point. Bash sucks like that.
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -d|--dev)
+            OPT_DEV_ENABLE=true
+            echo -e "  ${FUCHSIA}${BLINK}Devmode Enabled${NORMAL}"
+            ;;
+
+    -dd*|--dist*)
+            if [[ "$1" != *=* ]]; then shift; fi
+            OPT_DISTRIBUTION="${1#*=}"
+            if [ -z "${OPT_DISTRIBUTION}" ]; then
+                echo -e "  ${NORMAL}Must specify a valid distribution"
+                echo -e "  ${NORMAL}      Default:  ${YELLOW}${sys_code}${NORMAL}"
+
+                exit 1
+            fi
+            ;;
+
+    -s*|--setup*)
+            app_setup
+            ;;
+
+    -t*|--test*)
+            app_test
+            ;;
+
+    -g*|--githubOnly*)
+            OPT_ONLY_GIT=true
+            echo "Update Github Only"
+            ;;
+
+    -p*|--sourceOnly*)
+            OPT_ONLY_SRC=true
+            echo "Update Source Packages Only"
+            ;;
+
+    -h*|--help*)
+            opt_usage
+            ;;
+
+    -b*|--branch*)
+            if [[ "$1" != *=* ]]; then shift; fi
+            OPT_BRANCH="${1#*=}"
+            if [ -z "${OPT_BRANCH}" ]; then
+                echo -e "  ${NORMAL}Must specify a valid branch"
+                echo -e "  ${NORMAL}      Default:  ${YELLOW}${app_repo_branch}${NORMAL}"
+
+                exit 1
+            fi
+            ;;
+
+    -n|--nullrun)
+            OPT_DEV_NULLRUN=true
+            echo -e "  ${FUCHSIA}${BLINK}Devnull Enabled${NORMAL}"
+            ;;
+
+    -q|--quiet)
+            OPT_NOLOG=true
+            echo -e "  ${FUCHSIA}${BLINK}Logging Disabled{NORMAL}"
+            ;;
+
+    -u|--update)
+            OPT_UPDATE=true
+            ;;
+
+    -v|--version)
+            echo
+            echo -e "  ${GREEN}${BOLD}${app_title}${NORMAL} - v$(get_version)${NORMAL}"
+            echo -e "  ${GREYL}${BOLD}${app_repo_url}${NORMAL}"
+            echo -e "  ${GREYL}${BOLD}${OS} | ${OS_VER}${NORMAL}"
+            echo
+            exit 1
+            ;;
+    *)
+            opt_usage
+            ;;
+  esac
+  shift
+done
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   vars > active repo branch
 #   typically "main"
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -454,6 +629,39 @@ app_repo_branch_sel=$( [[ -n "$OPT_BRANCH" ]] && echo "$OPT_BRANCH" || echo "$ap
 
 app_repo_dist_sel=$( [[ -n "$OPT_DISTRIBUTION" ]] && echo "$OPT_DISTRIBUTION" || echo "$sys_code"  )
 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   line > comment
+#
+#   allows for lines to be commented out
+#
+#   comment REGEX FILE [COMMENT-MARK]
+#   comment "skip-grant-tables" "/etc/mysql/my.cnf"
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+line_comment()
+{
+    local regx="${1:?}"
+    local targ="${2:?}"
+    local mark="${3:-#}"
+    sudo sed -ri "s:^([ ]*)($regx):\\1$mark\\2:" "$targ"
+}
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   line > uncomment
+#
+#   allows for lines to be uncommented
+#
+#   uncomment REGEX FILE [COMMENT-MARK]
+#   uncomment "skip-grant-tables" "/etc/mysql/my.cnf"
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+line_uncomment()
+{
+    local regx="${1:?}"
+    local targ="${2:?}"
+    local mark="${3:-#}"
+    sudo sed -ri "s:^([ ]*)[$mark]+[ ]?([ ]*$regx):\\1\\2:" "$targ"
+}
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   func > logs > begin
@@ -545,7 +753,6 @@ Logs_Finish()
 
 Logs_Begin
 
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   Cache Sudo Password
 #
@@ -565,6 +772,192 @@ else
         printf "\n%-50s %-5s\n\n" "${TIME}      SUDO [EXISTING]: $USER" | tee -a "${LOGS_FILE}" >/dev/null
     fi
 fi
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   func > spinner animation
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+spin()
+{
+    spinner="-\\|/-\\|/"
+
+    while :
+    do
+        for i in `seq 0 7`
+        do
+            echo -n "${spinner:$i:1}"
+            echo -en "\010"
+            sleep 0.4
+        done
+    done
+}
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   func > spinner > halt
+#
+#   destroy text spinner process id
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+spinner_halt()
+{
+    if ps -p $app_pid_spin > /dev/null
+    then
+        kill -9 $app_pid_spin 2> /dev/null
+        printf "\n%-50s %-5s\n" "${TIME}      KILL Spinner: PID (${app_pid_spin})" | tee -a "${LOGS_FILE}" >/dev/null
+    fi
+}
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   func > cli selection menu
+#
+#   allows for prompting user with questions and to select their desired
+#   choice.
+#
+#   echo -e "  ${BOLD}${FUCHSIA}ATTENTION  ${WHITE}This is a question${NORMAL}"
+#
+#   export CHOICES=( "Choice 1" "Choice 2" )
+#   cli_options
+#   case $? in
+#       0 )
+#           bChoiceProteus=true
+#       ;;
+#       1 )
+#           bChoiceSqlSecure=true
+#       ;;
+#   esac
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+cli_options()
+{
+    opts_show()
+    {
+        local it=$( echo $1 )
+        for i in ${!CHOICES[*]}; do
+            if [[ "$i" == "$it" ]]; then
+                tput rev
+                printf '\e[1;33m'
+                printf '%4d. \e[1m\e[33m %s\t\e[0m\n' $i "${LIME_YELLOW}  ${CHOICES[$i]}  "
+                tput sgr0
+            else
+                printf '\e[1;33m'
+                printf '%4d. \e[1m\e[33m %s\t\e[0m\n' $i "${LIME_YELLOW}  ${CHOICES[$i]}  "
+            fi
+            tput cuf 2
+        done
+    }
+
+    tput civis
+    it=0
+    tput cuf 2
+
+    opts_show $it
+
+    while true; do
+        read -rsn1 key
+        local escaped_char=$( printf "\u1b" )
+        if [[ $key == $escaped_char ]]; then
+            read -rsn2 key
+        fi
+
+        tput cuu ${#CHOICES[@]} && tput ed
+        tput sc
+
+        case $key in
+            '[A' | '[C' )
+                it=$(($it-1));;
+            '[D' | '[B')
+                it=$(($it+1));;
+            '' )
+                return $it && exit;;
+        esac
+
+        local min_len=0
+        local farr_len=$(( ${#CHOICES[@]}-1))
+        if [[ "$it" -lt "$min_len" ]]; then
+            it=$(( ${#CHOICES[@]}-1 ))
+        elif [[ "$it" -gt "$farr_len"  ]]; then
+            it=0
+        fi
+
+        opts_show $it
+
+    done
+}
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   func > cli question
+#
+#   used for command-line to prompt the user with a question
+#
+#   if cli_question "  Install the above packages?"; then
+#       sleep 0.5
+#
+#       for key in "${!pendinstall[@]}"
+#       do
+#           app_name="${pendinstall[${key}]}"
+#           app_func="${app_functions[$app_name]}"
+#
+#           $app_func "${app_name}" "${app_func}"
+#       done
+#   fi
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+cli_question( )
+{
+    local syntax def response
+
+    while true; do
+
+        # end argument determines type of syntax
+        if [ "${2:-}" = "Y" ]; then
+            syntax="Y / n"
+            def=Y
+        elif [ "${2:-}" = "N" ]; then
+            syntax="y / N"
+            def=N
+        else
+            syntax="Y / N"
+            def=
+        fi
+
+        #printf '%-60s %13s %-5s' "    $1 " "${YELLOW}[$syntax]${NORMAL}" ""
+        echo -n "$1 [$syntax] "
+
+        read response </dev/tty
+
+        # NULL response uses default
+        if [ -z "$response" ]; then
+            response=$def
+        fi
+
+        # validate response
+        case "$response" in
+            Y|y|yes|YES)
+                return 0
+                ;;
+            N|n|no|NO)
+                return 1
+                ;;
+        esac
+
+    done
+}
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   func > open url
+#
+#   opening urls in bash can be wonky as hell. just doing it the manual
+#   way to ensure a browser gets opened.
+#
+#   example
+#       open_url "http://127.0.0.1"
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+open_url()
+{
+   local URL="$1"
+   xdg-open $URL || firefox $URL || sensible-browser $URL || x-www-browser $URL || gnome-open $URL
+}
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   func > cmd title
@@ -588,6 +981,17 @@ title()
 
 begin()
 {
+    # start spinner
+    spin &
+
+    # spinner PID
+    app_pid_spin=$!
+
+    printf "%-50s %-5s\n\n" "${TIME}      NEW Spinner: PID (${app_pid_spin})" | tee -a "${LOGS_FILE}" >/dev/null
+
+    # kill spinner on any signal
+    trap "kill -9 $app_pid_spin 2> /dev/null" `seq 0 15`
+
     printf '%-50s %-5s' "  ${1}" ""
 
     sleep 0.3
@@ -604,6 +1008,14 @@ begin()
 finish()
 {
     arg1=${1}
+
+    spinner_halt
+
+    # if arg1 not empty
+    if ! [ -z "${arg1}" ]; then
+        assoc_uri="${get_docs_uri[$arg1]}"
+        app_queue_url+=($assoc_uri)
+    fi
 }
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -669,25 +1081,36 @@ app_update()
 
     begin "Updating from branch [${repo_branch}]"
 
+    sleep 1
     echo
+
     printf '%-50s %-5s' "    |--- Downloading update" ""
-
-    sudo wget -O "${app_file_proteus}" -q "$branch_uri" >> $LOGS_FILE 2>&1
-
+    sleep 1
+    if [ -z "${OPT_DEV_NULLRUN}" ]; then
+        sudo wget -O "${app_file_proteus}" -q "$branch_uri" >> $LOGS_FILE 2>&1
+    fi
     echo -e "[ ${STATUS_OK} ]"
+
     printf '%-50s %-5s' "    |--- Set ownership to ${USER}" ""
-
-    sudo chgrp ${USER} ${app_file_proteus} >> $LOGS_FILE 2>&1
-    sudo chown ${USER} ${app_file_proteus} >> $LOGS_FILE 2>&1
-
+    sleep 1
+    if [ -z "${OPT_DEV_NULLRUN}" ]; then
+        sudo chgrp ${USER} ${app_file_proteus} >> $LOGS_FILE 2>&1
+        sudo chown ${USER} ${app_file_proteus} >> $LOGS_FILE 2>&1
+    fi
     echo -e "[ ${STATUS_OK} ]"
+
     printf '%-50s %-5s' "    |--- Set perms to u+x" ""
-
-    sudo chmod u+x ${app_file_proteus} >> $LOGS_FILE 2>&1
-
+    sleep 1
+    if [ -z "${OPT_DEV_NULLRUN}" ]; then
+        sudo chmod u+x ${app_file_proteus} >> $LOGS_FILE 2>&1
+    fi
     echo -e "[ ${STATUS_OK} ]"
+
     echo
+
+    sleep 2
     echo -e "  ${BOLD}${GREEN}Update Complete!${NORMAL}" >&2
+    sleep 2
 
     finish
 }
@@ -719,10 +1142,10 @@ if [ ! -d .git ]; then
 
     app_run_github_precheck
 
-    #git init --initial-branch=${app_repo_branch}
-    #git add .;git commit -m'Proteus-Git Setup'
-    #git remote add origin https://github.com/Aetherinox/proteus-apt-repo.git
-    #git pull origin ${app_repo_branch} --allow-unrelated-histories
+    git init --initial-branch=${app_repo_branch}
+    git add .;git commit -m'Proteus-Git Setup'
+    git remote add origin https://github.com/Aetherinox/proteus-apt-repo.git
+    git pull origin ${app_repo_branch} --allow-unrelated-histories
 fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -836,7 +1259,7 @@ app_setup()
 
     # Check if contains title
     # If so, called from another function
-    if [ "$bMissingAptMove" = true ] || [ "$bMissingAptUrl" = true ] || [ "$bMissingCurl" = true ] || [ "$bMissingWget" = true ] || [ "$bMissingTree" = true ] || [ "$bMissingGPG" = true ] ||  [ "$bMissingGChrome" = true ]  || [ "$bMissingMFirefox" = true ] || [ "$bMissingRepo" = true ] || [ "$bMissingReprepro" = true ]; then
+    if [ "$bMissingAptMove" = true ] || [ "$bMissingAptUrl" = true ] || [ "$bMissingCurl" = true ] || [ "$bMissingWget" = true ] || [ "$bMissingTree" = true ] || [ "$bMissingGPG" = true ] ||  [ "$bMissingGChrome" = true ]  || [ "$bMissingMFirefox" = true ] || [ "$bMissingRepo" = true ] || [ "$bMissingReprepro" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         echo
         title "Addressing Dependencies ..."
         echo
@@ -956,15 +1379,17 @@ app_setup()
     #   missing curl
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    if [ "$bMissingCurl" = true ]; then
+    if [ "$bMissingCurl" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing curl package" | tee -a "${LOGS_FILE}" >/dev/null
         printf '%-50s %-5s' "    |--- Adding curl package" ""
 
         sleep 0.5
     
-        sudo apt-get update -y -q >> /dev/null 2>&1
-        sudo apt-get install curl -y -qq >> /dev/null 2>&1
-
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            sudo apt-get update -y -q >> /dev/null 2>&1
+            sudo apt-get install curl -y -qq >> /dev/null 2>&1
+        fi
+    
         sleep 0.5
         echo -e "[ ${STATUS_OK} ]"
     fi
@@ -973,14 +1398,16 @@ app_setup()
     #   missing wget
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    if [ "$bMissingWget" = true ]; then
+    if [ "$bMissingWget" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing wget package" | tee -a "${LOGS_FILE}" >/dev/null
         printf '%-50s %-5s' "    |--- Adding wget package" ""
 
         sleep 0.5
 
-        sudo apt-get update -y -q >> /dev/null 2>&1
-        sudo apt-get install wget -y -qq >> /dev/null 2>&1
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            sudo apt-get update -y -q >> /dev/null 2>&1
+            sudo apt-get install wget -y -qq >> /dev/null 2>&1
+        fi
 
         sleep 0.5
         echo -e "[ ${STATUS_OK} ]"
@@ -990,14 +1417,16 @@ app_setup()
     #   missing tree
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    if [ "$bMissingTree" = true ]; then
+    if [ "$bMissingTree" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing tree package" | tee -a "${LOGS_FILE}" >/dev/null
         printf '%-50s %-5s' "    |--- Adding tree package" ""
 
         sleep 0.5
 
-        sudo apt-get update -y -q >> /dev/null 2>&1
-        sudo apt-get install tree -y -qq >> /dev/null 2>&1
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            sudo apt-get update -y -q >> /dev/null 2>&1
+            sudo apt-get install tree -y -qq >> /dev/null 2>&1
+        fi
 
         sleep 0.5
         echo -e "[ ${STATUS_OK} ]"
@@ -1009,13 +1438,15 @@ app_setup()
     #   bMissingGPG     File /usr/share/keyrings/${app_repo_apt_pkg}.gpg not found
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    if [ "$bMissingGPG" = true ]; then
+    if [ "$bMissingGPG" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Adding ${app_repo_author} GPG key: [https://github.com/${app_repo_author}.gpg]" | tee -a "${LOGS_FILE}" >/dev/null
         printf '%-50s %-5s' "    |--- Adding github.com/${app_repo_author}.gpg" ""
 
         sleep 0.5
 
-        sudo wget -qO - "https://github.com/${app_repo_author}.gpg" | sudo gpg --batch --yes --dearmor -o "/usr/share/keyrings/${app_repo_apt_pkg}.gpg" >/dev/null
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            sudo wget -qO - "https://github.com/${app_repo_author}.gpg" | sudo gpg --batch --yes --dearmor -o "/usr/share/keyrings/${app_repo_apt_pkg}.gpg" >/dev/null
+        fi
 
         sleep 0.5
         echo -e "[ ${STATUS_OK} ]"
@@ -1027,7 +1458,7 @@ app_setup()
     #   add google source repo so that chrome can be downloaded using apt-get
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    if [ "$bMissingGChrome" = true ]; then
+    if [ "$bMissingGChrome" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Registering Chrome: /etc/apt/sources.list.d/google-chrome.list" | tee -a "${LOGS_FILE}" >/dev/null
         printf '%-50s %-5s' "    |--- Registering Chrome" ""
 
@@ -1035,8 +1466,10 @@ app_setup()
 
         sudo install -d -m 0755 /etc/apt/keyrings
 
-        sudo wget -qO - "https://dl-ssl.google.com/linux/linux_signing_key.pub" | sudo gpg --batch --yes --dearmor -o "/etc/apt/keyrings/dl.google.com.gpg" >/dev/null
-        echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/dl.google.com.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list >/dev/null
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            sudo wget -qO - "https://dl-ssl.google.com/linux/linux_signing_key.pub" | sudo gpg --batch --yes --dearmor -o "/etc/apt/keyrings/dl.google.com.gpg" >/dev/null
+            echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/dl.google.com.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list >/dev/null
+        fi
 
         # change priority
         echo 'Package: * Pin: origin dl.google.com Pin-Priority: 1000' | sudo tee /etc/apt/preferences.d/google-chrome >/dev/null
@@ -1047,7 +1480,9 @@ app_setup()
 
         sleep 0.5
 
-        sudo apt-get update -y -q >/dev/null
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            sudo apt-get update -y -q >/dev/null
+        fi
 
         sleep 0.5
         echo -e "[ ${STATUS_OK} ]"
@@ -1061,7 +1496,7 @@ app_setup()
     #       https://support.mozilla.org/en-US/kb/install-firefox-linux#w_install-firefox-deb-package-for-debian-based-distributions
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    if [ "$bMissingMFirefox" = true ]; then
+    if [ "$bMissingMFirefox" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Registering Mozilla: /etc/apt/sources.list.d/mozilla.list" | tee -a "${LOGS_FILE}" >/dev/null
         printf '%-50s %-5s' "    |--- Registering Mozilla" ""
 
@@ -1070,7 +1505,9 @@ app_setup()
         sudo install -d -m 0755 /etc/apt/keyrings
         sudo wget -qO - "https://packages.mozilla.org/apt/repo-signing-key.gpg" | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
 
-        echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" | sudo tee /etc/apt/sources.list.d/mozilla.list >/dev/null
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" | sudo tee /etc/apt/sources.list.d/mozilla.list >/dev/null
+        fi
 
         # change priority
         echo 'Package: * Pin: origin packages.mozilla.org Pin-Priority: 1000' | sudo tee /etc/apt/preferences.d/mozilla >/dev/null
@@ -1081,7 +1518,9 @@ app_setup()
 
         sleep 0.5
 
-        sudo apt-get update -y -q >/dev/null
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            sudo apt-get update -y -q >/dev/null
+        fi
 
         sleep 0.5
         echo -e "[ ${STATUS_OK} ]"
@@ -1091,13 +1530,15 @@ app_setup()
     #   missing proteus apt repo
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    if [ "$bMissingRepo" = true ]; then
+    if [ "$bMissingRepo" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Registering ${app_repo_apt}: https://raw.githubusercontent.com/${app_repo_author}/${app_repo_apt}/${app_repo_branch}" | tee -a "${LOGS_FILE}" >/dev/null
         printf '%-50s %-5s' "    |--- Registering ${app_repo_apt}" ""
 
         sleep 0.5
 
-        echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/${app_repo_apt_pkg}.gpg] https://raw.githubusercontent.com/${app_repo_author}/${app_repo_apt}//${app_repo_branch} $(lsb_release -cs) ${app_repo_branch}" | sudo tee /etc/apt/sources.list.d/${app_repo_apt_pkg}.list >/dev/null
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/${app_repo_apt_pkg}.gpg] https://raw.githubusercontent.com/${app_repo_author}/${app_repo_apt}//${app_repo_branch} $(lsb_release -cs) ${app_repo_branch}" | sudo tee /etc/apt/sources.list.d/${app_repo_apt_pkg}.list >/dev/null
+        fi
 
         sleep 0.5
 
@@ -1105,7 +1546,9 @@ app_setup()
         
         sleep 0.5
 
-        sudo apt-get update -y -q >/dev/null
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            sudo apt-get update -y -q >/dev/null
+        fi
 
         sleep 0.5
         echo -e "[ ${STATUS_OK} ]"
@@ -1115,19 +1558,21 @@ app_setup()
     #   install proteus-git binary in /home/$USER/bin/proteus-git
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    if ! [ -f "$app_file_proteus" ]; then
+    if ! [ -f "$app_file_proteus" ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing ${app_title}" | tee -a "${LOGS_FILE}" >/dev/null
         printf '%-50s %-5s' "    |--- Installing ${app_title}" ""
 
         sleep 0.5
 
-        mkdir -p "$app_dir_home"
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            mkdir -p "$app_dir_home"
 
-        local branch_uri="${app_script/BRANCH/"$app_repo_branch_sel"}"
-        sudo wget -O "${app_file_proteus}" -q "$branch_uri" >> $LOGS_FILE 2>&1
-        sudo chgrp ${USER} ${app_file_proteus} >> $LOGS_FILE 2>&1
-        sudo chown ${USER} ${app_file_proteus} >> $LOGS_FILE 2>&1
-        sudo chmod u+x ${app_file_proteus} >> $LOGS_FILE 2>&1
+            local branch_uri="${app_script/BRANCH/"$app_repo_branch_sel"}"
+            sudo wget -O "${app_file_proteus}" -q "$branch_uri" >> $LOGS_FILE 2>&1
+            sudo chgrp ${USER} ${app_file_proteus} >> $LOGS_FILE 2>&1
+            sudo chown ${USER} ${app_file_proteus} >> $LOGS_FILE 2>&1
+            sudo chmod u+x ${app_file_proteus} >> $LOGS_FILE 2>&1
+        fi
 
         sleep 0.5
         echo -e "[ ${STATUS_OK} ]"
@@ -1137,14 +1582,16 @@ app_setup()
     #   missing apt-move
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    if [ "$bMissingAptMove" = true ]; then
+    if [ "$bMissingAptMove" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing apt-move package" | tee -a "${LOGS_FILE}" >/dev/null
         printf '%-50s %-5s' "    |--- Adding apt-move package" ""
 
         sleep 0.5
 
-        sudo apt-get update -y -q >> /dev/null 2>&1
-        sudo apt-get install apt-move -y -qq >> /dev/null 2>&1
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            sudo apt-get update -y -q >> /dev/null 2>&1
+            sudo apt-get install apt-move -y -qq >> /dev/null 2>&1
+        fi
 
         sleep 0.5
         echo -e "[ ${STATUS_OK} ]"
@@ -1154,14 +1601,16 @@ app_setup()
     #   missing apt-url
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    if [ "$bMissingAptUrl" = true ]; then
+    if [ "$bMissingAptUrl" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing apt-url package" | tee -a "${LOGS_FILE}" >/dev/null
         printf '%-50s %-5s' "    |--- Adding apt-url package" ""
 
         sleep 0.5
 
-        sudo apt-get update -y -q >> /dev/null 2>&1
-        sudo apt-get install apt-url -y -qq >> /dev/null 2>&1
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            sudo apt-get update -y -q >> /dev/null 2>&1
+            sudo apt-get install apt-url -y -qq >> /dev/null 2>&1
+        fi
 
         sleep 0.5
         echo -e "[ ${STATUS_OK} ]"
@@ -1171,14 +1620,16 @@ app_setup()
     #   missing reprepro
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    if [ "$bMissingReprepro" = true ]; then
+    if [ "$bMissingReprepro" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing reprepro package" | tee -a "${LOGS_FILE}" >/dev/null
         printf '%-50s %-5s' "    |--- Adding reprepro package" ""
 
         sleep 0.5
 
-        sudo apt-get update -y -q >> /dev/null 2>&1
-        sudo apt-get install reprepro -y -qq >> /dev/null 2>&1
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            sudo apt-get update -y -q >> /dev/null 2>&1
+            sudo apt-get install reprepro -y -qq >> /dev/null 2>&1
+        fi
 
         sleep 0.5
         echo -e "[ ${STATUS_OK} ]"
@@ -1194,36 +1645,38 @@ app_setup()
     #   missing lastversion
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    if [ "$bMissingLastVersion" = true ]; then
+    if [ "$bMissingLastVersion" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing LastVersion" | tee -a "${LOGS_FILE}" >/dev/null
         printf '%-50s %-5s' "    |--- Adding LastVersion package" ""
 
         sleep 0.5
 
-        sudo apt-get update -y -q >> /dev/null 2>&1
-        sudo apt-get install python3-pip python3-venv -y -qq >> /dev/null 2>&1
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            sudo apt-get update -y -q >> /dev/null 2>&1
+            sudo apt-get install python3-pip python3-venv -y -qq >> /dev/null 2>&1
 
-        #wget https://github.com/dvershinin/lastversion/archive/refs/tags/v3.5.0.zip
-        #mkdir /home/${USER}/Packages/
-        #unzip v3.5.0.zip -d /home/${USER}/Packages/lastversion
+            #wget https://github.com/dvershinin/lastversion/archive/refs/tags/v3.5.0.zip
+            #mkdir /home/${USER}/Packages/
+            #unzip v3.5.0.zip -d /home/${USER}/Packages/lastversion
 
-        # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-        #   Uninstall with
-        #       pip uninstall lastversion
-        # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+            # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+            #   Uninstall with
+            #       pip uninstall lastversion
+            # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-        pip install lastversion --break-system-packages
-        cp /home/${USER}/.local/bin/lastversion /home/${USER}/bin/
-        sudo touch /etc/profile.d/lastversion.sh
+            pip install lastversion --break-system-packages
+            cp /home/${USER}/.local/bin/lastversion /home/${USER}/bin/
+            sudo touch /etc/profile.d/lastversion.sh
 
-        envpath_add_lastversion '$HOME/bin'
+            envpath_add_lastversion '$HOME/bin'
 
-        echo 'export PATH="$HOME/bin:$PATH"' | sudo tee /etc/profile.d/lastversion.sh
+            echo 'export PATH="$HOME/bin:$PATH"' | sudo tee /etc/profile.d/lastversion.sh
 
-        . ~/.bashrc
-        . ~/.profile
+            . ~/.bashrc
+            . ~/.profile
 
-        source $HOME/.profile # not executing for some reason
+            source $HOME/.profile # not executing for some reason
+        fi
 
         sleep 0.5
         echo -e "[ ${STATUS_OK} ]"
@@ -1238,13 +1691,13 @@ app_setup()
 
     gpgconfig_file="/home/${USER}/.gnupg/gpg-agent.conf"
 
-    if ! [ -x "$(command -v gpg)" ]; then
+    if ! [ -x "$(command -v gpg)" ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf '%-57s' "    |--- Installing GPG"
         sleep 1
-
-        sudo apt-get update -y -q >> /dev/null 2>&1
-        sudo apt-get install gpg -y -qq >> /dev/null 2>&1
-
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            sudo apt-get update -y -q >> /dev/null 2>&1
+            sudo apt-get install gpg -y -qq >> /dev/null 2>&1
+        fi
         echo -e "[ ${STATUS_OK} ]"
         sleep 1
     fi
@@ -1264,18 +1717,48 @@ pinentry-timeout 0
 EOF
 
     printf '%-57s' "    |--- Set ownership to ${USER}"
-
-    sudo chgrp ${USER} ${gpgconfig_file} >> $LOGS_FILE 2>&1
-    sudo chown ${USER} ${gpgconfig_file} >> $LOGS_FILE 2>&1
-
+    sleep 1
+    if [ -z "${OPT_DEV_NULLRUN}" ]; then
+        sudo chgrp ${USER} ${gpgconfig_file} >> $LOGS_FILE 2>&1
+        sudo chown ${USER} ${gpgconfig_file} >> $LOGS_FILE 2>&1
+    fi
     echo -e "[ ${STATUS_OK} ]"
 
     printf '%-57s' "    |--- Restart GPG Agent"
-
+    sleep 1
     gpgconf --kill gpg-agent
     echo -e "[ ${STATUS_OK} ]"
+
+
+    sleep 0.5
+
 }
 app_setup
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   output some logging
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+[ -n "${OPT_DEV_ENABLE}" ] && printf "%-50s %-5s\n" "${TIME}      Notice: Dev Mode Enabled" | tee -a "${LOGS_FILE}" >/dev/null
+[ -z "${OPT_DEV_ENABLE}" ] && printf "%-50s %-5s\n" "${TIME}      Notice: Dev Mode Disabled" | tee -a "${LOGS_FILE}" >/dev/null
+
+[ -n "${OPT_DEV_NULLRUN}" ] && printf "%-50s %-5s\n\n" "${TIME}      Notice: Dev Option: 'No Actions' Enabled" | tee -a "${LOGS_FILE}" >/dev/null
+[ -z "${OPT_DEV_NULLRUN}" ] && printf "%-50s %-5s\n\n" "${TIME}      Notice: Dev Option: 'No Actions' Disabled" | tee -a "${LOGS_FILE}" >/dev/null
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   associated app urls
+#
+#   when certain apps are installed, we may want to open a browser window
+#   so that the user can get a better understanding of where to find
+#   resources for that app.
+#
+#   not all apps have to have a website, as that would get annoying.
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+declare -A get_docs_uri
+get_docs_uri=(
+    ["$app_dialog"]='http://url.here'
+)
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   header
@@ -1297,6 +1780,14 @@ show_header()
 
     printf '%-35s %-40s\n' "  ${BOLD}${DEVGREY}GPG KEY ${NORMAL}" "${BOLD}${FUCHSIA} $GPG_KEY ${NORMAL}"
     echo
+
+    if [ -n "${OPT_DEV_NULLRUN}" ]; then
+        printf '%-35s %-40s\n' "  ${BOLD}${DEVGREY}PID ${NORMAL}" "${BOLD}${FUCHSIA} $$ ${NORMAL}"
+        printf '%-35s %-40s\n' "  ${BOLD}${DEVGREY}USER ${NORMAL}" "${BOLD}${FUCHSIA} ${USER} ${NORMAL}"
+        printf '%-35s %-40s\n' "  ${BOLD}${DEVGREY}APPS ${NORMAL}" "${BOLD}${FUCHSIA} ${app_i} ${NORMAL}"
+        printf '%-35s %-40s\n' "  ${BOLD}${DEVGREY}DEV ${NORMAL}" "${BOLD}${FUCHSIA} $([ -n "${OPT_DEV_ENABLE}" ] && echo "Enabled" || echo "Disabled" ) ${NORMAL}"
+        echo
+    fi
 
     echo -e " ${BLUE}-------------------------------------------------------------------------${NORMAL}"
     echo
@@ -1348,7 +1839,7 @@ app_run_dl_aptsrc()
             arch=${lst_arch[$j]}
             
             #   package:arch
-            local pkg_arch="$pkg:$arch"
+            local pkg_arch="${pkg}:${arch}"
 
             # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
             #   download "package:arch"
@@ -1389,7 +1880,7 @@ app_run_dl_aptsrc()
                     mv "${app_dir}/${app_filename}" "${app_dir_storage}/all/"
                     echo -e "[ ${STATUS_OK} ]"
 
-                    if [ -n "${bRep}" ]; then
+                    if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
                         #   full path to deb package
                         deb_package="${app_dir_repo}/${arch}/${app_filename}"
                         reprepro -V \
@@ -1410,7 +1901,7 @@ app_run_dl_aptsrc()
                     mv "${app_dir}/${app_filename}" "${app_dir_storage}/amd64/"
                     echo -e "[ ${STATUS_OK} ]"
 
-                    if [ -n "${bRep}" ]; then
+                    if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
                         #   full path to deb package
                         deb_package="${app_dir_repo}/${arch}/${app_filename}"
                         reprepro -V \
@@ -1432,7 +1923,7 @@ app_run_dl_aptsrc()
                     mv "${app_dir}/${app_filename}" "${app_dir_storage}/arm64/"
                     echo -e "[ ${STATUS_OK} ]"
 
-                    if [ -n "${bRep}" ]; then
+                    if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
                         #   full path to deb package
                         deb_package="${app_dir_repo}/${arch}/${app_filename}"
                         reprepro -V \
@@ -1479,7 +1970,7 @@ app_run_dl_gh()
 {
     count=${#lst_github[@]}
 
-    begin "Downloading Github Packages [ ${count} ]"
+    begin "Downloading Github Packages [ $count ]"
     echo
 
     mkdir -p ${app_dir_storage}/{all,amd64,arm64}
@@ -1513,27 +2004,27 @@ app_run_dl_gh()
             #   this filters out "armhf", however, readds it because the word focal matches
             #   so we need to do additional filtering below.
 
-            check=`echo ${app_filename} | grep '\armhf\|armv7l'`
-            if [ -n "${check}" ]; then
+            check=`echo $app_filename | grep '\armhf\|armv7l'`
+            if [ -n "$check" ]; then
                 continue
             fi
 
-            wget "${repo_file_url}" -q
+            wget "$repo_file_url" -q
 
             for j in "${!lst_arch[@]}"; do
                 #   returns arch
                 #   amd64, arm64, i386, all
                 arch=${lst_arch[$j]}
 
-                if [ -f "${app_dir}/${app_filename}" ]; then
-                    if [[ "${arch}" == "all" ]] && [[ ${app_filename} == *all.deb || ${app_filename} == *all*.deb ]]; then
+                if [ -f "$app_dir/$app_filename" ]; then
+                    if [[ "$arch" == "all" ]] && [[ $app_filename == *all.deb || $app_filename == *all*.deb ]]; then
                         printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
-                        mv "${app_dir}/${app_filename}" "${app_dir_storage}/all/"
+                        mv "$app_dir/$app_filename" "$app_dir_storage/all/"
                         echo -e "[ ${STATUS_OK} ]"
 
-                        if [ -n "${bRep}" ]; then
+                        if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
                             #   full path to deb package
-                            deb_package="${app_dir_repo}/${arch}/${app_filename}"
+                            deb_package="$app_dir_repo/$arch/$app_filename"
 
                             reprepro -V \
                                 --section utils \
@@ -1549,7 +2040,7 @@ app_run_dl_gh()
                         mv "$app_dir/$app_filename" "$app_dir_storage/amd64/"
                         echo -e "[ ${STATUS_OK} ]"
 
-                        if [ -n "${bRep}" ]; then
+                        if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
                             #   full path to deb package
                             deb_package="$app_dir_repo/$arch/$app_filename"
 
@@ -1568,7 +2059,7 @@ app_run_dl_gh()
                         mv "$app_dir/$app_filename" "$app_dir_storage/arm64/"
                         echo -e "[ ${STATUS_OK} ]"
 
-                        if [ -n "${bRep}" ]; then
+                        if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
                             #   full path to deb package
                             deb_package="$app_dir_repo/$arch/$app_filename"
 
@@ -1628,17 +2119,21 @@ EOF
 
     app_run_github_precheck
 
-    #git branch -m ${app_repo_branch}
-    #git add --all
-    #git add -u
+    git branch -m ${app_repo_branch}
+    git add --all
+    git add -u
+
+    sleep 1
 
     local app_repo_commit="[S] auto-update [ ${app_repo_dist_sel} ] @ ${NOW}"
     echo -e "  ${WHITE}Starting commit ${FUCHSIA}${app_repo_commit}${WHITE}${NORMAL}"
 
-    #git commit -S -m "${app_repo_commit}"
+    git commit -S -m "$app_repo_commit"
+
+    sleep 1
 
     echo -e "  ${WHITE}Starting push ${FUCHSIA}${app_repo_branch}${WHITE}${NORMAL}"
-    #git push https://${CSI_PAT_GITHUB}@github.com/${GITHUB_NAME}/${app_repo_apt}
+    git push https://${CSI_PAT_GITHUB}@github.com/${GITHUB_NAME}/${app_repo_apt}
 
 }
 
@@ -1658,23 +2153,23 @@ app_run_gh_end()
     echo
     echo -e " ${BLUE}-------------------------------------------------------------------------${NORMAL}"
     echo
-    echo -e "  ${GREYL}Updating Github: ${app_repo_branch}${WHITE}"
+    echo -e "  ${GREYL}Updating Github: $app_repo_branch${WHITE}"
     echo
     echo -e " ${BLUE}-------------------------------------------------------------------------${NORMAL}"
     echo
 
-    sleep 1
-
-    #git branch -m ${app_repo_branch}
-    #git add --all
-    #git add -u
+    git branch -m $app_repo_branch
+    git add --all
+    git add -u
 
     sleep 1
 
-    local app_repo_commit="[E] auto-update [ ${app_repo_dist_sel} ] @ ${NOW}"
-    #git commit -S -m "${app_repo_commit}"
+    local app_repo_commit="[E] auto-update [ $app_repo_dist_sel ] @ $NOW"
+    git commit -S -m "$app_repo_commit"
 
-    #git push -u origin ${app_repo_branch}
+    sleep 1
+
+    git push -u origin $app_repo_branch
 }
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -1794,9 +2289,14 @@ app_start()
         echo -e "  ${BOLD}${WHITE}     sudo apt-get install reprepro${NORMAL}"
         echo
 
+        printf "  Press any key to abort ... ${NORMAL}"
+        read -n 1 -s -r -p ""
+        echo
+        echo
+
         set +m
-        trap "kill -9 ${app_pid} 2> /dev/null" `seq 0 15`
-        kill ${app_pid}
+        trap "kill -9 $app_pid 2> /dev/null" `seq 0 15`
+        kill $app_pid
         set -m
     fi
 
@@ -1838,6 +2338,12 @@ app_start()
     echo
     echo -e " ${BLUE}-------------------------------------------------------------------------${NORMAL}"
     echo
+
+    sleep 10
+
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    #   close logs, kill spinner, and finish process
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     finish
     Logs_Finish
