@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `06.17.2024 19:27:16`
+Last generated on `06.17.2024 19:36:53`
 
 <br />
 
@@ -12,7 +12,6 @@ Last generated on `06.17.2024 19:27:16`
 ├── .app
 │   ├── focal.json
 │   ├── jammy.json
-│   ├── .json
 │   ├── lunar.json
 │   ├── mantic.json
 │   ├── noble.json
@@ -1189,5 +1188,5 @@ Last generated on `06.17.2024 19:27:16`
 ├── secrets.sh
 └── tree.md
 
-198 directories, 981 files
+198 directories, 980 files
 ```

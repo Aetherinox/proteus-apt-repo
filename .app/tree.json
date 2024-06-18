@@ -3,7 +3,6 @@
     {"type":"directory","name":".app","contents":[
       {"type":"file","name":"focal.json"},
       {"type":"file","name":"jammy.json"},
-      {"type":"file","name":".json"},
       {"type":"file","name":"lunar.json"},
       {"type":"file","name":"mantic.json"},
       {"type":"file","name":"noble.json"},
@@ -1379,5 +1378,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":198,"files":981}
+  {"type":"report","directories":198,"files":980}
 ]
