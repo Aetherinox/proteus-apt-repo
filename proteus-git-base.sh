@@ -135,7 +135,7 @@ app_script="https://raw.githubusercontent.com/${app_repo_author}/${app_repo}/BRA
 app_dir=$PWD
 app_dir_wd=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 app_dir_repo="incoming/proteus-git/${sys_code}"
-app_dir_storage="${app_dir}/incoming/proteus-git/${sys_code}"
+app_dir_storage="$app_dir/incoming/proteus-git/${sys_code}"
 app_pid_spin=0
 app_pid=$BASHPID
 app_queue_url=()
@@ -151,7 +151,7 @@ export YEAR=$(date +'%Y')
 export TIME=$(date '+%H:%M:%S')
 export NOW=$(date '+%m.%d.%Y %H:%M:%S')
 export ARGS=$1
-export LOGS_DIR="${app_dir}/logs"
+export LOGS_DIR="$app_dir/logs"
 export LOGS_FILE="$LOGS_DIR/proteus-git-${DATE}.log"
 export SECONDS=0
 
@@ -410,13 +410,13 @@ app_run_github_precheck( )
     git config --global credential.helper store
 
     # see if repo directory is in safelist for git
-    if git config --global --get-all safe.directory | grep -q "${app_dir}"; then
+    if git config --global --get-all safe.directory | grep -q "$app_dir"; then
         bFoundSafe=true
     fi
 
     # if new repo, add to safelist
     if ! [ $bFoundSafe ]; then
-        git config --global --add safe.directory ${app_dir}
+        git config --global --add safe.directory $app_dir
     fi
 
     git config --global init.defaultBranch ${app_repo_branch}
@@ -643,8 +643,8 @@ EOF
     printf '%-57s' "    |--- Set ownership to ${USER}"
     sleep 1
     if [ -z "${OPT_DEV_NULLRUN}" ]; then
-        sudo chgrp ${USER} ${gpgconfig_file} >> ${LOGS_FILE} 2>&1
-        sudo chown ${USER} ${gpgconfig_file} >> ${LOGS_FILE} 2>&1
+        sudo chgrp ${USER} ${gpgconfig_file} >> $LOGS_FILE 2>&1
+        sudo chown ${USER} ${gpgconfig_file} >> $LOGS_FILE 2>&1
     fi
     echo -e "[ ${STATUS_OK} ]"
 
@@ -886,12 +886,12 @@ Logs_Finish()
     if [ ${PIPE_OPENED} ] ; then
         exec 1<&3
         sleep 0.2
-        ps --pid ${app_pid_tee} >/dev/null
+        ps --pid $app_pid_tee >/dev/null
         if [ $? -eq 0 ] ; then
-            # using $(wait ${app_pid_tee}) would be better
+            # using $(wait $app_pid_tee) would be better
             # however, some commands leave file descriptors open
             sleep 1
-            kill ${app_pid_tee} >> ${LOGS_FILE} 2>&1
+            kill $app_pid_tee >> $LOGS_FILE 2>&1
         fi
 
         printf "%-50s %-15s\n" "${TIME}      Destroying Pipe ${LOGS_PIPE} (${app_pid_tee})" | tee -a "${LOGS_FILE}" >/dev/null
@@ -900,8 +900,8 @@ Logs_Finish()
         unset PIPE_OPENED
     fi
 
-    duration=${SECONDS}
-    elapsed="$((${duration} / 60)) minutes and $((${duration} % 60)) seconds elapsed."
+    duration=$SECONDS
+    elapsed="$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."
 
     printf "%-50s %-15s\n" "${TIME}      User Input: OnClick ......... Exit App" | tee -a "${LOGS_FILE}" >/dev/null
     printf "%-50s %-15s\n\n\n\n" "${TIME}      ${elapsed}" | tee -a "${LOGS_FILE}" >/dev/null
@@ -1205,9 +1205,9 @@ envpath_add_proteus()
     local file_env=/etc/profile.d/proteus-git.sh
     if [ "$2" = "force" ] || ! echo $PATH | $(which egrep) -q "(^|:)$1($|:)" ; then
         if [ "$2" = "after" ] ; then
-            echo 'export PATH="$PATH:'$1'"' | sudo tee ${file_env} > /dev/null
+            echo 'export PATH="$PATH:'$1'"' | sudo tee $file_env > /dev/null
         else
-            echo 'export PATH="'$1':$PATH"' | sudo tee ${file_env} > /dev/null
+            echo 'export PATH="'$1':$PATH"' | sudo tee $file_env > /dev/null
         fi
     fi
 }
@@ -1217,9 +1217,9 @@ envpath_add_lastversion()
     local file_env=/etc/profile.d/lastversion.sh
     if [ "$2" = "force" ] || ! echo $PATH | $(which egrep) -q "(^|:)$1($|:)" ; then
         if [ "$2" = "after" ] ; then
-            echo 'export PATH="$PATH:'$1'"' | sudo tee ${file_env} > /dev/null
+            echo 'export PATH="$PATH:'$1'"' | sudo tee $file_env > /dev/null
         else
-            echo 'export PATH="'$1':$PATH"' | sudo tee ${file_env} > /dev/null
+            echo 'export PATH="'$1':$PATH"' | sudo tee $file_env > /dev/null
         fi
     fi
 }
@@ -1247,22 +1247,22 @@ app_update()
     printf '%-50s %-5s' "    |--- Downloading update" ""
     sleep 1
     if [ -z "${OPT_DEV_NULLRUN}" ]; then
-        sudo wget -O "${app_file_proteus}" -q "${branch_uri}" >> ${LOGS_FILE} 2>&1
+        sudo wget -O "${app_file_proteus}" -q "$branch_uri" >> $LOGS_FILE 2>&1
     fi
     echo -e "[ ${STATUS_OK} ]"
 
     printf '%-50s %-5s' "    |--- Set ownership to ${USER}" ""
     sleep 1
     if [ -z "${OPT_DEV_NULLRUN}" ]; then
-        sudo chgrp ${USER} ${app_file_proteus} >> ${LOGS_FILE} 2>&1
-        sudo chown ${USER} ${app_file_proteus} >> ${LOGS_FILE} 2>&1
+        sudo chgrp ${USER} ${app_file_proteus} >> $LOGS_FILE 2>&1
+        sudo chown ${USER} ${app_file_proteus} >> $LOGS_FILE 2>&1
     fi
     echo -e "[ ${STATUS_OK} ]"
 
     printf '%-50s %-5s' "    |--- Set perms to u+x" ""
     sleep 1
     if [ -z "${OPT_DEV_NULLRUN}" ]; then
-        sudo chmod u+x ${app_file_proteus} >> ${LOGS_FILE} 2>&1
+        sudo chmod u+x ${app_file_proteus} >> $LOGS_FILE 2>&1
     fi
     echo -e "[ ${STATUS_OK} ]"
 
@@ -1390,7 +1390,7 @@ app_setup()
     #   Missing proteus-apt-repo gpg key
     #
     #   NOTE:   apt-key has been deprecated
-    #           sudo add-apt-repository -y "deb [arch=amd64] https://raw.githubusercontent.com/${app_repo_author}/${app_repo_apt}/master focal main" >> ${LOGS_FILE} 2>&1
+    #           sudo add-apt-repository -y "deb [arch=amd64] https://raw.githubusercontent.com/${app_repo_author}/${app_repo_apt}/master focal main" >> $LOGS_FILE 2>&1
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     if ! [ -f "/usr/share/keyrings/${app_repo_apt_pkg}.gpg" ]; then
@@ -1471,19 +1471,19 @@ app_setup()
             echo -e "  ${ORANGE}Error${WHITE}"
             echo -e "  "
             echo -e "  ${WHITE}Specified GPG key ${YELLOW}${GPG_KEY}${NORMAL} not found in GnuPG key store."
-            echo -e "  ${WHITE}Searching ${YELLOW}${app_dir}/.gpg/${NORMAL} for a GPG key to import."
+            echo -e "  ${WHITE}Searching ${YELLOW}$app_dir/.gpg/${NORMAL} for a GPG key to import."
             echo
             echo
 
             sleep 1
 
-            if [ -f ${app_dir}/.gpg/*.gpg ]; then
-                gpg_file=${app_dir}/.gpg/*.gpg
+            if [ -f $app_dir/.gpg/*.gpg ]; then
+                gpg_file=$app_dir/.gpg/*.gpg
                 gpg --import $gpg_file
                 bGPGLoaded=true
 
                 echo
-                echo -e "  ${WHITE}Found ${YELLOW}${app_dir}/.gpg/${gpg_file}${NORMAL} to import."
+                echo -e "  ${WHITE}Found ${YELLOW}$app_dir/.gpg/${gpg_file}${NORMAL} to import."
                 echo
             else
                 echo
@@ -1520,7 +1520,7 @@ app_setup()
         echo -e "  ${WHITE}repositories that you upload.${NORMAL}"
         echo
         echo -e "  ${WHITE}You must either add a private .gpg keyfile to the folder:${NORMAL}"
-        echo -e "       ${YELLOW}${app_dir}/.gpg/${NORMAL}"
+        echo -e "       ${YELLOW}$app_dir/.gpg/${NORMAL}"
         echo -e "  ${WHITE}Or manually import a GPG key to your system's GPG keyring${NORMAL}"
         echo
 
@@ -1725,13 +1725,13 @@ app_setup()
         sleep 0.5
 
         if [ -z "${OPT_DEV_NULLRUN}" ]; then
-            mkdir -p "${app_dir}_home"
+            mkdir -p "$app_dir_home"
 
             local branch_uri="${app_script/BRANCH/"$app_repo_branch_sel"}"
-            sudo wget -O "${app_file_proteus}" -q "${branch_uri}" >> ${LOGS_FILE} 2>&1
-            sudo chgrp ${USER} ${app_file_proteus} >> ${LOGS_FILE} 2>&1
-            sudo chown ${USER} ${app_file_proteus} >> ${LOGS_FILE} 2>&1
-            sudo chmod u+x ${app_file_proteus} >> ${LOGS_FILE} 2>&1
+            sudo wget -O "${app_file_proteus}" -q "$branch_uri" >> $LOGS_FILE 2>&1
+            sudo chgrp ${USER} ${app_file_proteus} >> $LOGS_FILE 2>&1
+            sudo chown ${USER} ${app_file_proteus} >> $LOGS_FILE 2>&1
+            sudo chmod u+x ${app_file_proteus} >> $LOGS_FILE 2>&1
         fi
 
         sleep 0.5
@@ -1879,8 +1879,8 @@ EOF
     printf '%-57s' "    |--- Set ownership to ${USER}"
     sleep 1
     if [ -z "${OPT_DEV_NULLRUN}" ]; then
-        sudo chgrp ${USER} ${gpgconfig_file} >> ${LOGS_FILE} 2>&1
-        sudo chown ${USER} ${gpgconfig_file} >> ${LOGS_FILE} 2>&1
+        sudo chgrp ${USER} ${gpgconfig_file} >> $LOGS_FILE 2>&1
+        sudo chown ${USER} ${gpgconfig_file} >> $LOGS_FILE 2>&1
     fi
     echo -e "[ ${STATUS_OK} ]"
 
@@ -2010,7 +2010,7 @@ app_run_dl_aptsrc()
             #   
             #   to combat this, we will use wget to download the file since this
             #   doesnt seem to have the issue.
-            #   apt download "$pkg_arch" >> ${LOGS_FILE} 2>&1
+            #   apt download "$pkg_arch" >> $LOGS_FILE 2>&1
             #   
             #   http://us.archive.ubuntu.com/ubuntu/pool/universe/d/<package>/<package>_1.x.x-x_<arch>.deb
             #   app_url=$(sudo ./apt-url "$pkg_arch" | tail -n 1 )
@@ -2023,13 +2023,13 @@ app_run_dl_aptsrc()
             app_url=$( echo "$query" | tail -n 1; )
 
             sudo pkill -9 "reprepro"
-            if [ -f "${app_dir}/db/lockfile" ]; then
-                sudo rm "${app_dir}/db/lockfile"
+            if [ -f "$app_dir/db/lockfile" ]; then
+                sudo rm "$app_dir/db/lockfile"
             fi
 
             wget "$app_url" -q
 
-            if [[ -f "${app_dir}/$app_filename" ]]; then
+            if [[ -f "$app_dir/$app_filename" ]]; then
 
                 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
                 #   architecture > all
@@ -2037,12 +2037,12 @@ app_run_dl_aptsrc()
 
                 if [[ "$arch" == "all" ]] && [[ $app_filename == *all.deb ]]; then
                     printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL} ${YELLOW}[ $count ]${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
-                    mv "${app_dir}/$app_filename" "${app_dir}_storage/all/"
+                    mv "$app_dir/$app_filename" "$app_dir_storage/all/"
                     echo -e "[ ${STATUS_OK} ]"
 
                     if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
                         #   full path to deb package
-                        deb_package="${app_dir}_repo/$arch/$app_filename"
+                        deb_package="$app_dir_repo/$arch/$app_filename"
                         reprepro -V \
                             --section utils \
                             --component main \
@@ -2058,12 +2058,12 @@ app_run_dl_aptsrc()
 
                 elif [[ "$arch" == "amd64" ]] && [[ $app_filename == *amd64.deb ]]; then
                     printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL} ${YELLOW}[ $count ]${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
-                    mv "${app_dir}/$app_filename" "${app_dir}_storage/amd64/"
+                    mv "$app_dir/$app_filename" "$app_dir_storage/amd64/"
                     echo -e "[ ${STATUS_OK} ]"
 
                     if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
                         #   full path to deb package
-                        deb_package="${app_dir}_repo/$arch/$app_filename"
+                        deb_package="$app_dir_repo/$arch/$app_filename"
                         reprepro -V \
                             --section utils \
                             --component main \
@@ -2080,12 +2080,12 @@ app_run_dl_aptsrc()
 
                 elif [[ "$arch" == "arm64" ]] && [[ $app_filename == *arm64.deb ]]; then
                     printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL} ${YELLOW}[ $count ]${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
-                    mv "${app_dir}/$app_filename" "${app_dir}_storage/arm64/"
+                    mv "$app_dir/$app_filename" "$app_dir_storage/arm64/"
                     echo -e "[ ${STATUS_OK} ]"
 
                     if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
                         #   full path to deb package
-                        deb_package="${app_dir}_repo/$arch/$app_filename"
+                        deb_package="$app_dir_repo/$arch/$app_filename"
                         reprepro -V \
                             --section utils \
                             --component main \
@@ -2104,7 +2104,7 @@ app_run_dl_aptsrc()
                 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
                 else
-                    rm "${app_dir}/$app_filename"
+                    rm "$app_dir/$app_filename"
                 fi
 
                 sleep 1
@@ -2176,15 +2176,15 @@ app_run_dl_gh()
                 #   amd64, arm64, i386, all
                 arch=${lst_arch[$j]}
 
-                if [ -f "${app_dir}/$app_filename" ]; then
+                if [ -f "$app_dir/$app_filename" ]; then
                     if [[ "$arch" == "all" ]] && [[ $app_filename == *all.deb || $app_filename == *all*.deb ]]; then
                         printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
-                        mv "${app_dir}/$app_filename" "${app_dir}_storage/all/"
+                        mv "$app_dir/$app_filename" "$app_dir_storage/all/"
                         echo -e "[ ${STATUS_OK} ]"
 
                         if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
                             #   full path to deb package
-                            deb_package="${app_dir}_repo/$arch/$app_filename"
+                            deb_package="$app_dir_repo/$arch/$app_filename"
 
                             reprepro -V \
                                 --section utils \
@@ -2197,12 +2197,12 @@ app_run_dl_gh()
 
                     elif [[ "$arch" == "amd64" ]] && [[ $app_filename == *amd64.deb || $app_filename == *amd64*.deb ]]; then
                         printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
-                        mv "${app_dir}/$app_filename" "${app_dir}_storage/amd64/"
+                        mv "$app_dir/$app_filename" "$app_dir_storage/amd64/"
                         echo -e "[ ${STATUS_OK} ]"
 
                         if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
                             #   full path to deb package
-                            deb_package="${app_dir}_repo/$arch/$app_filename"
+                            deb_package="$app_dir_repo/$arch/$app_filename"
 
                             reprepro -V \
                                 --section utils \
@@ -2216,12 +2216,12 @@ app_run_dl_gh()
 
                     elif [[ "$arch" == "arm64" ]] && [[ $app_filename == *arm64.deb || $app_filename == *arm64*.deb ]]; then
                         printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
-                        mv "${app_dir}/$app_filename" "${app_dir}_storage/arm64/"
+                        mv "$app_dir/$app_filename" "$app_dir_storage/arm64/"
                         echo -e "[ ${STATUS_OK} ]"
 
                         if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
                             #   full path to deb package
-                            deb_package="${app_dir}_repo/$arch/$app_filename"
+                            deb_package="$app_dir_repo/$arch/$app_filename"
 
                             reprepro -V \
                                 --section utils \
@@ -2254,14 +2254,14 @@ app_run_gh_start()
     #   .app folder
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    local manifest_dir=${app_dir}/.app
-    mkdir -p            ${manifest_dir}
+    local manifest_dir=$app_dir/.app/
+    mkdir -p            $manifest_dir
 
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   .app folder > create .json
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-tee ${manifest_dir}/$app_repo_dist_sel.json >/dev/null <<EOF
+tee $manifest_dir/$app_repo_dist_sel.json >/dev/null <<EOF
 {
     "name":             "${app_title}",
     "version":          "$(get_version)",
@@ -2338,21 +2338,21 @@ app_run_tree_update()
     #   .app folder
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    local manifest_dir=${app_dir}/.app
-    mkdir -p            ${manifest_dir}
+    local manifest_dir=$app_dir/.app/
+    mkdir -p            $manifest_dir
 
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   duration elapsed
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    duration=${SECONDS}
-    elapsed="$((${duration} / 60))m $(( ${duration} % 60 ))s"
+    duration=$SECONDS
+    elapsed="$(($duration / 60))m $(( $duration % 60 ))s"
 
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   .app folder > create .json
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-tee ${manifest_dir}/$app_repo_dist_sel.json >/dev/null <<EOF
+tee $manifest_dir/$app_repo_dist_sel.json >/dev/null <<EOF
 {
     "name":             "${app_title}",
     "version":          "$(get_version)",
@@ -2371,16 +2371,16 @@ EOF
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     tree_output=$( tree -a -I ".git" --dirsfirst )
-    tree -a -I ".git" --dirsfirst -J > ${manifest_dir}/tree.json
+    tree -a -I ".git" --dirsfirst -J > $manifest_dir/tree.json
 
     #   useful for Gitea with HTML rendering plugin, not useful for Github
-    #   tree -a --dirsfirst -I '.git' -H https://github.com/${app_repo_author}/${app_repo}/src/branch/$app_repo_branch/ -o ${app_dir}/.data/tree.html
+    #   tree -a --dirsfirst -I '.git' -H https://github.com/${app_repo_author}/${app_repo}/src/branch/$app_repo_branch/ -o $app_dir/.data/tree.html
 
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   tree.md content
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-tee ${app_dir}/tree.md >/dev/null <<EOF
+tee $app_dir/tree.md >/dev/null <<EOF
 # Repo Tree
 Last generated on \`$NOW\`
 
@@ -2482,8 +2482,8 @@ app_start()
     #   duration elapsed
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    duration=${SECONDS}
-    elapsed="$((${duration} / 60)) minutes and $(( ${duration} % 60 )) seconds elapsed."
+    duration=$SECONDS
+    elapsed="$(($duration / 60)) minutes and $(( $duration % 60 )) seconds elapsed."
 
     printf "%-57s %-15s\n\n\n\n" "${TIME}      ${elapsed}" | tee -a "${LOGS_FILE}" >/dev/null
 
