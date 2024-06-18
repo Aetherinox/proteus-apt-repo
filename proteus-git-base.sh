@@ -160,11 +160,6 @@ export SECONDS=0
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 lst_github=(
-    'obsidianmd/obsidian-releases'
-    'AppOutlet/AppOutlet'
-    'bitwarden/clients'
-    'shiftkey/desktop'
-    'FreeTubeApp/FreeTube'
     'makedeb/makedeb'
 )
 
@@ -174,161 +169,6 @@ lst_github=(
 
 lst_packages=(
     'adduser'
-    'argon2'
-    'apt-move'
-    'apt-utils'
-    'clevis'
-    'clevis-dracut'
-    'clevis-udisks2'
-    'clevis-tpm2'
-    'dialog'
-    'firefox'
-    'flatpak'
-    'gnome-keyring'
-    'gnome-keysign'
-    'gnome-shell-extension-manager'
-    'gpg'
-    'gpgconf'
-    'gpgv'
-    'jose'
-    'keyutils'
-    'kgpg'
-    'libnginx-mod-http-auth-pam'
-    'libnginx-mod-http-cache-purge'
-    'libnginx-mod-http-dav-ext'
-    'libnginx-mod-http-echo'
-    'libnginx-mod-http-fancyindex'
-    'libnginx-mod-http-geoip'
-    'libnginx-mod-http-headers-more-filter'
-    'libnginx-mod-http-ndk'
-    'libnginx-mod-http-perl'
-    'libnginx-mod-http-subs-filter'
-    'libnginx-mod-http-uploadprogress'
-    'libnginx-mod-http-upstream-fair'
-    'libnginx-mod-nchan'
-    'libnginx-mod-rtmp'
-    'libnginx-mod-stream-geoip'
-    'lsb-base'
-    'lz4'
-    'mysql-client'
-    'mysql-common'
-    'mysql-server'
-    'network-manager-config-connectivity-ubuntu'
-    'network-manager-dev'
-    'network-manager-gnome'
-    'network-manager-openvpn-gnome'
-    'network-manager-openvpn'
-    'network-manager-pptp-gnome'
-    'network-manager-pptp'
-    'network-manager'
-    'networkd-dispatcher'
-    'nginx-common'
-    'nginx-confgen'
-    'nginx-core'
-    'nginx-dev'
-    'nginx-doc'
-    'nginx-extras'
-    'nginx-full'
-    'nginx-light'
-    'nginx'
-    'open-vm-tools-desktop'
-    'open-vm-tools-dev'
-    'open-vm-tools'
-    'php-all-dev'
-    'php-amqp'
-    'php-amqplib'
-    'php-apcu-all-dev'
-    'php-apcu'
-    'php-ast-all-dev'
-    'php-ast'
-    'php-bacon-qr-code'
-    'php-bcmath'
-    'php-brick-math'
-    'php-brick-varexporter'
-    'php-bz2'
-    'php-cas'
-    'php-cgi'
-    'php-cli'
-    'php-code-lts-u2f-php-server'
-    'php-common'
-    'php-crypt-gpg'
-    'php-curl'
-    'php-db'
-    'php-dba'
-    'php-decimal'
-    'php-dev'
-    'php-ds-all-dev'
-    'php-ds'
-    'php-email-validator'
-    'php-embed'
-    'php-enchant'
-    'php-excimer'
-    'php-faker'
-    'php-fpm'
-    'php-fxsl'
-    'php-gd'
-    'php-gearman'
-    'php-gettext-languages'
-    'php-gmagick-all-dev'
-    'php-gmagick'
-    'php-gmp'
-    'php-gnupg-all-dev'
-    'php-gnupg'
-    'php-gnupg'
-    'php-grpc'
-    'php-http'
-    'php-igbinary'
-    'php-imagick'
-    'php-imap'
-    'php-inotify'
-    'php-interbase'
-    'php-intl'
-    'php-ldap'
-    'php-mailparse'
-    'php-maxminddb'
-    'php-mbstring'
-    'php-mcrypt'
-    'php-memcache'
-    'php-memcached'
-    'php-mongodb'
-    'php-msgpack'
-    'php-mysql'
-    'php-oauth'
-    'php-odbc'
-    'php-pcov'
-    'php-pgsql'
-    'php-phpdbg'
-    'php-ps'
-    'php-pspell'
-    'php-psr'
-    'php-raphf'
-    'php-readline'
-    'php-redis'
-    'php-rrd'
-    'php-smbclient'
-    'php-snmp'
-    'php-soap'
-    'php-solr'
-    'php-sqlite3'
-    'php-ssh2'
-    'php-stomp'
-    'php-sybase'
-    'php-tideways'
-    'php-tidy'
-    'php-uopz'
-    'php-uploadprogress'
-    'php-uuid'
-    'php-xdebug'
-    'php-xml'
-    'php-xmlrpc'
-    'php-yac'
-    'php-yaml'
-    'php-zip'
-    'php-zmq'
-    'php'
-    'snap'
-    'snapd'
-    'wget'
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -2250,18 +2090,20 @@ app_run_dl_gh()
 app_run_gh_start()
 {
 
+    cd ${app_dir}
+
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   .app folder
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    local manifest_dir=$app_dir/.app/
-    mkdir -p            $manifest_dir
+    local manifest_dir="${app_dir}/.app"
+    mkdir -p            ${manifest_dir}
 
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   .app folder > create .json
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-tee $manifest_dir/$app_repo_dist_sel.json >/dev/null <<EOF
+sudo tee ${manifest_dir}/${app_repo_dist_sel}.json >/dev/null <<EOF
 {
     "name":             "${app_title}",
     "version":          "$(get_version)",
@@ -2277,14 +2119,13 @@ EOF
 
     app_run_github_precheck
 
-    git branch -m $app_repo_branch
+    git branch -m ${app_repo_branch}
     git add --all
     git add -u
 
     sleep 1
 
-    local app_repo_commit="[S] auto-update [ $app_repo_dist_sel ] @ $NOW"
-
+    local app_repo_commit="[S] auto-update [ ${app_repo_dist_sel} ] @ ${NOW}"
     echo -e "  ${WHITE}Starting commit ${FUCHSIA}${app_repo_commit}${WHITE}${NORMAL}"
 
     git commit -S -m "$app_repo_commit"
@@ -2304,6 +2145,9 @@ EOF
 
 app_run_gh_end()
 {
+
+    cd ${app_dir}
+
     app_run_github_precheck
 
     echo
@@ -2338,21 +2182,21 @@ app_run_tree_update()
     #   .app folder
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    local manifest_dir=$app_dir/.app/
-    mkdir -p            $manifest_dir
+    local manifest_dir="${app_dir}/.app"
+    mkdir -p            ${manifest_dir}
 
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   duration elapsed
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    duration=$SECONDS
-    elapsed="$(($duration / 60))m $(( $duration % 60 ))s"
+    duration=${SECONDS}
+    elapsed="$((${duration} / 60))m $(( ${duration} % 60 ))s"
 
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   .app folder > create .json
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-tee $manifest_dir/$app_repo_dist_sel.json >/dev/null <<EOF
+sudo tee ${manifest_dir}/${app_repo_dist_sel}.json >/dev/null <<EOF
 {
     "name":             "${app_title}",
     "version":          "$(get_version)",
@@ -2371,7 +2215,7 @@ EOF
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     tree_output=$( tree -a -I ".git" --dirsfirst )
-    tree -a -I ".git" --dirsfirst -J > $manifest_dir/tree.json
+    tree -a -I ".git" --dirsfirst -J > ${manifest_dir}/tree.json
 
     #   useful for Gitea with HTML rendering plugin, not useful for Github
     #   tree -a --dirsfirst -I '.git' -H https://github.com/${app_repo_author}/${app_repo}/src/branch/$app_repo_branch/ -o $app_dir/.data/tree.html
@@ -2380,9 +2224,9 @@ EOF
     #   tree.md content
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-tee $app_dir/tree.md >/dev/null <<EOF
+sudo tee ${app_dir}/tree.md >/dev/null <<EOF
 # Repo Tree
-Last generated on \`$NOW\`
+Last generated on \`${NOW}\`
 
 <br />
 
@@ -2391,7 +2235,7 @@ Last generated on \`$NOW\`
 <br />
 
 \`\`\`
-$tree_output
+${tree_output}
 \`\`\`
 EOF
 }
@@ -2415,7 +2259,7 @@ app_start()
     #   pull all changes from github
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    git_pull=$( git pull origin $app_repo_branch )
+    git_pull=$( git pull origin ${app_repo_branch} )
 
     echo -e "  ${GREYL}Git Pull${WHITE}"
     echo -e "  ${WHITE}${git_pull}${NORMAL}"
@@ -2482,8 +2326,8 @@ app_start()
     #   duration elapsed
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    duration=$SECONDS
-    elapsed="$(($duration / 60)) minutes and $(( $duration % 60 )) seconds elapsed."
+    duration=${SECONDS}
+    elapsed="$((${duration} / 60)) minutes and $(( ${duration} % 60 )) seconds elapsed."
 
     printf "%-57s %-15s\n\n\n\n" "${TIME}      ${elapsed}" | tee -a "${LOGS_FILE}" >/dev/null
 

@@ -1369,11 +1369,8 @@
       ]}
     ]}
   ]},
-    {"type":"file","name":"adduser_3.118ubuntu5_all.deb.1"},
     {"type":"file","name":".gitattributes"},
     {"type":"file","name":".gitignore"},
-    {"type":"file","name":"makedeb-beta_16.1.0-beta1_amd64_jammy.deb"},
-    {"type":"file","name":"makedeb-beta_16.1.0-beta1_arm64_jammy.deb"},
     {"type":"file","name":"proteus-git-24-17-06.log"},
     {"type":"file","name":"proteus-git-base.sh"},
     {"type":"file","name":"proteus-git.sh"},
@@ -1382,5 +1379,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":198,"files":984}
+  {"type":"report","directories":198,"files":981}
 ]
