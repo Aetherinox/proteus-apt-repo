@@ -3,6 +3,7 @@
     {"type":"directory","name":".app","contents":[
       {"type":"file","name":"focal.json"},
       {"type":"file","name":"jammy.json"},
+      {"type":"file","name":".json"},
       {"type":"file","name":"lunar.json"},
       {"type":"file","name":"mantic.json"},
       {"type":"file","name":"noble.json"},
@@ -1370,6 +1371,7 @@
   ]},
     {"type":"file","name":".gitattributes"},
     {"type":"file","name":".gitignore"},
+    {"type":"file","name":"proteus-git-24-17-06.log"},
     {"type":"file","name":"proteus-git-base.sh"},
     {"type":"file","name":"proteus-git.sh"},
     {"type":"file","name":"README.md"},
@@ -1377,5 +1379,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":198,"files":979}
+  {"type":"report","directories":198,"files":981}
 ]
