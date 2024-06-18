@@ -1823,7 +1823,7 @@ app_run_dl_aptsrc()
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     count=${#lst_pkgs_sorted[@]}
-    (( count++ ))
+    # (( count++ ))
 
     begin "Downloading Packages [ $count ]"
     echo
