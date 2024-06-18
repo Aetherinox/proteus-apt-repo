@@ -2,9 +2,6 @@
 PATH="/bin:/usr/bin:/sbin:/usr/sbin:/home/$USER/bin"
 echo 
 
-HOME=/home/aetherinox
-PATH_BACKUP=/server/proteus
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   @author :           aetherinox
 #   @script :           Proteus Apt Git
@@ -32,18 +29,6 @@ PATH_BACKUP=/server/proteus
 #   database errors:
 #       - v5.4.2
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   Deprecated: This method is being deprecated in favor of clevis encrypted
-#   secrets.
-#
-#   load secrets file to handle Github rate limiting via a PAF.
-#   managed via https://github.com/settings/tokens?type=beta
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-if [ -f ${PATH_BACKUP}/secrets.sh ]; then
-source ${PATH_BACKUP}/secrets.sh
-fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   vars > colors
@@ -87,6 +72,55 @@ STATUS_FAIL="${BOLD}${RED} FAIL ${NORMAL}"
 STATUS_HALT="${BOLD}${YELLOW} HALT ${NORMAL}"
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   vars > app
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+sys_arch=$(dpkg --print-architecture)
+sys_code=$(lsb_release -cs)
+
+HOME="/home/aetherinox"
+
+app_dir="/server/proteus"
+app_dir_home="${HOME}/bin"
+app_dir_storage="$app_dir/incoming/proteus-git/${sys_code}"
+app_dir_repo="incoming/proteus-git/${sys_code}"
+app_dir_wd=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+app_title="Proteus Apt Git"
+app_about="Internal system to Proteus App Manager which grabs debian packages."
+app_ver=("1" "1" "0" "0")
+app_file_this=$(basename "$0")
+app_file_proteus="${app_dir_home}/proteus-git"
+
+app_repo_author="Aetherinox"
+app_repo="proteus-git"
+app_repo_branch="main"
+app_repo_user=$( git config --global --get-all user.name )
+app_repo_email=$( git config --global --get-all user.email )
+app_repo_apt="proteus-apt-repo"
+app_repo_apt_pkg="aetherinox-${app_repo_apt}-archive"
+app_repo_url="https://github.com/${app_repo_author}/${app_repo}"
+app_repo_mnfst="https://raw.githubusercontent.com/${app_repo_author}/${app_repo}/${app_repo_branch}/manifest.json"
+app_repo_script="https://raw.githubusercontent.com/${app_repo_author}/${app_repo}/BRANCH/setup.sh"
+
+app_pid_spin=0
+app_pid=$BASHPID
+app_queue_url=()
+app_i=0
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   Deprecated: This method is being deprecated in favor of clevis encrypted
+#   secrets.
+#
+#   load secrets file to handle Github rate limiting via a PAF.
+#   managed via https://github.com/settings/tokens?type=beta
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+if [ -f ${app_dir}/secrets.sh ]; then
+source ${app_dir}/secrets.sh
+fi
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   load secrets through Clevis
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -110,36 +144,6 @@ else
     echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.passwd missing${WHITE}"
 fi
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   vars > app
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-sys_arch=$(dpkg --print-architecture)
-sys_code=$(lsb_release -cs)
-app_dir_home="$HOME/bin"
-app_file_this=$(basename "$0")
-app_file_proteus="${app_dir_home}/proteus-git"
-app_repo_author="Aetherinox"
-app_title="Proteus Apt Git"
-app_about="Internal system to Proteus App Manager which grabs debian packages."
-app_ver=("1" "1" "0" "0")
-app_repo="proteus-git"
-app_repo_branch="main"
-app_repo_user=$( git config --global --get-all user.name )
-app_repo_email=$( git config --global --get-all user.email )
-app_repo_apt="proteus-apt-repo"
-app_repo_apt_pkg="aetherinox-${app_repo_apt}-archive"
-app_repo_url="https://github.com/${app_repo_author}/${app_repo}"
-app_mnfst="https://raw.githubusercontent.com/${app_repo_author}/${app_repo}/${app_repo_branch}/manifest.json"
-app_script="https://raw.githubusercontent.com/${app_repo_author}/${app_repo}/BRANCH/setup.sh"
-app_dir="/server/proteus"
-app_dir_wd=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-app_dir_repo="incoming/proteus-git/${sys_code}"
-app_dir_storage="$app_dir/incoming/proteus-git/${sys_code}"
-app_pid_spin=0
-app_pid=$BASHPID
-app_queue_url=()
-app_i=0
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   exports
@@ -151,8 +155,8 @@ export YEAR=$(date +'%Y')
 export TIME=$(date '+%H:%M:%S')
 export NOW=$(date '+%m.%d.%Y %H:%M:%S')
 export ARGS=$1
-export LOGS_DIR="$app_dir/logs"
-export LOGS_FILE="$LOGS_DIR/proteus-git-${DATE}.log"
+export LOGS_DIR="${app_dir}/logs"
+export LOGS_FILE="${LOGS_DIR}/proteus-git-${DATE}.log"
 export SECONDS=0
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -250,13 +254,13 @@ app_run_github_precheck( )
     git config --global credential.helper store
 
     # see if repo directory is in safelist for git
-    if git config --global --get-all safe.directory | grep -q "$app_dir"; then
+    if git config --global --get-all safe.directory | grep -q "${app_dir}"; then
         bFoundSafe=true
     fi
 
     # if new repo, add to safelist
-    if ! [ $bFoundSafe ]; then
-        git config --global --add safe.directory $app_dir
+    if ! [ ${bFoundSafe} ]; then
+        git config --global --add safe.directory ${app_dir}
     fi
 
     git config --global init.defaultBranch ${app_repo_branch}
@@ -268,7 +272,7 @@ app_run_github_precheck( )
 #   secrets.sh file missing -- abort
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-if ! [ -f ${PATH_BACKUP}/secrets.sh ]; then
+if ! [ -f ${app_dir}/secrets.sh ]; then
     echo
     echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}secrets.sh file not found${NORMAL}"
     echo -e "  ${BOLD}${WHITE}Must create a ${FUCHSIA}secrets.sh${WHITE} file.${NORMAL}"
@@ -282,8 +286,8 @@ if ! [ -f ${PATH_BACKUP}/secrets.sh ]; then
     echo
 
     set +m
-    trap "kill -9 $app_pid 2> /dev/null" `seq 0 15`
-    kill $app_pid
+    trap "kill -9 ${app_pid} 2> /dev/null" `seq 0 15`
+    kill ${app_pid}
     set -m
 fi
 
@@ -360,8 +364,8 @@ if [ -z "${GPG_KEY}" ]; then
     echo
 
     set +m
-    trap "kill -9 $app_pid 2> /dev/null" `seq 0 15`
-    kill $app_pid
+    trap "kill -9 ${app_pid} 2> /dev/null" `seq 0 15`
+    kill ${app_pid}
     set -m
 fi
 
@@ -398,8 +402,8 @@ if [ -z "${CSI_PAT_GITHUB}" ] && [ -z "${CSI_PAT_GITLAB}" ]; then
     echo
 
     set +m
-    trap "kill -9 $app_pid 2> /dev/null" `seq 0 15`
-    kill $app_pid
+    trap "kill -9 ${app_pid} 2> /dev/null" `seq 0 15`
+    kill ${app_pid}
     set -m
 fi
 
@@ -483,8 +487,8 @@ EOF
     printf '%-57s' "    |--- Set ownership to ${USER}"
     sleep 1
     if [ -z "${OPT_DEV_NULLRUN}" ]; then
-        sudo chgrp ${USER} ${gpgconfig_file} >> $LOGS_FILE 2>&1
-        sudo chown ${USER} ${gpgconfig_file} >> $LOGS_FILE 2>&1
+        sudo chgrp ${USER} ${gpgconfig_file} >> ${LOGS_FILE} 2>&1
+        sudo chown ${USER} ${gpgconfig_file} >> ${LOGS_FILE} 2>&1
     fi
     echo -e "[ ${STATUS_OK} ]"
 
@@ -726,22 +730,22 @@ Logs_Finish()
     if [ ${PIPE_OPENED} ] ; then
         exec 1<&3
         sleep 0.2
-        ps --pid $app_pid_tee >/dev/null
+        ps --pid ${app_pid_tee} >/dev/null
         if [ $? -eq 0 ] ; then
             # using $(wait $app_pid_tee) would be better
             # however, some commands leave file descriptors open
             sleep 1
-            kill $app_pid_tee >> $LOGS_FILE 2>&1
+            kill ${app_pid_tee} >> ${LOGS_FILE} 2>&1
         fi
 
         printf "%-50s %-15s\n" "${TIME}      Destroying Pipe ${LOGS_PIPE} (${app_pid_tee})" | tee -a "${LOGS_FILE}" >/dev/null
 
-        rm $LOGS_PIPE
+        rm ${LOGS_PIPE}
         unset PIPE_OPENED
     fi
 
-    duration=$SECONDS
-    elapsed="$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."
+    duration=${SECONDS}
+    elapsed="$((${duration} / 60)) minutes and $((${duration} % 60)) seconds elapsed."
 
     printf "%-50s %-15s\n" "${TIME}      User Input: OnClick ......... Exit App" | tee -a "${LOGS_FILE}" >/dev/null
     printf "%-50s %-15s\n\n\n\n" "${TIME}      ${elapsed}" | tee -a "${LOGS_FILE}" >/dev/null
@@ -759,7 +763,7 @@ Logs_Begin
 #   require normal user sudo authentication for certain actions
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-if [[ $EUID -ne 0 ]]; then
+if [[ ${EUID} -ne 0 ]]; then
     sudo -k # make sure to ask for password on next sudo
     if sudo true && [ -n "${USER}" ]; then
         printf "\n%-50s %-5s\n\n" "${TIME}      SUDO [SIGN-IN]: Welcome, ${USER}" | tee -a "${LOGS_FILE}" >/dev/null
@@ -769,7 +773,7 @@ if [[ $EUID -ne 0 ]]; then
     fi
 else
     if [ -n "${USER}" ]; then
-        printf "\n%-50s %-5s\n\n" "${TIME}      SUDO [EXISTING]: $USER" | tee -a "${LOGS_FILE}" >/dev/null
+        printf "\n%-50s %-5s\n\n" "${TIME}      SUDO [EXISTING]: ${USER}" | tee -a "${LOGS_FILE}" >/dev/null
     fi
 fi
 
@@ -800,9 +804,9 @@ spin()
 
 spinner_halt()
 {
-    if ps -p $app_pid_spin > /dev/null
+    if ps -p ${app_pid_spin} > /dev/null
     then
-        kill -9 $app_pid_spin 2> /dev/null
+        kill -9 ${app_pid_spin} 2> /dev/null
         printf "\n%-50s %-5s\n" "${TIME}      KILL Spinner: PID (${app_pid_spin})" | tee -a "${LOGS_FILE}" >/dev/null
     fi
 }
@@ -855,7 +859,7 @@ cli_options()
     while true; do
         read -rsn1 key
         local escaped_char=$( printf "\u1b" )
-        if [[ $key == $escaped_char ]]; then
+        if [[ ${key} == ${escaped_char} ]]; then
             read -rsn2 key
         fi
 
@@ -868,18 +872,18 @@ cli_options()
             '[D' | '[B')
                 it=$(($it+1));;
             '' )
-                return $it && exit;;
+                return ${it} && exit;;
         esac
 
         local min_len=0
         local farr_len=$(( ${#CHOICES[@]}-1))
         if [[ "$it" -lt "$min_len" ]]; then
             it=$(( ${#CHOICES[@]}-1 ))
-        elif [[ "$it" -gt "$farr_len"  ]]; then
+        elif [[ "$it" -gt "${farr_len}"  ]]; then
             it=0
         fi
 
-        opts_show $it
+        opts_show ${it}
 
     done
 }
@@ -926,12 +930,12 @@ cli_question( )
         read response </dev/tty
 
         # NULL response uses default
-        if [ -z "$response" ]; then
+        if [ -z "${response}" ]; then
             response=$def
         fi
 
         # validate response
-        case "$response" in
+        case "${response}" in
             Y|y|yes|YES)
                 return 0
                 ;;
@@ -990,7 +994,7 @@ begin()
     printf "%-50s %-5s\n\n" "${TIME}      NEW Spinner: PID (${app_pid_spin})" | tee -a "${LOGS_FILE}" >/dev/null
 
     # kill spinner on any signal
-    trap "kill -9 $app_pid_spin 2> /dev/null" `seq 0 15`
+    trap "kill -9 ${app_pid_spin} 2> /dev/null" `seq 0 15`
 
     printf '%-50s %-5s' "  ${1}" ""
 
@@ -1043,11 +1047,11 @@ exit()
 envpath_add_proteus()
 {
     local file_env=/etc/profile.d/proteus-git.sh
-    if [ "$2" = "force" ] || ! echo $PATH | $(which egrep) -q "(^|:)$1($|:)" ; then
+    if [ "$2" = "force" ] || ! echo ${PATH} | $(which egrep) -q "(^|:)$1($|:)" ; then
         if [ "$2" = "after" ] ; then
-            echo 'export PATH="$PATH:'$1'"' | sudo tee $file_env > /dev/null
+            echo 'export PATH="$PATH:'$1'"' | sudo tee ${file_env} > /dev/null
         else
-            echo 'export PATH="'$1':$PATH"' | sudo tee $file_env > /dev/null
+            echo 'export PATH="'$1':$PATH"' | sudo tee ${file_env} > /dev/null
         fi
     fi
 }
@@ -1055,11 +1059,11 @@ envpath_add_proteus()
 envpath_add_lastversion()
 {
     local file_env=/etc/profile.d/lastversion.sh
-    if [ "$2" = "force" ] || ! echo $PATH | $(which egrep) -q "(^|:)$1($|:)" ; then
+    if [ "$2" = "force" ] || ! echo ${PATH} | $(which egrep) -q "(^|:)$1($|:)" ; then
         if [ "$2" = "after" ] ; then
-            echo 'export PATH="$PATH:'$1'"' | sudo tee $file_env > /dev/null
+            echo 'export PATH="$PATH:'$1'"' | sudo tee ${file_env} > /dev/null
         else
-            echo 'export PATH="'$1':$PATH"' | sudo tee $file_env > /dev/null
+            echo 'export PATH="'$1':$PATH"' | sudo tee ${file_env} > /dev/null
         fi
     fi
 }
@@ -1076,7 +1080,7 @@ envpath_add_lastversion()
 app_update()
 {
     local repo_branch=$([ "${1}" ] && echo "${1}" || echo "${app_repo_branch}" )
-    local branch_uri="${app_script/BRANCH/"$repo_branch"}"
+    local branch_uri="${app_repo_script/BRANCH/"$repo_branch"}"
     local IsSilent=${2}
 
     begin "Updating from branch [${repo_branch}]"
@@ -1087,22 +1091,22 @@ app_update()
     printf '%-50s %-5s' "    |--- Downloading update" ""
     sleep 1
     if [ -z "${OPT_DEV_NULLRUN}" ]; then
-        sudo wget -O "${app_file_proteus}" -q "$branch_uri" >> $LOGS_FILE 2>&1
+        sudo wget -O "${app_file_proteus}" -q "${branch_uri}" >> ${LOGS_FILE} 2>&1
     fi
     echo -e "[ ${STATUS_OK} ]"
 
     printf '%-50s %-5s' "    |--- Set ownership to ${USER}" ""
     sleep 1
     if [ -z "${OPT_DEV_NULLRUN}" ]; then
-        sudo chgrp ${USER} ${app_file_proteus} >> $LOGS_FILE 2>&1
-        sudo chown ${USER} ${app_file_proteus} >> $LOGS_FILE 2>&1
+        sudo chgrp ${USER} ${app_file_proteus} >> ${LOGS_FILE} 2>&1
+        sudo chown ${USER} ${app_file_proteus} >> ${LOGS_FILE} 2>&1
     fi
     echo -e "[ ${STATUS_OK} ]"
 
     printf '%-50s %-5s' "    |--- Set perms to u+x" ""
     sleep 1
     if [ -z "${OPT_DEV_NULLRUN}" ]; then
-        sudo chmod u+x ${app_file_proteus} >> $LOGS_FILE 2>&1
+        sudo chmod u+x ${app_file_proteus} >> ${LOGS_FILE} 2>&1
     fi
     echo -e "[ ${STATUS_OK} ]"
 
@@ -1122,7 +1126,7 @@ app_update()
 #   ran from anywhere.
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-if [ "$OPT_UPDATE" = true ]; then
+if [ "${OPT_UPDATE}" = true ]; then
     app_update ${app_repo_branch_sel}
 fi
 
@@ -1567,7 +1571,7 @@ app_setup()
         if [ -z "${OPT_DEV_NULLRUN}" ]; then
             mkdir -p "$app_dir_home"
 
-            local branch_uri="${app_script/BRANCH/"$app_repo_branch_sel"}"
+            local branch_uri="${app_repo_script/BRANCH/"$app_repo_branch_sel"}"
             sudo wget -O "${app_file_proteus}" -q "$branch_uri" >> $LOGS_FILE 2>&1
             sudo chgrp ${USER} ${app_file_proteus} >> $LOGS_FILE 2>&1
             sudo chown ${USER} ${app_file_proteus} >> $LOGS_FILE 2>&1
