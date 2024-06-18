@@ -1367,36 +1367,36 @@ app_run_dl_aptsrc()
             # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
             #   <package>_1.x.x-x_<arch>.deb
-            query=$( sudo apt-url "$pkg_arch" )
-            app_filename=$( echo "$query" | head -n 1; )
-            app_url=$( echo "$query" | tail -n 1; )
+            query=$( sudo apt-url "${pkg_arch}" )
+            app_filename=$( echo "${query}" | head -n 1; )
+            app_url=$( echo "${query}" | tail -n 1; )
 
             sudo pkill -9 "reprepro"
-            if [ -f "$app_dir/db/lockfile" ]; then
-                sudo rm "$app_dir/db/lockfile"
+            if [ -f "${app_dir}/db/lockfile" ]; then
+                sudo rm "${app_dir}/db/lockfile"
             fi
 
-            wget "$app_url" -q
+            wget "${app_url}" -q
 
-            if [[ -f "$app_dir/$app_filename" ]]; then
+            if [[ -f "${app_dir}/${app_filename}" ]]; then
 
                 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
                 #   architecture > all
                 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-                if [[ "$arch" == "all" ]] && [[ $app_filename == *all.deb ]]; then
-                    printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL} ${YELLOW}[ $count ]${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
-                    mv "$app_dir/$app_filename" "$app_dir_storage/all/"
+                if [[ "${arch}" == "all" ]] && [[ ${app_filename} == *all.deb ]]; then
+                    printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL} ${YELLOW}[ ${count} ]${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
+                    mv "${app_dir}/${app_filename}" "${app_dir_storage}/all/"
                     echo -e "[ ${STATUS_OK} ]"
 
                     if [ -n "${bRep}" ]; then
                         #   full path to deb package
-                        deb_package="$app_dir_repo/$arch/$app_filename"
+                        deb_package="${app_dir_repo}/${arch}/${app_filename}"
                         reprepro -V \
                             --section utils \
                             --component main \
                             --priority 0 \
-                            includedeb $app_repo_dist_sel "$deb_package"
+                            includedeb ${app_repo_dist_sel} "${deb_package}"
                     fi
 
                     echo
@@ -1405,20 +1405,20 @@ app_run_dl_aptsrc()
                 #   architecture > amd64
                 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-                elif [[ "$arch" == "amd64" ]] && [[ $app_filename == *amd64.deb ]]; then
-                    printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL} ${YELLOW}[ $count ]${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
-                    mv "$app_dir/$app_filename" "$app_dir_storage/amd64/"
+                elif [[ "${arch}" == "amd64" ]] && [[ ${app_filename} == *amd64.deb ]]; then
+                    printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL} ${YELLOW}[ ${count} ]${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
+                    mv "${app_dir}/${app_filename}" "${app_dir_storage}/amd64/"
                     echo -e "[ ${STATUS_OK} ]"
 
                     if [ -n "${bRep}" ]; then
                         #   full path to deb package
-                        deb_package="$app_dir_repo/$arch/$app_filename"
+                        deb_package="${app_dir_repo}/${arch}/${app_filename}"
                         reprepro -V \
                             --section utils \
                             --component main \
                             --priority 0 \
-                            --architecture $arch \
-                            includedeb $app_repo_dist_sel "$deb_package"
+                            --architecture ${arch} \
+                            includedeb ${app_repo_dist_sel} "${deb_package}"
                     fi
 
                     echo
@@ -1427,8 +1427,8 @@ app_run_dl_aptsrc()
                 #   architecture > arm64
                 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-                elif [[ "$arch" == "arm64" ]] && [[ $app_filename == *arm64.deb ]]; then
-                    printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL} ${YELLOW}[ $count ]${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
+                elif [[ "${arch}" == "arm64" ]] && [[ ${app_filename} == *arm64.deb ]]; then
+                    printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL} ${YELLOW}[ ${count} ]${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
                     mv "${app_dir}/${app_filename}" "${app_dir_storage}/arm64/"
                     echo -e "[ ${STATUS_OK} ]"
 
@@ -1439,7 +1439,7 @@ app_run_dl_aptsrc()
                             --section utils \
                             --component main \
                             --priority 0 \
-                            --architecture $arch \
+                            --architecture ${arch} \
                             includedeb ${app_repo_dist_sel} "${deb_package}"
                     fi
 
@@ -1663,9 +1663,13 @@ app_run_gh_end()
     echo -e " ${BLUE}-------------------------------------------------------------------------${NORMAL}"
     echo
 
+    sleep 1
+
     #git branch -m ${app_repo_branch}
     #git add --all
     #git add -u
+
+    sleep 1
 
     local app_repo_commit="[E] auto-update [ ${app_repo_dist_sel} ] @ ${NOW}"
     #git commit -S -m "${app_repo_commit}"
@@ -1836,6 +1840,7 @@ app_start()
     echo
 
     finish
+    Logs_Finish
 }
 
 app_start
