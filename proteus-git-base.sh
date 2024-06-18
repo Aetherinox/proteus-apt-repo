@@ -2035,19 +2035,19 @@ app_run_dl_aptsrc()
                 #   architecture > all
                 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-                if [[ "$arch" == "all" ]] && [[ $app_filename == *all.deb ]]; then
+                if [[ "${arch}" == "all" ]] && [[ ${app_filename} == *all.deb ]]; then
                     printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL} ${YELLOW}[ $count ]${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
-                    mv "$app_dir/$app_filename" "$app_dir_storage/all/"
+                    mv "${app_dir}/${app_filename}" "${app_dir_storage}/all/"
                     echo -e "[ ${STATUS_OK} ]"
 
                     if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
                         #   full path to deb package
-                        deb_package="$app_dir_repo/$arch/$app_filename"
+                        deb_package="${app_dir_repo}/${arch}/${app_filename}"
                         reprepro -V \
                             --section utils \
                             --component main \
                             --priority 0 \
-                            includedeb $app_repo_dist_sel "$deb_package"
+                            includedeb ${app_repo_dist_sel} "${deb_package}"
                     fi
 
                     echo
