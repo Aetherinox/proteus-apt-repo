@@ -454,39 +454,6 @@ app_repo_branch_sel=$( [[ -n "$OPT_BRANCH" ]] && echo "$OPT_BRANCH" || echo "$ap
 
 app_repo_dist_sel=$( [[ -n "$OPT_DISTRIBUTION" ]] && echo "$OPT_DISTRIBUTION" || echo "$sys_code"  )
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   line > comment
-#
-#   allows for lines to be commented out
-#
-#   comment REGEX FILE [COMMENT-MARK]
-#   comment "skip-grant-tables" "/etc/mysql/my.cnf"
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-line_comment()
-{
-    local regx="${1:?}"
-    local targ="${2:?}"
-    local mark="${3:-#}"
-    sudo sed -ri "s:^([ ]*)($regx):\\1$mark\\2:" "$targ"
-}
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   line > uncomment
-#
-#   allows for lines to be uncommented
-#
-#   uncomment REGEX FILE [COMMENT-MARK]
-#   uncomment "skip-grant-tables" "/etc/mysql/my.cnf"
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-line_uncomment()
-{
-    local regx="${1:?}"
-    local targ="${2:?}"
-    local mark="${3:-#}"
-    sudo sed -ri "s:^([ ]*)[$mark]+[ ]?([ ]*$regx):\\1\\2:" "$targ"
-}
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   func > logs > begin
@@ -496,39 +463,47 @@ line_uncomment()
 
 Logs_Begin()
 {
+    if [ $OPT_NOLOG ] ; then
+        echo
+        echo
+        printf '%-50s %-5s' "    Logging for this package has been disabled." ""
+        echo
+        echo
+        sleep 3
+    else
+        mkdir -p $LOGS_DIR
+        LOGS_PIPE=${LOGS_FILE}.pipe
 
-    mkdir -p $LOGS_DIR
-    LOGS_PIPE=${LOGS_FILE}.pipe
+        # get name of display in use
+        local display=":$(ls /tmp/.X11-unix/* | sed 's#/tmp/.X11-unix/X##' | head -n 1)"
 
-    # get name of display in use
-    local display=":$(ls /tmp/.X11-unix/* | sed 's#/tmp/.X11-unix/X##' | head -n 1)"
+        # get user using display
+        local user=$(who | grep '('$display')' | awk '{print $1}' | head -n 1)
 
-    # get user using display
-    local user=$(who | grep '('$display')' | awk '{print $1}' | head -n 1)
+        if ! [[ -p $LOGS_PIPE ]]; then
+            mkfifo -m 775 $LOGS_PIPE
+            printf "%-50s %-5s\n" "${TIME}      Creating new pipe ${LOGS_PIPE}" | tee -a "${LOGS_FILE}" >/dev/null
+        fi
 
-    if ! [[ -p $LOGS_PIPE ]]; then
-        mkfifo -m 775 $LOGS_PIPE
-        printf "%-50s %-5s\n" "${TIME}      Creating new pipe ${LOGS_PIPE}" | tee -a "${LOGS_FILE}" >/dev/null
+        LOGS_OBJ=${LOGS_FILE}
+        exec 3>&1
+        tee -a ${LOGS_OBJ} <$LOGS_PIPE >&3 &
+        app_pid_tee=$!
+        exec 1>$LOGS_PIPE
+        PIPE_OPENED=1
+
+        printf "%-50s %-5s\n" "${TIME}      Logging to ${LOGS_OBJ}" | tee -a "${LOGS_FILE}" >/dev/null
+
+        printf "%-50s %-5s\n" "${TIME}      Software  : ${app_title}" | tee -a "${LOGS_FILE}" >/dev/null
+        printf "%-50s %-5s\n" "${TIME}      Version   : v$(get_version)" | tee -a "${LOGS_FILE}" >/dev/null
+        printf "%-50s %-5s\n" "${TIME}      Process   : $$" | tee -a "${LOGS_FILE}" >/dev/null
+        printf "%-50s %-5s\n" "${TIME}      OS        : ${OS}" | tee -a "${LOGS_FILE}" >/dev/null
+        printf "%-50s %-5s\n" "${TIME}      OS VER    : ${OS_VER}" | tee -a "${LOGS_FILE}" >/dev/null
+
+        printf "%-50s %-5s\n" "${TIME}      DATE      : ${DATE}" | tee -a "${LOGS_FILE}" >/dev/null
+        printf "%-50s %-5s\n" "${TIME}      TIME      : ${TIME}" | tee -a "${LOGS_FILE}" >/dev/null
+
     fi
-
-    LOGS_OBJ=${LOGS_FILE}
-    exec 3>&1
-    tee -a ${LOGS_OBJ} <$LOGS_PIPE >&3 &
-    app_pid_tee=$!
-    exec 1>$LOGS_PIPE
-    PIPE_OPENED=1
-
-    printf "%-50s %-5s\n" "${TIME}      Logging to ${LOGS_OBJ}" | tee -a "${LOGS_FILE}" >/dev/null
-
-    printf "%-50s %-5s\n" "${TIME}      Software  : ${app_title}" | tee -a "${LOGS_FILE}" >/dev/null
-    printf "%-50s %-5s\n" "${TIME}      Version   : v$(get_version)" | tee -a "${LOGS_FILE}" >/dev/null
-    printf "%-50s %-5s\n" "${TIME}      Process   : $$" | tee -a "${LOGS_FILE}" >/dev/null
-    printf "%-50s %-5s\n" "${TIME}      OS        : ${OS}" | tee -a "${LOGS_FILE}" >/dev/null
-    printf "%-50s %-5s\n" "${TIME}      OS VER    : ${OS_VER}" | tee -a "${LOGS_FILE}" >/dev/null
-
-    printf "%-50s %-5s\n" "${TIME}      DATE      : ${DATE}" | tee -a "${LOGS_FILE}" >/dev/null
-    printf "%-50s %-5s\n" "${TIME}      TIME      : ${TIME}" | tee -a "${LOGS_FILE}" >/dev/null
-
 }
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -569,6 +544,7 @@ Logs_Finish()
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 Logs_Begin
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   Cache Sudo Password
@@ -743,10 +719,10 @@ if [ ! -d .git ]; then
 
     app_run_github_precheck
 
-    git init --initial-branch=${app_repo_branch}
-    git add .;git commit -m'Proteus-Git Setup'
-    git remote add origin https://github.com/Aetherinox/proteus-apt-repo.git
-    git pull origin ${app_repo_branch} --allow-unrelated-histories
+    #git init --initial-branch=${app_repo_branch}
+    #git add .;git commit -m'Proteus-Git Setup'
+    #git remote add origin https://github.com/Aetherinox/proteus-apt-repo.git
+    #git pull origin ${app_repo_branch} --allow-unrelated-histories
 fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -1652,22 +1628,17 @@ EOF
 
     app_run_github_precheck
 
-    git branch -m ${app_repo_branch}
-    git add --all
-    git add -u
-
-    sleep 1
+    #git branch -m ${app_repo_branch}
+    #git add --all
+    #git add -u
 
     local app_repo_commit="[S] auto-update [ ${app_repo_dist_sel} ] @ ${NOW}"
-
     echo -e "  ${WHITE}Starting commit ${FUCHSIA}${app_repo_commit}${WHITE}${NORMAL}"
 
-    git commit -S -m "${app_repo_commit}"
-
-    sleep 1
+    #git commit -S -m "${app_repo_commit}"
 
     echo -e "  ${WHITE}Starting push ${FUCHSIA}${app_repo_branch}${WHITE}${NORMAL}"
-    git push https://${CSI_PAT_GITHUB}@github.com/${GITHUB_NAME}/${app_repo_apt}
+    #git push https://${CSI_PAT_GITHUB}@github.com/${GITHUB_NAME}/${app_repo_apt}
 
 }
 
@@ -1692,18 +1663,14 @@ app_run_gh_end()
     echo -e " ${BLUE}-------------------------------------------------------------------------${NORMAL}"
     echo
 
-    git branch -m ${app_repo_branch}
-    git add --all
-    git add -u
-
-    sleep 1
+    #git branch -m ${app_repo_branch}
+    #git add --all
+    #git add -u
 
     local app_repo_commit="[E] auto-update [ ${app_repo_dist_sel} ] @ ${NOW}"
-    git commit -S -m "${app_repo_commit}"
+    #git commit -S -m "${app_repo_commit}"
 
-    sleep 1
-
-    git push -u origin ${app_repo_branch}
+    #git push -u origin ${app_repo_branch}
 }
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -1823,11 +1790,6 @@ app_start()
         echo -e "  ${BOLD}${WHITE}     sudo apt-get install reprepro${NORMAL}"
         echo
 
-        printf "  Press any key to abort ... ${NORMAL}"
-        read -n 1 -s -r -p ""
-        echo
-        echo
-
         set +m
         trap "kill -9 ${app_pid} 2> /dev/null" `seq 0 15`
         kill ${app_pid}
@@ -1860,8 +1822,8 @@ app_start()
     #   duration elapsed
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    duration=$SECONDS
-    elapsed="$(($duration / 60)) minutes and $(( $duration % 60 )) seconds elapsed."
+    duration=${SECONDS}
+    elapsed="$((${duration} / 60)) minutes and $(( ${duration} % 60 )) seconds elapsed."
 
     printf "%-57s %-15s\n\n\n\n" "${TIME}      ${elapsed}" | tee -a "${LOGS_FILE}" >/dev/null
 
@@ -1873,11 +1835,7 @@ app_start()
     echo -e " ${BLUE}-------------------------------------------------------------------------${NORMAL}"
     echo
 
-    sleep 10
-
     finish
-    Logs_Finish
-    exit
 }
 
 app_start
