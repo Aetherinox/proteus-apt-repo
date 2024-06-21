@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `06.20.2024 12:00:01`
+Last generated on `06.20.2024 18:00:00`
 
 <br />
 
@@ -207,6 +207,7 @@ Last generated on `06.20.2024 12:00:01`
 │           │   ├── firefox_1snap1-0ubuntu2_amd64.deb
 │           │   ├── flatpak_1.14.6-1~flatpak1~22.04.1_amd64.deb
 │           │   ├── freetube_0.20.0_amd64.deb
+│           │   ├── freetube_0.21.0_amd64.deb
 │           │   ├── GitHubDesktop-linux-amd64-3.3.18-linux1.deb
 │           │   ├── gnome-keyring_40.0-3ubuntu3_amd64.deb
 │           │   ├── gnome-shell-extension-manager_0.3.0-0ubuntu2.1_amd64.deb
@@ -296,6 +297,7 @@ Last generated on `06.20.2024 12:00:01`
 │           │   └── wget_1.21.2-2ubuntu1_amd64.deb
 │           └── arm64
 │               ├── freetube_0.20.0_arm64.deb
+│               ├── freetube_0.21.0_arm64.deb
 │               ├── GitHubDesktop-linux-arm64-3.3.18-linux1.deb
 │               └── makedeb-beta_16.1.0-beta1_arm64_jammy.deb
 ├── logs
@@ -375,8 +377,8 @@ Last generated on `06.20.2024 12:00:01`
 │       │   └── freetube
 │       │       ├── freetube_0.19.1_amd64.deb
 │       │       ├── freetube_0.19.1_arm64.deb
-│       │       ├── freetube_0.20.0_amd64.deb
-│       │       └── freetube_0.20.0_arm64.deb
+│       │       ├── freetube_0.21.0_amd64.deb
+│       │       └── freetube_0.21.0_arm64.deb
 │       ├── g
 │       │   ├── github-desktop
 │       │   │   ├── github-desktop_3.3.18-linux1_amd64.deb
@@ -1193,5 +1195,5 @@ Last generated on `06.20.2024 12:00:01`
 ├── secrets.sh
 └── tree.md
 
-198 directories, 985 files
+198 directories, 987 files
 ```
