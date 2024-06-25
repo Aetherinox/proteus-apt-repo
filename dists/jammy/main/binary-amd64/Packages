@@ -160,23 +160,23 @@ Description: memory-hard hashing function - utility
  This package contains the argon2 tool for hashing data on the command-line.
 
 Package: bitwarden
-Version: 2024.6.2
+Version: 2024.6.3
 License: GPL-3.0
 Vendor: Bitwarden Inc. <hello@bitwarden.com>
 Architecture: amd64
 Maintainer: Bitwarden Inc. <hello@bitwarden.com>
-Installed-Size: 298250
+Installed-Size: 294953
 Depends: libnotify4, libxtst6, libnss3, libsecret-1-0, libxss1
 Recommends: libappindicator3-1
 Homepage: https://bitwarden.com
 Priority: 0
 Section: utils
-Filename: pool/main/b/bitwarden/bitwarden_2024.6.2_amd64.deb
-Size: 80698124
-SHA512: 9c079280bec42803527eca58045d437b49192119fd5027edbc28dcd6d447dbeb421e199783c7a9d971439641311ddd72452560768ad2bc3875c48a7b5b259780
-SHA256: fd1da605d6ceaf7caee9ac4c6dd14f3b189bb6adce1a2745a7573e81f8642b1c
-SHA1: fa0c7b22069c59228dc34ae6672b7563ad6ea4b6
-MD5sum: 220dfae75864203c37c0b29f6c6b4d3a
+Filename: pool/main/b/bitwarden/bitwarden_2024.6.3_amd64.deb
+Size: 80070590
+SHA512: 0a4cc3127c595aa8b6e9ffaf55cf7d3ba0d31e7eef7848e4b1bf8d39166652894c654846052c7bd76b8b8137da1bebd8243388b6ed9dea7eef8b442cf75f9892
+SHA256: ffbf4ade098ca60cb21a435b29879ea24224d6c219d98bc5f6073f0fcbd22bc4
+SHA1: daa683a73f9dd2c43cf99d76dd2b85df01dcf2d6
+MD5sum: 382d8ec4ed96c5dcb759342d620fe51a
 Description: A secure and free password manager for all of your devices.
   A secure and free password manager for all of your devices.
 
@@ -1874,23 +1874,23 @@ Description: nginx web/proxy server (basic version)
 Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
 
 Package: obsidian
-Version: 1.6.3
+Version: 1.6.5
 License: UNLICENSED
 Vendor: Dynalist Inc.
 Architecture: amd64
 Maintainer: Dynalist Inc.
-Installed-Size: 288043
+Installed-Size: 288280
 Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
 Recommends: libappindicator3-1
 Homepage: https://obsidian.md
 Priority: 0
 Section: utils
-Filename: pool/main/o/obsidian/obsidian_1.6.3_amd64.deb
-Size: 79185280
-SHA512: 66cd4ec5a2100288584c0195a8b487bcc3ff35ff8356c1776cee7e316588478c06386792a99ee4040922841ea013b58218c220ceb6a85c221609d599570a4046
-SHA256: 2f71096cfe73ac7158da5f334f7b1539376ec21d49ac064908dc460c7b33b1b6
-SHA1: 8e409ae865f6787d6c70c9cfc4fc61297c4a9f34
-MD5sum: da588ad67a3747aa46c890fffa836861
+Filename: pool/main/o/obsidian/obsidian_1.6.5_amd64.deb
+Size: 79244640
+SHA512: 6f4783df5205aa358d1a966fb89dac5bc72cd088f74854029e09f68487b11a5b89c07b5246d74ba19a337f8d2d9d5b5a0bfabe28c96377ef505e1f62ebd14e96
+SHA256: 2998e370edec62d2ab534a4ce2d233bffb7e49bc86cf85412de67017f73e1c8f
+SHA1: 490b2dad30fb3ef8aa27ab30eec362fc75bdd02e
+MD5sum: c2258d8da92b773d4c1a2c76c11909c4
 Description: 
   Obsidian
 

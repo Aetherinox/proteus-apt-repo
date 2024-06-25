@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `06.25.2024 06:00:01`
+Last generated on `06.25.2024 12:00:01`
 
 <br />
 
@@ -199,6 +199,7 @@ Last generated on `06.25.2024 06:00:01`
 │           │   ├── argon2_0~20171227-0.3_amd64.deb
 │           │   ├── Bitwarden-2024.6.1-amd64.deb
 │           │   ├── Bitwarden-2024.6.2-amd64.deb
+│           │   ├── Bitwarden-2024.6.3-amd64.deb
 │           │   ├── clevis_18-1ubuntu1_amd64.deb
 │           │   ├── clevis-dracut_18-1ubuntu1_amd64.deb
 │           │   ├── clevis-tpm2_18-1ubuntu1_amd64.deb
@@ -247,6 +248,7 @@ Last generated on `06.25.2024 06:00:01`
 │           │   ├── nginx-full_1.18.0-6ubuntu14.4_amd64.deb
 │           │   ├── nginx-light_1.18.0-6ubuntu14.4_amd64.deb
 │           │   ├── obsidian_1.6.3_amd64.deb
+│           │   ├── obsidian-1.6.5-amd64.deb
 │           │   ├── open-vm-tools_12.3.5-3~ubuntu0.22.04.1_amd64.deb
 │           │   ├── open-vm-tools-desktop_12.3.5-3~ubuntu0.22.04.1_amd64.deb
 │           │   ├── open-vm-tools-dev_12.3.5-3~ubuntu0.22.04.1_amd64.deb
@@ -353,7 +355,7 @@ Last generated on `06.25.2024 06:00:01`
 │       │   │   └── php-bacon-qr-code_2.0.8-2_arm64.deb
 │       │   └── bitwarden
 │       │       ├── bitwarden_2023.9.3_amd64.deb
-│       │       └── bitwarden_2024.6.2_amd64.deb
+│       │       └── bitwarden_2024.6.3_amd64.deb
 │       ├── c
 │       │   └── clevis
 │       │       ├── clevis_18-1ubuntu1_amd64.deb
@@ -648,7 +650,7 @@ Last generated on `06.25.2024 06:00:01`
 │       │   │   ├── obsidian_1.4.16_amd64.deb
 │       │   │   ├── obsidian_1.5.3_amd64.deb
 │       │   │   ├── obsidian_1.5.8_amd64.deb
-│       │   │   └── obsidian_1.6.3_amd64.deb
+│       │   │   └── obsidian_1.6.5_amd64.deb
 │       │   ├── ocs-url
 │       │   │   └── ocs-url_3.1.0-0ubuntu1_amd64.deb
 │       │   ├── opengist
@@ -1205,5 +1207,5 @@ Last generated on `06.25.2024 06:00:01`
 ├── secrets.sh
 └── tree.md
 
-198 directories, 997 files
+198 directories, 999 files
 ```
