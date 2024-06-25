@@ -229,6 +229,7 @@
             {"type":"file","name":"argon2_0~20171227-0.3_amd64.deb"},
             {"type":"file","name":"Bitwarden-2024.6.1-amd64.deb"},
             {"type":"file","name":"Bitwarden-2024.6.2-amd64.deb"},
+            {"type":"file","name":"Bitwarden-2024.6.3-amd64.deb"},
             {"type":"file","name":"clevis_18-1ubuntu1_amd64.deb"},
             {"type":"file","name":"clevis-dracut_18-1ubuntu1_amd64.deb"},
             {"type":"file","name":"clevis-tpm2_18-1ubuntu1_amd64.deb"},
@@ -277,6 +278,7 @@
             {"type":"file","name":"nginx-full_1.18.0-6ubuntu14.4_amd64.deb"},
             {"type":"file","name":"nginx-light_1.18.0-6ubuntu14.4_amd64.deb"},
             {"type":"file","name":"obsidian_1.6.3_amd64.deb"},
+            {"type":"file","name":"obsidian-1.6.5-amd64.deb"},
             {"type":"file","name":"open-vm-tools_12.3.5-3~ubuntu0.22.04.1_amd64.deb"},
             {"type":"file","name":"open-vm-tools-desktop_12.3.5-3~ubuntu0.22.04.1_amd64.deb"},
             {"type":"file","name":"open-vm-tools-dev_12.3.5-3~ubuntu0.22.04.1_amd64.deb"},
@@ -398,7 +400,7 @@
         ]},
           {"type":"directory","name":"bitwarden","contents":[
             {"type":"file","name":"bitwarden_2023.9.3_amd64.deb"},
-            {"type":"file","name":"bitwarden_2024.6.2_amd64.deb"}
+            {"type":"file","name":"bitwarden_2024.6.3_amd64.deb"}
         ]}
       ]},
         {"type":"directory","name":"c","contents":[
@@ -756,7 +758,7 @@
             {"type":"file","name":"obsidian_1.4.16_amd64.deb"},
             {"type":"file","name":"obsidian_1.5.3_amd64.deb"},
             {"type":"file","name":"obsidian_1.5.8_amd64.deb"},
-            {"type":"file","name":"obsidian_1.6.3_amd64.deb"}
+            {"type":"file","name":"obsidian_1.6.5_amd64.deb"}
         ]},
           {"type":"directory","name":"ocs-url","contents":[
             {"type":"file","name":"ocs-url_3.1.0-0ubuntu1_amd64.deb"}
@@ -1395,5 +1397,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":198,"files":997}
+  {"type":"report","directories":198,"files":999}
 ]
