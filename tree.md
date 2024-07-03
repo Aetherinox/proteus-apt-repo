@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `06.30.2024 00:00:06`
+Last generated on `07.02.2024 18:00:01`
 
 <br />
 
@@ -200,6 +200,7 @@ Last generated on `06.30.2024 00:00:06`
 │           │   ├── Bitwarden-2024.6.1-amd64.deb
 │           │   ├── Bitwarden-2024.6.2-amd64.deb
 │           │   ├── Bitwarden-2024.6.3-amd64.deb
+│           │   ├── Bitwarden-2024.6.4-amd64.deb
 │           │   ├── clevis_18-1ubuntu1_amd64.deb
 │           │   ├── clevis-dracut_18-1ubuntu1_amd64.deb
 │           │   ├── clevis-tpm2_18-1ubuntu1_amd64.deb
@@ -210,6 +211,8 @@ Last generated on `06.30.2024 00:00:06`
 │           │   ├── freetube_0.20.0_amd64.deb
 │           │   ├── freetube_0.21.0_amd64.deb
 │           │   ├── GitHubDesktop-linux-amd64-3.3.18-linux1.deb
+│           │   ├── GitHubDesktop-linux-amd64-3.4.0-linux1.deb
+│           │   ├── GitHubDesktop-linux-amd64-3.4.2-linux1.deb
 │           │   ├── gnome-keyring_40.0-3ubuntu3_amd64.deb
 │           │   ├── gnome-shell-extension-manager_0.3.0-0ubuntu2.1_amd64.deb
 │           │   ├── gpg_2.2.27-3ubuntu2.1_amd64.deb
@@ -302,6 +305,8 @@ Last generated on `06.30.2024 00:00:06`
 │               ├── freetube_0.20.0_arm64.deb
 │               ├── freetube_0.21.0_arm64.deb
 │               ├── GitHubDesktop-linux-arm64-3.3.18-linux1.deb
+│               ├── GitHubDesktop-linux-arm64-3.4.0-linux1.deb
+│               ├── GitHubDesktop-linux-arm64-3.4.2-linux1.deb
 │               └── makedeb-beta_16.1.0-beta1_arm64_jammy.deb
 ├── logs
 │   ├── repos
@@ -319,7 +324,9 @@ Last generated on `06.30.2024 00:00:06`
 │   ├── proteus-git-062824.log
 │   ├── proteus-git-062924.log
 │   ├── proteus-git-063024.log
-│   ├── proteus-git-063024.log.pipe
+│   ├── proteus-git-070124.log
+│   ├── proteus-git-070224.log
+│   ├── proteus-git-070224.log.pipe
 │   ├── proteus-git-15062024.log
 │   ├── proteus-git-17062024.log
 │   ├── proteus-git-service-061806.log
@@ -334,7 +341,9 @@ Last generated on `06.30.2024 00:00:06`
 │   ├── proteus-git-service-062706.log
 │   ├── proteus-git-service-062806.log
 │   ├── proteus-git-service-062906.log
-│   └── proteus-git-service-063006.log
+│   ├── proteus-git-service-063006.log
+│   ├── proteus-git-service-070107.log
+│   └── proteus-git-service-070207.log
 ├── pool
 │   └── main
 │       ├── a
@@ -366,7 +375,7 @@ Last generated on `06.30.2024 00:00:06`
 │       │   │   └── php-bacon-qr-code_2.0.8-2_arm64.deb
 │       │   └── bitwarden
 │       │       ├── bitwarden_2023.9.3_amd64.deb
-│       │       └── bitwarden_2024.6.3_amd64.deb
+│       │       └── bitwarden_2024.6.4_amd64.deb
 │       ├── c
 │       │   └── clevis
 │       │       ├── clevis_18-1ubuntu1_amd64.deb
@@ -404,12 +413,12 @@ Last generated on `06.30.2024 00:00:06`
 │       │       └── freetube_0.21.0_arm64.deb
 │       ├── g
 │       │   ├── github-desktop
-│       │   │   ├── github-desktop_3.3.18-linux1_amd64.deb
-│       │   │   ├── github-desktop_3.3.18-linux1_arm64.deb
 │       │   │   ├── github-desktop_3.3.3-linux2_amd64.deb
 │       │   │   ├── github-desktop_3.3.3-linux2_arm64.deb
 │       │   │   ├── github-desktop_3.3.8-linux2_amd64.deb
-│       │   │   └── github-desktop_3.3.8-linux2_arm64.deb
+│       │   │   ├── github-desktop_3.3.8-linux2_arm64.deb
+│       │   │   ├── github-desktop_3.4.2-linux1_amd64.deb
+│       │   │   └── github-desktop_3.4.2-linux1_arm64.deb
 │       │   ├── gitkraken-license-pro
 │       │   │   └── gitkraken-license-pro_1.0.0-1_all.deb
 │       │   ├── gnome-keyring
@@ -1218,5 +1227,5 @@ Last generated on `06.30.2024 00:00:06`
 ├── secrets.sh
 └── tree.md
 
-198 directories, 1010 files
+198 directories, 1019 files
 ```
