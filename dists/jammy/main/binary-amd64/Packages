@@ -160,7 +160,7 @@ Description: memory-hard hashing function - utility
  This package contains the argon2 tool for hashing data on the command-line.
 
 Package: bitwarden
-Version: 2024.6.3
+Version: 2024.6.4
 License: GPL-3.0
 Vendor: Bitwarden Inc. <hello@bitwarden.com>
 Architecture: amd64
@@ -171,12 +171,12 @@ Recommends: libappindicator3-1
 Homepage: https://bitwarden.com
 Priority: 0
 Section: utils
-Filename: pool/main/b/bitwarden/bitwarden_2024.6.3_amd64.deb
-Size: 80070590
-SHA512: 0a4cc3127c595aa8b6e9ffaf55cf7d3ba0d31e7eef7848e4b1bf8d39166652894c654846052c7bd76b8b8137da1bebd8243388b6ed9dea7eef8b442cf75f9892
-SHA256: ffbf4ade098ca60cb21a435b29879ea24224d6c219d98bc5f6073f0fcbd22bc4
-SHA1: daa683a73f9dd2c43cf99d76dd2b85df01dcf2d6
-MD5sum: 382d8ec4ed96c5dcb759342d620fe51a
+Filename: pool/main/b/bitwarden/bitwarden_2024.6.4_amd64.deb
+Size: 79772094
+SHA512: 0d118caa5940ec2c970bf814f879dc997750278c0b3d4b369c2b3439798447d3c8ea5c6312d97ed4efc427167eedae866837b8f96ddd89b173a22b9073d0b4a5
+SHA256: 765115154cf12f1248437217b404745dfac37be04191bf8f98225dcdd53294fe
+SHA1: fcc1506e94a3826fc42502ec05d1b9b53ffc47ae
+MD5sum: 8a04298071ef88d1dc73679e72e70862
 Description: A secure and free password manager for all of your devices.
   A secure and free password manager for all of your devices.
 
@@ -411,22 +411,22 @@ Description:
   A private YouTube client
 
 Package: github-desktop
-Version: 3.3.18-linux1
+Version: 3.4.2-linux1
 Architecture: amd64
 Depends: libgtk-3-0, libnotify4, libnss3, libxtst6, xdg-utils, libatspi2.0-0, libdrm2, libgbm1, libxcb-dri3-0, kde-cli-tools | kde-runtime | trash-cli | libglib2.0-bin | gvfs-bin, libcurl3 | libcurl4, libsecret-1-0, gnome-keyring
 Recommends: pulseaudio | libasound2
 Suggests: gir1.2-gnomekeyring-1.0, libgnome-keyring0, lsb-release
-Installed-Size: 351854
+Installed-Size: 442499
 Maintainer: Brendan Forster <github@brendanforster.com>
 Homepage: https://github.com/shiftkey/desktop
 Priority: 0
 Section: utils
-Filename: pool/main/g/github-desktop/github-desktop_3.3.18-linux1_amd64.deb
-Size: 97408628
-SHA512: 2b7558828e3840fe7ff3447cdf46d3290e2ae82c486c94f6616830b3dca99227f4097e566e963ec4e77b351a1fa3d4d7b3e910216ba86280510529f35541a3c9
-SHA256: 05755785c29e3e3f3b99a698d53d54d0b96e402eba066f5042264220e742b63b
-SHA1: 4cc723f03dc5d7977bd0cab27bd600764fe6d632
-MD5sum: f5f72e825d8ffa4ff91e39c731cef06e
+Filename: pool/main/g/github-desktop/github-desktop_3.4.2-linux1_amd64.deb
+Size: 128805080
+SHA512: 4ed921ff5ee53c75ec9351a4a76e6b5d33dab33b9777212883eb193758a5e2db9c33b2b78c53b59d3368ab40b5e01afbfd4b4acada6242cd91ac7701e1ed8eee
+SHA256: a98e6b0af3a07f5fd9d345d9eb2027eb329d519fba9783c2b613d4e385cb2a17
+SHA1: 644a5b382e0a9e48a79a8fb7adc2e5875db261cb
+MD5sum: fb9c3ac5d457f5a3b1de1d98d0c96bb3
 Description: Simple collaboration from your desktop
  This is the unofficial port of GitHub Desktop for Linux distributions
 

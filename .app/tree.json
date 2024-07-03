@@ -230,6 +230,7 @@
             {"type":"file","name":"Bitwarden-2024.6.1-amd64.deb"},
             {"type":"file","name":"Bitwarden-2024.6.2-amd64.deb"},
             {"type":"file","name":"Bitwarden-2024.6.3-amd64.deb"},
+            {"type":"file","name":"Bitwarden-2024.6.4-amd64.deb"},
             {"type":"file","name":"clevis_18-1ubuntu1_amd64.deb"},
             {"type":"file","name":"clevis-dracut_18-1ubuntu1_amd64.deb"},
             {"type":"file","name":"clevis-tpm2_18-1ubuntu1_amd64.deb"},
@@ -240,6 +241,8 @@
             {"type":"file","name":"freetube_0.20.0_amd64.deb"},
             {"type":"file","name":"freetube_0.21.0_amd64.deb"},
             {"type":"file","name":"GitHubDesktop-linux-amd64-3.3.18-linux1.deb"},
+            {"type":"file","name":"GitHubDesktop-linux-amd64-3.4.0-linux1.deb"},
+            {"type":"file","name":"GitHubDesktop-linux-amd64-3.4.2-linux1.deb"},
             {"type":"file","name":"gnome-keyring_40.0-3ubuntu3_amd64.deb"},
             {"type":"file","name":"gnome-shell-extension-manager_0.3.0-0ubuntu2.1_amd64.deb"},
             {"type":"file","name":"gpg_2.2.27-3ubuntu2.1_amd64.deb"},
@@ -333,6 +336,8 @@
             {"type":"file","name":"freetube_0.20.0_arm64.deb"},
             {"type":"file","name":"freetube_0.21.0_arm64.deb"},
             {"type":"file","name":"GitHubDesktop-linux-arm64-3.3.18-linux1.deb"},
+            {"type":"file","name":"GitHubDesktop-linux-arm64-3.4.0-linux1.deb"},
+            {"type":"file","name":"GitHubDesktop-linux-arm64-3.4.2-linux1.deb"},
             {"type":"file","name":"makedeb-beta_16.1.0-beta1_arm64_jammy.deb"}
         ]}
       ]}
@@ -355,7 +360,9 @@
       {"type":"file","name":"proteus-git-062824.log"},
       {"type":"file","name":"proteus-git-062924.log"},
       {"type":"file","name":"proteus-git-063024.log"},
-      {"type":"fifo","name":"proteus-git-063024.log.pipe"},
+      {"type":"file","name":"proteus-git-070124.log"},
+      {"type":"file","name":"proteus-git-070224.log"},
+      {"type":"fifo","name":"proteus-git-070224.log.pipe"},
       {"type":"file","name":"proteus-git-15062024.log"},
       {"type":"file","name":"proteus-git-17062024.log"},
       {"type":"file","name":"proteus-git-service-061806.log"},
@@ -370,7 +377,9 @@
       {"type":"file","name":"proteus-git-service-062706.log"},
       {"type":"file","name":"proteus-git-service-062806.log"},
       {"type":"file","name":"proteus-git-service-062906.log"},
-      {"type":"file","name":"proteus-git-service-063006.log"}
+      {"type":"file","name":"proteus-git-service-063006.log"},
+      {"type":"file","name":"proteus-git-service-070107.log"},
+      {"type":"file","name":"proteus-git-service-070207.log"}
   ]},
     {"type":"directory","name":"pool","contents":[
       {"type":"directory","name":"main","contents":[
@@ -411,7 +420,7 @@
         ]},
           {"type":"directory","name":"bitwarden","contents":[
             {"type":"file","name":"bitwarden_2023.9.3_amd64.deb"},
-            {"type":"file","name":"bitwarden_2024.6.3_amd64.deb"}
+            {"type":"file","name":"bitwarden_2024.6.4_amd64.deb"}
         ]}
       ]},
         {"type":"directory","name":"c","contents":[
@@ -463,12 +472,12 @@
       ]},
         {"type":"directory","name":"g","contents":[
           {"type":"directory","name":"github-desktop","contents":[
-            {"type":"file","name":"github-desktop_3.3.18-linux1_amd64.deb"},
-            {"type":"file","name":"github-desktop_3.3.18-linux1_arm64.deb"},
             {"type":"file","name":"github-desktop_3.3.3-linux2_amd64.deb"},
             {"type":"file","name":"github-desktop_3.3.3-linux2_arm64.deb"},
             {"type":"file","name":"github-desktop_3.3.8-linux2_amd64.deb"},
-            {"type":"file","name":"github-desktop_3.3.8-linux2_arm64.deb"}
+            {"type":"file","name":"github-desktop_3.3.8-linux2_arm64.deb"},
+            {"type":"file","name":"github-desktop_3.4.2-linux1_amd64.deb"},
+            {"type":"file","name":"github-desktop_3.4.2-linux1_arm64.deb"}
         ]},
           {"type":"directory","name":"gitkraken-license-pro","contents":[
             {"type":"file","name":"gitkraken-license-pro_1.0.0-1_all.deb"}
@@ -1408,5 +1417,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":198,"files":1010}
+  {"type":"report","directories":198,"files":1019}
 ]
