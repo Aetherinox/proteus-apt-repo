@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `07.02.2024 18:00:01`
+Last generated on `07.02.2024 21:17:33`
 
 <br />
 
@@ -417,7 +417,6 @@ Last generated on `07.02.2024 18:00:01`
 │       │   │   ├── github-desktop_3.3.3-linux2_arm64.deb
 │       │   │   ├── github-desktop_3.3.8-linux2_amd64.deb
 │       │   │   ├── github-desktop_3.3.8-linux2_arm64.deb
-│       │   │   ├── github-desktop_3.4.2-linux1_amd64.deb
 │       │   │   └── github-desktop_3.4.2-linux1_arm64.deb
 │       │   ├── gitkraken-license-pro
 │       │   │   └── gitkraken-license-pro_1.0.0-1_all.deb
@@ -1227,5 +1226,5 @@ Last generated on `07.02.2024 18:00:01`
 ├── secrets.sh
 └── tree.md
 
-198 directories, 1019 files
+198 directories, 1018 files
 ```
