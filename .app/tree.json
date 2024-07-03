@@ -476,7 +476,6 @@
             {"type":"file","name":"github-desktop_3.3.3-linux2_arm64.deb"},
             {"type":"file","name":"github-desktop_3.3.8-linux2_amd64.deb"},
             {"type":"file","name":"github-desktop_3.3.8-linux2_arm64.deb"},
-            {"type":"file","name":"github-desktop_3.4.2-linux1_amd64.deb"},
             {"type":"file","name":"github-desktop_3.4.2-linux1_arm64.deb"}
         ]},
           {"type":"directory","name":"gitkraken-license-pro","contents":[
@@ -1417,5 +1416,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":198,"files":1019}
+  {"type":"report","directories":198,"files":1018}
 ]
