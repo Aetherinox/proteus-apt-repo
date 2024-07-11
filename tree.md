@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `07.10.2024 12:00:00`
+Last generated on `07.10.2024 18:00:01`
 
 <br />
 
@@ -210,6 +210,7 @@ Last generated on `07.10.2024 12:00:00`
 │           │   ├── flatpak_1.14.6-1~flatpak1~22.04.1_amd64.deb
 │           │   ├── freetube_0.20.0_amd64.deb
 │           │   ├── freetube_0.21.0_amd64.deb
+│           │   ├── freetube_0.21.1_amd64.deb
 │           │   ├── GitHubDesktop-linux-amd64-3.3.18-linux1.deb
 │           │   ├── GitHubDesktop-linux-amd64-3.4.0-linux1.deb
 │           │   ├── GitHubDesktop-linux-amd64-3.4.2-linux1.deb
@@ -304,6 +305,7 @@ Last generated on `07.10.2024 12:00:00`
 │           └── arm64
 │               ├── freetube_0.20.0_arm64.deb
 │               ├── freetube_0.21.0_arm64.deb
+│               ├── freetube_0.21.1_arm64.deb
 │               ├── GitHubDesktop-linux-arm64-3.3.18-linux1.deb
 │               ├── GitHubDesktop-linux-arm64-3.4.0-linux1.deb
 │               ├── GitHubDesktop-linux-arm64-3.4.2-linux1.deb
@@ -426,8 +428,8 @@ Last generated on `07.10.2024 12:00:00`
 │       │   └── freetube
 │       │       ├── freetube_0.19.1_amd64.deb
 │       │       ├── freetube_0.19.1_arm64.deb
-│       │       ├── freetube_0.21.0_amd64.deb
-│       │       └── freetube_0.21.0_arm64.deb
+│       │       ├── freetube_0.21.1_amd64.deb
+│       │       └── freetube_0.21.1_arm64.deb
 │       ├── g
 │       │   ├── github-desktop
 │       │   │   ├── github-desktop_3.3.3-linux2_amd64.deb
@@ -1243,5 +1245,5 @@ Last generated on `07.10.2024 12:00:00`
 ├── secrets.sh
 └── tree.md
 
-198 directories, 1035 files
+198 directories, 1037 files
 ```
