@@ -160,23 +160,23 @@ Description: memory-hard hashing function - utility
  This package contains the argon2 tool for hashing data on the command-line.
 
 Package: bitwarden
-Version: 2024.6.4
+Version: 2024.7.0
 License: GPL-3.0
 Vendor: Bitwarden Inc. <hello@bitwarden.com>
 Architecture: amd64
 Maintainer: Bitwarden Inc. <hello@bitwarden.com>
-Installed-Size: 294953
+Installed-Size: 297565
 Depends: libnotify4, libxtst6, libnss3, libsecret-1-0, libxss1
 Recommends: libappindicator3-1
 Homepage: https://bitwarden.com
 Priority: 0
 Section: utils
-Filename: pool/main/b/bitwarden/bitwarden_2024.6.4_amd64.deb
-Size: 79772094
-SHA512: 0d118caa5940ec2c970bf814f879dc997750278c0b3d4b369c2b3439798447d3c8ea5c6312d97ed4efc427167eedae866837b8f96ddd89b173a22b9073d0b4a5
-SHA256: 765115154cf12f1248437217b404745dfac37be04191bf8f98225dcdd53294fe
-SHA1: fcc1506e94a3826fc42502ec05d1b9b53ffc47ae
-MD5sum: 8a04298071ef88d1dc73679e72e70862
+Filename: pool/main/b/bitwarden/bitwarden_2024.7.0_amd64.deb
+Size: 80360214
+SHA512: 3c543af1b75394133ca53a04453a19ac2f8ba9c68272fb46a3f82c9b05452418fb815f85c910c879b20a912d7ed8844af09599bc79209447fb3d4ee0cbe27532
+SHA256: 9508e1795b402f955649ac77466bbe9e767bfeb487fedfd8b68d1f409c332a2f
+SHA1: 7a737719872607cf5e18867604fdc20ae63e0aa2
+MD5sum: 231a7ae8f67451bd5866f4a1031fe3c4
 Description: A secure and free password manager for all of your devices.
   A secure and free password manager for all of your devices.
 
