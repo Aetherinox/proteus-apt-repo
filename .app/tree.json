@@ -231,6 +231,7 @@
             {"type":"file","name":"Bitwarden-2024.6.2-amd64.deb"},
             {"type":"file","name":"Bitwarden-2024.6.3-amd64.deb"},
             {"type":"file","name":"Bitwarden-2024.6.4-amd64.deb"},
+            {"type":"file","name":"Bitwarden-2024.7.0-amd64.deb"},
             {"type":"file","name":"clevis_18-1ubuntu1_amd64.deb"},
             {"type":"file","name":"clevis-dracut_18-1ubuntu1_amd64.deb"},
             {"type":"file","name":"clevis-tpm2_18-1ubuntu1_amd64.deb"},
@@ -449,7 +450,7 @@
         ]},
           {"type":"directory","name":"bitwarden","contents":[
             {"type":"file","name":"bitwarden_2023.9.3_amd64.deb"},
-            {"type":"file","name":"bitwarden_2024.6.4_amd64.deb"}
+            {"type":"file","name":"bitwarden_2024.7.0_amd64.deb"}
         ]}
       ]},
         {"type":"directory","name":"c","contents":[
@@ -1445,5 +1446,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":198,"files":1047}
+  {"type":"report","directories":198,"files":1048}
 ]
