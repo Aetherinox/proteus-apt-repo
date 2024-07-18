@@ -1874,23 +1874,23 @@ Description: nginx web/proxy server (basic version)
 Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
 
 Package: obsidian
-Version: 1.6.5
+Version: 1.6.7
 License: UNLICENSED
 Vendor: Dynalist Inc.
 Architecture: amd64
 Maintainer: Dynalist Inc.
-Installed-Size: 288280
+Installed-Size: 284926
 Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
 Recommends: libappindicator3-1
 Homepage: https://obsidian.md
 Priority: 0
 Section: utils
-Filename: pool/main/o/obsidian/obsidian_1.6.5_amd64.deb
-Size: 79244640
-SHA512: 6f4783df5205aa358d1a966fb89dac5bc72cd088f74854029e09f68487b11a5b89c07b5246d74ba19a337f8d2d9d5b5a0bfabe28c96377ef505e1f62ebd14e96
-SHA256: 2998e370edec62d2ab534a4ce2d233bffb7e49bc86cf85412de67017f73e1c8f
-SHA1: 490b2dad30fb3ef8aa27ab30eec362fc75bdd02e
-MD5sum: c2258d8da92b773d4c1a2c76c11909c4
+Filename: pool/main/o/obsidian/obsidian_1.6.7_amd64.deb
+Size: 79172558
+SHA512: bbf913f6806a1d23d2a6bbb9d5572569b019c79c877c3165ff94938f01282e7d98b6ba660821dca7e38874413207846b025707161c8901983458bdf4add05336
+SHA256: 772da38d23b15f0f5d7cf17024a1948ff2c073b2195954743703178bf1254b36
+SHA1: 1ebede61696c77ee97394c6b0a3fcd8abaa299ed
+MD5sum: c993b303e6ee232504713062c38f3440
 Description: 
   Obsidian
 

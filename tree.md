@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `07.18.2024 06:00:00`
+Last generated on `07.18.2024 12:00:01`
 
 <br />
 
@@ -254,6 +254,7 @@ Last generated on `07.18.2024 06:00:00`
 │           │   ├── nginx-light_1.18.0-6ubuntu14.4_amd64.deb
 │           │   ├── obsidian_1.6.3_amd64.deb
 │           │   ├── obsidian-1.6.5-amd64.deb
+│           │   ├── obsidian_1.6.7_amd64.deb
 │           │   ├── open-vm-tools_12.3.5-3~ubuntu0.22.04.1_amd64.deb
 │           │   ├── open-vm-tools-desktop_12.3.5-3~ubuntu0.22.04.1_amd64.deb
 │           │   ├── open-vm-tools-dev_12.3.5-3~ubuntu0.22.04.1_amd64.deb
@@ -705,7 +706,7 @@ Last generated on `07.18.2024 06:00:00`
 │       │   │   ├── obsidian_1.4.16_amd64.deb
 │       │   │   ├── obsidian_1.5.3_amd64.deb
 │       │   │   ├── obsidian_1.5.8_amd64.deb
-│       │   │   └── obsidian_1.6.5_amd64.deb
+│       │   │   └── obsidian_1.6.7_amd64.deb
 │       │   ├── ocs-url
 │       │   │   └── ocs-url_3.1.0-0ubuntu1_amd64.deb
 │       │   ├── opengist
@@ -1262,5 +1263,5 @@ Last generated on `07.18.2024 06:00:00`
 ├── secrets.sh
 └── tree.md
 
-198 directories, 1054 files
+198 directories, 1055 files
 ```
