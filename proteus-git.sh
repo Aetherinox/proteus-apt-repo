@@ -128,6 +128,12 @@ app_queue_url=()
 app_i=0
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   Configs
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+cfg_Storage_Clevis=true
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   Deprecated
 #   This method is being deprecated in favor of clevis encrypted secrets.
 #
@@ -140,52 +146,6 @@ app_i=0
 
 if [ -f ${PWD}/secrets.sh ]; then
 source ${PWD}/secrets.sh
-fi
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   SECRETS > CLEVIS > LOAD
-#
-#   this method has you create multiple files:
-#       ./secrets/.pat_github
-#       ./secrets/.pat_gitlab
-#
-#   the contents of the files should be encrypted using Clevis, either tpm
-#   or a tang server.
-#
-#   clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'github_pat_XXXXXX' > /.secrets/.pat_github
-#   clevis decrypt < /.secrets/.pat_github
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-if [ -f ${HOME}/.secrets/.pat_github ]; then
-    CSI_PAT_GITHUB=$(cat ${HOME}/.secrets/.pat_github | clevis decrypt 2>/dev/null)
-    export GITHUB_API_TOKEN=${CSI_PAT_GITHUB}
-else
-    echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.pat_github missing${WHITE}"
-fi
-
-if [ -f ${HOME}/.secrets/.pat_gitlab ]; then
-    CSI_PAT_GITLAB=$(cat ${HOME}/.secrets/.pat_gitlab | clevis decrypt 2>/dev/null)
-    export GITLAB_PA_TOKEN=${CSI_PAT_GITLAB}
-else
-    echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.pat_gitlab missing${WHITE}"
-fi
-
-if [ -f ${HOME}/.secrets/.passwd ]; then
-    CSI_SUDO_PASSWD=$(cat ${HOME}/.secrets/.passwd | clevis decrypt 2>/dev/null)
-else
-    echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.passwd missing${WHITE}"
-fi
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   SECRETS > CLEVIS > CREATE
-#   creates the secrets structure if it doesnt exist
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-if [ ! -d "$PWD/.secrets/" ]; then
-    mkdir -p $PWD/.secrets/
-    touch $PWD/.secrets/.pat_github
-    touch $PWD/.secrets/.pat_gitlab
-    touch $PWD/.secrets/.passwd
 fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -207,11 +167,6 @@ export SECONDS=0
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 lst_github=(
-    'obsidianmd/obsidian-releases'
-    'AppOutlet/AppOutlet'
-    'bitwarden/clients'
-    'shiftkey/desktop'
-    'FreeTubeApp/FreeTube'
     'makedeb/makedeb'
 )
 
@@ -221,162 +176,6 @@ lst_github=(
 
 lst_packages=(
     'adduser'
-    'argon2'
-    'apt-move'
-    'apt-utils'
-    'clevis'
-    'clevis-dracut'
-    'clevis-udisks2'
-    'clevis-tpm2'
-    'dialog'
-    'firefox'
-    'flatpak'
-    'gnome-keyring'
-    'gnome-keysign'
-    'gnome-shell-extension-manager'
-    'gpg'
-    'gpgconf'
-    'gpgv'
-    'jose'
-    'keyutils'
-    'kgpg'
-    'libnginx-mod-http-auth-pam'
-    'libnginx-mod-http-cache-purge'
-    'libnginx-mod-http-dav-ext'
-    'libnginx-mod-http-echo'
-    'libnginx-mod-http-fancyindex'
-    'libnginx-mod-http-geoip'
-    'libnginx-mod-http-headers-more-filter'
-    'libnginx-mod-http-ndk'
-    'libnginx-mod-http-perl'
-    'libnginx-mod-http-subs-filter'
-    'libnginx-mod-http-uploadprogress'
-    'libnginx-mod-http-upstream-fair'
-    'libnginx-mod-nchan'
-    'libnginx-mod-rtmp'
-    'libnginx-mod-stream-geoip'
-    'lsb-base'
-    'lz4'
-    'mysql-client'
-    'mysql-common'
-    'mysql-server'
-    'network-manager-config-connectivity-ubuntu'
-    'network-manager-dev'
-    'network-manager-gnome'
-    'network-manager-openvpn-gnome'
-    'network-manager-openvpn'
-    'network-manager-pptp-gnome'
-    'network-manager-pptp'
-    'network-manager'
-    'networkd-dispatcher'
-    'nginx-common'
-    'nginx-confgen'
-    'nginx-core'
-    'nginx-dev'
-    'nginx-doc'
-    'nginx-extras'
-    'nginx-full'
-    'nginx-light'
-    'nginx'
-    'open-vm-tools-desktop'
-    'open-vm-tools-dev'
-    'open-vm-tools'
-    'php-all-dev'
-    'php-amqp'
-    'php-amqplib'
-    'php-apcu-all-dev'
-    'php-apcu'
-    'php-ast-all-dev'
-    'php-ast'
-    'php-bacon-qr-code'
-    'php-bcmath'
-    'php-brick-math'
-    'php-brick-varexporter'
-    'php-bz2'
-    'php-cas'
-    'php-cgi'
-    'php-cli'
-    'php-code-lts-u2f-php-server'
-    'php-common'
-    'php-crypt-gpg'
-    'php-curl'
-    'php-db'
-    'php-dba'
-    'php-decimal'
-    'php-dev'
-    'php-ds-all-dev'
-    'php-ds'
-    'php-email-validator'
-    'php-embed'
-    'php-enchant'
-    'php-excimer'
-    'php-faker'
-    'php-fpm'
-    'php-fxsl'
-    'php-gd'
-    'php-gearman'
-    'php-gettext-languages'
-    'php-gmagick-all-dev'
-    'php-gmagick'
-    'php-gmp'
-    'php-gnupg-all-dev'
-    'php-gnupg'
-    'php-gnupg'
-    'php-grpc'
-    'php-http'
-    'php-igbinary'
-    'php-imagick'
-    'php-imap'
-    'php-inotify'
-    'php-interbase'
-    'php-intl'
-    'php-ldap'
-    'php-mailparse'
-    'php-maxminddb'
-    'php-mbstring'
-    'php-mcrypt'
-    'php-memcache'
-    'php-memcached'
-    'php-mongodb'
-    'php-msgpack'
-    'php-mysql'
-    'php-oauth'
-    'php-odbc'
-    'php-pcov'
-    'php-pgsql'
-    'php-phpdbg'
-    'php-ps'
-    'php-pspell'
-    'php-psr'
-    'php-raphf'
-    'php-readline'
-    'php-redis'
-    'php-rrd'
-    'php-smbclient'
-    'php-snmp'
-    'php-soap'
-    'php-solr'
-    'php-sqlite3'
-    'php-ssh2'
-    'php-stomp'
-    'php-sybase'
-    'php-tideways'
-    'php-tidy'
-    'php-uopz'
-    'php-uploadprogress'
-    'php-uuid'
-    'php-xdebug'
-    'php-xml'
-    'php-xmlrpc'
-    'php-yac'
-    'php-yaml'
-    'php-zip'
-    'php-zmq'
-    'php'
-    'sks',
-    'snap'
-    'snapd'
-    'wget'
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -424,10 +223,69 @@ else
 fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   SECRETS > CLEVIS > LOAD
+#
+#   this method has you create multiple files:
+#       ./secrets/.pat_github
+#       ./secrets/.pat_gitlab
+#
+#   the contents of the files should be encrypted using Clevis, either tpm
+#   or a tang server.
+#
+#   clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'github_pat_XXXXXX' > /.secrets/.pat_github
+#   clevis decrypt < /.secrets/.pat_github
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+if [ "${cfg_Storage_Clevis}" = true ]; then
+    if [ -f ${HOME}/.secrets/.pat_github ]; then
+        CSI_PAT_GITHUB=$(cat ${HOME}/.secrets/.pat_github | clevis decrypt 2>/dev/null)
+
+
+            echo -e "  ${WHITE}       Github PAT ${FUCHSIA}${CSI_PAT_GITHUB}${NORMAL}${NORMAL}"
+
+        export GITHUB_API_TOKEN=${CSI_PAT_GITHUB}
+    else
+        echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.pat_github missing${WHITE}"
+    fi
+
+    if [ -f ${HOME}/.secrets/.pat_gitlab ]; then
+        CSI_PAT_GITLAB=$(cat ${HOME}/.secrets/.pat_gitlab | clevis decrypt 2>/dev/null)
+
+
+            echo -e "  ${WHITE}       Gitlab PAT ${FUCHSIA}${CSI_PAT_GITLAB}${NORMAL}${NORMAL}"
+
+        export GITLAB_PA_TOKEN=${CSI_PAT_GITLAB}
+    else
+        echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.pat_gitlab missing${WHITE}"
+    fi
+
+    if [ -f ${HOME}/.secrets/.passwd ]; then
+        CSI_SUDO_PASSWD=$(cat ${HOME}/.secrets/.passwd | clevis decrypt 2>/dev/null)
+
+        echo "$CSI_SUDO_PASSWD" | sudo -S su 2> /dev/null
+
+    else
+        echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.passwd missing${WHITE}"
+    fi
+fi
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   SECRETS > CLEVIS > CREATE
+#   creates the secrets structure if it doesnt exist
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+if [ "${cfg_Storage_Clevis}" = true ] && [ ! -d "$PWD/.secrets/" ]; then
+    mkdir -p $PWD/.secrets/
+    touch $PWD/.secrets/.pat_github
+    touch $PWD/.secrets/.pat_gitlab
+    touch $PWD/.secrets/.passwd
+fi
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   clevis required to decrypt tokens
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-if ! [ -x "$(command -v clevis)" ]; then
+if [ "${cfg_Storage_Clevis}" = true ] && [ ! -x "$(command -v clevis)" ]; then
     echo -e "  ${GREYL}Installing package ${MAGENTA}Clevis${WHITE}"
     sudo apt-get update -y -q >/dev/null 2>&1
     sudo apt-get install clevis clevis-dracut clevis-udisks2 clevis-tpm2 -y -qq >/dev/null 2>&1
@@ -476,7 +334,7 @@ app_run_github_precheck( )
 #   secrets.sh file missing -- abort
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-if ! [ -f $app_dir/secrets.sh ]; then
+if [ "${cfg_Storage_Clevis}" = false ] && [ ! -f $app_dir/secrets.sh ]; then
     echo
     echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}secrets.sh file not found! Creating a blank ${FUCHSIA}secrets.sh${WHITE} file.${NORMAL}"
     echo -e "  ${BOLD}${WHITE}This file defines things such as your GPG key and Github Personal Token.${NORMAL}"
@@ -1016,33 +874,12 @@ Logs_Finish()
 Logs_Begin
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   Cache Sudo Password
-#
-#   require normal user sudo authentication for certain actions
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-if [[ ${EUID} -ne 0 ]]; then
-    sudo -k # make sure to ask for password on next sudo
-    if sudo true && [ -n "${USER}" ]; then
-        printf "\n%-50s %-5s\n\n" "${TIME}      SUDO [SIGN-IN]: Welcome, ${USER}" | tee -a "${LOGS_FILE}" >/dev/null
-    else
-        printf "\n%-50s %-5s\n\n" "${TIME}      SUDO Failure: Wrong Password x3" | tee -a "${LOGS_FILE}" >/dev/null
-        exit 1
-    fi
-else
-    if [ -n "${USER}" ]; then
-        printf "\n%-50s %-5s\n\n" "${TIME}      SUDO [EXISTING]: ${USER}" | tee -a "${LOGS_FILE}" >/dev/null
-    fi
-fi
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   func > spinner animation
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 spin()
 {
     spinner="-\\|/-\\|/"
-
 }
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
