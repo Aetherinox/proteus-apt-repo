@@ -78,7 +78,7 @@ STATUS_HALT="${BOLD}${YELLOW} HALT ${NORMAL}"
 sys_arch=$(dpkg --print-architecture)
 sys_code=$(lsb_release -cs)
 
-app_dir="/server/proteus"
+app_dir="$PWD"
 app_dir_home="${HOME}/bin"
 app_dir_storage="$app_dir/incoming/proteus-git/${sys_code}"
 app_dir_repo="incoming/proteus-git/${sys_code}"
@@ -138,14 +138,12 @@ app_i=0
 #   inside.
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-mkdir -p $LOGS_DIR
-
-if [ -f ${app_dir}/secrets.sh ]; then
-source ${app_dir}/secrets.sh
+if [ -f ${PWD}/secrets.sh ]; then
+source ${PWD}/secrets.sh
 fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   load secrets through Clevis
+#   SECRETS > CLEVIS > LOAD
 #
 #   this method has you create multiple files:
 #       ./secrets/.pat_github
@@ -178,6 +176,17 @@ else
     echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.passwd missing${WHITE}"
 fi
 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   SECRETS > CLEVIS > CREATE
+#   creates the secrets structure if it doesnt exist
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+if [ ! -d "$PWD/.secrets/" ]; then
+    mkdir -p $PWD/.secrets/
+    touch $PWD/.secrets/.pat_github
+    touch $PWD/.secrets/.pat_gitlab
+    touch $PWD/.secrets/.passwd
+fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   exports
@@ -467,11 +476,24 @@ app_run_github_precheck( )
 #   secrets.sh file missing -- abort
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-if ! [ -f ${app_dir}/secrets.sh ]; then
+if ! [ -f $app_dir/secrets.sh ]; then
     echo
-    echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}secrets.sh file not found! Must create a ${FUCHSIA}secrets.sh${WHITE} file.${NORMAL}"
+    echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}secrets.sh file not found! Creating a blank ${FUCHSIA}secrets.sh${WHITE} file.${NORMAL}"
     echo -e "  ${BOLD}${WHITE}This file defines things such as your GPG key and Github Personal Token.${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}Open the newly created ${FUCHSIA}secrets.sh${WHITE} file and add your secrets${NORMAL}"
     echo
+
+    touch $app_dir/secrets.sh
+
+sudo tee $app_dir/secrets.sh << EOF > /dev/null
+#!/bin/bash
+PATH="/bin:/usr/bin:/sbin:/usr/sbin:/home/$USER/bin"
+export GITHUB_API_TOKEN=github_pat_xxxxxxxxx
+export GITLAB_PA_TOKEN=glpat-xxxxxxxxxxxxxxx
+export GPG_KEY=
+export GITHUB_NAME=
+export GITHUB_EMAIL=
+EOF
 
     printf "  Press any key to abort ... ${NORMAL}"
     read -n 1 -s -r -p ""
@@ -566,8 +588,8 @@ fi
 #   check > Github / Gitlab API tokens
 #
 #   Must use the values
-#       - CSI_PAT_GITHUB
-#       - GITLAB_PA_TOKEN
+#       - GITHUB_API_TOKEN=${CSI_PAT_GITHUB}
+#       - GITLAB_PA_TOKEN=${CSI_PAT_GITLAB}
 #
 #   Do not rename them, these are the globals recognized by LastVersion
 #   
