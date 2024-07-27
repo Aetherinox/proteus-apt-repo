@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `07.27.2024 06:00:01`
+Last generated on `07.27.2024 12:00:02`
 
 <br />
 
@@ -433,7 +433,6 @@ Last generated on `07.27.2024 06:00:01`
 │       │   │   ├── php-bacon-qr-code_2.0.8-2_amd64.deb
 │       │   │   └── php-bacon-qr-code_2.0.8-2_arm64.deb
 │       │   └── bitwarden
-│       │       ├── bitwarden_2023.9.3_amd64.deb
 │       │       └── bitwarden_2024.7.1_amd64.deb
 │       ├── c
 │       │   └── clevis
@@ -466,14 +465,10 @@ Last generated on `07.27.2024 06:00:01`
 │       │   │   ├── flatpak_1.14.4-2_amd64.deb
 │       │   │   └── flatpak_1.14.6-1~flatpak1~22.04.1_amd64.deb
 │       │   └── freetube
-│       │       ├── freetube_0.19.1_amd64.deb
-│       │       ├── freetube_0.19.1_arm64.deb
 │       │       ├── freetube_0.21.2_amd64.deb
 │       │       └── freetube_0.21.2_arm64.deb
 │       ├── g
 │       │   ├── github-desktop
-│       │   │   ├── github-desktop_3.3.3-linux2_amd64.deb
-│       │   │   ├── github-desktop_3.3.3-linux2_arm64.deb
 │       │   │   ├── github-desktop_3.3.8-linux2_amd64.deb
 │       │   │   ├── github-desktop_3.3.8-linux2_arm64.deb
 │       │   │   └── github-desktop_3.4.2-linux1_arm64.deb
@@ -725,9 +720,6 @@ Last generated on `07.27.2024 06:00:01`
 │       │       └── nginx-confgen_2.1-1_arm64.deb
 │       ├── o
 │       │   ├── obsidian
-│       │   │   ├── obsidian_1.4.16_amd64.deb
-│       │   │   ├── obsidian_1.5.3_amd64.deb
-│       │   │   ├── obsidian_1.5.8_amd64.deb
 │       │   │   └── obsidian_1.6.7_amd64.deb
 │       │   ├── ocs-url
 │       │   │   └── ocs-url_3.1.0-0ubuntu1_amd64.deb
@@ -1285,5 +1277,5 @@ Last generated on `07.27.2024 06:00:01`
 ├── secrets.sh
 └── tree.md
 
-198 directories, 1077 files
+198 directories, 1069 files
 ```

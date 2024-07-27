@@ -478,7 +478,6 @@
             {"type":"file","name":"php-bacon-qr-code_2.0.8-2_arm64.deb"}
         ]},
           {"type":"directory","name":"bitwarden","contents":[
-            {"type":"file","name":"bitwarden_2023.9.3_amd64.deb"},
             {"type":"file","name":"bitwarden_2024.7.1_amd64.deb"}
         ]}
       ]},
@@ -523,16 +522,12 @@
             {"type":"file","name":"flatpak_1.14.6-1~flatpak1~22.04.1_amd64.deb"}
         ]},
           {"type":"directory","name":"freetube","contents":[
-            {"type":"file","name":"freetube_0.19.1_amd64.deb"},
-            {"type":"file","name":"freetube_0.19.1_arm64.deb"},
             {"type":"file","name":"freetube_0.21.2_amd64.deb"},
             {"type":"file","name":"freetube_0.21.2_arm64.deb"}
         ]}
       ]},
         {"type":"directory","name":"g","contents":[
           {"type":"directory","name":"github-desktop","contents":[
-            {"type":"file","name":"github-desktop_3.3.3-linux2_amd64.deb"},
-            {"type":"file","name":"github-desktop_3.3.3-linux2_arm64.deb"},
             {"type":"file","name":"github-desktop_3.3.8-linux2_amd64.deb"},
             {"type":"file","name":"github-desktop_3.3.8-linux2_arm64.deb"},
             {"type":"file","name":"github-desktop_3.4.2-linux1_arm64.deb"}
@@ -833,9 +828,6 @@
       ]},
         {"type":"directory","name":"o","contents":[
           {"type":"directory","name":"obsidian","contents":[
-            {"type":"file","name":"obsidian_1.4.16_amd64.deb"},
-            {"type":"file","name":"obsidian_1.5.3_amd64.deb"},
-            {"type":"file","name":"obsidian_1.5.8_amd64.deb"},
             {"type":"file","name":"obsidian_1.6.7_amd64.deb"}
         ]},
           {"type":"directory","name":"ocs-url","contents":[
@@ -1475,5 +1467,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":198,"files":1077}
+  {"type":"report","directories":198,"files":1069}
 ]
