@@ -5,7 +5,7 @@ echo
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   @author :           aetherinox
 #   @script :           Proteus Apt Git
-#   @when   :           2024-06-15 19:50:31
+#   @date   :           2024-07-27 03:15:53
 #   @url    :           https://github.com/Aetherinox/proteus-git
 #
 #   requires chmod +x proteus_git.sh
@@ -78,8 +78,6 @@ STATUS_HALT="${BOLD}${YELLOW} HALT ${NORMAL}"
 sys_arch=$(dpkg --print-architecture)
 sys_code=$(lsb_release -cs)
 
-HOME="/home/aetherinox"
-
 app_dir="/server/proteus"
 app_dir_home="${HOME}/bin"
 app_dir_storage="$app_dir/incoming/proteus-git/${sys_code}"
@@ -88,9 +86,30 @@ app_dir_wd=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 app_title="Proteus Apt Git"
 app_about="Internal system to Proteus App Manager which grabs debian packages."
-app_ver=("1" "1" "0" "0")
+app_ver=("1" "2" "0" "0")
 app_file_this=$(basename "$0")
 app_file_proteus="${app_dir_home}/proteus-git"
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   requite packages before anything begins.
+#   we need these to assign variables in the next step for 
+#       app_repo_user
+#       app_repo_email
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+if ! [ -x "$(command -v git)" ]; then
+    echo -e "  ${GREYL}Installing package ${MAGENTA}Git${WHITE}"
+    sudo apt-get update -y -q >/dev/null 2>&1
+    sudo apt-get install git -y -qq >/dev/null 2>&1
+
+    echo -e "  ${GREYL}Installing package ${MAGENTA}GPG${WHITE}"
+    sudo apt-get update -y -q >/dev/null 2>&1
+    sudo apt-get install gpg -y -qq >/dev/null 2>&1
+fi
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   app repo paths and commands
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 app_repo_author="Aetherinox"
 app_repo="proteus-git"
@@ -109,12 +128,17 @@ app_queue_url=()
 app_i=0
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   Deprecated: This method is being deprecated in favor of clevis encrypted
-#   secrets.
+#   Deprecated
+#   This method is being deprecated in favor of clevis encrypted secrets.
 #
 #   load secrets file to handle Github rate limiting via a PAF.
 #   managed via https://github.com/settings/tokens?type=beta
+#
+#   this method made you create a "secrets.sh" bash file and add your secrets
+#   inside.
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+mkdir -p $LOGS_DIR
 
 if [ -f ${app_dir}/secrets.sh ]; then
 source ${app_dir}/secrets.sh
@@ -122,6 +146,16 @@ fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   load secrets through Clevis
+#
+#   this method has you create multiple files:
+#       ./secrets/.pat_github
+#       ./secrets/.pat_gitlab
+#
+#   the contents of the files should be encrypted using Clevis, either tpm
+#   or a tang server.
+#
+#   clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'github_pat_XXXXXX' > /.secrets/.pat_github
+#   clevis decrypt < /.secrets/.pat_github
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 if [ -f ${HOME}/.secrets/.pat_github ]; then
@@ -330,6 +364,7 @@ lst_packages=(
     'php-zip'
     'php-zmq'
     'php'
+    'sks',
     'snap'
     'snapd'
     'wget'
@@ -434,10 +469,8 @@ app_run_github_precheck( )
 
 if ! [ -f ${app_dir}/secrets.sh ]; then
     echo
-    echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}secrets.sh file not found${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}Must create a ${FUCHSIA}secrets.sh${WHITE} file.${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}This file defines things such as your${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}GPG key and Github Personal Token.${NORMAL}"
+    echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}secrets.sh file not found! Must create a ${FUCHSIA}secrets.sh${WHITE} file.${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}This file defines things such as your GPG key and Github Personal Token.${NORMAL}"
     echo
 
     printf "  Press any key to abort ... ${NORMAL}"
@@ -545,7 +578,7 @@ fi
 
 if [ -z "${CSI_PAT_GITHUB}" ] && [ -z "${CSI_PAT_GITLAB}" ]; then
     echo
-    echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Missing ${YELLOW}API Tokens${WHITE}${NORMAL}"
+    echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Missing ${YELLOW}API Tokens${NORMAL}"
     echo -e "  ${BOLD}${WHITE}Must create a ${FUCHSIA}secrets.sh${WHITE} file and define an API token${NORMAL}"
     echo -e "  ${BOLD}${WHITE}for either Github or Gitlab.${NORMAL}"
     echo
@@ -553,7 +586,7 @@ if [ -z "${CSI_PAT_GITHUB}" ] && [ -z "${CSI_PAT_GITLAB}" ]; then
     echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GITLAB_PA_TOKEN=${WHITE}XXXXXXX${NORMAL}"
     echo
     echo -e "  ${BOLD}${WHITE}Without supplying this, you will be rate limited.${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}on queries using ${YELLOW}LastVersion${WHITE}${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}on queries using ${YELLOW}LastVersion${NORMAL}"
     echo
 
     printf "  Press any key to abort ... ${NORMAL}"
@@ -605,7 +638,7 @@ get_version_compare_gt()
 #       proteus-git.sh --test
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-app_test( )
+app_update_gpg( )
 {
     printf '%-57s' "    |--- Running Test"
     echo
@@ -677,10 +710,11 @@ opt_usage()
     printf '  %-5s %-40s\n' "    " "${0} [${GREYL}options${NORMAL}]" 1>&2
     printf '  %-5s %-40s\n\n' "    " "${0} [${GREYL}-h${NORMAL}] [${GREYL}-d${NORMAL}] [${GREYL}-n${NORMAL}] [${GREYL}-s${NORMAL}] [${GREYL}-t THEME${NORMAL}] [${GREYL}-v${NORMAL}]" 1>&2
     printf '  %-5s %-40s\n' "Options:" "" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-d, --dev" "dev mode" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-d, --dev" "dev mode with advanced logs" 1>&2
     printf '  %-5s %-18s %-40s\n' "    " "-h, --help" "show help menu" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-g, --githubOnly" "only update github packages" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-s, --sourceOnly" "only update apt source packages" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-g, --onlyTest" "download packages from apt-get and LastVersion, do not push to git repo" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-g, --onlyGithub" "only update packages using LastVersion, push to git" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-s, --onlyAptget" "only update packages using AptGet, push to git" 1>&2
     printf '  %-5s %-18s %-40s\n' "    " "-n, --nullrun" "dev: null run" 1>&2
     printf '  %-5s %-18s %-40s\n' "    " "" "simulate app installs (no changes)" 1>&2
     printf '  %-5s %-18s %-40s\n' "    " "-q, --quiet" "quiet mode which disables logging" 1>&2
@@ -697,6 +731,43 @@ opt_usage()
 #
 #   reminder that any functions which need executed must be defined BEFORE
 #   this point. Bash sucks like that.
+#
+#   --dev           show advanced printing
+#
+#   --dist          specifies a specific distribution
+#                   jammy, lunar, focal, noble, etc
+#
+#   --setup         installs all required dependencies for proteus script
+#                   apt-move, apt-url, curl, wget, tree, reprepro, lastversion
+#
+#   --gpg           adds new entries to "/home/${USER}/.gnupg/gpg-agent.conf"
+#
+#   --onlyTest      downloads packages from both apt-get and LastVersion
+#                   does not push packages to Github proteus repo
+#
+#   --onlyGithub    only downloads packages from github using LastVersion
+#                   does not download packages from apt-get
+#
+#   --onlyAptget    only downloads packages from apt-get
+#                   does not download packages from github using LastVersion
+#
+#   --help          show help and usage information
+#
+#   --branch        used in combination with --update
+#                   used to install proteus apt script from another github
+#                   branch such as development branch
+#
+#   --nullrun       used for testing functionality
+#                   does not download packages
+#                   does not modify file permissions
+#                   does not add packages to reprepro
+#                   does not push changes to github
+#
+#   --quiet         no logs output to pipe file
+#
+#   --update        downloads the latest proteus script to local folder
+#
+#   --version       display version information
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 while [ $# -gt 0 ]; do
@@ -721,17 +792,22 @@ while [ $# -gt 0 ]; do
             app_setup
             ;;
 
-    -t*|--test*)
-            app_test
+    -gp*|--gpg*)
+            app_update_gpg
+            ;;
+
+    -t*|--onlyTest*)
+            OPT_DLPKG_ONLY_TEST=true
+            echo "Testing Download Only"
             ;;
 
     -g*|--githubOnly*)
-            OPT_ONLY_GIT=true
+            OPT_DLPKG_ONLY_LASTVER=true
             echo "Update Github Only"
             ;;
 
-    -p*|--sourceOnly*)
-            OPT_ONLY_SRC=true
+    -p*|--onlyAptget*)
+            OPT_DL_ONLY_APTGET=true
             echo "Update Source Packages Only"
             ;;
 
@@ -1810,9 +1886,9 @@ app_setup()
             sudo apt-get update -y -q >> /dev/null 2>&1
             sudo apt-get install python3-pip python3-venv -y -qq >> /dev/null 2>&1
 
-            #wget https://github.com/dvershinin/lastversion/archive/refs/tags/v3.5.0.zip
-            #mkdir /home/${USER}/Packages/
-            #unzip v3.5.0.zip -d /home/${USER}/Packages/lastversion
+            # wget https://github.com/dvershinin/lastversion/archive/refs/tags/v3.5.0.zip
+            # mkdir /home/${USER}/Packages/
+            # unzip v3.5.0.zip -d /home/${USER}/Packages/lastversion
 
             # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
             #   Uninstall with
@@ -1959,7 +2035,7 @@ show_header()
 #   updates apt source packages for the distro being used
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-app_run_dl_aptsrc()
+app_run_dl_aptget()
 {
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   sort alphabetically
@@ -2115,13 +2191,13 @@ app_run_dl_aptsrc()
 }
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   app > run > github
+#   app > run > github (using lastversion)
 #
 #   check github repos and download any updates that will be added to our
 #   apt repo.
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-app_run_dl_gh()
+app_run_dl_lastver()
 {
     count=${#lst_github[@]}
 
@@ -2139,8 +2215,16 @@ app_run_dl_gh()
         #   (?:\b|_)(?:amd64|arm64|$app_repo_dist_sel).*\b.*\.deb$
         lst_releases=($( lastversion --pre --assets $repo --filter "(?:\b|_)(?:amd64|arm64|$app_repo_dist_sel)\b.*\.deb$" ))
 
+        if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
+            echo -e "  ${WHITE}LastVersion var ${GREEN}lst_releases${NORMAL}: ${FUCHSIA}${lst_releases}${NORMAL}"
+        fi
+
         if [ -z ${count_git} ]; then
             count_git=${#lst_releases[@]}
+        fi
+
+        if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
+            echo -e "  ${WHITE}Using LastVersion to download ${FUCHSIA}${count_git}${NORMAL} packages"
         fi
 
         #   loop each downloadable package
@@ -2148,6 +2232,11 @@ app_run_dl_gh()
         do
             repo_file_url=${lst_releases[$key]}
             app_filename="${repo_file_url##*/}"
+
+            if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
+                echo -e "  ${WHITE}       Repo Url: ${FUCHSIA}${repo_file_url}${NORMAL}"
+                echo -e "  ${WHITE}       File Name: ${FUCHSIA}${app_filename}${NORMAL}"
+            fi
 
             #   The filtering in the lastversion query should be enough, however, some people name their packages in a way
             #   where it would be difficult to rely only on that.
@@ -2181,6 +2270,10 @@ app_run_dl_gh()
                             #   full path to deb package
                             deb_package="$app_dir_repo/$arch/$app_filename"
 
+                            if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
+                                echo -e "  ${WHITE}       Adding reprepro package ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
+                            fi
+
                             reprepro -V \
                                 --section utils \
                                 --component main \
@@ -2198,6 +2291,10 @@ app_run_dl_gh()
                         if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
                             #   full path to deb package
                             deb_package="$app_dir_repo/$arch/$app_filename"
+
+                            if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
+                                echo -e "  ${WHITE}       Adding reprepro package ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
+                            fi
 
                             reprepro -V \
                                 --section utils \
@@ -2217,6 +2314,10 @@ app_run_dl_gh()
                         if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
                             #   full path to deb package
                             deb_package="$app_dir_repo/$arch/$app_filename"
+
+                            if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
+                                echo -e "  ${WHITE}       Adding reprepro package ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
+                            fi
 
                             reprepro -V \
                                 --section utils \
@@ -2245,18 +2346,20 @@ app_run_dl_gh()
 app_run_gh_start()
 {
 
-    cd ${app_dir}
+    if [ -z "${OPT_DEV_NULLRUN}" ] && [ -z "${OPT_DLPKG_ONLY_TEST}" ]; then
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-    #   .app folder
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+        cd ${app_dir}
 
-    local manifest_dir="${app_dir}/.app"
-    mkdir -p            ${manifest_dir}
+        # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+        #   .app folder
+        # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-    #   .app folder > create .json
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+        local manifest_dir="${app_dir}/.app"
+        mkdir -p            ${manifest_dir}
+
+        # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+        #   .app folder > create .json
+        # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 sudo tee ${manifest_dir}/${app_repo_dist_sel}.json >/dev/null <<EOF
 {
@@ -2272,23 +2375,25 @@ sudo tee ${manifest_dir}/${app_repo_dist_sel}.json >/dev/null <<EOF
 }
 EOF
 
-    app_run_github_precheck
+        app_run_github_precheck
 
-    git branch -m ${app_repo_branch}
-    git add --all
-    git add -u
+        git branch -m ${app_repo_branch}
+        git add --all
+        git add -u
 
-    sleep 1
+        sleep 1
 
-    local app_repo_commit="[S] auto-update [ ${app_repo_dist_sel} ] @ ${NOW}"
-    echo -e "  ${WHITE}Starting commit ${FUCHSIA}${app_repo_commit}${WHITE}${NORMAL}"
+        local app_repo_commit="[S] auto-update [ ${app_repo_dist_sel} ] @ ${NOW}"
+        echo -e "  ${WHITE}Starting commit ${FUCHSIA}${app_repo_commit}${NORMAL}"
 
-    git commit -S -m "$app_repo_commit"
+        git commit -S -m "$app_repo_commit"
 
-    sleep 1
+        sleep 1
 
-    echo -e "  ${WHITE}Starting push ${FUCHSIA}${app_repo_branch}${WHITE}${NORMAL}"
-    git push https://${CSI_PAT_GITHUB}@github.com/${GITHUB_NAME}/${app_repo_apt}
+        echo -e "  ${WHITE}Starting push ${FUCHSIA}${app_repo_branch}${NORMAL}"
+        git push https://${CSI_PAT_GITHUB}@github.com/${GITHUB_NAME}/${app_repo_apt}
+
+    fi # end devnull
 
 }
 
@@ -2301,30 +2406,34 @@ EOF
 app_run_gh_end()
 {
 
-    cd ${app_dir}
+    if [ -z "${OPT_DEV_NULLRUN}" ] && [ -z "${OPT_DLPKG_ONLY_TEST}" ]; then
 
-    app_run_github_precheck
+        cd ${app_dir}
 
-    echo
-    echo -e " ${BLUE}-------------------------------------------------------------------------${NORMAL}"
-    echo
-    echo -e "  ${GREYL}Updating Github: $app_repo_branch${WHITE}"
-    echo
-    echo -e " ${BLUE}-------------------------------------------------------------------------${NORMAL}"
-    echo
+        app_run_github_precheck
 
-    git branch -m $app_repo_branch
-    git add --all
-    git add -u
+        echo
+        echo -e " ${BLUE}-------------------------------------------------------------------------${NORMAL}"
+        echo
+        echo -e "  ${GREYL}Updating Github: $app_repo_branch${WHITE}"
+        echo
+        echo -e " ${BLUE}-------------------------------------------------------------------------${NORMAL}"
+        echo
 
-    sleep 1
+        git branch -m $app_repo_branch
+        git add --all
+        git add -u
 
-    local app_repo_commit="[E] auto-update [ $app_repo_dist_sel ] @ $NOW"
-    git commit -S -m "$app_repo_commit"
+        sleep 1
 
-    sleep 1
+        local app_repo_commit="[E] auto-update [ $app_repo_dist_sel ] @ $NOW"
+        git commit -S -m "$app_repo_commit"
 
-    git push -u origin $app_repo_branch
+        sleep 1
+
+        git push -u origin $app_repo_branch
+
+    fi # end devnull
 }
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -2459,20 +2568,20 @@ app_start()
     #   run
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    if [ -n "${OPT_ONLY_GIT}" ]; then
+    if [ -n "${OPT_DLPKG_ONLY_LASTVER}" ]; then
         app_run_gh_start
-        app_run_dl_gh
+        app_run_dl_lastver
         app_run_tree_update
         app_run_gh_end
-    elif [ -n "${OPT_ONLY_SRC}" ]; then
+    elif [ -n "${OPT_DL_ONLY_APTGET}" ]; then
         app_run_gh_start
-        app_run_dl_aptsrc
+        app_run_dl_aptget
         app_run_tree_update
         app_run_gh_end
     else
         app_run_gh_start
-        app_run_dl_aptsrc
-        app_run_dl_gh
+        app_run_dl_aptget
+        app_run_dl_lastver
         app_run_tree_update
         app_run_gh_end
     fi
