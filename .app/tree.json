@@ -1459,6 +1459,11 @@
       ]}
     ]}
   ]},
+    {"type":"directory","name":".secrets","contents":[
+      {"type":"file","name":".passwd"},
+      {"type":"file","name":".pat_github"},
+      {"type":"file","name":".pat_gitlab"}
+  ]},
     {"type":"file","name":".gitattributes"},
     {"type":"file","name":".gitignore"},
     {"type":"file","name":"proteus-git.sh"},
@@ -1467,5 +1472,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":198,"files":1069}
+  {"type":"report","directories":199,"files":1072}
 ]
