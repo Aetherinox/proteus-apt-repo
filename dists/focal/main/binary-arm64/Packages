@@ -34,35 +34,6 @@ Description: add and remove users and groups
  A custom script can be executed after each of the commands.
 Original-Maintainer: Debian Adduser Developers <adduser@packages.debian.org>
 
-Package: apt-move
-Version: 4.2.27-6
-Architecture: arm64
-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Original-Maintainer: Debian QA Group <packages@qa.debian.org>
-Installed-Size: 130
-Depends: bc, dash, libapt-pkg6.0 (>= 1.9~), libc6 (>= 2.17), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)
-Recommends: apt
-Homepage: http://sourceforge.net/projects/apt-move/
-Priority: 0
-Section: utils
-Filename: pool/main/a/apt-move/apt-move_4.2.27-6_arm64.deb
-Size: 36040
-SHA512: ccda9501957980e6bf9a701e4f6dbb0fb2d541f09930d4741bf429758458e164e6fba617ef7897cc148dc62331712771ab2bdd056598fc97f48306551b2a5f3d
-SHA256: f44381ccc4789d01c6733c1e925a45eb507f6a93dc8c9e4f928e9855bde8e295
-SHA1: 18b93445c7b575ff0d8c9531ad3fc16c77c04246
-MD5sum: a8f56ad9a285c1ca60dd460e4dac2662
-Description: maintain Debian packages in a package pool
- apt-move is used to move a collection of Debian package files into a
- proper archive hierarchy as is used in the official Debian archive. It
- is intended as a tool to help manage the apt-get(8) file cache, but
- could be configured to work with any collection of Debian packages.
- .
- Running apt-move periodically will assist in managing the resulting
- partial mirror by optionally removing obsolete packages, and creating
- valid local Packages.gz files. It can also build a partial or complete
- local mirror of a Debian binary distribution (including an
- ``installed-packages only'' mirror).
-
 Package: apt-url
 Version: 1.0.0-2
 Architecture: all
@@ -133,47 +104,6 @@ Description: Displays user-friendly dialog boxes from shell scripts
   tail             Allows viewing the end of files (tail) that auto updates
   background tail  Similar to tail but runs in the background.
   editbox          Allows editing an existing file
-
-Package: freetube
-Version: 0.19.1
-License: AGPL-3.0-or-later
-Vendor: PrestonN <FreeTubeApp@protonmail.com>
-Architecture: arm64
-Maintainer: PrestonN <FreeTubeApp@protonmail.com>
-Installed-Size: 239779
-Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
-Recommends: libappindicator3-1
-Homepage: https://github.com/FreeTubeApp/FreeTube#readme
-Priority: 0
-Section: utils
-Filename: pool/main/f/freetube/freetube_0.19.1_arm64.deb
-Size: 63756828
-SHA512: c182aa2e7a97210f61f8a4db43b41468424a2e2970c740e86156ce562fc663b160ec81ac215b0d3af6e76fd6d25ada1c3b7ebcee525d35794c4ba05ddf72eb08
-SHA256: 11a6a364c9182688bab210f0ec09c302dd60074f66bc8b8352e285016549ca27
-SHA1: fae809d74ca2af7abc38ec96738a74166aebbad0
-MD5sum: c30bd6084f0dc738ba3623fff62f9699
-Description: 
-  A private YouTube client
-
-Package: github-desktop
-Version: 3.3.3-linux2
-Architecture: arm64
-Depends: libgtk-3-0, libnotify4, libnss3, libxtst6, xdg-utils, libatspi2.0-0, libdrm2, libgbm1, libxcb-dri3-0, kde-cli-tools | kde-runtime | trash-cli | libglib2.0-bin | gvfs-bin, libcurl3 | libcurl4, libsecret-1-0, gnome-keyring
-Recommends: pulseaudio | libasound2
-Suggests: gir1.2-gnomekeyring-1.0, libgnome-keyring0, lsb-release
-Installed-Size: 334114
-Maintainer: Brendan Forster <github@brendanforster.com>
-Homepage: https://github.com/shiftkey/desktop
-Priority: 0
-Section: utils
-Filename: pool/main/g/github-desktop/github-desktop_3.3.3-linux2_arm64.deb
-Size: 87366284
-SHA512: 2a303911514e284e65728069ca901152aa4cd0e55ebaca33636c546fff84a37d28cdb154652f29de34a85269e6bd7c629b97215eaa7cefcc7ca9fed31e6168cd
-SHA256: 2635ba8006d7b25aad2589632014869c6540b9efeaa7b7cade3cc3d211c031e1
-SHA1: b477b9fb07866d8ee0c9f294161723c12d1732fc
-MD5sum: bdf307ddff767e82c763cf0f3862c2d2
-Description: Simple collaboration from your desktop
- This is the unofficial port of GitHub Desktop for Linux distributions
 
 Package: gitkraken-license-pro
 Version: 1.0.0-1

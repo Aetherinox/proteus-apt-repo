@@ -41,27 +41,6 @@ Description: add and remove users and groups
  easier and more stable to write and maintain.
 Original-Maintainer: Debian Adduser Developers <adduser@packages.debian.org>
 
-Package: freetube
-Version: 0.19.1
-License: AGPL-3.0-or-later
-Vendor: PrestonN <FreeTubeApp@protonmail.com>
-Architecture: arm64
-Maintainer: PrestonN <FreeTubeApp@protonmail.com>
-Installed-Size: 239779
-Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
-Recommends: libappindicator3-1
-Homepage: https://github.com/FreeTubeApp/FreeTube#readme
-Priority: 0
-Section: utils
-Filename: pool/main/f/freetube/freetube_0.19.1_arm64.deb
-Size: 63756828
-SHA512: c182aa2e7a97210f61f8a4db43b41468424a2e2970c740e86156ce562fc663b160ec81ac215b0d3af6e76fd6d25ada1c3b7ebcee525d35794c4ba05ddf72eb08
-SHA256: 11a6a364c9182688bab210f0ec09c302dd60074f66bc8b8352e285016549ca27
-SHA1: fae809d74ca2af7abc38ec96738a74166aebbad0
-MD5sum: c30bd6084f0dc738ba3623fff62f9699
-Description: 
-  A private YouTube client
-
 Package: github-desktop
 Version: 3.3.8-linux2
 Architecture: arm64

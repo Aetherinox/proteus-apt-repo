@@ -55,35 +55,6 @@ MD5sum: cce3d6aea24c0cfba940e7bfbd853cf1
 Description: 
   A Universal linux app store 
 
-Package: apt-move
-Version: 4.2.27-6
-Architecture: amd64
-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Original-Maintainer: Debian QA Group <packages@qa.debian.org>
-Installed-Size: 134
-Depends: bc, dash, libapt-pkg6.0 (>= 1.9~), libc6 (>= 2.4), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)
-Recommends: apt
-Homepage: http://sourceforge.net/projects/apt-move/
-Priority: 0
-Section: utils
-Filename: pool/main/a/apt-move/apt-move_4.2.27-6_amd64.deb
-Size: 36584
-SHA512: 6bb01a4fb841b99dc8042f51db90dc43f2469840fd31731d835dc0f1181300778df1eceb9606830fd3fadb4fd9b587455719bfdcaa25b48d320c2268f9341b7d
-SHA256: 39c59aff8855261faa194e43108a7ea22f25ab5146215191ad57b795a81c1272
-SHA1: 239764d6520ba84769c91cba3eec2d65e7e7da35
-MD5sum: 521d8838791d74bdfab348b7565e73e6
-Description: maintain Debian packages in a package pool
- apt-move is used to move a collection of Debian package files into a
- proper archive hierarchy as is used in the official Debian archive. It
- is intended as a tool to help manage the apt-get(8) file cache, but
- could be configured to work with any collection of Debian packages.
- .
- Running apt-move periodically will assist in managing the resulting
- partial mirror by optionally removing obsolete packages, and creating
- valid local Packages.gz files. It can also build a partial or complete
- local mirror of a Debian binary distribution (including an
- ``installed-packages only'' mirror).
-
 Package: apt-url
 Version: 1.0.0-2
 Architecture: all
@@ -99,27 +70,6 @@ SHA1: 9ecc12edf4ece7ad8c0f8fc47998a340d2730b0a
 MD5sum: 447e1605cac9b953fe6797ae647e586a
 Description: Fetches URLs for specified packages.
  Provides the download URL for a specified package.
-
-Package: bitwarden
-Version: 2023.9.3
-License: GPL-3.0
-Vendor: Bitwarden Inc. <hello@bitwarden.com>
-Architecture: amd64
-Maintainer: Bitwarden Inc. <hello@bitwarden.com>
-Installed-Size: 270218
-Depends: libnotify4, libxtst6, libnss3, libsecret-1-0, libxss1
-Recommends: libappindicator3-1
-Homepage: https://bitwarden.com
-Priority: 0
-Section: utils
-Filename: pool/main/b/bitwarden/bitwarden_2023.9.3_amd64.deb
-Size: 73934484
-SHA512: ce6fbab351ab537cc1199dd7f658cfee7d1a6cd9887cf0bbf62a0b374295b4dac822a59c5995e79e94194be55af4fd9e2fa56c82d125cf25ea9fb15a42ca435c
-SHA256: 741c0893b2fc6b6ff00736c886a0c9ad40b6692305fb6ca41026143824388ee5
-SHA1: dc3e08d9a6813feca0584a3b273623c1cd48d6e6
-MD5sum: 909341b1c75c93c025804dca599b9ace
-Description: A secure and free password manager for all of your devices.
-  A secure and free password manager for all of your devices.
 
 Package: deb-get
 Version: 0.3.9-1
@@ -175,47 +125,6 @@ Description: Displays user-friendly dialog boxes from shell scripts
   tail             Allows viewing the end of files (tail) that auto updates
   background tail  Similar to tail but runs in the background.
   editbox          Allows editing an existing file
-
-Package: freetube
-Version: 0.19.1
-License: AGPL-3.0-or-later
-Vendor: PrestonN <FreeTubeApp@protonmail.com>
-Architecture: amd64
-Maintainer: PrestonN <FreeTubeApp@protonmail.com>
-Installed-Size: 234625
-Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
-Recommends: libappindicator3-1
-Homepage: https://github.com/FreeTubeApp/FreeTube#readme
-Priority: 0
-Section: utils
-Filename: pool/main/f/freetube/freetube_0.19.1_amd64.deb
-Size: 67679340
-SHA512: 01c73ebcd7fc6aa7158633b81fb1117869acb5c72a58c80ed15f420e2d85c3aa882e83f008fe9091df6d02cc4c8a7d0939ef2ffda364219a8310b5e452a6e735
-SHA256: 75a4441b8a5ec3cf5937fa867391554dad6bf118a99496af1dfc6b8dc2437ef6
-SHA1: 20200252c4340a61e7ec2f21652dba16d6e1d6db
-MD5sum: 43a2e6e8cb4877a29edb444ef30e8ede
-Description: 
-  A private YouTube client
-
-Package: github-desktop
-Version: 3.3.3-linux2
-Architecture: amd64
-Depends: libgtk-3-0, libnotify4, libnss3, libxtst6, xdg-utils, libatspi2.0-0, libdrm2, libgbm1, libxcb-dri3-0, kde-cli-tools | kde-runtime | trash-cli | libglib2.0-bin | gvfs-bin, libcurl3 | libcurl4, libsecret-1-0, gnome-keyring
-Recommends: pulseaudio | libasound2
-Suggests: gir1.2-gnomekeyring-1.0, libgnome-keyring0, lsb-release
-Installed-Size: 331834
-Maintainer: Brendan Forster <github@brendanforster.com>
-Homepage: https://github.com/shiftkey/desktop
-Priority: 0
-Section: utils
-Filename: pool/main/g/github-desktop/github-desktop_3.3.3-linux2_amd64.deb
-Size: 92138360
-SHA512: b06938df15d6ed91e5469a3d8943edb1c4d8e3ebb0f2a24c80ab06a98b0be31a250d9b4550ae0f3e9c8acc6600388e73a80a0dc852fa727c8366a5bbf192c3d4
-SHA256: dd252a4686243f8fea17ff6cf96d23db951658deda258fcbacbcc30fa83d1dbf
-SHA1: d77560a4f11a71c6122fde05b699af679cd5ccce
-MD5sum: abb63bb36f66fb067eee8b3e5c326696
-Description: Simple collaboration from your desktop
- This is the unofficial port of GitHub Desktop for Linux distributions
 
 Package: gitkraken-license-pro
 Version: 1.0.0-1

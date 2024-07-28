@@ -27,7 +27,7 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 #!/bin/bash
-PATH="/bin:/usr/bin:/sbin:/usr/sbin:/home/$USER/bin"
+PATH="/bin:/usr/bin:/sbin:/usr/sbin:/home/${USER}/bin"
 echo 
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -87,6 +87,7 @@ app_dir_home="${HOME}/bin"
 app_dir_storage="$app_dir/incoming/proteus-git/${sys_code}"
 app_dir_repo="incoming/proteus-git/${sys_code}"
 app_dir_wd=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+app_dir_secrets="${HOME}/.secrets"
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   vars > app > files
@@ -94,6 +95,9 @@ app_dir_wd=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 app_file_this=$(basename "$0")
 app_file_proteus="${app_dir_home}/proteus-git"
+app_file_secrets_github=${app_dir_secrets}/.pat_github
+app_file_secrets_gitlab=${app_dir_secrets}/.pat_gitlab
+app_file_secrets_passwd=${app_dir_secrets}/.passwd
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   vars > app > general
@@ -457,6 +461,12 @@ export SECONDS=0
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 lst_github=(
+    'obsidianmd/obsidian-releases'
+    'AppOutlet/AppOutlet'
+    'bitwarden/clients'
+    'shiftkey/desktop'
+    'FreeTubeApp/FreeTube'
+    'makedeb/makedeb'
     'Aetherinox/debian-apt-url'
 )
 
@@ -466,6 +476,168 @@ lst_github=(
 
 lst_packages=(
     'adduser'
+    'argon2'
+    'apt-move'
+    'apt-utils'
+    'clevis'
+    'clevis-dracut'
+    'clevis-udisks2'
+    'clevis-tpm2'
+    'dialog'
+    'firefox'
+    'flatpak'
+    'gnome-keyring'
+    'gnome-keysign'
+    'gnome-shell-extension-manager'
+    'git'
+    'gpg'
+    'gpgconf'
+    'gpgv'
+    'jose'
+    'keyutils'
+    'kgpg'
+    'libnginx-mod-http-auth-pam'
+    'libnginx-mod-http-cache-purge'
+    'libnginx-mod-http-dav-ext'
+    'libnginx-mod-http-echo'
+    'libnginx-mod-http-fancyindex'
+    'libnginx-mod-http-geoip'
+    'libnginx-mod-http-headers-more-filter'
+    'libnginx-mod-http-ndk'
+    'libnginx-mod-http-perl'
+    'libnginx-mod-http-subs-filter'
+    'libnginx-mod-http-uploadprogress'
+    'libnginx-mod-http-upstream-fair'
+    'libnginx-mod-nchan'
+    'libnginx-mod-rtmp'
+    'libnginx-mod-stream-geoip'
+    'lsb-base'
+    'lz4'
+    'mysql-client'
+    'mysql-common'
+    'mysql-server'
+    'net-tools'
+    'neofetch'
+    'network-manager-config-connectivity-ubuntu'
+    'network-manager-dev'
+    'network-manager-gnome'
+    'network-manager-openvpn-gnome'
+    'network-manager-openvpn'
+    'network-manager-pptp-gnome'
+    'network-manager-pptp'
+    'network-manager'
+    'networkd-dispatcher'
+    'nginx-common'
+    'nginx-confgen'
+    'nginx-core'
+    'nginx-dev'
+    'nginx-doc'
+    'nginx-extras'
+    'nginx-full'
+    'nginx-light'
+    'nginx'
+    'open-vm-tools-desktop'
+    'open-vm-tools-dev'
+    'open-vm-tools'
+    'php-all-dev'
+    'php-amqp'
+    'php-amqplib'
+    'php-apcu-all-dev'
+    'php-apcu'
+    'php-ast-all-dev'
+    'php-ast'
+    'php-bacon-qr-code'
+    'php-bcmath'
+    'php-brick-math'
+    'php-brick-varexporter'
+    'php-bz2'
+    'php-cas'
+    'php-cgi'
+    'php-cli'
+    'php-code-lts-u2f-php-server'
+    'php-common'
+    'php-crypt-gpg'
+    'php-curl'
+    'php-db'
+    'php-dba'
+    'php-decimal'
+    'php-dev'
+    'php-ds-all-dev'
+    'php-ds'
+    'php-email-validator'
+    'php-embed'
+    'php-enchant'
+    'php-excimer'
+    'php-faker'
+    'php-fpm'
+    'php-fxsl'
+    'php-gd'
+    'php-gearman'
+    'php-gettext-languages'
+    'php-gmagick-all-dev'
+    'php-gmagick'
+    'php-gmp'
+    'php-gnupg-all-dev'
+    'php-gnupg'
+    'php-gnupg'
+    'php-grpc'
+    'php-http'
+    'php-igbinary'
+    'php-imagick'
+    'php-imap'
+    'php-inotify'
+    'php-interbase'
+    'php-intl'
+    'php-ldap'
+    'php-mailparse'
+    'php-maxminddb'
+    'php-mbstring'
+    'php-mcrypt'
+    'php-memcache'
+    'php-memcached'
+    'php-mongodb'
+    'php-msgpack'
+    'php-mysql'
+    'php-oauth'
+    'php-odbc'
+    'php-pcov'
+    'php-pgsql'
+    'php-phpdbg'
+    'php-ps'
+    'php-pspell'
+    'php-psr'
+    'php-raphf'
+    'php-readline'
+    'php-redis'
+    'php-rrd'
+    'php-smbclient'
+    'php-snmp'
+    'php-soap'
+    'php-solr'
+    'php-sqlite3'
+    'php-ssh2'
+    'php-stomp'
+    'php-sybase'
+    'php-tideways'
+    'php-tidy'
+    'php-uopz'
+    'php-uploadprogress'
+    'php-uuid'
+    'php-xdebug'
+    'php-xml'
+    'php-xmlrpc'
+    'php-yac'
+    'php-yaml'
+    'php-zip'
+    'php-zmq'
+    'php'
+    'sks',
+    'snap'
+    'snapd'
+    'tcptrack'
+    'trash-cli'
+    'tree'
+    'wget'
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -535,8 +707,8 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
     #   SECRETS > Github PAT
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    if [ -f $HOME/.secrets/.pat_github ]; then
-        CSI_PAT_GITHUB=$(cat ${HOME}/.secrets/.pat_github | clevis decrypt 2>/dev/null)
+    if [ -f ${app_file_secrets_github} ]; then
+        CSI_PAT_GITHUB=$(cat ${app_file_secrets_github} | clevis decrypt 2>/dev/null)
 
         if [ "${OPT_DEV_ENABLE}" = true ]; then
             printf "%-3s %-15s %-10s\n" "" "Github PAT" "${GREEN}${CSI_PAT_GITHUB}${NORMAL}"
@@ -544,15 +716,15 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
 
         export GITHUB_API_TOKEN=${CSI_PAT_GITHUB}
     else
-        printf "%-3s %-15s %-10s\n" "" "Github PAT" "${RED}${PWD}/.secrets/.pat_github Missing${NORMAL}"
+        printf "%-3s %-15s %-10s\n" "" "Github PAT" "${RED}${app_file_secrets_github} Missing${NORMAL}"
     fi
 
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   SECRETS > Gitlab PAT
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    if [ -f ${HOME}/.secrets/.pat_gitlab ]; then
-        CSI_PAT_GITLAB=$(cat ${HOME}/.secrets/.pat_gitlab | clevis decrypt 2>/dev/null)
+    if [ -f ${app_file_secrets_gitlab} ]; then
+        CSI_PAT_GITLAB=$(cat ${app_file_secrets_gitlab} | clevis decrypt 2>/dev/null)
 
         if [ "${OPT_DEV_ENABLE}" = true ]; then
             printf "%-3s %-15s %-10s\n" "" "Gitlab PAT" "${GREEN}${CSI_PAT_GITLAB}${NORMAL}"
@@ -560,15 +732,15 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
 
         export GITLAB_PA_TOKEN=${CSI_PAT_GITLAB}
     else
-        printf "%-3s %-15s %-10s\n" "" "Gitlab PAT" "${RED}${PWD}/.secrets/.pat_gitlab Missing${NORMAL}"
+        printf "%-3s %-15s %-10s\n" "" "Gitlab PAT" "${RED}${app_file_secrets_gitlab} Missing${NORMAL}"
     fi
 
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   SECRETS > Sudo
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    if [ -f ${HOME}/.secrets/.passwd ]; then
-        CSI_SUDO_PASSWD=$(cat ${HOME}/.secrets/.passwd | clevis decrypt 2>/dev/null)
+    if [ -f ${app_file_secrets_passwd} ]; then
+        CSI_SUDO_PASSWD=$(cat ${app_file_secrets_passwd} | clevis decrypt 2>/dev/null)
     
         if [ "${OPT_DEV_ENABLE}" = true ]; then
             printf "%-3s %-15s %-10s\n" "" "Sudo Passwd" "${GREEN}${CSI_SUDO_PASSWD}${NORMAL}"
@@ -576,7 +748,7 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
 
         echo "$CSI_SUDO_PASSWD" | sudo -S su 2> /dev/null
     else
-        printf "%-3s %-15s %-10s\n" "" "Sudo Passwd" "${RED}$PWD/.secrets/.passwd Missing${NORMAL}"
+        printf "%-3s %-15s %-10s\n" "" "Sudo Passwd" "${RED}${app_file_secrets_passwd} Missing${NORMAL}"
     fi
 
     echo -e
@@ -588,11 +760,11 @@ fi
 #   creates the secrets structure if it doesnt exist
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-if [ "${cfg_Storage_Clevis}" = true ] && [ ! -d "$PWD/.secrets/" ]; then
-    mkdir -p $PWD/.secrets/
-    touch $PWD/.secrets/.pat_github
-    touch $PWD/.secrets/.pat_gitlab
-    touch $PWD/.secrets/.passwd
+if [ "${cfg_Storage_Clevis}" = true ] && [ ! -d "${app_dir_secrets}" ]; then
+    mkdir -p ${app_dir_secrets}
+    touch ${app_file_secrets_github}
+    touch ${app_file_secrets_gitlab}
+    touch ${app_file_secrets_passwd}
 fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -634,7 +806,7 @@ app_run_github_precheck( )
 #   .gitignore
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-if [ ! -f $app_dir/secrets.sh ]; then
+if [ ! -f $app_dir/.gitignore ]; then
 
     touch $app_dir/.gitignore
 
@@ -671,6 +843,13 @@ fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   secrets.sh file missing -- abort
+#
+#   secrets.sh is the old way of storing secrets.
+#   it keeps all secrets in a secrets.sh file in the root folder of the
+#   repo script.
+#
+#   the new method stores your secrets files in the home directory of the
+#   user within a `./secrets` folder.
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 if [ "${cfg_Storage_Clevis}" = false ] && [ ! -f $app_dir/secrets.sh ]; then
@@ -684,7 +863,7 @@ if [ "${cfg_Storage_Clevis}" = false ] && [ ! -f $app_dir/secrets.sh ]; then
 
 sudo tee $app_dir/secrets.sh << EOF > /dev/null
 #!/bin/bash
-PATH="/bin:/usr/bin:/sbin:/usr/sbin:/home/$USER/bin"
+PATH="/bin:/usr/bin:/sbin:/usr/sbin:/home/${USER}/bin"
 export GITHUB_API_TOKEN=github_pat_xxxxxxxxx
 export GITLAB_PA_TOKEN=glpat-xxxxxxxxxxxxxxx
 export GPG_KEY=
@@ -1202,14 +1381,7 @@ begin()
 finish()
 {
     arg1=${1}
-
     spinner_halt
-
-    # if arg1 not empty
-    if ! [ -z "${arg1}" ]; then
-        assoc_uri="${get_docs_uri[$arg1]}"
-        app_queue_url+=($assoc_uri)
-    fi
 }
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -1531,7 +1703,7 @@ app_setup()
                     set -m
                 else
                     echo
-                    echo -e "  ${WHITE}No GPG keys found to import. Since you are in${YELLOW}--onlyTest${NORMAL} mode, ${YELLOW}Skipping${NORMAL}"
+                    echo -e "  ${WHITE}No GPG keys found to import. Since you are in ${YELLOW}--onlyTest${NORMAL} mode, ${YELLOW}Skipping${NORMAL}"
                     echo
                 fi
             fi
@@ -1755,7 +1927,7 @@ app_setup()
     fi
 
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-    #   install proteus-git binary in /home/$USER/bin/proteus-git
+    #   install proteus-git binary in /home/${USER}/bin/proteus-git
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     if ! [ -f "$app_file_proteus" ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
@@ -1836,14 +2008,15 @@ app_setup()
     fi
 
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-    #   add env path /home/$USER/bin/
+    #   add env path /home/${USER}/bin/
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    envpath_add_proteus '$HOME/bin'
+    envpath_add_proteus '${HOME}/bin'
 
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   missing lastversion
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
 
     if [ "$bMissingLastVersion" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing LastVersion" | tee -a "${LOGS_FILE}" >/dev/null
@@ -1854,6 +2027,7 @@ app_setup()
         if [ -z "${OPT_DEV_NULLRUN}" ]; then
             sudo apt-get update -y -q >> /dev/null 2>&1
             sudo apt-get install python3-pip python3-venv -y -qq >> /dev/null 2>&1
+            sudo pip3 install --upgrade --force pip >> /dev/null 2>&1
 
             # wget https://github.com/dvershinin/lastversion/archive/refs/tags/v3.5.0.zip
             # mkdir /home/${USER}/Packages/
@@ -1862,20 +2036,26 @@ app_setup()
             # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
             #   Uninstall with
             #       pip uninstall lastversion
+            #
+            #   note:   --break-system-packages is only available for pip
+            #           23.1 and forward.
+            #
+            #           get version by using
+            #               pip --version
             # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
             pip install lastversion --break-system-packages
             cp /home/${USER}/.local/bin/lastversion /home/${USER}/bin/
             sudo touch /etc/profile.d/lastversion.sh
 
-            envpath_add_lastversion '$HOME/bin'
+            envpath_add_lastversion '${HOME}/bin'
 
-            echo 'export PATH="$HOME/bin:$PATH"' | sudo tee /etc/profile.d/lastversion.sh
+            echo 'export PATH="${HOME}/bin:$PATH"' | sudo tee /etc/profile.d/lastversion.sh
 
             . ~/.bashrc
             . ~/.profile
 
-            source $HOME/.profile # not executing for some reason
+            source ${HOME}/.profile # not executing for some reason
         fi
 
         sleep 0.5
@@ -1894,10 +2074,12 @@ app_setup()
     if ! [ -x "$(command -v gpg)" ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf '%-57s' "    |--- Installing GPG"
         sleep 1
+
         if [ -z "${OPT_DEV_NULLRUN}" ]; then
             sudo apt-get update -y -q >> /dev/null 2>&1
             sudo apt-get install gpg -y -qq >> /dev/null 2>&1
         fi
+
         echo -e "[ ${STATUS_OK} ]"
         sleep 1
     fi
@@ -1944,21 +2126,6 @@ app_setup
 
 [ -n "${OPT_DEV_NULLRUN}" ] && printf "%-50s %-5s\n\n" "${TIME}      Notice: Dev Option: 'No Actions' Enabled" | tee -a "${LOGS_FILE}" >/dev/null
 [ -z "${OPT_DEV_NULLRUN}" ] && printf "%-50s %-5s\n\n" "${TIME}      Notice: Dev Option: 'No Actions' Disabled" | tee -a "${LOGS_FILE}" >/dev/null
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   associated app urls
-#
-#   when certain apps are installed, we may want to open a browser window
-#   so that the user can get a better understanding of where to find
-#   resources for that app.
-#
-#   not all apps have to have a website, as that would get annoying.
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-declare -A get_docs_uri
-get_docs_uri=(
-    ["$app_dialog"]='http://url.here'
-)
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   header
@@ -2019,16 +2186,20 @@ app_run_dl_aptget()
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     count=${#lst_pkgs_sorted[@]}
+    local countNow=count
+
     # (( count++ ))
 
-    begin "Downloading Packages [ $count ]"
-    echo
+    begin "Aptget Packages [ $count ]"
+    echo -e
 
     mkdir -p ${app_dir_storage}/{all,amd64,arm64}
 
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
     #   loop sorted packages
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+    local bNewPackage=true
 
     for i in "${!lst_pkgs_sorted[@]}"; do
         pkg=${lst_pkgs_sorted[$i]}
@@ -2058,16 +2229,41 @@ app_run_dl_aptget()
             # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
             #   <package>_1.x.x-x_<arch>.deb
-            query=$( sudo apt-url "${pkg_arch}" )
-            app_filename=$( echo "${query}" | head -n 1; )
-            app_url=$( echo "${query}" | tail -n 1; )
 
+            apturl_exit_code="0"
+            apturl_query="$(sudo apt-url "${pkg_arch}" \
+                "$@" 2>&1)" \
+                || { apturl_exit_code="$?" ; true; };
+
+            app_filename=$( echo "${apturl_query}" | head -n 1; )
+            app_url=$( echo "${apturl_query}" | tail -n 1; )
+
+            if [ "$bNewPackage" = true ]; then
+                echo -e "     ${GREYL}|--- ${YELLOW}[ ${count} ]${FUCHSIA}${BOLD} Get ${pkg_arch:0:35}${NORMAL}"
+            else
+                echo -e "               ${FUCHSIA}${BOLD} Get ${pkg_arch:0:35}${NORMAL}"
+            fi
+
+            #   kill reprepro if running
             sudo pkill -9 "reprepro"
+
+            #   lockfile exists, remove it to ensure we can download the package
             if [ -f "${app_dir}/db/lockfile" ]; then
                 sudo rm "${app_dir}/db/lockfile"
             fi
 
             wget "${app_url}" -q
+
+            echo -e "  ${WHITE}                Package         ${FUCHSIA}${pkg_arch}${NORMAL}"
+            echo -e "  ${WHITE}                File            ${FUCHSIA}${app_filename}${NORMAL}"
+
+            if echo "$apturl_query" | grep --quiet --ignore-case "find package" ; then
+                echo -e "  ${WHITE}                ${GREEN}Status:         ${FUCHSIA}🔍 ${arch:0:35}${NORMAL} doesn't exist for this package"
+            fi
+
+            if echo "$apturl_query" | grep --quiet --ignore-case "It is held by process" ; then
+                echo -e "  ${WHITE}                ${GREEN}Status:         ${FUCHSIA}🗔 ${pkg_arch:0:35}${NORMAL} held up by process"
+            fi
 
             if [[ -f "${app_dir}/${app_filename}" ]]; then
 
@@ -2076,80 +2272,121 @@ app_run_dl_aptget()
                 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
                 if [[ "${arch}" == "all" ]] && [[ ${app_filename} == *all.deb ]]; then
-                    printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL} ${YELLOW}[ ${count} ]${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
+                    echo -e "  ${WHITE}                Download        ${FUCHSIA}${app_url}${NORMAL}"
+
                     mv "${app_dir}/${app_filename}" "${app_dir_storage}/all/"
-                    echo -e "[ ${STATUS_OK} ]"
+
+                    echo -e "  ${WHITE}                Move            ${FUCHSIA}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA}${app_dir_storage}/all/${NORMAL}"
 
                     if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
                         #   full path to deb package
                         deb_package="${app_dir_repo}/${arch}/${app_filename}"
 
                         if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
-                            echo -e "  ${WHITE}       Adding reprepro package ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
+                            echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
                         fi
 
-                        reprepro -V \
+                        #   repreproStatus=$(reprepro -V --section utils --component main --priority 0 includedeb jammy "incoming/proteus-git/jammy/all/adduser_3.118ubuntu5_all.deb" )
+
+                        reprepro_exit_code="0"
+                        reprepro_output="$(reprepro -V \
                             --section utils \
                             --component main \
                             --priority 0 \
-                            includedeb ${app_repo_dist_sel} "${deb_package}"
+                            includedeb "${app_repo_dist_sel}" "${deb_package}" \
+                            "$@" 2>&1)" \
+                            || { reprepro_exit_code="$?" ; true; };
+
+                            if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
+                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
+                            fi
+
+                            if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
+                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
+                            fi
                     fi
 
-                    echo
+                    bNewPackage=false
 
                 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
                 #   architecture > amd64
                 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
                 elif [[ "${arch}" == "amd64" ]] && [[ ${app_filename} == *amd64.deb ]]; then
-                    printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL} ${YELLOW}[ ${count} ]${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
+                    echo -e "  ${WHITE}                Download        ${FUCHSIA}${app_url}${NORMAL}"
+
                     mv "${app_dir}/${app_filename}" "${app_dir_storage}/amd64/"
-                    echo -e "[ ${STATUS_OK} ]"
+
+                    echo -e "  ${WHITE}                Move            ${FUCHSIA}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA}${app_dir_storage}/amd64/${NORMAL}"
 
                     if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
                         #   full path to deb package
                         deb_package="${app_dir_repo}/${arch}/${app_filename}"
 
                         if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
-                            echo -e "  ${WHITE}       Adding reprepro package ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
+                            echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
                         fi
                         
-                        reprepro -V \
+                        reprepro_exit_code="0"
+                        reprepro_output="$(reprepro -V \
                             --section utils \
                             --component main \
                             --priority 0 \
                             --architecture ${arch} \
-                            includedeb ${app_repo_dist_sel} "${deb_package}"
+                            includedeb "${app_repo_dist_sel}" "${deb_package}" \
+                            "$@" 2>&1)" \
+                            || { reprepro_exit_code="$?" ; true; };
+
+                            if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
+                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
+                            fi
+
+                            if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
+                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
+                            fi
                     fi
 
-                    echo
+                    bNewPackage=false
 
                 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
                 #   architecture > arm64
                 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
                 elif [[ "${arch}" == "arm64" ]] && [[ ${app_filename} == *arm64.deb ]]; then
-                    printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL} ${YELLOW}[ ${count} ]${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
+                    echo -e "  ${WHITE}                Download        ${FUCHSIA}${app_url}${NORMAL}"
+
                     mv "${app_dir}/${app_filename}" "${app_dir_storage}/arm64/"
-                    echo -e "[ ${STATUS_OK} ]"
+
+                    echo -e "  ${WHITE}                Move            ${FUCHSIA}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA}${app_dir_storage}/arm64/${NORMAL}"
 
                     if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
                         #   full path to deb package
                         deb_package="${app_dir_repo}/${arch}/${app_filename}"
 
                         if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
-                            echo -e "  ${WHITE}       Adding reprepro package ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
+                            echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
                         fi
 
-                        reprepro -V \
+                        reprepro_exit_code="0"
+                        reprepro_output="$(reprepro -V \
                             --section utils \
                             --component main \
                             --priority 0 \
                             --architecture ${arch} \
-                            includedeb ${app_repo_dist_sel} "${deb_package}"
+                            includedeb "${app_repo_dist_sel}" "${deb_package}" \
+                            "$@" 2>&1)" \
+                            || { reprepro_exit_code="$?" ; true; };
+
+                            if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
+                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
+                            fi
+
+                            if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
+                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
+                            fi
                     fi
 
-                    echo
+                    bNewPackage=false
 
                 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
                 #   certain packages will output an *amd64 or *arm64 file when calling
@@ -2160,15 +2397,21 @@ app_run_dl_aptget()
 
                 else
                     rm "${app_dir}/${app_filename}"
+                    echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}⭕ Double file detected ${FUCHSIA}${app_dir}/${app_filename}${NORMAL}${NORMAL}"
                 fi
 
                 sleep 1
 
             fi
+
+            bNewPackage=false
+            echo -e
         done
 
         (( count-- ))
-        echo
+
+        bNewPackage=true
+        echo -e
 
     done
 
@@ -2185,10 +2428,12 @@ app_run_dl_lastver()
 {
     count=${#lst_github[@]}
 
-    begin "Downloading Github Packages [ $count ]"
+    begin "Github Packages [ $count ]"
     echo
 
     mkdir -p ${app_dir_storage}/{all,amd64,arm64}
+
+    local bNewPackage=true
 
     #   loop github URLs
     for i in "${!lst_github[@]}"
@@ -2199,27 +2444,27 @@ app_run_dl_lastver()
         #   (?:\b|_)(?:amd64|arm64|$app_repo_dist_sel).*\b.*\.deb$
         lst_releases=($( lastversion --pre --assets $repo --filter "(?:\b|_)(?:amd64|arm64|$app_repo_dist_sel)\b.*\.deb$" ))
 
-        if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
-            echo -e "  ${WHITE}LastVersion var ${GREEN}lst_releases${NORMAL}: ${FUCHSIA}${lst_releases}${NORMAL}"
-        fi
-
         if [ -z ${count_git} ]; then
             count_git=${#lst_releases[@]}
         fi
 
-        if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
-            echo -e "  ${WHITE}Using LastVersion to download ${FUCHSIA}${count_git}${NORMAL} packages"
-        fi
-
+        # # #
         #   loop each downloadable package
+        #   
+        #       key     returns number 0, 1, ...
+        #       0           apt-url_1.0.0-2_amd64.deb
+        #       1           apt-url_1.0.0-2_arm64.deb
+        # # #
+    
         for key in "${!lst_releases[@]}"
         do
-            repo_file_url=${lst_releases[$key]}
-            app_filename="${repo_file_url##*/}"
+            repo_file_url=${lst_releases[$key]}         #   https://github.com/Aetherinox/debian-apt-url/releases/download/v1.0.0-2/apt-url_1.0.0-2_amd64.deb
+            app_filename="${repo_file_url##*/}"         #   apt-url_1.0.0-2_amd64.deb
 
-            if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
-                echo -e "  ${WHITE}       Repo Url: ${FUCHSIA}${repo_file_url}${NORMAL}"
-                echo -e "  ${WHITE}       File Name: ${FUCHSIA}${app_filename}${NORMAL}"
+            if [ "$bNewPackage" = true ]; then
+                echo -e "     ${GREYL}|--- ${YELLOW}[ ${count} ]${FUCHSIA}${BOLD} Get ${app_filename:0:35}${NORMAL}"
+            else
+                echo -e "               ${FUCHSIA}${BOLD} Get ${app_filename:0:35}${NORMAL}"
             fi
 
             #   The filtering in the lastversion query should be enough, however, some people name their packages in a way
@@ -2246,79 +2491,130 @@ app_run_dl_lastver()
 
                 if [ -f "$app_dir/$app_filename" ]; then
                     if [[ "$arch" == "all" ]] && [[ $app_filename == *all.deb || $app_filename == *all*.deb ]]; then
-                        printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
+                        echo -e "  ${WHITE}                Package         ${FUCHSIA}${arch}${NORMAL}"
+                        echo -e "  ${WHITE}                File            ${FUCHSIA}${app_filename}${NORMAL}"
+                        echo -e "  ${WHITE}                Download        ${FUCHSIA}${repo_file_url}${NORMAL}"
+
                         mv "$app_dir/$app_filename" "$app_dir_storage/all/"
-                        echo -e "[ ${STATUS_OK} ]"
+                        echo -e "  ${WHITE}                Move            ${FUCHSIA}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA}${app_dir_storage}/all/${NORMAL}"
 
                         if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
                             #   full path to deb package
                             deb_package="$app_dir_repo/$arch/$app_filename"
 
                             if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
-                                echo -e "  ${WHITE}       Adding reprepro package ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
+                                echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
                             fi
 
-                            reprepro -V \
+                            reprepro_exit_code="0"
+                            reprepro_output="$(reprepro -V \
                                 --section utils \
                                 --component main \
                                 --priority 0 \
-                                includedeb $app_repo_dist_sel "$deb_package"
+                                includedeb "${app_repo_dist_sel}" "${deb_package}" \
+                                "$@" 2>&1)" \
+                                || { reprepro_exit_code="$?" ; true; };
+
+                                if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
+                                    echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
+                                fi
+
+                                if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
+                                    echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
+                                fi
                         fi
 
-                        echo
+                        echo -e
+                        bNewPackage=false
 
                     elif [[ "$arch" == "amd64" ]] && [[ $app_filename == *amd64.deb || $app_filename == *amd64*.deb ]]; then
-                        printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
+                        echo -e "  ${WHITE}                Package         ${FUCHSIA}${arch}${NORMAL}"
+                        echo -e "  ${WHITE}                File            ${FUCHSIA}${app_filename}${NORMAL}"
+                        echo -e "  ${WHITE}                Download        ${FUCHSIA}${repo_file_url}${NORMAL}"
+
                         mv "$app_dir/$app_filename" "$app_dir_storage/amd64/"
-                        echo -e "[ ${STATUS_OK} ]"
+                        echo -e "  ${WHITE}                Move            ${FUCHSIA}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA}${app_dir_storage}/amd64/${NORMAL}"
 
                         if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
                             #   full path to deb package
                             deb_package="$app_dir_repo/$arch/$app_filename"
 
                             if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
-                                echo -e "  ${WHITE}       Adding reprepro package ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
+                                echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
                             fi
 
-                            reprepro -V \
+                            reprepro_exit_code="0"
+                            reprepro_output="$(reprepro -V \
                                 --section utils \
                                 --component main \
                                 --priority 0 \
                                 --architecture $arch \
-                                includedeb $app_repo_dist_sel "$deb_package"
+                                includedeb "${app_repo_dist_sel}" "${deb_package}" \
+                                "$@" 2>&1)" \
+                                || { reprepro_exit_code="$?" ; true; };
+
+                                if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
+                                    echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
+                                fi
+
+                                if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
+                                    echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
+                                fi
                         fi
 
-                        echo
-
+                        echo -e
+                        bNewPackage=false
+ 
                     elif [[ "$arch" == "arm64" ]] && [[ $app_filename == *arm64.deb || $app_filename == *arm64*.deb ]]; then
-                        printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
+                        echo -e "  ${WHITE}                Package         ${FUCHSIA}${arch}${NORMAL}"
+                        echo -e "  ${WHITE}                File            ${FUCHSIA}${app_filename}${NORMAL}"
+                        echo -e "  ${WHITE}                Download        ${FUCHSIA}${repo_file_url}${NORMAL}"
+
                         mv "$app_dir/$app_filename" "$app_dir_storage/arm64/"
-                        echo -e "[ ${STATUS_OK} ]"
+                        echo -e "  ${WHITE}                Move            ${FUCHSIA}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA}${app_dir_storage}/arm64/${NORMAL}"
 
                         if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
                             #   full path to deb package
                             deb_package="$app_dir_repo/$arch/$app_filename"
 
                             if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
-                                echo -e "  ${WHITE}       Adding reprepro package ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
+                                echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
                             fi
 
-                            reprepro -V \
+                            reprepro_exit_code="0"
+                            reprepro_output="$(reprepro -V \
                                 --section utils \
                                 --component main \
                                 --priority 0 \
                                 --architecture $arch \
-                                includedeb $app_repo_dist_sel "$deb_package"
+                                includedeb "${app_repo_dist_sel}" "${deb_package}" \
+                                "$@" 2>&1)" \
+                                || { reprepro_exit_code="$?" ; true; };
+
+                                if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
+                                    echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
+                                fi
+
+                                if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
+                                    echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
+                                fi
                         fi
 
-                        echo
+                        echo -e
+                        bNewPackage=false
 
                     fi
                 fi
+
+                bNewPackage=false
+
             done
         done
 
-        echo
+        (( count-- ))
+
+        bNewPackage=true
+        echo -e
 
     done
 }
