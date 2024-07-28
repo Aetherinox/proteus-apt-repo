@@ -133,27 +133,6 @@ Description: package management related utility programs
   * apt-sortpkgs is a Packages/Sources file normalizer.
 Original-Maintainer: APT Development Team <deity@lists.debian.org>
 
-Package: bitwarden
-Version: 2023.9.3
-License: GPL-3.0
-Vendor: Bitwarden Inc. <hello@bitwarden.com>
-Architecture: amd64
-Maintainer: Bitwarden Inc. <hello@bitwarden.com>
-Installed-Size: 270218
-Depends: libnotify4, libxtst6, libnss3, libsecret-1-0, libxss1
-Recommends: libappindicator3-1
-Homepage: https://bitwarden.com
-Priority: 0
-Section: utils
-Filename: pool/main/b/bitwarden/bitwarden_2023.9.3_amd64.deb
-Size: 73934484
-SHA512: ce6fbab351ab537cc1199dd7f658cfee7d1a6cd9887cf0bbf62a0b374295b4dac822a59c5995e79e94194be55af4fd9e2fa56c82d125cf25ea9fb15a42ca435c
-SHA256: 741c0893b2fc6b6ff00736c886a0c9ad40b6692305fb6ca41026143824388ee5
-SHA1: dc3e08d9a6813feca0584a3b273623c1cd48d6e6
-MD5sum: 909341b1c75c93c025804dca599b9ace
-Description: A secure and free password manager for all of your devices.
-  A secure and free password manager for all of your devices.
-
 Package: deb-get
 Version: 0.3.9-1
 Architecture: all
@@ -233,27 +212,6 @@ Description: Displays user-friendly dialog boxes from shell scripts
   tail             Allows viewing the end of files (tail) that auto updates
   background tail  Similar to tail but runs in the background.
   editbox          Allows editing an existing file
-
-Package: freetube
-Version: 0.19.1
-License: AGPL-3.0-or-later
-Vendor: PrestonN <FreeTubeApp@protonmail.com>
-Architecture: amd64
-Maintainer: PrestonN <FreeTubeApp@protonmail.com>
-Installed-Size: 234625
-Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
-Recommends: libappindicator3-1
-Homepage: https://github.com/FreeTubeApp/FreeTube#readme
-Priority: 0
-Section: utils
-Filename: pool/main/f/freetube/freetube_0.19.1_amd64.deb
-Size: 67679340
-SHA512: 01c73ebcd7fc6aa7158633b81fb1117869acb5c72a58c80ed15f420e2d85c3aa882e83f008fe9091df6d02cc4c8a7d0939ef2ffda364219a8310b5e452a6e735
-SHA256: 75a4441b8a5ec3cf5937fa867391554dad6bf118a99496af1dfc6b8dc2437ef6
-SHA1: 20200252c4340a61e7ec2f21652dba16d6e1d6db
-MD5sum: 43a2e6e8cb4877a29edb444ef30e8ede
-Description: 
-  A private YouTube client
 
 Package: github-desktop
 Version: 3.3.8-linux2
