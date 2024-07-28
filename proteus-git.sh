@@ -815,11 +815,6 @@ logs/
 *.log
 
 # ----------------------------------------
-# Libraries
-# ----------------------------------------
-apt-url
-
-# ----------------------------------------
 # GPG keys
 # ----------------------------------------
 .gpg/*.gpg
@@ -828,9 +823,9 @@ apt-url
 # ----------------------------------------
 # Secrets Files
 # ----------------------------------------
-/secrets.sh
-/secrets
-/.secrets
+secrets.sh
+secrets/*
+.secrets/*
 EOF
 
 fi
@@ -1686,14 +1681,20 @@ app_setup()
                 echo -e "  ${WHITE}Found ${YELLOW}$app_dir/.gpg/${gpg_file}${NORMAL} to import."
                 echo
             else
-                echo
-                echo -e "  ${WHITE}No GPG keys found to import. ${RED}Aborting${NORMAL}"
-                echo
+                if [ -z "${OPT_DLPKG_ONLY_TEST}" ]; then
+                    echo
+                    echo -e "  ${WHITE}No GPG keys found to import. ${RED}Aborting${NORMAL}"
+                    echo
 
-                set +m
-                trap "kill -9 $app_pid 2> /dev/null" `seq 0 15`
-                kill $app_pid
-                set -m
+                    set +m
+                    trap "kill -9 $app_pid 2> /dev/null" `seq 0 15`
+                    kill $app_pid
+                    set -m
+                else
+                    echo
+                    echo -e "  ${WHITE}No GPG keys found to import. Since you are in${YELLOW}--onlyTest${NORMAL} mode, ${YELLOW}Skipping${NORMAL}"
+                    echo
+                fi
             fi
 
             printf "  Press any key to continue ... ${NORMAL}"
@@ -1710,7 +1711,7 @@ app_setup()
     #                   2. found .gpg file in ./gpg folder
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
-    if [ "$bGPGLoaded" = false ]; then
+    if [ "$bGPGLoaded" = false ] && [ -z "${OPT_DLPKG_ONLY_TEST}" ]; then
         echo
         echo
         echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Private GPG key not found${NORMAL}"
