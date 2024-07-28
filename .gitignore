@@ -5,11 +5,10 @@ logs/
 *-log
 *.log
 
-apt-url
-
 .gpg/*.gpg
 .gpg/*.asc
 
 /secrets.sh
-
+/secrets
+/.secrets
 node_modules/
