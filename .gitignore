@@ -9,6 +9,6 @@ logs/
 .gpg/*.asc
 
 /secrets.sh
-/secrets
-/.secrets
+secrets/
+.secrets/
 node_modules/
