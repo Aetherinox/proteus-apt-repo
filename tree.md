@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `07.27.2024 13:28:25`
+Last generated on `07.28.2024 05:36:06`
 
 <br />
 
@@ -196,6 +196,7 @@ Last generated on `07.27.2024 13:28:25`
 │           ├── amd64
 │           │   ├── app-outlet_2.1.0_amd64.deb
 │           │   ├── apt-move_4.2.27-6_amd64.deb
+│           │   ├── apt-url_1.0.0-2_amd64.deb
 │           │   ├── apt-utils_2.4.12_amd64.deb
 │           │   ├── argon2_0~20171227-0.3_amd64.deb
 │           │   ├── Bitwarden-2024.6.1-amd64.deb
@@ -308,6 +309,7 @@ Last generated on `07.27.2024 13:28:25`
 │           │   ├── wget_1.21.2-2ubuntu1.1_amd64.deb
 │           │   └── wget_1.21.2-2ubuntu1_amd64.deb
 │           └── arm64
+│               ├── apt-url_1.0.0-2_arm64.deb
 │               ├── freetube_0.20.0_arm64.deb
 │               ├── freetube_0.21.0_arm64.deb
 │               ├── freetube_0.21.1_arm64.deb
@@ -319,90 +321,10 @@ Last generated on `07.27.2024 13:28:25`
 ├── logs
 │   ├── repos
 │   │   └── jammy.log
-│   ├── proteus-git-061824.log
-│   ├── proteus-git-061924.log
-│   ├── proteus-git-062024.log
-│   ├── proteus-git-062124.log
-│   ├── proteus-git-062224.log
-│   ├── proteus-git-062324.log
-│   ├── proteus-git-062424.log
-│   ├── proteus-git-062524.log
-│   ├── proteus-git-062624.log
-│   ├── proteus-git-062724.log
-│   ├── proteus-git-062824.log
-│   ├── proteus-git-062924.log
-│   ├── proteus-git-063024.log
-│   ├── proteus-git-070124.log
-│   ├── proteus-git-070224.log
-│   ├── proteus-git-070324.log
-│   ├── proteus-git-070424.log
-│   ├── proteus-git-070424.log.pipe
-│   ├── proteus-git-070524.log
-│   ├── proteus-git-070624.log
-│   ├── proteus-git-070724.log
-│   ├── proteus-git-070824.log
-│   ├── proteus-git-070924.log
-│   ├── proteus-git-071024.log
-│   ├── proteus-git-071124.log
-│   ├── proteus-git-071224.log
-│   ├── proteus-git-071324.log
-│   ├── proteus-git-071424.log
-│   ├── proteus-git-071524.log
-│   ├── proteus-git-071624.log
-│   ├── proteus-git-071724.log
-│   ├── proteus-git-071824.log
-│   ├── proteus-git-071924.log
-│   ├── proteus-git-072024.log
-│   ├── proteus-git-072124.log
-│   ├── proteus-git-072224.log
-│   ├── proteus-git-072324.log
-│   ├── proteus-git-072424.log
-│   ├── proteus-git-072524.log
-│   ├── proteus-git-072624.log
-│   ├── proteus-git-072724.log
-│   ├── proteus-git-072724.log.pipe
-│   ├── proteus-git-15062024.log
-│   ├── proteus-git-17062024.log
-│   ├── proteus-git-service-061806.log
-│   ├── proteus-git-service-061906.log
-│   ├── proteus-git-service-062006.log
-│   ├── proteus-git-service-062106.log
-│   ├── proteus-git-service-062206.log
-│   ├── proteus-git-service-062306.log
-│   ├── proteus-git-service-062406.log
-│   ├── proteus-git-service-062506.log
-│   ├── proteus-git-service-062606.log
-│   ├── proteus-git-service-062706.log
-│   ├── proteus-git-service-062806.log
-│   ├── proteus-git-service-062906.log
-│   ├── proteus-git-service-063006.log
-│   ├── proteus-git-service-070107.log
-│   ├── proteus-git-service-070207.log
-│   ├── proteus-git-service-070307.log
-│   ├── proteus-git-service-070407.log
-│   ├── proteus-git-service-070507.log
-│   ├── proteus-git-service-070607.log
-│   ├── proteus-git-service-070707.log
-│   ├── proteus-git-service-070807.log
-│   ├── proteus-git-service-070907.log
-│   ├── proteus-git-service-071007.log
-│   ├── proteus-git-service-071107.log
-│   ├── proteus-git-service-071207.log
-│   ├── proteus-git-service-071307.log
-│   ├── proteus-git-service-071407.log
-│   ├── proteus-git-service-071507.log
-│   ├── proteus-git-service-071607.log
-│   ├── proteus-git-service-071707.log
-│   ├── proteus-git-service-071807.log
-│   ├── proteus-git-service-071907.log
-│   ├── proteus-git-service-072007.log
-│   ├── proteus-git-service-072107.log
-│   ├── proteus-git-service-072207.log
-│   ├── proteus-git-service-072307.log
-│   ├── proteus-git-service-072407.log
-│   ├── proteus-git-service-072507.log
-│   ├── proteus-git-service-072607.log
-│   └── proteus-git-service-072707.log
+│   ├── proteus-git-072824.log
+│   ├── proteus-git-072824.log.pipe
+│   ├── proteus-git-service-072707.log
+│   └── proteus-git-service-072807.log
 ├── pool
 │   └── main
 │       ├── a
@@ -1281,5 +1203,5 @@ Last generated on `07.27.2024 13:28:25`
 ├── secrets.sh
 └── tree.md
 
-199 directories, 1072 files
+199 directories, 994 files
 ```
