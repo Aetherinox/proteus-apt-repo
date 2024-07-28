@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `07.28.2024 05:36:06`
+Last generated on `07.28.2024 15:24:44`
 
 <br />
 
@@ -143,6 +143,7 @@ Last generated on `07.28.2024 05:36:06`
 │           │   ├── mysql-client_8.0.37-0ubuntu0.22.04.3_all.deb
 │           │   ├── mysql-common_5.8+1.0.8_all.deb
 │           │   ├── mysql-server_8.0.37-0ubuntu0.22.04.3_all.deb
+│           │   ├── neofetch_7.1.0-3_all.deb
 │           │   ├── networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
 │           │   ├── network-manager-config-connectivity-ubuntu_1.36.6-0ubuntu2_all.deb
 │           │   ├── network-manager-dev_1.36.6-0ubuntu2_all.deb
@@ -192,7 +193,8 @@ Last generated on `07.28.2024 05:36:06`
 │           │   ├── php-sybase_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
 │           │   ├── php-tidy_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
 │           │   ├── php-xml_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
-│           │   └── php-zip_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   ├── php-zip_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
+│           │   └── trash-cli_0.17.1.14-5build1_all.deb
 │           ├── amd64
 │           │   ├── app-outlet_2.1.0_amd64.deb
 │           │   ├── apt-move_4.2.27-6_amd64.deb
@@ -216,6 +218,7 @@ Last generated on `07.28.2024 05:36:06`
 │           │   ├── freetube_0.21.0_amd64.deb
 │           │   ├── freetube_0.21.1_amd64.deb
 │           │   ├── freetube_0.21.2_amd64.deb
+│           │   ├── git_2.34.1-1ubuntu1.11_amd64.deb
 │           │   ├── GitHubDesktop-linux-amd64-3.3.18-linux1.deb
 │           │   ├── GitHubDesktop-linux-amd64-3.4.0-linux1.deb
 │           │   ├── GitHubDesktop-linux-amd64-3.4.2-linux1.deb
@@ -244,6 +247,7 @@ Last generated on `07.28.2024 05:36:06`
 │           │   ├── libnginx-mod-stream-geoip_1.18.0-6ubuntu14.4_amd64.deb
 │           │   ├── lz4_1.9.3-2build2_amd64.deb
 │           │   ├── makedeb-beta_16.1.0-beta1_amd64_jammy.deb
+│           │   ├── net-tools_1.60+git20181103.0eebece-1ubuntu5_amd64.deb
 │           │   ├── network-manager_1.36.6-0ubuntu2_amd64.deb
 │           │   ├── network-manager-gnome_1.24.0-1ubuntu3_amd64.deb
 │           │   ├── network-manager-openvpn_1.8.18-1_amd64.deb
@@ -306,6 +310,8 @@ Last generated on `07.28.2024 05:36:06`
 │           │   ├── php-zmq_1.1.3-24+ubuntu22.04.1+deb.sury.org+1_amd64.deb
 │           │   ├── snap_2013-11-29-11_amd64.deb
 │           │   ├── snapd_2.63+22.04_amd64.deb
+│           │   ├── tcptrack_1.4.3-1_amd64.deb
+│           │   ├── tree_2.0.2-1_amd64.deb
 │           │   ├── wget_1.21.2-2ubuntu1.1_amd64.deb
 │           │   └── wget_1.21.2-2ubuntu1_amd64.deb
 │           └── arm64
@@ -320,7 +326,10 @@ Last generated on `07.28.2024 05:36:06`
 │               └── makedeb-beta_16.1.0-beta1_arm64_jammy.deb
 ├── logs
 │   ├── repos
-│   │   └── jammy.log
+│   │   ├── focal.log
+│   │   ├── jammy.log
+│   │   ├── lunar.log
+│   │   └── mantic.log
 │   ├── proteus-git-072824.log
 │   ├── proteus-git-072824.log.pipe
 │   ├── proteus-git-service-072707.log
@@ -390,6 +399,8 @@ Last generated on `07.28.2024 05:36:06`
 │       │       ├── freetube_0.21.2_amd64.deb
 │       │       └── freetube_0.21.2_arm64.deb
 │       ├── g
+│       │   ├── git
+│       │   │   └── git_2.34.1-1ubuntu1.11_amd64.deb
 │       │   ├── github-desktop
 │       │   │   ├── github-desktop_3.3.8-linux2_amd64.deb
 │       │   │   ├── github-desktop_3.3.8-linux2_arm64.deb
@@ -514,6 +525,8 @@ Last generated on `07.28.2024 05:36:06`
 │       │   │   ├── neofetch_7.0.0-1_all.deb
 │       │   │   ├── neofetch_7.1.0-3_all.deb
 │       │   │   └── neofetch_7.1.0-4_all.deb
+│       │   ├── net-tools
+│       │   │   └── net-tools_1.60+git20181103.0eebece-1ubuntu5_amd64.deb
 │       │   ├── networkd-dispatcher
 │       │   │   ├── networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
 │       │   │   ├── networkd-dispatcher_2.2.3-1_all.deb
@@ -1163,21 +1176,27 @@ Last generated on `07.28.2024 05:36:06`
 │       │       ├── snapd_2.60.4+23.10.1_amd64.deb
 │       │       └── snapd_2.63+22.04_amd64.deb
 │       ├── t
+│       │   ├── tcptrack
+│       │   │   └── tcptrack_1.4.3-1_amd64.deb
 │       │   ├── tideways
 │       │   │   ├── php-tideways_5.0.4-14+ubuntu22.04.1+deb.sury.org+1_amd64.deb
 │       │   │   ├── php-tideways_5.0.4-16_amd64.deb
 │       │   │   ├── php-tideways_5.0.4-16_arm64.deb
 │       │   │   └── php-tideways_5.0.4-16build1_amd64.deb
-│       │   └── tilix
-│       │       ├── tilix_1.9.3-4build3_amd64.deb
-│       │       ├── tilix_1.9.3-4build3_arm64.deb
-│       │       ├── tilix_1.9.4-2build1_amd64.deb
-│       │       ├── tilix_1.9.4-2build1_arm64.deb
-│       │       ├── tilix_1.9.5-2_amd64.deb
-│       │       ├── tilix_1.9.5-2_arm64.deb
-│       │       ├── tilix-common_1.9.3-4build3_all.deb
-│       │       ├── tilix-common_1.9.4-2build1_all.deb
-│       │       └── tilix-common_1.9.5-2_all.deb
+│       │   ├── tilix
+│       │   │   ├── tilix_1.9.3-4build3_amd64.deb
+│       │   │   ├── tilix_1.9.3-4build3_arm64.deb
+│       │   │   ├── tilix_1.9.4-2build1_amd64.deb
+│       │   │   ├── tilix_1.9.4-2build1_arm64.deb
+│       │   │   ├── tilix_1.9.5-2_amd64.deb
+│       │   │   ├── tilix_1.9.5-2_arm64.deb
+│       │   │   ├── tilix-common_1.9.3-4build3_all.deb
+│       │   │   ├── tilix-common_1.9.4-2build1_all.deb
+│       │   │   └── tilix-common_1.9.5-2_all.deb
+│       │   ├── trash-cli
+│       │   │   └── trash-cli_0.17.1.14-5build1_all.deb
+│       │   └── tree
+│       │       └── tree_2.0.2-1_amd64.deb
 │       ├── w
 │       │   └── wget
 │       │       ├── wget_1.21.2-2ubuntu1.1_amd64.deb
@@ -1203,5 +1222,5 @@ Last generated on `07.28.2024 05:36:06`
 ├── secrets.sh
 └── tree.md
 
-199 directories, 994 files
+204 directories, 1008 files
 ```
