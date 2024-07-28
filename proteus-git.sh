@@ -787,12 +787,26 @@ app_run_github_precheck( )
 
     git config --global credential.helper store
 
-    # see if repo directory is in safelist for git
+    # #
+    #   GIT > SAFE DIRECTORY
+    #
+    #   allow sharing across users in the same group (OU/no admin rights)
+    #   These config entries specify Git-tracked directories that are considered
+    #   safe even if they are owned by someone other than the current user. 
+    # #
+
+    # #
+    #   see if repo directory is in safelist for git
+    # #
+
     if git config --global --get-all safe.directory | grep -q "${app_dir}"; then
         bFoundSafe=true
     fi
 
-    # if new repo, add to safelist
+    # #
+    #   if new repo, add to safelist
+    # #
+
     if ! [ ${bFoundSafe} ]; then
         git config --global --add safe.directory ${app_dir}
     fi
@@ -2173,46 +2187,106 @@ show_header()
 
 app_run_dl_aptget()
 {
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+    # #
     #   sort alphabetically
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     IFS=$'\n' lst_pkgs_sorted=($(sort <<<"${lst_packages[*]}"))
     unset IFS
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   add countdown to the num of packages to install
     #   add +1 so we're not hitting 0
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     count=${#lst_pkgs_sorted[@]}
     local countNow=count
 
-    # (( count++ ))
+    # #
+    #   Begin
+    # #
 
     begin "Aptget Packages [ $count ]"
     echo -e
 
+    # #
+    #   Create main folders for architecture
+    #   all, amd64, arm54
+    # #
+
     mkdir -p ${app_dir_storage}/{all,amd64,arm64}
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-    #   loop sorted packages
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
+    #   set new package
+    #
+    #   each main package has several downloads, one for amd64, one for arm64, and all
+    #   when this script is ran and each package is shown in terminal for the user as it downloads,
+    #   this flag groups things together so that you don't see the same count for each sub package.
+    #
+    #   a new package will start out with its current number in line to the left of the package name.
+    #   all sub-packages are listed under without the count.
+    #
+    #   |--- [ 120 ] Get networkd-dispatcher:all
+    #           Package         networkd-dispatcher:all
+    #           File            networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+    #           Download        http://us.archive.ubuntu.com/ubuntu/pool/main/n/networkd-dispatcher/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+    #           Move            /server/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb > /server/proteus/incoming/proteus-git/jammy/all/
+    #           Status:         💡 Already exists
+    #
+    #       Get networkd-dispatcher:amd64
+    #           Package         networkd-dispatcher:amd64
+    #           File            networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+    #           Status:         ⭕ Double file detected /server/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+    #
+    #       Get networkd-dispatcher:arm64
+    #           Package         networkd-dispatcher:arm64
+    #           File            Couldn't find package networkd-dispatcher:arm64
+    #           Status:         🔍 arm64 doesn't exist for this package
+    # #
 
     local bNewPackage=true
 
+    # #
+    #   loop sorted packages
+    # #
+
     for i in "${!lst_pkgs_sorted[@]}"; do
+
+        # #
+        #   get package name
+        #       networkd-dispatcher
+        # #
+
         pkg=${lst_pkgs_sorted[$i]}
 
+        # #
+        #   loop each architecture for each package
+        #       all
+        #       amd64
+        #       arm64
+        #       i386
+        # #
+
         for j in "${!lst_arch[@]}"; do
-            #   returns arch
-            #   amd64, arm64, i386, all
+
+            # #
+            #   get architecture
+            #       amd64, arm64, i386, all
+            # #
+
             arch=${lst_arch[$j]}
             
-            #   package:arch
+            # #
+            #   get package name and arch combined
+            #       networkd-dispatcher:all
+            #       networkd-dispatcher:amd64
+            #       networkd-dispatcher:arm64
+            # #
+
             local pkg_arch="${pkg}:${arch}"
 
-            # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+            # #
             #   download "package:arch"
             #   
             #   originally apt-get download was utilized, however it has a weird bug
@@ -2226,17 +2300,36 @@ app_run_dl_aptget()
             #   http://us.archive.ubuntu.com/ubuntu/pool/universe/d/<package>/<package>_1.x.x-x_<arch>.deb
             #   app_url=$(sudo ./apt-url "$pkg_arch" | tail -n 1 )
             #   
-            # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+            # #
 
-            #   <package>_1.x.x-x_<arch>.deb
+            # #
+            #   run package through apt-url
+            #   this returns a multi-line result which needs broken up into two values
+            # #
 
             apturl_exit_code="0"
             apturl_query="$(sudo apt-url "${pkg_arch}" \
                 "$@" 2>&1)" \
                 || { apturl_exit_code="$?" ; true; };
 
+            # #
+            #   break the two apturl values up into separate variables
+            #       app_filename        networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+            #       app_url             http://us.archive.ubuntu.com/ubuntu/pool/main/n/networkd-dispatcher/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+            # #
+
             app_filename=$( echo "${apturl_query}" | head -n 1; )
             app_url=$( echo "${apturl_query}" | tail -n 1; )
+
+            # #
+            #   determines if a new package should be shown, or the architecture
+            #   
+            #   bNewPackage = true
+            #       |--- [ 120 ] Get networkd-dispatcher:all
+            #   
+            #   bNewPackage = false
+            #       Get networkd-dispatcher:amd64
+            # #
 
             if [ "$bNewPackage" = true ]; then
                 echo -e "     ${GREYL}|--- ${YELLOW}[ ${count} ]${FUCHSIA}${BOLD} Get ${pkg_arch:0:35}${NORMAL}"
@@ -2244,49 +2337,96 @@ app_run_dl_aptget()
                 echo -e "               ${FUCHSIA}${BOLD} Get ${pkg_arch:0:35}${NORMAL}"
             fi
 
+            # #
             #   kill reprepro if running
+            # #
+
             sudo pkill -9 "reprepro"
 
+            # #
             #   lockfile exists, remove it to ensure we can download the package
+            # #
+
             if [ -f "${app_dir}/db/lockfile" ]; then
                 sudo rm "${app_dir}/db/lockfile"
             fi
 
+            # #
+            #   take the download url provided by apt-url and download the package using wget
+            # #
+
             wget "${app_url}" -q
+
+            # #
+            #   output > package info
+            # #
 
             echo -e "  ${WHITE}                Package         ${FUCHSIA}${pkg_arch}${NORMAL}"
             echo -e "  ${WHITE}                File            ${FUCHSIA}${app_filename}${NORMAL}"
+
+            # #
+            #   output > architecture doesn't exist for this package
+            # #
 
             if echo "$apturl_query" | grep --quiet --ignore-case "find package" ; then
                 echo -e "  ${WHITE}                ${GREEN}Status:         ${FUCHSIA}🔍 ${arch:0:35}${NORMAL} doesn't exist for this package"
             fi
 
+            # #
+            #   output > apt-url cannot be run because apt get is held up by another process
+            # #
+
             if echo "$apturl_query" | grep --quiet --ignore-case "It is held by process" ; then
                 echo -e "  ${WHITE}                ${GREEN}Status:         ${FUCHSIA}🗔 ${pkg_arch:0:35}${NORMAL} held up by process"
             fi
 
+            # #
+            #   check if file exists
+            #       /home/$USER/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+            # #
+
             if [[ -f "${app_dir}/${app_filename}" ]]; then
 
-                # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+                # #
                 #   architecture > all
-                # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+                #   file must end with 'all.deb'
+                # #
 
                 if [[ "${arch}" == "all" ]] && [[ ${app_filename} == *all.deb ]]; then
                     echo -e "  ${WHITE}                Download        ${FUCHSIA}${app_url}${NORMAL}"
+
+                    # #
+                    #   architecture > all
+                    #   move package to its final location inside the reprepro directory
+                    #       move    /home/$USER/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+                    #       to      /home/$USER/proteus/incoming/proteus-git/jammy/all/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+                    # #
 
                     mv "${app_dir}/${app_filename}" "${app_dir_storage}/all/"
 
                     echo -e "  ${WHITE}                Move            ${FUCHSIA}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA}${app_dir_storage}/all/${NORMAL}"
 
                     if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
-                        #   full path to deb package
+
+                        # #
+                        #   architecture > all > full package path
+                        #
+                        #       deb_package             incoming/proteus-git/jammy/all/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+                        # #
+
                         deb_package="${app_dir_repo}/${arch}/${app_filename}"
 
                         if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
                             echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
                         fi
 
-                        #   repreproStatus=$(reprepro -V --section utils --component main --priority 0 includedeb jammy "incoming/proteus-git/jammy/all/adduser_3.118ubuntu5_all.deb" )
+                        # #
+                        #   architecture > all > reprepro
+                        #   add package to reprepro database
+                        #
+                        #       app_repo_dist_sel       jammy
+                        #       deb_package             incoming/proteus-git/jammy/all/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+                        # #
 
                         reprepro_exit_code="0"
                         reprepro_output="$(reprepro -V \
@@ -2297,36 +2437,70 @@ app_run_dl_aptget()
                             "$@" 2>&1)" \
                             || { reprepro_exit_code="$?" ; true; };
 
-                            if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
-                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
-                            fi
+                        # #
+                        #   architecture > all > reprepro
+                        #
+                        #   output > package already added to reprepro
+                        # #
 
-                            if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
-                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
-                            fi
+                        if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
+                            echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
+                        fi
+
+                        # #
+                        #   architecture > all > reprepro
+                        #
+                        #   output > new package added
+                        # #
+
+                        if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
+                            echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
+                        fi
                     fi
 
                     bNewPackage=false
 
-                # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+                # #
                 #   architecture > amd64
-                # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+                #   file must end with 'amd64.deb'
+                # #
 
                 elif [[ "${arch}" == "amd64" ]] && [[ ${app_filename} == *amd64.deb ]]; then
                     echo -e "  ${WHITE}                Download        ${FUCHSIA}${app_url}${NORMAL}"
+
+                    # #
+                    #   architecture > amd64
+                    #   move package to its final location inside the reprepro directory
+                    #       move    /home/$USER/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_amd64.deb
+                    #       to      /home/$USER/proteus/incoming/proteus-git/jammy/amd64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_amd64.deb
+                    # #
 
                     mv "${app_dir}/${app_filename}" "${app_dir_storage}/amd64/"
 
                     echo -e "  ${WHITE}                Move            ${FUCHSIA}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA}${app_dir_storage}/amd64/${NORMAL}"
 
                     if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
-                        #   full path to deb package
+
+                        # #
+                        #   architecture > amd64 > full package path
+                        #
+                        #       deb_package             incoming/proteus-git/jammy/amd64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_amd64.deb
+                        # #
+
                         deb_package="${app_dir_repo}/${arch}/${app_filename}"
 
                         if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
                             echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
                         fi
                         
+                        # #
+                        #   architecture > amd64 > reprepro
+                        #   add package to reprepro database
+                        #
+                        #       app_repo_dist_sel       jammy
+                        #       deb_package             incoming/proteus-git/jammy/amd64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_amd64.deb
+                        # #
+
                         reprepro_exit_code="0"
                         reprepro_output="$(reprepro -V \
                             --section utils \
@@ -2337,35 +2511,69 @@ app_run_dl_aptget()
                             "$@" 2>&1)" \
                             || { reprepro_exit_code="$?" ; true; };
 
-                            if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
-                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
-                            fi
+                        # #
+                        #   architecture > amd64 > reprepro
+                        #
+                        #   output > package already added to reprepro
+                        # #
 
-                            if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
-                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
-                            fi
+                        if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
+                            echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
+                        fi
+
+                        # #
+                        #   architecture > amd64 > reprepro
+                        #
+                        #   output > new package added
+                        # #
+
+                        if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
+                            echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
+                        fi
                     fi
 
                     bNewPackage=false
 
-                # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+                # #
                 #   architecture > arm64
-                # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+                #   file must end with 'arm64.deb'
+                # #
 
                 elif [[ "${arch}" == "arm64" ]] && [[ ${app_filename} == *arm64.deb ]]; then
                     echo -e "  ${WHITE}                Download        ${FUCHSIA}${app_url}${NORMAL}"
+
+                    # #
+                    #   architecture > arm64
+                    #   move package to its final location inside the reprepro directory
+                    #       move    /home/$USER/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_arm64.deb
+                    #       to      /home/$USER/proteus/incoming/proteus-git/jammy/arm64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_arm64.deb
+                    # #
 
                     mv "${app_dir}/${app_filename}" "${app_dir_storage}/arm64/"
 
                     echo -e "  ${WHITE}                Move            ${FUCHSIA}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA}${app_dir_storage}/arm64/${NORMAL}"
 
                     if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
-                        #   full path to deb package
+
+                        # #
+                        #   architecture > arm64 > full package path
+                        #
+                        #       deb_package             incoming/proteus-git/jammy/arm64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_arm64.deb
+                        # #
+
                         deb_package="${app_dir_repo}/${arch}/${app_filename}"
 
                         if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
                             echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
                         fi
+
+                        # #
+                        #   architecture > arm64 > reprepro
+                        #   add package to reprepro database
+                        #
+                        #       app_repo_dist_sel       jammy
+                        #       deb_package             incoming/proteus-git/jammy/arm64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_arm64.deb
+                        # #
 
                         reprepro_exit_code="0"
                         reprepro_output="$(reprepro -V \
@@ -2377,23 +2585,35 @@ app_run_dl_aptget()
                             "$@" 2>&1)" \
                             || { reprepro_exit_code="$?" ; true; };
 
-                            if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
-                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
-                            fi
+                        # #
+                        #   architecture > arm64 > reprepro
+                        #
+                        #   output > package already added to reprepro
+                        # #
 
-                            if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
-                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
-                            fi
+                        if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
+                            echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
+                        fi
+
+                        # #
+                        #   architecture > arm64 > reprepro
+                        #
+                        #   output > new package added
+                        # #
+
+                        if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
+                            echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
+                        fi
                     fi
 
                     bNewPackage=false
 
-                # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+                # #
                 #   certain packages will output an *amd64 or *arm64 file when calling
                 #   the "all" architecture, which means you'll have double the files.
                 #
                 #   delete the left-over files since we already have them.
-                # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+                # #
 
                 else
                     rm "${app_dir}/${app_filename}"
@@ -2426,16 +2646,61 @@ app_run_dl_aptget()
 
 app_run_dl_lastver()
 {
+
+    # #
+    #   add countdown to the num of packages to install
+    # #
+
     count=${#lst_github[@]}
+
+    # #
+    #   Begin
+    # #
 
     begin "Github Packages [ $count ]"
     echo
 
+    # #
+    #   Create main folders for architecture
+    #   all, amd64, arm54
+    # #
+
     mkdir -p ${app_dir_storage}/{all,amd64,arm64}
+
+    # #
+    #   set new package
+    #
+    #   each main package has several downloads, one for amd64, one for arm64, and all
+    #   when this script is ran and each package is shown in terminal for the user as it downloads,
+    #   this flag groups things together so that you don't see the same count for each sub package.
+    #
+    #   a new package will start out with its current number in line to the left of the package name.
+    #   all sub-packages are listed under without the count.
+    #
+    #   |--- [ 120 ] Get networkd-dispatcher:all
+    #           Package         networkd-dispatcher:all
+    #           File            networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+    #           Download        http://us.archive.ubuntu.com/ubuntu/pool/main/n/networkd-dispatcher/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+    #           Move            /server/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb > /server/proteus/incoming/proteus-git/jammy/all/
+    #           Status:         💡 Already exists
+    #
+    #       Get networkd-dispatcher:amd64
+    #           Package         networkd-dispatcher:amd64
+    #           File            networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+    #           Status:         ⭕ Double file detected /server/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+    #
+    #       Get networkd-dispatcher:arm64
+    #           Package         networkd-dispatcher:arm64
+    #           File            Couldn't find package networkd-dispatcher:arm64
+    #           Status:         🔍 arm64 doesn't exist for this package
+    # #
 
     local bNewPackage=true
 
-    #   loop github URLs
+    # #
+    #   loop each package listed in the lastver / github table
+    # #
+
     for i in "${!lst_github[@]}"
     do
         repo=${lst_github[$i]}

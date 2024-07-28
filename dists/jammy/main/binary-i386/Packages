@@ -1642,3 +1642,25 @@ Description: Tiling terminal emulator - data files
  This package contains architecture independent data.
 Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
 
+Package: trash-cli
+Version: 0.17.1.14-5build1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 108
+Depends: python3:any, python3-pkg-resources
+Homepage: https://github.com/andreafrancia/trash-cli
+Priority: 0
+Section: utils
+Filename: pool/main/t/trash-cli/trash-cli_0.17.1.14-5build1_all.deb
+Size: 24156
+SHA512: 2c552a59910b3cbfc98f452ba31d2a77316b1ef782af5e0d891d277ca867d274c8c575d8d7500e2f33fb40b8a7a6408d55a0aab9da1cf356b2920952de77ad07
+SHA256: 5de669099e306f804793ad36e27b565d660ea2d47137568e65f5fb9f3ae918f5
+SHA1: 0d7432b8cf7124a182e7195068648a7dde940a3d
+MD5sum: 8777c50f772067663362ed4cfd8435d5
+Description: command line trashcan utility
+ This package provides a command line interface trashcan utility
+ compliant with the FreeDesktop.org Trash Specification. It remembers
+ the name, original path, deletion date, and permissions of each trashed
+ file
+Original-Maintainer: Stefano Karapetsas <stefano@karapetsas.com>
+
