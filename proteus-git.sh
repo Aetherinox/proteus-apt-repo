@@ -1,7 +1,3 @@
-#!/bin/bash
-PATH="/bin:/usr/bin:/sbin:/usr/sbin:/home/$USER/bin"
-echo 
-
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   @author :           aetherinox
 #   @script :           Proteus Apt Git
@@ -30,13 +26,17 @@ echo
 #       - v5.4.2
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
+#!/bin/bash
+PATH="/bin:/usr/bin:/sbin:/usr/sbin:/home/$USER/bin"
+echo 
+
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   vars > colors
 #
-#   tput setab  [1-7]       – Set a background color using ANSI escape
-#   tput setb   [1-7]       – Set a background color
-#   tput setaf  [1-7]       – Set a foreground color using ANSI escape
-#   tput setf   [1-7]       – Set a foreground color
+#   tput setab  [1-7]       : Set a background color using ANSI escape
+#   tput setb   [1-7]       : Set a background color
+#   tput setaf  [1-7]       : Set a foreground color using ANSI escape
+#   tput setf   [1-7]       : Set a foreground color
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 BLACK=$(tput setaf 0)
@@ -72,11 +72,15 @@ STATUS_FAIL="${BOLD}${RED} FAIL ${NORMAL}"
 STATUS_HALT="${BOLD}${YELLOW} HALT ${NORMAL}"
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   vars > app
+#   vars > system
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 sys_arch=$(dpkg --print-architecture)
 sys_code=$(lsb_release -cs)
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   vars > app > folders
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 app_dir="$PWD"
 app_dir_home="${HOME}/bin"
@@ -84,11 +88,24 @@ app_dir_storage="$app_dir/incoming/proteus-git/${sys_code}"
 app_dir_repo="incoming/proteus-git/${sys_code}"
 app_dir_wd=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   vars > app > files
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+app_file_this=$(basename "$0")
+app_file_proteus="${app_dir_home}/proteus-git"
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   vars > app > general
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
 app_title="Proteus Apt Git"
 app_about="Internal system to Proteus App Manager which grabs debian packages."
 app_ver=("1" "2" "0" "0")
-app_file_this=$(basename "$0")
-app_file_proteus="${app_dir_home}/proteus-git"
+app_pid_spin=0
+app_pid=$BASHPID
+app_queue_url=()
+app_i=0
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   requite packages before anything begins.
@@ -108,6 +125,284 @@ if ! [ -x "$(command -v git)" ]; then
 fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   func > get version
+#
+#   returns current version of app
+#   converts to human string.
+#       e.g.    "1" "2" "4" "0"
+#               1.2.4.0
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+get_version()
+{
+    ver_join=${app_ver[@]}
+    ver_str=${ver_join// /.}
+    echo ${ver_str}
+}
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   func > version > compare greater than
+#
+#   this function compares two versions and determines if an update may
+#   be available. or the user is running a lesser version of a program.
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+get_version_compare_gt()
+{
+    test "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1";
+}
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   func > test
+#
+#   development function, not used in normal operations,
+#   has no specific purpose other than to drop code in here and test with
+#
+#   Execute with:
+#       proteus-git.sh --test
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+app_update_gpg( )
+{
+    printf '%-57s' "    |--- Running Test"
+    echo
+
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    #   modify gpg.conf
+    #
+    #   first check if GPG installed (usually on Ubuntu it is)
+    #   then modify user's gpg-agent.conf file
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+    gpgconfig_file="/home/${USER}/.gnupg/gpg-agent.conf"
+
+    if ! [ -x "$(command -v gpg)" ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
+        printf '%-57s' "    |--- Installing GPG"
+        sleep 1
+        if [ -z "${OPT_DEV_NULLRUN}" ]; then
+            sudo apt-get update -y -q >> /dev/null 2>&1
+            sudo apt-get install gpg -y -qq >> /dev/null 2>&1
+        fi
+        echo -e "[ ${STATUS_OK} ]"
+        sleep 1
+    fi
+
+sudo tee ${gpgconfig_file} << EOF > /dev/null
+enable-putty-support
+enable-ssh-support
+use-standard-socket
+default-cache-ttl-ssh 60
+max-cache-ttl-ssh 120
+default-cache-ttl 28800 # gpg key cache time
+max-cache-ttl 28800 # max gpg key cache time
+pinentry-program "/usr/bin/pinentry"
+allow-loopback-pinentry
+allow-preset-passphrase
+pinentry-timeout 0
+EOF
+
+    printf '%-57s' "    |--- Set ownership to ${USER}"
+    sleep 1
+
+    if [ -z "${OPT_DEV_NULLRUN}" ]; then
+        sudo chgrp ${USER} ${gpgconfig_file} >> ${LOGS_FILE} 2>&1
+        sudo chown ${USER} ${gpgconfig_file} >> ${LOGS_FILE} 2>&1
+    fi
+
+    echo -e "[ ${STATUS_OK} ]"
+
+    printf '%-57s' "    |--- Restart GPG Agent"
+    sleep 1
+
+    gpgconf --kill gpg-agent
+
+    echo -e "[ ${STATUS_OK} ]"
+
+    exit 0
+    sleep 0.2
+}
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   Display Usage Help
+#
+#   activate using ./proteus-git.sh --help or -h
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+opt_usage()
+{
+    echo
+    printf "  ${BLUE}${app_title}${NORMAL}\n" 1>&2
+    printf "  ${GREYL}${gui_about}${NORMAL}\n" 1>&2
+    echo
+    printf '  %-5s %-40s\n' "Usage:" "" 1>&2
+    printf '  %-5s %-40s\n' "    " "${0} [${GREYL}options${NORMAL}]" 1>&2
+    printf '  %-5s %-40s\n\n' "    " "${0} [${GREYL}-h${NORMAL}] [${GREYL}-d${NORMAL}] [${GREYL}-n${NORMAL}] [${GREYL}-s${NORMAL}] [${GREYL}-t THEME${NORMAL}] [${GREYL}-v${NORMAL}]" 1>&2
+    printf '  %-5s %-40s\n' "Options:" "" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-d, --dev" "dev mode with advanced logs" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-h, --help" "show help menu" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-g, --onlyTest" "download packages from apt-get and LastVersion, do not push to git repo" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-g, --onlyGithub" "only update packages using LastVersion, push to git" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-s, --onlyAptget" "only update packages using AptGet, push to git" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-n, --nullrun" "dev: null run" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "" "simulate app installs (no changes)" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-q, --quiet" "quiet mode which disables logging" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-u, --update" "update ${app_file_proteus} executable" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "    --branch" "branch to update from" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-v, --version" "current version of app manager" 1>&2
+    echo
+    echo
+    exit 1
+}
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   command-line options
+#
+#   reminder that any functions which need executed must be defined BEFORE
+#   this point. Bash sucks like that.
+#
+#   --dev           show advanced printing
+#
+#   --dist          specifies a specific distribution
+#                   jammy, lunar, focal, noble, etc
+#
+#   --setup         installs all required dependencies for proteus script
+#                   apt-move, apt-url, curl, wget, tree, reprepro, lastversion
+#
+#   --gpg           adds new entries to "/home/${USER}/.gnupg/gpg-agent.conf"
+#
+#   --onlyTest      downloads packages from both apt-get and LastVersion
+#                   does not push packages to Github proteus repo
+#
+#   --onlyGithub    only downloads packages from github using LastVersion
+#                   does not download packages from apt-get
+#
+#   --onlyAptget    only downloads packages from apt-get
+#                   does not download packages from github using LastVersion
+#
+#   --help          show help and usage information
+#
+#   --branch        used in combination with --update
+#                   used to install proteus apt script from another github
+#                   branch such as development branch
+#
+#   --nullrun       used for testing functionality
+#                   does not download packages
+#                   does not modify file permissions
+#                   does not add packages to reprepro
+#                   does not push changes to github
+#
+#   --quiet         no logs output to pipe file
+#
+#   --update        downloads the latest proteus script to local folder
+#
+#   --version       display version information
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -d|--dev)
+            OPT_DEV_ENABLE=true
+            echo -e "  ${FUCHSIA}${BLINK}Devmode Enabled${NORMAL}"
+            ;;
+
+    -dd*|--dist*)
+            if [[ "$1" != *=* ]]; then shift; fi
+            OPT_DISTRIBUTION="${1#*=}"
+            if [ -z "${OPT_DISTRIBUTION}" ]; then
+                echo -e "  ${NORMAL}Must specify a valid distribution"
+                echo -e "  ${NORMAL}      Default:  ${YELLOW}${sys_code}${NORMAL}"
+
+                exit 1
+            fi
+            ;;
+
+    -s*|--setup*)
+            app_setup
+            ;;
+
+    -gp*|--gpg*)
+            app_update_gpg
+            ;;
+
+    -t*|--onlyTest*)
+            OPT_DLPKG_ONLY_TEST=true
+            ;;
+
+    -g*|--githubOnly*)
+            OPT_DLPKG_ONLY_LASTVER=true
+            ;;
+
+    -p*|--onlyAptget*)
+            OPT_DL_ONLY_APTGET=true
+            ;;
+
+    -h*|--help*)
+            opt_usage
+            ;;
+
+    -b*|--branch*)
+            if [[ "$1" != *=* ]]; then shift; fi
+            OPT_BRANCH="${1#*=}"
+            if [ -z "${OPT_BRANCH}" ]; then
+                echo -e "  ${NORMAL}Must specify a valid branch"
+                echo -e "  ${NORMAL}      Default:  ${YELLOW}${app_repo_branch}${NORMAL}"
+
+                exit 1
+            fi
+            ;;
+
+    -n|--nullrun)
+            OPT_DEV_NULLRUN=true
+            echo -e "  ${FUCHSIA}${BLINK}Devnull Enabled${NORMAL}"
+            ;;
+
+    -q|--quiet)
+            OPT_NOLOG=true
+            echo -e "  ${FUCHSIA}${BLINK}Logging Disabled{NORMAL}"
+            ;;
+
+    -u|--update)
+            OPT_UPDATE=true
+            ;;
+
+    -v|--version)
+            echo
+            echo -e "  ${GREEN}${BOLD}${app_title}${NORMAL} - v$(get_version)${NORMAL}"
+            echo -e "  ${GREYL}${BOLD}${app_repo_url}${NORMAL}"
+            echo -e "  ${GREYL}${BOLD}${OS} | ${OS_VER}${NORMAL}"
+            echo
+            exit 1
+            ;;
+    *)
+            opt_usage
+            ;;
+  esac
+  shift
+done
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   DEV > Show Arguments
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+if [ "${OPT_DEV_ENABLE}" = true ]; then
+
+    echo -e
+    echo -e "  ${LIME_YELLOW}${BOLD}[ Arguments ]${NORMAL}"
+
+    [ "${OPT_DEV_ENABLE}" = true ] && printf "%-3s %-15s %-10s\n" "" "--dev" "${GREEN}${OPT_DEV_ENABLE}${NORMAL}"
+    [ "${OPT_DLPKG_ONLY_TEST}" = true ] && printf "%-3s %-15s %-10s\n" "" "--onlyTest" "${GREEN}${OPT_DLPKG_ONLY_TEST}${NORMAL}"
+    [ "${OPT_DLPKG_ONLY_LASTVER}" = true ] && printf "%-3s %-15s %-10s\n" "" "--githubOnly" "${GREEN}${OPT_DLPKG_ONLY_LASTVER}${NORMAL}"
+    [ "${OPT_DL_ONLY_APTGET}" = true ] && printf "%-3s %-15s %-10s\n" "" "--onlyAptget" "${GREEN}${OPT_DL_ONLY_APTGET}${NORMAL}"
+    [ "${OPT_DEV_NULLRUN}" = true ] && printf "%-3s %-15s %-10s\n" "" "--nullrun" "${GREEN}${OPT_DEV_NULLRUN}${NORMAL}"
+    [ "${OPT_NOLOG}" = true ] && printf "%-3s %-15s %-10s\n" "" "--quiet" "${GREEN}${OPT_NOLOG}${NORMAL}"
+    [ -n "${OPT_DISTRIBUTION}" ] && printf "%-3s %-15s %-10s\n" "" "--dist" "${GREEN}${OPT_DISTRIBUTION}${NORMAL}"
+    [ -n "${OPT_BRANCH}" ] && printf "%-3s %-15s %-10s\n" "" "--branch" "${GREEN}${OPT_BRANCH}${NORMAL}"
+
+    echo -e
+    sleep 5
+fi
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   app repo paths and commands
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
@@ -121,11 +416,6 @@ app_repo_apt_pkg="aetherinox-${app_repo_apt}-archive"
 app_repo_url="https://github.com/${app_repo_author}/${app_repo}"
 app_repo_mnfst="https://raw.githubusercontent.com/${app_repo_author}/${app_repo}/${app_repo_branch}/manifest.json"
 app_repo_script="https://raw.githubusercontent.com/${app_repo_author}/${app_repo}/BRANCH/setup.sh"
-
-app_pid_spin=0
-app_pid=$BASHPID
-app_queue_url=()
-app_i=0
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   Configs
@@ -167,6 +457,11 @@ export SECONDS=0
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 lst_github=(
+    'obsidianmd/obsidian-releases'
+    'AppOutlet/AppOutlet'
+    'bitwarden/clients'
+    'shiftkey/desktop'
+    'FreeTubeApp/FreeTube'
     'makedeb/makedeb'
 )
 
@@ -176,6 +471,162 @@ lst_github=(
 
 lst_packages=(
     'adduser'
+    'argon2'
+    'apt-move'
+    'apt-utils'
+    'clevis'
+    'clevis-dracut'
+    'clevis-udisks2'
+    'clevis-tpm2'
+    'dialog'
+    'firefox'
+    'flatpak'
+    'gnome-keyring'
+    'gnome-keysign'
+    'gnome-shell-extension-manager'
+    'gpg'
+    'gpgconf'
+    'gpgv'
+    'jose'
+    'keyutils'
+    'kgpg'
+    'libnginx-mod-http-auth-pam'
+    'libnginx-mod-http-cache-purge'
+    'libnginx-mod-http-dav-ext'
+    'libnginx-mod-http-echo'
+    'libnginx-mod-http-fancyindex'
+    'libnginx-mod-http-geoip'
+    'libnginx-mod-http-headers-more-filter'
+    'libnginx-mod-http-ndk'
+    'libnginx-mod-http-perl'
+    'libnginx-mod-http-subs-filter'
+    'libnginx-mod-http-uploadprogress'
+    'libnginx-mod-http-upstream-fair'
+    'libnginx-mod-nchan'
+    'libnginx-mod-rtmp'
+    'libnginx-mod-stream-geoip'
+    'lsb-base'
+    'lz4'
+    'mysql-client'
+    'mysql-common'
+    'mysql-server'
+    'network-manager-config-connectivity-ubuntu'
+    'network-manager-dev'
+    'network-manager-gnome'
+    'network-manager-openvpn-gnome'
+    'network-manager-openvpn'
+    'network-manager-pptp-gnome'
+    'network-manager-pptp'
+    'network-manager'
+    'networkd-dispatcher'
+    'nginx-common'
+    'nginx-confgen'
+    'nginx-core'
+    'nginx-dev'
+    'nginx-doc'
+    'nginx-extras'
+    'nginx-full'
+    'nginx-light'
+    'nginx'
+    'open-vm-tools-desktop'
+    'open-vm-tools-dev'
+    'open-vm-tools'
+    'php-all-dev'
+    'php-amqp'
+    'php-amqplib'
+    'php-apcu-all-dev'
+    'php-apcu'
+    'php-ast-all-dev'
+    'php-ast'
+    'php-bacon-qr-code'
+    'php-bcmath'
+    'php-brick-math'
+    'php-brick-varexporter'
+    'php-bz2'
+    'php-cas'
+    'php-cgi'
+    'php-cli'
+    'php-code-lts-u2f-php-server'
+    'php-common'
+    'php-crypt-gpg'
+    'php-curl'
+    'php-db'
+    'php-dba'
+    'php-decimal'
+    'php-dev'
+    'php-ds-all-dev'
+    'php-ds'
+    'php-email-validator'
+    'php-embed'
+    'php-enchant'
+    'php-excimer'
+    'php-faker'
+    'php-fpm'
+    'php-fxsl'
+    'php-gd'
+    'php-gearman'
+    'php-gettext-languages'
+    'php-gmagick-all-dev'
+    'php-gmagick'
+    'php-gmp'
+    'php-gnupg-all-dev'
+    'php-gnupg'
+    'php-gnupg'
+    'php-grpc'
+    'php-http'
+    'php-igbinary'
+    'php-imagick'
+    'php-imap'
+    'php-inotify'
+    'php-interbase'
+    'php-intl'
+    'php-ldap'
+    'php-mailparse'
+    'php-maxminddb'
+    'php-mbstring'
+    'php-mcrypt'
+    'php-memcache'
+    'php-memcached'
+    'php-mongodb'
+    'php-msgpack'
+    'php-mysql'
+    'php-oauth'
+    'php-odbc'
+    'php-pcov'
+    'php-pgsql'
+    'php-phpdbg'
+    'php-ps'
+    'php-pspell'
+    'php-psr'
+    'php-raphf'
+    'php-readline'
+    'php-redis'
+    'php-rrd'
+    'php-smbclient'
+    'php-snmp'
+    'php-soap'
+    'php-solr'
+    'php-sqlite3'
+    'php-ssh2'
+    'php-stomp'
+    'php-sybase'
+    'php-tideways'
+    'php-tidy'
+    'php-uopz'
+    'php-uploadprogress'
+    'php-uuid'
+    'php-xdebug'
+    'php-xml'
+    'php-xmlrpc'
+    'php-yac'
+    'php-yaml'
+    'php-zip'
+    'php-zmq'
+    'php'
+    'sks',
+    'snap'
+    'snapd'
+    'wget'
 )
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -237,36 +688,60 @@ fi
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 if [ "${cfg_Storage_Clevis}" = true ]; then
-    if [ -f ${HOME}/.secrets/.pat_github ]; then
+
+    echo -e
+    echo -e "  ${LIME_YELLOW}${BOLD}[ Secrets ]${NORMAL}"
+
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    #   SECRETS > Github PAT
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+    if [ -f $HOME/.secrets/.pat_github ]; then
         CSI_PAT_GITHUB=$(cat ${HOME}/.secrets/.pat_github | clevis decrypt 2>/dev/null)
 
-
-            echo -e "  ${WHITE}       Github PAT ${FUCHSIA}${CSI_PAT_GITHUB}${NORMAL}${NORMAL}"
+        if [ "${OPT_DEV_ENABLE}" = true ]; then
+            printf "%-3s %-15s %-10s\n" "" "Github PAT" "${GREEN}${CSI_PAT_GITHUB}${NORMAL}"
+        fi
 
         export GITHUB_API_TOKEN=${CSI_PAT_GITHUB}
     else
-        echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.pat_github missing${WHITE}"
+        printf "%-3s %-15s %-10s\n" "" "Github PAT" "${RED}${PWD}/.secrets/.pat_github Missing${NORMAL}"
     fi
+
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    #   SECRETS > Gitlab PAT
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     if [ -f ${HOME}/.secrets/.pat_gitlab ]; then
         CSI_PAT_GITLAB=$(cat ${HOME}/.secrets/.pat_gitlab | clevis decrypt 2>/dev/null)
 
-
-            echo -e "  ${WHITE}       Gitlab PAT ${FUCHSIA}${CSI_PAT_GITLAB}${NORMAL}${NORMAL}"
+        if [ "${OPT_DEV_ENABLE}" = true ]; then
+            printf "%-3s %-15s %-10s\n" "" "Gitlab PAT" "${GREEN}${CSI_PAT_GITLAB}${NORMAL}"
+        fi
 
         export GITLAB_PA_TOKEN=${CSI_PAT_GITLAB}
     else
-        echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.pat_gitlab missing${WHITE}"
+        printf "%-3s %-15s %-10s\n" "" "Gitlab PAT" "${RED}${PWD}/.secrets/.pat_gitlab Missing${NORMAL}"
     fi
+
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    #   SECRETS > Sudo
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
     if [ -f ${HOME}/.secrets/.passwd ]; then
         CSI_SUDO_PASSWD=$(cat ${HOME}/.secrets/.passwd | clevis decrypt 2>/dev/null)
+    
+        if [ "${OPT_DEV_ENABLE}" = true ]; then
+            printf "%-3s %-15s %-10s\n" "" "Sudo Passwd" "${GREEN}${CSI_SUDO_PASSWD}${NORMAL}"
+        fi
 
         echo "$CSI_SUDO_PASSWD" | sudo -S su 2> /dev/null
-
     else
-        echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.passwd missing${WHITE}"
+        printf "%-3s %-15s %-10s\n" "" "Sudo Passwd" "${RED}$PWD/.secrets/.passwd Missing${NORMAL}"
     fi
+
+    echo -e
+    sleep 5
 fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -289,20 +764,6 @@ if [ "${cfg_Storage_Clevis}" = true ] && [ ! -x "$(command -v clevis)" ]; then
     echo -e "  ${GREYL}Installing package ${MAGENTA}Clevis${WHITE}"
     sudo apt-get update -y -q >/dev/null 2>&1
     sudo apt-get install clevis clevis-dracut clevis-udisks2 clevis-tpm2 -y -qq >/dev/null 2>&1
-fi
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   requite packages before anything begins
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-if ! [ -x "$(command -v git)" ]; then
-    echo -e "  ${GREYL}Installing package ${MAGENTA}Git${WHITE}"
-    sudo apt-get update -y -q >/dev/null 2>&1
-    sudo apt-get install git -y -qq >/dev/null 2>&1
-
-    echo -e "  ${GREYL}Installing package ${MAGENTA}GPG${WHITE}"
-    sudo apt-get update -y -q >/dev/null 2>&1
-    sudo apt-get install gpg -y -qq >/dev/null 2>&1
 fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -329,6 +790,50 @@ app_run_github_precheck( )
     git config --global user.name ${GITHUB_NAME}
     git config --global user.email ${GITHUB_EMAIL}
 }
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   .gitignore
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+if [ ! -f $app_dir/secrets.sh ]; then
+
+    touch $app_dir/.gitignore
+
+sudo tee $app_dir/.gitignore << EOF > /dev/null
+# ----------------------------------------
+#   Misc
+# ----------------------------------------
+incoming/
+.env
+sources-*.list
+
+# ----------------------------------------
+# Logs
+# ----------------------------------------
+logs/
+*-log
+*.log
+
+# ----------------------------------------
+# Libraries
+# ----------------------------------------
+apt-url
+
+# ----------------------------------------
+# GPG keys
+# ----------------------------------------
+.gpg/*.gpg
+.gpg/*.asc
+
+# ----------------------------------------
+# Secrets Files
+# ----------------------------------------
+/secrets.sh
+/secrets
+/.secrets
+EOF
+
+fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   secrets.sh file missing -- abort
@@ -481,261 +986,6 @@ if [ -z "${CSI_PAT_GITHUB}" ] && [ -z "${CSI_PAT_GITLAB}" ]; then
 fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   func > get version
-#
-#   returns current version of app
-#   converts to human string.
-#       e.g.    "1" "2" "4" "0"
-#               1.2.4.0
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-get_version()
-{
-    ver_join=${app_ver[@]}
-    ver_str=${ver_join// /.}
-    echo ${ver_str}
-}
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   func > version > compare greater than
-#
-#   this function compares two versions and determines if an update may
-#   be available. or the user is running a lesser version of a program.
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-get_version_compare_gt()
-{
-    test "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1";
-}
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   func > test
-#
-#   development function, not used in normal operations,
-#   has no specific purpose other than to drop code in here and test with
-#
-#   Execute with:
-#       proteus-git.sh --test
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-app_update_gpg( )
-{
-    printf '%-57s' "    |--- Running Test"
-    echo
-
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-    #   modify gpg.conf
-    #
-    #   first check if GPG installed (usually on Ubuntu it is)
-    #   then modify user's gpg-agent.conf file
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-    gpgconfig_file="/home/${USER}/.gnupg/gpg-agent.conf"
-
-    if ! [ -x "$(command -v gpg)" ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
-        printf '%-57s' "    |--- Installing GPG"
-        sleep 1
-        if [ -z "${OPT_DEV_NULLRUN}" ]; then
-            sudo apt-get update -y -q >> /dev/null 2>&1
-            sudo apt-get install gpg -y -qq >> /dev/null 2>&1
-        fi
-        echo -e "[ ${STATUS_OK} ]"
-        sleep 1
-    fi
-
-sudo tee ${gpgconfig_file} << EOF > /dev/null
-enable-putty-support
-enable-ssh-support
-use-standard-socket
-default-cache-ttl-ssh 60
-max-cache-ttl-ssh 120
-default-cache-ttl 28800 # gpg key cache time
-max-cache-ttl 28800 # max gpg key cache time
-pinentry-program "/usr/bin/pinentry"
-allow-loopback-pinentry
-allow-preset-passphrase
-pinentry-timeout 0
-EOF
-
-    printf '%-57s' "    |--- Set ownership to ${USER}"
-    sleep 1
-    if [ -z "${OPT_DEV_NULLRUN}" ]; then
-        sudo chgrp ${USER} ${gpgconfig_file} >> ${LOGS_FILE} 2>&1
-        sudo chown ${USER} ${gpgconfig_file} >> ${LOGS_FILE} 2>&1
-    fi
-    echo -e "[ ${STATUS_OK} ]"
-
-    printf '%-57s' "    |--- Restart GPG Agent"
-    sleep 1
-    gpgconf --kill gpg-agent
-    echo -e "[ ${STATUS_OK} ]"
-
-    exit 0
-    sleep 0.2
-}
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   Display Usage Help
-#
-#   activate using ./proteus-git.sh --help or -h
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-opt_usage()
-{
-    echo
-    printf "  ${BLUE}${app_title}${NORMAL}\n" 1>&2
-    printf "  ${GREYL}${gui_about}${NORMAL}\n" 1>&2
-    echo
-    printf '  %-5s %-40s\n' "Usage:" "" 1>&2
-    printf '  %-5s %-40s\n' "    " "${0} [${GREYL}options${NORMAL}]" 1>&2
-    printf '  %-5s %-40s\n\n' "    " "${0} [${GREYL}-h${NORMAL}] [${GREYL}-d${NORMAL}] [${GREYL}-n${NORMAL}] [${GREYL}-s${NORMAL}] [${GREYL}-t THEME${NORMAL}] [${GREYL}-v${NORMAL}]" 1>&2
-    printf '  %-5s %-40s\n' "Options:" "" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-d, --dev" "dev mode with advanced logs" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-h, --help" "show help menu" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-g, --onlyTest" "download packages from apt-get and LastVersion, do not push to git repo" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-g, --onlyGithub" "only update packages using LastVersion, push to git" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-s, --onlyAptget" "only update packages using AptGet, push to git" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-n, --nullrun" "dev: null run" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "" "simulate app installs (no changes)" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-q, --quiet" "quiet mode which disables logging" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-u, --update" "update ${app_file_proteus} executable" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "    --branch" "branch to update from" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-v, --version" "current version of app manager" 1>&2
-    echo
-    echo
-    exit 1
-}
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   command-line options
-#
-#   reminder that any functions which need executed must be defined BEFORE
-#   this point. Bash sucks like that.
-#
-#   --dev           show advanced printing
-#
-#   --dist          specifies a specific distribution
-#                   jammy, lunar, focal, noble, etc
-#
-#   --setup         installs all required dependencies for proteus script
-#                   apt-move, apt-url, curl, wget, tree, reprepro, lastversion
-#
-#   --gpg           adds new entries to "/home/${USER}/.gnupg/gpg-agent.conf"
-#
-#   --onlyTest      downloads packages from both apt-get and LastVersion
-#                   does not push packages to Github proteus repo
-#
-#   --onlyGithub    only downloads packages from github using LastVersion
-#                   does not download packages from apt-get
-#
-#   --onlyAptget    only downloads packages from apt-get
-#                   does not download packages from github using LastVersion
-#
-#   --help          show help and usage information
-#
-#   --branch        used in combination with --update
-#                   used to install proteus apt script from another github
-#                   branch such as development branch
-#
-#   --nullrun       used for testing functionality
-#                   does not download packages
-#                   does not modify file permissions
-#                   does not add packages to reprepro
-#                   does not push changes to github
-#
-#   --quiet         no logs output to pipe file
-#
-#   --update        downloads the latest proteus script to local folder
-#
-#   --version       display version information
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-while [ $# -gt 0 ]; do
-  case "$1" in
-    -d|--dev)
-            OPT_DEV_ENABLE=true
-            echo -e "  ${FUCHSIA}${BLINK}Devmode Enabled${NORMAL}"
-            ;;
-
-    -dd*|--dist*)
-            if [[ "$1" != *=* ]]; then shift; fi
-            OPT_DISTRIBUTION="${1#*=}"
-            if [ -z "${OPT_DISTRIBUTION}" ]; then
-                echo -e "  ${NORMAL}Must specify a valid distribution"
-                echo -e "  ${NORMAL}      Default:  ${YELLOW}${sys_code}${NORMAL}"
-
-                exit 1
-            fi
-            ;;
-
-    -s*|--setup*)
-            app_setup
-            ;;
-
-    -gp*|--gpg*)
-            app_update_gpg
-            ;;
-
-    -t*|--onlyTest*)
-            OPT_DLPKG_ONLY_TEST=true
-            echo "Testing Download Only"
-            ;;
-
-    -g*|--githubOnly*)
-            OPT_DLPKG_ONLY_LASTVER=true
-            echo "Update Github Only"
-            ;;
-
-    -p*|--onlyAptget*)
-            OPT_DL_ONLY_APTGET=true
-            echo "Update Source Packages Only"
-            ;;
-
-    -h*|--help*)
-            opt_usage
-            ;;
-
-    -b*|--branch*)
-            if [[ "$1" != *=* ]]; then shift; fi
-            OPT_BRANCH="${1#*=}"
-            if [ -z "${OPT_BRANCH}" ]; then
-                echo -e "  ${NORMAL}Must specify a valid branch"
-                echo -e "  ${NORMAL}      Default:  ${YELLOW}${app_repo_branch}${NORMAL}"
-
-                exit 1
-            fi
-            ;;
-
-    -n|--nullrun)
-            OPT_DEV_NULLRUN=true
-            echo -e "  ${FUCHSIA}${BLINK}Devnull Enabled${NORMAL}"
-            ;;
-
-    -q|--quiet)
-            OPT_NOLOG=true
-            echo -e "  ${FUCHSIA}${BLINK}Logging Disabled{NORMAL}"
-            ;;
-
-    -u|--update)
-            OPT_UPDATE=true
-            ;;
-
-    -v|--version)
-            echo
-            echo -e "  ${GREEN}${BOLD}${app_title}${NORMAL} - v$(get_version)${NORMAL}"
-            echo -e "  ${GREYL}${BOLD}${app_repo_url}${NORMAL}"
-            echo -e "  ${GREYL}${BOLD}${OS} | ${OS_VER}${NORMAL}"
-            echo
-            exit 1
-            ;;
-    *)
-            opt_usage
-            ;;
-  esac
-  shift
-done
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   vars > active repo branch
 #   typically "main"
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -872,6 +1122,26 @@ Logs_Finish()
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 Logs_Begin
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   Cache Sudo Password
+#
+#   require normal user sudo authentication for certain actions
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# if [[ ${EUID} -ne 0 ]]; then
+#    sudo -k # make sure to ask for password on next sudo
+#    if sudo true && [ -n "${USER}" ]; then
+#        printf "\n%-50s %-5s\n\n" "${TIME}      SUDO [SIGN-IN]: Welcome, ${USER}" | tee -a "${LOGS_FILE}" >/dev/null
+#    else
+#        printf "\n%-50s %-5s\n\n" "${TIME}      SUDO Failure: Wrong Password x3" | tee -a "${LOGS_FILE}" >/dev/null
+#        exit 1
+#    fi
+# else
+#    if [ -n "${USER}" ]; then
+#        printf "\n%-50s %-5s\n\n" "${TIME}      SUDO [EXISTING]: ${USER}" | tee -a "${LOGS_FILE}" >/dev/null
+#    fi
+# fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   func > spinner animation
@@ -1973,6 +2243,11 @@ app_run_dl_aptget()
                     if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
                         #   full path to deb package
                         deb_package="${app_dir_repo}/${arch}/${app_filename}"
+
+                        if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
+                            echo -e "  ${WHITE}       Adding reprepro package ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
+                        fi
+
                         reprepro -V \
                             --section utils \
                             --component main \
@@ -1994,6 +2269,11 @@ app_run_dl_aptget()
                     if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
                         #   full path to deb package
                         deb_package="${app_dir_repo}/${arch}/${app_filename}"
+
+                        if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
+                            echo -e "  ${WHITE}       Adding reprepro package ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
+                        fi
+                        
                         reprepro -V \
                             --section utils \
                             --component main \
@@ -2016,6 +2296,11 @@ app_run_dl_aptget()
                     if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
                         #   full path to deb package
                         deb_package="${app_dir_repo}/${arch}/${app_filename}"
+
+                        if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
+                            echo -e "  ${WHITE}       Adding reprepro package ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
+                        fi
+
                         reprepro -V \
                             --section utils \
                             --component main \
