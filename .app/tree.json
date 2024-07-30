@@ -343,9 +343,9 @@
       {"type":"directory","name":"repos","contents":[
         {"type":"file","name":"noble.log"}
       ]},
-      {"type":"file","name":"proteus-git-072924.log"},
-      {"type":"fifo","name":"proteus-git-072924.log.pipe"},
-      {"type":"file","name":"proteus-git-service-072907.log"},
+      {"type":"file","name":"proteus-git-073024.log"},
+      {"type":"fifo","name":"proteus-git-073024.log.pipe"},
+      {"type":"file","name":"proteus-git-service-073007.log"},
       {"type":"file","name":"proteus-git-service-%m%d%m.log"}
     ]},
     {"type":"directory","name":"pool","contents":[
