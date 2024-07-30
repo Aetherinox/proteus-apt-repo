@@ -3492,9 +3492,12 @@ EOF
         app_run_github_precheck
 
         git branch -m ${app_repo_branch}
-        git add --all
-        git add -u
 
+        # git add -A        stages all changes
+        # git add .         stages new files and modifications, without deletions (on the current directory and its subdirectories).
+        # git add -u        stages modifications and deletions, without new files
+
+        git add --all
         sleep 1
 
         local NOW=$(date '+%m.%d.%Y %H:%M:%S')
