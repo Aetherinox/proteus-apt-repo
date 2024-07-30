@@ -3507,7 +3507,9 @@ EOF
         sleep 1
 
         echo -e "  ${WHITE}Starting push ${FUCHSIA}${app_repo_branch}${NORMAL}"
+        echo -e "  ${WHITE}START ${FUCHSIA}https://${CSI_PAT_GITHUB}@github.com/${GITHUB_NAME}/${app_repo_apt}${NORMAL}"
         git push https://${CSI_PAT_GITHUB}@github.com/${GITHUB_NAME}/${app_repo_apt}
+        echo -e "  ${WHITE}END ${FUCHSIA}https://${CSI_PAT_GITHUB}@github.com/${GITHUB_NAME}/${app_repo_apt}${NORMAL}"
 
     fi # end devnull
 
