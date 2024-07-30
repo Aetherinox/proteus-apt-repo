@@ -886,10 +886,6 @@ export LOGS_DIR="${app_dir}/logs"
 export LOGS_FILE="${LOGS_DIR}/proteus-git-${DATE}.log"
 export SECONDS=0
 
-
-
-
-
 # #
 #   distro
 #
@@ -938,7 +934,6 @@ export SECONDS=0
             OS=$(uname -s)
             OS_VER=$(uname -r)
         fi
-
 
 # #
 #   SECRETS > METHOD > CLEVIS
@@ -1300,12 +1295,26 @@ app_run_github_precheck( )
 
     git config --global credential.helper store
 
-    # see if repo directory is in safelist for git
+    # #
+    #   GIT > SAFE DIRECTORY
+    #
+    #   allow sharing across users in the same group (OU/no admin rights)
+    #   These config entries specify Git-tracked directories that are considered
+    #   safe even if they are owned by someone other than the current user. 
+    # #
+
+    # #
+    #   see if repo directory is in safelist for git
+    # #
+
     if git config --global --get-all safe.directory | grep -q "${app_dir}"; then
         bFoundSafe=true
     fi
 
-    # if new repo, add to safelist
+    # #
+    #   if new repo, add to safelist
+    # #
+
     if ! [ ${bFoundSafe} ]; then
         git config --global --add safe.directory ${app_dir}
     fi
@@ -1315,12 +1324,12 @@ app_run_github_precheck( )
     git config --global user.email ${GITHUB_EMAIL}
 }
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   check if GPG key defined in git config user.signingKey
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 checkgit_signing=$( git config --global --get-all user.signingKey )
-if [ -z "${checkgit_signing}" ]; then
+if [ -z "${checkgit_signing}" ] || [ "${checkgit_signing}" == "!" ]; then
     echo
     echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Missing ${YELLOW}user.signingKey${WHITE} in ${YELLOW}/home/${USER}/.gitconfig${NORMAL}"
     echo -e "  ${BOLD}${WHITE}You should have the below entries in your ${FUCHSIA}.gitconfig${WHITE}:${NORMAL}"
@@ -1350,10 +1359,10 @@ if [ -z "${checkgit_signing}" ]; then
 
     sleep 2
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   run the same check as above to double confirm that user.signingKey
     #   has been defined.
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     checkgit_signing=$( git config --global --get-all user.signingKey )
     if [ -z "${checkgit_signing}" ]; then
@@ -1368,67 +1377,28 @@ if [ -z "${checkgit_signing}" ]; then
     fi
 fi
 
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   check > Github / Gitlab API tokens
-#
-#   Must use the values
-#       - CSI_PAT_GITHUB
-#       - GITLAB_PA_TOKEN
-#
-#   Do not rename them, these are the globals recognized by LastVersion
-#   
-#   This is required for LastVersion when checking if specific github repos
-#   have updates to any packages. Failure to provide an API key means
-#   that you will be rate limited.
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-if [ -z "${CSI_PAT_GITHUB}" ] && [ -z "${CSI_PAT_GITLAB}" ]; then
-    echo
-    echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Missing ${YELLOW}API Tokens${WHITE}${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}Must create a ${FUCHSIA}secrets.sh${WHITE} file and define an API token${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}for either Github or Gitlab.${NORMAL}"
-    echo
-    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GITHUB_API_TOKEN=${WHITE}XXXXXXX${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GITLAB_PA_TOKEN=${WHITE}XXXXXXX${NORMAL}"
-    echo
-    echo -e "  ${BOLD}${WHITE}Without supplying this, you will be rate limited.${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}on queries using ${YELLOW}LastVersion${WHITE}${NORMAL}"
-    echo
-
-    printf "  Press any key to abort ... ${NORMAL}"
-    read -n 1 -s -r -p ""
-    echo
-    echo
-
-    set +m
-    trap "kill -9 ${app_pid} 2> /dev/null" `seq 0 15`
-    kill ${app_pid}
-    set -m
-fi
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   vars > active repo branch
 #   typically "main"
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 app_repo_branch_sel=$( [[ -n "$OPT_BRANCH" ]] && echo "$OPT_BRANCH" || echo "$app_repo_branch"  )
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   distribution
 #   jammy, lunar, focal, noble, etc
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 app_repo_dist_sel=$( [[ -n "$OPT_DISTRIBUTION" ]] && echo "$OPT_DISTRIBUTION" || echo "$sys_code"  )
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   line > comment
 #
 #   allows for lines to be commented out
 #
 #   comment REGEX FILE [COMMENT-MARK]
 #   comment "skip-grant-tables" "/etc/mysql/my.cnf"
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 line_comment()
 {
@@ -1438,14 +1408,14 @@ line_comment()
     sudo sed -ri "s:^([ ]*)($regx):\\1$mark\\2:" "$targ"
 }
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   line > uncomment
 #
 #   allows for lines to be uncommented
 #
 #   uncomment REGEX FILE [COMMENT-MARK]
 #   uncomment "skip-grant-tables" "/etc/mysql/my.cnf"
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 line_uncomment()
 {
@@ -1455,11 +1425,11 @@ line_uncomment()
     sudo sed -ri "s:^([ ]*)[$mark]+[ ]?([ ]*$regx):\\1\\2:" "$targ"
 }
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   func > logs > begin
 #
 #   sets the script up to provide logging to the /logs/ folder
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 Logs_Begin()
 {
@@ -1506,12 +1476,12 @@ Logs_Begin()
     fi
 }
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   func > logs > finish
 #
 #   stop logging system. Mainly kills the pipe otherwise you can't access
 #   the file.
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 Logs_Finish()
 {
@@ -1539,17 +1509,17 @@ Logs_Finish()
     printf "%-50s %-15s\n\n\n\n" "${TIME}      ${elapsed}" | tee -a "${LOGS_FILE}" >/dev/null
 }
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   Begin Logging
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 Logs_Begin
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   Cache Sudo Password
 #
 #   require normal user sudo authentication for certain actions
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 if [[ ${EUID} -ne 0 ]]; then
     sudo -k # make sure to ask for password on next sudo
@@ -1565,9 +1535,9 @@ else
     fi
 fi
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   func > spinner animation
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 spin()
 {
@@ -1575,11 +1545,11 @@ spin()
 
 }
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   func > spinner > halt
 #
 #   destroy text spinner process id
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 spinner_halt()
 {
@@ -1590,7 +1560,7 @@ spinner_halt()
     fi
 }
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   func > cli selection menu
 #
 #   allows for prompting user with questions and to select their desired
@@ -1608,7 +1578,7 @@ spinner_halt()
 #           bChoiceSqlSecure=true
 #       ;;
 #   esac
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 cli_options()
 {
@@ -1667,7 +1637,7 @@ cli_options()
     done
 }
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   func > cli question
 #
 #   used for command-line to prompt the user with a question
@@ -1683,7 +1653,7 @@ cli_options()
 #           $app_func "${app_name}" "${app_func}"
 #       done
 #   fi
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 cli_question( )
 {
@@ -1726,7 +1696,7 @@ cli_question( )
     done
 }
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   func > open url
 #
 #   opening urls in bash can be wonky as hell. just doing it the manual
@@ -1734,7 +1704,7 @@ cli_question( )
 #
 #   example
 #       open_url "http://127.0.0.1"
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 open_url()
 {
@@ -1742,12 +1712,12 @@ open_url()
    xdg-open $URL || firefox $URL || sensible-browser $URL || x-www-browser $URL || gnome-open $URL
 }
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   func > cmd title
 #
 #   example
 #       title "First Time Setup ..."
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 title()
 {
@@ -1755,12 +1725,12 @@ title()
     sleep 0.3
 }
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   func > begin action
 #
 #   example
 #       begin "Updating from branch main"
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 begin()
 {
@@ -1780,13 +1750,13 @@ begin()
     sleep 0.3
 }
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   func > finish action
 #
 #   this func supports opening a url at the end of the installation
 #   however the command needs to have
 #       finish "${1}"
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 finish()
 {
@@ -1801,9 +1771,9 @@ finish()
     fi
 }
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   func > exit action
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 exit()
 {
@@ -1811,7 +1781,7 @@ exit()
     clear
 }
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   func > env path (add)
 #
 #   creates a new file inside /etc/profile.d/ which includes the new
@@ -1821,7 +1791,7 @@ exit()
 #   anywhere with an entry similar to:
 #
 #       export PATH="/home/aetherinox/bin:$PATH"
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 envpath_add_proteus()
 {
@@ -1847,14 +1817,14 @@ envpath_add_lastversion()
     fi
 }
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   func > app update
 #
 #   updates the /home/USER/bin/proteus file which allows proteus to be
 #   ran from anywhere.
 #
 #   activate using ./proteus-git --update or -u
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 app_update()
 {
@@ -1898,17 +1868,16 @@ app_update()
     finish
 }
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   func > app update
 #
 #   updates the /home/USER/bin/proteus file which allows proteus to be
 #   ran from anywhere.
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 if [ "${OPT_UPDATE}" = true ]; then
     app_update ${app_repo_branch_sel}
 fi
-
 
 # #
 #   .git folder doesnt exist
@@ -2614,44 +2583,108 @@ show_header()
 #   updates apt source packages for the distro being used
 # #
 
-app_run_dl_aptsrc()
+app_run_dl_aptget()
 {
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+    # #
     #   sort alphabetically
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     IFS=$'\n' lst_pkgs_sorted=($(sort <<<"${lst_packages[*]}"))
     unset IFS
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   add countdown to the num of packages to install
     #   add +1 so we're not hitting 0
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     count=${#lst_pkgs_sorted[@]}
-    # (( count++ ))
+    local countNow=count
 
-    begin "Downloading Packages [ $count ]"
-    echo
+    # #
+    #   Begin
+    # #
+
+    begin "Aptget Packages [ $count ]"
+    echo -e
+
+    # #
+    #   Create main folders for architecture
+    #   all, amd64, arm54
+    # #
 
     mkdir -p ${app_dir_storage}/{all,amd64,arm64}
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
+    #   set new package
+    #
+    #   each main package has several downloads, one for amd64, one for arm64, and all
+    #   when this script is ran and each package is shown in terminal for the user as it downloads,
+    #   this flag groups things together so that you don't see the same count for each sub package.
+    #
+    #   a new package will start out with its current number in line to the left of the package name.
+    #   all sub-packages are listed under without the count.
+    #
+    #   |--- [ 120 ] Get networkd-dispatcher:all
+    #           Package         networkd-dispatcher:all
+    #           File            networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+    #           Download        http://us.archive.ubuntu.com/ubuntu/pool/main/n/networkd-dispatcher/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+    #           Move            /server/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb > /server/proteus/incoming/proteus-git/jammy/all/
+    #           Status:         💡 Already exists
+    #
+    #       Get networkd-dispatcher:amd64
+    #           Package         networkd-dispatcher:amd64
+    #           File            networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+    #           Status:         ⭕ Double file detected /server/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+    #
+    #       Get networkd-dispatcher:arm64
+    #           Package         networkd-dispatcher:arm64
+    #           File            Couldn't find package networkd-dispatcher:arm64
+    #           Status:         🔍 arm64 doesn't exist for this package
+    # #
+
+    local bNewPackage=true
+
+    # #
     #   loop sorted packages
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     for i in "${!lst_pkgs_sorted[@]}"; do
+
+        # #
+        #   get package name
+        #       networkd-dispatcher
+        # #
+
         pkg=${lst_pkgs_sorted[$i]}
 
+        # #
+        #   loop each architecture for each package
+        #       all
+        #       amd64
+        #       arm64
+        #       i386
+        # #
+
         for j in "${!lst_arch[@]}"; do
-            #   returns arch
-            #   amd64, arm64, i386, all
+
+            # #
+            #   get architecture
+            #       amd64, arm64, i386, all
+            # #
+
             arch=${lst_arch[$j]}
             
-            #   package:arch
+            # #
+            #   get package name and arch combined
+            #       networkd-dispatcher:all
+            #       networkd-dispatcher:amd64
+            #       networkd-dispatcher:arm64
+            # #
+
             local pkg_arch="${pkg}:${arch}"
 
-            # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+            # #
             #   download "package:arch"
             #   
             #   originally apt-get download was utilized, however it has a weird bug
@@ -2665,145 +2698,480 @@ app_run_dl_aptsrc()
             #   http://us.archive.ubuntu.com/ubuntu/pool/universe/d/<package>/<package>_1.x.x-x_<arch>.deb
             #   app_url=$(sudo ./apt-url "$pkg_arch" | tail -n 1 )
             #   
-            # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+            # #
 
-            #   <package>_1.x.x-x_<arch>.deb
-            query=$( sudo apt-url "${pkg_arch}" )
-            app_filename=$( echo "${query}" | head -n 1; )
-            app_url=$( echo "${query}" | tail -n 1; )
+            # #
+            #   run package through apt-url
+            #   this returns a multi-line result which needs broken up into two values
+            # #
+
+            apturl_exit_code="0"
+            apturl_query="$(sudo apt-url "${pkg_arch}" \
+                "$@" 2>&1)" \
+                || { apturl_exit_code="$?" ; true; };
+
+            # #
+            #   break the two apturl values up into separate variables
+            #       app_filename        networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+            #       app_url             http://us.archive.ubuntu.com/ubuntu/pool/main/n/networkd-dispatcher/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+            # #
+
+            app_filename=$( echo "${apturl_query}" | head -n 1; )
+            app_url=$( echo "${apturl_query}" | tail -n 1; )
+
+            # #
+            #   determines if a new package should be shown, or the architecture
+            #   
+            #   bNewPackage = true
+            #       |--- [ 120 ] Get networkd-dispatcher:all
+            #   
+            #   bNewPackage = false
+            #       Get networkd-dispatcher:amd64
+            # #
+
+            if [ "$bNewPackage" = true ]; then
+                echo -e "     ${GREYL}|--- ${YELLOW}[ ${count} ]${FUCHSIA}${BOLD} Get ${pkg_arch:0:35}${NORMAL}"
+            else
+                echo -e "               ${FUCHSIA}${BOLD} Get ${pkg_arch:0:35}${NORMAL}"
+            fi
+
+            # #
+            #   kill reprepro if running
+            # #
 
             sudo pkill -9 "reprepro"
+
+            # #
+            #   lockfile exists, remove it to ensure we can download the package
+            # #
+
             if [ -f "${app_dir}/db/lockfile" ]; then
                 sudo rm "${app_dir}/db/lockfile"
             fi
 
+            # #
+            #   take the download url provided by apt-url and download the package using wget
+            # #
+
             wget "${app_url}" -q
+
+            # #
+            #   output > package info
+            # #
+
+            echo -e "  ${WHITE}                Package         ${FUCHSIA}${pkg_arch}${NORMAL}"
+            echo -e "  ${WHITE}                File            ${FUCHSIA}${app_filename}${NORMAL}"
+
+            # #
+            #   output > architecture doesn't exist for this package
+            # #
+
+            if echo "$apturl_query" | grep --quiet --ignore-case "find package" ; then
+                echo -e "  ${WHITE}                ${GREEN}Status:         ${FUCHSIA}🔍 ${arch:0:35}${NORMAL} doesn't exist for this package"
+            fi
+
+            # #
+            #   output > apt-url cannot be run because apt get is held up by another process
+            # #
+
+            if echo "$apturl_query" | grep --quiet --ignore-case "It is held by process" ; then
+                echo -e "  ${WHITE}                ${GREEN}Status:         ${FUCHSIA}🗔 ${pkg_arch:0:35}${NORMAL} held up by process"
+            fi
+
+            # #
+            #   check if file exists
+            #       /home/$USER/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+            # #
 
             if [[ -f "${app_dir}/${app_filename}" ]]; then
 
-                # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+                # #
                 #   architecture > all
-                # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+                #   file must end with 'all.deb'
+                # #
 
                 if [[ "${arch}" == "all" ]] && [[ ${app_filename} == *all.deb ]]; then
-                    printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL} ${YELLOW}[ ${count} ]${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
-                    mv "${app_dir}/${app_filename}" "${app_dir_storage}/all/"
-                    echo -e "[ ${STATUS_OK} ]"
+                    echo -e "  ${WHITE}                Download        ${FUCHSIA}${app_url}${NORMAL}"
 
-                    if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
-                        #   full path to deb package
+                    # #
+                    #   architecture > all
+                    #   move package to its final location inside the reprepro directory
+                    #       move    /home/$USER/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+                    #       to      /home/$USER/proteus/incoming/proteus-git/jammy/all/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+                    # #
+
+                    mv "${app_dir}/${app_filename}" "${app_dir_storage}/all/"
+
+                    echo -e "  ${WHITE}                Move            ${FUCHSIA}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA}${app_dir_storage}/all/${NORMAL}"
+
+                    if [ -n "${bRepreproInstalled}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
+
+                        # #
+                        #   architecture > all > full package path
+                        #
+                        #       deb_package             incoming/proteus-git/jammy/all/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+                        # #
+
                         deb_package="${app_dir_repo}/${arch}/${app_filename}"
-                        reprepro -V \
+
+                        if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
+                            echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
+                        fi
+
+                        # #
+                        #   architecture > all > reprepro
+                        #   add package to reprepro database
+                        #
+                        #       app_repo_dist_sel       jammy
+                        #       deb_package             incoming/proteus-git/jammy/all/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+                        # #
+
+                        reprepro_exit_code="0"
+                        reprepro_output="$(reprepro -V \
                             --section utils \
                             --component main \
                             --priority 0 \
-                            includedeb ${app_repo_dist_sel} "${deb_package}"
+                            includedeb "${app_repo_dist_sel}" "${deb_package}" \
+                            "$@" 2>&1)" \
+                            || { reprepro_exit_code="$?" ; true; };
+
+                        # #
+                        #   architecture > all > reprepro
+                        #
+                        #   output > package already added to reprepro
+                        # #
+
+                        if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
+                            echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
+                        fi
+
+                        # #
+                        #   architecture > all > reprepro
+                        #
+                        #   output > new package added
+                        # #
+
+                        if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
+                            echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
+                        fi
                     fi
 
-                    echo
+                    bNewPackage=false
 
-                # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+                # #
                 #   architecture > amd64
-                # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+                #   file must end with 'amd64.deb'
+                # #
 
                 elif [[ "${arch}" == "amd64" ]] && [[ ${app_filename} == *amd64.deb ]]; then
-                    printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL} ${YELLOW}[ ${count} ]${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
-                    mv "${app_dir}/${app_filename}" "${app_dir_storage}/amd64/"
-                    echo -e "[ ${STATUS_OK} ]"
+                    echo -e "  ${WHITE}                Download        ${FUCHSIA}${app_url}${NORMAL}"
 
-                    if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
-                        #   full path to deb package
+                    # #
+                    #   architecture > amd64
+                    #   move package to its final location inside the reprepro directory
+                    #       move    /home/$USER/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_amd64.deb
+                    #       to      /home/$USER/proteus/incoming/proteus-git/jammy/amd64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_amd64.deb
+                    # #
+
+                    mv "${app_dir}/${app_filename}" "${app_dir_storage}/amd64/"
+
+                    echo -e "  ${WHITE}                Move            ${FUCHSIA}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA}${app_dir_storage}/amd64/${NORMAL}"
+
+                    if [ -n "${bRepreproInstalled}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
+
+                        # #
+                        #   architecture > amd64 > full package path
+                        #
+                        #       deb_package             incoming/proteus-git/jammy/amd64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_amd64.deb
+                        # #
+
                         deb_package="${app_dir_repo}/${arch}/${app_filename}"
-                        reprepro -V \
+
+                        if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
+                            echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
+                        fi
+                        
+                        # #
+                        #   architecture > amd64 > reprepro
+                        #   add package to reprepro database
+                        #
+                        #       app_repo_dist_sel       jammy
+                        #       deb_package             incoming/proteus-git/jammy/amd64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_amd64.deb
+                        # #
+
+                        reprepro_exit_code="0"
+                        reprepro_output="$(reprepro -V \
                             --section utils \
                             --component main \
                             --priority 0 \
                             --architecture ${arch} \
-                            includedeb ${app_repo_dist_sel} "${deb_package}"
+                            includedeb "${app_repo_dist_sel}" "${deb_package}" \
+                            "$@" 2>&1)" \
+                            || { reprepro_exit_code="$?" ; true; };
+
+                        # #
+                        #   architecture > amd64 > reprepro
+                        #
+                        #   output > package already added to reprepro
+                        # #
+
+                        if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
+                            echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
+                        fi
+
+                        # #
+                        #   architecture > amd64 > reprepro
+                        #
+                        #   output > new package added
+                        # #
+
+                        if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
+                            echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
+                        fi
                     fi
 
-                    echo
+                    bNewPackage=false
 
-                # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+                # #
                 #   architecture > arm64
-                # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+                #   file must end with 'arm64.deb'
+                # #
 
                 elif [[ "${arch}" == "arm64" ]] && [[ ${app_filename} == *arm64.deb ]]; then
-                    printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL} ${YELLOW}[ ${count} ]${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
-                    mv "${app_dir}/${app_filename}" "${app_dir_storage}/arm64/"
-                    echo -e "[ ${STATUS_OK} ]"
+                    echo -e "  ${WHITE}                Download        ${FUCHSIA}${app_url}${NORMAL}"
 
-                    if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
-                        #   full path to deb package
+                    # #
+                    #   architecture > arm64
+                    #   move package to its final location inside the reprepro directory
+                    #       move    /home/$USER/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_arm64.deb
+                    #       to      /home/$USER/proteus/incoming/proteus-git/jammy/arm64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_arm64.deb
+                    # #
+
+                    mv "${app_dir}/${app_filename}" "${app_dir_storage}/arm64/"
+
+                    echo -e "  ${WHITE}                Move            ${FUCHSIA}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA}${app_dir_storage}/arm64/${NORMAL}"
+
+                    if [ -n "${bRepreproInstalled}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
+
+                        # #
+                        #   architecture > arm64 > full package path
+                        #
+                        #       deb_package             incoming/proteus-git/jammy/arm64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_arm64.deb
+                        # #
+
                         deb_package="${app_dir_repo}/${arch}/${app_filename}"
-                        reprepro -V \
+
+                        if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
+                            echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
+                        fi
+
+                        # #
+                        #   architecture > arm64 > reprepro
+                        #   add package to reprepro database
+                        #
+                        #       app_repo_dist_sel       jammy
+                        #       deb_package             incoming/proteus-git/jammy/arm64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_arm64.deb
+                        # #
+
+                        reprepro_exit_code="0"
+                        reprepro_output="$(reprepro -V \
                             --section utils \
                             --component main \
                             --priority 0 \
                             --architecture ${arch} \
-                            includedeb ${app_repo_dist_sel} "${deb_package}"
+                            includedeb "${app_repo_dist_sel}" "${deb_package}" \
+                            "$@" 2>&1)" \
+                            || { reprepro_exit_code="$?" ; true; };
+
+                        # #
+                        #   architecture > arm64 > reprepro
+                        #
+                        #   output > package already added to reprepro
+                        # #
+
+                        if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
+                            echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
+                        fi
+
+                        # #
+                        #   architecture > arm64 > reprepro
+                        #
+                        #   output > new package added
+                        # #
+
+                        if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
+                            echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
+                        fi
                     fi
 
-                    echo
+                    bNewPackage=false
 
-                # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+                # #
                 #   certain packages will output an *amd64 or *arm64 file when calling
                 #   the "all" architecture, which means you'll have double the files.
                 #
                 #   delete the left-over files since we already have them.
-                # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+                # #
 
                 else
                     rm "${app_dir}/${app_filename}"
+                    echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}⭕ Double file detected ${FUCHSIA}${app_dir}/${app_filename}${NORMAL}${NORMAL}"
                 fi
 
                 sleep 1
 
             fi
+
+            bNewPackage=false
+            echo -e
         done
 
         (( count-- ))
-        echo
+
+        bNewPackage=true
+        echo -e
 
     done
 
 }
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   app > run > github
+# #
+#   app > run > github (using lastversion)
 #
 #   check github repos and download any updates that will be added to our
 #   apt repo.
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
-app_run_dl_gh()
+app_run_dl_lastver()
 {
+
+    # #
+    #   add countdown to the num of packages to install
+    # #
+
     count=${#lst_github[@]}
 
-    begin "Downloading Github Packages [ $count ]"
+    # #
+    #   Begin
+    # #
+
+    begin "Github Packages [ $count ]"
     echo
+
+    # #
+    #   Create main folders for architecture
+    #   all, amd64, arm54
+    # #
 
     mkdir -p ${app_dir_storage}/{all,amd64,arm64}
 
-    #   loop github URLs
+    # #
+    #   set new package
+    #
+    #   each main package has several downloads, one for amd64, one for arm64, and all
+    #   when this script is ran and each package is shown in terminal for the user as it downloads,
+    #   this flag groups things together so that you don't see the same count for each sub package.
+    #
+    #   a new package will start out with its current number in line to the left of the package name.
+    #   all sub-packages are listed under without the count.
+    #
+    #   |--- [ 4 ] Get GitHubDesktop-linux-amd64-3.4.2-linux1.deb
+    #           Package         amd64
+    #           File            GitHubDesktop-linux-amd64-3.4.2-linux1.deb
+    #           Download        https://github.com/shiftkey/desktop/releases/download/release-3.4.2-linux1/GitHubDesktop-linux-amd64-3.4.2-linux1.deb
+    #           Move            /home/$USER/Repos/GitHubDesktop-linux-amd64-3.4.2-linux1.deb > /home/$USER/Repos/incoming/proteus-git/jammy/amd64/
+    #           Reprepro        incoming/proteus-git/jammy/amd64/GitHubDesktop-linux-amd64-3.4.2-linux1.deb for dist jammy
+    #           Status:         💡 Already exists
+    #
+    #       Get GitHubDesktop-linux-arm64-3.4.2-linux1.deb
+    #           Package         arm64
+    #           File            GitHubDesktop-linux-arm64-3.4.2-linux1.deb
+    #           Download        https://github.com/shiftkey/desktop/releases/download/release-3.4.2-linux1/GitHubDesktop-linux-arm64-3.4.2-linux1.deb
+    #           Move            /home/$USER/Repos/GitHubDesktop-linux-arm64-3.4.2-linux1.deb > /home/$USER/Repos/incoming/proteus-git/jammy/arm64/
+    #           Reprepro        incoming/proteus-git/jammy/arm64/GitHubDesktop-linux-arm64-3.4.2-linux1.deb for dist jammy
+    #           Status:         💡 Already exists
+    # #
+
+    local bNewPackage=true
+
+    # #
+    #   loop each package listed in the lastver / github table
+    # #
+
     for i in "${!lst_github[@]}"
     do
+
+        # #
+        #   set repo url to variable
+        #
+        #       obsidianmd/obsidian-releases
+        #       AppOutlet/AppOutlet
+        # #
+
         repo=${lst_github[$i]}
 
+        # #
+        #   use LastVersion to view all of the releases on a github repo and pull out the files that match the filenames:
+        #       *amd64*.deb
+        #       *arm64*.deb
+        #
+        #       *jammy*.deb
+        #       *focal*.deb
+        #       *mantic*.deb
+        #
         #   (?:\b|_)(?:amd64|arm64|$app_repo_dist_sel)\b.*\.deb$
         #   (?:\b|_)(?:amd64|arm64|$app_repo_dist_sel).*\b.*\.deb$
+        # #
+
         lst_releases=($( lastversion --pre --assets $repo --filter "(?:\b|_)(?:amd64|arm64|$app_repo_dist_sel)\b.*\.deb$" ))
+
+        # #
+        #   if git count empty, set it to the number of packages in the lst_releases table
+        # #
 
         if [ -z ${count_git} ]; then
             count_git=${#lst_releases[@]}
         fi
 
+        # #
         #   loop each downloadable package
+        #   
+        #       key     returns number 0, 1, ...
+        #       0           GitHubDesktop-linux-amd64-3.4.2-linux1.deb
+        #       1           GitHubDesktop-linux-arm64-3.4.2-linux1.deb
+        # #
+    
         for key in "${!lst_releases[@]}"
         do
+
+            # #
+            #   repo_file_url       https://github.com/shiftkey/desktop/releases/download/release-3.4.2-linux1/GitHubDesktop-linux-amd64-3.4.2-linux1.deb
+            #                       https://github.com/shiftkey/desktop/releases/download/release-3.4.2-linux1/GitHubDesktop-linux-arm64-3.4.2-linux1.deb
+            #   
+            #   app_filename        GitHubDesktop-linux-amd64-3.4.2-linux1.deb
+            #                       GitHubDesktop-linux-arm64-3.4.2-linux1.deb
+            # #
+
             repo_file_url=${lst_releases[$key]}
             app_filename="${repo_file_url##*/}"
 
+            # #
+            #   determines if a new package should be shown, or the architecture
+            #   
+            #   bNewPackage = true
+            #       |--- [ 1 ] Get GitHubDesktop-linux-amd64-3.4.2-linux1.deb
+            #   
+            #   bNewPackage = false
+            #       Get GitHubDesktop-linux-arm64-3.4.2-linux1.deb
+            # #
+
+            if [ "$bNewPackage" = true ]; then
+                echo -e "     ${GREYL}|--- ${YELLOW}[ ${count} ]${FUCHSIA}${BOLD} Get ${app_filename:0:100}${NORMAL}"
+            else
+                echo -e "               ${FUCHSIA}${BOLD} Get ${app_filename:0:100}${NORMAL}"
+            fi
+
+            # #
             #   The filtering in the lastversion query should be enough, however, some people name their packages in a way
             #   where it would be difficult to rely only on that.
             #
@@ -2811,107 +3179,300 @@ app_run_dl_gh()
             #       makedeb-beta_16.1.0-beta1_armhf_focal.deb
             #       makedeb-beta_16.1.0-beta1_arm64_focal.deb
             #   
-            #   this filters out "armhf", however, readds it because the word focal matches
+            #   this filters out "armhf", however, reads it because the word focal matches
             #   so we need to do additional filtering below.
+            # #
 
             check=`echo $app_filename | grep '\armhf\|armv7l'`
             if [ -n "$check" ]; then
                 continue
             fi
 
+            # #
+            #   take the download url provided from github and download the package using wget
+            # #
+
             wget "$repo_file_url" -q
 
+            # #
+            #   loop each architecture for each package
+            #       all
+            #       amd64
+            #       arm64
+            #       i386
+            # #
+
             for j in "${!lst_arch[@]}"; do
-                #   returns arch
-                #   amd64, arm64, i386, all
+
+                # #
+                #   get architecture
+                #       amd64, arm64, i386, all
+                # #
+
                 arch=${lst_arch[$j]}
 
+                # #
+                #   check if file exists
+                #       /home/$USER/Repos/GitHubDesktop-linux-amd64-3.4.2-linux1.deb
+                #       /home/$USER/Repos/GitHubDesktop-linux-amd64-3.4.2-linux1.deb
+                # #
+
                 if [ -f "$app_dir/$app_filename" ]; then
+
+                    # #
+                    #   architecture > all
+                    #   file must end with 'all.deb' or '*all*.deb'
+                    # #
+
                     if [[ "$arch" == "all" ]] && [[ $app_filename == *all.deb || $app_filename == *all*.deb ]]; then
-                        printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
+                        echo -e "  ${WHITE}                Package         ${FUCHSIA}${arch}${NORMAL}"
+                        echo -e "  ${WHITE}                File            ${FUCHSIA}${app_filename}${NORMAL}"
+                        echo -e "  ${WHITE}                Download        ${FUCHSIA}${repo_file_url}${NORMAL}"
+
+                        # #
+                        #   architecture > all
+                        #   move package to its final location inside the reprepro directory
+                        #       move    /home/$USER/Repos/GitHubDesktop-linux-all-3.4.2-linux1.deb
+                        #       to      /home/$USER/Repos/incoming/proteus-git/jammy/all/
+                        # #
+
                         mv "$app_dir/$app_filename" "$app_dir_storage/all/"
-                        echo -e "[ ${STATUS_OK} ]"
+                        echo -e "  ${WHITE}                Move            ${FUCHSIA}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA}${app_dir_storage}/all/${NORMAL}"
 
-                        if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
-                            #   full path to deb package
-                            deb_package="$app_dir_repo/$arch/$app_filename"
+                        if [ -n "${bRepreproInstalled}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
 
-                            reprepro -V \
+                            # #
+                            #   architecture > all > full package path
+                            #
+                            #       deb_package             incoming/proteus-git/jammy/all/GitHubDesktop-linux-all-3.4.2-linux1.deb
+                            # #
+
+                            deb_package="${app_dir_repo}/${arch}/${app_filename}"
+
+                            if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
+                                echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
+                            fi
+
+                            # #
+                            #   architecture > all > reprepro
+                            #   add package to reprepro database
+                            #
+                            #       app_repo_dist_sel       jammy
+                            #       deb_package             incoming/proteus-git/jammy/all/GitHubDesktop-linux-all-3.4.2-linux1.deb
+                            # #
+
+                            reprepro_exit_code="0"
+                            reprepro_output="$(reprepro -V \
                                 --section utils \
                                 --component main \
                                 --priority 0 \
-                                includedeb $app_repo_dist_sel "$deb_package"
+                                includedeb "${app_repo_dist_sel}" "${deb_package}" \
+                                "$@" 2>&1)" \
+                                || { reprepro_exit_code="$?" ; true; };
+
+                            # #
+                            #   architecture > all > reprepro
+                            #
+                            #   output > package already added to reprepro
+                            # #
+
+                            if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
+                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
+                            fi
+
+                            # #
+                            #   architecture > all > reprepro
+                            #
+                            #   output > new package added
+                            # #
+
+                            if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
+                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
+                            fi
                         fi
 
-                        echo
+                        echo -e
+                        bNewPackage=false
 
                     elif [[ "$arch" == "amd64" ]] && [[ $app_filename == *amd64.deb || $app_filename == *amd64*.deb ]]; then
-                        printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
+                        echo -e "  ${WHITE}                Package         ${FUCHSIA}${arch}${NORMAL}"
+                        echo -e "  ${WHITE}                File            ${FUCHSIA}${app_filename}${NORMAL}"
+                        echo -e "  ${WHITE}                Download        ${FUCHSIA}${repo_file_url}${NORMAL}"
+
+                        # #
+                        #   architecture > amd64
+                        #   move package to its final location inside the reprepro directory
+                        #       move    /home/aetherx/Repos/GitHubDesktop-linux-amd64-3.4.2-linux1.deb
+                        #       to      /home/aetherx/Repos/incoming/proteus-git/jammy/amd64/
+                        # #
+
                         mv "$app_dir/$app_filename" "$app_dir_storage/amd64/"
-                        echo -e "[ ${STATUS_OK} ]"
+                        echo -e "  ${WHITE}                Move            ${FUCHSIA}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA}${app_dir_storage}/amd64/${NORMAL}"
 
-                        if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
-                            #   full path to deb package
+                        if [ -n "${bRepreproInstalled}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
+
+                            # #
+                            #   architecture > amd64 > full package path
+                            #
+                            #       deb_package             incoming/proteus-git/jammy/amd64/GitHubDesktop-linux-amd64-3.4.2-linux1.deb
+                            # #
+
                             deb_package="$app_dir_repo/$arch/$app_filename"
 
-                            reprepro -V \
+                            if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
+                                echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
+                            fi
+
+                            # #
+                            #   architecture > amd64 > reprepro
+                            #   add package to reprepro database
+                            #
+                            #       app_repo_dist_sel       jammy
+                            #       deb_package             incoming/proteus-git/jammy/amd64/GitHubDesktop-linux-amd64-3.4.2-linux1.deb
+                            # #
+
+                            reprepro_exit_code="0"
+                            reprepro_output="$(reprepro -V \
                                 --section utils \
                                 --component main \
                                 --priority 0 \
                                 --architecture $arch \
-                                includedeb $app_repo_dist_sel "$deb_package"
+                                includedeb "${app_repo_dist_sel}" "${deb_package}" \
+                                "$@" 2>&1)" \
+                                || { reprepro_exit_code="$?" ; true; };
+
+                            # #
+                            #   architecture > amd64 > reprepro
+                            #
+                            #   output > package already added to reprepro
+                            # #
+
+                            if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
+                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
+                            fi
+
+                            # #
+                            #   architecture > amd64 > reprepro
+                            #
+                            #   output > new package added
+                            # #
+
+                            if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
+                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
+                            fi
                         fi
 
-                        echo
-
+                        echo -e
+                        bNewPackage=false
+ 
                     elif [[ "$arch" == "arm64" ]] && [[ $app_filename == *arm64.deb || $app_filename == *arm64*.deb ]]; then
-                        printf ' %-25s %-60s %-5s' "    ${GREYL}|---${NORMAL}" "${FUCHSIA}${BOLD}Get ${app_filename:0:35}...${NORMAL}" "" 1>&2
-                        mv "$app_dir/$app_filename" "$app_dir_storage/arm64/"
-                        echo -e "[ ${STATUS_OK} ]"
+                        echo -e "  ${WHITE}                Package         ${FUCHSIA}${arch}${NORMAL}"
+                        echo -e "  ${WHITE}                File            ${FUCHSIA}${app_filename}${NORMAL}"
+                        echo -e "  ${WHITE}                Download        ${FUCHSIA}${repo_file_url}${NORMAL}"
 
-                        if [ -n "${bRep}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
-                            #   full path to deb package
+                        # #
+                        #   architecture > arm64
+                        #   move package to its final location inside the reprepro directory
+                        #       move    /home/aetherx/Repos/GitHubDesktop-linux-arm64-3.4.2-linux1.deb
+                        #       to      /home/aetherx/Repos/incoming/proteus-git/jammy/arm64/
+                        # #
+
+                        mv "$app_dir/$app_filename" "$app_dir_storage/arm64/"
+                        echo -e "  ${WHITE}                Move            ${FUCHSIA}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA}${app_dir_storage}/arm64/${NORMAL}"
+
+                        if [ -n "${bRepreproInstalled}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
+
+                            # #
+                            #   architecture > arm64 > full package path
+                            #
+                            #       deb_package             incoming/proteus-git/jammy/arm64/GitHubDesktop-linux-arm64-3.4.2-linux1.deb
+                            # #
+
                             deb_package="$app_dir_repo/$arch/$app_filename"
 
-                            reprepro -V \
+                            if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
+                                echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
+                            fi
+
+                            # #
+                            #   architecture > arm64 > reprepro
+                            #   add package to reprepro database
+                            #
+                            #       app_repo_dist_sel       jammy
+                            #       deb_package             incoming/proteus-git/jammy/arm64/GitHubDesktop-linux-arm64-3.4.2-linux1.deb
+                            # #
+
+                            reprepro_exit_code="0"
+                            reprepro_output="$(reprepro -V \
                                 --section utils \
                                 --component main \
                                 --priority 0 \
                                 --architecture $arch \
-                                includedeb $app_repo_dist_sel "$deb_package"
+                                includedeb "${app_repo_dist_sel}" "${deb_package}" \
+                                "$@" 2>&1)" \
+                                || { reprepro_exit_code="$?" ; true; };
+
+                            # #
+                            #   architecture > arm64 > reprepro
+                            #
+                            #   output > package already added to reprepro
+                            # #
+
+                            if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
+                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
+                            fi
+
+                            # #
+                            #   architecture > arm64 > reprepro
+                            #
+                            #   output > new package added
+                            # #
+
+                            if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
+                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
+                            fi
                         fi
 
-                        echo
+                        echo -e
+                        bNewPackage=false
 
                     fi
                 fi
+
+                bNewPackage=false
+
             done
         done
 
-        echo
+        (( count-- ))
+
+        bNewPackage=true
+        echo -e
 
     done
 }
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   Github > Start
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 app_run_gh_start()
 {
 
-    cd ${app_dir}
+    if [ -z "${OPT_DEV_NULLRUN}" ] && [ -z "${OPT_DLPKG_ONLY_TEST}" ]; then
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-    #   .app folder
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+        cd ${app_dir}
 
-    local manifest_dir="${app_dir}/.app"
-    mkdir -p            ${manifest_dir}
+        # #
+        #   .app folder
+        # #
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-    #   .app folder > create .json
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+        local manifest_dir="${app_dir}/.app"
+        mkdir -p            ${manifest_dir}
+
+        # #
+        #   .app folder > create .json
+        # #
 
 sudo tee ${manifest_dir}/${app_repo_dist_sel}.json >/dev/null <<EOF
 {
@@ -2921,90 +3482,108 @@ sudo tee ${manifest_dir}/${app_repo_dist_sel}.json >/dev/null <<EOF
     "description":      "${app_about}",
     "distrib":          "${app_repo_dist_sel}",
     "url":              "${app_repo_url}",
-    "last_duration":    ".......",
+    "last_duration":    ".........",
     "last_update":      "Running ...............",
     "last_update_ts":   "${DATE_TS}"
 }
 EOF
 
-    app_run_github_precheck
+        app_run_github_precheck
 
-    git branch -m ${app_repo_branch}
-    git add --all
-    git add -u
+        git branch -m ${app_repo_branch}
+        git add --all
+        git add -u
 
-    sleep 1
+        sleep 1
 
-    local app_repo_commit="[S] auto-update [ ${app_repo_dist_sel} ] @ ${NOW}"
-    echo -e "  ${WHITE}Starting commit ${FUCHSIA}${app_repo_commit}${WHITE}${NORMAL}"
+        local NOW=$(date '+%m.%d.%Y %H:%M:%S')
+        local app_repo_commit="[S] auto-update [ ${app_repo_dist_sel} ] @ ${NOW}"
+        echo -e "  ${WHITE}Starting commit ${FUCHSIA}${app_repo_commit}${NORMAL}"
 
-    git commit -S -m "$app_repo_commit"
+        # #
+        #   The command below can throw the following errors:
+        #   
+        #       error: gpg failed to sign the data:
+        #       gpg: skipped "!": No secret key
+        #       [GNUPG:] INV_SGNR 9 !
+        #       [GNUPG:] FAILURE sign 17
+        #       gpg: signing failed: No secret key
+        # #
 
-    sleep 1
+        git commit -S -m "$app_repo_commit"
 
-    echo -e "  ${WHITE}Starting push ${FUCHSIA}${app_repo_branch}${WHITE}${NORMAL}"
-    git push https://${CSI_PAT_GITHUB}@github.com/${GITHUB_NAME}/${app_repo_apt}
+        sleep 1
+
+        echo -e "  ${WHITE}Starting push ${FUCHSIA}${app_repo_branch}${NORMAL}"
+        git push https://${CSI_PAT_GITHUB}@github.com/${GITHUB_NAME}/${app_repo_apt}
+
+    fi # end devnull
 
 }
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   Github > End
 #
 #   push all packages / upload to proteus apt repo
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 app_run_gh_end()
 {
 
-    cd ${app_dir}
+    if [ -z "${OPT_DEV_NULLRUN}" ] && [ -z "${OPT_DLPKG_ONLY_TEST}" ]; then
 
-    app_run_github_precheck
+        cd ${app_dir}
 
-    echo
-    echo -e " ${BLUE}-------------------------------------------------------------------------${NORMAL}"
-    echo
-    echo -e "  ${GREYL}Updating Github: $app_repo_branch${WHITE}"
-    echo
-    echo -e " ${BLUE}-------------------------------------------------------------------------${NORMAL}"
-    echo
+        app_run_github_precheck
 
-    git branch -m $app_repo_branch
-    git add --all
-    git add -u
+        echo
+        echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
+        echo
+        echo -e "  ${GREYL}Updating Github: $app_repo_branch${WHITE}"
+        echo
+        echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
+        echo
 
-    sleep 1
+        git branch -m $app_repo_branch
+        git add --all
+        git add -u
 
-    local app_repo_commit="[E] auto-update [ $app_repo_dist_sel ] @ $NOW"
-    git commit -S -m "$app_repo_commit"
+        sleep 1
 
-    sleep 1
+        local NOW=$(date '+%m.%d.%Y %H:%M:%S')
+        local app_repo_commit="[E] auto-update [ $app_repo_dist_sel ] @ $NOW"
+        git commit -S -m "$app_repo_commit"
 
-    git push -u origin $app_repo_branch
+        sleep 1
+
+        git push -u origin $app_repo_branch
+
+    fi # end devnull
 }
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+## #
 #   update tree
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 app_run_tree_update()
 {
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   .app folder
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     local manifest_dir="${app_dir}/.app"
     mkdir -p            ${manifest_dir}
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   duration elapsed
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     duration=${SECONDS}
     elapsed="$((${duration} / 60))m $(( ${duration} % 60 ))s"
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   .app folder > create .json
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
 sudo tee ${manifest_dir}/${app_repo_dist_sel}.json >/dev/null <<EOF
 {
@@ -3020,9 +3599,9 @@ sudo tee ${manifest_dir}/${app_repo_dist_sel}.json >/dev/null <<EOF
 }
 EOF
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   tree
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     tree_output=$( tree -a -I ".git" --dirsfirst )
     tree -a -I ".git" --dirsfirst -J > ${manifest_dir}/tree.json
@@ -3030,9 +3609,9 @@ EOF
     #   useful for Gitea with HTML rendering plugin, not useful for Github
     #   tree -a --dirsfirst -I '.git' -H https://github.com/${app_repo_author}/${app_repo}/src/branch/$app_repo_branch/ -o $app_dir/.data/tree.html
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   tree.md content
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
 sudo tee ${app_dir}/tree.md >/dev/null <<EOF
 # Repo Tree
@@ -3050,46 +3629,46 @@ ${tree_output}
 EOF
 }
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   Start App
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 app_start()
 {
 
     show_header
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   set seconds for duration
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     export SECONDS=0
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   pull all changes from github
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     git_pull=$( git pull origin ${app_repo_branch} )
 
     echo -e "  ${GREYL}Git Pull${WHITE}"
     echo -e "  ${WHITE}${git_pull}${NORMAL}"
     echo
-    echo -e " ${BLUE}-------------------------------------------------------------------------${NORMAL}"
+    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
     echo
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   check for reprepro
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     if [ -x "$(command -v reprepro)" ]; then
-        bRep=true
+        bRepreproInstalled=true
     fi
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   reprepro missing
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
-    if [ -z "${bRep}" ]; then
+    if [ -z "${bRepreproInstalled}" ]; then
         echo
         echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Reprepro Missing${NORMAL}"
         echo -e "  ${BOLD}${WHITE}It appears the package ${FUCHSIA}Reprepro${WHITE} is missing.${NORMAL}"
@@ -3110,31 +3689,31 @@ app_start()
         set -m
     fi
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   run
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
-    if [ -n "${OPT_ONLY_GIT}" ]; then
+    if [ -n "${OPT_DLPKG_ONLY_LASTVER}" ]; then
         app_run_gh_start
-        app_run_dl_gh
+        app_run_dl_lastver
         app_run_tree_update
         app_run_gh_end
-    elif [ -n "${OPT_ONLY_SRC}" ]; then
+    elif [ -n "${OPT_DL_ONLY_APTGET}" ]; then
         app_run_gh_start
-        app_run_dl_aptsrc
+        app_run_dl_aptget
         app_run_tree_update
         app_run_gh_end
     else
         app_run_gh_start
-        app_run_dl_aptsrc
-        app_run_dl_gh
+        app_run_dl_aptget
+        app_run_dl_lastver
         app_run_tree_update
         app_run_gh_end
     fi
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   duration elapsed
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     duration=${SECONDS}
     elapsed="$((${duration} / 60)) minutes and $(( ${duration} % 60 )) seconds elapsed."
@@ -3142,18 +3721,18 @@ app_start()
     printf "%-57s %-15s\n\n\n\n" "${TIME}      ${elapsed}" | tee -a "${LOGS_FILE}" >/dev/null
 
     echo
-    echo -e " ${BLUE}-------------------------------------------------------------------------${NORMAL}"
+    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
     echo
     echo -e "  ${GREYL}Total Execution Time: $elapsed${WHITE}"
     echo
-    echo -e " ${BLUE}-------------------------------------------------------------------------${NORMAL}"
+    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
     echo
 
     sleep 10
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   close logs, kill spinner, and finish process
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     finish
     Logs_Finish
