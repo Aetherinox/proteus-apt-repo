@@ -293,6 +293,12 @@ app_dir_wd=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 app_dir_secrets="${HOME}/.secrets"
 
 # #
+#   Ensure we're in the correct directory
+# #
+
+cd ${app_dir}
+
+# #
 #   vars > app > files
 #
 #   OLD VERSION (Unencrypted)
@@ -1915,12 +1921,15 @@ fi
 # #
 
 if [ ! -d .git ]; then
+
     echo
     echo
     echo -e "  ${ORANGE}Error${WHITE}"
     echo -e "  "
     echo -e "  ${WHITE}Folder ${YELLOW}.git${NORMAL} does not exist."
     echo -e "  ${WHITE}Must clone the ${YELLOW}${app_repo_apt}${NORMAL} first."
+    echo -e
+    echo -e "  Couldn't find .git folder in ${app_dir}"
     echo
     echo
 
