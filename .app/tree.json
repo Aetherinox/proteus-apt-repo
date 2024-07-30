@@ -345,7 +345,8 @@
       ]},
       {"type":"file","name":"proteus-git-073024.log"},
       {"type":"fifo","name":"proteus-git-073024.log.pipe"},
-      {"type":"file","name":"proteus-git-service-073007.log"}
+      {"type":"file","name":"proteus-git-service-073007.log"},
+      {"type":"file","name":"proteus-git-service-073024.log"}
     ]},
     {"type":"directory","name":"pool","contents":[
       {"type":"directory","name":"main","contents":[
@@ -1532,5 +1533,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":204,"files":1124}
+  {"type":"report","directories":204,"files":1125}
 ]
