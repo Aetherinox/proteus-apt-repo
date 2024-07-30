@@ -368,7 +368,7 @@ fi
 #   Create .gitignore
 # #
 
-if [ ! -f $app_dir/.gitignore ] || [ ! -s $app_dir/.gitignore ]; then
+if [ ! -f "${app_dir}/.gitignore" ] || [ ! -s "${app_dir}/.gitignore" ]; then
 
     touch $app_dir/.gitignore
 
@@ -3648,8 +3648,18 @@ app_start()
     # #
     #   pull all changes from github
     # #
+    
+    # remove all changes and sync with remote repo
+    # git fetch --prune
 
-    git_pull=$( git pull origin ${app_repo_branch} )
+    delete lock
+    rm -f "${app_dir}.git/index.lock"
+
+    # force head to match with remote repo
+    # git reset --hard origin/main
+
+    git config pull.rebase false
+    git_pull=$( git pull origin ${app_repo_branch} --allow-unrelated-histories)
 
     echo -e "  ${GREYL}Git Pull${WHITE}"
     echo -e "  ${WHITE}${git_pull}${NORMAL}"
