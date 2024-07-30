@@ -33,6 +33,10 @@
 #   
 # #
 
+# #
+#   GPG_KEY         : CB5C4C30CD0D4028
+# #
+
 #!/bin/bash
 PATH="/bin:/usr/bin:/sbin:/usr/sbin:/home/${USER}/bin"
 echo 
@@ -1868,6 +1872,12 @@ fi
 
 # #
 #   .git folder doesnt exist
+#
+#   this feature is not fully developed. It is supposed to allow
+#   the proteus apt repo to be downloaded locally to the server and 
+#   ran.
+#
+#   for now, manually use git clone and then run the proteus script
 # #
 
 if [ ! -d .git ]; then
@@ -1899,7 +1909,6 @@ if [ ! -d .git ]; then
     git commit -S -m "New Server Addition"
     git pull https://${GITHUB_NAME}:${CSI_PAT_GITHUB}@github.com/${app_repo_author}/${app_repo_apt}.git
 
-    sleep 20
 
     # git remote add origin https://github.com/Aetherinox/proteus-apt-repo.git
     # git pull origin ${app_repo_branch} --allow-unrelated-histories
@@ -3024,6 +3033,8 @@ app_run_dl_aptget()
 app_run_dl_lastver()
 {
 
+    printf "%-50s %-5s\n" "${TIME}      Running app_run_dl_lastver" | tee -a "${LOGS_FILE}" >/dev/null
+
     # #
     #   add countdown to the num of packages to install
     # #
@@ -3440,6 +3451,8 @@ app_run_gh_start()
 
     if [ -z "${OPT_DEV_NULLRUN}" ] && [ -z "${OPT_DLPKG_ONLY_TEST}" ]; then
 
+        printf "%-50s %-5s\n" "${TIME}      Running app_run_gh_start" | tee -a "${LOGS_FILE}" >/dev/null
+
         cd ${app_dir}
 
         # #
@@ -3479,8 +3492,6 @@ EOF
         local app_repo_commit="[S] auto-update [ ${app_repo_dist_sel} ] @ ${NOW}"
         echo -e "  ${WHITE}Starting commit ${FUCHSIA}${app_repo_commit}${NORMAL}"
 
-        echo -e "1"
-
         # #
         #   The command below can throw the following errors:
         #   
@@ -3491,16 +3502,12 @@ EOF
         #       gpg: signing failed: No secret key
         # #
 
-        echo -e "2"
         git commit -S -m "$app_repo_commit"
 
-        echo -e "3"
         sleep 1
 
         echo -e "  ${WHITE}Starting push ${FUCHSIA}${app_repo_branch}${NORMAL}"
-                echo -e "4"
         git push https://${CSI_PAT_GITHUB}@github.com/${GITHUB_NAME}/${app_repo_apt}
-                echo -e "5"
 
     fi # end devnull
 
@@ -3516,6 +3523,8 @@ app_run_gh_end()
 {
 
     if [ -z "${OPT_DEV_NULLRUN}" ] && [ -z "${OPT_DLPKG_ONLY_TEST}" ]; then
+
+        printf "%-50s %-5s\n" "${TIME}      Running app_run_gh_end" | tee -a "${LOGS_FILE}" >/dev/null
 
         cd ${app_dir}
 
@@ -3552,6 +3561,9 @@ app_run_gh_end()
 
 app_run_tree_update()
 {
+
+    printf "%-50s %-5s\n" "${TIME}      Running app_run_tree_update" | tee -a "${LOGS_FILE}" >/dev/null
+
     # #
     #   .app folder
     # #
@@ -3677,6 +3689,8 @@ app_start()
     # #
     #   run
     # #
+
+    printf "%-50s %-5s\n" "${TIME}      Starting Process" | tee -a "${LOGS_FILE}" >/dev/null
 
     if [ -n "${OPT_DLPKG_ONLY_LASTVER}" ]; then
         app_run_gh_start
