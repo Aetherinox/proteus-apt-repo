@@ -285,7 +285,7 @@ sys_code=$(lsb_release -cs)
 #   vars > app > folders
 # #
 
-app_dir="$PWD"
+app_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 app_dir_home="${HOME}/bin"
 app_dir_storage="$app_dir/incoming/proteus-git/${sys_code}"
 app_dir_repo="incoming/proteus-git/${sys_code}"
@@ -1903,9 +1903,16 @@ if [ "${OPT_UPDATE}" = true ]; then
     app_update ${app_repo_branch_sel}
 fi
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# #
 #   .git folder doesnt exist
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#
+#   this feature is not fully developed. It is supposed to allow
+#   the proteus apt repo to be downloaded locally to the server and 
+#   ran.
+#
+#   for now, manually use git clone and then run the proteus script
+# #
 
 if [ ! -d .git ]; then
     echo
@@ -1913,19 +1920,36 @@ if [ ! -d .git ]; then
     echo -e "  ${ORANGE}Error${WHITE}"
     echo -e "  "
     echo -e "  ${WHITE}Folder ${YELLOW}.git${NORMAL} does not exist."
-    echo -e "  ${WHITE}Must clone the ${YELLOW}proteus-apt-repo${NORMAL} first."
+    echo -e "  ${WHITE}Must clone the ${YELLOW}${app_repo_apt}${NORMAL} first."
     echo
     echo
 
     app_run_github_precheck
 
+    # git clone -b main https://github.com/Aetherinox/proteus-apt-repo.git
     git init --initial-branch=${app_repo_branch}
-    git add .;git commit -m'Proteus-Git Setup'
     git remote add origin https://github.com/Aetherinox/proteus-apt-repo.git
-    git pull origin ${app_repo_branch} --allow-unrelated-histories
+    git fetch
+    git checkout origin/main -b main
+
+    git add .
+
+    # #
+    #   
+    #   -m <msg>, --message=<msg> 
+    #   -s, --signoff 
+    # #
+
+    git commit -S -m "New Server Addition"
+    git pull https://${GITHUB_NAME}:${CSI_PAT_GITHUB}@github.com/${app_repo_author}/${app_repo_apt}.git
+
+
+    # git remote add origin https://github.com/Aetherinox/proteus-apt-repo.git
+    # git pull origin ${app_repo_branch} --allow-unrelated-histories
+    # git push --set-upstream origin main
 fi
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   func > first time setup
 #
 #   this is the default func executed when script is launched to make sure
@@ -1948,7 +1972,7 @@ fi
 #   contains two files
 #       -   trusted gpg key:        aetherinox-proteus-apt-repo-archive.gpg
 #       -   source .list:           /etc/apt/sources.list.d/aetherinox*list
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 app_setup()
 {
@@ -2003,20 +2027,20 @@ app_setup()
         bMissingLastVersion=true
     fi
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   Missing proteus-apt-repo gpg key
     #
     #   NOTE:   apt-key has been deprecated
     #           sudo add-apt-repository -y "deb [arch=amd64] https://raw.githubusercontent.com/${app_repo_author}/${app_repo_apt}/master focal main" >> $LOGS_FILE 2>&1
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     if ! [ -f "/usr/share/keyrings/${app_repo_apt_pkg}.gpg" ]; then
         bMissingGPG=true
     fi
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   Missing browsers .list (google chrome, firefox)
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     if ! [ -f "/etc/apt/sources.list.d/google-chrome.list" ]; then
         bMissingGChrome=true
@@ -2026,9 +2050,9 @@ app_setup()
         bMissingMFirefox=true
     fi
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   Missing proteus-apt-repo .list
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     if ! [ -f "/etc/apt/sources.list.d/${app_repo_apt_pkg}.list" ]; then
         bMissingRepo=true
@@ -2043,17 +2067,17 @@ app_setup()
         sleep 1
     fi
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   find a gpg key that can be imported
     #   maybe later add a loop to check for multiple.
     #
     #   PATH GPG_KEY missing from secrets.sh
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     if [ -z "${GPG_KEY}" ]; then
         echo
         echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}GPG Key not specified${NORMAL}"
-        echo -e "  ${BOLD}${WHITE}Must create a ${FUCHSIA}secrets.sh${WHITE} file and define your GPG key.${NORMAL}"
+        echo -e "  ${BOLD}${WHITE}Must create ${FUCHSIA}secrets.sh${WHITE} file and define your GPG key.${NORMAL}"
         echo
         echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GPG_KEY=${WHITE}XXXXXXXX${NORMAL}"
         echo
@@ -2068,9 +2092,9 @@ app_setup()
         kill $app_pid
         set -m
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   no gpg key registered with gpg command line via gpg --list-secret-keys
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     else
         gpg_id=$( gpg --list-secret-keys --keyid-format=long | grep $GPG_KEY )
@@ -2103,14 +2127,20 @@ app_setup()
                 echo -e "  ${WHITE}Found ${YELLOW}$app_dir/.gpg/${gpg_file}${NORMAL} to import."
                 echo
             else
-                echo
-                echo -e "  ${WHITE}No GPG keys found to import. ${RED}Aborting${NORMAL}"
-                echo
+                if [ -z "${OPT_DLPKG_ONLY_TEST}" ]; then
+                    echo
+                    echo -e "  ${WHITE}No GPG keys found to import. ${RED}Aborting${NORMAL}"
+                    echo
 
-                set +m
-                trap "kill -9 $app_pid 2> /dev/null" `seq 0 15`
-                kill $app_pid
-                set -m
+                    set +m
+                    trap "kill -9 $app_pid 2> /dev/null" `seq 0 15`
+                    kill $app_pid
+                    set -m
+                else
+                    echo
+                    echo -e "  ${WHITE}No GPG keys found to import. Since you are in ${YELLOW}--onlyTest${NORMAL} mode, ${YELLOW}Skipping${NORMAL}"
+                    echo
+                fi
             fi
 
             printf "  Press any key to continue ... ${NORMAL}"
@@ -2119,15 +2149,15 @@ app_setup()
         fi
     fi
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   missing gpg key after searching numerous places, including .gpg folder
     #
     #   bGPGLoaded      TRUE if either condition is met:
     #                   1. gpg --list-keys KEY_ID found
     #                   2. found .gpg file in ./gpg folder
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
-    if [ "$bGPGLoaded" = false ]; then
+    if [ "$bGPGLoaded" = false ] && [ -z "${OPT_DLPKG_ONLY_TEST}" ]; then
         echo
         echo
         echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Private GPG key not found${NORMAL}"
@@ -2152,9 +2182,9 @@ app_setup()
         set -m
     fi
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   missing curl
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     if [ "$bMissingCurl" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing curl package" | tee -a "${LOGS_FILE}" >/dev/null
@@ -2171,9 +2201,9 @@ app_setup()
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   missing wget
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     if [ "$bMissingWget" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing wget package" | tee -a "${LOGS_FILE}" >/dev/null
@@ -2190,9 +2220,9 @@ app_setup()
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   missing tree
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     if [ "$bMissingTree" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing tree package" | tee -a "${LOGS_FILE}" >/dev/null
@@ -2209,11 +2239,11 @@ app_setup()
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   missing gpg trusted file
     #
     #   bMissingGPG     File /usr/share/keyrings/${app_repo_apt_pkg}.gpg not found
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     if [ "$bMissingGPG" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Adding ${app_repo_author} GPG key: [https://github.com/${app_repo_author}.gpg]" | tee -a "${LOGS_FILE}" >/dev/null
@@ -2229,11 +2259,11 @@ app_setup()
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   missing google chrome
     #
     #   add google source repo so that chrome can be downloaded using apt-get
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     if [ "$bMissingGChrome" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Registering Chrome: /etc/apt/sources.list.d/google-chrome.list" | tee -a "${LOGS_FILE}" >/dev/null
@@ -2265,13 +2295,13 @@ app_setup()
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   missing mozilla repo
     #
     #   add mozilla source repo so that firefox can be downloaded using apt-get
     #   instructions via:
     #       https://support.mozilla.org/en-US/kb/install-firefox-linux#w_install-firefox-deb-package-for-debian-based-distributions
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     if [ "$bMissingMFirefox" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Registering Mozilla: /etc/apt/sources.list.d/mozilla.list" | tee -a "${LOGS_FILE}" >/dev/null
@@ -2303,9 +2333,9 @@ app_setup()
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   missing proteus apt repo
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     if [ "$bMissingRepo" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Registering ${app_repo_apt}: https://raw.githubusercontent.com/${app_repo_author}/${app_repo_apt}/${app_repo_branch}" | tee -a "${LOGS_FILE}" >/dev/null
@@ -2331,9 +2361,9 @@ app_setup()
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-    #   install proteus-git binary in /home/$USER/bin/proteus-git
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
+    #   install proteus-git binary in /home/${USER}/bin/proteus-git
+    # #
 
     if ! [ -f "$app_file_proteus" ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing ${app_title}" | tee -a "${LOGS_FILE}" >/dev/null
@@ -2355,9 +2385,9 @@ app_setup()
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   missing apt-move
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     if [ "$bMissingAptMove" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing apt-move package" | tee -a "${LOGS_FILE}" >/dev/null
@@ -2374,9 +2404,9 @@ app_setup()
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   missing apt-url
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     if [ "$bMissingAptUrl" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing apt-url package" | tee -a "${LOGS_FILE}" >/dev/null
@@ -2393,9 +2423,9 @@ app_setup()
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   missing reprepro
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     if [ "$bMissingReprepro" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing reprepro package" | tee -a "${LOGS_FILE}" >/dev/null
@@ -2412,15 +2442,15 @@ app_setup()
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-    #   add env path /home/$USER/bin/
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
+    #   add env path /home/${USER}/bin/
+    # #
 
-    envpath_add_proteus '$HOME/bin'
+    envpath_add_proteus '${HOME}/bin'
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   missing lastversion
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     if [ "$bMissingLastVersion" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing LastVersion" | tee -a "${LOGS_FILE}" >/dev/null
@@ -2431,50 +2461,59 @@ app_setup()
         if [ -z "${OPT_DEV_NULLRUN}" ]; then
             sudo apt-get update -y -q >> /dev/null 2>&1
             sudo apt-get install python3-pip python3-venv -y -qq >> /dev/null 2>&1
+            sudo pip3 install --upgrade --force pip >> /dev/null 2>&1
 
-            #wget https://github.com/dvershinin/lastversion/archive/refs/tags/v3.5.0.zip
-            #mkdir /home/${USER}/Packages/
-            #unzip v3.5.0.zip -d /home/${USER}/Packages/lastversion
+            # wget https://github.com/dvershinin/lastversion/archive/refs/tags/v3.5.0.zip
+            # mkdir /home/${USER}/Packages/
+            # unzip v3.5.0.zip -d /home/${USER}/Packages/lastversion
 
-            # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+            # #
             #   Uninstall with
             #       pip uninstall lastversion
-            # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+            #
+            #   note:   --break-system-packages is only available for pip
+            #           23.1 and forward.
+            #
+            #           get version by using
+            #               pip --version
+            # #
 
             pip install lastversion --break-system-packages
             cp /home/${USER}/.local/bin/lastversion /home/${USER}/bin/
             sudo touch /etc/profile.d/lastversion.sh
 
-            envpath_add_lastversion '$HOME/bin'
+            envpath_add_lastversion '${HOME}/bin'
 
-            echo 'export PATH="$HOME/bin:$PATH"' | sudo tee /etc/profile.d/lastversion.sh
+            echo 'export PATH="${HOME}/bin:$PATH"' | sudo tee /etc/profile.d/lastversion.sh
 
             . ~/.bashrc
             . ~/.profile
 
-            source $HOME/.profile # not executing for some reason
+            source ${HOME}/.profile # not executing for some reason
         fi
 
         sleep 0.5
         echo -e "[ ${STATUS_OK} ]"
     fi
 
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
     #   modify gpg-agent.conf
     #
     #   first check if GPG installed (usually on Ubuntu it is)
     #   then modify user's gpg-agent.conf file
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # #
 
     gpgconfig_file="/home/${USER}/.gnupg/gpg-agent.conf"
 
     if ! [ -x "$(command -v gpg)" ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf '%-57s' "    |--- Installing GPG"
         sleep 1
+
         if [ -z "${OPT_DEV_NULLRUN}" ]; then
             sudo apt-get update -y -q >> /dev/null 2>&1
             sudo apt-get install gpg -y -qq >> /dev/null 2>&1
         fi
+
         echo -e "[ ${STATUS_OK} ]"
         sleep 1
     fi
@@ -2512,9 +2551,9 @@ EOF
 }
 app_setup
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   output some logging
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 [ -n "${OPT_DEV_ENABLE}" ] && printf "%-50s %-5s\n" "${TIME}      Notice: Dev Mode Enabled" | tee -a "${LOGS_FILE}" >/dev/null
 [ -z "${OPT_DEV_ENABLE}" ] && printf "%-50s %-5s\n" "${TIME}      Notice: Dev Mode Disabled" | tee -a "${LOGS_FILE}" >/dev/null
@@ -2522,24 +2561,9 @@ app_setup
 [ -n "${OPT_DEV_NULLRUN}" ] && printf "%-50s %-5s\n\n" "${TIME}      Notice: Dev Option: 'No Actions' Enabled" | tee -a "${LOGS_FILE}" >/dev/null
 [ -z "${OPT_DEV_NULLRUN}" ] && printf "%-50s %-5s\n\n" "${TIME}      Notice: Dev Option: 'No Actions' Disabled" | tee -a "${LOGS_FILE}" >/dev/null
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   associated app urls
-#
-#   when certain apps are installed, we may want to open a browser window
-#   so that the user can get a better understanding of where to find
-#   resources for that app.
-#
-#   not all apps have to have a website, as that would get annoying.
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-declare -A get_docs_uri
-get_docs_uri=(
-    ["$app_dialog"]='http://url.here'
-)
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   header
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 show_header()
 {
@@ -2547,7 +2571,7 @@ show_header()
 
     sleep 0.3
 
-    echo -e " ${BLUE}-------------------------------------------------------------------------${NORMAL}"
+    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
     echo -e " ${GREEN}${BOLD} ${app_title} - v$(get_version)${NORMAL}${MAGENTA}"
     echo
     echo -e "  This is a package which handles the Proteus App Manager behind"
@@ -2566,7 +2590,7 @@ show_header()
         echo
     fi
 
-    echo -e " ${BLUE}-------------------------------------------------------------------------${NORMAL}"
+    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
     echo
 
     sleep 0.3
@@ -2575,11 +2599,11 @@ show_header()
     printf "%-50s %-5s\n" "${TIME}      Waiting for user input ..." | tee -a "${LOGS_FILE}" >/dev/null
 }
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   app > run > apt source packages
 #
 #   updates apt source packages for the distro being used
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 app_run_dl_aptsrc()
 {
