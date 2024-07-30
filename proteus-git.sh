@@ -1,11 +1,7 @@
-#!/bin/bash
-PATH="/bin:/usr/bin:/sbin:/usr/sbin:/home/$USER/bin"
-echo 
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 #   @author :           aetherinox
 #   @script :           Proteus Apt Git
-#   @when   :           2024-06-15 19:50:31
+#   @date   :           2024-07-27 03:15:53
 #   @url    :           https://github.com/Aetherinox/proteus-git
 #
 #   requires chmod +x proteus_git.sh
@@ -28,153 +24,22 @@ echo
 #   This script requires a minimum Reprepro version or it will cause
 #   database errors:
 #       - v5.4.2
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   
+#   ----------------------------------------------------------------
+#   
+#   To test the functionality of this script without actually 
+#   writing anything to Github or Reprepro, you can use the command
+#       ./proteus-git.sh --onlyTest --dev
+#   
+# #
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   vars > colors
-#
-#   tput setab  [1-7]       – Set a background color using ANSI escape
-#   tput setb   [1-7]       – Set a background color
-#   tput setaf  [1-7]       – Set a foreground color using ANSI escape
-#   tput setf   [1-7]       – Set a foreground color
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#!/bin/bash
+PATH="/bin:/usr/bin:/sbin:/usr/sbin:/home/${USER}/bin"
+echo 
 
-BLACK=$(tput setaf 0)
-RED=$(tput setaf 1)
-ORANGE=$(tput setaf 208)
-GREEN=$(tput setaf 2)
-YELLOW=$(tput setaf 156)
-LIME_YELLOW=$(tput setaf 190)
-POWDER_BLUE=$(tput setaf 153)
-BLUE=$(tput setaf 4)
-MAGENTA=$(tput setaf 5)
-CYAN=$(tput setaf 6)
-WHITE=$(tput setaf 7)
-GREYL=$(tput setaf 242)
-DEV=$(tput setaf 157)
-DEVGREY=$(tput setaf 243)
-FUCHSIA=$(tput setaf 198)
-PINK=$(tput setaf 200)
-BOLD=$(tput bold)
-NORMAL=$(tput sgr0)
-BLINK=$(tput blink)
-REVERSE=$(tput smso)
-UNDERLINE=$(tput smul)
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   vars > status messages
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-STATUS_MISS="${BOLD}${GREYL} MISS ${NORMAL}"
-STATUS_SKIP="${BOLD}${GREYL} SKIP ${NORMAL}"
-STATUS_OK="${BOLD}${GREEN}  OK  ${NORMAL}"
-STATUS_FAIL="${BOLD}${RED} FAIL ${NORMAL}"
-STATUS_HALT="${BOLD}${YELLOW} HALT ${NORMAL}"
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   vars > app
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-sys_arch=$(dpkg --print-architecture)
-sys_code=$(lsb_release -cs)
-
-HOME="/home/aetherinox"
-
-app_dir="/server/proteus"
-app_dir_home="${HOME}/bin"
-app_dir_storage="$app_dir/incoming/proteus-git/${sys_code}"
-app_dir_repo="incoming/proteus-git/${sys_code}"
-app_dir_wd=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-
-app_title="Proteus Apt Git"
-app_about="Internal system to Proteus App Manager which grabs debian packages."
-app_ver=("1" "1" "0" "0")
-app_file_this=$(basename "$0")
-app_file_proteus="${app_dir_home}/proteus-git"
-
-app_repo_author="Aetherinox"
-app_repo="proteus-git"
-app_repo_branch="main"
-app_repo_user=$( git config --global --get-all user.name )
-app_repo_email=$( git config --global --get-all user.email )
-app_repo_apt="proteus-apt-repo"
-app_repo_apt_pkg="aetherinox-${app_repo_apt}-archive"
-app_repo_url="https://github.com/${app_repo_author}/${app_repo}"
-app_repo_mnfst="https://raw.githubusercontent.com/${app_repo_author}/${app_repo}/${app_repo_branch}/manifest.json"
-app_repo_script="https://raw.githubusercontent.com/${app_repo_author}/${app_repo}/BRANCH/setup.sh"
-
-app_pid_spin=0
-app_pid=$BASHPID
-app_queue_url=()
-app_i=0
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   Deprecated: This method is being deprecated in favor of clevis encrypted
-#   secrets.
-#
-#   load secrets file to handle Github rate limiting via a PAF.
-#   managed via https://github.com/settings/tokens?type=beta
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-if [ -f ${app_dir}/secrets.sh ]; then
-source ${app_dir}/secrets.sh
-fi
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   load secrets through Clevis
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-if [ -f ${HOME}/.secrets/.pat_github ]; then
-    CSI_PAT_GITHUB=$(cat ${HOME}/.secrets/.pat_github | clevis decrypt 2>/dev/null)
-    export GITHUB_API_TOKEN=${CSI_PAT_GITHUB}
-else
-    echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.pat_github missing${WHITE}"
-fi
-
-if [ -f ${HOME}/.secrets/.pat_gitlab ]; then
-    CSI_PAT_GITLAB=$(cat ${HOME}/.secrets/.pat_gitlab | clevis decrypt 2>/dev/null)
-    export GITLAB_PA_TOKEN=${CSI_PAT_GITLAB}
-else
-    echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.pat_gitlab missing${WHITE}"
-fi
-
-if [ -f ${HOME}/.secrets/.passwd ]; then
-    CSI_SUDO_PASSWD=$(cat ${HOME}/.secrets/.passwd | clevis decrypt 2>/dev/null)
-else
-    echo -e "  ${ORANGE}${BLINK}NOTICE  ${NORMAL} ......... ~/.secrets/.passwd missing${WHITE}"
-fi
-
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   exports
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-export DATE=$(date '+%m%d%y')
-export DATE_TS=$(date +%s)
-export YEAR=$(date +'%Y')
-export TIME=$(date '+%H:%M:%S')
-export NOW=$(date '+%m.%d.%Y %H:%M:%S')
-export ARGS=$1
-export LOGS_DIR="${app_dir}/logs"
-export LOGS_FILE="${LOGS_DIR}/proteus-git-${DATE}.log"
-export SECONDS=0
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   lists > github repos
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-lst_github=(
-    'obsidianmd/obsidian-releases'
-    'AppOutlet/AppOutlet'
-    'bitwarden/clients'
-    'shiftkey/desktop'
-    'FreeTubeApp/FreeTube'
-    'makedeb/makedeb'
-)
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   list > packages
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
+#   DEFINE > Packages > apt-get
+# #
 
 lst_packages=(
     'adduser'
@@ -191,6 +56,7 @@ lst_packages=(
     'gnome-keyring'
     'gnome-keysign'
     'gnome-shell-extension-manager'
+    'git'
     'gpg'
     'gpgconf'
     'gpgv'
@@ -217,6 +83,8 @@ lst_packages=(
     'mysql-client'
     'mysql-common'
     'mysql-server'
+    'net-tools'
+    'neofetch'
     'network-manager-config-connectivity-ubuntu'
     'network-manager-dev'
     'network-manager-gnome'
@@ -330,14 +198,32 @@ lst_packages=(
     'php-zip'
     'php-zmq'
     'php'
+    'sks',
     'snap'
     'snapd'
+    'tcptrack'
+    'trash-cli'
+    'tree'
     'wget'
 )
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
+#   DEFINE > Packages > Github Repos (LastVersion)
+# #
+
+lst_github=(
+    'obsidianmd/obsidian-releases'
+    'AppOutlet/AppOutlet'
+    'bitwarden/clients'
+    'shiftkey/desktop'
+    'FreeTubeApp/FreeTube'
+    'makedeb/makedeb'
+    'Aetherinox/debian-apt-url'
+)
+
+# #
 #   list > architectures
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 lst_arch=(
     'all'
@@ -345,53 +231,112 @@ lst_arch=(
     'arm64'
 )
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   distro
+# #
+#   vars > colors
 #
-#   returns distro information.
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+#   tput setab  [1-7]       : Set a background color using ANSI escape
+#   tput setb   [1-7]       : Set a background color
+#   tput setaf  [1-7]       : Set a foreground color using ANSI escape
+#   tput setf   [1-7]       : Set a foreground color
+# #
 
-# freedesktop.org and systemd
-if [ -f /etc/os-release ]; then
-    . /etc/os-release
-    OS=$NAME
-    OS_VER=$VERSION_ID
+BLACK=$(tput setaf 0)
+RED=$(tput setaf 1)
+ORANGE=$(tput setaf 208)
+GREEN=$(tput setaf 2)
+YELLOW=$(tput setaf 156)
+LIME_YELLOW=$(tput setaf 190)
+POWDER_BLUE=$(tput setaf 153)
+BLUE=$(tput setaf 4)
+MAGENTA=$(tput setaf 5)
+CYAN=$(tput setaf 6)
+WHITE=$(tput setaf 7)
+GREYL=$(tput setaf 242)
+DEV=$(tput setaf 157)
+DEVGREY=$(tput setaf 243)
+FUCHSIA=$(tput setaf 198)
+PINK=$(tput setaf 200)
+BOLD=$(tput bold)
+NORMAL=$(tput sgr0)
+BLINK=$(tput blink)
+REVERSE=$(tput smso)
+UNDERLINE=$(tput smul)
+STRIKE="\e[9m"
+END="\e[0m"
 
-# linuxbase.org
-elif type lsb_release >/dev/null 2>&1; then
-    OS=$(lsb_release -si)
-    OS_VER=$(lsb_release -sr)
+# #
+#   vars > status messages
+# #
 
-# versions of Debian/Ubuntu without lsb_release cmd
-elif [ -f /etc/lsb-release ]; then
-    . /etc/lsb-release
-    OS=$DISTRIB_ID
-    OS_VER=$DISTRIB_RELEASE
+STATUS_MISS="${BOLD}${GREYL} MISS ${NORMAL}"
+STATUS_SKIP="${BOLD}${GREYL} SKIP ${NORMAL}"
+STATUS_OK="${BOLD}${GREEN}  OK  ${NORMAL}"
+STATUS_FAIL="${BOLD}${RED} FAIL ${NORMAL}"
+STATUS_HALT="${BOLD}${YELLOW} HALT ${NORMAL}"
 
-# older Debian/Ubuntu/etc distros
-elif [ -f /etc/debian_version ]; then
-    OS=Debian
-    OS_VER=$(cat /etc/debian_version)
+# #
+#   vars > system
+# #
 
-# fallback: uname, e.g. "Linux <version>", also works for BSD
-else
-    OS=$(uname -s)
-    OS_VER=$(uname -r)
-fi
+sys_arch=$(dpkg --print-architecture)
+sys_code=$(lsb_release -cs)
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   clevis required to decrypt tokens
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
+#   vars > app > folders
+# #
 
-if ! [ -x "$(command -v clevis)" ]; then
-    echo -e "  ${GREYL}Installing package ${MAGENTA}Clevis${WHITE}"
-    sudo apt-get update -y -q >/dev/null 2>&1
-    sudo apt-get install clevis clevis-dracut clevis-udisks2 clevis-tpm2 -y -qq >/dev/null 2>&1
-fi
+app_dir="$PWD"
+app_dir_home="${HOME}/bin"
+app_dir_storage="$app_dir/incoming/proteus-git/${sys_code}"
+app_dir_repo="incoming/proteus-git/${sys_code}"
+app_dir_wd=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+app_dir_secrets="${HOME}/.secrets"
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   requite packages before anything begins
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
+#   vars > app > files
+#
+#   OLD VERSION (Unencrypted)
+#       app_file_secrets_sh
+#
+#   NEW VERSION (Clevis Encrypted)
+#       app_file_secrets_github
+#       app_file_secrets_gitlab
+#       app_file_secrets_passwd
+#       app_file_secrets_general
+# #
+
+app_file_this=$(basename "$0")
+app_file_proteus="${app_dir_home}/proteus-git"
+app_file_secrets_github=${app_dir_secrets}/.pat_github
+app_file_secrets_gitlab=${app_dir_secrets}/.pat_gitlab
+app_file_secrets_passwd=${app_dir_secrets}/.passwd
+app_file_secrets_general=${app_dir_secrets}/.base
+app_file_secrets_sh=${app_dir}/secrets.sh
+
+# #
+#   vars > app > general
+# #
+
+app_title="Proteus Apt Git"
+app_about="Internal system to Proteus App Manager which grabs debian packages."
+app_ver=("1" "2" "0" "0")
+app_pid_spin=0
+app_pid=$BASHPID
+app_queue_url=()
+app_i=0
+
+# #
+#   DEFINE > Clevis Secret Files
+# #
+
+cfg_Storage_Clevis=true
+
+# #
+#   requite packages before anything begins.
+#   we need these to assign variables in the next step for 
+#       app_repo_user
+#       app_repo_email
+# #
 
 if ! [ -x "$(command -v git)" ]; then
     echo -e "  ${GREYL}Installing package ${MAGENTA}Git${WHITE}"
@@ -403,9 +348,945 @@ if ! [ -x "$(command -v git)" ]; then
     sudo apt-get install gpg -y -qq >/dev/null 2>&1
 fi
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
+#   clevis required to decrypt tokens
+# #
+
+if [ "${cfg_Storage_Clevis}" = true ] && [ ! -x "$(command -v clevis)" ]; then
+    echo -e "  ${GREYL}Installing package ${MAGENTA}Clevis${WHITE}"
+    sudo apt-get update -y -q >/dev/null 2>&1
+    sudo apt-get install clevis clevis-udisks2 clevis-tpm2 -y -qq >/dev/null 2>&1
+fi
+
+# #
+#   Create .gitignore
+# #
+
+if [ ! -f $app_dir/.gitignore ]; then
+
+    touch $app_dir/.gitignore
+
+sudo tee $app_dir/.gitignore << EOF > /dev/null
+# ----------------------------------------
+#   Misc
+# ----------------------------------------
+incoming/
+.env
+sources-*.list
+
+# ----------------------------------------
+# Logs
+# ----------------------------------------
+logs/
+*-log
+*.log
+
+# ----------------------------------------
+# GPG keys
+# ----------------------------------------
+.gpg/*.gpg
+.gpg/*.asc
+
+# ----------------------------------------
+# Secrets Files
+# ----------------------------------------
+secrets.sh
+secrets/*
+.secrets/*
+EOF
+
+fi
+
+# #
+#   func > get version
+#
+#   returns current version of app
+#   converts to human string.
+#       e.g.    "1" "2" "4" "0"
+#               1.2.4.0
+# #
+
+get_version()
+{
+    ver_join=${app_ver[@]}
+    ver_str=${ver_join// /.}
+    echo ${ver_str}
+}
+
+# #
+#   func > version > compare greater than
+#
+#   this function compares two versions and determines if an update may
+#   be available. or the user is running a lesser version of a program.
+# #
+
+get_version_compare_gt()
+{
+    test "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1";
+}
+
+# #
+#   func > error > base file missing error
+#
+#   throws an error to the user if they are missing the .base secrets file
+# #
+
+error_missing_file_base()
+{
+    file_base_path="Unknown"
+    if [ "${cfg_Storage_Clevis}" = true ]; then
+        file_base_path="${app_file_secrets_general}"
+    else
+        file_base_path="${app_file_secrets_sh}"
+    fi
+
+    echo -e 
+    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
+    echo -e
+    echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Missing base config file${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}Create new ${FUCHSIA}${file_base_path}${WHITE} file and add the following lines:${NORMAL}"
+    echo -e
+    echo -e "  ${BOLD}${WHITE}    ${DEVGREY}#!/bin/bash${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}    ${DEVGREY}PATH=\"/bin:/usr/bin:/sbin:/usr/sbin:/home/$USER/bin\"${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GPG_KEY=${WHITE}XXXXXXXX${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GITHUB_NAME=${WHITE}YourName${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GITHUB_EMAIL=${WHITE}username@email.com${NORMAL}"
+    echo -e 
+    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
+    echo -e
+
+    printf "  Press any key to abort ... ${NORMAL}"
+    read -n 1 -s -r -p ""
+    echo -e
+    echo -e
+
+    set +m
+    trap "kill -9 ${app_pid} 2> /dev/null" `seq 0 15`
+    kill ${app_pid}
+    set -m
+}
+
+# #
+#   func > error > GPG_KEY missing
+#
+#   throws an error if GPG_KEY is not specified
+# #
+
+error_missing_value_gpg()
+{
+    file_base_path="Unknown"
+    if [ "${cfg_Storage_Clevis}" = true ]; then
+        file_base_path="${app_file_secrets_general}"
+    else
+        file_base_path="${app_file_secrets_sh}"
+    fi
+
+    echo -e 
+    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
+    echo -e
+    echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}GPG_KEY value not specified${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}Make sure ${FUCHSIA}${file_base_path}${WHITE} exists and contains the following lines:${NORMAL}"
+    echo -e
+    echo -e "  ${BOLD}${WHITE}    ${DEVGREY}#!/bin/bash${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}    ${DEVGREY}PATH=\"/bin:/usr/bin:/sbin:/usr/sbin:/home/$USER/bin\"${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GPG_KEY=${WHITE}XXXXXXXX${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GITHUB_NAME=${WHITE}YourName${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GITHUB_EMAIL=${WHITE}username@email.com${NORMAL}"
+    echo -e 
+    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
+    echo -e
+
+    printf "  Press any key to abort ... ${NORMAL}"
+    read -n 1 -s -r -p ""
+    echo -e
+    echo -e
+
+    set +m
+    trap "kill -9 ${app_pid} 2> /dev/null" `seq 0 15`
+    kill ${app_pid}
+    set -m
+}
+
+# #
+#   Display Usage Help
+#
+#   activate using ./proteus-git.sh --help or -h
+# #
+
+opt_usage()
+{
+    echo
+    printf "  ${BLUE}${app_title}${NORMAL}\n" 1>&2
+    printf "  ${GREYL}${gui_about}${NORMAL}\n" 1>&2
+    echo
+    printf '  %-5s %-40s\n' "Usage:" "" 1>&2
+    printf '  %-5s %-40s\n' "    " "${0} [${GREYL}options${NORMAL}]" 1>&2
+    printf '  %-5s %-40s\n\n' "    " "${0} [${GREYL}-s${NORMAL}] [${GREYL}-t${NORMAL}] [${GREYL}-g${NORMAL}] [${GREYL}-p${NORMAL}] [${GREYL}-d${NORMAL}] [${GREYL}-n${NORMAL}] [${GREYL}-q${NORMAL}] [${GREYL}-u${NORMAL}] [${GREYL}-b main | dev${NORMAL}] [${GREYL}-r${NORMAL}]" 1>&2
+    printf '  %-5s %-40s\n' "Options:" "" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-s, --setup" "install script packages (git, wget, reprepro, etc.), setup gpg daemon, configure gpg key" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-t, --onlyTest" "download packages from apt-get and LastVersion, do not push to git repo" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-g, --onlyGithub" "only update packages using LastVersion, push to git" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-p, --onlyAptget" "only update packages using AptGet, push to git" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-d, --dev" "dev mode (advanced logs)" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-n, --nullrun" "run script without adding packages to reprepro" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "" "simulate app installs (no changes)" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-q, --quiet" "disable logging" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-r, --report" "how info about ${app_file_this}" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "" "current paths, installed dependencies, etc." 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-u, --update" "update ${app_file_this} executable" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-b, --branch" "branch to use for downloading/updating this script" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-v, --version" "current version of app manager" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-h, --help" "show help menu" 1>&2
+    echo
+    echo
+    exit 1
+}
+
+# #
+#   Display Report
+# #
+
+opt_report()
+{
+
+    clear
+
+    sleep 0.3
+
+    file_base_path="Missing"
+    var_clevis_status='Disabled'
+    if [ "${cfg_Storage_Clevis}" = true ]; then
+        file_base_path="${app_file_secrets_general}"
+        var_clevis_status='Enabled'
+    else
+        file_base_path="${app_file_secrets_sh}"
+        var_clevis_status='Disabled'
+    fi
+
+    # #
+    #   base > load /.secrets/.base
+    # #
+
+    if [ -f ${app_file_secrets_general} ]; then
+        source ${app_file_secrets_general}
+    elif [ -f ${app_file_secrets_sh} ]; then
+        source ${app_file_secrets_sh}
+    fi
+
+    # #
+    #   base > secrets mode > color
+    #
+    #   changes the color of the "secrets.sh" mode to a dark gray if clevis mode is enabled
+    # #
+
+    clrSecretsModeSh_Title=$([ ${var_clevis_status} == "Enabled" ] && echo ${STRIKE}${DEVGREY} || echo ${LIME_YELLOW})
+    clrSecretsModeSh_Item=$([ ${var_clevis_status} == "Enabled" ] && echo ${DEVGREY} || echo ${POWDER_BLUE})
+
+    # #
+    #  Section > Header 
+    # #
+
+    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
+    echo -e " ${GREEN}${BOLD} ${app_title} - v$(get_version)${NORMAL}${MAGENTA}"
+    echo
+    echo -e "  This is a package which handles the Proteus App Manager behind"
+    echo -e "  the scene by grabbing from the list of registered packages"
+    echo -e "  and adding them to the queue to be updated."
+    echo
+
+    # #
+    #  Section > Settings
+    # #
+
+    echo -e
+    echo -e "  ${LIME_YELLOW}${BOLD}[ Settings ]${NORMAL}"
+
+    Val_SecretMode=$([ ${var_clevis_status} == "Enabled" ] && echo "Clevis (Encrypted)" || echo "Secrets.sh (Unencrypted)")
+    Val_Pkgs_Aptget=${#lst_packages[@]}
+    Val_Pkgs_Github=${#lst_github[@]}
+    Val_Pkgs_Arch=${#lst_arch[@]}
+
+    printf "%-5s %-40s %-40s %-40s\n" "" "${POWDER_BLUE}⚙️  Script" "${WHITE}${app_file_this}" "${NORMAL}"
+    printf "%-5s %-40s %-40s %-40s\n" "" "${POWDER_BLUE}⚙️  Path" "${WHITE}${app_dir}" "${NORMAL}"
+    printf "%-5s %-40s %-40s %-40s\n" "" "${POWDER_BLUE}⚙️  Version" "${WHITE}v$(get_version)" "${NORMAL}"
+    printf "%-5s %-40s %-40s %-40s\n" "" "${POWDER_BLUE}⚙️  Secret Mode" "${WHITE}${Val_SecretMode}" "${NORMAL}"
+    printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📦 Packages (Apt)" "${WHITE}${Val_Pkgs_Aptget}" "${NORMAL}"
+    printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📦 Packages (Github)" "${WHITE}${Val_Pkgs_Github}" "${NORMAL}"
+    printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📦 Architextures" "${WHITE}${Val_Pkgs_Arch}" "${NORMAL}"
+
+    echo
+
+    # #
+    #  Section > Variables
+    # #
+
+    echo -e
+    echo -e "  ${LIME_YELLOW}${BOLD}[ Variables ]${NORMAL}"
+
+    bExists_Val_GPG=$([ -z "${GPG_KEY}" ] && echo "Missing" || echo "${GPG_KEY}")
+    bExists_Val_GithubName=$([ -z "${GITHUB_NAME}" ] && echo "Missing" || echo "${GITHUB_NAME}")
+    bExists_Val_GithubEmail=$([ -z "${GITHUB_EMAIL}" ] && echo "Missing" || echo "${GITHUB_EMAIL}")
+
+    printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}✎ GPG_KEY" "${WHITE}${bExists_Val_GPG}" "${NORMAL}"
+    printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}✎ GITHUB_NAME" "${WHITE}${bExists_Val_GithubName}" "${NORMAL}"
+    printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}✎ GITHUB_EMAIL" "${WHITE}${bExists_Val_GithubEmail}" "${NORMAL}"
+    echo
+
+    # #
+    #  Section > Paths
+    # #
+
+    echo -e
+    echo -e "  ${LIME_YELLOW}${BOLD}[ Paths - Clevis Mode]${NORMAL}"
+
+    bExists_Fold_Secrets=$([ ! -d "${app_dir_secrets}" ] && echo "Missing" || echo "${app_dir_secrets}")
+    bExists_File_Base=$([ ! -f "${app_file_secrets_general}" ] && echo "Missing" || echo "${app_file_secrets_general}")
+    bExists_File_Github=$([ ! -f "${app_file_secrets_github}" ] && echo "Missing" || echo "${app_file_secrets_github}")
+    bExists_File_Gitlab=$([ ! -f "${app_file_secrets_gitlab}" ] && echo "Missing" || echo "${app_file_secrets_gitlab}")
+    bExists_File_Passwd=$([ ! -f "${app_file_secrets_passwd}" ] && echo "Missing" || echo "${app_file_secrets_passwd}")
+
+    printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📁 .secrets" "${WHITE}${bExists_Fold_Secrets}" "${DEVGREY}${Val_SecretMode}${NORMAL}"
+    printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📄 .base" "${WHITE}${bExists_File_Base}${NORMAL}" ""
+    printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📄 .passwd" "${WHITE}${bExists_File_Passwd}${NORMAL}" ""
+    printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📄 .pat_github" "${WHITE}${bExists_File_Github}${NORMAL}" ""
+    printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📄 .pat_gitlab" "${WHITE}${bExists_File_Gitlab}${NORMAL}" ""
+    echo
+
+    # #
+    #  Section > Paths > Secrets.Sh Mode
+    # #
+
+    echo -e
+    echo -e "  ${clrSecretsModeSh_Title}${BOLD}[ Paths - Secrets.sh Mode]${NORMAL}"
+
+    bExists_File_SecretsSh=$([ ! -f "${app_file_secrets_sh}" ] && echo "Missing" || echo 'Found')
+
+    printf "%-5s %-37s %-40s %-40s\n" "" "${clrSecretsModeSh_Item}📄 secrets.sh" "${WHITE}${bExists_File_SecretsSh}" "${DEVGREY}${Val_SecretMode}${NORMAL}"
+    echo
+
+    # #
+    #  Section > Dependencies 
+    # #
+
+    echo -e
+    echo -e "  ${LIME_YELLOW}${BOLD}[ Dependencies ]${NORMAL}"
+
+    bInstalled_AptMove=$([ ! -x "$(command -v apt-move)" ] && echo "Missing" || echo 'Installed')
+    bInstalled_Git=$([ ! -x "$(command -v git)" ] && echo "Missing" || echo 'Installed')
+    bInstalled_Clevis=$([ ! -x "$(command -v clevis)" ] && echo "Missing" || echo 'Installed')
+    bInstalled_Reprepro=$([ ! -x "$(command -v reprepro)" ] && echo "Missing" || echo 'Installed')
+    bInstalled_GPG=$([ ! -x "$(command -v gpg)" ] && echo "Missing" || echo 'Installed')
+    bInstalled_Wget=$([ ! -x "$(command -v wget)" ] && echo "Missing" || echo 'Installed')
+    bInstalled_Curl=$([ ! -x "$(command -v curl)" ] && echo "Missing" || echo 'Installed')
+    bInstalled_Tree=$([ ! -x "$(command -v tree)" ] && echo "Missing" || echo 'Installed')
+
+    printf "%-5s %-38s %-40s\n" "" "${POWDER_BLUE}🗔  apt-move" "${WHITE}${bInstalled_AptMove}${NORMAL}"
+    printf "%-5s %-38s %-40s\n" "" "${POWDER_BLUE}🗔  git" "${WHITE}${bInstalled_Git}${NORMAL}"
+    printf "%-5s %-38s %-40s\n" "" "${POWDER_BLUE}🗔  clevis" "${WHITE}${bInstalled_Clevis}${NORMAL}"
+    printf "%-5s %-38s %-40s\n" "" "${POWDER_BLUE}🗔  reprepro" "${WHITE}${bInstalled_Reprepro}${NORMAL}"
+    printf "%-5s %-38s %-40s\n" "" "${POWDER_BLUE}🗔  gPG" "${WHITE}${bInstalled_GPG}${NORMAL}"
+    printf "%-5s %-38s %-40s\n" "" "${POWDER_BLUE}🗔  wget" "${WHITE}${bInstalled_Wget}${NORMAL}"
+    printf "%-5s %-38s %-40s\n" "" "${POWDER_BLUE}🗔  curl" "${WHITE}${bInstalled_Curl}${NORMAL}"
+    printf "%-5s %-38s %-40s\n" "" "${POWDER_BLUE}🗔  tree" "${WHITE}${bInstalled_Tree}${NORMAL}"
+
+    # #
+    #  Section > Footer
+    # #
+
+    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
+    echo
+
+    sleep 0.3
+
+    echo
+    exit 1
+}
+
+
+# #
+#   command-line options
+#
+#   reminder that any functions which need executed must be defined BEFORE
+#   this point. Bash sucks like that.
+#
+#   --dev           show advanced printing
+#
+#   --dist          specifies a specific distribution
+#                   jammy, lunar, focal, noble, etc
+#
+#   --setup         installs all required dependencies for proteus script
+#                   apt-move, apt-url, curl, wget, tree, reprepro, lastversion
+#
+#   --gpg           adds new entries to "/home/${USER}/.gnupg/gpg-agent.conf"
+#
+#   --onlyTest      downloads packages from both apt-get and LastVersion
+#                   does not push packages to Github proteus repo
+#
+#   --onlyGithub    only downloads packages from github using LastVersion
+#                   does not download packages from apt-get
+#
+#   --onlyAptget    only downloads packages from apt-get
+#                   does not download packages from github using LastVersion
+#
+#   --help          show help and usage information
+#
+#   --branch        used in combination with --update
+#                   used to install proteus apt script from another github
+#                   branch such as development branch
+#
+#   --nullrun       used for testing functionality
+#                   does not download packages
+#                   does not modify file permissions
+#                   does not add packages to reprepro
+#                   does not push changes to github
+#
+#   --quiet         no logs output to pipe file
+#
+#   --update        downloads the latest proteus script to local folder
+#
+#   --version       display version information
+# #
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -d|--dev)
+            OPT_DEV_ENABLE=true
+            echo -e "  ${FUCHSIA}${BLINK}Devmode Enabled${NORMAL}"
+            ;;
+
+    -dd*|--dist*)
+            if [[ "$1" != *=* ]]; then shift; fi
+            OPT_DISTRIBUTION="${1#*=}"
+            if [ -z "${OPT_DISTRIBUTION}" ]; then
+                echo -e "  ${NORMAL}Must specify a valid distribution"
+                echo -e "  ${NORMAL}      Default:  ${YELLOW}${sys_code}${NORMAL}"
+
+                exit 1
+            fi
+            ;;
+
+    -s*|--setup*)
+            app_setup
+            ;;
+
+    -t*|--onlyTest*)
+            OPT_DLPKG_ONLY_TEST=true
+            ;;
+
+    -g*|--onlyGithub*)
+            OPT_DLPKG_ONLY_LASTVER=true
+            ;;
+
+    -p*|--onlyAptget*)
+            OPT_DL_ONLY_APTGET=true
+            ;;
+
+    -h*|--help*)
+            opt_usage
+            ;;
+
+    -r*|--report*)
+            opt_report
+            ;;
+
+    -b*|--branch*)
+            if [[ "$1" != *=* ]]; then shift; fi
+            OPT_BRANCH="${1#*=}"
+            if [ -z "${OPT_BRANCH}" ]; then
+                echo -e "  ${NORMAL}Must specify a valid branch"
+                echo -e "  ${NORMAL}      Default:  ${YELLOW}${app_repo_branch}${NORMAL}"
+
+                exit 1
+            fi
+            ;;
+
+    -n|--nullrun)
+            OPT_DEV_NULLRUN=true
+            echo -e "  ${FUCHSIA}${BLINK}Devnull Enabled${NORMAL}"
+            ;;
+
+    -q|--quiet)
+            OPT_NOLOG=true
+            echo -e "  ${FUCHSIA}${BLINK}Logging Disabled{NORMAL}"
+            ;;
+
+    -u|--update)
+            OPT_UPDATE=true
+            ;;
+
+    -v|--version)
+            echo
+            echo -e "  ${GREEN}${BOLD}${app_title}${NORMAL} - v$(get_version)${NORMAL}"
+            echo -e "  ${GREYL}${BOLD}${app_repo_url}${NORMAL}"
+            echo -e "  ${GREYL}${BOLD}${OS} | ${OS_VER}${NORMAL}"
+            echo
+            exit 1
+            ;;
+    *)
+            opt_usage
+            ;;
+  esac
+  shift
+done
+
+# #
+#   DEV > Show Arguments
+# #
+
+if [ "${OPT_DEV_ENABLE}" = true ]; then
+
+    echo -e
+    echo -e "  ${LIME_YELLOW}${BOLD}[ Arguments ]${NORMAL}"
+
+    [ "${OPT_DEV_ENABLE}" = true ] && printf "%-3s %-15s %-10s\n" "" "--dev" "${GREEN}${OPT_DEV_ENABLE}${NORMAL}"
+    [ "${OPT_DLPKG_ONLY_TEST}" = true ] && printf "%-3s %-15s %-10s\n" "" "--onlyTest" "${GREEN}${OPT_DLPKG_ONLY_TEST}${NORMAL}"
+    [ "${OPT_DLPKG_ONLY_LASTVER}" = true ] && printf "%-3s %-15s %-10s\n" "" "--onlyGithub" "${GREEN}${OPT_DLPKG_ONLY_LASTVER}${NORMAL}"
+    [ "${OPT_DL_ONLY_APTGET}" = true ] && printf "%-3s %-15s %-10s\n" "" "--onlyAptget" "${GREEN}${OPT_DL_ONLY_APTGET}${NORMAL}"
+    [ "${OPT_DEV_NULLRUN}" = true ] && printf "%-3s %-15s %-10s\n" "" "--nullrun" "${GREEN}${OPT_DEV_NULLRUN}${NORMAL}"
+    [ "${OPT_NOLOG}" = true ] && printf "%-3s %-15s %-10s\n" "" "--quiet" "${GREEN}${OPT_NOLOG}${NORMAL}"
+    [ -n "${OPT_DISTRIBUTION}" ] && printf "%-3s %-15s %-10s\n" "" "--dist" "${GREEN}${OPT_DISTRIBUTION}${NORMAL}"
+    [ -n "${OPT_BRANCH}" ] && printf "%-3s %-15s %-10s\n" "" "--branch" "${GREEN}${OPT_BRANCH}${NORMAL}"
+
+    echo -e
+    sleep 5
+fi
+
+# #
+#   DEFINE > App repo paths and commands
+# #
+
+app_repo_author="Aetherinox"
+app_repo="proteus-git"
+app_repo_branch="main"
+app_repo_user=$( git config --global --get-all user.name )
+app_repo_email=$( git config --global --get-all user.email )
+app_repo_apt="proteus-apt-repo"
+app_repo_apt_pkg="aetherinox-${app_repo_apt}-archive"
+app_repo_url="https://github.com/${app_repo_author}/${app_repo}"
+app_repo_mnfst="https://raw.githubusercontent.com/${app_repo_author}/${app_repo}/${app_repo_branch}/manifest.json"
+app_repo_script="https://raw.githubusercontent.com/${app_repo_author}/${app_repo}/BRANCH/setup.sh"
+
+# #
+#   DEFINE > Exports
+# #
+
+export DATE=$(date '+%m%d%y')
+export DATE_TS=$(date +%s)
+export YEAR=$(date +'%Y')
+export TIME=$(date '+%H:%M:%S')
+export NOW=$(date '+%m.%d.%Y %H:%M:%S')
+export ARGS=$1
+export LOGS_DIR="${app_dir}/logs"
+export LOGS_FILE="${LOGS_DIR}/proteus-git-${DATE}.log"
+export SECONDS=0
+
+
+
+
+
+# #
+#   distro
+#
+#   returns distro information.
+# #
+
+    # #
+    #   freedesktop.org and systemd
+    # #
+
+        if [ -f /etc/os-release ]; then
+            . /etc/os-release
+            OS=$NAME
+            OS_VER=$VERSION_ID
+
+    # #
+    #   linuxbase.org
+    # #
+
+        elif type lsb_release >/dev/null 2>&1; then
+            OS=$(lsb_release -si)
+            OS_VER=$(lsb_release -sr)
+
+    # #
+    #   versions of Debian/Ubuntu without lsb_release cmd
+    # #
+
+        elif [ -f /etc/lsb-release ]; then
+            . /etc/lsb-release
+            OS=$DISTRIB_ID
+            OS_VER=$DISTRIB_RELEASE
+
+    # #
+    #   older Debian/Ubuntu/etc distros
+    # #
+
+        elif [ -f /etc/debian_version ]; then
+            OS=Debian
+            OS_VER=$(cat /etc/debian_version)
+
+    # #
+    #   fallback: uname, e.g. "Linux <version>", also works for BSD
+    # #
+
+        else
+            OS=$(uname -s)
+            OS_VER=$(uname -r)
+        fi
+
+
+# #
+#   SECRETS > METHOD > CLEVIS
+# #
+
+if [ "${cfg_Storage_Clevis}" = true ]; then
+
+    # #
+    #   the Clevis /.secrets directory doesnt exist
+    #   create the folder and the needed files.
+    #   make user re-launch proteus
+    # #
+
+    # #
+    #   /.secrets/ folder missing
+    # #
+
+    if [ ! -d "${app_dir_secrets}" ]; then
+
+        echo
+        echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE} Creating new secrets folder ${FUCHSIA}${app_dir_secrets}${WHITE}.${NORMAL}"
+        echo -e "  ${BOLD}${WHITE}Additional files will be created which you must open and add your Clevis encrypted secrets to.${NORMAL}"
+        echo -e "  ${BOLD}${WHITE}Relaunch Proteus when you are finished.${NORMAL}"
+        echo
+
+        mkdir -p ${app_dir_secrets}
+        touch ${app_file_secrets_general}
+        touch ${app_file_secrets_github}
+        touch ${app_file_secrets_gitlab}
+        touch ${app_file_secrets_passwd}
+
+        printf "  Press any key to abort ... ${NORMAL}"
+        read -n 1 -s -r -p ""
+        echo
+        echo
+
+        set +m
+        trap "kill -9 ${app_pid} 2> /dev/null" `seq 0 15`
+        kill ${app_pid}
+        set -m
+
+    # #
+    #   /.secrets/ folder exists
+    # #
+
+    else
+
+        # #
+        #   SECRETS > CLEVIS > LOAD
+        #
+        #   loads clevis secured secrets from the following files:
+        #       ./secrets/.pat_github
+        #       ./secrets/.pat_gitlab
+        #       ./secrets/.passwd
+        #
+        #   the contents of the files should be encrypted using Clevis, either tpm
+        #   or a tang server.
+        #
+        #   clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'github_pat_XXXXXX' > /.secrets/.pat_github
+        #   clevis decrypt < /.secrets/.pat_github
+        # #
+
+        echo -e
+        echo -e "  ${LIME_YELLOW}${BOLD}[ Public Values ]${NORMAL}"
+
+        # #
+        #   SECRETS > Base / General
+        # #
+
+        if [ -f ${app_file_secrets_general} ]; then
+
+            # #
+            #   base > load /.secrets/.base
+            # #
+
+            if [ -f ${app_file_secrets_general} ]; then
+                source ${app_file_secrets_general}
+            fi
+
+            # #
+            #   base > verify gpg key
+            # #
+
+            if [ -z "${GPG_KEY}" ]; then
+                printf "%-3s %-15s %-10s\n" "" "GPG Key" "${LIME_YELLOW}GPG_KEY${ORANGE} empty or undefined in ${LIME_YELLOW}${app_file_secrets_general}${NORMAL}"
+            elif [ "${GPG_KEY}" == "!" ]; then
+                printf "%-3s %-15s %-10s\n" "" "GPG Key" "${RED}GPG_KEY${ORANGE} invalid key !${NORMAL}"
+            else
+                printf "%-3s %-15s %-10s\n" "" "GPG Key" "${GREEN}${GPG_KEY}${NORMAL}"
+            fi
+
+            # #
+            #   base > github name
+            # #
+
+            if [ -z "${GITHUB_NAME}" ]; then
+                printf "%-3s %-15s %-10s\n" "" "Github Name" "${LIME_YELLOW}GITHUB_NAME${ORANGE} empty or undefined in ${LIME_YELLOW}${app_file_secrets_general}${NORMAL}"
+            else
+                printf "%-3s %-15s %-10s\n" "" "Github Name" "${GREEN}${GITHUB_NAME}${NORMAL}"
+            fi
+
+            # #
+            #   base > github email
+            # #
+
+            if [ -z "${GITHUB_EMAIL}" ]; then
+                printf "%-3s %-15s %-10s\n" "" "Github Email" "${LIME_YELLOW}GITHUB_EMAIL${ORANGE} empty or undefined in ${LIME_YELLOW}${app_file_secrets_general}${NORMAL}"
+            else
+                printf "%-3s %-15s %-10s\n" "" "Github Email" "${GREEN}${GITHUB_EMAIL}${NORMAL}"
+            fi
+
+        # #
+        #   SECRETS > Base File > Missing
+        #
+        #   create .base file, and throw warning to user, then exit
+        # #
+
+        else
+            printf "%-3s %-15s %-10s\n" "" "Base" "${RED}${app_file_secrets_passwd} Missing ${LIME_YELLOW}${app_file_secrets_general}${NORMAL}"
+
+            mkdir -p ${app_dir_secrets}
+            touch ${app_file_secrets_general}
+
+            error_missing_file_base
+        fi
+
+        echo -e
+        echo -e "  ${LIME_YELLOW}${BOLD}[ Secrets ]${NORMAL}"
+        bMissingSecret=false
+
+        # #
+        #   SECRETS > Github PAT
+        # #
+
+        if [ -f ${app_file_secrets_github} ]; then
+            CSI_PAT_GITHUB=$(cat ${app_file_secrets_github} | clevis decrypt 2>/dev/null)
+
+            # #
+            #   SECRETS > Github PAT > Valid
+            # #
+
+            if [ -n "${CSI_PAT_GITHUB}" ]; then
+                if [ "${OPT_DEV_ENABLE}" = true ]; then
+                    printf "%-3s %-15s %-10s\n" "" "Github PAT" "${GREEN}${CSI_PAT_GITHUB}${NORMAL}"
+                else
+                    printf "%-3s %-15s %-10s\n" "" "Github PAT" "${GREEN}***********${NORMAL}"
+                fi
+
+                export GITHUB_API_TOKEN=${CSI_PAT_GITHUB}
+
+            # #
+            #   SECRETS > Github PAT > Empty
+            # #
+
+            else
+                printf "%-3s %-15s %-10s\n" "" "Github PAT" "${LIME_YELLOW}CSI_PAT_GITHUB${ORANGE} Not declared in ${LIME_YELLOW}${app_file_secrets_github}${NORMAL}"
+                bMissingSecret=true
+            fi
+        else
+            printf "%-3s %-15s %-10s\n" "" "Github PAT" "${RED}${app_file_secrets_github} Missing ${LIME_YELLOW}${app_file_secrets_github}${NORMAL}"
+
+            mkdir -p ${app_dir_secrets}
+            touch ${app_file_secrets_github}
+        fi
+
+        # #
+        #   SECRETS > Gitlab PAT
+        # #
+
+        if [ -f ${app_file_secrets_gitlab} ]; then
+            CSI_PAT_GITLAB=$(cat ${app_file_secrets_gitlab} | clevis decrypt 2>/dev/null)
+
+            # #
+            #   SECRETS > Gitlab PAT > Valid
+            # #
+
+            if [ -n "${CSI_PAT_GITLAB}" ]; then
+                if [ "${OPT_DEV_ENABLE}" = true ]; then
+                    printf "%-3s %-15s %-10s\n" "" "Gitlab PAT" "${GREEN}${CSI_PAT_GITLAB}${NORMAL}"
+                else
+                    printf "%-3s %-15s %-10s\n" "" "Gitlab PAT" "${GREEN}***********${NORMAL}"
+                fi
+
+                export GITLAB_PA_TOKEN=${CSI_PAT_GITLAB}
+
+            # #
+            #   SECRETS > Gitlab PAT > Empty
+            # #
+
+            else
+                printf "%-3s %-15s %-10s\n" "" "Gitlab PAT" "${LIME_YELLOW}CSI_PAT_GITLAB${ORANGE} Not declared in ${LIME_YELLOW}${app_file_secrets_gitlab}${NORMAL}"
+
+                # #
+                #   Only mark the Gitlab one as missing and show the error if they also havent specified one for Github.
+                # #
+
+                if [ -z "${CSI_PAT_GITHUB}" ] || [ "${CSI_PAT_GITHUB}" == "!" ]; then
+                    bMissingSecret=true
+                fi
+            fi
+        else
+            printf "%-3s %-15s %-10s\n" "" "Gitlab PAT" "${RED}${app_file_secrets_gitlab} Missing ${LIME_YELLOW}${app_file_secrets_gitlab}${NORMAL}"
+
+            mkdir -p ${app_dir_secrets}
+            touch ${app_file_secrets_gitlab}
+        fi
+
+        # #
+        #   SECRETS > Sudo
+        # #
+
+        if [ -f ${app_file_secrets_passwd} ]; then
+            CSI_SUDO_PASSWD=$(cat ${app_file_secrets_passwd} | clevis decrypt 2>/dev/null)
+
+            # #
+            #   SECRETS > Sudo Passwd > Valid
+            # #
+
+            if [ -n "${CSI_SUDO_PASSWD}" ]; then
+                if [ "${OPT_DEV_ENABLE}" = true ]; then
+                    printf "%-3s %-15s %-10s\n" "" "Sudo Passwd" "${GREEN}${CSI_SUDO_PASSWD}${NORMAL}"
+                else
+                    printf "%-3s %-15s %-10s\n" "" "Sudo Passwd" "${GREEN}***********${NORMAL}"
+                fi
+
+                echo "$CSI_SUDO_PASSWD" | sudo -S su 2> /dev/null
+
+            # #
+            #   SECRETS > Sudo Passwd > Empty
+            # #
+
+            else
+                printf "%-3s %-15s %-10s\n" "" "Sudo Passwd" "${LIME_YELLOW}CSI_SUDO_PASSWD${ORANGE} Not declared in ${LIME_YELLOW}${app_file_secrets_passwd}${NORMAL}"
+                bMissingSecret=true
+            fi
+        else
+            printf "%-3s %-15s %-10s\n" "" "Sudo Passwd" "${RED}${app_file_secrets_passwd} Missing ${LIME_YELLOW}${app_file_secrets_passwd}${NORMAL}"
+
+            mkdir -p ${app_dir_secrets}
+            touch ${app_file_secrets_passwd}
+        fi
+
+        if [ "${bMissingSecret}" = true ]; then
+
+            echo -e
+            echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
+            echo -e
+            echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}You are missing required secrets.${NORMAL}"
+            echo -e "  ${BOLD}${WHITE}You must define your secrets within files inside ${RED}${app_dir_secrets}${NORMAL}"
+            echo -e "  ${BOLD}${WHITE}Each line belongs in its own file, and must be encrypted using Clevis${NORMAL}"
+            echo -e 
+            printf "%-5s %-60s %-40s\n" "" "${POWDER_BLUE}${app_file_secrets_github}" "${WHITE}github_pat_xxxxxx_xxxxxx${NORMAL}"
+            printf "%-5s %-60s %-40s\n" "" "${POWDER_BLUE}${app_file_secrets_gitlab}" "${WHITE}glpat-xxxxxxx${NORMAL}"
+            printf "%-5s %-60s %-40s\n" "" "${POWDER_BLUE}${app_file_secrets_passwd}" "${WHITE}YourSudoPassword${NORMAL}"
+            echo -e 
+            echo -e "  ${BOLD}${WHITE}(Left)   File you should create${NORMAL}"
+            echo -e "  ${BOLD}${WHITE}(Right)  What each file should have inside${NORMAL}"
+            echo -e 
+            echo -e "  ${BOLD}${WHITE}You can create and encrypt each file at the same time using these commands:${NORMAL}"
+            echo -e "      ${BOLD}${DEVGREY}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'github_pat_xxxxxx_xxxxxx' > .pat_github${NORMAL}"
+            echo -e "      ${BOLD}${DEVGREY}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'glpat-xxxxxxx' > .pat_gitlab${NORMAL}"
+            echo -e "      ${BOLD}${DEVGREY}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'YourSudoPassword' > .passwd${NORMAL}"
+            echo -e 
+            echo -e "  ${BOLD}${WHITE}You can decrypt these files using these commands:${NORMAL}"
+            echo -e "      ${BOLD}${DEVGREY}clevis decrypt < .pat_github${NORMAL}"
+            echo -e "      ${BOLD}${DEVGREY}clevis decrypt < .pat_github > .pat_github_decrypted${NORMAL}"
+            echo -e 
+            echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
+            echo -e
+
+            printf "  Press any key to abort ... ${NORMAL}"
+            read -n 1 -s -r -p ""
+            echo
+            echo
+
+            set +m
+            trap "kill -9 ${app_pid} 2> /dev/null" `seq 0 15`
+            kill ${app_pid}
+            set -m
+        fi
+
+        echo -e
+        sleep 5
+    fi
+
+# #
+#   SECRETS > METHOD > SECRETS.SH (OLD)
+# #
+
+else
+
+    # #
+    #   secrets.sh missing
+    #
+    #   warn the user.
+    #   create a new secrets.sh file
+    # #
+
+    if [ ! -f ${app_file_secrets_sh} ]; then
+        echo
+        echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}secrets.sh file not found! Creating a blank ${FUCHSIA}secrets.sh${WHITE} file.${NORMAL}"
+        echo -e "  ${BOLD}${WHITE}This file defines things such as your GPG key and Github Personal Token.${NORMAL}"
+        echo -e "  ${BOLD}${WHITE}Open the newly created ${FUCHSIA}secrets.sh${WHITE} file and add your secrets${NORMAL}"
+        echo
+
+        touch ${app_file_secrets_sh}
+
+sudo tee ${app_file_secrets_sh} << EOF > /dev/null
+#!/bin/bash
+PATH="/bin:/usr/bin:/sbin:/usr/sbin:/home/${USER}/bin"
+export GITHUB_API_TOKEN=github_pat_xxxxxxxxx
+export GITLAB_PA_TOKEN=glpat-xxxxxxxxxxxxxxx
+export GPG_KEY=
+export GITHUB_NAME=
+export GITHUB_EMAIL=
+EOF
+
+        printf "  Press any key to abort ... ${NORMAL}"
+        read -n 1 -s -r -p ""
+        echo
+        echo
+
+        set +m
+        trap "kill -9 ${app_pid} 2> /dev/null" `seq 0 15`
+        kill ${app_pid}
+        set -m
+
+    # #
+    #   secrets.sh found
+    #
+    #   load secrets.sh variables
+    # #
+
+    else
+        if [ -f ${app_file_secrets_sh} ]; then
+            source ${app_file_secrets_sh}
+        fi
+    fi
+
+fi
+
+# #
+#   check > GPG key
+#
+#   you must define GPG_KEY in the secrets.sh file
+# #
+
+if [ -z "${GPG_KEY}" ] || [ "${GPG_KEY}" == "!" ]; then
+    error_missing_value_gpg
+fi
+
+# #
 #   upload to github > precheck
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# #
 
 app_run_github_precheck( )
 {
@@ -427,29 +1308,6 @@ app_run_github_precheck( )
     git config --global user.name ${GITHUB_NAME}
     git config --global user.email ${GITHUB_EMAIL}
 }
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   secrets.sh file missing -- abort
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-if ! [ -f ${app_dir}/secrets.sh ]; then
-    echo
-    echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}secrets.sh file not found${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}Must create a ${FUCHSIA}secrets.sh${WHITE} file.${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}This file defines things such as your${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}GPG key and Github Personal Token.${NORMAL}"
-    echo
-
-    printf "  Press any key to abort ... ${NORMAL}"
-    read -n 1 -s -r -p ""
-    echo
-    echo
-
-    set +m
-    trap "kill -9 ${app_pid} 2> /dev/null" `seq 0 15`
-    kill ${app_pid}
-    set -m
-fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   check if GPG key defined in git config user.signingKey
@@ -504,30 +1362,6 @@ if [ -z "${checkgit_signing}" ]; then
     fi
 fi
 
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   check > GPG key
-#
-#   you must define GPG_KEY in the secrets.sh file
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-if [ -z "${GPG_KEY}" ]; then
-    echo
-    echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}GPG Key not specified${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}Must create a ${FUCHSIA}secrets.sh${WHITE} file and define your GPG key.${NORMAL}"
-    echo
-    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GPG_KEY=${WHITE}XXXXXXXX${NORMAL}"
-    echo
-
-    printf "  Press any key to abort ... ${NORMAL}"
-    read -n 1 -s -r -p ""
-    echo
-    echo
-
-    set +m
-    trap "kill -9 ${app_pid} 2> /dev/null" `seq 0 15`
-    kill ${app_pid}
-    set -m
-fi
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   check > Github / Gitlab API tokens
@@ -566,218 +1400,6 @@ if [ -z "${CSI_PAT_GITHUB}" ] && [ -z "${CSI_PAT_GITLAB}" ]; then
     kill ${app_pid}
     set -m
 fi
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   func > get version
-#
-#   returns current version of app
-#   converts to human string.
-#       e.g.    "1" "2" "4" "0"
-#               1.2.4.0
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-get_version()
-{
-    ver_join=${app_ver[@]}
-    ver_str=${ver_join// /.}
-    echo ${ver_str}
-}
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   func > version > compare greater than
-#
-#   this function compares two versions and determines if an update may
-#   be available. or the user is running a lesser version of a program.
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-get_version_compare_gt()
-{
-    test "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1";
-}
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   func > test
-#
-#   development function, not used in normal operations,
-#   has no specific purpose other than to drop code in here and test with
-#
-#   Execute with:
-#       proteus-git.sh --test
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-app_test( )
-{
-    printf '%-57s' "    |--- Running Test"
-    echo
-
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-    #   modify gpg.conf
-    #
-    #   first check if GPG installed (usually on Ubuntu it is)
-    #   then modify user's gpg-agent.conf file
-    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-    gpgconfig_file="/home/${USER}/.gnupg/gpg-agent.conf"
-
-    if ! [ -x "$(command -v gpg)" ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
-        printf '%-57s' "    |--- Installing GPG"
-        sleep 1
-        if [ -z "${OPT_DEV_NULLRUN}" ]; then
-            sudo apt-get update -y -q >> /dev/null 2>&1
-            sudo apt-get install gpg -y -qq >> /dev/null 2>&1
-        fi
-        echo -e "[ ${STATUS_OK} ]"
-        sleep 1
-    fi
-
-sudo tee ${gpgconfig_file} << EOF > /dev/null
-enable-putty-support
-enable-ssh-support
-use-standard-socket
-default-cache-ttl-ssh 60
-max-cache-ttl-ssh 120
-default-cache-ttl 28800 # gpg key cache time
-max-cache-ttl 28800 # max gpg key cache time
-pinentry-program "/usr/bin/pinentry"
-allow-loopback-pinentry
-allow-preset-passphrase
-pinentry-timeout 0
-EOF
-
-    printf '%-57s' "    |--- Set ownership to ${USER}"
-    sleep 1
-    if [ -z "${OPT_DEV_NULLRUN}" ]; then
-        sudo chgrp ${USER} ${gpgconfig_file} >> ${LOGS_FILE} 2>&1
-        sudo chown ${USER} ${gpgconfig_file} >> ${LOGS_FILE} 2>&1
-    fi
-    echo -e "[ ${STATUS_OK} ]"
-
-    printf '%-57s' "    |--- Restart GPG Agent"
-    sleep 1
-    gpgconf --kill gpg-agent
-    echo -e "[ ${STATUS_OK} ]"
-
-    exit 0
-    sleep 0.2
-}
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   Display Usage Help
-#
-#   activate using ./proteus-git.sh --help or -h
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-opt_usage()
-{
-    echo
-    printf "  ${BLUE}${app_title}${NORMAL}\n" 1>&2
-    printf "  ${GREYL}${gui_about}${NORMAL}\n" 1>&2
-    echo
-    printf '  %-5s %-40s\n' "Usage:" "" 1>&2
-    printf '  %-5s %-40s\n' "    " "${0} [${GREYL}options${NORMAL}]" 1>&2
-    printf '  %-5s %-40s\n\n' "    " "${0} [${GREYL}-h${NORMAL}] [${GREYL}-d${NORMAL}] [${GREYL}-n${NORMAL}] [${GREYL}-s${NORMAL}] [${GREYL}-t THEME${NORMAL}] [${GREYL}-v${NORMAL}]" 1>&2
-    printf '  %-5s %-40s\n' "Options:" "" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-d, --dev" "dev mode" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-h, --help" "show help menu" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-g, --githubOnly" "only update github packages" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-s, --sourceOnly" "only update apt source packages" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-n, --nullrun" "dev: null run" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "" "simulate app installs (no changes)" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-q, --quiet" "quiet mode which disables logging" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-u, --update" "update ${app_file_proteus} executable" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "    --branch" "branch to update from" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-v, --version" "current version of app manager" 1>&2
-    echo
-    echo
-    exit 1
-}
-
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-#   command-line options
-#
-#   reminder that any functions which need executed must be defined BEFORE
-#   this point. Bash sucks like that.
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-while [ $# -gt 0 ]; do
-  case "$1" in
-    -d|--dev)
-            OPT_DEV_ENABLE=true
-            echo -e "  ${FUCHSIA}${BLINK}Devmode Enabled${NORMAL}"
-            ;;
-
-    -dd*|--dist*)
-            if [[ "$1" != *=* ]]; then shift; fi
-            OPT_DISTRIBUTION="${1#*=}"
-            if [ -z "${OPT_DISTRIBUTION}" ]; then
-                echo -e "  ${NORMAL}Must specify a valid distribution"
-                echo -e "  ${NORMAL}      Default:  ${YELLOW}${sys_code}${NORMAL}"
-
-                exit 1
-            fi
-            ;;
-
-    -s*|--setup*)
-            app_setup
-            ;;
-
-    -t*|--test*)
-            app_test
-            ;;
-
-    -g*|--githubOnly*)
-            OPT_ONLY_GIT=true
-            echo "Update Github Only"
-            ;;
-
-    -p*|--sourceOnly*)
-            OPT_ONLY_SRC=true
-            echo "Update Source Packages Only"
-            ;;
-
-    -h*|--help*)
-            opt_usage
-            ;;
-
-    -b*|--branch*)
-            if [[ "$1" != *=* ]]; then shift; fi
-            OPT_BRANCH="${1#*=}"
-            if [ -z "${OPT_BRANCH}" ]; then
-                echo -e "  ${NORMAL}Must specify a valid branch"
-                echo -e "  ${NORMAL}      Default:  ${YELLOW}${app_repo_branch}${NORMAL}"
-
-                exit 1
-            fi
-            ;;
-
-    -n|--nullrun)
-            OPT_DEV_NULLRUN=true
-            echo -e "  ${FUCHSIA}${BLINK}Devnull Enabled${NORMAL}"
-            ;;
-
-    -q|--quiet)
-            OPT_NOLOG=true
-            echo -e "  ${FUCHSIA}${BLINK}Logging Disabled{NORMAL}"
-            ;;
-
-    -u|--update)
-            OPT_UPDATE=true
-            ;;
-
-    -v|--version)
-            echo
-            echo -e "  ${GREEN}${BOLD}${app_title}${NORMAL} - v$(get_version)${NORMAL}"
-            echo -e "  ${GREYL}${BOLD}${app_repo_url}${NORMAL}"
-            echo -e "  ${GREYL}${BOLD}${OS} | ${OS_VER}${NORMAL}"
-            echo
-            exit 1
-            ;;
-    *)
-            opt_usage
-            ;;
-  esac
-  shift
-done
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 #   vars > active repo branch
