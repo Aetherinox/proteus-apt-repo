@@ -870,6 +870,7 @@ app_repo_email=$( git config --global --get-all user.email )
 app_repo_apt="proteus-apt-repo"
 app_repo_apt_pkg="aetherinox-${app_repo_apt}-archive"
 app_repo_url="https://github.com/${app_repo_author}/${app_repo}"
+app_repo_apt_url="https://github.com/${app_repo_author}/${app_repo_apt}"
 app_repo_mnfst="https://raw.githubusercontent.com/${app_repo_author}/${app_repo}/${app_repo_branch}/manifest.json"
 app_repo_script="https://raw.githubusercontent.com/${app_repo_author}/${app_repo}/BRANCH/setup.sh"
 
@@ -1897,7 +1898,7 @@ if [ ! -d .git ]; then
     echo -e "  ${ORANGE}Error${WHITE}"
     echo -e "  "
     echo -e "  ${WHITE}Folder ${YELLOW}.git${NORMAL} does not exist."
-    echo -e "  ${WHITE}Must clone the ${YELLOW}${app_repo_apt}${NORMAL} first."
+    echo -e "  ${WHITE}Must clone ${YELLOW}${app_repo_apt_url}${NORMAL} first."
     echo -e
     echo -e "  Couldn't find .git folder in ${app_dir}"
     echo
@@ -3655,7 +3656,7 @@ app_start()
     # remove all changes and sync with remote repo
     # git fetch --prune
 
-    delete lock
+    # delete lock
     rm -f "${app_dir}.git/index.lock"
 
     # force head to match with remote repo
