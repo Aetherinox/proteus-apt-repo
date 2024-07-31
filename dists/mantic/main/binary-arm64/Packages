@@ -41,6 +41,27 @@ Description: add and remove users and groups
  easier and more stable to write and maintain.
 Original-Maintainer: Debian Adduser Developers <adduser@packages.debian.org>
 
+Package: apt-transport-https
+Source: apt
+Version: 2.7.3ubuntu0.1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 36
+Depends: apt (>= 1.5~alpha4)
+Multi-Arch: foreign
+Priority: 0
+Section: utils
+Filename: pool/main/a/apt/apt-transport-https_2.7.3ubuntu0.1_all.deb
+Size: 3966
+SHA512: 811f065aaf87c873e8b6c827d7d60a77f6131b0a35a05a3ab6db36db6fe4c52805d474850cf3e505c8a9de0bb46054503b17656b03ce7a9101a2f44392aedcce
+SHA256: 8038fec32697101bc85c9bc689bbc32b3ef786aa41e524e77a9dd7cc4d476f25
+SHA1: 5cea209145a71909b222b3abf7aacfa5fa814e1a
+MD5sum: 5a0b95e26c0f80a3972d2dc885f11ab5
+Description: transitional package for https support
+ This is a dummy transitional package - https support has been moved into
+ the apt package in 1.5. It can be safely removed.
+Original-Maintainer: APT Development Team <deity@lists.debian.org>
+
 Package: apt-url
 Version: 1.0.0-2
 Architecture: all
