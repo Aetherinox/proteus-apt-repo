@@ -79,7 +79,6 @@ lst_packages=(
     'libnginx-mod-nchan'
     'libnginx-mod-rtmp'
     'libnginx-mod-stream-geoip'
-    'lintian'
     'lsb-base'
     'lz4'
     'mysql-client'
