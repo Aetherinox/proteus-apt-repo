@@ -41,23 +41,60 @@ Description: add and remove users and groups
  easier and more stable to write and maintain.
 Original-Maintainer: Debian Adduser Developers <adduser@packages.debian.org>
 
+Package: apt-url
+Version: 1.0.0-2
+Architecture: all
+Depends: apt-move (>=4.0)
+Maintainer: Aetherinox <aetherinox@proton.me>
+Priority: 0
+Section: utils
+Filename: pool/main/a/apt-url/apt-url_1.0.0-2_all.deb
+Size: 2310
+SHA512: 5d04d99e636b897e39c7b7b834e845cd7bc98ed82e5ebb7657fc035819e05d585ddc3c7a8c6e2c9c3c47e56d4529d7b2b185addceb1c2115b6ea32982d6f6de6
+SHA256: 90d8e1a8bb35a880fa87ca1061974a8450d9edf26215f2fa7403f0d42d3b9f1c
+SHA1: 9ecc12edf4ece7ad8c0f8fc47998a340d2730b0a
+MD5sum: 447e1605cac9b953fe6797ae647e586a
+Description: Fetches URLs for specified packages.
+ Provides the download URL for a specified package.
+
+Package: freetube
+Version: 0.21.2
+License: AGPL-3.0-or-later
+Vendor: PrestonN <FreeTubeApp@protonmail.com>
+Architecture: arm64
+Maintainer: PrestonN <FreeTubeApp@protonmail.com>
+Installed-Size: 273711
+Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
+Recommends: libappindicator3-1
+Homepage: https://github.com/FreeTubeApp/FreeTube#readme
+Priority: 0
+Section: utils
+Filename: pool/main/f/freetube/freetube_0.21.2_arm64.deb
+Size: 71100000
+SHA512: 863957b3a96ea98c4b35d01b9a7217f1a88c77618abb07142dec3c5ce233db4bec398933c82bf707fe59936c14bed39c646073e303e620107065a79d182b892b
+SHA256: 177a3333206cbf2b03208176d733876f81c51f0b5cde3b86a519f9d5f9d0d600
+SHA1: 10ff1a439d62831d0721540c365295355f9f484d
+MD5sum: e81bcad1f804a75fc725e4fa3c7aa5ff
+Description: 
+  A private YouTube client
+
 Package: github-desktop
-Version: 3.3.8-linux2
+Version: 3.4.2-linux1
 Architecture: arm64
 Depends: libgtk-3-0, libnotify4, libnss3, libxtst6, xdg-utils, libatspi2.0-0, libdrm2, libgbm1, libxcb-dri3-0, kde-cli-tools | kde-runtime | trash-cli | libglib2.0-bin | gvfs-bin, libcurl3 | libcurl4, libsecret-1-0, gnome-keyring
 Recommends: pulseaudio | libasound2
 Suggests: gir1.2-gnomekeyring-1.0, libgnome-keyring0, lsb-release
-Installed-Size: 339358
+Installed-Size: 358065
 Maintainer: Brendan Forster <github@brendanforster.com>
 Homepage: https://github.com/shiftkey/desktop
 Priority: 0
 Section: utils
-Filename: pool/main/g/github-desktop/github-desktop_3.3.8-linux2_arm64.deb
-Size: 88474884
-SHA512: ee0e4977add80a5d745309289c91f365bd1e8ebf0c71ed04fd208e2df94c6fc41182ced4779c3067499c5076e846ac1497b637309a183347f32182989e1c2519
-SHA256: 179f751dedb67eec9f8ec9717674bc37939ba44237f6b71f9339b090a72fe7f3
-SHA1: 4bc6fa930266ee3c595fa555c42a8950b57f29b9
-MD5sum: 13f32a936a74def48c2548dec5a81d1a
+Filename: pool/main/g/github-desktop/github-desktop_3.4.2-linux1_arm64.deb
+Size: 92450244
+SHA512: 1330ce03d9804037a49979263560c85d96f24796c8bf2e5249360a3ebebb662027e5065bc3e8b74ead6d1a0f866d7100b3430621fea5d54acc2740f873e8b72e
+SHA256: 55b3e34f3e316066953b7b8e1ba950350ad5126c77f87ffecbcfabd0ee796948
+SHA1: 6eac8b171e7d93d9d50719215507c488767ccbff
+MD5sum: 49f8432dcce2e7ef88bb6db9abf5409d
 Description: Simple collaboration from your desktop
  This is the unofficial port of GitHub Desktop for Linux distributions
 

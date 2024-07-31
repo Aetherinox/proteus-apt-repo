@@ -91,6 +91,22 @@ Description: maintain Debian packages in a package pool
  local mirror of a Debian binary distribution (including an
  ``installed-packages only'' mirror).
 
+Package: apt-url
+Version: 1.0.0-2
+Architecture: all
+Depends: apt-move (>=4.0)
+Maintainer: Aetherinox <aetherinox@proton.me>
+Priority: 0
+Section: utils
+Filename: pool/main/a/apt-url/apt-url_1.0.0-2_all.deb
+Size: 2310
+SHA512: 5d04d99e636b897e39c7b7b834e845cd7bc98ed82e5ebb7657fc035819e05d585ddc3c7a8c6e2c9c3c47e56d4529d7b2b185addceb1c2115b6ea32982d6f6de6
+SHA256: 90d8e1a8bb35a880fa87ca1061974a8450d9edf26215f2fa7403f0d42d3b9f1c
+SHA1: 9ecc12edf4ece7ad8c0f8fc47998a340d2730b0a
+MD5sum: 447e1605cac9b953fe6797ae647e586a
+Description: Fetches URLs for specified packages.
+ Provides the download URL for a specified package.
+
 Package: apt-utils
 Source: apt
 Version: 2.7.3
@@ -248,23 +264,44 @@ Description: Application deployment framework for desktop apps
  launch sandboxed applications, and the portal services needed to provide
  limited access to resources outside the sandbox.
 
+Package: freetube
+Version: 0.21.2
+License: AGPL-3.0-or-later
+Vendor: PrestonN <FreeTubeApp@protonmail.com>
+Architecture: amd64
+Maintainer: PrestonN <FreeTubeApp@protonmail.com>
+Installed-Size: 268693
+Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
+Recommends: libappindicator3-1
+Homepage: https://github.com/FreeTubeApp/FreeTube#readme
+Priority: 0
+Section: utils
+Filename: pool/main/f/freetube/freetube_0.21.2_amd64.deb
+Size: 75678828
+SHA512: 729b29c57a7d39990edc1d294674b2a533481f25aa7f1a8da2bb3dfd7b01457c201230dffae00b3f18c9855556e672b37dbd3c994eeb8adca1ee2f5eb7d4aa2f
+SHA256: 9bee4f73cebbd5c095ae9099981c1cab39378df7f2c471d6f5dc02f106b8ab91
+SHA1: b3ecf8c7ac7afffc5c4b16cf90a5946483210ce4
+MD5sum: d6c4c37e14ee53930a73d30daa4d91bd
+Description: 
+  A private YouTube client
+
 Package: github-desktop
-Version: 3.3.8-linux2
+Version: 3.4.2-linux1
 Architecture: amd64
 Depends: libgtk-3-0, libnotify4, libnss3, libxtst6, xdg-utils, libatspi2.0-0, libdrm2, libgbm1, libxcb-dri3-0, kde-cli-tools | kde-runtime | trash-cli | libglib2.0-bin | gvfs-bin, libcurl3 | libcurl4, libsecret-1-0, gnome-keyring
 Recommends: pulseaudio | libasound2
 Suggests: gir1.2-gnomekeyring-1.0, libgnome-keyring0, lsb-release
-Installed-Size: 337293
+Installed-Size: 442499
 Maintainer: Brendan Forster <github@brendanforster.com>
 Homepage: https://github.com/shiftkey/desktop
 Priority: 0
 Section: utils
-Filename: pool/main/g/github-desktop/github-desktop_3.3.8-linux2_amd64.deb
-Size: 94652532
-SHA512: ce6638b9b1b12967dca6c5aebdb1b5b56e906b0ec4a57ad0d83c6dfa13d605ffdebf74b55a5e096c970bad0452ac92abf70767bc256a732ac5b9cbe3911bf707
-SHA256: 317b4421512c7791803c6bb13077052c9fccd34f653d19d7ea1fa48f9525486f
-SHA1: d5b0775bd8e259d853330d1784590b7af6222f90
-MD5sum: c211261b2413198adf321923a1905aae
+Filename: pool/main/g/github-desktop/github-desktop_3.4.2-linux1_amd64.deb
+Size: 128805080
+SHA512: 4ed921ff5ee53c75ec9351a4a76e6b5d33dab33b9777212883eb193758a5e2db9c33b2b78c53b59d3368ab40b5e01afbfd4b4acada6242cd91ac7701e1ed8eee
+SHA256: a98e6b0af3a07f5fd9d345d9eb2027eb329d519fba9783c2b613d4e385cb2a17
+SHA1: 644a5b382e0a9e48a79a8fb7adc2e5875db261cb
+MD5sum: fb9c3ac5d457f5a3b1de1d98d0c96bb3
 Description: Simple collaboration from your desktop
  This is the unofficial port of GitHub Desktop for Linux distributions
 
@@ -1556,23 +1593,23 @@ Description: nginx web/proxy server (basic version)
 Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
 
 Package: obsidian
-Version: 1.5.8
+Version: 1.6.7
 License: UNLICENSED
 Vendor: Dynalist Inc.
 Architecture: amd64
 Maintainer: Dynalist Inc.
-Installed-Size: 283615
+Installed-Size: 284926
 Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
 Recommends: libappindicator3-1
 Homepage: https://obsidian.md
 Priority: 0
 Section: utils
-Filename: pool/main/o/obsidian/obsidian_1.5.8_amd64.deb
-Size: 78625030
-SHA512: f5308bd94a80d70e1eb74862f54dc8ce5a0818544c2fd329f3fd7818d6748ecdbeac710ac4438d677e742c955161a7a5513afbe99303e54ba20ee65da3c62bd0
-SHA256: 46675f643a24fb94d763eb03001090d3f500f1c6b3a354d11639f23ee268489b
-SHA1: af79fa906526d2be1b7ad0dadf696ca63f068d93
-MD5sum: 7153ea50aaf7e5b405e975dae1ec91ad
+Filename: pool/main/o/obsidian/obsidian_1.6.7_amd64.deb
+Size: 79172558
+SHA512: bbf913f6806a1d23d2a6bbb9d5572569b019c79c877c3165ff94938f01282e7d98b6ba660821dca7e38874413207846b025707161c8901983458bdf4add05336
+SHA256: 772da38d23b15f0f5d7cf17024a1948ff2c073b2195954743703178bf1254b36
+SHA1: 1ebede61696c77ee97394c6b0a3fcd8abaa299ed
+MD5sum: c993b303e6ee232504713062c38f3440
 Description: 
   Obsidian
 
