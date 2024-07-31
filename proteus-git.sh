@@ -285,12 +285,18 @@ sys_code=$(lsb_release -cs)
 #   vars > app > folders
 # #
 
-app_dir="$PWD"
+app_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 app_dir_home="${HOME}/bin"
 app_dir_storage="$app_dir/incoming/proteus-git/${sys_code}"
 app_dir_repo="incoming/proteus-git/${sys_code}"
 app_dir_wd=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 app_dir_secrets="${HOME}/.secrets"
+
+# #
+#   Ensure we're in the correct directory
+# #
+
+cd ${app_dir}
 
 # #
 #   vars > app > files
@@ -362,7 +368,7 @@ fi
 #   Create .gitignore
 # #
 
-if [ ! -f $app_dir/.gitignore ]; then
+if [ ! -f "${app_dir}/.gitignore" ] || [ ! -s "${app_dir}/.gitignore" ]; then
 
     touch $app_dir/.gitignore
 
@@ -373,6 +379,7 @@ sudo tee $app_dir/.gitignore << EOF > /dev/null
 incoming/
 .env
 sources-*.list
+.pipe
 
 # ----------------------------------------
 # Logs
@@ -1515,19 +1522,19 @@ Logs_Begin
 #   require normal user sudo authentication for certain actions
 # #
 
-# if [[ ${EUID} -ne 0 ]]; then
-#    sudo -k # make sure to ask for password on next sudo
-#    if sudo true && [ -n "${USER}" ]; then
-#        printf "\n%-50s %-5s\n\n" "${TIME}      SUDO [SIGN-IN]: Welcome, ${USER}" | tee -a "${LOGS_FILE}" >/dev/null
-#    else
-#        printf "\n%-50s %-5s\n\n" "${TIME}      SUDO Failure: Wrong Password x3" | tee -a "${LOGS_FILE}" >/dev/null
-#        exit 1
-#    fi
-# else
-#    if [ -n "${USER}" ]; then
-#        printf "\n%-50s %-5s\n\n" "${TIME}      SUDO [EXISTING]: ${USER}" | tee -a "${LOGS_FILE}" >/dev/null
-#    fi
-# fi
+if [[ ${EUID} -ne 0 ]]; then
+    sudo -k # make sure to ask for password on next sudo
+    if sudo true && [ -n "${USER}" ]; then
+        printf "\n%-50s %-5s\n\n" "${TIME}      SUDO [SIGN-IN]: Welcome, ${USER}" | tee -a "${LOGS_FILE}" >/dev/null
+    else
+        printf "\n%-50s %-5s\n\n" "${TIME}      SUDO Failure: Wrong Password x3" | tee -a "${LOGS_FILE}" >/dev/null
+        exit 1
+    fi
+else
+    if [ -n "${USER}" ]; then
+        printf "\n%-50s %-5s\n\n" "${TIME}      SUDO [EXISTING]: ${USER}" | tee -a "${LOGS_FILE}" >/dev/null
+    fi
+fi
 
 # #
 #   func > spinner animation
@@ -1536,6 +1543,7 @@ Logs_Begin
 spin()
 {
     spinner="-\\|/-\\|/"
+
 }
 
 # #
@@ -1754,7 +1762,14 @@ begin()
 finish()
 {
     arg1=${1}
+
     spinner_halt
+
+    # if arg1 not empty
+    if ! [ -z "${arg1}" ]; then
+        assoc_uri="${get_docs_uri[$arg1]}"
+        app_queue_url+=($assoc_uri)
+    fi
 }
 
 # #
@@ -1867,24 +1882,50 @@ fi
 
 # #
 #   .git folder doesnt exist
+#
+#   this feature is not fully developed. It is supposed to allow
+#   the proteus apt repo to be downloaded locally to the server and 
+#   ran.
+#
+#   for now, manually use git clone and then run the proteus script
 # #
 
 if [ ! -d .git ]; then
+
     echo
     echo
     echo -e "  ${ORANGE}Error${WHITE}"
     echo -e "  "
     echo -e "  ${WHITE}Folder ${YELLOW}.git${NORMAL} does not exist."
-    echo -e "  ${WHITE}Must clone the ${YELLOW}proteus-apt-repo${NORMAL} first."
+    echo -e "  ${WHITE}Must clone the ${YELLOW}${app_repo_apt}${NORMAL} first."
+    echo -e
+    echo -e "  Couldn't find .git folder in ${app_dir}"
     echo
     echo
 
     app_run_github_precheck
 
+    # git clone -b main https://github.com/Aetherinox/proteus-apt-repo.git
     git init --initial-branch=${app_repo_branch}
-    git add .;git commit -m'Proteus-Git Setup'
     git remote add origin https://github.com/Aetherinox/proteus-apt-repo.git
-    git pull origin ${app_repo_branch} --allow-unrelated-histories
+    git fetch
+    git checkout origin/main -b main
+
+    git add .
+
+    # #
+    #   
+    #   -m <msg>, --message=<msg> 
+    #   -s, --signoff 
+    # #
+
+    git commit -S -m "New Server Addition"
+    git pull https://${GITHUB_NAME}:${CSI_PAT_GITHUB}@github.com/${app_repo_author}/${app_repo_apt}.git
+
+
+    # git remote add origin https://github.com/Aetherinox/proteus-apt-repo.git
+    # git pull origin ${app_repo_branch} --allow-unrelated-histories
+    # git push --set-upstream origin main
 fi
 
 # #
@@ -3442,7 +3483,7 @@ sudo tee ${manifest_dir}/${app_repo_dist_sel}.json >/dev/null <<EOF
     "description":      "${app_about}",
     "distrib":          "${app_repo_dist_sel}",
     "url":              "${app_repo_url}",
-    "last_duration":    ".......",
+    "last_duration":    ".........",
     "last_update":      "Running ...............",
     "last_update_ts":   "${DATE_TS}"
 }
@@ -3451,9 +3492,12 @@ EOF
         app_run_github_precheck
 
         git branch -m ${app_repo_branch}
-        git add --all
-        git add -u
 
+        # git add -A        stages all changes
+        # git add .         stages new files and modifications, without deletions (on the current directory and its subdirectories).
+        # git add -u        stages modifications and deletions, without new files
+
+        git add --all
         sleep 1
 
         local NOW=$(date '+%m.%d.%Y %H:%M:%S')
@@ -3521,7 +3565,7 @@ app_run_gh_end()
     fi # end devnull
 }
 
-# #
+## #
 #   update tree
 # #
 
@@ -3607,12 +3651,23 @@ app_start()
     # #
     #   pull all changes from github
     # #
+    
+    # remove all changes and sync with remote repo
+    # git fetch --prune
 
-    git_pull=$( git pull origin ${app_repo_branch} )
+    delete lock
+    rm -f "${app_dir}.git/index.lock"
+
+    # force head to match with remote repo
+    # git reset --hard origin/main
+
+    git config pull.rebase false
+    git_pull=$( git pull origin ${app_repo_branch} --allow-unrelated-histories)
     git_reset=$( reset --hard origin/${app_repo_branch} )
 
     echo -e "  ${GREYL}Git Pull${WHITE}"
     echo -e "  ${WHITE}${git_pull}${NORMAL}"
+    echo -e "  ${WHITE}${git_reset}${NORMAL}"
     echo
     echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
     echo
