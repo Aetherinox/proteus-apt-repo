@@ -878,11 +878,11 @@ app_repo_script="https://raw.githubusercontent.com/${app_repo_author}/${app_repo
 #   DEFINE > Exports
 # #
 
-export DATE=$(date '+%m%d%y')
-export DATE_TS=$(date +%s)
-export YEAR=$(date +'%Y')
-export TIME=$(date '+%H:%M:%S')
-export NOW=$(date '+%m.%d.%Y %H:%M:%S')
+export DATE=$(date -u '+%m%d%y')
+export DATE_TS=$(date -u +%s)
+export YEAR=$(date -u +'%Y')
+export TIME=$(date -u '+%H:%M:%S')
+export NOW=$(date -u '+%m.%d.%Y %H:%M:%S')
 export ARGS=$1
 export LOGS_DIR="${app_dir}/logs"
 export LOGS_FILE="${LOGS_DIR}/proteus-git-${DATE}.log"
@@ -3501,7 +3501,7 @@ EOF
         git add --all
         sleep 1
 
-        local NOW=$(date '+%m.%d.%Y %H:%M:%S')
+        local NOW=$(date -u '+%m.%d.%Y %H:%M:%S')
         local app_repo_commit="[S] auto-update [ ${app_repo_dist_sel} ] @ ${NOW}"
         echo -e "  ${WHITE}Starting commit ${FUCHSIA}${app_repo_commit}${NORMAL}"
 
@@ -3555,7 +3555,7 @@ app_run_gh_end()
 
         sleep 1
 
-        local NOW=$(date '+%m.%d.%Y %H:%M:%S')
+        local NOW=$(date -u '+%m.%d.%Y %H:%M:%S')
         local app_repo_commit="[E] auto-update [ $app_repo_dist_sel ] @ $NOW"
         git commit -S -m "$app_repo_commit"
 
