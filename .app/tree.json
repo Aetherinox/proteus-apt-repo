@@ -1563,8 +1563,8 @@
       {"type":"file","name":".pat_github"},
       {"type":"file","name":".pat_gitlab"}
   ]},
-    {"type":"file","name":"firefox_1snap1-0ubuntu2_amd64.deb"},
     {"type":"file","name":"firefox_1snap1-0ubuntu2_amd64.deb.1"},
+    {"type":"file","name":"firefox_1snap1-0ubuntu2_amd64.deb.2"},
     {"type":"file","name":".gitattributes"},
     {"type":"file","name":".gitignore"},
     {"type":"file","name":"proteus-git.sh"},
