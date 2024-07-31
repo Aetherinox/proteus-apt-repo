@@ -45,6 +45,7 @@ lst_packages=(
     'adduser'
     'argon2'
     'apt-move'
+    'apt-transport-https'
     'apt-utils'
     'clevis'
     'clevis-dracut'
@@ -78,6 +79,7 @@ lst_packages=(
     'libnginx-mod-nchan'
     'libnginx-mod-rtmp'
     'libnginx-mod-stream-geoip'
+    'lintian'
     'lsb-base'
     'lz4'
     'mysql-client'
@@ -219,6 +221,7 @@ lst_github=(
     'FreeTubeApp/FreeTube'
     'makedeb/makedeb'
     'Aetherinox/debian-apt-url'
+    'Aetherinox/opengist-debian'
 )
 
 # #
