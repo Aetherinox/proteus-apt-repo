@@ -103,7 +103,7 @@ Description: transitional package for Linux Standard Base init script functional
 
 Package: mysql-client
 Source: mysql-8.0
-Version: 8.0.36-0ubuntu0.23.10.1
+Version: 8.0.37-0ubuntu0.23.10.2
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 41
@@ -111,12 +111,12 @@ Depends: mysql-client-8.0
 Homepage: http://dev.mysql.com/
 Priority: 0
 Section: utils
-Filename: pool/main/m/mysql-8.0/mysql-client_8.0.36-0ubuntu0.23.10.1_all.deb
+Filename: pool/main/m/mysql-8.0/mysql-client_8.0.37-0ubuntu0.23.10.2_all.deb
 Size: 9438
-SHA512: 32a6f093a87d673999f3b3df4f163b591d92f74eae986b0e8fad527c769c4f64271a0d5fd5b9f37529c99d595bb919379e5512aca9130c1b4e5a708737acf6ac
-SHA256: faba554c7400feb15377b6a0d383fa2215e50883aa9109c0ed00e7fa07427f4c
-SHA1: 67f51d3c6927bb09e05b32f9ca856bc93aa498a6
-MD5sum: c55ce0813d806cfeaa718d97a64a60ad
+SHA512: 3356d9a1d253c5642209672f477a0b204ce7fe1575a9104c418ec2696a59ab92cd2e5da347647c7d4a0935fb31d16fdb89e25f31fc6ced7caaf684069df0bb31
+SHA256: 54d574c8b27d3be0584dbe7bda8fdecd8c0f0aa6ec5de6fc25afd97f6fb79262
+SHA1: 5ea17b4f13c05b1054174555d907081a6ad34e3d
+MD5sum: 9a2fe6a63e867fd319ca321557f1df45
 Description: MySQL database client (metapackage depending on the latest version)
  This is an empty package that depends on the current "best" version of
  mysql-client (currently mysql-client-8.0), as determined by the MySQL
@@ -156,7 +156,7 @@ Description: MySQL database common files, e.g. /etc/mysql/my.cnf
 
 Package: mysql-server
 Source: mysql-8.0
-Version: 8.0.36-0ubuntu0.23.10.1
+Version: 8.0.37-0ubuntu0.23.10.2
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 41
@@ -164,12 +164,12 @@ Depends: mysql-server-8.0
 Homepage: http://dev.mysql.com/
 Priority: 0
 Section: utils
-Filename: pool/main/m/mysql-8.0/mysql-server_8.0.36-0ubuntu0.23.10.1_all.deb
-Size: 9544
-SHA512: e692a79b84b74741e924658201c7a88bba8dbecb29a4bd6bd156576c4ed81a4939abd61a7bd488ebc7c95c8ffb88b12a736088bb7fb99f7cb3f5e149d36406c6
-SHA256: adfc650f7c863793f34b681dbc2da9e3aa2bcd980dae575512b52274e8174316
-SHA1: bf38d55f9ae728a6848f32de8fc7f2e394af7162
-MD5sum: fb3a1f569f8a42c1ad0356bc5b264efd
+Filename: pool/main/m/mysql-8.0/mysql-server_8.0.37-0ubuntu0.23.10.2_all.deb
+Size: 9546
+SHA512: 71a8ffed91fd8c71ced155bcc002916221e9df0ef5fbde235696c716de8eff927074dbc8e8b5e5857611707639a27746333b5c19c56d153563727edf03046938
+SHA256: adf8dc69bf4475cbd92894763bdb7deafa2c6f4c8c89f9b7fc6decc7d49d1649
+SHA1: 890556a930c5abfd50709a54d4041a64e3bb5086
+MD5sum: 92dd238c9a4a48be321ba90dc16e0a3e
 Description: MySQL database server (metapackage depending on the latest version)
  This is an empty package that depends on the current "best" version of
  mysql-server (currently mysql-server-8.0), as determined by the MySQL
@@ -182,6 +182,29 @@ Description: MySQL database server (metapackage depending on the latest version)
  language in the world. The main goals of MySQL are speed, robustness and
  ease of use.
 Original-Maintainer: Debian MySQL Maintainers <pkg-mysql-maint@lists.alioth.debian.org>
+
+Package: neofetch
+Version: 7.1.0-4
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Nobuhiro Iwamatsu <iwamatsu@debian.org>
+Installed-Size: 352
+Recommends: chafa, caca-utils, imagemagick, jp2a, libsixel-bin, w3m-img, pciutils
+Multi-Arch: foreign
+Homepage: https://github.com/dylanaraps/neofetch
+Priority: 0
+Section: utils
+Filename: pool/main/n/neofetch/neofetch_7.1.0-4_all.deb
+Size: 83664
+SHA512: 4a874d8e4458753ba04066ad30a1fbb727677c863d83fc7d49a1113a7eae699ce813bef0e719bd8624f39ef67cd9b56d36dfa1b21dfd28401215c351d5c172fe
+SHA256: 19402d7f2aebebf2755a6abbb9e5024196353f574f5c10cd7ea53241f8ae748e
+SHA1: 7994978ac40672d466e93872909e6641c968a0ff
+MD5sum: fa09d71047fb62d2dd7ecdc980db7ea2
+Description: Shows Linux System Information with Distribution Logo
+ Neofetch is a cross-platform and easy-to-use system information
+ command line script that collects your Linux system information
+ and display it on the terminal next to an image, it could be your
+ distributions logo or any ascii art of your choice.
 
 Package: network-manager-config-connectivity-ubuntu
 Source: network-manager
@@ -1717,4 +1740,26 @@ Description: Debian package repository producer
  signatures of the generated Package indices is supported.
  .
  This package also contains the changestool and rredtool helpers.
+
+Package: trash-cli
+Version: 0.23.2.13.2-1.1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Stefano Karapetsas <stefano@karapetsas.com>
+Installed-Size: 213
+Depends: python3-psutil, python3-six, python3:any, python3-pkg-resources
+Homepage: https://github.com/andreafrancia/trash-cli
+Priority: 0
+Section: utils
+Filename: pool/main/t/trash-cli/trash-cli_0.23.2.13.2-1.1_all.deb
+Size: 37610
+SHA512: 4c73795d379d5207829edc66aeb8a449f2467a6d613afff53a55244c7b24bf77ed7492c016706dc2989ee674892b23ffcdc5769276d0dd2ddbc937b24b619615
+SHA256: 7730cb12319d4bb3a02f2ff9a4b5cd1c0870bac77b5f6a5c540e22bd13385c12
+SHA1: 8241eb3a2657872bf31b42ee84ad0e5f6b7de0d5
+MD5sum: 2d2a728bd583e6f155cad3e41c2c9c18
+Description: command line trashcan utility
+ This package provides a command line interface trashcan utility
+ compliant with the FreeDesktop.org Trash Specification. It remembers
+ the name, original path, deletion date, and permissions of each trashed
+ file
 

@@ -109,20 +109,19 @@ Description: Fetches URLs for specified packages.
 
 Package: apt-utils
 Source: apt
-Version: 2.7.3
+Version: 2.7.3ubuntu0.1
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Original-Maintainer: APT Development Team <deity@lists.debian.org>
 Installed-Size: 672
-Depends: apt (= 2.7.3), libapt-pkg6.0 (>= 2.7.3), libc6 (>= 2.34), libdb5.3, libgcc-s1 (>= 3.3.1), libstdc++6 (>= 13.1)
+Depends: apt (= 2.7.3ubuntu0.1), libapt-pkg6.0 (>= 2.7.3ubuntu0.1), libc6 (>= 2.34), libdb5.3, libgcc-s1 (>= 3.3.1), libstdc++6 (>= 13.1)
 Priority: 0
 Section: utils
-Filename: pool/main/a/apt/apt-utils_2.7.3_amd64.deb
-Size: 216382
-SHA512: 99c5baec0d9cf17b5be956d4074cc91f6e5dbc8ad3a863f599799f29444e1dc06916b93129535965cea5728da04ab996c9b719fc75f73dfaf7fbc222504a205f
-SHA256: 24fffc596b05fbfea819c356666ea6adcb9cabef4c0564afcd54cf0a83d1405b
-SHA1: ace1b19876e0e46c5bcbdbc78ea08589f332356c
-MD5sum: 725e1bad9931b864f7f23389f997b5fa
+Filename: pool/main/a/apt/apt-utils_2.7.3ubuntu0.1_amd64.deb
+Size: 216620
+SHA512: 28c8b6799b0f6bea2a0f604b36d520079be8de33e7fbe1f691d8b23fb9df7052f53136f52a505029d0fd40ab6f3362032b3323f2de7a96f0296f756011d25e63
+SHA256: dbb58a0bd9e2083374147c924102b7843fa7d13735dcefb8449f1e34e2af2db9
+SHA1: 480846da3265082f3c87d82da03abc3d4637c471
+MD5sum: cb63da3af14aefd84ecc33b961f1b215
 Description: package management related utility programs
  This package contains some less used commandline utilities related
  to package management with APT.
@@ -132,6 +131,7 @@ Description: package management related utility programs
   * apt-ftparchive is used to create Packages and other index files
     needed to publish an archive of Debian packages
   * apt-sortpkgs is a Packages/Sources file normalizer.
+Original-Maintainer: APT Development Team <deity@lists.debian.org>
 
 Package: argon2
 Version: 0~20190702+dfsg-3
@@ -165,6 +165,99 @@ Description: memory-hard hashing function - utility
   * A parallelism degree, which defines the number of parallel threads
  .
  This package contains the argon2 tool for hashing data on the command-line.
+
+Package: clevis
+Version: 19-3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Christoph Biedl <debian.axhn@manchmal.in-ulm.de>
+Installed-Size: 89
+Depends: libc6 (>= 2.34), libjansson4 (>= 2.14), libjose0 (>= 10), libssl3 (>= 3.0.0), cracklib-runtime, curl, jose, libpwquality-tools, luksmeta
+Recommends: cryptsetup-bin
+Homepage: https://github.com/latchset/clevis
+Priority: 0
+Section: utils
+Filename: pool/main/c/clevis/clevis_19-3_amd64.deb
+Size: 24008
+SHA512: 15fab23008921d31ab0e1d45febb3d624e21c8829de3791ef727bcf0ceffd9108683b1cb6d2a8ee5d468349e38d2e27696014d78cb3097dd844094a48ffa0642
+SHA256: 8aacd7205b4bcfd31f196afe844fcfbe892931bf58901a6b20ad3f329666dc2a
+SHA1: b4cefdc901ffd2a6d6df4bcf7a3d71750d4d6a5d
+MD5sum: b5b5d55855208ae78fa667589ad0fc00
+Description: automated encryption framework
+ Clevis is a plugable framework for automated decryption. It can be used
+ to provide automated decryption of data or even automated unlocking of
+ LUKS volumes.
+ .
+ It supports tang and shamir secret sharing (SSS).
+
+Package: clevis-dracut
+Source: clevis
+Version: 19-3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Christoph Biedl <debian.axhn@manchmal.in-ulm.de>
+Installed-Size: 29
+Depends: clevis-systemd (= 19-3), dracut, dracut-network
+Homepage: https://github.com/latchset/clevis
+Priority: 0
+Section: utils
+Filename: pool/main/c/clevis/clevis-dracut_19-3_amd64.deb
+Size: 3416
+SHA512: 1037c49d35b3f341285a0997099b6fbf6c2811f569625e758560f286b6858c86cc70ca8448481d162de9e40230d44f46d6f36d229faab3c203d358f1445f6bf7
+SHA256: 2199cd2c49bdcb24ca9d0cd0f2e6e21216dcfbaa616aaf550f7ae40aa5bd5180
+SHA1: c54b6c715098dd0d6bafacedf027ec5ad5fe4e4e
+MD5sum: 73af8ba43ee36441ecb595b365ab569f
+Description: Clevis integration for dracut
+ Clevis is a plugable framework for automated decryption. This package
+ provides integration for dracut to automatically unlock LUKS encrypted
+ block devices in early boot.
+
+Package: clevis-tpm2
+Source: clevis
+Version: 19-3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Christoph Biedl <debian.axhn@manchmal.in-ulm.de>
+Installed-Size: 31
+Depends: clevis (= 19-3), tpm2-tools
+Recommends: cryptsetup-bin
+Homepage: https://github.com/latchset/clevis
+Priority: 0
+Section: utils
+Filename: pool/main/c/clevis/clevis-tpm2_19-3_amd64.deb
+Size: 7476
+SHA512: ed4c2d5ab79615bc8f36b365805698214831db28ca0c71945dc01a549219813e5f97c47709b10e15974d7cec591c098ad28e42760aec2dbf756f975d94496182
+SHA256: 77303eb1848b7341981681885446d42f55461339334bf6b02b866e9e2fa0ad62
+SHA1: f86391589b392d5cf7dadc24c1e75d39b7f0ee7c
+MD5sum: 3c3948d6384b98a0cbe255fd5314be2b
+Description: automated encryption framework, TPM2 support
+ Clevis is a plugable framework for automated decryption. It can be used
+ to provide automated decryption of data or even automated unlocking of
+ LUKS volumes.
+ .
+ This package provides the TPM2 pin.
+
+Package: clevis-udisks2
+Source: clevis
+Version: 19-3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Christoph Biedl <debian.axhn@manchmal.in-ulm.de>
+Installed-Size: 44
+Depends: libaudit1 (>= 1:2.2.1), libc6 (>= 2.34), libcryptsetup12 (>= 2:2.0), libglib2.0-0 (>= 2.36.0), libjansson4 (>= 2.14), libluksmeta0 (>= 8), libudisks2-0 (>= 2.0.0), adduser, clevis-luks (= 19-3), udisks2
+Homepage: https://github.com/latchset/clevis
+Priority: 0
+Section: utils
+Filename: pool/main/c/clevis/clevis-udisks2_19-3_amd64.deb
+Size: 10118
+SHA512: b9579704c9f92e80ee716d57d198a25f0462f86ef535ebd889a4cdd3f89b8443e6e3542de1e0e8069af4846e512653b6863b8170d069b602a3579184f7607438
+SHA256: 6ebc07f5073430f2299d264cd5ab2ca3bc4a590ab0f8869f114fda5f5cf4df9b
+SHA1: 1ab1c01dab8f157c5d66146b0346a5214ccaeae3
+MD5sum: d508b98ccbaa6e006f50d38883b740ca
+Description: UDisks2/Storaged integration for clevis
+ Clevis is a plugable framework for automated decryption. This package
+ provides automatic unlocking LUKS encrypted block devices in desktop
+ environments that use UDisks2 or storaged.
 
 Package: dialog
 Version: 1.3-20230209-1
@@ -284,6 +377,42 @@ SHA1: b3ecf8c7ac7afffc5c4b16cf90a5946483210ce4
 MD5sum: d6c4c37e14ee53930a73d30daa4d91bd
 Description: 
   A private YouTube client
+
+Package: git
+Version: 1:2.40.1-1ubuntu1.1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 21296
+Depends: libc6 (>= 2.38), libcurl3-gnutls (>= 7.56.1), libexpat1 (>= 2.0.1), libpcre2-8-0 (>= 10.34), zlib1g (>= 1:1.2.2), perl, liberror-perl, git-man (>> 1:2.40.1), git-man (<< 1:2.40.1-.)
+Recommends: ca-certificates, patch, less, ssh-client
+Suggests: gettext-base, git-daemon-run | git-daemon-sysvinit, git-doc, git-email, git-gui, gitk, gitweb, git-cvs, git-mediawiki, git-svn
+Breaks: bash-completion (<< 1:1.90-1), cogito (<= 0.18.2+), dgit (<< 5.1~), git-buildpackage (<< 0.6.5), git-el (<< 1:2.32.0~rc2-1~), gitosis (<< 0.2+20090917-7), gitpkg (<< 0.15), guilt (<< 0.33), openssh-client (<< 1:6.8), stgit (<< 0.15), stgit-contrib (<< 0.15)
+Provides: git-completion, git-core
+Multi-Arch: foreign
+Homepage: https://git-scm.com/
+Priority: 0
+Section: utils
+Filename: pool/main/g/git/git_2.40.1-1ubuntu1.1_amd64.deb
+Size: 3606982
+SHA512: 90ff3c9eb1181c4a46a3e251366c33c447a0a1c8796392591bc4d5d3a6d8b260ed8af53499d06f22f78e3be9a01ef996f46dd4b1c4418982e5fd30a9abaf22de
+SHA256: 84e99fff169bc5ce2d97eef64ad88b76f40f981fb0db208d6ea114d19f4ac758
+SHA1: da62c6f4cd57c516baba741f001942c3a7a19fb0
+MD5sum: 2c7313892b0b90c6798582fad61ab198
+Description: fast, scalable, distributed revision control system
+ Git is popular version control system designed to handle very large
+ projects with speed and efficiency; it is used for many high profile
+ open source projects, most notably the Linux kernel.
+ .
+ Git falls in the category of distributed source code management tools.
+ Every Git working directory is a full-fledged repository with full
+ revision tracking capabilities, not dependent on network access or a
+ central server.
+ .
+ This package provides the git main components with minimal dependencies.
+ Additional functionality, e.g. a graphical user interface and revision
+ tree visualizer, tools for interoperating with other VCS's, or a web
+ interface, is provided as separate git* packages.
+Original-Maintainer: Jonathan Nieder <jrnieder@gmail.com>
 
 Package: github-desktop
 Version: 3.4.2-linux1
@@ -481,6 +610,35 @@ Description: GNU privacy guard - signature verification tool
  used to make the signature are valid. There are no configuration
  files and only a few options are implemented.
 Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>
+
+Package: jose
+Version: 11-2
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Christoph Biedl <debian.axhn@manchmal.in-ulm.de>
+Installed-Size: 134
+Depends: libc6 (>= 2.34), libjansson4 (>= 2.10), libjose0 (>= 10)
+Homepage: https://github.com/latchset/jose
+Priority: 0
+Section: utils
+Filename: pool/main/j/jose/jose_11-2_amd64.deb
+Size: 49948
+SHA512: e1a25f357fe4a92f4be2a847dfbe5ecd45604b4804ef628f4d0ee066d5f129e22191199199e06873d83bd25f3f2d2536584b3293fbe34f0fa1cbad8ad91d540b
+SHA256: e172250c9326a98189aceaed9fa33c709f88ae8d813d430b3322e7ba81edc1fa
+SHA1: 4373862ab443b8bbd16b9c170ea68e8e007a6741
+MD5sum: 0bd751c535d06e0bd404711e2b47b73c
+Description: C implementation of Javascript Object Signing and Encryption standards
+ José is a C-language implementation of the Javascript Object Signing
+ and Encryption standards. Specifically, José aims towards implementing
+ the following standards:
+ .
+   RFC 7515 - JSON Web Signature (JWS)
+   RFC 7516 - JSON Web Encryption (JWE)
+   RFC 7517 - JSON Web Key (JWK)
+   RFC 7518 - JSON Web Algorithms (JWA)
+   RFC 7519 - JSON Web Token (JWT)
+   RFC 7520 - Examples of ... JOSE
+   RFC 7638 - JSON Web Key (JWK) Thumbprint
 
 Package: keyutils
 Version: 1.6.3-2
@@ -971,7 +1129,7 @@ Description: Fast LZ compression algorithm library - tool
 
 Package: mysql-client
 Source: mysql-8.0
-Version: 8.0.36-0ubuntu0.23.10.1
+Version: 8.0.37-0ubuntu0.23.10.2
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 41
@@ -979,12 +1137,12 @@ Depends: mysql-client-8.0
 Homepage: http://dev.mysql.com/
 Priority: 0
 Section: utils
-Filename: pool/main/m/mysql-8.0/mysql-client_8.0.36-0ubuntu0.23.10.1_all.deb
+Filename: pool/main/m/mysql-8.0/mysql-client_8.0.37-0ubuntu0.23.10.2_all.deb
 Size: 9438
-SHA512: 32a6f093a87d673999f3b3df4f163b591d92f74eae986b0e8fad527c769c4f64271a0d5fd5b9f37529c99d595bb919379e5512aca9130c1b4e5a708737acf6ac
-SHA256: faba554c7400feb15377b6a0d383fa2215e50883aa9109c0ed00e7fa07427f4c
-SHA1: 67f51d3c6927bb09e05b32f9ca856bc93aa498a6
-MD5sum: c55ce0813d806cfeaa718d97a64a60ad
+SHA512: 3356d9a1d253c5642209672f477a0b204ce7fe1575a9104c418ec2696a59ab92cd2e5da347647c7d4a0935fb31d16fdb89e25f31fc6ced7caaf684069df0bb31
+SHA256: 54d574c8b27d3be0584dbe7bda8fdecd8c0f0aa6ec5de6fc25afd97f6fb79262
+SHA1: 5ea17b4f13c05b1054174555d907081a6ad34e3d
+MD5sum: 9a2fe6a63e867fd319ca321557f1df45
 Description: MySQL database client (metapackage depending on the latest version)
  This is an empty package that depends on the current "best" version of
  mysql-client (currently mysql-client-8.0), as determined by the MySQL
@@ -1024,7 +1182,7 @@ Description: MySQL database common files, e.g. /etc/mysql/my.cnf
 
 Package: mysql-server
 Source: mysql-8.0
-Version: 8.0.36-0ubuntu0.23.10.1
+Version: 8.0.37-0ubuntu0.23.10.2
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 41
@@ -1032,12 +1190,12 @@ Depends: mysql-server-8.0
 Homepage: http://dev.mysql.com/
 Priority: 0
 Section: utils
-Filename: pool/main/m/mysql-8.0/mysql-server_8.0.36-0ubuntu0.23.10.1_all.deb
-Size: 9544
-SHA512: e692a79b84b74741e924658201c7a88bba8dbecb29a4bd6bd156576c4ed81a4939abd61a7bd488ebc7c95c8ffb88b12a736088bb7fb99f7cb3f5e149d36406c6
-SHA256: adfc650f7c863793f34b681dbc2da9e3aa2bcd980dae575512b52274e8174316
-SHA1: bf38d55f9ae728a6848f32de8fc7f2e394af7162
-MD5sum: fb3a1f569f8a42c1ad0356bc5b264efd
+Filename: pool/main/m/mysql-8.0/mysql-server_8.0.37-0ubuntu0.23.10.2_all.deb
+Size: 9546
+SHA512: 71a8ffed91fd8c71ced155bcc002916221e9df0ef5fbde235696c716de8eff927074dbc8e8b5e5857611707639a27746333b5c19c56d153563727edf03046938
+SHA256: adf8dc69bf4475cbd92894763bdb7deafa2c6f4c8c89f9b7fc6decc7d49d1649
+SHA1: 890556a930c5abfd50709a54d4041a64e3bb5086
+MD5sum: 92dd238c9a4a48be321ba90dc16e0a3e
 Description: MySQL database server (metapackage depending on the latest version)
  This is an empty package that depends on the current "best" version of
  mysql-server (currently mysql-server-8.0), as determined by the MySQL
@@ -1050,6 +1208,56 @@ Description: MySQL database server (metapackage depending on the latest version)
  language in the world. The main goals of MySQL are speed, robustness and
  ease of use.
 Original-Maintainer: Debian MySQL Maintainers <pkg-mysql-maint@lists.alioth.debian.org>
+
+Package: neofetch
+Version: 7.1.0-4
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Nobuhiro Iwamatsu <iwamatsu@debian.org>
+Installed-Size: 352
+Recommends: chafa, caca-utils, imagemagick, jp2a, libsixel-bin, w3m-img, pciutils
+Multi-Arch: foreign
+Homepage: https://github.com/dylanaraps/neofetch
+Priority: 0
+Section: utils
+Filename: pool/main/n/neofetch/neofetch_7.1.0-4_all.deb
+Size: 83664
+SHA512: 4a874d8e4458753ba04066ad30a1fbb727677c863d83fc7d49a1113a7eae699ce813bef0e719bd8624f39ef67cd9b56d36dfa1b21dfd28401215c351d5c172fe
+SHA256: 19402d7f2aebebf2755a6abbb9e5024196353f574f5c10cd7ea53241f8ae748e
+SHA1: 7994978ac40672d466e93872909e6641c968a0ff
+MD5sum: fa09d71047fb62d2dd7ecdc980db7ea2
+Description: Shows Linux System Information with Distribution Logo
+ Neofetch is a cross-platform and easy-to-use system information
+ command line script that collects your Linux system information
+ and display it on the terminal next to an image, it could be your
+ distributions logo or any ascii art of your choice.
+
+Package: net-tools
+Version: 2.10-0.1ubuntu3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 796
+Depends: libc6 (>= 2.34), libselinux1 (>= 3.1~)
+Multi-Arch: foreign
+Homepage: http://sourceforge.net/projects/net-tools/
+Priority: 0
+Section: utils
+Filename: pool/main/n/net-tools/net-tools_2.10-0.1ubuntu3_amd64.deb
+Size: 204052
+SHA512: eedcff5383285ce76988e0f5f5493cf83251fc986990eadaf26eed92979e607291656999a90b814a7985ec7316115fab88e866f8f65fc6770a6dca8a1abc230e
+SHA256: 53999a98dcbbe655affbd390ce589efa8eb9cb855fdc0199af55662297e005e5
+SHA1: 2f031eb2cc09c067a330908128f3e159263b207a
+MD5sum: 84f17f6ded814d9338b09cdcd45755b9
+Description: NET-3 networking toolkit
+ This package includes the important tools for controlling the network
+ subsystem of the Linux kernel.  This includes arp, ifconfig, netstat,
+ rarp, nameif and route.  Additionally, this package contains utilities
+ relating to particular network hardware types (plipconfig, slattach,
+ mii-tool) and advanced aspects of IP configuration (iptunnel, ipmaddr).
+ .
+ In the upstream package 'hostname' and friends are included. Those are
+ not installed by this package, since there is a special "hostname*.deb".
+Original-Maintainer: net-tools Team <team+net-tools@tracker.debian.org>
 
 Package: network-manager
 Version: 1.44.2-1ubuntu1.2
@@ -3987,12 +4195,12 @@ Description: location of genes from DNA sequence with hidden markov model
  Parser.
 
 Package: snapd
-Version: 2.60.4+23.10.1
+Version: 2.63+23.10
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Installed-Size: 107752
-Depends: adduser, apparmor (>= 2.10.95-0ubuntu2.2), ca-certificates, openssh-client, squashfs-tools, systemd, udev, libc6 (>= 2.38), libfuse3-3 (>= 3.12.0), liblzma5 (>= 5.1.1alpha+20110809), liblzo2-2 (>= 2.02), libudev1 (>= 183), zlib1g (>= 1:1.1.4), default-dbus-session-bus | dbus-session-bus
-Recommends: gnupg, fuse3 (>= 3.10.5-1) | fuse
+Installed-Size: 105272
+Depends: adduser, apparmor (>= 2.10.95-0ubuntu2.2), ca-certificates, fuse3 (>= 3.10.5-1) | fuse, openssh-client, squashfs-tools, systemd, udev, default-dbus-session-bus | dbus-session-bus, libc6 (>= 2.38), libfuse3-3 (>= 3.12.0), liblzma5 (>= 5.1.1alpha+20120614), liblzo2-2 (>= 2.02), libudev1 (>= 183), zlib1g (>= 1:1.1.4)
+Recommends: gnupg
 Suggests: zenity | kdialog
 Conflicts: snap (<< 2013-11-29-1ubuntu1)
 Breaks: snap-confine (<< 2.23), snapd-xdg-open (<= 0.0.0), ubuntu-core-launcher (<< 2.22), ubuntu-snappy (<< 1.9), ubuntu-snappy-cli (<< 1.9)
@@ -4001,12 +4209,12 @@ Built-Using: apparmor (= 4.0.0~alpha2-0ubuntu5), libcap2 (= 1:2.66-4ubuntu1), li
 Homepage: https://github.com/snapcore/snapd
 Priority: 0
 Section: utils
-Filename: pool/main/s/snapd/snapd_2.60.4+23.10.1_amd64.deb
-Size: 27270704
-SHA512: fd382352336e77a4220597446107cdb46aa5188b058c7f6db207cf3cbbba44e751027c7ef58372380a9894581a99e35f4ec42da0a5c80a98e4eafdad1599d579
-SHA256: 935878f259bdecb902fc04a83a2b7259de7ee1ebdf78355520165460ad5b26cf
-SHA1: f7bd434dc2228209a212d1c397f2580216cf0e29
-MD5sum: c49af48255b090160f29e3af00555055
+Filename: pool/main/s/snapd/snapd_2.63+23.10_amd64.deb
+Size: 27343736
+SHA512: e005b4a42c7cf57489c929a71ecb17f02bf81401ec26f6ff9689894566a68e21f007d64d9b27d98f9a009120cb1a52845b9d3d2f5a2571d81d06af3cc710040d
+SHA256: 28551166dbb9c351aa3b97b3cc27a9ddd0f143f9cd89725b4fa2dfe7c17ee1fb
+SHA1: d0abe8fef33314f460e679b2a10b9899175c808d
+MD5sum: df1e36df80ad324246b99d7e79bdd77d
 Description: Daemon and tooling that enable snap packages
  Install, configure, refresh and remove snap packages. Snaps are
  'universal' packages that work across many different Linux systems,
@@ -4015,24 +4223,91 @@ Description: Daemon and tooling that enable snap packages
  .
  Start with 'snap list' to see installed snaps.
 
-Package: wget
-Version: 1.21.3-1ubuntu1
+Package: tcptrack
+Version: 1.4.3-1
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Installed-Size: 932
-Depends: libc6 (>= 2.34), libidn2-0 (>= 0.6), libpcre2-8-0 (>= 10.22), libpsl5 (>= 0.16.0), libssl3 (>= 3.0.0~~alpha1), libuuid1 (>= 2.16), zlib1g (>= 1:1.1.4)
+Original-Maintainer: Chow Loong Jin <hyperair@debian.org>
+Installed-Size: 79
+Depends: libc6 (>= 2.34), libgcc-s1 (>= 3.3.1), libncurses6 (>= 6), libpcap0.8 (>= 0.9.8), libstdc++6 (>= 11), libtinfo6 (>= 6)
+Homepage: https://github.com/bchretien/tcptrack
+Priority: 0
+Section: utils
+Filename: pool/main/t/tcptrack/tcptrack_1.4.3-1_amd64.deb
+Size: 30110
+SHA512: 2b979213a2357b6d658c7303d76957336fa394933e4e33bc275067aa0e22e58786d4a0a96a586f6032d8b0c7e080bc8e84fb5bb2c9454fd3d913c8881e3f2ccf
+SHA256: fd742ccf9a59cca4e2a77477991b6afdd76de46222637782896b7987e852c1ad
+SHA1: ae9e4bfea3220def1ea91eaecad5704f51b5fffe
+MD5sum: 51d450806bb8832453c62a1da7541494
+Description: TCP connection tracker, with states and speeds
+ tcptrack is a sniffer which displays information about TCP connections
+ it sees on a network interface. It passively watches for connections
+ on the network interface, keeps track of their state and displays a
+ list of connections in a manner similar to the unix 'top' command. It
+ displays  source and destination addresses and ports, connection
+ state, idle time, and bandwidth usage.
+
+Package: trash-cli
+Version: 0.23.2.13.2-1.1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Stefano Karapetsas <stefano@karapetsas.com>
+Installed-Size: 213
+Depends: python3-psutil, python3-six, python3:any, python3-pkg-resources
+Homepage: https://github.com/andreafrancia/trash-cli
+Priority: 0
+Section: utils
+Filename: pool/main/t/trash-cli/trash-cli_0.23.2.13.2-1.1_all.deb
+Size: 37610
+SHA512: 4c73795d379d5207829edc66aeb8a449f2467a6d613afff53a55244c7b24bf77ed7492c016706dc2989ee674892b23ffcdc5769276d0dd2ddbc937b24b619615
+SHA256: 7730cb12319d4bb3a02f2ff9a4b5cd1c0870bac77b5f6a5c540e22bd13385c12
+SHA1: 8241eb3a2657872bf31b42ee84ad0e5f6b7de0d5
+MD5sum: 2d2a728bd583e6f155cad3e41c2c9c18
+Description: command line trashcan utility
+ This package provides a command line interface trashcan utility
+ compliant with the FreeDesktop.org Trash Specification. It remembers
+ the name, original path, deletion date, and permissions of each trashed
+ file
+
+Package: tree
+Version: 2.1.1-1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Florian Ernst <florian@debian.org>
+Installed-Size: 108
+Depends: libc6 (>= 2.34)
+Homepage: http://mama.indstate.edu/users/ice/tree/
+Priority: 0
+Section: utils
+Filename: pool/main/t/tree/tree_2.1.1-1_amd64.deb
+Size: 46684
+SHA512: d4b3c074af98648174433809481a38c805eccc6634b281bb1aa4d5752b645fa1455a826b3ac47ec8773d8886edcaeb3d319fc5653bb4a2dbe375feeb27e51b09
+SHA256: 83ab0babc347bba4d0c3d5bc685d95e204c52d28c158eff6dfa889c5e687845a
+SHA1: d1909797a683f5c9591374327ae61d8a75e9f9fd
+MD5sum: 4c0240182d07f14f4bbfd78192ab86d2
+Description: displays an indented directory tree, in color
+ Tree is a recursive directory listing command that produces a depth indented
+ listing of files, which is colorized ala dircolors if the LS_COLORS environment
+ variable is set and output is to tty.
+
+Package: wget
+Version: 1.21.3-1ubuntu1.1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 916
+Depends: libc6 (>= 2.38), libidn2-0 (>= 0.6), libpcre2-8-0 (>= 10.22), libpsl5 (>= 0.16.0), libssl3 (>= 3.0.0), libuuid1 (>= 2.16), zlib1g (>= 1:1.1.4)
 Recommends: ca-certificates
 Conflicts: wget-ssl
 Multi-Arch: foreign
 Homepage: https://www.gnu.org/software/wget/
 Priority: 0
 Section: utils
-Filename: pool/main/w/wget/wget_1.21.3-1ubuntu1_amd64.deb
-Size: 334280
-SHA512: bed09ed02ebe8a6be4d1cb5a1c7e43a218b6e6921a078cb994ecd554abf40fc5759004aae71cfc0b00cc9d7d6912a3cfb8eebb8a9cfe791b8da7df17b192adde
-SHA256: f4bfb999409f99037c52ffa557fef3e8b02c9c128db9c2cccd89c491ff77a8b9
-SHA1: d621e3fae26ec9b5b218515cb02b7b687f338463
-MD5sum: 3f9eb1194ce2a6db593999c694fb9e86
+Filename: pool/main/w/wget/wget_1.21.3-1ubuntu1.1_amd64.deb
+Size: 334778
+SHA512: 98b5a7be82bc02840f7644ccbc1505e1f4c60fd812b82d2b63fd6fd49786fad0a094ddc69d41f469e5407236eaea2fda9e02f761b59134d1f6881203fe9945e7
+SHA256: 71f2a68379e4e9e5fb19a0247dfd7fc9afe11e88fba1d7bdbeb62243ae68424b
+SHA1: 70eb7327c4617f0d12dc107e8317bd6bbf9c9243
+MD5sum: 68b28971715da258f66378cff46eef33
 Description: retrieves files from the web
  Wget is a network utility to retrieve files from the web
  using HTTP(S) and FTP, the two most widely used internet
