@@ -3468,6 +3468,12 @@ app_run_gh_start()
 
         cd ${app_dir}
 
+        #   ensure git config is updated
+        app_run_github_precheck
+
+        #   add origin
+        git remote add origin https://github.com/${GITHUB_NAME}/${app_repo_apt}.git
+
         #   can use -u, --set-upstream
         git push --set-upstream origin ${app_repo_branch}
 
@@ -3480,7 +3486,6 @@ app_run_gh_start()
         #   must have at least one commit for this to work
         #   -m / --move flag to rename a branch in our local repository
         git branch -m ${app_repo_branch}
-        git remote add origin https://github.com/${GITHUB_NAME}/${app_repo_apt}.git
 
         # #
         #   .app folder
@@ -3506,9 +3511,6 @@ sudo tee ${manifest_dir}/${app_repo_dist_sel}.json >/dev/null <<EOF
     "last_update_ts":   "${DATE_TS}"
 }
 EOF
-
-        #   ensure git config is updated
-        app_run_github_precheck
 
         git_pull=$( git pull origin ${app_repo_branch} --allow-unrelated-histories)
 
