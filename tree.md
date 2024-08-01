@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `08.01.2024 21:23:08`
+Last generated on `08.01.2024 22:54:23`
 
 <br />
 
@@ -141,10 +141,8 @@ Last generated on `08.01.2024 21:23:08`
 │           │   ├── apt-transport-https_2.4.12_all.deb
 │           │   ├── gnome-keysign_1.2.0-3_all.deb
 │           │   ├── lsb-base_11.1.0ubuntu4_all.deb
-│           │   ├── mysql-client_8.0.37-0ubuntu0.22.04.3_all.deb
 │           │   ├── mysql-client_8.0.39-0ubuntu0.22.04.1_all.deb
 │           │   ├── mysql-common_5.8+1.0.8_all.deb
-│           │   ├── mysql-server_8.0.37-0ubuntu0.22.04.3_all.deb
 │           │   ├── mysql-server_8.0.39-0ubuntu0.22.04.1_all.deb
 │           │   ├── neofetch_7.1.0-3_all.deb
 │           │   ├── networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
@@ -159,7 +157,6 @@ Last generated on `08.01.2024 21:23:08`
 │           │   ├── php-ast-all-dev_1.1.0-1+ubuntu22.04.1+deb.sury.org+1_all.deb
 │           │   ├── php-bcmath_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
 │           │   ├── php-bz2_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
-│           │   ├── php-cas_1.3.8-1_all.deb
 │           │   ├── php-cas_1.3.8-1ubuntu0.22.04.1_all.deb
 │           │   ├── php-cgi_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
 │           │   ├── php-cli_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb
@@ -204,12 +201,6 @@ Last generated on `08.01.2024 21:23:08`
 │           │   ├── apt-url_1.0.0-2_amd64.deb
 │           │   ├── apt-utils_2.4.12_amd64.deb
 │           │   ├── argon2_0~20171227-0.3_amd64.deb
-│           │   ├── Bitwarden-2024.6.1-amd64.deb
-│           │   ├── Bitwarden-2024.6.2-amd64.deb
-│           │   ├── Bitwarden-2024.6.3-amd64.deb
-│           │   ├── Bitwarden-2024.6.4-amd64.deb
-│           │   ├── Bitwarden-2024.7.0-amd64.deb
-│           │   ├── Bitwarden-2024.7.1-amd64.deb
 │           │   ├── clevis_18-1ubuntu1_amd64.deb
 │           │   ├── clevis-dracut_18-1ubuntu1_amd64.deb
 │           │   ├── clevis-tpm2_18-1ubuntu1_amd64.deb
@@ -217,13 +208,8 @@ Last generated on `08.01.2024 21:23:08`
 │           │   ├── dialog_1.3-20211214-1_amd64.deb
 │           │   ├── firefox_1snap1-0ubuntu2_amd64.deb
 │           │   ├── flatpak_1.14.6-1~flatpak1~22.04.1_amd64.deb
-│           │   ├── freetube_0.20.0_amd64.deb
-│           │   ├── freetube_0.21.0_amd64.deb
-│           │   ├── freetube_0.21.1_amd64.deb
 │           │   ├── freetube_0.21.2_amd64.deb
 │           │   ├── git_2.34.1-1ubuntu1.11_amd64.deb
-│           │   ├── GitHubDesktop-linux-amd64-3.3.18-linux1.deb
-│           │   ├── GitHubDesktop-linux-amd64-3.4.0-linux1.deb
 │           │   ├── GitHubDesktop-linux-amd64-3.4.2-linux1.deb
 │           │   ├── gnome-keyring_40.0-3ubuntu3_amd64.deb
 │           │   ├── gnome-shell-extension-manager_0.3.0-0ubuntu2.1_amd64.deb
@@ -263,8 +249,6 @@ Last generated on `08.01.2024 21:23:08`
 │           │   ├── nginx-extras_1.18.0-6ubuntu14.4_amd64.deb
 │           │   ├── nginx-full_1.18.0-6ubuntu14.4_amd64.deb
 │           │   ├── nginx-light_1.18.0-6ubuntu14.4_amd64.deb
-│           │   ├── obsidian_1.6.3_amd64.deb
-│           │   ├── obsidian-1.6.5-amd64.deb
 │           │   ├── obsidian_1.6.7_amd64.deb
 │           │   ├── opengist_1.7.3_amd64.deb
 │           │   ├── open-vm-tools_12.3.5-3~ubuntu0.22.04.1_amd64.deb
@@ -312,33 +296,27 @@ Last generated on `08.01.2024 21:23:08`
 │           │   ├── php-yac_2.3.1++-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb
 │           │   ├── php-yaml_2.2.3-2+ubuntu22.04.1+deb.sury.org+1_amd64.deb
 │           │   ├── php-zmq_1.1.3-24+ubuntu22.04.1+deb.sury.org+1_amd64.deb
+│           │   ├── reprepro_5.4.4-1_amd64.deb
 │           │   ├── snap_2013-11-29-11_amd64.deb
 │           │   ├── snapd_2.63+22.04_amd64.deb
 │           │   ├── snapd_2.63+22.04ubuntu0.1_amd64.deb
 │           │   ├── tcptrack_1.4.3-1_amd64.deb
 │           │   ├── tree_2.0.2-1_amd64.deb
-│           │   ├── wget_1.21.2-2ubuntu1.1_amd64.deb
-│           │   └── wget_1.21.2-2ubuntu1_amd64.deb
-│           └── arm64
-│               ├── apt-url_1.0.0-2_arm64.deb
-│               ├── freetube_0.20.0_arm64.deb
-│               ├── freetube_0.21.0_arm64.deb
-│               ├── freetube_0.21.1_arm64.deb
-│               ├── freetube_0.21.2_arm64.deb
-│               ├── GitHubDesktop-linux-arm64-3.3.18-linux1.deb
-│               ├── GitHubDesktop-linux-arm64-3.4.0-linux1.deb
-│               ├── GitHubDesktop-linux-arm64-3.4.2-linux1.deb
-│               ├── makedeb-beta_16.1.0-beta1_arm64_jammy.deb
-│               └── opengist_1.7.3_arm64.deb
+│           │   └── wget_1.21.2-2ubuntu1.1_amd64.deb
+│           ├── arm64
+│           │   ├── apt-url_1.0.0-2_arm64.deb
+│           │   ├── freetube_0.21.2_arm64.deb
+│           │   ├── GitHubDesktop-linux-arm64-3.4.2-linux1.deb
+│           │   ├── makedeb-beta_16.1.0-beta1_arm64_jammy.deb
+│           │   ├── opengist_1.7.3_arm64.deb
+│           │   └── reprepro_5.4.4-1_arm64.deb
+│           └── i386
+│               └── reprepro_5.4.4-1_i386.deb
 ├── logs
 │   ├── repos
-│   │   ├── focal.log
-│   │   ├── jammy.log
-│   │   ├── lunar.log
-│   │   └── mantic.log
+│   │   └── jammy.log
 │   ├── proteus-git-080124.log
-│   ├── proteus-git-080124.log.pipe
-│   └── proteus-git-service-080124.log
+│   └── proteus-git-080124.log.pipe
 ├── pool
 │   └── main
 │       ├── a
@@ -1382,16 +1360,11 @@ Last generated on `08.01.2024 21:23:08`
 │       └── z
 │           └── zorin-pro-layouts
 │               └── zorin-pro-layouts_1.0.0-3_all.deb
-├── .secrets
-│   ├── .passwd
-│   ├── .pat_github
-│   └── .pat_gitlab
 ├── .gitattributes
 ├── .gitignore
 ├── proteus-git.sh
 ├── README.md
-├── secrets.sh
 └── tree.md
 
-205 directories, 1178 files
+205 directories, 1151 files
 ```
