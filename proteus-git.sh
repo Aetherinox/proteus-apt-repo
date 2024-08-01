@@ -713,7 +713,6 @@ opt_report()
     exit 1
 }
 
-
 # #
 #   command-line options
 #
@@ -866,17 +865,16 @@ fi
 #   DEFINE > App repo paths and commands
 # #
 
-app_repo_author="Aetherinox"
 app_repo="proteus-git"
 app_repo_branch="main"
 app_repo_user=$( git config --global --get-all user.name )
 app_repo_email=$( git config --global --get-all user.email )
 app_repo_apt="proteus-apt-repo"
 app_repo_apt_pkg="aetherinox-${app_repo_apt}-archive"
-app_repo_url="https://github.com/${app_repo_author}/${app_repo}"
-app_repo_apt_url="https://github.com/${app_repo_author}/${app_repo_apt}"
-app_repo_mnfst="https://raw.githubusercontent.com/${app_repo_author}/${app_repo}/${app_repo_branch}/manifest.json"
-app_repo_script="https://raw.githubusercontent.com/${app_repo_author}/${app_repo}/BRANCH/setup.sh"
+app_repo_url="https://github.com/${GITHUB_NAME}/${app_repo}"
+app_repo_apt_url="https://github.com/${GITHUB_NAME}/${app_repo_apt}"
+app_repo_mnfst="https://raw.githubusercontent.com/${GITHUB_NAME}/${app_repo}/${app_repo_branch}/manifest.json"
+app_repo_script="https://raw.githubusercontent.com/${GITHUB_NAME}/${app_repo}/BRANCH/setup.sh"
 
 # #
 #   DEFINE > Exports
@@ -1420,14 +1418,14 @@ if [ -z "${checkgit_signing}" ] || [ "${checkgit_signing}" == "!" ]; then
 
     checkgit_signing=$( git config --global --get-all user.signingKey )
     if [ -z "${checkgit_signing}" ]; then
-        echo
+        echo -e
         echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Could not add the above entries to ${YELLOW}${HOME}/.gitconfig${NORMAL}"
         echo -e "  ${BOLD}${WHITE}You will need to manually add these entries.${WHITE}:${NORMAL}"
-        echo
+        echo -e
     else
-        echo
+        echo -e
         echo -e "  ${BOLD}${GREEN}SUCCESS  ${WHITE}Entries added to ${YELLOW}${HOME}/.gitconfig${NORMAL}"
-        echo
+        echo -e
     fi
 fi
 
@@ -1488,11 +1486,11 @@ line_uncomment()
 Logs_Begin()
 {
     if [ $OPT_NOLOG ] ; then
-        echo
-        echo
+        echo -e
+        echo -e
         printf '%-50s %-5s' "    Logging for this package has been disabled." ""
-        echo
-        echo
+        echo -e
+        echo -e
         sleep 3
     else
         mkdir -p $LOGS_DIR
@@ -1889,7 +1887,7 @@ app_update()
     begin "Updating from branch [${repo_branch}]"
 
     sleep 1
-    echo
+    echo -e
 
     printf '%-50s %-5s' "    |--- Downloading update" ""
     sleep 1
@@ -1912,8 +1910,7 @@ app_update()
         sudo chmod u+x ${app_file_proteus} >> ${LOGS_FILE} 2>&1
     fi
     echo -e "[ ${STATUS_OK} ]"
-
-    echo
+    echo -e
 
     sleep 2
     echo -e "  ${BOLD}${GREEN}Update Complete!${NORMAL}" >&2
@@ -1945,22 +1942,20 @@ fi
 
 if [ ! -d .git ]; then
 
-    echo
-    echo
+    echo -e
     echo -e "  ${ORANGE}Error${WHITE}"
     echo -e "  "
     echo -e "  ${WHITE}Folder ${YELLOW}.git${NORMAL} does not exist."
     echo -e "  ${WHITE}Must clone ${YELLOW}${app_repo_apt_url}${NORMAL} first."
     echo -e
     echo -e "  Couldn't find .git folder in ${app_dir}"
-    echo
-    echo
+    echo -e
 
     app_run_github_precheck
 
     # git clone -b main https://github.com/Aetherinox/proteus-apt-repo.git
     git init --initial-branch=${app_repo_branch}
-    git remote add origin https://github.com/${app_repo_author}/${app_repo_apt}.git
+    git remote add origin https://github.com/${GITHUB_NAME}/${app_repo_apt}.git
     git fetch
     git checkout origin/main -b main
 
@@ -1973,7 +1968,7 @@ if [ ! -d .git ]; then
     # #
 
     git commit -S -m "New Server Addition"
-    git pull https://${GITHUB_NAME}:${CSI_PAT_GITHUB}@github.com/${app_repo_author}/${app_repo_apt}.git
+    git pull https://${GITHUB_NAME}:${CSI_PAT_GITHUB}@github.com/${GITHUB_NAME}/${app_repo_apt}.git
 
     # git remote add origin https://github.com/Aetherinox/${${app_repo_apt}}.git
     # git pull origin ${app_repo_branch} --allow-unrelated-histories
@@ -2062,7 +2057,7 @@ app_setup()
     #   Missing proteus-apt-repo gpg key
     #
     #   NOTE:   apt-key has been deprecated
-    #           sudo add-apt-repository -y "deb [arch=amd64] https://raw.githubusercontent.com/${app_repo_author}/${app_repo_apt}/master focal main" >> $LOGS_FILE 2>&1
+    #           sudo add-apt-repository -y "deb [arch=amd64] https://raw.githubusercontent.com/${GITHUB_NAME}/${app_repo_apt}/master focal main" >> $LOGS_FILE 2>&1
     # #
 
     if ! [ -f "/usr/share/keyrings/${app_repo_apt_pkg}.gpg" ]; then
@@ -2106,17 +2101,17 @@ app_setup()
     # #
 
     if [ -z "${GPG_KEY}" ]; then
-        echo
+        echo -e
         echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}GPG Key not specified${NORMAL}"
         echo -e "  ${BOLD}${WHITE}Must create ${FUCHSIA}secrets.sh${WHITE} file and define your GPG key.${NORMAL}"
         echo
         echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GPG_KEY=${WHITE}XXXXXXXX${NORMAL}"
-        echo
+        echo -e
 
         printf "  Press any key to abort ... ${NORMAL}"
         read -n 1 -s -r -p ""
-        echo
-        echo
+        echo -e
+        echo -e
 
         set +m
         trap "kill -9 $app_pid 2> /dev/null" `seq 0 15`
@@ -2130,22 +2125,20 @@ app_setup()
     else
         gpg_id=$( gpg --list-secret-keys --keyid-format=long | grep $GPG_KEY )
         if [[ $? == 0 ]]; then 
-            echo
+            echo -e
             echo -e "  ${WHITE}GPG key ${GREEN}${GPG_KEY}${NORMAL} found."
-            echo
+            echo -e
 
             bGPGLoaded=true
 
             sleep 5
         else
-            echo
-            echo
+            echo -e
             echo -e "  ${ORANGE}Error${WHITE}"
             echo -e "  "
             echo -e "  ${WHITE}Specified GPG key ${YELLOW}${GPG_KEY}${NORMAL} not found in GnuPG key store."
             echo -e "  ${WHITE}Searching ${YELLOW}$app_dir/.gpg/${NORMAL} for a GPG key to import."
-            echo
-            echo
+            echo -e
 
             sleep 1
 
@@ -2154,29 +2147,29 @@ app_setup()
                 gpg --import $gpg_file
                 bGPGLoaded=true
 
-                echo
+                echo -e
                 echo -e "  ${WHITE}Found ${YELLOW}$app_dir/.gpg/${gpg_file}${NORMAL} to import."
-                echo
+                echo -e
             else
                 if [ -z "${OPT_DLPKG_ONLY_TEST}" ]; then
-                    echo
+                    echo -e
                     echo -e "  ${WHITE}No GPG keys found to import. ${RED}Aborting${NORMAL}"
-                    echo
+                    echo -e
 
                     set +m
                     trap "kill -9 $app_pid 2> /dev/null" `seq 0 15`
                     kill $app_pid
                     set -m
                 else
-                    echo
+                    echo -e
                     echo -e "  ${WHITE}No GPG keys found to import. Since you are in ${YELLOW}--onlyTest${NORMAL} mode, ${YELLOW}Skipping${NORMAL}"
-                    echo
+                    echo -e
                 fi
             fi
 
             printf "  Press any key to continue ... ${NORMAL}"
             read -n 1 -s -r -p ""
-            echo
+            echo -e
         fi
     fi
 
@@ -2277,13 +2270,13 @@ app_setup()
     # #
 
     if [ "$bMissingGPG" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
-        printf "%-50s %-5s\n" "${TIME}      Adding ${app_repo_author} GPG key: [https://github.com/${app_repo_author}.gpg]" | tee -a "${LOGS_FILE}" >/dev/null
-        printf '%-50s %-5s' "    |--- Adding github.com/${app_repo_author}.gpg" ""
+        printf "%-50s %-5s\n" "${TIME}      Adding ${GITHUB_NAME} GPG key: [https://github.com/${GITHUB_NAME}.gpg]" | tee -a "${LOGS_FILE}" >/dev/null
+        printf '%-50s %-5s' "    |--- Adding github.com/${GITHUB_NAME}.gpg" ""
 
         sleep 0.5
 
         if [ -z "${OPT_DEV_NULLRUN}" ]; then
-            sudo wget -qO - "https://github.com/${app_repo_author}.gpg" | sudo gpg --batch --yes --dearmor -o "/usr/share/keyrings/${app_repo_apt_pkg}.gpg" >/dev/null
+            sudo wget -qO - "https://github.com/${GITHUB_NAME}.gpg" | sudo gpg --batch --yes --dearmor -o "/usr/share/keyrings/${app_repo_apt_pkg}.gpg" >/dev/null
         fi
 
         sleep 0.5
@@ -2369,13 +2362,13 @@ app_setup()
     # #
 
     if [ "$bMissingRepo" = true ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
-        printf "%-50s %-5s\n" "${TIME}      Registering ${app_repo_apt}: https://raw.githubusercontent.com/${app_repo_author}/${app_repo_apt}/${app_repo_branch}" | tee -a "${LOGS_FILE}" >/dev/null
+        printf "%-50s %-5s\n" "${TIME}      Registering ${app_repo_apt}: https://raw.githubusercontent.com/${GITHUB_NAME}/${app_repo_apt}/${app_repo_branch}" | tee -a "${LOGS_FILE}" >/dev/null
         printf '%-50s %-5s' "    |--- Registering ${app_repo_apt}" ""
 
         sleep 0.5
 
         if [ -z "${OPT_DEV_NULLRUN}" ]; then
-            echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/${app_repo_apt_pkg}.gpg] https://raw.githubusercontent.com/${app_repo_author}/${app_repo_apt}//${app_repo_branch} $(lsb_release -cs) ${app_repo_branch}" | sudo tee /etc/apt/sources.list.d/${app_repo_apt_pkg}.list >/dev/null
+            echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/${app_repo_apt_pkg}.gpg] https://raw.githubusercontent.com/${GITHUB_NAME}/${app_repo_apt}//${app_repo_branch} $(lsb_release -cs) ${app_repo_branch}" | sudo tee /etc/apt/sources.list.d/${app_repo_apt_pkg}.list >/dev/null
         fi
 
         sleep 0.5
@@ -2550,7 +2543,7 @@ app_setup()
     fi
 
     printf '%-57s' "    |--- Import GPG configs into ${gpgconfig_file}"
-
+    sleep 1
 sudo tee ${gpgconfig_file} << EOF > /dev/null
 enable-putty-support
 enable-ssh-support
@@ -2564,6 +2557,7 @@ allow-loopback-pinentry
 allow-preset-passphrase
 pinentry-timeout 0
 EOF
+    echo -e "[ ${STATUS_OK} ]"
 
     printf '%-57s' "    |--- Set ownership to ${USER}"
     sleep 1
@@ -2577,7 +2571,6 @@ EOF
     sleep 1
     gpgconf --kill gpg-agent
     echo -e "[ ${STATUS_OK} ]"
-
 
     sleep 0.5
 
@@ -2650,11 +2643,9 @@ app_run_dl_aptget()
 
     # #
     #   add countdown to the num of packages to install
-    #   add +1 so we're not hitting 0
     # #
 
     count=${#lst_pkgs_sorted[@]}
-    local countNow=count
 
     # #
     #   Begin
@@ -2665,10 +2656,10 @@ app_run_dl_aptget()
 
     # #
     #   Create main folders for architecture
-    #   all, amd64, arm54
+    #   all, amd64, arm54, i386
     # #
 
-    mkdir -p ${app_dir_storage}/{all,amd64,arm64}
+    mkdir -p ${app_dir_storage}/{all,amd64,arm64,i386}
 
     # #
     #   set new package
@@ -2758,6 +2749,9 @@ app_run_dl_aptget()
             # #
             #   run package through apt-url
             #   this returns a multi-line result which needs broken up into two values
+            #
+            #   an alternative to apt-url is using
+            #       apt download --print-uris apt-move:all
             # #
 
             apturl_exit_code="0"
@@ -3108,14 +3102,14 @@ app_run_dl_lastver()
     # #
 
     begin "Github Packages [ $count ]"
-    echo
+    echo -e
 
     # #
     #   Create main folders for architecture
-    #   all, amd64, arm54
+    #   all, amd64, arm54, i386
     # #
 
-    mkdir -p ${app_dir_storage}/{all,amd64,arm64}
+    mkdir -p ${app_dir_storage}/{all,amd64,arm64,i386}
 
     # #
     #   set new package
@@ -3547,7 +3541,7 @@ sudo tee ${manifest_dir}/${app_repo_dist_sel}.json >/dev/null <<EOF
 {
     "name":             "${app_title}",
     "version":          "$(get_version)",
-    "author":           "${app_repo_author}",
+    "author":           "${GITHUB_NAME}",
     "description":      "${app_about}",
     "distrib":          "${app_repo_dist_sel}",
     "url":              "${app_repo_url}",
@@ -3642,7 +3636,7 @@ app_run_gh_end()
         sleep 1
 
         # can use -u, --set-upstream
-        git push --set-upstream origin ${app_repo_branch}
+        git push https://${CSI_PAT_GITHUB}@github.com/${GITHUB_NAME}/${app_repo_apt}
 
     fi # end devnull
 }
@@ -3675,7 +3669,7 @@ sudo tee ${manifest_dir}/${app_repo_dist_sel}.json >/dev/null <<EOF
 {
     "name":             "${app_title}",
     "version":          "$(get_version)",
-    "author":           "${app_repo_author}",
+    "author":           "${GITHUB_NAME}",
     "description":      "${app_about}",
     "distrib":          "${app_repo_dist_sel}",
     "url":              "${app_repo_url}",
@@ -3693,7 +3687,7 @@ EOF
     tree -a -I ".git" --dirsfirst -J > ${manifest_dir}/tree.json
 
     #   useful for Gitea with HTML rendering plugin, not useful for Github
-    #   tree -a --dirsfirst -I '.git' -H https://github.com/${app_repo_author}/${app_repo}/src/branch/$app_repo_branch/ -o $app_dir/.data/tree.html
+    #   tree -a --dirsfirst -I '.git' -H https://github.com/${GITHUB_NAME}/${app_repo}/src/branch/$app_repo_branch/ -o $app_dir/.data/tree.html
 
     # #
     #   tree.md content
