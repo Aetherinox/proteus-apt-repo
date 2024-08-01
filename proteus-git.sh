@@ -383,6 +383,7 @@ incoming/
 .env
 sources-*.list
 .pipe
+/*.deb
 
 # ----------------------------------------
 # Logs
@@ -3568,6 +3569,9 @@ app_run_gh_end()
     if [ -z "${OPT_DEV_NULLRUN}" ] && [ -z "${OPT_DLPKG_ONLY_TEST}" ]; then
 
         cd ${app_dir}
+
+        echo -e "  ${GREYL}Cleaning up left-over .deb: ${YELLOW}${app_dir}/*.deb${WHITE}"
+        rm "${app_dir}/*.deb" >/dev/null
 
         app_run_github_precheck
 
