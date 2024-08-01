@@ -1299,13 +1299,22 @@ app_run_github_precheck( )
 {
     echo -e "  ${GREYL}Configuring git config${WHITE}"
 
+    # #
     #   delete lock
+    # #
+
     rm -f "${app_dir}.git/index.lock"
 
+    # #
     #   set credential.helper
+    # #
+
     git config --global credential.helper store
 
+    # #
     #   set default action for conflicts
+    # #
+
     git config pull.rebase false
 
     # #
@@ -1332,9 +1341,31 @@ app_run_github_precheck( )
         git config --global --add safe.directory ${app_dir}
     fi
 
+    # #
+    #   default branch > main
+    # #
+
     git config --global init.defaultBranch ${app_repo_branch}
+
+    # #
+    #   username / email
+    # #
+
     git config --global user.name ${GITHUB_NAME}
     git config --global user.email ${GITHUB_EMAIL}
+
+    # #
+    #   init
+    # #
+
+    git config --global init.defaultBranch ${app_repo_branch}
+
+    # #
+    #   http
+    # #
+
+    git config --global http.postBuffer 524288000
+    git config --global http.lowSpeedLimit 0
 }
 
 # #
@@ -1359,12 +1390,22 @@ if [ -z "${checkgit_signing}" ] || [ "${checkgit_signing}" == "!" ]; then
     echo -e "  ${BOLD}${WHITE}    ${GREYL}[tag]${NORMAL}"
     echo -e "  ${BOLD}${WHITE}         ${BLUE}forceSignAnnotated${WHITE} = true${NORMAL}"
     echo
+    echo -e "  ${BOLD}${WHITE}    ${GREYL}[init]${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}         ${BLUE}defaultBranch${WHITE} = main${NORMAL}"
+    echo
+    echo -e "  ${BOLD}${WHITE}    ${GREYL}[http]${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}         ${BLUE}postBuffer${WHITE} = 524288000${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}         ${BLUE}lowSpeedLimit${WHITE} = 0${NORMAL}"
+    echo
 
     git config --global gpg.program gpg
     git config --global commit.gpgsign true
     git config --global tag.forceSignAnnotated true
     git config --global user.signingkey ${GPG_KEY}!
     git config --global credential.helper store
+    git config --global init.defaultBranch ${app_repo_branch}
+    git config --global http.postBuffer 524288000
+    git config --global http.lowSpeedLimit 0
 
     sleep 1
 
@@ -1380,12 +1421,12 @@ if [ -z "${checkgit_signing}" ] || [ "${checkgit_signing}" == "!" ]; then
     checkgit_signing=$( git config --global --get-all user.signingKey )
     if [ -z "${checkgit_signing}" ]; then
         echo
-        echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Could not add the above entries to ${YELLOW}/home/${USER}/.gitconfig${NORMAL}"
+        echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Could not add the above entries to ${YELLOW}${HOME}/.gitconfig${NORMAL}"
         echo -e "  ${BOLD}${WHITE}You will need to manually add these entries.${WHITE}:${NORMAL}"
         echo
     else
         echo
-        echo -e "  ${BOLD}${GREEN}SUCCESS  ${WHITE}Entries added to ${YELLOW}/home/${USER}/.gitconfig${NORMAL}"
+        echo -e "  ${BOLD}${GREEN}SUCCESS  ${WHITE}Entries added to ${YELLOW}${HOME}/.gitconfig${NORMAL}"
         echo
     fi
 fi
