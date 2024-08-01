@@ -2549,14 +2549,16 @@ app_setup()
         sleep 1
     fi
 
+    printf '%-57s' "    |--- Import GPG configs into ${gpgconfig_file}"
+
 sudo tee ${gpgconfig_file} << EOF > /dev/null
 enable-putty-support
 enable-ssh-support
 use-standard-socket
 default-cache-ttl-ssh 60
 max-cache-ttl-ssh 120
-default-cache-ttl 28800 # gpg key cache time
-max-cache-ttl 28800 # max gpg key cache time
+default-cache-ttl 63072000 # gpg key cache time
+max-cache-ttl 63072000 # max gpg key cache time
 pinentry-program "/usr/bin/pinentry"
 allow-loopback-pinentry
 allow-preset-passphrase
