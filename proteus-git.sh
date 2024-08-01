@@ -363,6 +363,7 @@ fi
 if [ "${cfg_Storage_Clevis}" = true ] && [ ! -x "$(command -v clevis)" ]; then
     echo -e "  ${GREYL}Installing package ${MAGENTA}Clevis${WHITE}"
     sudo apt-get update -y -q >/dev/null 2>&1
+    sudo apt --fix-broken install >/dev/null 2>&1
     sudo apt-get install clevis clevis-udisks2 clevis-tpm2 -y -qq >/dev/null 2>&1
 fi
 
@@ -1910,7 +1911,7 @@ if [ ! -d .git ]; then
 
     # git clone -b main https://github.com/Aetherinox/proteus-apt-repo.git
     git init --initial-branch=${app_repo_branch}
-    git remote add origin https://github.com/Aetherinox/proteus-apt-repo.git
+    git remote add origin https://github.com/${app_repo_author}/${app_repo_apt}.git
     git fetch
     git checkout origin/main -b main
 
@@ -1925,8 +1926,7 @@ if [ ! -d .git ]; then
     git commit -S -m "New Server Addition"
     git pull https://${GITHUB_NAME}:${CSI_PAT_GITHUB}@github.com/${app_repo_author}/${app_repo_apt}.git
 
-
-    # git remote add origin https://github.com/Aetherinox/proteus-apt-repo.git
+    # git remote add origin https://github.com/Aetherinox/${${app_repo_apt}}.git
     # git pull origin ${app_repo_branch} --allow-unrelated-histories
     # git push --set-upstream origin main
 fi
@@ -2818,10 +2818,6 @@ app_run_dl_aptget()
 
                         deb_package="${app_dir_repo}/${arch}/${app_filename}"
 
-                        if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
-                            echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
-                        fi
-
                         # #
                         #   architecture > all > reprepro
                         #   add package to reprepro database
@@ -2829,6 +2825,9 @@ app_run_dl_aptget()
                         #       app_repo_dist_sel       jammy
                         #       deb_package             incoming/proteus-git/jammy/all/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
                         # #
+
+                        echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
+                        echo -e "  ${WHITE}                                    ${FUCHSIA}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${NORMAL}"
 
                         reprepro_exit_code="0"
                         reprepro_output="$(reprepro -V \
@@ -2891,10 +2890,6 @@ app_run_dl_aptget()
 
                         deb_package="${app_dir_repo}/${arch}/${app_filename}"
 
-                        if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
-                            echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
-                        fi
-                        
                         # #
                         #   architecture > amd64 > reprepro
                         #   add package to reprepro database
@@ -2902,6 +2897,9 @@ app_run_dl_aptget()
                         #       app_repo_dist_sel       jammy
                         #       deb_package             incoming/proteus-git/jammy/amd64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_amd64.deb
                         # #
+
+                        echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
+                        echo -e "  ${WHITE}                                    ${FUCHSIA}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${NORMAL}"
 
                         reprepro_exit_code="0"
                         reprepro_output="$(reprepro -V \
@@ -2965,10 +2963,6 @@ app_run_dl_aptget()
 
                         deb_package="${app_dir_repo}/${arch}/${app_filename}"
 
-                        if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
-                            echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
-                        fi
-
                         # #
                         #   architecture > arm64 > reprepro
                         #   add package to reprepro database
@@ -2976,6 +2970,9 @@ app_run_dl_aptget()
                         #       app_repo_dist_sel       jammy
                         #       deb_package             incoming/proteus-git/jammy/arm64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_arm64.deb
                         # #
+
+                        echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
+                        echo -e "  ${WHITE}                                    ${FUCHSIA}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${NORMAL}"
 
                         reprepro_exit_code="0"
                         reprepro_output="$(reprepro -V \
@@ -3253,10 +3250,6 @@ app_run_dl_lastver()
 
                             deb_package="${app_dir_repo}/${arch}/${app_filename}"
 
-                            if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
-                                echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
-                            fi
-
                             # #
                             #   architecture > all > reprepro
                             #   add package to reprepro database
@@ -3264,6 +3257,9 @@ app_run_dl_lastver()
                             #       app_repo_dist_sel       jammy
                             #       deb_package             incoming/proteus-git/jammy/all/GitHubDesktop-linux-all-3.4.2-linux1.deb
                             # #
+
+                            echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
+                            echo -e "  ${WHITE}                                    ${FUCHSIA}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${NORMAL}"
 
                             reprepro_exit_code="0"
                             reprepro_output="$(reprepro -V \
@@ -3323,10 +3319,6 @@ app_run_dl_lastver()
 
                             deb_package="$app_dir_repo/$arch/$app_filename"
 
-                            if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
-                                echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
-                            fi
-
                             # #
                             #   architecture > amd64 > reprepro
                             #   add package to reprepro database
@@ -3334,6 +3326,9 @@ app_run_dl_lastver()
                             #       app_repo_dist_sel       jammy
                             #       deb_package             incoming/proteus-git/jammy/amd64/GitHubDesktop-linux-amd64-3.4.2-linux1.deb
                             # #
+
+                            echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
+                            echo -e "  ${WHITE}                                    ${FUCHSIA}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${NORMAL}"
 
                             reprepro_exit_code="0"
                             reprepro_output="$(reprepro -V \
@@ -3394,10 +3389,6 @@ app_run_dl_lastver()
 
                             deb_package="$app_dir_repo/$arch/$app_filename"
 
-                            if [ -n "${OPT_DEV_ENABLE}" ] || [ -n "${OPT_DLPKG_ONLY_TEST}" ]; then
-                                echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
-                            fi
-
                             # #
                             #   architecture > arm64 > reprepro
                             #   add package to reprepro database
@@ -3405,6 +3396,9 @@ app_run_dl_lastver()
                             #       app_repo_dist_sel       jammy
                             #       deb_package             incoming/proteus-git/jammy/arm64/GitHubDesktop-linux-arm64-3.4.2-linux1.deb
                             # #
+
+                            echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
+                            echo -e "  ${WHITE}                                    ${FUCHSIA}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${NORMAL}"
 
                             reprepro_exit_code="0"
                             reprepro_output="$(reprepro -V \
