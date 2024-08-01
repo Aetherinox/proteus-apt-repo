@@ -91,6 +91,27 @@ Description: maintain Debian packages in a package pool
  ``installed-packages only'' mirror).
 Original-Maintainer: Debian QA Group <packages@qa.debian.org>
 
+Package: apt-transport-https
+Source: apt
+Version: 2.7.14build2
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: APT Development Team <deity@lists.debian.org>
+Installed-Size: 35
+Depends: apt (>= 1.5~alpha4)
+Multi-Arch: foreign
+Priority: 0
+Section: utils
+Filename: pool/main/a/apt/apt-transport-https_2.7.14build2_all.deb
+Size: 3974
+SHA512: 749ce395dc317645e6c2f8107847c07e52de388733d5d5a606ca8afd6bd831cbd18586e575050cb3c86160559daa88f1602173be9b66f24f90e2a0565b545173
+SHA256: 4f661e6f00b11ed778b186e95648aef362228166c449e62cf38a58f632613a5f
+SHA1: 1cadd4ffc857d60a4a39b23ef627799679c15011
+MD5sum: 8a2bd848e11a3f7f536a3e29634b82f3
+Description: transitional package for https support
+ This is a dummy transitional package - https support has been moved into
+ the apt package in 1.5. It can be safely removed.
+
 Package: apt-url
 Version: 1.0.0-2
 Architecture: all
