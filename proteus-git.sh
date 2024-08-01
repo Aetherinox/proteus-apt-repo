@@ -3475,10 +3475,6 @@ app_run_gh_start()
         echo -e "  ${GREYL}Git: ${LIME_YELLOW}git remote add origin https://github.com/${GITHUB_NAME}/${app_repo_apt}.git${WHITE}"
         git remote add origin https://github.com/${GITHUB_NAME}/${app_repo_apt}.git
 
-        #   can use -u, --set-upstream
-        echo -e "  ${GREYL}Git: ${LIME_YELLOW}git push --set-upstream origin ${app_repo_branch}${WHITE}"
-        git push --set-upstream origin ${app_repo_branch}
-
         #   remove all changes and sync with remote repo
         echo -e "  ${GREYL}Git: ${LIME_YELLOW}git fetch --prune${WHITE}"
         git fetch --prune
@@ -3519,7 +3515,6 @@ EOF
 
         git_pull=$( git pull origin ${app_repo_branch} --allow-unrelated-histories)
 
-        echo -e "  ${GREYL}Git Pull${WHITE}"
         echo -e "  ${WHITE}Git Pull: ${LIME_YELLOW}${git_pull}${NORMAL}"
         echo
         echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
