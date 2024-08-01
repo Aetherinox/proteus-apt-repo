@@ -2,7 +2,7 @@ Origin: Aetherx
 Label: Mantic Minotaur 23.10
 Suite: stable
 Codename: mantic
-Date: Thu, 01 Aug 2024 16:39:01 UTC
+Date: Thu, 01 Aug 2024 16:45:58 UTC
 Architectures: amd64 arm64 i386
 Components: main
 Description: Ubuntu 23.10 (Mantic)
@@ -13,8 +13,8 @@ MD5Sum:
  8ec124e94cdd11ae5d8207226a4e87d3 85126 main/binary-arm64/Packages
  e412ed33bcfabe607a1514af1c072637 25345 main/binary-arm64/Packages.gz
  9934a83c6e078943af4cd69fa0f60bd8 124 main/binary-arm64/Release
- 5e8be1951e6caf2b8830421a710b5420 81687 main/binary-i386/Packages
- 495c9fd2d08594c9e546cd72a4835cc2 23862 main/binary-i386/Packages.gz
+ a8ec26740b99026b05d2ee55876c4642 81685 main/binary-i386/Packages
+ 0ded36296fc91c7e9e45a2ddb6093617 23865 main/binary-i386/Packages.gz
  2493426ad32ae4214bf1daa9d26210b2 123 main/binary-i386/Release
  d41d8cd98f00b204e9800998ecf8427e 0 main/source/Sources
  7029066c27ac6f5ef18d660d5741979a 20 main/source/Sources.gz
@@ -26,8 +26,8 @@ SHA1:
  b296150c03f56de3bff8bc8a2c2af3ecdcd241b5 85126 main/binary-arm64/Packages
  45e3beb81bb3e266c5e78eed2aaebdbb7303c222 25345 main/binary-arm64/Packages.gz
  1155d65e2f4ed89415704240926a9e0b42098e7b 124 main/binary-arm64/Release
- 618c1c8fffe4837cf03e652a9a1fd272b5cc46ad 81687 main/binary-i386/Packages
- ac436b7d7be5a105423640322ab121f2d44dfd53 23862 main/binary-i386/Packages.gz
+ c8eb6e2238b00e0e03d18bbfd61e146e272b09fe 81685 main/binary-i386/Packages
+ 010561d04e061151097fc82c45c795bc0b08fb54 23865 main/binary-i386/Packages.gz
  48fdc08ea4461757f3c676343bd4f02e4cf8b8c6 123 main/binary-i386/Release
  da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/source/Sources
  46c6643f07aa7f6bfe7118de926b86defc5087c4 20 main/source/Sources.gz
@@ -39,8 +39,8 @@ SHA256:
  98a83b6b46695ab36cd5f49a58d32c553d83c6f6c7f4a2fe1c180a35cba07ca2 85126 main/binary-arm64/Packages
  13ec0cabfaa47a27436165cf6c93a4c98bdb8655aeacd82fdfd75e5bafd0224e 25345 main/binary-arm64/Packages.gz
  86d6d30ebaedf824931e1734165b460b29abfe94f5daba5e5fff97a23fb8c943 124 main/binary-arm64/Release
- 51bdf7360906d633e6db675551813d944c809aeae7969df2fa6345ed41af22a1 81687 main/binary-i386/Packages
- 27df7b1cb6c621b5885f88b742b4cd3d487b475d06a84a6c1b9b5d281c6598b8 23862 main/binary-i386/Packages.gz
+ 8bf1439326d9c2e81f55a5df2ab8dc155027665a036935c9b17fa1a5e97127d3 81685 main/binary-i386/Packages
+ 72de253415a802bca3356846cb0638b5322ed9250cce94252ee60b1965f59fc1 23865 main/binary-i386/Packages.gz
  45fde76bb74c3dfa8d78ddbeafc8d00e5fd5ffd174e15d4350b873cea45f81f6 123 main/binary-i386/Release
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/source/Sources
  59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2 20 main/source/Sources.gz
@@ -52,8 +52,8 @@ SHA512:
  9ab5723865be3b4e3b2f788e1ff006f9d96b682208b5d99fc1a62adeab45ea1e08af53c7bcd16fb3c57f262ddb006274da5e93863c92e0f017f192647bda3f08 85126 main/binary-arm64/Packages
  d7a4ec4718b27d4d1aa2aea4baf4d43e3d832d9e81b83fb52bd751be980f4270f7b75d9c2f0a1e2c74a60aada92fd0e3e304325af4ad1384f1bd78cbc91d68da 25345 main/binary-arm64/Packages.gz
  a9a5c647e21f98317d6f71000aa653bb32c7888bbc75e897ba9d77718555b949c256e34e6e22c88b65119cf056d29f3444bbe7d0b1fa4d672df92f5065a73979 124 main/binary-arm64/Release
- c8c9d74f46f98d9566d01d914ef7cf2fe4c2fed0d911d2279d33ba7a884bdef11182b00fa80b4f0441630a645e8f8f1a7e8a6fa1fd131482c8e5217d11ff8e16 81687 main/binary-i386/Packages
- 87ee857c05cfa5e275aa316d5c99e9230d7ffb61c28149cf6a94fe1fc8bd0e4c24650bd17ac5c3c85a35a9ca83921adda74e83b105631e2ad2e5b27de423e0ee 23862 main/binary-i386/Packages.gz
+ 3b1c9fc27fadcc8468b3a21c89ec3c55721b646ffe386b30f8bfdf52de078a1dd46482f21a8af8317ecc9feb0e174e8296329cf21c1f3be004cba3c834456921 81685 main/binary-i386/Packages
+ 8f0eeb46524ee0233c3a0cb53ece594ca057e618e25ef063d66f48e5d012f710b2c2903e5ed147d2787b16128d03213e9eb9ac9c47bda938e84c977f62bd27af 23865 main/binary-i386/Packages.gz
  b72b8da467e20590d8658dc964ad7bbfe0d1cf1758c904cd469335154d1c322a50f4a798df7a8998996d359fc24e21696afc2278c4a7e646828c7115efc5d8bd 123 main/binary-i386/Release
  cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e 0 main/source/Sources
  7e8e93f4a89ce7fae011403e14a1d53544c6e6f6b6010d61129dc27937806d2b03802610d7999eab33a4c36b0f9e001d9d76001b8354087634c1aa9c740c536f 20 main/source/Sources.gz
