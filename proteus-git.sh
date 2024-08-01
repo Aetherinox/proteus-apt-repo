@@ -3468,6 +3468,20 @@ app_run_gh_start()
 
         cd ${app_dir}
 
+        #   can use -u, --set-upstream
+        git push --set-upstream origin ${app_repo_branch}
+
+        #   remove all changes and sync with remote repo
+        git fetch --prune
+
+        #   force head to match with remote repo
+        git reset --hard origin/main
+
+        #   must have at least one commit for this to work
+        #   -m / --move flag to rename a branch in our local repository
+        git branch -m ${app_repo_branch}
+        git remote add origin https://github.com/${GITHUB_NAME}/${app_repo_apt}.git
+
         # #
         #   .app folder
         # #
@@ -3496,26 +3510,10 @@ EOF
         #   ensure git config is updated
         app_run_github_precheck
 
-        #   can use -u, --set-upstream
-        git push --set-upstream origin ${app_repo_branch}
-
-        #   remove all changes and sync with remote repo
-        git fetch --prune
-
-        #   force head to match with remote repo
-        git reset --hard origin/main
-
-        #   must have at least one commit for this to work
-        #   -m / --move flag to rename a branch in our local repository
-        git branch -m ${app_repo_branch}
-        git remote add origin https://github.com/${GITHUB_NAME}/${app_repo_apt}.git
-
-        git_reset=$( reset --hard origin/${app_repo_branch} )
         git_pull=$( git pull origin ${app_repo_branch} --allow-unrelated-histories)
 
         echo -e "  ${GREYL}Git Pull${WHITE}"
         echo -e "  ${WHITE}${git_pull}${NORMAL}"
-        echo -e "  ${WHITE}${git_reset}${NORMAL}"
         echo
         echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
         echo
