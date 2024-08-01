@@ -70,6 +70,27 @@ Description: maintain Debian packages in a package pool
  local mirror of a Debian binary distribution (including an
  ``installed-packages only'' mirror).
 
+Package: apt-transport-https
+Source: apt
+Version: 2.6.0ubuntu0.1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 35
+Depends: apt (>= 1.5~alpha4)
+Multi-Arch: foreign
+Priority: 0
+Section: utils
+Filename: pool/main/a/apt/apt-transport-https_2.6.0ubuntu0.1_all.deb
+Size: 3968
+SHA512: a4953417ab1d04a97128763672ffa3e966dff7534e598705ce039440d084530597fc8cae072f61b77d3bd8a9064e58308a4bf0b952298e4bfe9687b5f070202b
+SHA256: e548694259332cfeb378f7cd72a357038fb11e807ef88d3d90aaa547ee0d0abc
+SHA1: 7afb49181e220e465a58e5ce002550aa61c29397
+MD5sum: e01600c4342d4bb9d073b1bb79eaed68
+Description: transitional package for https support
+ This is a dummy transitional package - https support has been moved into
+ the apt package in 1.5. It can be safely removed.
+Original-Maintainer: APT Development Team <deity@lists.debian.org>
+
 Package: apt-url
 Version: 1.0.0-2
 Architecture: all
@@ -192,23 +213,44 @@ Description: Displays user-friendly dialog boxes from shell scripts
   background tail  Similar to tail but runs in the background.
   editbox          Allows editing an existing file
 
+Package: freetube
+Version: 0.21.2
+License: AGPL-3.0-or-later
+Vendor: PrestonN <FreeTubeApp@protonmail.com>
+Architecture: arm64
+Maintainer: PrestonN <FreeTubeApp@protonmail.com>
+Installed-Size: 273711
+Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
+Recommends: libappindicator3-1
+Homepage: https://github.com/FreeTubeApp/FreeTube#readme
+Priority: 0
+Section: utils
+Filename: pool/main/f/freetube/freetube_0.21.2_arm64.deb
+Size: 71100000
+SHA512: 863957b3a96ea98c4b35d01b9a7217f1a88c77618abb07142dec3c5ce233db4bec398933c82bf707fe59936c14bed39c646073e303e620107065a79d182b892b
+SHA256: 177a3333206cbf2b03208176d733876f81c51f0b5cde3b86a519f9d5f9d0d600
+SHA1: 10ff1a439d62831d0721540c365295355f9f484d
+MD5sum: e81bcad1f804a75fc725e4fa3c7aa5ff
+Description: 
+  A private YouTube client
+
 Package: github-desktop
-Version: 3.3.8-linux2
+Version: 3.4.2-linux1
 Architecture: arm64
 Depends: libgtk-3-0, libnotify4, libnss3, libxtst6, xdg-utils, libatspi2.0-0, libdrm2, libgbm1, libxcb-dri3-0, kde-cli-tools | kde-runtime | trash-cli | libglib2.0-bin | gvfs-bin, libcurl3 | libcurl4, libsecret-1-0, gnome-keyring
 Recommends: pulseaudio | libasound2
 Suggests: gir1.2-gnomekeyring-1.0, libgnome-keyring0, lsb-release
-Installed-Size: 339358
+Installed-Size: 358065
 Maintainer: Brendan Forster <github@brendanforster.com>
 Homepage: https://github.com/shiftkey/desktop
 Priority: 0
 Section: utils
-Filename: pool/main/g/github-desktop/github-desktop_3.3.8-linux2_arm64.deb
-Size: 88474884
-SHA512: ee0e4977add80a5d745309289c91f365bd1e8ebf0c71ed04fd208e2df94c6fc41182ced4779c3067499c5076e846ac1497b637309a183347f32182989e1c2519
-SHA256: 179f751dedb67eec9f8ec9717674bc37939ba44237f6b71f9339b090a72fe7f3
-SHA1: 4bc6fa930266ee3c595fa555c42a8950b57f29b9
-MD5sum: 13f32a936a74def48c2548dec5a81d1a
+Filename: pool/main/g/github-desktop/github-desktop_3.4.2-linux1_arm64.deb
+Size: 92450244
+SHA512: 1330ce03d9804037a49979263560c85d96f24796c8bf2e5249360a3ebebb662027e5065bc3e8b74ead6d1a0f866d7100b3430621fea5d54acc2740f873e8b72e
+SHA256: 55b3e34f3e316066953b7b8e1ba950350ad5126c77f87ffecbcfabd0ee796948
+SHA1: 6eac8b171e7d93d9d50719215507c488767ccbff
+MD5sum: 49f8432dcce2e7ef88bb6db9abf5409d
 Description: Simple collaboration from your desktop
  This is the unofficial port of GitHub Desktop for Linux distributions
 
@@ -1635,19 +1677,19 @@ Description: Open VMware Tools for virtual machines hosted on VMware (developmen
 Original-Maintainer: Bernd Zeimetz <bzed@debian.org>
 
 Package: opengist
-Version: 1.6.1
+Version: 1.7.3
 Architecture: arm64
 Maintainer: Thomas Miceli <thomiceli@github.com>
 Depends: adduser
 Homepage: https://github.com/Aetherinox/debian-opengist
 Priority: 0
 Section: utils
-Filename: pool/main/o/opengist/opengist_1.6.1_arm64.deb
-Size: 17169340
-SHA512: 349685da15894366da9d4321130f51dbecae51cac081bb3fd4b531308f381a1a40a9b5b00006dcfa0604df74aa645bfdabf6304b3632b68c8c344c04a8c02b28
-SHA256: 0c1c31f8ff4d0cf5fad24b037080e867661fe6d032c978c67210d9560b782416
-SHA1: 9a797271c7f56d9730f09293d616a189c5a6bf8e
-MD5sum: aaaed5726cd5fda416b7bd13b9be8b01
+Filename: pool/main/o/opengist/opengist_1.7.3_arm64.deb
+Size: 18699004
+SHA512: de91f714c4b67bbcbd6c89fe2156f2fc893772a069ff49319b7a2b4779a2af81538e8b84a564f84a6b5c8701bf5c371da4a2976923a5a02f3757a7100f44846a
+SHA256: 00e6be3787356d13adf3985fdccb2dde03a59d8f5aeca669274c82a11d213e87
+SHA1: a3b399ce94393e6853e96415c4bcf4fb5aa17541
+MD5sum: 6b0eff0e8b08eaf48b99fb5fe949ff5f
 Description: Self-hosted pastebin powered by Git, open-source alternative to Github
  Gist. Opengist is a self-hosted pastebin powered by Git. All snippets are
  stored in a Git repository and can be read and/or modified using standard Git
@@ -4062,6 +4104,28 @@ Description: Tiling terminal emulator - data files
  GNOME human interface design guidelines.
  .
  This package contains architecture independent data.
+
+Package: trash-cli
+Version: 0.17.1.14-5build1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 108
+Depends: python3:any, python3-pkg-resources
+Homepage: https://github.com/andreafrancia/trash-cli
+Priority: 0
+Section: utils
+Filename: pool/main/t/trash-cli/trash-cli_0.17.1.14-5build1_all.deb
+Size: 24156
+SHA512: 2c552a59910b3cbfc98f452ba31d2a77316b1ef782af5e0d891d277ca867d274c8c575d8d7500e2f33fb40b8a7a6408d55a0aab9da1cf356b2920952de77ad07
+SHA256: 5de669099e306f804793ad36e27b565d660ea2d47137568e65f5fb9f3ae918f5
+SHA1: 0d7432b8cf7124a182e7195068648a7dde940a3d
+MD5sum: 8777c50f772067663362ed4cfd8435d5
+Description: command line trashcan utility
+ This package provides a command line interface trashcan utility
+ compliant with the FreeDesktop.org Trash Specification. It remembers
+ the name, original path, deletion date, and permissions of each trashed
+ file
+Original-Maintainer: Stefano Karapetsas <stefano@karapetsas.com>
 
 Package: wget
 Version: 1.21.3-1ubuntu1
