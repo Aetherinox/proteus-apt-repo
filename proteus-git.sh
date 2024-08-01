@@ -1,7 +1,7 @@
 # #
 #   @author :           aetherinox
 #   @script :           Proteus Apt Git
-#   @date   :           2024-07-27 03:15:53
+#   @date   :           2024-08-01 03:15:53
 #   @url    :           https://github.com/Aetherinox/proteus-git
 #
 #   requires chmod +x proteus_git.sh
@@ -291,7 +291,6 @@ app_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 app_dir_home="${HOME}/bin"
 app_dir_storage="$app_dir/incoming/proteus-git/${sys_code}"
 app_dir_repo="incoming/proteus-git/${sys_code}"
-app_dir_wd=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 app_dir_secrets="${HOME}/.secrets"
 
 # #
@@ -315,10 +314,10 @@ cd ${app_dir}
 
 app_file_this=$(basename "$0")
 app_file_proteus="${app_dir_home}/proteus-git"
+app_file_secrets_general=${app_dir_secrets}/.base
+app_file_secrets_passwd=${app_dir_secrets}/.passwd
 app_file_secrets_github=${app_dir_secrets}/.pat_github
 app_file_secrets_gitlab=${app_dir_secrets}/.pat_gitlab
-app_file_secrets_passwd=${app_dir_secrets}/.passwd
-app_file_secrets_general=${app_dir_secrets}/.base
 app_file_secrets_sh=${app_dir}/secrets.sh
 
 # #
@@ -526,10 +525,10 @@ error_missing_value_gpg()
 
 opt_usage()
 {
-    echo
+    echo -e 
     printf "  ${BLUE}${app_title}${NORMAL}\n" 1>&2
     printf "  ${GREYL}${gui_about}${NORMAL}\n" 1>&2
-    echo
+    echo -e 
     printf '  %-5s %-40s\n' "Usage:" "" 1>&2
     printf '  %-5s %-40s\n' "    " "${0} [${GREYL}options${NORMAL}]" 1>&2
     printf '  %-5s %-40s\n\n' "    " "${0} [${GREYL}-s${NORMAL}] [${GREYL}-t${NORMAL}] [${GREYL}-g${NORMAL}] [${GREYL}-p${NORMAL}] [${GREYL}-d${NORMAL}] [${GREYL}-n${NORMAL}] [${GREYL}-q${NORMAL}] [${GREYL}-u${NORMAL}] [${GREYL}-b main | dev${NORMAL}] [${GREYL}-r${NORMAL}]" 1>&2
@@ -548,8 +547,8 @@ opt_usage()
     printf '  %-5s %-18s %-40s\n' "    " "-b, --branch" "branch to use for downloading/updating this script" 1>&2
     printf '  %-5s %-18s %-40s\n' "    " "-v, --version" "current version of app manager" 1>&2
     printf '  %-5s %-18s %-40s\n' "    " "-h, --help" "show help menu" 1>&2
-    echo
-    echo
+    echo -e 
+    echo -e 
     exit 1
 }
 
@@ -603,7 +602,7 @@ opt_report()
     echo -e "  This is a package which handles the Proteus App Manager behind"
     echo -e "  the scene by grabbing from the list of registered packages"
     echo -e "  and adding them to the queue to be updated."
-    echo
+    echo -e 
 
     # #
     #  Section > Settings
@@ -625,12 +624,11 @@ opt_report()
     printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📦 Packages (Github)" "${WHITE}${Val_Pkgs_Github}" "${NORMAL}"
     printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📦 Architextures" "${WHITE}${Val_Pkgs_Arch}" "${NORMAL}"
 
-    echo
-
     # #
     #  Section > Variables
     # #
 
+    echo -e
     echo -e
     echo -e "  ${LIME_YELLOW}${BOLD}[ Variables ]${NORMAL}"
 
@@ -641,7 +639,7 @@ opt_report()
     printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}✎ GPG_KEY" "${WHITE}${bExists_Val_GPG}" "${NORMAL}"
     printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}✎ GITHUB_NAME" "${WHITE}${bExists_Val_GithubName}" "${NORMAL}"
     printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}✎ GITHUB_EMAIL" "${WHITE}${bExists_Val_GithubEmail}" "${NORMAL}"
-    echo
+    echo -e
 
     # #
     #  Section > Paths
@@ -661,7 +659,7 @@ opt_report()
     printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📄 .passwd" "${WHITE}${bExists_File_Passwd}${NORMAL}" ""
     printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📄 .pat_github" "${WHITE}${bExists_File_Github}${NORMAL}" ""
     printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📄 .pat_gitlab" "${WHITE}${bExists_File_Gitlab}${NORMAL}" ""
-    echo
+    echo -e
 
     # #
     #  Section > Paths > Secrets.Sh Mode
@@ -673,7 +671,7 @@ opt_report()
     bExists_File_SecretsSh=$([ ! -f "${app_file_secrets_sh}" ] && echo "Missing" || echo 'Found')
 
     printf "%-5s %-37s %-40s %-40s\n" "" "${clrSecretsModeSh_Item}📄 secrets.sh" "${WHITE}${bExists_File_SecretsSh}" "${DEVGREY}${Val_SecretMode}${NORMAL}"
-    echo
+    echo -e
 
     # #
     #  Section > Dependencies 
@@ -705,11 +703,11 @@ opt_report()
     # #
 
     echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
-    echo
+    echo -e
+    echo -e
 
     sleep 0.3
 
-    echo
     exit 1
 }
 
@@ -847,7 +845,6 @@ if [ "${OPT_DEV_ENABLE}" = true ]; then
 
     echo -e
     echo -e "  ${LIME_YELLOW}${BOLD}[ Arguments ]${NORMAL}"
-
     [ "${OPT_DEV_ENABLE}" = true ] && printf "%-3s %-15s %-10s\n" "" "--dev" "${GREEN}${OPT_DEV_ENABLE}${NORMAL}"
     [ "${OPT_DLPKG_ONLY_TEST}" = true ] && printf "%-3s %-15s %-10s\n" "" "--onlyTest" "${GREEN}${OPT_DLPKG_ONLY_TEST}${NORMAL}"
     [ "${OPT_DLPKG_ONLY_LASTVER}" = true ] && printf "%-3s %-15s %-10s\n" "" "--onlyGithub" "${GREEN}${OPT_DLPKG_ONLY_LASTVER}${NORMAL}"
@@ -856,8 +853,8 @@ if [ "${OPT_DEV_ENABLE}" = true ]; then
     [ "${OPT_NOLOG}" = true ] && printf "%-3s %-15s %-10s\n" "" "--quiet" "${GREEN}${OPT_NOLOG}${NORMAL}"
     [ -n "${OPT_DISTRIBUTION}" ] && printf "%-3s %-15s %-10s\n" "" "--dist" "${GREEN}${OPT_DISTRIBUTION}${NORMAL}"
     [ -n "${OPT_BRANCH}" ] && printf "%-3s %-15s %-10s\n" "" "--branch" "${GREEN}${OPT_BRANCH}${NORMAL}"
-
     echo -e
+
     sleep 5
 fi
 
@@ -865,16 +862,14 @@ fi
 #   DEFINE > App repo paths and commands
 # #
 
-app_repo="proteus-git"
+app_repo_script="proteus-git"
 app_repo_branch="main"
-app_repo_user=$( git config --global --get-all user.name )
-app_repo_email=$( git config --global --get-all user.email )
 app_repo_apt="proteus-apt-repo"
 app_repo_apt_pkg="aetherinox-${app_repo_apt}-archive"
-app_repo_url="https://github.com/${GITHUB_NAME}/${app_repo}"
+app_repo_url="https://github.com/${GITHUB_NAME}/${app_repo_script}"
 app_repo_apt_url="https://github.com/${GITHUB_NAME}/${app_repo_apt}"
-app_repo_mnfst="https://raw.githubusercontent.com/${GITHUB_NAME}/${app_repo}/${app_repo_branch}/manifest.json"
-app_repo_script="https://raw.githubusercontent.com/${GITHUB_NAME}/${app_repo}/BRANCH/setup.sh"
+app_repo_mnfst="https://raw.githubusercontent.com/${GITHUB_NAME}/${app_repo_script}/${app_repo_branch}/manifest.json"
+app_repo_script="https://raw.githubusercontent.com/${GITHUB_NAME}/${app_repo_script}/BRANCH/setup.sh"
 
 # #
 #   DEFINE > Exports
@@ -3551,7 +3546,7 @@ sudo tee ${manifest_dir}/${app_repo_dist_sel}.json >/dev/null <<EOF
 }
 EOF
 
-        git_pull=$( git pull origin ${app_repo_branch} --allow-unrelated-histories)
+        git_pull=$( git pull origin ${app_repo_branch} --allow-unrelated-histories )
 
         echo -e "  ${WHITE}Git Pull: ${LIME_YELLOW}${git_pull}${NORMAL}"
         echo
@@ -3683,11 +3678,11 @@ EOF
     #   tree
     # #
 
-    tree_output=$( tree -a -I ".git" --dirsfirst )
+    tree_output=$( tree -a -I ".git" -I "logs" -I "docs" -I ".gpg" -I "incoming" --dirsfirst )
     tree -a -I ".git" --dirsfirst -J > ${manifest_dir}/tree.json
 
     #   useful for Gitea with HTML rendering plugin, not useful for Github
-    #   tree -a --dirsfirst -I '.git' -H https://github.com/${GITHUB_NAME}/${app_repo}/src/branch/$app_repo_branch/ -o $app_dir/.data/tree.html
+    #   tree -a --dirsfirst -I '.git' -H https://github.com/${GITHUB_NAME}/${app_repo_script}/src/branch/$app_repo_branch/ -o $app_dir/.data/tree.html
 
     # #
     #   tree.md content
