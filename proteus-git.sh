@@ -1298,7 +1298,14 @@ app_run_github_precheck( )
 {
     echo -e "  ${GREYL}Configuring git config${WHITE}"
 
+    #   delete lock
+    rm -f "${app_dir}.git/index.lock"
+
+    #   set credential.helper
     git config --global credential.helper store
+
+    #   set default action for conflicts
+    git config pull.rebase false
 
     # #
     #   GIT > SAFE DIRECTORY
@@ -3486,10 +3493,32 @@ sudo tee ${manifest_dir}/${app_repo_dist_sel}.json >/dev/null <<EOF
 }
 EOF
 
+        #   ensure git config is updated
         app_run_github_precheck
 
-        git branch -m ${app_repo_branch}
+        #   can use -u, --set-upstream
         git push --set-upstream origin ${app_repo_branch}
+
+        #   remove all changes and sync with remote repo
+        git fetch --prune
+
+        #   force head to match with remote repo
+        git reset --hard origin/main
+
+        #   must have at least one commit for this to work
+        #   -m / --move flag to rename a branch in our local repository
+        git branch -m ${app_repo_branch}
+        git remote add origin https://github.com/${GITHUB_NAME}/${app_repo_apt}.git
+
+        git_reset=$( reset --hard origin/${app_repo_branch} )
+        git_pull=$( git pull origin ${app_repo_branch} --allow-unrelated-histories)
+
+        echo -e "  ${GREYL}Git Pull${WHITE}"
+        echo -e "  ${WHITE}${git_pull}${NORMAL}"
+        echo -e "  ${WHITE}${git_reset}${NORMAL}"
+        echo
+        echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
+        echo
 
         # git add -A        stages all changes
         # git add .         stages new files and modifications, without deletions (on the current directory and its subdirectories).
@@ -3546,7 +3575,10 @@ app_run_gh_end()
         echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
         echo
 
-        git branch -m $app_repo_branch
+        #   must have at least one commit for this to work
+        #   -m / --move flag to rename a branch in our local repository
+        git branch -m ${app_repo_branch}
+
         git add --all
         git add -u
 
@@ -3558,7 +3590,8 @@ app_run_gh_end()
 
         sleep 1
 
-        git push -u origin $app_repo_branch
+        # can use -u, --set-upstream
+        git push --set-upstream origin ${app_repo_branch}
 
     fi # end devnull
 }
@@ -3645,30 +3678,6 @@ app_start()
     # #
 
     export SECONDS=0
-
-    # #
-    #   pull all changes from github
-    # #
-    
-    # remove all changes and sync with remote repo
-    # git fetch --prune
-
-    # delete lock
-    rm -f "${app_dir}.git/index.lock"
-
-    # force head to match with remote repo
-    # git reset --hard origin/main
-
-    git config pull.rebase false
-    git_reset=$( reset --hard origin/${app_repo_branch} )
-    git_pull=$( git pull origin ${app_repo_branch} --allow-unrelated-histories)
-
-    echo -e "  ${GREYL}Git Pull${WHITE}"
-    echo -e "  ${WHITE}${git_pull}${NORMAL}"
-    echo -e "  ${WHITE}${git_reset}${NORMAL}"
-    echo
-    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
-    echo
 
     # #
     #   check for reprepro
