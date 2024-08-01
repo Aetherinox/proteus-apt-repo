@@ -3489,6 +3489,7 @@ EOF
         app_run_github_precheck
 
         git branch -m ${app_repo_branch}
+        git push --set-upstream origin ${app_repo_branch}
 
         # git add -A        stages all changes
         # git add .         stages new files and modifications, without deletions (on the current directory and its subdirectories).
