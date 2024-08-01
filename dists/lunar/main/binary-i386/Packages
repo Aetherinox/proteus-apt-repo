@@ -1756,6 +1756,34 @@ Description: XSL module for PHP (dummy)
  This package is a transitional dummy package and can be safely
  removed.
 
+Package: reprepro
+Version: 5.4.4-1
+Architecture: i386
+Maintainer: Bastian Germann <bage@debian.org>
+Installed-Size: 1350
+Depends: libarchive13 (>= 3.0.4), libbz2-1.0, libc6 (>= 2.34), libdb5.3, libgpg-error0 (>= 1.14), libgpgme11 (>= 1.2.0), liblzma5 (>= 5.1.1alpha+20120614), zlib1g (>= 1:1.2.0.2), zstd
+Recommends: apt (>= 0.9.4)
+Suggests: pinentry-curses, gpg-agent, inoticoming, lzip (>= 1.11-2)
+Priority: 0
+Section: utils
+Filename: pool/main/r/reprepro/reprepro_5.4.4-1_i386.deb
+Size: 485964
+SHA512: 8a477fc4a1fe3ee922f7237be374e9e4ebbd68f2e101707578ce75fb504ad2f62451336fba3fc0b5f95e0221d2eb8766e978b67d3b12abe6c36d25afd0ba9c2c
+SHA256: 9314fbf52aaa622df875fdf48d17f28af86c7e18614dfc0618df46e90c374d56
+SHA1: bb56d389676961692cc7b15927864782bb2f5b82
+MD5sum: 30642770a4c0a35b18beabbdfdcdfce1
+Description: Debian package repository producer
+ reprepro is a tool to manage a repository of Debian packages
+ (.deb, .udeb, .dsc, ...). It stores files either being
+ injected manually or downloaded from some other repository
+ (partially) mirrored into one pool/ hierarchy.
+ Managed packages and files are stored in a Berkeley DB,
+ so no database server is needed.
+ Checking signatures of mirrored repositories and creating
+ signatures of the generated Package indices is supported.
+ .
+ This package also contains the changestool and rredtool helpers.
+
 Package: tilix-common
 Source: tilix
 Version: 1.9.5-2
