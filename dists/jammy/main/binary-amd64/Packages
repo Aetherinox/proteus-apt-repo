@@ -5888,10 +5888,10 @@ Description: location of genes from DNA sequence with hidden markov model
  Parser.
 
 Package: snapd
-Version: 2.63+22.04
+Version: 2.63+22.04ubuntu0.1
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Installed-Size: 101484
+Installed-Size: 101504
 Depends: adduser, apparmor (>= 2.10.95-0ubuntu2.2), ca-certificates, fuse3 (>= 3.10.5-1) | fuse, openssh-client, squashfs-tools, systemd, udev, default-dbus-session-bus | dbus-session-bus, libc6 (>= 2.34), libfuse3-3 (>= 3.2.3), liblzma5 (>= 5.1.1alpha+20120614), liblzo2-2 (>= 2.02), libudev1 (>= 183), zlib1g (>= 1:1.1.4)
 Recommends: gnupg
 Suggests: zenity | kdialog
@@ -5902,12 +5902,12 @@ Built-Using: apparmor (= 3.0.4-2ubuntu2.4), libcap2 (= 1:2.44-1ubuntu0.22.04.1),
 Homepage: https://github.com/snapcore/snapd
 Priority: 0
 Section: utils
-Filename: pool/main/s/snapd/snapd_2.63+22.04_amd64.deb
-Size: 25878908
-SHA512: b1e21702bb1a98e0cb98333f60eaf43fc8c1a2ca4d23290dbd31269b28ea89803b9f04d0dca50ce9242d27945fccbfda634bff24489c6b8a163996f7b27f52ff
-SHA256: 8aab4d534dfe860432d374c6aadcde394965c03e027a153d0b4eb4e45d32bb1d
-SHA1: 848d71782ad9c923515643e6dba5ca029f6190aa
-MD5sum: 2a669b3147e6db7775528d001925b29d
+Filename: pool/main/s/snapd/snapd_2.63+22.04ubuntu0.1_amd64.deb
+Size: 25871272
+SHA512: 8b9c5769d09c64496073e0593300736e0dc1d63631c1280417124e2980f3a68bda1c2a5e0be382f6d163156beba9a43214b73f6c11c7345587cec66d70818134
+SHA256: 8ba81a4963b28386733d14335b5a9964257cda810ac6b1a52de097e104c5b84d
+SHA1: 10b28a09bd5f77471119889ea1d68f90dc6aa22a
+MD5sum: 4d6bc44db778c9d3c3e8d82b44c8ef85
 Description: Daemon and tooling that enable snap packages
  Install, configure, refresh and remove snap packages. Snaps are
  'universal' packages that work across many different Linux systems,
