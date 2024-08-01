@@ -3472,19 +3472,24 @@ app_run_gh_start()
         app_run_github_precheck
 
         #   add origin
+        echo -e "  ${GREYL}Git: ${LIME_YELLOW}git remote add origin https://github.com/${GITHUB_NAME}/${app_repo_apt}.git${WHITE}"
         git remote add origin https://github.com/${GITHUB_NAME}/${app_repo_apt}.git
 
         #   can use -u, --set-upstream
+        echo -e "  ${GREYL}Git: ${LIME_YELLOW}git push --set-upstream origin ${app_repo_branch}${WHITE}"
         git push --set-upstream origin ${app_repo_branch}
 
         #   remove all changes and sync with remote repo
+        echo -e "  ${GREYL}Git: ${LIME_YELLOW}git fetch --prune${WHITE}"
         git fetch --prune
 
         #   force head to match with remote repo
-        git reset --hard origin/main
+        echo -e "  ${GREYL}Git: ${LIME_YELLOW}git reset --hard origin/${app_repo_branch}${WHITE}"
+        git reset --hard origin/${app_repo_branch}
 
         #   must have at least one commit for this to work
         #   -m / --move flag to rename a branch in our local repository
+        echo -e "  ${GREYL}Git: ${LIME_YELLOW}git branch -m ${app_repo_branch}${WHITE}"
         git branch -m ${app_repo_branch}
 
         # #
@@ -3515,16 +3520,18 @@ EOF
         git_pull=$( git pull origin ${app_repo_branch} --allow-unrelated-histories)
 
         echo -e "  ${GREYL}Git Pull${WHITE}"
-        echo -e "  ${WHITE}${git_pull}${NORMAL}"
+        echo -e "  ${WHITE}Git Pull: ${LIME_YELLOW}${git_pull}${NORMAL}"
         echo
         echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
         echo
 
-        # git add -A        stages all changes
-        # git add .         stages new files and modifications, without deletions (on the current directory and its subdirectories).
-        # git add -u        stages modifications and deletions, without new files
+        # git add -A, --all     stages all changes
+        # git add .             stages new files and modifications, without deletions (on the current directory and its subdirectories).
+        # git add -u            stages modifications and deletions, without new files
 
+        echo -e "  ${GREYL}Git: ${LIME_YELLOW}git add --all${WHITE}"
         git add --all
+
         sleep 1
 
         local NOW=$(date -u '+%m.%d.%Y %H:%M:%S')
@@ -3541,11 +3548,13 @@ EOF
         #       gpg: signing failed: No secret key
         # #
 
-        git commit -S -m "$app_repo_commit"
+        echo -e "  ${GREYL}Git: ${LIME_YELLOW}git commit -S -m ${app_repo_commit}${WHITE}"
+        git commit -S -m "${app_repo_commit}"
 
         sleep 1
 
         echo -e "  ${WHITE}Starting push ${FUCHSIA}${app_repo_branch}${NORMAL}"
+        echo -e "  ${GREYL}Git: ${LIME_YELLOW}git push https://${CSI_PAT_GITHUB}@github.com/${GITHUB_NAME}/${app_repo_apt}${WHITE}"
         git push https://${CSI_PAT_GITHUB}@github.com/${GITHUB_NAME}/${app_repo_apt}
 
     fi # end devnull
