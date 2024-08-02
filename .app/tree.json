@@ -376,7 +376,8 @@
       {"type":"file","name":"proteus-git-080124.log"},
       {"type":"file","name":"proteus-git-080224.log"},
       {"type":"fifo","name":"proteus-git-080224.log.pipe"},
-      {"type":"file","name":"proteus-git-service-080124.log"}
+      {"type":"file","name":"proteus-git-service-080124.log"},
+      {"type":"file","name":"proteus-git-service-080224.log"}
   ]},
     {"type":"directory","name":"pool","contents":[
       {"type":"directory","name":"main","contents":[
@@ -851,8 +852,7 @@
             {"type":"file","name":"ocs-url_3.1.0-0ubuntu1_amd64.deb"}
         ]},
           {"type":"directory","name":"opengist","contents":[
-            {"type":"file","name":"opengist_1.6.1_amd64.deb"},
-            {"type":"file","name":"opengist_1.6.1_arm64.deb"},
+            {"type":"file","name":"opengist_1.7.3_amd64.deb"},
             {"type":"file","name":"opengist_1.7.3_arm64.deb"}
         ]},
           {"type":"directory","name":"open-vm-tools","contents":[
