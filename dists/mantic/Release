@@ -2,16 +2,16 @@ Origin: Aetherx
 Label: Mantic Minotaur 23.10
 Suite: stable
 Codename: mantic
-Date: Fri, 02 Aug 2024 01:53:22 UTC
+Date: Fri, 02 Aug 2024 02:20:59 UTC
 Architectures: amd64 arm64 i386
 Components: main
 Description: Ubuntu 23.10 (Mantic)
 MD5Sum:
- 3cc07bcfb9cfd581ccc7e46ec30073d1 204106 main/binary-amd64/Packages
- 46b86008af7a106be7e72c02ca75140d 62899 main/binary-amd64/Packages.gz
+ a4086d84a048718ce7047d50596a0096 204106 main/binary-amd64/Packages
+ 869cefba17a9d2636b1fe0870ef25102 62905 main/binary-amd64/Packages.gz
  1f3382330d680850351efb3cc9b6e8fd 124 main/binary-amd64/Release
- 8ec124e94cdd11ae5d8207226a4e87d3 85126 main/binary-arm64/Packages
- e412ed33bcfabe607a1514af1c072637 25345 main/binary-arm64/Packages.gz
+ bec66adbbc5c738f245ccc9f92bc13ba 85126 main/binary-arm64/Packages
+ f133f2e1b29cc1b7494d7bb50d8be922 25341 main/binary-arm64/Packages.gz
  9934a83c6e078943af4cd69fa0f60bd8 124 main/binary-arm64/Release
  a8ec26740b99026b05d2ee55876c4642 81685 main/binary-i386/Packages
  0ded36296fc91c7e9e45a2ddb6093617 23865 main/binary-i386/Packages.gz
@@ -20,11 +20,11 @@ MD5Sum:
  7029066c27ac6f5ef18d660d5741979a 20 main/source/Sources.gz
  000077dfe0767475ce8348745d496628 125 main/source/Release
 SHA1:
- a33b4ab4579650ee88e7f40f851736a24acebe23 204106 main/binary-amd64/Packages
- 36f10f4c1a37a3a64442aa97a8e18bc95161e797 62899 main/binary-amd64/Packages.gz
+ e2a97ca6d030b80000f7e65dd39834e5c51fa8f1 204106 main/binary-amd64/Packages
+ 38c29237847efc472c3ef330e35bc6dd088a7616 62905 main/binary-amd64/Packages.gz
  a7c3e20806526b94db6d956eaae2d3d9267c13ab 124 main/binary-amd64/Release
- b296150c03f56de3bff8bc8a2c2af3ecdcd241b5 85126 main/binary-arm64/Packages
- 45e3beb81bb3e266c5e78eed2aaebdbb7303c222 25345 main/binary-arm64/Packages.gz
+ 7a9cac797058095102771d1883475e5ad0f402a8 85126 main/binary-arm64/Packages
+ 6c7909f3ae1a102321cb2778099275edb8fcc22b 25341 main/binary-arm64/Packages.gz
  1155d65e2f4ed89415704240926a9e0b42098e7b 124 main/binary-arm64/Release
  c8eb6e2238b00e0e03d18bbfd61e146e272b09fe 81685 main/binary-i386/Packages
  010561d04e061151097fc82c45c795bc0b08fb54 23865 main/binary-i386/Packages.gz
@@ -33,11 +33,11 @@ SHA1:
  46c6643f07aa7f6bfe7118de926b86defc5087c4 20 main/source/Sources.gz
  0c75fd0f5382dbdd8c4d7639cbcf785d546d5302 125 main/source/Release
 SHA256:
- 7c6400e3bcc6f758e9660e3e5a5d30c3a460e270e996cbd2be3c8d3158937162 204106 main/binary-amd64/Packages
- c911a263e4002241d9016dd115a7337e919b993dad0cc9140376f5979aa652f8 62899 main/binary-amd64/Packages.gz
+ 2511efcf2de7258d1030a3a8b6bd69f20019d94beaa772c24a25d05b4bab44ad 204106 main/binary-amd64/Packages
+ cb03470fb8586f518df2a6e9c28d5f0a15d98661cb13c0faf1b5a07a475fdfe1 62905 main/binary-amd64/Packages.gz
  6d16c3b7905f94114167b7a3cd4ee35f30e98ffe43d001112051abc6b336f259 124 main/binary-amd64/Release
- 98a83b6b46695ab36cd5f49a58d32c553d83c6f6c7f4a2fe1c180a35cba07ca2 85126 main/binary-arm64/Packages
- 13ec0cabfaa47a27436165cf6c93a4c98bdb8655aeacd82fdfd75e5bafd0224e 25345 main/binary-arm64/Packages.gz
+ 71b8aec150a66ce2add4fe2d0051fe39f6d63f27bc9192c0b4d10e1040271c5f 85126 main/binary-arm64/Packages
+ 021a96e9fda2a4ab7ab78a833fd2bd6970c936a4eb3bb3b779675fec643e60c8 25341 main/binary-arm64/Packages.gz
  86d6d30ebaedf824931e1734165b460b29abfe94f5daba5e5fff97a23fb8c943 124 main/binary-arm64/Release
  8bf1439326d9c2e81f55a5df2ab8dc155027665a036935c9b17fa1a5e97127d3 81685 main/binary-i386/Packages
  72de253415a802bca3356846cb0638b5322ed9250cce94252ee60b1965f59fc1 23865 main/binary-i386/Packages.gz
@@ -46,11 +46,11 @@ SHA256:
  59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2 20 main/source/Sources.gz
  ccdeb322c4cbdb9a8b8547c208fa00ecdff7e3edbd7f58421295b188f6a9a84f 125 main/source/Release
 SHA512:
- a47d6885ef5e7b628a9586679b9d60e9ff9fb1fc0de0645b0144ba3e3312ce36375408a9c0e55f8d5afd30e14432edc6e74fb30ca5ff27b0c31e77722455563a 204106 main/binary-amd64/Packages
- 121972afeb4940c7f781a4336b0ee82b1ebb05d048f2b2e4f02e3e22ef618099d2a7d1bdb37dc4cf6ebca481972b31d5004330f2cb7c089b06bc0b901ba71ab1 62899 main/binary-amd64/Packages.gz
+ 4e4a4864a82245267cc11843788a2773b8ff699ea0a7f15e55363ce8988c6480e07dbba288da49e6fbfa2efb8504b64d34f6b1fcf30b9c53c5938673b0b4fb4f 204106 main/binary-amd64/Packages
+ b73098efb837f6fede53bade40d5890a2d0f26f3e83beb253eaea418366f2c49af94cbeab31fb13a622806d9a6d4ad54fc416ffc095d6be5ea19115f9c59256d 62905 main/binary-amd64/Packages.gz
  92c5c2b6950e90e3b56379716b1f7cd67306f4b1e7aab779609cdd569b3e7633895572ca7c522dcb85e33cad0d9ad43f1d5e35060d793c3e767f249e42d730d9 124 main/binary-amd64/Release
- 9ab5723865be3b4e3b2f788e1ff006f9d96b682208b5d99fc1a62adeab45ea1e08af53c7bcd16fb3c57f262ddb006274da5e93863c92e0f017f192647bda3f08 85126 main/binary-arm64/Packages
- d7a4ec4718b27d4d1aa2aea4baf4d43e3d832d9e81b83fb52bd751be980f4270f7b75d9c2f0a1e2c74a60aada92fd0e3e304325af4ad1384f1bd78cbc91d68da 25345 main/binary-arm64/Packages.gz
+ 9135616ac55111296ada4b123c4f547ca2c1f8843489cec5b445633c7a9bb77da1cf81ecb0220e2a892695e9eb5430a4df2cf69d3d5cdf2dd57ab74cccc45d01 85126 main/binary-arm64/Packages
+ 3099b20f1f5e47c5162751fd56db850655416c25fe5928e992c6d4631a979f6c11ddd532b43ca50efb7c6dc3ac58e2fd99b36eb81744d1e0d1968a1607b24643 25341 main/binary-arm64/Packages.gz
  a9a5c647e21f98317d6f71000aa653bb32c7888bbc75e897ba9d77718555b949c256e34e6e22c88b65119cf056d29f3444bbe7d0b1fa4d672df92f5065a73979 124 main/binary-arm64/Release
  3b1c9fc27fadcc8468b3a21c89ec3c55721b646ffe386b30f8bfdf52de078a1dd46482f21a8af8317ecc9feb0e174e8296329cf21c1f3be004cba3c834456921 81685 main/binary-i386/Packages
  8f0eeb46524ee0233c3a0cb53ece594ca057e618e25ef063d66f48e5d012f710b2c2903e5ed147d2787b16128d03213e9eb9ac9c47bda938e84c977f62bd27af 23865 main/binary-i386/Packages.gz
