@@ -169,6 +169,7 @@
             {"type":"file","name":"adduser_3.118ubuntu5_all.deb"},
             {"type":"file","name":"apt-transport-https_2.4.12_all.deb"},
             {"type":"file","name":"gnome-keysign_1.2.0-3_all.deb"},
+            {"type":"file","name":"lintian_2.114.0ubuntu1.4_all.deb"},
             {"type":"file","name":"lsb-base_11.1.0ubuntu4_all.deb"},
             {"type":"file","name":"mysql-client_8.0.37-0ubuntu0.22.04.3_all.deb"},
             {"type":"file","name":"mysql-client_8.0.39-0ubuntu0.22.04.1_all.deb"},
@@ -251,6 +252,7 @@
             {"type":"file","name":"freetube_0.21.0_amd64.deb"},
             {"type":"file","name":"freetube_0.21.1_amd64.deb"},
             {"type":"file","name":"freetube_0.21.2_amd64.deb"},
+            {"type":"file","name":"freetube_0.21.3_amd64.deb"},
             {"type":"file","name":"git_2.34.1-1ubuntu1.11_amd64.deb"},
             {"type":"file","name":"GitHubDesktop-linux-amd64-3.3.18-linux1.deb"},
             {"type":"file","name":"GitHubDesktop-linux-amd64-3.4.0-linux1.deb"},
@@ -356,6 +358,7 @@
             {"type":"file","name":"freetube_0.21.0_arm64.deb"},
             {"type":"file","name":"freetube_0.21.1_arm64.deb"},
             {"type":"file","name":"freetube_0.21.2_arm64.deb"},
+            {"type":"file","name":"freetube_0.21.3_arm64.deb"},
             {"type":"file","name":"GitHubDesktop-linux-arm64-3.3.18-linux1.deb"},
             {"type":"file","name":"GitHubDesktop-linux-arm64-3.4.0-linux1.deb"},
             {"type":"file","name":"GitHubDesktop-linux-arm64-3.4.2-linux1.deb"},
@@ -485,7 +488,9 @@
         ]},
           {"type":"directory","name":"freetube","contents":[
             {"type":"file","name":"freetube_0.21.2_amd64.deb"},
-            {"type":"file","name":"freetube_0.21.2_arm64.deb"}
+            {"type":"file","name":"freetube_0.21.2_arm64.deb"},
+            {"type":"file","name":"freetube_0.21.3_amd64.deb"},
+            {"type":"file","name":"freetube_0.21.3_arm64.deb"}
         ]}
       ]},
         {"type":"directory","name":"g","contents":[
@@ -584,6 +589,7 @@
       ]},
         {"type":"directory","name":"l","contents":[
           {"type":"directory","name":"lintian","contents":[
+            {"type":"file","name":"lintian_2.114.0ubuntu1.4_all.deb"},
             {"type":"file","name":"lintian_2.116.3ubuntu3.2_all.deb"}
         ]},
           {"type":"directory","name":"lsb","contents":[
@@ -1586,7 +1592,7 @@
   ]},
     {"type":"file","name":".gitattributes"},
     {"type":"file","name":".gitignore"},
-    {"type":"file","name":"gpg_2.2.27-3ubuntu2.1_amd64.deb"},
+    {"type":"file","name":"gpg_2.2.27-3ubuntu2.1_amd64.deb.1"},
     {"type":"file","name":"gpgconf_2.2.27-3ubuntu2.1_amd64.deb.1"},
     {"type":"file","name":"proteus-git.sh"},
     {"type":"file","name":"README.md"},
@@ -1594,5 +1600,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":206,"files":1181}
+  {"type":"report","directories":206,"files":1187}
 ]

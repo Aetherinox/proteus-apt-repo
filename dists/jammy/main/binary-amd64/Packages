@@ -411,23 +411,23 @@ Description: Application deployment framework for desktop apps
  limited access to resources outside the sandbox.
 
 Package: freetube
-Version: 0.21.2
+Version: 0.21.3
 License: AGPL-3.0-or-later
 Vendor: PrestonN <FreeTubeApp@protonmail.com>
 Architecture: amd64
 Maintainer: PrestonN <FreeTubeApp@protonmail.com>
-Installed-Size: 268693
+Installed-Size: 268696
 Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
 Recommends: libappindicator3-1
 Homepage: https://github.com/FreeTubeApp/FreeTube#readme
 Priority: 0
 Section: utils
-Filename: pool/main/f/freetube/freetube_0.21.2_amd64.deb
-Size: 75678828
-SHA512: 729b29c57a7d39990edc1d294674b2a533481f25aa7f1a8da2bb3dfd7b01457c201230dffae00b3f18c9855556e672b37dbd3c994eeb8adca1ee2f5eb7d4aa2f
-SHA256: 9bee4f73cebbd5c095ae9099981c1cab39378df7f2c471d6f5dc02f106b8ab91
-SHA1: b3ecf8c7ac7afffc5c4b16cf90a5946483210ce4
-MD5sum: d6c4c37e14ee53930a73d30daa4d91bd
+Filename: pool/main/f/freetube/freetube_0.21.3_amd64.deb
+Size: 75556992
+SHA512: 25aa0e13db28601047855c04dd59e032ca1569e6cc0dcc40e6da5943ec575308fe99c040756134256774dc39c356ffe450cb6ffbb5b31f2e38e75c6df31592c5
+SHA256: bf8649c7b384cd50178d6c887371472916bfdacb9971e939c35ddbe4ab3adc08
+SHA1: 9534464c64de49dcdae9c7897581eafdac52a9d2
+MD5sum: 844fec3dd9abf50a24eab6ca16d9a29d
 Description: 
   A private YouTube client
 
@@ -1226,6 +1226,37 @@ SHA1: cadac9be566de5c53d41fa91fc71afe8b888ffa9
 MD5sum: 1e3c767b1b2dac5e7900b833d4f4aa9b
 Description: Run privacy frontends on your computer
  (none)
+
+Package: lintian
+Version: 2.114.0ubuntu1.4
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 7260
+Depends: binutils, bzip2, diffstat, dpkg (>= 1.17.14), dpkg-dev, file, gettext, gpg, intltool-debian, libapt-pkg-perl, libarchive-zip-perl, libcapture-tiny-perl, libclass-xsaccessor-perl, libclone-perl, libconfig-tiny-perl, libconst-fast-perl, libcpanel-json-xs-perl, libdata-dpath-perl, libdata-validate-domain-perl, libdata-validate-uri-perl, libdevel-size-perl, libdigest-sha-perl, libdpkg-perl, libencode-perl, libemail-address-xs-perl, libfile-basedir-perl, libfile-find-rule-perl, libfont-ttf-perl, libhtml-html5-entities-perl, libio-interactive-perl, libio-prompt-tiny-perl, libipc-run3-perl, libjson-maybexs-perl, liblist-compare-perl, liblist-someutils-perl, liblist-utilsby-perl, libmoo-perl, libmoox-aliases-perl, libnamespace-clean-perl, libpath-tiny-perl, libperlio-gzip-perl, libperlio-utf8-strict-perl, libproc-processtable-perl, libsereal-decoder-perl, libsereal-encoder-perl, libsort-versions-perl, libsyntax-keyword-try-perl, libterm-readkey-perl, libtext-glob-perl, libtext-levenshteinxs-perl, libtext-markdown-discount-perl, libtext-xslate-perl, libtime-duration-perl, libtime-moment-perl, libtimedate-perl, libunicode-utf8-perl, liburi-perl, libxml-libxml-perl, libyaml-libyaml-perl, lzip | clzip, lzop, man-db, patchutils, perl, t1utils, unzip, xz-utils, perl:any
+Suggests: binutils-multiarch, libtext-template-perl
+Breaks: funny-manpages (<< 1.3-5.1), libconfig-model-dpkg-perl (<< 2.151), lintian-brush (<< 0.88), pkg-js-tools (<< 0.9.4), pkg-perl-tools (<< 0.53)
+Replaces: funny-manpages (<< 1.3-5.1)
+Multi-Arch: foreign
+Homepage: https://lintian.debian.org/
+Priority: 0
+Section: utils
+Filename: pool/main/l/lintian/lintian_2.114.0ubuntu1.4_all.deb
+Size: 1081166
+SHA512: af1e6aec7667f7c905cbf54867127620529b52dfbf8fc84a907f7d696297fc81bacfc7050bdb9e3695b5b6d37831c900c2acf0c8656b426e9756d14368156bea
+SHA256: d17d564715d671092dd2305c3dfb734871106457dee875a73750823be943bbf2
+SHA1: 3a4757f74703b0744a11cb1d62664075919542c1
+MD5sum: 58dc362b074cf99072e2e81c3e95d989
+Description: Debian package checker
+ Lintian dissects Debian packages and reports bugs and policy violations. It
+ contains automated checks for many aspects of Debian policy as well as some
+ checks for common errors.
+ .
+ This package is useful for all people who want to check Debian packages for
+ compliance with Debian policy. Every Debian maintainer should check packages
+ with this tool before uploading them to the archive.
+ .
+ This version of Lintian is calibrated for Debian Policy version 4.6.0.1.
+Original-Maintainer: Debian Lintian Maintainers <lintian-maint@debian.org>
 
 Package: lsb-base
 Source: lsb

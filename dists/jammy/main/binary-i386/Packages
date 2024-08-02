@@ -143,6 +143,37 @@ Description: easy signing of OpenPGP keys over the local network
  SMTP configuration needs to be obtained and gives the user a well known
  interface.
 
+Package: lintian
+Version: 2.114.0ubuntu1.4
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 7260
+Depends: binutils, bzip2, diffstat, dpkg (>= 1.17.14), dpkg-dev, file, gettext, gpg, intltool-debian, libapt-pkg-perl, libarchive-zip-perl, libcapture-tiny-perl, libclass-xsaccessor-perl, libclone-perl, libconfig-tiny-perl, libconst-fast-perl, libcpanel-json-xs-perl, libdata-dpath-perl, libdata-validate-domain-perl, libdata-validate-uri-perl, libdevel-size-perl, libdigest-sha-perl, libdpkg-perl, libencode-perl, libemail-address-xs-perl, libfile-basedir-perl, libfile-find-rule-perl, libfont-ttf-perl, libhtml-html5-entities-perl, libio-interactive-perl, libio-prompt-tiny-perl, libipc-run3-perl, libjson-maybexs-perl, liblist-compare-perl, liblist-someutils-perl, liblist-utilsby-perl, libmoo-perl, libmoox-aliases-perl, libnamespace-clean-perl, libpath-tiny-perl, libperlio-gzip-perl, libperlio-utf8-strict-perl, libproc-processtable-perl, libsereal-decoder-perl, libsereal-encoder-perl, libsort-versions-perl, libsyntax-keyword-try-perl, libterm-readkey-perl, libtext-glob-perl, libtext-levenshteinxs-perl, libtext-markdown-discount-perl, libtext-xslate-perl, libtime-duration-perl, libtime-moment-perl, libtimedate-perl, libunicode-utf8-perl, liburi-perl, libxml-libxml-perl, libyaml-libyaml-perl, lzip | clzip, lzop, man-db, patchutils, perl, t1utils, unzip, xz-utils, perl:any
+Suggests: binutils-multiarch, libtext-template-perl
+Breaks: funny-manpages (<< 1.3-5.1), libconfig-model-dpkg-perl (<< 2.151), lintian-brush (<< 0.88), pkg-js-tools (<< 0.9.4), pkg-perl-tools (<< 0.53)
+Replaces: funny-manpages (<< 1.3-5.1)
+Multi-Arch: foreign
+Homepage: https://lintian.debian.org/
+Priority: 0
+Section: utils
+Filename: pool/main/l/lintian/lintian_2.114.0ubuntu1.4_all.deb
+Size: 1081166
+SHA512: af1e6aec7667f7c905cbf54867127620529b52dfbf8fc84a907f7d696297fc81bacfc7050bdb9e3695b5b6d37831c900c2acf0c8656b426e9756d14368156bea
+SHA256: d17d564715d671092dd2305c3dfb734871106457dee875a73750823be943bbf2
+SHA1: 3a4757f74703b0744a11cb1d62664075919542c1
+MD5sum: 58dc362b074cf99072e2e81c3e95d989
+Description: Debian package checker
+ Lintian dissects Debian packages and reports bugs and policy violations. It
+ contains automated checks for many aspects of Debian policy as well as some
+ checks for common errors.
+ .
+ This package is useful for all people who want to check Debian packages for
+ compliance with Debian policy. Every Debian maintainer should check packages
+ with this tool before uploading them to the archive.
+ .
+ This version of Lintian is calibrated for Debian Policy version 4.6.0.1.
+Original-Maintainer: Debian Lintian Maintainers <lintian-maint@debian.org>
+
 Package: lsb-base
 Source: lsb
 Version: 11.1.0ubuntu4
