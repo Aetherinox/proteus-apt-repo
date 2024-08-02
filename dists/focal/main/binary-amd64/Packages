@@ -126,6 +126,26 @@ Description: Displays user-friendly dialog boxes from shell scripts
   background tail  Similar to tail but runs in the background.
   editbox          Allows editing an existing file
 
+Package: github-desktop
+Version: 3.4.2-linux1
+Architecture: amd64
+Depends: libgtk-3-0, libnotify4, libnss3, libxtst6, xdg-utils, libatspi2.0-0, libdrm2, libgbm1, libxcb-dri3-0, kde-cli-tools | kde-runtime | trash-cli | libglib2.0-bin | gvfs-bin, libcurl3 | libcurl4, libsecret-1-0, gnome-keyring
+Recommends: pulseaudio | libasound2
+Suggests: gir1.2-gnomekeyring-1.0, libgnome-keyring0, lsb-release
+Installed-Size: 442499
+Maintainer: Brendan Forster <github@brendanforster.com>
+Homepage: https://github.com/shiftkey/desktop
+Priority: 0
+Section: utils
+Filename: pool/main/g/github-desktop/github-desktop_3.4.2-linux1_amd64.deb
+Size: 128805080
+SHA512: 4ed921ff5ee53c75ec9351a4a76e6b5d33dab33b9777212883eb193758a5e2db9c33b2b78c53b59d3368ab40b5e01afbfd4b4acada6242cd91ac7701e1ed8eee
+SHA256: a98e6b0af3a07f5fd9d345d9eb2027eb329d519fba9783c2b613d4e385cb2a17
+SHA1: 644a5b382e0a9e48a79a8fb7adc2e5875db261cb
+MD5sum: fb9c3ac5d457f5a3b1de1d98d0c96bb3
+Description: Simple collaboration from your desktop
+ This is the unofficial port of GitHub Desktop for Linux distributions
+
 Package: gitkraken-license-pro
 Version: 1.0.0-1
 Architecture: all
