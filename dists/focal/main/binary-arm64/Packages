@@ -537,19 +537,19 @@ Description: Shows Linux System Information with Distribution Logo
  distributions logo or any ascii art of your choice.
 
 Package: opengist
-Version: 1.6.1
+Version: 1.7.3
 Architecture: arm64
 Maintainer: Thomas Miceli <thomiceli@github.com>
 Depends: adduser
 Homepage: https://github.com/Aetherinox/debian-opengist
 Priority: 0
 Section: utils
-Filename: pool/main/o/opengist/opengist_1.6.1_arm64.deb
-Size: 17169340
-SHA512: 349685da15894366da9d4321130f51dbecae51cac081bb3fd4b531308f381a1a40a9b5b00006dcfa0604df74aa645bfdabf6304b3632b68c8c344c04a8c02b28
-SHA256: 0c1c31f8ff4d0cf5fad24b037080e867661fe6d032c978c67210d9560b782416
-SHA1: 9a797271c7f56d9730f09293d616a189c5a6bf8e
-MD5sum: aaaed5726cd5fda416b7bd13b9be8b01
+Filename: pool/main/o/opengist/opengist_1.7.3_arm64.deb
+Size: 18699004
+SHA512: de91f714c4b67bbcbd6c89fe2156f2fc893772a069ff49319b7a2b4779a2af81538e8b84a564f84a6b5c8701bf5c371da4a2976923a5a02f3757a7100f44846a
+SHA256: 00e6be3787356d13adf3985fdccb2dde03a59d8f5aeca669274c82a11d213e87
+SHA1: a3b399ce94393e6853e96415c4bcf4fb5aa17541
+MD5sum: 6b0eff0e8b08eaf48b99fb5fe949ff5f
 Description: Self-hosted pastebin powered by Git, open-source alternative to Github
  Gist. Opengist is a self-hosted pastebin powered by Git. All snippets are
  stored in a Git repository and can be read and/or modified using standard Git
