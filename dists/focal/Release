@@ -2,13 +2,13 @@ Origin: Aetherx
 Label: Focal Fossa 20.04 LTS & ZorinOS v16
 Suite: stable
 Codename: focal
-Date: Fri, 02 Aug 2024 02:37:19 UTC
+Date: Fri, 02 Aug 2024 02:38:51 UTC
 Architectures: amd64 arm64 i386
 Components: main
 Description: Ubuntu 20.04 (Focal Fossa) LTS & ZorinOS v16
 MD5Sum:
- bab35524493ec719c0062075a00bf903 131012 main/binary-amd64/Packages
- 38a6a9fa265896e6c8118e9e4d7bf0ec 35382 main/binary-amd64/Packages.gz
+ 6cfdbf5c1005729e708c64fb9460cb49 131010 main/binary-amd64/Packages
+ 9015c07c37fa30b94d69b59901e3b50f 35381 main/binary-amd64/Packages.gz
  f443fcf28908eec942ba5f3580fcfc96 160 main/binary-amd64/Release
  29e60542fbc52909c9b1fdaa08ddf10b 42544 main/binary-arm64/Packages
  f545a4f9c890249d46aecf680404ea65 15337 main/binary-arm64/Packages.gz
@@ -20,8 +20,8 @@ MD5Sum:
  7029066c27ac6f5ef18d660d5741979a 20 main/source/Sources.gz
  5b68ad4815abf168d19afa79ed0c9884 161 main/source/Release
 SHA1:
- 5b0973c7e1e63f1d797c704c6bb1a23a9b90ea9c 131012 main/binary-amd64/Packages
- cc88e5f373911338b8533c0b8d2738fb6b4c2160 35382 main/binary-amd64/Packages.gz
+ 8682cf97012d91ee586ea20a8c5ad001ec80fbd2 131010 main/binary-amd64/Packages
+ 783d9d8cbf6b7c71d3199cbfa49d913c514df7e2 35381 main/binary-amd64/Packages.gz
  d59f8db32968b1e0e52ece6cb3a843821088038f 160 main/binary-amd64/Release
  38abf82f82965d8759138684373584284db83002 42544 main/binary-arm64/Packages
  b997c9bd0345195d6bb9c3aad2d6633f3ab0d507 15337 main/binary-arm64/Packages.gz
@@ -33,8 +33,8 @@ SHA1:
  46c6643f07aa7f6bfe7118de926b86defc5087c4 20 main/source/Sources.gz
  fcbe34ba4f60810ba525c22e80b0c904ba553966 161 main/source/Release
 SHA256:
- 6b4793d4c02fe14749b8579dc838daf9ea5c12b26daefdc88b3852c4db2df73e 131012 main/binary-amd64/Packages
- 986342aa08b54b00f350a7f39a909b5ead93e84a477cbb615df4c0fd340ab9d5 35382 main/binary-amd64/Packages.gz
+ 8bbec5533883c04ee8563cee443c55dafdd16fbbf35d00cadaa408d812aa381c 131010 main/binary-amd64/Packages
+ 3105fc4c7e9cfaf7d212f016d0d206a90007f82edec356915c90fc89bdeb1afe 35381 main/binary-amd64/Packages.gz
  377e593ad09cd2bd72400c3caf001378988bbffc7b96f03714d22f2cf25dadc1 160 main/binary-amd64/Release
  960dad1f01919dbf51a1a3b5fe0a7cd9a24ad49416bfa5e0fc016e10162fdb5f 42544 main/binary-arm64/Packages
  2c7a6d0046d0d7fc153e2555b0bb0a3be7ad18c32d9d0f1961fd6fe7b515d30d 15337 main/binary-arm64/Packages.gz
@@ -46,8 +46,8 @@ SHA256:
  59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2 20 main/source/Sources.gz
  ccd945635f5df1177d79db93e5d6c327f29045de4451ed213f652570a28caa5d 161 main/source/Release
 SHA512:
- 2b1e77fba4e14894f03902c8079b29d471f6f9399cb1271d1c3f83c73f1be74250a00ba5c45da18db5fe159ff7eac11193209f328a0b5c42823d7f3fd359d199 131012 main/binary-amd64/Packages
- 9f33d85c1bc125718e3bcd1b694e8fe1ac7edebf523288ebcb4c825174ff7a57404e31290fb133d2ed3697c748a43a90c897373bd613eb7fab83188da29be2aa 35382 main/binary-amd64/Packages.gz
+ ecc7cf019c6f6a45d937f2f7407f589f026d233ca82375b24e2bc626c704125740f3dd9edfc11fead4f12ec98858d6cd5f38499a6ae5bdacadf3aa8b2e7c4dc2 131010 main/binary-amd64/Packages
+ 971e2ac2f85898a8b6dc2598849155e84173985e834e8d8cf1946437bad217d2b2eaefdbf35287e211d0667c22a1bf5a7f1a54013266d7d71b38652e497aac28 35381 main/binary-amd64/Packages.gz
  7121697ee9bb9f18d67212a0763f37f3181d19f422cedad8f1bd34e7351c8236b8ddf7a1993cc24fb09d22535943487b96dd4934cb2a6a4716c4681a4217e5b0 160 main/binary-amd64/Release
  37f2b7e124809dcc616c5ebe69b57adf280e7543e9f29586ed83c6d8910d24f64dd766b795dae77d0e5bd0ab90669fd1828d5d707d748a1a105ea340652fbb21 42544 main/binary-arm64/Packages
  5b18be6b00e779c8cfb2f445858a13b2edb63f6286527f0e356e76656c490e93ee84a107e450fe2d94e80df1bb8602b049d345da2292d8c3423c2d8c6a40280b 15337 main/binary-arm64/Packages.gz
