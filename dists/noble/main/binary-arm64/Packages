@@ -563,15 +563,15 @@ Version: 1.7.3
 Architecture: arm64
 Maintainer: Thomas Miceli <thomiceli@github.com>
 Depends: adduser
-Homepage: https://github.com/Aetherinox/debian-opengist
+Homepage: https://github.com/Aetherinox/opengist-debian
 Priority: 0
 Section: utils
 Filename: pool/main/o/opengist/opengist_1.7.3_arm64.deb
-Size: 18699004
-SHA512: de91f714c4b67bbcbd6c89fe2156f2fc893772a069ff49319b7a2b4779a2af81538e8b84a564f84a6b5c8701bf5c371da4a2976923a5a02f3757a7100f44846a
-SHA256: 00e6be3787356d13adf3985fdccb2dde03a59d8f5aeca669274c82a11d213e87
-SHA1: a3b399ce94393e6853e96415c4bcf4fb5aa17541
-MD5sum: 6b0eff0e8b08eaf48b99fb5fe949ff5f
+Size: 18699014
+SHA512: 4fdff609b0452210d01471e20fbf81ade8c883df8ce0b510cc5471b62834c7bf9341921c6d507f96de8c3970a8de2b4379a3dece1dfaad76e6b4b46c921ac0f8
+SHA256: a5f4a7531874f2e50c73c869a9b729abc8da12f944777d38b042b88551d54a1b
+SHA1: dcb8b3c449e130f41854ea761c298e6e66576827
+MD5sum: abbd077cae7b09e1ceef0053b6e6dd31
 Description: Self-hosted pastebin powered by Git, open-source alternative to Github
  Gist. Opengist is a self-hosted pastebin powered by Git. All snippets are
  stored in a Git repository and can be read and/or modified using standard Git
