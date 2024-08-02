@@ -744,23 +744,23 @@ Description: Shows Linux System Information with Distribution Logo
  distributions logo or any ascii art of your choice.
 
 Package: obsidian
-Version: 1.4.16
+Version: 1.6.7
 License: UNLICENSED
 Vendor: Dynalist Inc.
 Architecture: amd64
 Maintainer: Dynalist Inc.
-Installed-Size: 263421
+Installed-Size: 284926
 Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
 Recommends: libappindicator3-1
 Homepage: https://obsidian.md
 Priority: 0
 Section: utils
-Filename: pool/main/o/obsidian/obsidian_1.4.16_amd64.deb
-Size: 73362498
-SHA512: 3b691188a05e20e0d1792a6b135076d3dabe33106e541ae4614703fdea44bcb64fc52bbd62808325c381f28348e37cbde0e3d072e4e1b077fb2b9728c43edb05
-SHA256: 7af0647fdc5a0a70840c9b71742c573e39990dde9e1dcd73479c4ca4aa38d74d
-SHA1: 44acf0c3753dd12c84ec6e2a72f2e3e956ea6044
-MD5sum: 1f9c258494f5270c1c7b0c480750e3d7
+Filename: pool/main/o/obsidian/obsidian_1.6.7_amd64.deb
+Size: 79172558
+SHA512: bbf913f6806a1d23d2a6bbb9d5572569b019c79c877c3165ff94938f01282e7d98b6ba660821dca7e38874413207846b025707161c8901983458bdf4add05336
+SHA256: 772da38d23b15f0f5d7cf17024a1948ff2c073b2195954743703178bf1254b36
+SHA1: 1ebede61696c77ee97394c6b0a3fcd8abaa299ed
+MD5sum: c993b303e6ee232504713062c38f3440
 Description: 
   Obsidian
 
