@@ -381,7 +381,8 @@
       {"type":"file","name":"proteus-git-080124.log"},
       {"type":"file","name":"proteus-git-080224.log"},
       {"type":"file","name":"proteus-git-080324.log"},
-      {"type":"fifo","name":"proteus-git-080324.log.pipe"},
+      {"type":"file","name":"proteus-git-080424.log"},
+      {"type":"fifo","name":"proteus-git-080424.log.pipe"},
       {"type":"file","name":"proteus-git-service-080124.log"},
       {"type":"file","name":"proteus-git-service-080224.log"},
       {"type":"file","name":"proteus-git-service-080324.log"}
@@ -1600,11 +1601,12 @@
     {"type":"file","name":"gpgconf_2.2.27-3ubuntu2.1_amd64.deb.1"},
     {"type":"file","name":"gpgconf_2.2.27-3ubuntu2.1_amd64.deb.2"},
     {"type":"file","name":"gpgv_2.2.27-3ubuntu2.1_amd64.deb.1"},
+    {"type":"file","name":"php-ldap_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
     {"type":"file","name":"proteus-git.sh"},
     {"type":"file","name":"README.md"},
     {"type":"file","name":"secrets.sh"},
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":206,"files":1193}
+  {"type":"report","directories":206,"files":1195}
 ]
