@@ -5,7 +5,7 @@ incoming/
 .env
 sources-*.list
 .pipe
-/*.deb
+/*.deb*
 
 # ----------------------------------------
 # Logs

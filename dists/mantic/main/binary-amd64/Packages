@@ -379,23 +379,23 @@ Description: Application deployment framework for desktop apps
  limited access to resources outside the sandbox.
 
 Package: freetube
-Version: 0.21.2
+Version: 0.21.3
 License: AGPL-3.0-or-later
 Vendor: PrestonN <FreeTubeApp@protonmail.com>
 Architecture: amd64
 Maintainer: PrestonN <FreeTubeApp@protonmail.com>
-Installed-Size: 268693
+Installed-Size: 268696
 Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
 Recommends: libappindicator3-1
 Homepage: https://github.com/FreeTubeApp/FreeTube#readme
 Priority: 0
 Section: utils
-Filename: pool/main/f/freetube/freetube_0.21.2_amd64.deb
-Size: 75678828
-SHA512: 729b29c57a7d39990edc1d294674b2a533481f25aa7f1a8da2bb3dfd7b01457c201230dffae00b3f18c9855556e672b37dbd3c994eeb8adca1ee2f5eb7d4aa2f
-SHA256: 9bee4f73cebbd5c095ae9099981c1cab39378df7f2c471d6f5dc02f106b8ab91
-SHA1: b3ecf8c7ac7afffc5c4b16cf90a5946483210ce4
-MD5sum: d6c4c37e14ee53930a73d30daa4d91bd
+Filename: pool/main/f/freetube/freetube_0.21.3_amd64.deb
+Size: 75556992
+SHA512: 25aa0e13db28601047855c04dd59e032ca1569e6cc0dcc40e6da5943ec575308fe99c040756134256774dc39c356ffe450cb6ffbb5b31f2e38e75c6df31592c5
+SHA256: bf8649c7b384cd50178d6c887371472916bfdacb9971e939c35ddbe4ab3adc08
+SHA1: 9534464c64de49dcdae9c7897581eafdac52a9d2
+MD5sum: 844fec3dd9abf50a24eab6ca16d9a29d
 Description: 
   A private YouTube client
 
