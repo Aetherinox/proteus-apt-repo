@@ -532,6 +532,48 @@ Description: nginx web/proxy server (basic version)
  THIRD PARTY MODULES: Echo.
 Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
 
+Package: opengist
+Version: 1.7.3
+Architecture: i386
+Maintainer: Thomas Miceli <thomiceli@github.com>
+Depends: adduser
+Homepage: https://github.com/Aetherinox/opengist-debian
+Priority: 0
+Section: utils
+Filename: pool/main/o/opengist/opengist_1.7.3_i386.deb
+Size: 19023816
+SHA512: 31c4e9cb18a72a42bbd92e103b837ac48293e1dd3e914c8cdb9cc97d3dcf7947af205d778ac9f09a249162c3880144096ebcbf594411ef878bfc5295b2adc099
+SHA256: 87924327cc8f44e006b142b266fdafd7759c2e01b22a89824d22c7ee1dc7cfca
+SHA1: 190eac5108e5ba9cfc64095dbf14232e2346fa3a
+MD5sum: 85163b5c150dd30813c8e09469161bd9
+Description: Self-hosted pastebin powered by Git, open-source alternative to Github
+ Gist. Opengist is a self-hosted pastebin powered by Git. All snippets are
+ stored in a Git repository and can be read and/or modified using standard Git
+ commands, or with the web interface. It is similar to GitHub Gist, but 
+ open-source and could be self-hosted.
+
+Package: pass
+Source: password-store
+Version: 1.7.4-6
+Architecture: all
+Maintainer: Colin Watson <cjwatson@debian.org>
+Installed-Size: 128
+Depends: gnupg, tree
+Recommends: git, qrencode, xclip, wl-clipboard
+Suggests: libxml-simple-perl, perl, python, python3, ruby
+Homepage: https://www.passwordstore.org/
+Priority: 0
+Section: utils
+Filename: pool/main/p/password-store/pass_1.7.4-6_all.deb
+Size: 34544
+SHA512: d238cffe1a615e5beb30e7460f908977dc086e133eb9a0ece863b149715a47f8b079b79ac54e7d37797c72b0122adbcc01bc18ace2ccd029d18972c5beacfaae
+SHA256: 7cab867385644bf838196ded0e9b1650da38459b214a368eb28d907ea80cd9a1
+SHA1: a3c6a912069a069dc8720ea59b7d1c6f00e4f16f
+MD5sum: 6e7601958af44567c34d894322aa0ea7
+Description: lightweight directory-based password manager
+ Stores, retrieves, generates, and synchronizes passwords securely using
+ gpg and git.
+
 Package: php
 Source: php-defaults (93ubuntu1)
 Version: 2:8.2+93ubuntu1

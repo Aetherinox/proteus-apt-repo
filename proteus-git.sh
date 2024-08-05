@@ -34,7 +34,7 @@
 # #
 
 #!/bin/bash
-PATH="/bin:/usr/bin:/sbin:/usr/sbin:/${HOME}/bin"
+PATH="/bin:/usr/bin:/sbin:/usr/sbin:${HOME}/bin"
 echo 
 
 # #
@@ -201,7 +201,7 @@ lst_packages=(
     'php-zip'
     'php-zmq'
     'php'
-    'sks',
+    'sks'
     'snap'
     'snapd'
     'tcptrack'
@@ -479,7 +479,7 @@ error_missing_file_base()
     echo -e "  ${BOLD}${WHITE}Create new ${FUCHSIA}${file_base_path}${WHITE} file and add the following lines:${NORMAL}"
     echo -e
     echo -e "  ${BOLD}${WHITE}    ${DEVGREY}#!/bin/bash${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}    ${DEVGREY}PATH=\"/bin:/usr/bin:/sbin:/usr/sbin:/${HOME}/bin\"${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}    ${DEVGREY}PATH=\"/bin:/usr/bin:/sbin:/usr/sbin:${HOME}/bin\"${NORMAL}"
     echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GPG_KEY=${WHITE}XXXXXXXX${NORMAL}"
     echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GITHUB_NAME=${WHITE}YourName${NORMAL}"
     echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GITHUB_EMAIL=${WHITE}username@email.com${NORMAL}"
@@ -520,7 +520,7 @@ error_missing_value_gpg()
     echo -e "  ${BOLD}${WHITE}Make sure ${FUCHSIA}${file_base_path}${WHITE} exists and contains the following lines:${NORMAL}"
     echo -e
     echo -e "  ${BOLD}${WHITE}    ${DEVGREY}#!/bin/bash${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}    ${DEVGREY}PATH=\"/bin:/usr/bin:/sbin:/usr/sbin:/${HOME}/bin\"${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}    ${DEVGREY}PATH=\"/bin:/usr/bin:/sbin:/usr/sbin:${HOME}/bin\"${NORMAL}"
     echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GPG_KEY=${WHITE}XXXXXXXX${NORMAL}"
     echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GITHUB_NAME=${WHITE}YourName${NORMAL}"
     echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GITHUB_EMAIL=${WHITE}username@email.com${NORMAL}"
@@ -761,7 +761,7 @@ opt_report()
 #   --setup         installs all required dependencies for proteus script
 #                   apt-move, apt-url, curl, wget, tree, reprepro, lastversion
 #
-#   --gpg           adds new entries to "/${HOME}/.gnupg/gpg-agent.conf"
+#   --gpg           adds new entries to "${HOME}/.gnupg/gpg-agent.conf"
 #
 #   --onlyTest      downloads packages from both apt-get and LastVersion
 #                   does not push packages to Github proteus repo
@@ -1230,7 +1230,7 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
                     printf "%-3s %-15s %-10s\n" "" "GPG Passwd" "${GREEN}***********${NORMAL}"
                 fi
 
-                echo "${CSI_GPG_PASSWD}" | gpg --batch --yes --pinentry-mode loopback --passphrase-fd 0 --output /dev/null --sign
+                echo "${CSI_GPG_PASSWD}" | gpg --batch --yes --pinentry-mode loopback --passphrase-fd 0 --output /dev/null --sign >> /dev/null 2>&1
 
             # #
             #   SECRETS > GPG Passwd > Empty
@@ -1316,7 +1316,7 @@ else
 
 sudo tee ${app_file_secrets_sh} << EOF > /dev/null
 #!/bin/bash
-PATH="/bin:/usr/bin:/sbin:/usr/sbin:/${HOME}/bin"
+PATH="/bin:/usr/bin:/sbin:/usr/sbin:${HOME}/bin"
 export GITHUB_API_TOKEN=github_pat_xxxxxxxxx
 export GITLAB_PA_TOKEN=glpat-xxxxxxxxxxxxxxx
 export GPG_KEY=
@@ -1442,7 +1442,7 @@ app_run_github_precheck( )
 checkgit_signing=$( git config --global --get-all user.signingKey )
 if [ -z "${checkgit_signing}" ] || [ "${checkgit_signing}" == "!" ]; then
     echo
-    echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Missing ${YELLOW}user.signingKey${WHITE} in ${YELLOW}/${HOME}/.gitconfig${NORMAL}"
+    echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Missing ${YELLOW}user.signingKey${WHITE} in ${YELLOW}${HOME}/.gitconfig${NORMAL}"
     echo -e "  ${BOLD}${WHITE}You should have the below entries in your ${FUCHSIA}.gitconfig${WHITE}:${NORMAL}"
     echo
     echo -e "  ${BOLD}${WHITE}    ${GREYL}[user]${NORMAL}"
@@ -2477,7 +2477,7 @@ app_setup()
     fi
 
     # #
-    #   install proteus-git binary in /${HOME}/bin/proteus-git
+    #   install proteus-git binary in ${HOME}/bin/proteus-git
     # #
 
     if ! [ -f "$app_file_proteus" ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
@@ -2558,7 +2558,7 @@ app_setup()
     fi
 
     # #
-    #   add env path /${HOME}/bin/
+    #   add env path ${HOME}/bin/
     # #
 
     envpath_add_proteus '${HOME}/bin'
@@ -2579,8 +2579,8 @@ app_setup()
             sudo pip3 install --upgrade --force pip >> /dev/null 2>&1
 
             # wget https://github.com/dvershinin/lastversion/archive/refs/tags/v3.5.0.zip
-            # mkdir /${HOME}/Packages/
-            # unzip v3.5.0.zip -d /${HOME}/Packages/lastversion
+            # mkdir ${HOME}/Packages/
+            # unzip v3.5.0.zip -d ${HOME}/Packages/lastversion
 
             # #
             #   Uninstall with
@@ -2594,7 +2594,7 @@ app_setup()
             # #
 
             pip install lastversion --break-system-packages
-            cp /${HOME}/.local/bin/lastversion /${HOME}/bin/
+            cp ${HOME}/.local/bin/lastversion ${HOME}/bin/
             sudo touch /etc/profile.d/lastversion.sh
 
             envpath_add_lastversion '${HOME}/bin'
@@ -2618,7 +2618,7 @@ app_setup()
     #   then modify user's gpg-agent.conf file
     # #
 
-    gpgconfig_file="/${HOME}/.gnupg/gpg-agent.conf"
+    gpgconfig_file="${HOME}/.gnupg/gpg-agent.conf"
 
     if ! [ -x "$(command -v gpg)" ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf '%-57s' "    |--- Installing GPG"
@@ -2936,7 +2936,7 @@ app_run_dl_aptget()
 
             # #
             #   check if file exists
-            #       /${HOME}/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+            #       ${HOME}/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
             # #
 
             if [[ -f "${app_dir}/${app_filename}" ]]; then
@@ -2952,8 +2952,8 @@ app_run_dl_aptget()
                     # #
                     #   architecture > all
                     #   move package to its final location inside the reprepro directory
-                    #       move    /${HOME}/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
-                    #       to      /${HOME}/proteus/incoming/proteus-git/jammy/all/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+                    #       move    ${HOME}/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+                    #       to      ${HOME}/proteus/incoming/proteus-git/jammy/all/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
                     # #
 
                     mv "${app_dir}/${app_filename}" "${app_dir_storage}/all/"
@@ -3024,8 +3024,8 @@ app_run_dl_aptget()
                     # #
                     #   architecture > amd64
                     #   move package to its final location inside the reprepro directory
-                    #       move    /${HOME}/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_amd64.deb
-                    #       to      /${HOME}/proteus/incoming/proteus-git/jammy/amd64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_amd64.deb
+                    #       move    ${HOME}/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_amd64.deb
+                    #       to      ${HOME}/proteus/incoming/proteus-git/jammy/amd64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_amd64.deb
                     # #
 
                     mv "${app_dir}/${app_filename}" "${app_dir_storage}/amd64/"
@@ -3097,8 +3097,8 @@ app_run_dl_aptget()
                     # #
                     #   architecture > arm64
                     #   move package to its final location inside the reprepro directory
-                    #       move    /${HOME}/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_arm64.deb
-                    #       to      /${HOME}/proteus/incoming/proteus-git/jammy/arm64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_arm64.deb
+                    #       move    ${HOME}/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_arm64.deb
+                    #       to      ${HOME}/proteus/incoming/proteus-git/jammy/arm64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_arm64.deb
                     # #
 
                     mv "${app_dir}/${app_filename}" "${app_dir_storage}/arm64/"
@@ -3160,7 +3160,80 @@ app_run_dl_aptget()
                     bNewPackage=false
 
                 # #
-                #   certain packages will output an *amd64 or *arm64 file when calling
+                #   architecture > i386
+                #   file must end with 'i386.deb'
+                # #
+
+                elif [[ "$arch" == "i386" || "$arch" == "386" ]] && [[ $app_filename == *i386.deb || $app_filename == *i386*.deb || $app_filename == *386.deb || $app_filename == *386*.deb ]]; then
+                    echo -e "  ${WHITE}                Download        ${FUCHSIA}${app_url}${NORMAL}"
+
+                    # #
+                    #   architecture > i386
+                    #   move package to its final location inside the reprepro directory
+                    #       move    ${HOME}/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.i386.deb
+                    #       to      ${HOME}/proteus/incoming/proteus-git/jammy/i386/networkd-dispatcher_2.1-2ubuntu0.22.04.i386.deb
+                    # #
+
+                    mv "${app_dir}/${app_filename}" "${app_dir_storage}/i386/"
+
+                    echo -e "  ${WHITE}                Move            ${FUCHSIA}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA}${app_dir_storage}/i386/${NORMAL}"
+
+                    if [ -n "${bRepreproInstalled}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
+
+                        # #
+                        #   architecture > i386 > full package path
+                        #
+                        #       deb_package             incoming/proteus-git/jammy/i386/networkd-dispatcher_2.1-2ubuntu0.22.04.i386.deb
+                        # #
+
+                        deb_package="${app_dir_repo}/${arch}/${app_filename}"
+
+                        # #
+                        #   architecture > i386 > reprepro
+                        #   add package to reprepro database
+                        #
+                        #       app_repo_dist_sel       jammy
+                        #       deb_package             incoming/proteus-git/jammy/i386/networkd-dispatcher_2.1-2ubuntu0.22.04.i386.deb
+                        # #
+
+                        echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
+                        echo -e "  ${WHITE}                                    ${FUCHSIA}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${NORMAL}"
+
+                        reprepro_exit_code="0"
+                        reprepro_output="$(reprepro -V \
+                            --section utils \
+                            --component main \
+                            --priority 0 \
+                            --architecture ${arch} \
+                            includedeb "${app_repo_dist_sel}" "${deb_package}" \
+                            "$@" 2>&1)" \
+                            || { reprepro_exit_code="$?" ; true; };
+
+                        # #
+                        #   architecture > i386 > reprepro
+                        #
+                        #   output > package already added to reprepro
+                        # #
+
+                        if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
+                            echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
+                        fi
+
+                        # #
+                        #   architecture > i386 > reprepro
+                        #
+                        #   output > new package added
+                        # #
+
+                        if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
+                            echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
+                        fi
+                    fi
+
+                    bNewPackage=false
+
+                # #
+                #   certain packages will output an *amd64, *arm64 and *i386 file when calling
                 #   the "all" architecture, which means you'll have double the files.
                 #
                 #   delete the left-over files since we already have them.
@@ -3232,7 +3305,7 @@ app_run_dl_lastver()
     #           Package         amd64
     #           File            GitHubDesktop-linux-amd64-3.4.2-linux1.deb
     #           Download        https://github.com/shiftkey/desktop/releases/download/release-3.4.2-linux1/GitHubDesktop-linux-amd64-3.4.2-linux1.deb
-    #           Move            /${HOME}/Repos/GitHubDesktop-linux-amd64-3.4.2-linux1.deb > /${HOME}/Repos/incoming/proteus-git/jammy/amd64/
+    #           Move            ${HOME}/Repos/GitHubDesktop-linux-amd64-3.4.2-linux1.deb > ${HOME}/Repos/incoming/proteus-git/jammy/amd64/
     #           Reprepro        incoming/proteus-git/jammy/amd64/GitHubDesktop-linux-amd64-3.4.2-linux1.deb for dist jammy
     #           Status:         💡 Already exists
     #
@@ -3240,7 +3313,7 @@ app_run_dl_lastver()
     #           Package         arm64
     #           File            GitHubDesktop-linux-arm64-3.4.2-linux1.deb
     #           Download        https://github.com/shiftkey/desktop/releases/download/release-3.4.2-linux1/GitHubDesktop-linux-arm64-3.4.2-linux1.deb
-    #           Move            /${HOME}/Repos/GitHubDesktop-linux-arm64-3.4.2-linux1.deb > /${HOME}/Repos/incoming/proteus-git/jammy/arm64/
+    #           Move            ${HOME}/Repos/GitHubDesktop-linux-arm64-3.4.2-linux1.deb > ${HOME}/Repos/incoming/proteus-git/jammy/arm64/
     #           Reprepro        incoming/proteus-git/jammy/arm64/GitHubDesktop-linux-arm64-3.4.2-linux1.deb for dist jammy
     #           Status:         💡 Already exists
     # #
@@ -3368,8 +3441,8 @@ app_run_dl_lastver()
 
                 # #
                 #   check if file exists
-                #       /${HOME}/Repos/GitHubDesktop-linux-amd64-3.4.2-linux1.deb
-                #       /${HOME}/Repos/GitHubDesktop-linux-amd64-3.4.2-linux1.deb
+                #       ${HOME}/Repos/GitHubDesktop-linux-amd64-3.4.2-linux1.deb
+                #       ${HOME}/Repos/GitHubDesktop-linux-amd64-3.4.2-linux1.deb
                 # #
 
                 if [ -f "$app_dir/$app_filename" ]; then
@@ -3387,8 +3460,8 @@ app_run_dl_lastver()
                         # #
                         #   architecture > all
                         #   move package to its final location inside the reprepro directory
-                        #       move    /${HOME}/Repos/GitHubDesktop-linux-all-3.4.2-linux1.deb
-                        #       to      /${HOME}/Repos/incoming/proteus-git/jammy/all/
+                        #       move    ${HOME}/Repos/GitHubDesktop-linux-all-3.4.2-linux1.deb
+                        #       to      ${HOME}/Repos/incoming/proteus-git/jammy/all/
                         # #
 
                         mv "$app_dir/$app_filename" "$app_dir_storage/all/"
