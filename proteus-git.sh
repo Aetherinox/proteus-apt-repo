@@ -108,6 +108,7 @@ lst_packages=(
     'open-vm-tools-desktop'
     'open-vm-tools-dev'
     'open-vm-tools'
+    'pass'
     'php-all-dev'
     'php-amqp'
     'php-amqplib'
@@ -310,6 +311,7 @@ cd ${app_dir}
 #       app_file_secrets_github
 #       app_file_secrets_gitlab
 #       app_file_secrets_passwd
+#       app_file_secrets_passwdgpg
 #       app_file_secrets_general
 # #
 
@@ -317,6 +319,7 @@ app_file_this=$(basename "$0")
 app_file_proteus="${app_dir_home}/proteus-git"
 app_file_secrets_general=${app_dir_secrets}/.base
 app_file_secrets_passwd=${app_dir_secrets}/.passwd
+app_file_secrets_passwdgpg=${app_dir_secrets}/.passwdgpg
 app_file_secrets_github=${app_dir_secrets}/.pat_github
 app_file_secrets_gitlab=${app_dir_secrets}/.pat_gitlab
 app_file_secrets_sh=${app_dir}/secrets.sh
@@ -654,10 +657,12 @@ opt_report()
     bExists_File_Github=$([ ! -f "${app_file_secrets_github}" ] && echo "Missing" || echo "${app_file_secrets_github}")
     bExists_File_Gitlab=$([ ! -f "${app_file_secrets_gitlab}" ] && echo "Missing" || echo "${app_file_secrets_gitlab}")
     bExists_File_Passwd=$([ ! -f "${app_file_secrets_passwd}" ] && echo "Missing" || echo "${app_file_secrets_passwd}")
+    bExists_File_PasswdGpg=$([ ! -f "${app_file_secrets_passwdgpg}" ] && echo "Missing" || echo "${app_file_secrets_passwdgpg}")
 
     printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📁 .secrets" "${WHITE}${bExists_Fold_Secrets}" "${DEVGREY}${Val_SecretMode}${NORMAL}"
     printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📄 .base" "${WHITE}${bExists_File_Base}${NORMAL}" ""
     printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📄 .passwd" "${WHITE}${bExists_File_Passwd}${NORMAL}" ""
+    printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📄 .passwdgpg" "${WHITE}${bExists_File_PasswdGpg}${NORMAL}" ""
     printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📄 .pat_github" "${WHITE}${bExists_File_Github}${NORMAL}" ""
     printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📄 .pat_gitlab" "${WHITE}${bExists_File_Gitlab}${NORMAL}" ""
     echo -e
@@ -964,6 +969,7 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
         touch ${app_file_secrets_github}
         touch ${app_file_secrets_gitlab}
         touch ${app_file_secrets_passwd}
+        touch ${app_file_secrets_passwdgpg}
 
         printf "  Press any key to abort ... ${NORMAL}"
         read -n 1 -s -r -p ""
@@ -1176,6 +1182,41 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
             touch ${app_file_secrets_passwd}
         fi
 
+        # #
+        #   SECRETS > GPG Passwd
+        # #
+
+        if [ -f ${app_file_secrets_passwdgpg} ]; then
+            CSI_GPG_PASSWD=$(cat ${app_file_secrets_passwdgpg} | clevis decrypt 2>/dev/null)
+
+            # #
+            #   SECRETS > GPG Passwd > Valid
+            # #
+
+            if [ -n "${CSI_GPG_PASSWD}" ]; then
+                if [ "${OPT_DEV_ENABLE}" = true ]; then
+                    printf "%-3s %-15s %-10s\n" "" "GPG Passwd" "${GREEN}${CSI_GPG_PASSWD}${NORMAL}"
+                else
+                    printf "%-3s %-15s %-10s\n" "" "GPG Passwd" "${GREEN}***********${NORMAL}"
+                fi
+
+                echo "" | gpg --batch --no-tty --yes --symmetric --armor --passphrase '${CSI_GPG_PASSWD}' 2> /dev/null
+
+            # #
+            #   SECRETS > GPG Passwd > Empty
+            # #
+
+            else
+                printf "%-3s %-15s %-10s\n" "" "Gpg Passwd" "${LIME_YELLOW}CSI_GPG_PASSWD${ORANGE} Not declared in ${LIME_YELLOW}${app_file_secrets_passwdgpg}${NORMAL}"
+                bMissingSecret=true
+            fi
+        else
+            printf "%-3s %-15s %-10s\n" "" "Gpg Passwd" "${RED}${app_file_secrets_passwdgpg} Missing ${LIME_YELLOW}${app_file_secrets_passwdgpg}${NORMAL}"
+
+            mkdir -p ${app_dir_secrets}
+            touch ${app_file_secrets_passwdgpg}
+        fi
+
         if [ "${bMissingSecret}" = true ]; then
 
             echo -e
@@ -1188,6 +1229,7 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
             printf "%-5s %-60s %-40s\n" "" "${POWDER_BLUE}${app_file_secrets_github}" "${WHITE}github_pat_xxxxxx_xxxxxx${NORMAL}"
             printf "%-5s %-60s %-40s\n" "" "${POWDER_BLUE}${app_file_secrets_gitlab}" "${WHITE}glpat-xxxxxxx${NORMAL}"
             printf "%-5s %-60s %-40s\n" "" "${POWDER_BLUE}${app_file_secrets_passwd}" "${WHITE}YourSudoPassword${NORMAL}"
+            printf "%-5s %-60s %-40s\n" "" "${POWDER_BLUE}${app_file_secrets_passwdgpg}" "${WHITE}YourGPGPassword${NORMAL}"
             echo -e 
             echo -e "  ${BOLD}${WHITE}(Left)   File you should create${NORMAL}"
             echo -e "  ${BOLD}${WHITE}(Right)  What each file should have inside${NORMAL}"
@@ -1196,6 +1238,7 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
             echo -e "      ${BOLD}${DEVGREY}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'github_pat_xxxxxx_xxxxxx' > .pat_github${NORMAL}"
             echo -e "      ${BOLD}${DEVGREY}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'glpat-xxxxxxx' > .pat_gitlab${NORMAL}"
             echo -e "      ${BOLD}${DEVGREY}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'YourSudoPassword' > .passwd${NORMAL}"
+            echo -e "      ${BOLD}${DEVGREY}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'YourGPGPassword' > .passwdgpg${NORMAL}"
             echo -e 
             echo -e "  ${BOLD}${WHITE}You can decrypt these files using these commands:${NORMAL}"
             echo -e "      ${BOLD}${DEVGREY}clevis decrypt < .pat_github${NORMAL}"
