@@ -280,6 +280,15 @@ STATUS_FAIL="${BOLD}${RED} FAIL ${NORMAL}"
 STATUS_HALT="${BOLD}${YELLOW} HALT ${NORMAL}"
 
 # #
+#   vars > CSI
+# #
+
+CSI_PAT_GITHUB=
+CSI_PAT_GITLAB=
+CSI_SUDO_PASSWD=
+CSI_GPG_PASSWD=
+
+# #
 #   vars > system
 # #
 
@@ -1221,7 +1230,7 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
                     printf "%-3s %-15s %-10s\n" "" "GPG Passwd" "${GREEN}***********${NORMAL}"
                 fi
 
-                echo "" | gpg --batch --no-tty --yes --symmetric --armor --passphrase '${CSI_GPG_PASSWD}' >> /dev/null 2>&1
+                echo "${CSI_GPG_PASSWD}" | gpg --batch --yes --pinentry-mode loopback --passphrase-fd 0 --output /dev/null --sign
 
             # #
             #   SECRETS > GPG Passwd > Empty
@@ -2653,6 +2662,22 @@ EOF
     sleep 1
     gpgconf --kill gpg-agent
     echo -e "[ ${STATUS_OK} ]"
+
+    # #
+    #   SECRETS > GPG precache
+    # #
+
+    if [ -f ${app_file_secrets_passwdgpg} ]; then
+        CSI_GPG_PASSWD=$(cat ${app_file_secrets_passwdgpg} | clevis decrypt 2>/dev/null)
+
+        # #
+        #   SECRETS > GPG Passwd > Valid
+        # #
+
+        if [ -n "${CSI_GPG_PASSWD}" ]; then
+            echo "${CSI_GPG_PASSWD}" | gpg --batch --yes --pinentry-mode loopback --passphrase-fd 0 --output /dev/null --sign
+        fi
+    fi
 
     sleep 0.5
 
