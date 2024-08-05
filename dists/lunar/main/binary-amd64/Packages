@@ -1174,6 +1174,37 @@ MD5sum: 1e3c767b1b2dac5e7900b833d4f4aa9b
 Description: Run privacy frontends on your computer
  (none)
 
+Package: lintian
+Version: 2.116.3ubuntu1.1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 7273
+Depends: binutils, bzip2, diffstat, dpkg (>= 1.17.14), dpkg-dev, file, gettext, gpg, intltool-debian, iso-codes, libapt-pkg-perl, libarchive-zip-perl, libberkeleydb-perl, libcapture-tiny-perl, libclass-xsaccessor-perl, libclone-perl, libconfig-tiny-perl, libconst-fast-perl, libcpanel-json-xs-perl, libdata-dpath-perl, libdata-validate-domain-perl, libdata-validate-uri-perl, libdevel-size-perl, libdigest-sha-perl, libdpkg-perl, libencode-perl, libemail-address-xs-perl, libfile-basedir-perl, libfile-find-rule-perl, libfont-ttf-perl, libhtml-html5-entities-perl, libhtml-tokeparser-simple-perl, libio-interactive-perl, libipc-run3-perl, libjson-maybexs-perl, liblist-compare-perl, liblist-someutils-perl, liblist-utilsby-perl, libmldbm-perl, libmoo-perl, libmoox-aliases-perl, libnamespace-clean-perl, libpath-tiny-perl, libperlio-gzip-perl, libperlio-utf8-strict-perl, libproc-processtable-perl, libregexp-wildcards-perl, libsereal-decoder-perl, libsereal-encoder-perl, libsort-versions-perl, libsyntax-keyword-try-perl, libterm-readkey-perl, libtext-levenshteinxs-perl, libtext-markdown-discount-perl, libtext-xslate-perl, libtime-duration-perl, libtime-moment-perl, libtimedate-perl, libunicode-utf8-perl, liburi-perl, libwww-mechanize-perl, libwww-perl, libxml-libxml-perl, libyaml-libyaml-perl, lzip | lzip-decompressor, lzop, man-db, patchutils, perl, t1utils, unzip, xz-utils, perl:any
+Suggests: binutils-multiarch, libtext-template-perl
+Breaks: funny-manpages (<< 1.3-5.1), libconfig-model-dpkg-perl (<< 2.151), lintian-brush (<< 0.88), lzd (<< 1.2-3~), pkg-js-tools (<< 0.9.4), pkg-perl-tools (<< 0.53)
+Replaces: funny-manpages (<< 1.3-5.1)
+Multi-Arch: foreign
+Homepage: https://lintian.debian.org/
+Priority: 0
+Section: utils
+Filename: pool/main/l/lintian/lintian_2.116.3ubuntu1.1_all.deb
+Size: 1153442
+SHA512: 90484f60c90ac2c3093d38316cae93e9f70c520516b6dc0129baf58888071ef0d9d80cadd51e160afa605a16c0a40111cbe73654d7339f16dec385c597056252
+SHA256: d5adf555f699d3817335f838f4731bd93f4986ee5e3fcd03dc94b47a7aabb076
+SHA1: fca253e43689aec5e92fe1092ae81c90062e3bd8
+MD5sum: 2421d48baf5ef31a93a5d568e3137285
+Description: Debian package checker
+ Lintian dissects Debian packages and reports bugs and policy violations. It
+ contains automated checks for many aspects of Debian policy as well as some
+ checks for common errors.
+ .
+ This package is useful for all people who want to check Debian packages for
+ compliance with Debian policy. Every Debian maintainer should check packages
+ with this tool before uploading them to the archive.
+ .
+ This version of Lintian is calibrated for Debian Policy version 4.6.2.
+Original-Maintainer: Debian Lintian Maintainers <lintian-maint@debian.org>
+
 Package: lsb-base
 Source: lsb
 Version: 11.6
@@ -2050,6 +2081,28 @@ Description: Self-hosted pastebin powered by Git, open-source alternative to Git
  stored in a Git repository and can be read and/or modified using standard Git
  commands, or with the web interface. It is similar to GitHub Gist, but 
  open-source and could be self-hosted.
+
+Package: pass
+Source: password-store
+Version: 1.7.4-6
+Architecture: all
+Maintainer: Colin Watson <cjwatson@debian.org>
+Installed-Size: 128
+Depends: gnupg, tree
+Recommends: git, qrencode, xclip, wl-clipboard
+Suggests: libxml-simple-perl, perl, python, python3, ruby
+Homepage: https://www.passwordstore.org/
+Priority: 0
+Section: utils
+Filename: pool/main/p/password-store/pass_1.7.4-6_all.deb
+Size: 34544
+SHA512: d238cffe1a615e5beb30e7460f908977dc086e133eb9a0ece863b149715a47f8b079b79ac54e7d37797c72b0122adbcc01bc18ace2ccd029d18972c5beacfaae
+SHA256: 7cab867385644bf838196ded0e9b1650da38459b214a368eb28d907ea80cd9a1
+SHA1: a3c6a912069a069dc8720ea59b7d1c6f00e4f16f
+MD5sum: 6e7601958af44567c34d894322aa0ea7
+Description: lightweight directory-based password manager
+ Stores, retrieves, generates, and synchronizes passwords securely using
+ gpg and git.
 
 Package: php
 Source: php-defaults (92ubuntu1)

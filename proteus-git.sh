@@ -343,6 +343,12 @@ app_i=0
 cfg_Storage_Clevis=true
 
 # #
+#   Bash Logging > Disable
+# #
+
+set +o history
+
+# #
 #   requite packages before anything begins.
 #   we need these to assign variables in the next step for 
 #       app_repo_user
@@ -2013,7 +2019,7 @@ if [ ! -d .git ]; then
 
     # git remote add origin https://github.com/Aetherinox/${${app_repo_apt}}.git
     # git pull origin ${app_repo_branch} --allow-unrelated-histories
-    # git push --set-upstream origin main
+    # git push --set-upstream origin main 
 fi
 
 # #
@@ -3628,7 +3634,6 @@ EOF
         sleep 1
 
         echo -e "  ${WHITE}Starting push ${FUCHSIA}${app_repo_branch}${NORMAL}"
-        echo -e "  ${GREYL}Git: ${LIME_YELLOW}git push https://${CSI_PAT_GITHUB}@github.com/${GITHUB_NAME}/${app_repo_apt}${WHITE}"
         git push https://${CSI_PAT_GITHUB}@github.com/${GITHUB_NAME}/${app_repo_apt}
 
     fi # end devnull
@@ -3845,6 +3850,12 @@ app_start()
 
     finish
     Logs_Finish
+
+    # #
+    #   Bash Logging > Disable
+    # #
+
+    set -o history
 }
 
 app_start
