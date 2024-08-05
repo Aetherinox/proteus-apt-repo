@@ -3863,8 +3863,14 @@ app_run_gh_end()
 
         cd ${app_dir}
 
-        echo -e "  ${GREYL}Cleaning up left-over .deb: ${YELLOW}${app_dir}/*.deb${WHITE}"
-        rm "${app_dir}/*.deb" >/dev/null
+        # #
+        #   clean up left-over .deb files in root directory
+        # #
+
+        if compgen -G "${app_dir}/*.deb" > /dev/null; then
+            echo -e "  ${GREYL}Cleaning up left-over .deb: ${YELLOW}${app_dir}/*.deb${WHITE}"
+            rm "${app_dir}/*.deb" >/dev/null
+        fi
 
         app_run_github_precheck
 
