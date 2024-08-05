@@ -1,7 +1,7 @@
 # #
 #   @author :           aetherinox
 #   @script :           Proteus Apt Git
-#   @date   :           2024-08-01 03:15:53
+#   @date   :           2024-08-05 00:00:26
 #   @url    :           https://github.com/Aetherinox/proteus-git
 #
 #   requires chmod +x proteus_git.sh
@@ -233,6 +233,7 @@ lst_arch=(
     'all'
     'amd64'
     'arm64'
+    'i386'
 )
 
 # #
@@ -3241,6 +3242,8 @@ app_run_dl_lastver()
         #   use LastVersion to view all of the releases on a github repo and pull out the files that match the filenames:
         #       *amd64*.deb
         #       *arm64*.deb
+        #       *i386*.deb
+        #       *386*.deb
         #
         #       *jammy*.deb
         #       *focal*.deb
@@ -3250,7 +3253,7 @@ app_run_dl_lastver()
         #   (?:\b|_)(?:amd64|arm64|$app_repo_dist_sel).*\b.*\.deb$
         # #
 
-        lst_releases=($( lastversion --pre --assets $repo --filter "(?:\b|_)(?:amd64|arm64|$app_repo_dist_sel)\b.*\.deb$" ))
+        lst_releases=($( lastversion --pre --assets $repo --filter "(?:\b|_)(?:amd64|arm64|i386|386|$app_repo_dist_sel)\b.*\.deb$" ))
 
         # #
         #   if git count empty, set it to the number of packages in the lst_releases table
@@ -3548,6 +3551,76 @@ app_run_dl_lastver()
 
                             # #
                             #   architecture > arm64 > reprepro
+                            #
+                            #   output > new package added
+                            # #
+
+                            if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
+                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
+                            fi
+                        fi
+
+                        echo -e
+                        bNewPackage=false
+
+                    elif [[ "$arch" == "i386" || "$arch" == "386" ]] && [[ $app_filename == *i386.deb || $app_filename == *i386*.deb || $app_filename == *386.deb || $app_filename == *386*.deb ]]; then
+                        echo -e "  ${WHITE}                Package         ${FUCHSIA}${arch}${NORMAL}"
+                        echo -e "  ${WHITE}                File            ${FUCHSIA}${app_filename}${NORMAL}"
+                        echo -e "  ${WHITE}                Download        ${FUCHSIA}${repo_file_url}${NORMAL}"
+
+                        # #
+                        #   architecture > i386
+                        #   move package to its final location inside the reprepro directory
+                        #       move    /home/aetherx/Repos/GitHubDesktop-linux-i386-3.4.2-linux1.deb
+                        #       to      /home/aetherx/Repos/incoming/proteus-git/jammy/i386/
+                        # #
+
+                        mv "$app_dir/$app_filename" "$app_dir_storage/i386/"
+                        echo -e "  ${WHITE}                Move            ${FUCHSIA}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA}${app_dir_storage}/i386/${NORMAL}"
+
+                        if [ -n "${bRepreproInstalled}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
+
+                            # #
+                            #   architecture > i386 > full package path
+                            #
+                            #       deb_package             incoming/proteus-git/jammy/i386/GitHubDesktop-linux-i386-3.4.2-linux1.deb
+                            # #
+
+                            deb_package="$app_dir_repo/$arch/$app_filename"
+
+                            # #
+                            #   architecture > i386 > reprepro
+                            #   add package to reprepro database
+                            #
+                            #       app_repo_dist_sel       jammy
+                            #       deb_package             incoming/proteus-git/jammy/i386/GitHubDesktop-linux-i386-3.4.2-linux1.deb
+                            # #
+
+                            echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
+                            echo -e "  ${WHITE}                                    ${FUCHSIA}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${NORMAL}"
+
+                            reprepro_exit_code="0"
+                            reprepro_output="$(reprepro -V \
+                                --section utils \
+                                --component main \
+                                --priority 0 \
+                                --architecture $arch \
+                                includedeb "${app_repo_dist_sel}" "${deb_package}" \
+                                "$@" 2>&1)" \
+                                || { reprepro_exit_code="$?" ; true; };
+
+                            # #
+                            #   architecture > i386 > reprepro
+                            #
+                            #   output > package already added to reprepro
+                            # #
+
+                            if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
+                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
+                            fi
+
+                            # #
+                            #   architecture > i386 > reprepro
                             #
                             #   output > new package added
                             # #
