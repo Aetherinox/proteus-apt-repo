@@ -577,6 +577,28 @@ Description: Self-hosted pastebin powered by Git, open-source alternative to Git
  commands, or with the web interface. It is similar to GitHub Gist, but 
  open-source and could be self-hosted.
 
+Package: pass
+Source: password-store
+Version: 1.7.4-5
+Architecture: all
+Maintainer: Colin Watson <cjwatson@debian.org>
+Installed-Size: 130
+Depends: gnupg, tree
+Recommends: git, qrencode, xclip | wl-clipboard
+Suggests: libxml-simple-perl, perl, python, python3, ruby
+Homepage: https://www.passwordstore.org/
+Priority: 0
+Section: utils
+Filename: pool/main/p/password-store/pass_1.7.4-5_all.deb
+Size: 35220
+SHA512: 5867d34a2d29beba770d0019d08612da49be613a015d65c7334bc2f8432795e2d236b160a6d3448ef297086da7297fa6c18b0ae9066fab0b0dbd1a94b0f11f04
+SHA256: a3b894cbe72e64b4a9fd798faa7b70af6f0de801c5f5b386c0b2761141d9afcf
+SHA1: 9fce53a9efa2b9e8d9b1047b4793f912a5eb7181
+MD5sum: 38ba9ee03587d0642b6c538fd8737b87
+Description: lightweight directory-based password manager
+ Stores, retrieves, generates, and synchronizes passwords securely using
+ gpg and git.
+
 Package: php
 Source: php-defaults (93+ubuntu22.04.1+deb.sury.org+2)
 Version: 2:8.2+93+ubuntu22.04.1+deb.sury.org+2

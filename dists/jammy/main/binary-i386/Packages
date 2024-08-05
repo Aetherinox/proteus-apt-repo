@@ -71,6 +71,65 @@ MD5sum: 447e1605cac9b953fe6797ae647e586a
 Description: Fetches URLs for specified packages.
  Provides the download URL for a specified package.
 
+Package: apt-utils
+Source: apt
+Version: 2.4.12
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: APT Development Team <deity@lists.debian.org>
+Installed-Size: 860
+Depends: apt (= 2.4.12), libapt-pkg6.0 (>= 2.4.12), libc6 (>= 2.34), libdb5.3, libgcc-s1 (>= 7), libstdc++6 (>= 11)
+Priority: 0
+Section: utils
+Filename: pool/main/a/apt/apt-utils_2.4.12_i386.deb
+Size: 241484
+SHA512: abe3588ec70a49b3fdeee5a219a97f2359d1ca28dda0817003962b742bd804b2bd6c0f9edeeddb3ef9cfd7b34f6eed1d2fc330bbb4429d28e41d11c5d7326f19
+SHA256: 9ef593cf64a07a307d6755814e885b07119f51fdf2db61cb9c50c48d1f8b6015
+SHA1: a609bbe9bf46d088e9fdb696ac6c19710ed6b8cc
+MD5sum: 325f63e3bf84a0e353a6f6d753f7b82e
+Description: package management related utility programs
+ This package contains some less used commandline utilities related
+ to package management with APT.
+ .
+  * apt-extracttemplates is used by debconf to prompt for configuration
+    questions before installation.
+  * apt-ftparchive is used to create Packages and other index files
+    needed to publish an archive of Debian packages
+  * apt-sortpkgs is a Packages/Sources file normalizer.
+
+Package: argon2
+Version: 0~20171227-0.3
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Luca Bruno <lucab@debian.org>
+Installed-Size: 74
+Depends: libc6 (>= 2.34)
+Multi-Arch: foreign
+Homepage: https://github.com/P-H-C/phc-winner-argon2
+Priority: 0
+Section: utils
+Filename: pool/main/a/argon2/argon2_0~20171227-0.3_i386.deb
+Size: 28184
+SHA512: bd23ef1371a4155521999dc80d9044727bc5c01889872ae6d567d79f886ef939cbc8d279bf92fc82b76da5773c9e725844767483649fab6fbd46b8a6b979c117
+SHA256: dffb291975fd1cee2cc7fa95444df2288a5b13637a352edfffee519e45f74d5d
+SHA1: fabdc75687f323e50e9f4fba82b4b1d1c2ee5736
+MD5sum: 9addd73b464f9f3a199d0f957ef00074
+Description: memory-hard hashing function - utility
+ Argon2 is a password-hashing function that can be used to hash passwords
+ for credential storage, key derivation, or other applications.
+ .
+ There are two main versions of Argon2: Argon2i and Argon2d.
+ Argon2i is the safest against side-channel attacks, while Argon2d provides
+ the highest resistance against GPU cracking attacks.
+ .
+ Argon2i and Argon2d are parametrized by:
+  * A time cost, which defines the amount of computation realized and
+    therefore the execution time, given in number of iterations
+  * A memory cost, which defines the memory usage, given in kibibytes
+  * A parallelism degree, which defines the number of parallel threads
+ .
+ This package contains the argon2 tool for hashing data on the command-line.
+
 Package: deb-get
 Version: 0.3.9-1
 Architecture: all
@@ -89,6 +148,58 @@ MD5sum: 2394fcfa6ab1b4d37ca0cd6fe1b4ca0a
 Description: Script to "manage" .deb installs from 3rd party vendors/projects
  apt-get functionality for .debs officially published by 3rd party vendors and
  projects.
+
+Package: firefox
+Version: 128.0.3~build1
+Architecture: i386
+Maintainer: Mozilla Releng <release@mozilla.com>
+Installed-Size: 256898
+Depends: libasound2 (>= 1.0.16), libatk1.0-0 (>= 1.12.4), libc6 (>= 2.18), libcairo-gobject2 (>= 1.10.0), libcairo2 (>= 1.10.0), libdbus-1-3 (>= 1.5.12), libfontconfig1 (>= 2.11), libfreetype6 (>= 2.3.5), libgcc1 (>= 1:4.1.1), libgdk-pixbuf2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.37.0), libgtk-3-0 (>= 3.13.7), libpango-1.0-0 (>= 1.14.0), libpangocairo-1.0-0 (>= 1.14.0), libstdc++6 (>= 4.8), libx11-6, libx11-xcb1, libxcb-shm0, libxcb1, libxcomposite1 (>= 1:0.3-1), libxcursor1 (>> 1.1.2), libxdamage1 (>= 1:1.1), libxext6, libxfixes3, libxi6, libxrandr2 (>= 2:1.4.0), libxrender1
+Priority: 0
+Section: utils
+Filename: pool/main/f/firefox/firefox_128.0.3~build1_i386.deb
+Size: 72672250
+SHA512: 4398f35e7aaa9d927568cbb263a164d829d1649b9712f6aa8e2149cd23c90aad6c97b23bb70df278fa377f80316150261e429157ce03d31a123641e949622bfe
+SHA256: ec426335662a53989d3f3ab787143600381c493135b0b8ad41166bcc7f394e17
+SHA1: 24f1a9abd53051c7e6cf51838e5ae1568cae57bf
+MD5sum: 1dc224f3a2599cba12385b0b1f4f1979
+Description: Mozilla Firefox
+
+Package: git
+Version: 1:2.34.1-1ubuntu1.11
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 34684
+Depends: libc6 (>= 2.34), libcurl3-gnutls (>= 7.56.1), libexpat1 (>= 2.0.1), libpcre2-8-0 (>= 10.34), zlib1g (>= 1:1.2.0), perl, liberror-perl, git-man (>> 1:2.34.1), git-man (<< 1:2.34.1-.)
+Recommends: ca-certificates, patch, less, ssh-client
+Suggests: gettext-base, git-daemon-run | git-daemon-sysvinit, git-doc, git-email, git-gui, gitk, gitweb, git-cvs, git-mediawiki, git-svn
+Breaks: bash-completion (<< 1:1.90-1), cogito (<= 0.18.2+), dgit (<< 5.1~), git-buildpackage (<< 0.6.5), git-el (<< 1:2.32.0~rc2-1~), gitosis (<< 0.2+20090917-7), gitpkg (<< 0.15), guilt (<< 0.33), openssh-client (<< 1:6.8), stgit (<< 0.15), stgit-contrib (<< 0.15)
+Provides: git-completion, git-core
+Multi-Arch: foreign
+Homepage: https://git-scm.com/
+Priority: 0
+Section: utils
+Filename: pool/main/g/git/git_2.34.1-1ubuntu1.11_i386.deb
+Size: 4201026
+SHA512: 45d8848a85ca33248f0a41fea258a2f2332a2518e9fc0865525a6864d241bf74d22d7a894ab905a2918408a52b3a8f6406f2f6b0b6cf2177e39617c1543ec8c4
+SHA256: 034991d53f8f201d34d761de0302c6c2fb0db6ba2cd4e4551a73363dc9876d69
+SHA1: 0ac4c66781117c603406ae2b75d8dac4e0ac38d4
+MD5sum: 0214c9001a8ea2cc3df8b1f4f4c22214
+Description: fast, scalable, distributed revision control system
+ Git is popular version control system designed to handle very large
+ projects with speed and efficiency; it is used for many high profile
+ open source projects, most notably the Linux kernel.
+ .
+ Git falls in the category of distributed source code management tools.
+ Every Git working directory is a full-fledged repository with full
+ revision tracking capabilities, not dependent on network access or a
+ central server.
+ .
+ This package provides the git main components with minimal dependencies.
+ Additional functionality, e.g. a graphical user interface and revision
+ tree visualizer, tools for interoperating with other VCS's, or a web
+ interface, is provided as separate git* packages.
+Original-Maintainer: Jonathan Nieder <jrnieder@gmail.com>
 
 Package: gitkraken-license-pro
 Version: 1.0.0-1
@@ -142,6 +253,120 @@ Description: easy signing of OpenPGP keys over the local network
  client the user has configured to use. This greatly reduces complexity as no
  SMTP configuration needs to be obtained and gives the user a well known
  interface.
+
+Package: gpg
+Source: gnupg2
+Version: 2.2.27-3ubuntu2.1
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 1357
+Depends: gpgconf (= 2.2.27-3ubuntu2.1), libassuan0 (>= 2.5.0), libbz2-1.0, libc6 (>= 2.34), libgcrypt20 (>= 1.9.0), libgpg-error0 (>= 1.42), libreadline8 (>= 6.0), libsqlite3-0 (>= 3.7.15), zlib1g (>= 1:1.1.4)
+Recommends: gnupg (= 2.2.27-3ubuntu2.1)
+Breaks: gnupg (<< 2.1.21-4)
+Replaces: gnupg (<< 2.1.21-4)
+Multi-Arch: foreign
+Homepage: https://www.gnupg.org/
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnupg2/gpg_2.2.27-3ubuntu2.1_i386.deb
+Size: 579380
+SHA512: 987752e8b58c2eac0b65d2ef0d4f924c68a42610867a1fb69cc235dbb65a11491f1dcaef8a0ab320baf8905cefa3d56194dcba526d3eaa344376f5150419b186
+SHA256: 4a4ce6ca752197a4f78a4cb499e76fd73c31edd8bb9d86d5c5ee237511ecc575
+SHA1: e3624023a9165b3bd6f5bd51d71881ab09f79cda
+MD5sum: ba2ea9662f355e1051429e4b0df9edea
+Description: GNU Privacy Guard -- minimalist public key operations
+ GnuPG is GNU's tool for secure communication and data storage.
+ It can be used to encrypt data and to create digital signatures.
+ It includes an advanced key management facility and is compliant
+ with the proposed OpenPGP Internet standard as described in RFC4880.
+ .
+ This package contains /usr/bin/gpg itself, and is useful on its own
+ only for public key operations (encryption, signature verification,
+ listing OpenPGP certificates, etc).  If you want full capabilities
+ (including secret key operations, network access, etc), please
+ install the "gnupg" package, which pulls in the full suite of tools.
+Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>
+
+Package: gpgconf
+Source: gnupg2
+Version: 2.2.27-3ubuntu2.1
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 399
+Depends: libassuan0 (>= 2.5.0), libc6 (>= 2.34), libgcrypt20 (>= 1.9.0), libgpg-error0 (>= 1.42), libreadline8 (>= 6.0)
+Breaks: gnupg (<< 2.1.21-4), gnupg-agent (<< 2.1.21-4)
+Replaces: gnupg (<< 2.1.21-4), gnupg-agent (<< 2.1.21-4)
+Multi-Arch: foreign
+Homepage: https://www.gnupg.org/
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnupg2/gpgconf_2.2.27-3ubuntu2.1_i386.deb
+Size: 138538
+SHA512: 1f0e3e74ac2bf0ae9b97246786ce4a6ddf270e76c3058df9b1d5610c85f21f36113d840d388793251f6f3c33daf8ad8255b7028d651e4196fd3ab166ba1df6be
+SHA256: 36ae821744542e16631b7cfd5147dec091431cf146d961d33d010958af2920df
+SHA1: ec33f0e68cc0bb32103e4fbc073e326d7fad396d
+MD5sum: 9d985318081ffd4a3ced6f81190a9cd8
+Description: GNU privacy guard - core configuration utilities
+ GnuPG is GNU's tool for secure communication and data storage.
+ .
+ This package contains core utilities used by different tools in the
+ suite offered by GnuPG.  It can be used to programmatically edit
+ config files for tools in the GnuPG suite, to launch or terminate
+ per-user daemons (if installed), etc.
+Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>
+
+Package: gpgv
+Source: gnupg2
+Version: 2.2.27-3ubuntu2.1
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 574
+Depends: libbz2-1.0, libc6 (>= 2.34), libgcrypt20 (>= 1.9.0), libgpg-error0 (>= 1.42), zlib1g (>= 1:1.1.4)
+Suggests: gnupg
+Breaks: gnupg2 (<< 2.0.21-2), gpgv2 (<< 2.1.11-7+exp1), python-debian (<< 0.1.29)
+Replaces: gnupg2 (<< 2.0.21-2), gpgv2 (<< 2.1.11-7+exp1)
+Multi-Arch: foreign
+Homepage: https://www.gnupg.org/
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnupg2/gpgv_2.2.27-3ubuntu2.1_i386.deb
+Size: 235118
+SHA512: 9a29a9d4680a3e7ee84ff442876477f5996f2758c15bd603f57581c9bcef08519c6fcb4efccb25791cace1e41ee2e4039c051bc5e551a761c223ca139ed06945
+SHA256: 0adf6b4cecea093d93aedc522c36a697e86dab0ff1382480ded1e2f8ae2c34db
+SHA1: 4d60af75cc44fb05f6638ef2ad131e94545b3594
+MD5sum: 6d43ee06abe7f96393756a1801fdc153
+Description: GNU privacy guard - signature verification tool
+ GnuPG is GNU's tool for secure communication and data storage.
+ .
+ gpgv is actually a stripped-down version of gpg which is only able
+ to check signatures. It is somewhat smaller than the fully-blown gpg
+ and uses a different (and simpler) way to check that the public keys
+ used to make the signature are valid. There are no configuration
+ files and only a few options are implemented.
+Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>
+
+Package: keyutils
+Version: 1.6.1-2ubuntu3
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 152
+Depends: libc6 (>= 2.34), libkeyutils1 (>= 1.6.1)
+Multi-Arch: foreign
+Homepage: https://people.redhat.com/~dhowells/keyutils/
+Priority: 0
+Section: utils
+Filename: pool/main/k/keyutils/keyutils_1.6.1-2ubuntu3_i386.deb
+Size: 52114
+SHA512: dd0b0ac8a2f8ee260ffe6bd6f4cb8b7a9b5ee1927f5aa153eefddaa2a0d4085d123b8e9b2bfb37081a8ca817bb958ac3861193da0108bb4c80ee4d9184eaf8d5
+SHA256: 8041cdda01f9b8e14ff863dc8f9a508c5240774ae0bf319b4080e7f682fa4f2b
+SHA1: f144bf8c9306e0b061222407ef37c378114e62d4
+MD5sum: 0b408a515f9bdee4f86e28757efd9866
+Description: Linux Key Management Utilities
+ Keyutils is a set of utilities for managing the key retention facility in the
+ kernel, which can be used by filesystems, block devices and more to gain and
+ retain the authorization and encryption keys required to perform secure
+ operations.
+Original-Maintainer: Christian Kastner <ckk@debian.org>
 
 Package: lintian
 Version: 2.114.0ubuntu1.4
@@ -199,6 +424,34 @@ Description: Linux Standard Base init script functionality
  may be used by other packages' initialization scripts for console
  logging and other purposes.
 Original-Maintainer: Debian sysvinit maintainers <debian-init-diversity@chiark.greenend.org.uk>
+
+Package: lz4
+Version: 1.9.3-2build2
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 237
+Depends: libc6 (>= 2.34), liblz4-1 (= 1.9.3-2build2)
+Conflicts: liblz4-tool (<< 1.8.0-1)
+Replaces: liblz4-tool (<< 1.8.0-1)
+Provides: liblz4-tool
+Multi-Arch: foreign
+Homepage: https://github.com/Cyan4973/lz4
+Priority: 0
+Section: utils
+Filename: pool/main/l/lz4/lz4_1.9.3-2build2_i386.deb
+Size: 93488
+SHA512: 020973a8cf7c3c4ea2d36443c80b02a24050e5e7cf24afd9ecc7b2c2c3c9f8d28c286720960b6c1c86202b33c02a0d2d7ceea40df7a0fdc74b49be3232731e3d
+SHA256: d5c8cf445d49fac62ec2fefdef930d87868579fd2ec0037228d5437eea84eef5
+SHA1: 496505fc9407ffe0013856508d47b42687712256
+MD5sum: c80a640d7210f6835c75bda2ac33c23a
+Description: Fast LZ compression algorithm library - tool
+ LZ4 is a very fast lossless compression algorithm, providing compression speed
+ at 400 MB/s per core, scalable with multi-cores CPU. It also features an
+ extremely fast decoder, with speed in multiple GB/s per core, typically
+ reaching RAM speed limits on multi-core systems.
+ .
+ This package contains files that is tool using liblz4.
+Original-Maintainer: Nobuhiro Iwamatsu <iwamatsu@debian.org>
 
 Package: mysql-client
 Source: mysql-8.0
@@ -303,6 +556,33 @@ Description: Shows Linux System Information with Distribution Logo
  command line script that collects your Linux system information
  and display it on the terminal next to an image, it could be your
  distributions logo or any ascii art of your choice.
+
+Package: net-tools
+Version: 1.60+git20181103.0eebece-1ubuntu5
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 844
+Depends: libc6 (>= 2.34), libselinux1 (>= 3.1~)
+Multi-Arch: foreign
+Homepage: http://sourceforge.net/projects/net-tools/
+Priority: 0
+Section: utils
+Filename: pool/main/n/net-tools/net-tools_1.60+git20181103.0eebece-1ubuntu5_i386.deb
+Size: 207498
+SHA512: fe14d628cb245a5215b28fac9b2f55cc9a411a23beb186997e23bde32bab41d5db6d12445e331320ac576796ce76a990069a9cfa7b0bc1bc8e6ee8795ee3bd53
+SHA256: a468b9f7d8509ce2d0e358ed380ed0fb953b12ce7f28b476bf9af27c4441a7c5
+SHA1: 542f72870a077fff30d86c5782efa03b5cf04018
+MD5sum: 451237313019de97a9dc7212a072976b
+Description: NET-3 networking toolkit
+ This package includes the important tools for controlling the network
+ subsystem of the Linux kernel.  This includes arp, ifconfig, netstat,
+ rarp, nameif and route.  Additionally, this package contains utilities
+ relating to particular network hardware types (plipconfig, slattach,
+ mii-tool) and advanced aspects of IP configuration (iptunnel, ipmaddr).
+ .
+ In the upstream package 'hostname' and friends are included. Those are
+ not installed by this package, since there is a special "hostname*.deb".
+Original-Maintainer: net-tools Team <team+net-tools@tracker.debian.org>
 
 Package: network-manager-config-connectivity-ubuntu
 Source: network-manager
@@ -430,6 +710,48 @@ Description: small, powerful, scalable web/proxy server - documentation
  .
  This package provides extra documentation to help unleash the power of Nginx.
 Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
+
+Package: opengist
+Version: 1.7.3
+Architecture: i386
+Maintainer: Thomas Miceli <thomiceli@github.com>
+Depends: adduser
+Homepage: https://github.com/Aetherinox/opengist-debian
+Priority: 0
+Section: utils
+Filename: pool/main/o/opengist/opengist_1.7.3_i386.deb
+Size: 19023816
+SHA512: 31c4e9cb18a72a42bbd92e103b837ac48293e1dd3e914c8cdb9cc97d3dcf7947af205d778ac9f09a249162c3880144096ebcbf594411ef878bfc5295b2adc099
+SHA256: 87924327cc8f44e006b142b266fdafd7759c2e01b22a89824d22c7ee1dc7cfca
+SHA1: 190eac5108e5ba9cfc64095dbf14232e2346fa3a
+MD5sum: 85163b5c150dd30813c8e09469161bd9
+Description: Self-hosted pastebin powered by Git, open-source alternative to Github
+ Gist. Opengist is a self-hosted pastebin powered by Git. All snippets are
+ stored in a Git repository and can be read and/or modified using standard Git
+ commands, or with the web interface. It is similar to GitHub Gist, but 
+ open-source and could be self-hosted.
+
+Package: pass
+Source: password-store
+Version: 1.7.4-5
+Architecture: all
+Maintainer: Colin Watson <cjwatson@debian.org>
+Installed-Size: 130
+Depends: gnupg, tree
+Recommends: git, qrencode, xclip | wl-clipboard
+Suggests: libxml-simple-perl, perl, python, python3, ruby
+Homepage: https://www.passwordstore.org/
+Priority: 0
+Section: utils
+Filename: pool/main/p/password-store/pass_1.7.4-5_all.deb
+Size: 35220
+SHA512: 5867d34a2d29beba770d0019d08612da49be613a015d65c7334bc2f8432795e2d236b160a6d3448ef297086da7297fa6c18b0ae9066fab0b0dbd1a94b0f11f04
+SHA256: a3b894cbe72e64b4a9fd798faa7b70af6f0de801c5f5b386c0b2761141d9afcf
+SHA1: 9fce53a9efa2b9e8d9b1047b4793f912a5eb7181
+MD5sum: 38ba9ee03587d0642b6c538fd8737b87
+Description: lightweight directory-based password manager
+ Stores, retrieves, generates, and synchronizes passwords securely using
+ gpg and git.
 
 Package: php
 Source: php-defaults (93+ubuntu22.04.1+deb.sury.org+2)
@@ -1715,4 +2037,43 @@ Description: command line trashcan utility
  the name, original path, deletion date, and permissions of each trashed
  file
 Original-Maintainer: Stefano Karapetsas <stefano@karapetsas.com>
+
+Package: wget
+Version: 1.21.2-2ubuntu1.1
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 1000
+Depends: libc6 (>= 2.34), libidn2-0 (>= 0.6), libpcre2-8-0 (>= 10.22), libpsl5 (>= 0.16.0), libssl3 (>= 3.0.0~~alpha1), libuuid1 (>= 2.16), zlib1g (>= 1:1.1.4)
+Recommends: ca-certificates
+Conflicts: wget-ssl
+Multi-Arch: foreign
+Homepage: https://www.gnu.org/software/wget/
+Priority: 0
+Section: utils
+Filename: pool/main/w/wget/wget_1.21.2-2ubuntu1.1_i386.deb
+Size: 357876
+SHA512: b617dcf5cec6628e62e63dc96f5b5c7e230864d8b8678021221900e2680aabc155dfc3ce96567fff54ee4aa2bb8b2ef0436175163d91707e7b7afa91aa161ffc
+SHA256: 9182d5dc0a0bdefc7b135e93811728a9f7ac965bbee68be996fd48171acc251c
+SHA1: 993e57d968dd72255cb16339d0bc0d91f250f915
+MD5sum: 43deb0142d993d41c01650ac87b7c5d4
+Description: retrieves files from the web
+ Wget is a network utility to retrieve files from the web
+ using HTTP(S) and FTP, the two most widely used internet
+ protocols. It works non-interactively, so it will work in
+ the background, after having logged off. The program supports
+ recursive retrieval of web-authoring pages as well as FTP
+ sites -- you can use Wget to make mirrors of archives and
+ home pages or to travel the web like a WWW robot.
+ .
+ Wget works particularly well with slow or unstable connections
+ by continuing to retrieve a document until the document is fully
+ downloaded. Re-getting files from where it left off works on
+ servers (both HTTP and FTP) that support it. Both HTTP and FTP
+ retrievals can be time stamped, so Wget can see if the remote
+ file has changed since the last retrieval and automatically
+ retrieve the new version if it has.
+ .
+ Wget supports proxy servers; this can lighten the network load,
+ speed up retrieval, and provide access behind firewalls.
+Original-Maintainer: Noël Köthe <noel@debian.org>
 
