@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `08.04.2024 19:00:01`
+Last generated on `08.05.2024 00:01:07`
 
 <br />
 
@@ -1172,23 +1172,11 @@ Last generated on `08.04.2024 19:00:01`
 │       └── z
 │           └── zorin-pro-layouts
 │               └── zorin-pro-layouts_1.0.0-3_all.deb
-├── .secrets
-│   ├── .passwd
-│   ├── .pat_github
-│   └── .pat_gitlab
 ├── .gitattributes
 ├── .gitignore
-├── gpg_2.2.27-3ubuntu2.1_amd64.deb.1
-├── gpgconf_2.2.27-3ubuntu2.1_amd64.deb.1
-├── gpgconf_2.2.27-3ubuntu2.1_amd64.deb.2
-├── gpgv_2.2.27-3ubuntu2.1_amd64.deb.1
-├── gpgv_2.2.27-3ubuntu2.1_amd64.deb.2
-├── gpgv_2.2.27-3ubuntu2.1_amd64.deb.3
-├── php-ldap_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb.1
 ├── proteus-git.sh
 ├── README.md
-├── secrets.sh
 └── tree.md
 
-193 directories, 987 files
+193 directories, 976 files
 ```
