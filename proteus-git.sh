@@ -2189,6 +2189,10 @@ app_setup()
 
             sleep 1
 
+            # #
+            #   find *.gpg
+            # #
+
             if [ -f $app_dir/.gpg/*.gpg ]; then
                 gpg_file=$app_dir/.gpg/*.gpg
                 gpg --import $gpg_file
@@ -2197,6 +2201,24 @@ app_setup()
                 echo -e
                 echo -e "  ${WHITE}Found ${YELLOW}$app_dir/.gpg/${gpg_file}${NORMAL} to import."
                 echo -e
+
+            # #
+            #   find *.asc
+            # #
+
+            elif [ -f $app_dir/.gpg/*.asc ]; then
+                gpg_file=$app_dir/.gpg/*.asc
+                gpg --import $gpg_file
+                bGPGLoaded=true
+
+                echo -e
+                echo -e "  ${WHITE}Found ${YELLOW}$app_dir/.gpg/${gpg_file}${NORMAL} to import."
+                echo -e
+
+            # #
+            #   no .gpg, .asc keys found
+            # #
+
             else
                 if [ -z "${OPT_DLPKG_ONLY_TEST}" ]; then
                     echo -e
@@ -3634,6 +3656,11 @@ EOF
         sleep 1
 
         echo -e "  ${WHITE}Starting push ${FUCHSIA}${app_repo_branch}${NORMAL}"
+
+        if [ "${OPT_DEV_ENABLE}" = true ]; then
+            echo -e "  ${GREYL}Git: ${LIME_YELLOW}git push https://${CSI_PAT_GITHUB}@github.com/${GITHUB_NAME}/${app_repo_apt}${WHITE}"
+        fi
+
         git push https://${CSI_PAT_GITHUB}@github.com/${GITHUB_NAME}/${app_repo_apt}
 
     fi # end devnull
