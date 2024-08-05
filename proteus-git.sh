@@ -398,8 +398,10 @@ logs/
 # ----------------------------------------
 # GPG keys
 # ----------------------------------------
-.gpg/*.gpg
-.gpg/*.asc
+/.gpg/*.gpg
+/.gpg/*.asc
+/*.gpg
+/*.asc
 
 # ----------------------------------------
 # Secrets Files
@@ -1200,7 +1202,7 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
                     printf "%-3s %-15s %-10s\n" "" "GPG Passwd" "${GREEN}***********${NORMAL}"
                 fi
 
-                echo "" | gpg --batch --no-tty --yes --symmetric --armor --passphrase '${CSI_GPG_PASSWD}' 2> /dev/null
+                echo "" | gpg --batch --no-tty --yes --symmetric --armor --passphrase '${CSI_GPG_PASSWD}' >> /dev/null 2>&1
 
             # #
             #   SECRETS > GPG Passwd > Empty
