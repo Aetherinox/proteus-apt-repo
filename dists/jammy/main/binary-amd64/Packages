@@ -2129,6 +2129,28 @@ Description: Self-hosted pastebin powered by Git, open-source alternative to Git
  commands, or with the web interface. It is similar to GitHub Gist, but 
  open-source and could be self-hosted.
 
+Package: pass
+Source: password-store
+Version: 1.7.4-5
+Architecture: all
+Maintainer: Colin Watson <cjwatson@debian.org>
+Installed-Size: 130
+Depends: gnupg, tree
+Recommends: git, qrencode, xclip | wl-clipboard
+Suggests: libxml-simple-perl, perl, python, python3, ruby
+Homepage: https://www.passwordstore.org/
+Priority: 0
+Section: utils
+Filename: pool/main/p/password-store/pass_1.7.4-5_all.deb
+Size: 35220
+SHA512: 5867d34a2d29beba770d0019d08612da49be613a015d65c7334bc2f8432795e2d236b160a6d3448ef297086da7297fa6c18b0ae9066fab0b0dbd1a94b0f11f04
+SHA256: a3b894cbe72e64b4a9fd798faa7b70af6f0de801c5f5b386c0b2761141d9afcf
+SHA1: 9fce53a9efa2b9e8d9b1047b4793f912a5eb7181
+MD5sum: 38ba9ee03587d0642b6c538fd8737b87
+Description: lightweight directory-based password manager
+ Stores, retrieves, generates, and synchronizes passwords securely using
+ gpg and git.
+
 Package: php
 Source: php-defaults (93+ubuntu22.04.1+deb.sury.org+2)
 Version: 2:8.2+93+ubuntu22.04.1+deb.sury.org+2
@@ -5896,6 +5918,32 @@ Description: Debian package repository producer
  signatures of the generated Package indices is supported.
  .
  This package also contains the changestool and rredtool helpers.
+
+Package: sks
+Version: 1.1.6+git20210302.c3ba6d5a-4
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Christoph Martin <martin@uni-mainz.de>
+Installed-Size: 5411
+Depends: adduser, db-util, lsb-base (>= 3.0-6), db5.3-util, libc6 (>= 2.35), libdb5.3, libgmp10 (>= 2:6.2.1+dfsg), zlib1g (>= 1:1.1.4)
+Suggests: logrotate, postfix | mail-transport-agent, procmail
+Homepage: https://github.com/SKS-Keyserver/sks-keyserver
+Priority: 0
+Section: utils
+Filename: pool/main/s/sks/sks_1.1.6+git20210302.c3ba6d5a-4_amd64.deb
+Size: 1354758
+SHA512: 78b6e6ac9a1d6eb45a45594e5178b4f48f45c9afd36e4730f174088f4a71edfdfef5095c0ae303934b359884644888f397c4cfa9861a4732ff89c87b06d8d9ee
+SHA256: d2cda4905361f7b23709a5700ecb48486b0c8802efd9e0682d70217f247e384c
+SHA1: f4bd63a4b97511de3445c2e817f2f9bf09f0756c
+MD5sum: 33377ba016ac8289652b9ebf25839312
+Description: Synchronizing OpenPGP Key Server
+ SKS is an OpenPGP key server that correctly handles all OpenPGP features
+ defined in RFC2440 and RFC4880, including photoID packages and multiple
+ subkeys.
+ .
+ This key server implementation uses an efficient and reliable reconciliation
+ algorithm to keep the database in sync with other SKS servers.  Additionally
+ it can both send and receive PKS style sync emails.
 
 Package: snap
 Version: 2013-11-29-11

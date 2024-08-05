@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `08.05.2024 07:00:01`
+Last generated on `08.05.2024 13:00:00`
 
 <br />
 
@@ -143,6 +143,7 @@ Last generated on `08.05.2024 07:00:01`
 │       │   │   ├── apt-transport-https_2.7.14build2_all.deb
 │       │   │   ├── apt-transport-https_2.7.3ubuntu0.1_all.deb
 │       │   │   ├── apt-utils_2.4.12_amd64.deb
+│       │   │   ├── apt-utils_2.4.12_i386.deb
 │       │   │   ├── apt-utils_2.6.0ubuntu0.1_amd64.deb
 │       │   │   ├── apt-utils_2.6.0ubuntu0.1_arm64.deb
 │       │   │   ├── apt-utils_2.7.14build2_amd64.deb
@@ -155,6 +156,7 @@ Last generated on `08.05.2024 07:00:01`
 │       │   │   └── apt-url_1.0.0-2_all.deb
 │       │   └── argon2
 │       │       ├── argon2_0~20171227-0.3_amd64.deb
+│       │       ├── argon2_0~20171227-0.3_i386.deb
 │       │       ├── argon2_0~20190702+dfsg-3_amd64.deb
 │       │       └── argon2_0~20190702+dfsg-4build1_amd64.deb
 │       ├── b
@@ -203,6 +205,7 @@ Last generated on `08.05.2024 07:00:01`
 │       │       └── dialog_1.3-20240101-1_amd64.deb
 │       ├── f
 │       │   ├── firefox
+│       │   │   ├── firefox_128.0.3~build1_i386.deb
 │       │   │   ├── firefox_1snap1-0ubuntu2_amd64.deb
 │       │   │   ├── firefox_1snap1-0ubuntu3_amd64.deb
 │       │   │   └── firefox_1snap1-0ubuntu5_amd64.deb
@@ -219,6 +222,7 @@ Last generated on `08.05.2024 07:00:01`
 │       ├── g
 │       │   ├── git
 │       │   │   ├── git_2.34.1-1ubuntu1.11_amd64.deb
+│       │   │   ├── git_2.34.1-1ubuntu1.11_i386.deb
 │       │   │   ├── git_2.39.2-1ubuntu1.1_amd64.deb
 │       │   │   ├── git_2.40.1-1ubuntu1.1_amd64.deb
 │       │   │   └── git_2.43.0-1ubuntu7.1_amd64.deb
@@ -252,6 +256,7 @@ Last generated on `08.05.2024 07:00:01`
 │       │   │   ├── gpg_2.2.19-3ubuntu2_amd64.deb
 │       │   │   ├── gpg_2.2.19-3ubuntu2_arm64.deb
 │       │   │   ├── gpg_2.2.27-3ubuntu2.1_amd64.deb
+│       │   │   ├── gpg_2.2.27-3ubuntu2.1_i386.deb
 │       │   │   ├── gpg_2.2.40-1.1ubuntu1_amd64.deb
 │       │   │   ├── gpg_2.2.40-1.1ubuntu1_arm64.deb
 │       │   │   ├── gpg_2.4.4-2ubuntu17_amd64.deb
@@ -260,6 +265,7 @@ Last generated on `08.05.2024 07:00:01`
 │       │   │   ├── gpgconf_2.2.19-3ubuntu2_amd64.deb
 │       │   │   ├── gpgconf_2.2.19-3ubuntu2_arm64.deb
 │       │   │   ├── gpgconf_2.2.27-3ubuntu2.1_amd64.deb
+│       │   │   ├── gpgconf_2.2.27-3ubuntu2.1_i386.deb
 │       │   │   ├── gpgconf_2.2.40-1.1ubuntu1_amd64.deb
 │       │   │   ├── gpgconf_2.2.40-1.1ubuntu1_arm64.deb
 │       │   │   ├── gpgconf_2.4.4-2ubuntu17_amd64.deb
@@ -268,6 +274,7 @@ Last generated on `08.05.2024 07:00:01`
 │       │   │   ├── gpgv_2.2.19-3ubuntu2_amd64.deb
 │       │   │   ├── gpgv_2.2.19-3ubuntu2_arm64.deb
 │       │   │   ├── gpgv_2.2.27-3ubuntu2.1_amd64.deb
+│       │   │   ├── gpgv_2.2.27-3ubuntu2.1_i386.deb
 │       │   │   ├── gpgv_2.2.40-1.1ubuntu1_amd64.deb
 │       │   │   ├── gpgv_2.2.40-1.1ubuntu1_arm64.deb
 │       │   │   ├── gpgv_2.4.4-2ubuntu17_amd64.deb
@@ -285,6 +292,7 @@ Last generated on `08.05.2024 07:00:01`
 │       ├── k
 │       │   ├── keyutils
 │       │   │   ├── keyutils_1.6.1-2ubuntu3_amd64.deb
+│       │   │   ├── keyutils_1.6.1-2ubuntu3_i386.deb
 │       │   │   ├── keyutils_1.6.3-2_amd64.deb
 │       │   │   ├── keyutils_1.6.3-2_arm64.deb
 │       │   │   └── keyutils_1.6.3-3build1_amd64.deb
@@ -304,6 +312,7 @@ Last generated on `08.05.2024 07:00:01`
 │       │   │   └── lsb-base_11.6_all.deb
 │       │   └── lz4
 │       │       ├── lz4_1.9.3-2build2_amd64.deb
+│       │       ├── lz4_1.9.3-2build2_i386.deb
 │       │       ├── lz4_1.9.4-1_amd64.deb
 │       │       ├── lz4_1.9.4-1_arm64.deb
 │       │       └── lz4_1.9.4-1build1_amd64.deb
@@ -375,6 +384,7 @@ Last generated on `08.05.2024 07:00:01`
 │       │   │   └── neofetch_7.1.0-4_all.deb
 │       │   ├── net-tools
 │       │   │   ├── net-tools_1.60+git20181103.0eebece-1ubuntu5_amd64.deb
+│       │   │   ├── net-tools_1.60+git20181103.0eebece-1ubuntu5_i386.deb
 │       │   │   ├── net-tools_2.10-0.1ubuntu3_amd64.deb
 │       │   │   └── net-tools_2.10-0.1ubuntu4_amd64.deb
 │       │   ├── networkd-dispatcher
@@ -549,6 +559,7 @@ Last generated on `08.05.2024 07:00:01`
 │       │       └── open-vm-tools-dev_12.3.5-5build3_amd64.deb
 │       ├── p
 │       │   ├── password-store
+│       │   │   ├── pass_1.7.4-5_all.deb
 │       │   │   └── pass_1.7.4-6_all.deb
 │       │   ├── php8.2
 │       │   │   ├── libapache2-mod-php8.2_8.2.11-1+ubuntu20.04.1+deb.sury.org+1_amd64.deb
@@ -1123,6 +1134,8 @@ Last generated on `08.05.2024 07:00:01`
 │       │       ├── reprepro_5.4.4-1_arm64.deb
 │       │       └── reprepro_5.4.4-1_i386.deb
 │       ├── s
+│       │   ├── sks
+│       │   │   └── sks_1.1.6+git20210302.c3ba6d5a-4_amd64.deb
 │       │   ├── snap
 │       │   │   └── snap_2013-11-29-11_amd64.deb
 │       │   └── snapd
@@ -1162,6 +1175,7 @@ Last generated on `08.05.2024 07:00:01`
 │       ├── w
 │       │   └── wget
 │       │       ├── wget_1.21.2-2ubuntu1.1_amd64.deb
+│       │       ├── wget_1.21.2-2ubuntu1.1_i386.deb
 │       │       ├── wget_1.21.3-1ubuntu1.1_amd64.deb
 │       │       ├── wget_1.21.3-1ubuntu1_amd64.deb
 │       │       ├── wget_1.21.3-1ubuntu1_arm64.deb
@@ -1182,10 +1196,12 @@ Last generated on `08.05.2024 07:00:01`
 │   └── .pat_gitlab
 ├── .gitattributes
 ├── .gitignore
+├── gnome-keyring_40.0-3ubuntu3_amd64.deb
+├── gnome-keyring_40.0-3ubuntu3_amd64.deb.1
 ├── proteus-git.sh
 ├── README.md
 ├── secrets.sh
 └── tree.md
 
-194 directories, 983 files
+195 directories, 998 files
 ```

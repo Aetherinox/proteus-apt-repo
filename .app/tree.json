@@ -182,6 +182,7 @@
             {"type":"file","name":"network-manager-dev_1.36.6-0ubuntu2_all.deb"},
             {"type":"file","name":"nginx-common_1.18.0-6ubuntu14.4_all.deb"},
             {"type":"file","name":"nginx-doc_1.18.0-6ubuntu14.4_all.deb"},
+            {"type":"file","name":"pass_1.7.4-5_all.deb"},
             {"type":"file","name":"php_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
             {"type":"file","name":"php-all-dev_93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
             {"type":"file","name":"php-amqplib_3.1.2-1_all.deb"},
@@ -345,6 +346,7 @@
             {"type":"file","name":"php-yac_2.3.1++-1+ubuntu22.04.1+deb.sury.org+1_amd64.deb"},
             {"type":"file","name":"php-yaml_2.2.3-2+ubuntu22.04.1+deb.sury.org+1_amd64.deb"},
             {"type":"file","name":"php-zmq_1.1.3-24+ubuntu22.04.1+deb.sury.org+1_amd64.deb"},
+            {"type":"file","name":"sks_1.1.6+git20210302.c3ba6d5a-4_amd64.deb"},
             {"type":"file","name":"snap_2013-11-29-11_amd64.deb"},
             {"type":"file","name":"snapd_2.63+22.04_amd64.deb"},
             {"type":"file","name":"snapd_2.63+22.04ubuntu0.1_amd64.deb"},
@@ -367,7 +369,20 @@
             {"type":"file","name":"opengist_1.7.3_arm64.deb"},
             {"type":"file","name":"opengist1.7.3-linux-arm64.deb"}
         ]},
-          {"type":"directory","name":"i386"}
+          {"type":"directory","name":"i386","contents":[
+            {"type":"file","name":"apt-utils_2.4.12_i386.deb"},
+            {"type":"file","name":"argon2_0~20171227-0.3_i386.deb"},
+            {"type":"file","name":"firefox_128.0.3~build1_i386_1dc224f3a2599cba12385b0b1f4f1979.deb"},
+            {"type":"file","name":"git_2.34.1-1ubuntu1.11_i386.deb"},
+            {"type":"file","name":"gpg_2.2.27-3ubuntu2.1_i386.deb"},
+            {"type":"file","name":"gpgconf_2.2.27-3ubuntu2.1_i386.deb"},
+            {"type":"file","name":"gpgv_2.2.27-3ubuntu2.1_i386.deb"},
+            {"type":"file","name":"keyutils_1.6.1-2ubuntu3_i386.deb"},
+            {"type":"file","name":"lz4_1.9.3-2build2_i386.deb"},
+            {"type":"file","name":"net-tools_1.60+git20181103.0eebece-1ubuntu5_i386.deb"},
+            {"type":"file","name":"opengist1.7.3-linux-386.deb"},
+            {"type":"file","name":"wget_1.21.2-2ubuntu1.1_i386.deb"}
+        ]}
       ]}
     ]}
   ]},
@@ -408,6 +423,7 @@
             {"type":"file","name":"apt-transport-https_2.7.14build2_all.deb"},
             {"type":"file","name":"apt-transport-https_2.7.3ubuntu0.1_all.deb"},
             {"type":"file","name":"apt-utils_2.4.12_amd64.deb"},
+            {"type":"file","name":"apt-utils_2.4.12_i386.deb"},
             {"type":"file","name":"apt-utils_2.6.0ubuntu0.1_amd64.deb"},
             {"type":"file","name":"apt-utils_2.6.0ubuntu0.1_arm64.deb"},
             {"type":"file","name":"apt-utils_2.7.14build2_amd64.deb"},
@@ -423,6 +439,7 @@
         ]},
           {"type":"directory","name":"argon2","contents":[
             {"type":"file","name":"argon2_0~20171227-0.3_amd64.deb"},
+            {"type":"file","name":"argon2_0~20171227-0.3_i386.deb"},
             {"type":"file","name":"argon2_0~20190702+dfsg-3_amd64.deb"},
             {"type":"file","name":"argon2_0~20190702+dfsg-4build1_amd64.deb"}
         ]}
@@ -484,6 +501,7 @@
       ]},
         {"type":"directory","name":"f","contents":[
           {"type":"directory","name":"firefox","contents":[
+            {"type":"file","name":"firefox_128.0.3~build1_i386.deb"},
             {"type":"file","name":"firefox_1snap1-0ubuntu2_amd64.deb"},
             {"type":"file","name":"firefox_1snap1-0ubuntu3_amd64.deb"},
             {"type":"file","name":"firefox_1snap1-0ubuntu5_amd64.deb"}
@@ -504,6 +522,7 @@
         {"type":"directory","name":"g","contents":[
           {"type":"directory","name":"git","contents":[
             {"type":"file","name":"git_2.34.1-1ubuntu1.11_amd64.deb"},
+            {"type":"file","name":"git_2.34.1-1ubuntu1.11_i386.deb"},
             {"type":"file","name":"git_2.39.2-1ubuntu1.1_amd64.deb"},
             {"type":"file","name":"git_2.40.1-1ubuntu1.1_amd64.deb"},
             {"type":"file","name":"git_2.43.0-1ubuntu7.1_amd64.deb"}
@@ -545,6 +564,7 @@
             {"type":"file","name":"gpg_2.2.19-3ubuntu2_amd64.deb"},
             {"type":"file","name":"gpg_2.2.19-3ubuntu2_arm64.deb"},
             {"type":"file","name":"gpg_2.2.27-3ubuntu2.1_amd64.deb"},
+            {"type":"file","name":"gpg_2.2.27-3ubuntu2.1_i386.deb"},
             {"type":"file","name":"gpg_2.2.40-1.1ubuntu1_amd64.deb"},
             {"type":"file","name":"gpg_2.2.40-1.1ubuntu1_arm64.deb"},
             {"type":"file","name":"gpg_2.4.4-2ubuntu17_amd64.deb"},
@@ -553,6 +573,7 @@
             {"type":"file","name":"gpgconf_2.2.19-3ubuntu2_amd64.deb"},
             {"type":"file","name":"gpgconf_2.2.19-3ubuntu2_arm64.deb"},
             {"type":"file","name":"gpgconf_2.2.27-3ubuntu2.1_amd64.deb"},
+            {"type":"file","name":"gpgconf_2.2.27-3ubuntu2.1_i386.deb"},
             {"type":"file","name":"gpgconf_2.2.40-1.1ubuntu1_amd64.deb"},
             {"type":"file","name":"gpgconf_2.2.40-1.1ubuntu1_arm64.deb"},
             {"type":"file","name":"gpgconf_2.4.4-2ubuntu17_amd64.deb"},
@@ -561,6 +582,7 @@
             {"type":"file","name":"gpgv_2.2.19-3ubuntu2_amd64.deb"},
             {"type":"file","name":"gpgv_2.2.19-3ubuntu2_arm64.deb"},
             {"type":"file","name":"gpgv_2.2.27-3ubuntu2.1_amd64.deb"},
+            {"type":"file","name":"gpgv_2.2.27-3ubuntu2.1_i386.deb"},
             {"type":"file","name":"gpgv_2.2.40-1.1ubuntu1_amd64.deb"},
             {"type":"file","name":"gpgv_2.2.40-1.1ubuntu1_arm64.deb"},
             {"type":"file","name":"gpgv_2.4.4-2ubuntu17_amd64.deb"},
@@ -583,6 +605,7 @@
         {"type":"directory","name":"k","contents":[
           {"type":"directory","name":"keyutils","contents":[
             {"type":"file","name":"keyutils_1.6.1-2ubuntu3_amd64.deb"},
+            {"type":"file","name":"keyutils_1.6.1-2ubuntu3_i386.deb"},
             {"type":"file","name":"keyutils_1.6.3-2_amd64.deb"},
             {"type":"file","name":"keyutils_1.6.3-2_arm64.deb"},
             {"type":"file","name":"keyutils_1.6.3-3build1_amd64.deb"}
@@ -607,6 +630,7 @@
         ]},
           {"type":"directory","name":"lz4","contents":[
             {"type":"file","name":"lz4_1.9.3-2build2_amd64.deb"},
+            {"type":"file","name":"lz4_1.9.3-2build2_i386.deb"},
             {"type":"file","name":"lz4_1.9.4-1_amd64.deb"},
             {"type":"file","name":"lz4_1.9.4-1_arm64.deb"},
             {"type":"file","name":"lz4_1.9.4-1build1_amd64.deb"}
@@ -702,6 +726,7 @@
         ]},
           {"type":"directory","name":"net-tools","contents":[
             {"type":"file","name":"net-tools_1.60+git20181103.0eebece-1ubuntu5_amd64.deb"},
+            {"type":"file","name":"net-tools_1.60+git20181103.0eebece-1ubuntu5_i386.deb"},
             {"type":"file","name":"net-tools_2.10-0.1ubuntu3_amd64.deb"},
             {"type":"file","name":"net-tools_2.10-0.1ubuntu4_amd64.deb"}
         ]},
@@ -891,6 +916,7 @@
       ]},
         {"type":"directory","name":"p","contents":[
           {"type":"directory","name":"password-store","contents":[
+            {"type":"file","name":"pass_1.7.4-5_all.deb"},
             {"type":"file","name":"pass_1.7.4-6_all.deb"}
         ]},
           {"type":"directory","name":"php8.2","contents":[
@@ -1528,6 +1554,9 @@
         ]}
       ]},
         {"type":"directory","name":"s","contents":[
+          {"type":"directory","name":"sks","contents":[
+            {"type":"file","name":"sks_1.1.6+git20210302.c3ba6d5a-4_amd64.deb"}
+        ]},
           {"type":"directory","name":"snap","contents":[
             {"type":"file","name":"snap_2013-11-29-11_amd64.deb"}
         ]},
@@ -1576,6 +1605,7 @@
         {"type":"directory","name":"w","contents":[
           {"type":"directory","name":"wget","contents":[
             {"type":"file","name":"wget_1.21.2-2ubuntu1.1_amd64.deb"},
+            {"type":"file","name":"wget_1.21.2-2ubuntu1.1_i386.deb"},
             {"type":"file","name":"wget_1.21.3-1ubuntu1.1_amd64.deb"},
             {"type":"file","name":"wget_1.21.3-1ubuntu1_amd64.deb"},
             {"type":"file","name":"wget_1.21.3-1ubuntu1_arm64.deb"},
@@ -1605,11 +1635,13 @@
   ]},
     {"type":"file","name":".gitattributes"},
     {"type":"file","name":".gitignore"},
+    {"type":"file","name":"gnome-keyring_40.0-3ubuntu3_amd64.deb"},
+    {"type":"file","name":"gnome-keyring_40.0-3ubuntu3_amd64.deb.1"},
     {"type":"file","name":"proteus-git.sh"},
     {"type":"file","name":"README.md"},
     {"type":"file","name":"secrets.sh"},
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":207,"files":1196}
+  {"type":"report","directories":208,"files":1225}
 ]
