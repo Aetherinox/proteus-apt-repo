@@ -16,7 +16,7 @@ tags:
 
 </p>
 
-The <a href="https://github.com/Aetherinox/proteus-apt-repo">Proteus Apt Repo</a> is a repository similar to others that store packages which can be downloaded using commands such as `apt install` or `apt-get install`. It supports Ubuntu as far back as Focal, as well as CentOS, Debian, and ZorinOS. 
+The <a href="https://github.com/Aetherinox/proteus-apt-repo">Proteus Apt Repo</a> is a repository similar to others that store packages which can be downloaded using commands such as `apt install` or `apt-get install`. It supports all flavours of Ubuntu as far back as Focal, as well as ZorinOS. 
 
 Along with popular packages; the Proteus Apt Repo also scans some of the most popular Github repos for linux releases and makes them available to install using the **APT Package Manager** (`apt-get install`); instead of having to manually download the associated `.deb` and installing it yourself. Packages are updated daily, and updates can be pushed to your system by simply running `apt-get update`.
 
@@ -24,10 +24,40 @@ Utilizing Proteus is as simple as adding the official repository to your system'
 
 <br />
 
-**Supported Services**:
+**Supported Distributions**:
 
-- [Github](https://gist.github.com)
-- [APT Package Manager](https://en.wikipedia.org/wiki/APT_(software))
+<br />
+
+<p align="center"><img src="https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,w_518,h_173/https://assets.ubuntu.com/v1/8527100a-ubuntu-flavours-23.png" width="300"></p>
+
+- [Edubuntu](https://edubuntu.org/)
+- [Kubuntu](https://kubuntu.org/)
+- [Lubuntu](https://lubuntu.me/)
+- [Ubuntu](https://ubuntu.com/)
+- [Xubuntu](https://xubuntu.org/)
+- [Ubuntu Budgie](https://ubuntubudgie.org/)
+- [Ubuntu Cinnamon](https://ubuntucinnamon.org/)
+- [Ubuntu Kylin](https://ubuntukylin.com/)
+- [Ubuntu MATE](https://ubuntu-mate.org/)
+- [Ubuntu Unity](https://ubuntuunity.org/)
+
+<p align="center"><img src="https://static-00.iconduck.com/assets.00/distributor-logo-zorin-icon-1024x1024-05nfhdjg.png" width="45"></p>
+
+- [ZorinOS](https://zorin.com/os/)
+
+<br />
+
+**Supported Codenames**:
+
+<br />
+
+| Version | Codename | Release | End of Life | ZorinOS Version |
+| --- | --- | --- | --- | --- |
+| [Noble Numbat](https://wiki.ubuntu.com/NobleNumbat) | Ubuntu 24.04 LTS | April 25, 2024 | April 2036 | Zorin OS 18 |
+| [Mantic Minotaur](https://wiki.ubuntu.com/ManticMinotaur) | Ubuntu 23.10 | October 12, 2023 | July 11, 2024 | - |
+| [Lunar Lobster](https://wiki.ubuntu.com/LunarLobster) | Ubuntu 23.04 | April 20, 2023 | January 25, 2024 | - |
+| [Jammy Jellyfish](https://wiki.ubuntu.com/JammyJellyfish) | Ubuntu 22.04 LTS | February 22, 2024 | April 2034 | Zorin OS 17 |
+| [Focal Fossa](https://wiki.ubuntu.com/FocalFossa) | Ubuntu 20.04 LTS | March 23, 2023 | April 2032 | Zorin OS 16 |
 
 <br />
 
