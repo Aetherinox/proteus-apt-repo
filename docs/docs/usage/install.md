@@ -12,7 +12,7 @@ This section explains how to install packages using the Proteus Apt repository.
 <br />
 
 ## Prerequisites
-Before you can install packages distributed by the Proteus Apt repository, you must ensure you have completed the steps on the [Setup page](/setup/add).
+Before you can install packages distributed by the Proteus Apt repository, you must ensure you have completed the steps on the [Setup page](../../setup/add).
 
 <br />
 

@@ -35,7 +35,7 @@ Finally, run in terminal
 sudo apt update
 ```
 
-Your new repository is now available to use. For a more detailed list of commands and how to use the Proteus repo, view the [Usage](/usage/install) section.
+Your new repository is now available to use. For a more detailed list of commands and how to use the Proteus repo, view the [Usage](../../usage/install) section.
 
 <br />
 
