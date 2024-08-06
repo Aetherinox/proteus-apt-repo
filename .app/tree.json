@@ -398,12 +398,14 @@
       {"type":"file","name":"proteus-git-080324.log"},
       {"type":"file","name":"proteus-git-080424.log"},
       {"type":"file","name":"proteus-git-080524.log"},
-      {"type":"fifo","name":"proteus-git-080524.log.pipe"},
+      {"type":"file","name":"proteus-git-080624.log"},
+      {"type":"fifo","name":"proteus-git-080624.log.pipe"},
       {"type":"file","name":"proteus-git-service-080124.log"},
       {"type":"file","name":"proteus-git-service-080224.log"},
       {"type":"file","name":"proteus-git-service-080324.log"},
       {"type":"file","name":"proteus-git-service-080424.log"},
-      {"type":"file","name":"proteus-git-service-080524.log"}
+      {"type":"file","name":"proteus-git-service-080524.log"},
+      {"type":"file","name":"proteus-git-service-080624.log"}
   ]},
     {"type":"directory","name":"pool","contents":[
       {"type":"directory","name":"main","contents":[
@@ -1635,8 +1637,6 @@
   ]},
     {"type":"file","name":".gitattributes"},
     {"type":"file","name":".gitignore"},
-    {"type":"file","name":"gnome-keyring_40.0-3ubuntu3_amd64.deb"},
-    {"type":"file","name":"gnome-keyring_40.0-3ubuntu3_amd64.deb.1"},
     {"type":"file","name":"proteus-git.sh"},
     {"type":"file","name":"README.md"},
     {"type":"file","name":"secrets.sh"},

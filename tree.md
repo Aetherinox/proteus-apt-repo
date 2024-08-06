@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `08.05.2024 13:00:00`
+Last generated on `08.06.2024 11:28:41`
 
 <br />
 
@@ -1196,12 +1196,10 @@ Last generated on `08.05.2024 13:00:00`
 │   └── .pat_gitlab
 ├── .gitattributes
 ├── .gitignore
-├── gnome-keyring_40.0-3ubuntu3_amd64.deb
-├── gnome-keyring_40.0-3ubuntu3_amd64.deb.1
 ├── proteus-git.sh
 ├── README.md
 ├── secrets.sh
 └── tree.md
 
-195 directories, 998 files
+195 directories, 996 files
 ```
