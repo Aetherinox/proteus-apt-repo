@@ -563,7 +563,7 @@ opt_usage()
     printf '  %-5s %-18s %-40s\n' "    " "-n, --nullrun" "run script without adding packages to reprepro" 1>&2
     printf '  %-5s %-18s %-40s\n' "    " "" "simulate app installs (no changes)" 1>&2
     printf '  %-5s %-18s %-40s\n' "    " "-q, --quiet" "disable logging" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-r, --report" "how info about ${app_file_this}" 1>&2
+    printf '  %-5s %-18s %-40s\n' "    " "-r, --report" "show info about ${app_file_this}" 1>&2
     printf '  %-5s %-18s %-40s\n' "    " "" "current paths, installed dependencies, etc." 1>&2
     printf '  %-5s %-18s %-40s\n' "    " "-u, --update" "update ${app_file_this} executable" 1>&2
     printf '  %-5s %-18s %-40s\n' "    " "-b, --branch" "branch to use for downloading/updating this script" 1>&2
@@ -644,7 +644,7 @@ opt_report()
     printf "%-5s %-40s %-40s %-40s\n" "" "${POWDER_BLUE}⚙️  Secret Mode" "${WHITE}${Val_SecretMode}" "${NORMAL}"
     printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📦 Packages (Apt)" "${WHITE}${Val_Pkgs_Aptget}" "${NORMAL}"
     printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📦 Packages (Github)" "${WHITE}${Val_Pkgs_Github}" "${NORMAL}"
-    printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📦 Architextures" "${WHITE}${Val_Pkgs_Arch}" "${NORMAL}"
+    printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📦 Architectures" "${WHITE}${Val_Pkgs_Arch}" "${NORMAL}"
 
     # #
     #  Section > Variables
