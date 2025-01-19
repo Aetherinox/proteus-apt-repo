@@ -65,7 +65,7 @@ Description: maintain Debian packages in a package pool
 
 Package: apt-transport-https
 Source: apt
-Version: 2.4.12
+Version: 2.4.13
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: APT Development Team <deity@lists.debian.org>
@@ -74,12 +74,12 @@ Depends: apt (>= 1.5~alpha4)
 Multi-Arch: foreign
 Priority: 0
 Section: utils
-Filename: pool/main/a/apt/apt-transport-https_2.4.12_all.deb
+Filename: pool/main/a/apt/apt-transport-https_2.4.13_all.deb
 Size: 1510
-SHA512: 4b95d12197d6243065a1fd234e15692d27d1f61a713a620b5c6ef13fa11894ac2e0673d5c87ac64bbc828455d39351b9db0e5b5be3f4bba421833b7a6360ccdb
-SHA256: c449b2ae950d0f0f62692cb143c2842e02013304ccc21aef3331c5622d1676b6
-SHA1: d0027b0e8c4fb135656a2f3eefc983a24017aba8
-MD5sum: a9b7487628e8ae7fa31955852dd38382
+SHA512: eebd6260b19f692d31d697f9936ab423747f27aca64e947662e3d13d8b62b6433c769fc4b4db9f85de6508e95ffd4303638ad5d26af3c9c9ed2628a23d481a39
+SHA256: 61b7cd853a291b32dfb75cfc896d09e6d5e88524a89053ef84640c33d7416cd3
+SHA1: f124ec5a1ddb0e76ea576f92d40a154edaa8ba4d
+MD5sum: ee68dbcc7edb8f3103d4fccbe3c937f1
 Description: transitional package for https support
  This is a dummy transitional package - https support has been moved into
  the apt package in 1.5. It can be safely removed.
