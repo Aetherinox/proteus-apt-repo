@@ -239,45 +239,52 @@ lst_arch=(
 # #
 #   vars > colors
 #
-#   tput setab  [1-7]       : Set a background color using ANSI escape
-#   tput setb   [1-7]       : Set a background color
-#   tput setaf  [1-7]       : Set a foreground color using ANSI escape
-#   tput setf   [1-7]       : Set a foreground color
+#   Use the color table at:
+#       - https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797
 # #
 
-BLACK=$(tput setaf 0)
-RED=$(tput setaf 1)
-ORANGE=$(tput setaf 208)
-GREEN=$(tput setaf 2)
-YELLOW=$(tput setaf 156)
-LIME_YELLOW=$(tput setaf 190)
-POWDER_BLUE=$(tput setaf 153)
-BLUE=$(tput setaf 4)
-MAGENTA=$(tput setaf 5)
-CYAN=$(tput setaf 6)
-WHITE=$(tput setaf 7)
-GREYL=$(tput setaf 242)
-DEV=$(tput setaf 157)
-DEVGREY=$(tput setaf 243)
-FUCHSIA=$(tput setaf 198)
-PINK=$(tput setaf 200)
-BOLD=$(tput bold)
-NORMAL=$(tput sgr0)
-BLINK=$(tput blink)
-REVERSE=$(tput smso)
-UNDERLINE=$(tput smul)
-STRIKE="\e[9m"
-END="\e[0m"
+END=$'\e[0m'
+WHITE=$'\e[97m'
+BOLD=$'\e[1m'
+DIM=$'\e[2m'
+UNDERLINE=$'\e[4m'
+STRIKE=$'\e[9m'
+BLINK=$'\e[5m'
+INVERTED=$'\e[7m'
+HIDDEN=$'\e[8m'
+BLACK=$'\e[38;5;0m'
+FUCHSIA1=$'\e[38;5;205m'
+FUCHSIA2=$'\e[38;5;198m'
+RED=$'\e[38;5;160m'
+RED2=$'\e[38;5;196m'
+ORANGE=$'\e[38;5;202m'
+ORANGE2=$'\e[38;5;208m'
+MAGENTA=$'\e[38;5;5m'
+BLUE=$'\e[38;5;033m'
+BLUE2=$'\e[38;5;39m'
+BLUE3=$'\e[38;5;68m'
+CYAN=$'\e[38;5;51m'
+GREEN=$'\e[38;5;2m'
+GREEN2=$'\e[38;5;76m'
+YELLOW=$'\e[38;5;184m'
+YELLOW2=$'\e[38;5;190m'
+YELLOW3=$'\e[38;5;193m'
+GREY1=$'\e[38;5;240m'
+GREY2=$'\e[38;5;244m'
+GREY3=$'\e[38;5;250m'
+NAVY=$'\e[38;5;62m'
+OLIVE=$'\e[38;5;144m'
+PEACH=$'\e[38;5;210m'
 
 # #
 #   vars > status messages
 # #
 
-STATUS_MISS="${BOLD}${GREYL} MISS ${NORMAL}"
-STATUS_SKIP="${BOLD}${GREYL} SKIP ${NORMAL}"
-STATUS_OK="${BOLD}${GREEN}  OK  ${NORMAL}"
-STATUS_FAIL="${BOLD}${RED} FAIL ${NORMAL}"
-STATUS_HALT="${BOLD}${YELLOW} HALT ${NORMAL}"
+STATUS_MISS="${BOLD}${GREY2} MISS ${END}"
+STATUS_SKIP="${BOLD}${GREY2} SKIP ${END}"
+STATUS_OK="${BOLD}${GREEN}  OK  ${END}"
+STATUS_FAIL="${BOLD}${RED} FAIL ${END}"
+STATUS_HALT="${BOLD}${YELLOW} HALT ${END}"
 
 # #
 #   vars > CSI
@@ -366,11 +373,11 @@ set +o history
 # #
 
 if ! [ -x "$(command -v git)" ]; then
-    echo -e "  ${GREYL}Installing package ${MAGENTA}Git${WHITE}"
+    echo -e "  ${GREY2}Installing package ${MAGENTA}Git${WHITE}"
     sudo apt-get update -y -q >/dev/null 2>&1
     sudo apt-get install git -y -qq >/dev/null 2>&1
 
-    echo -e "  ${GREYL}Installing package ${MAGENTA}GPG${WHITE}"
+    echo -e "  ${GREY2}Installing package ${MAGENTA}GPG${WHITE}"
     sudo apt-get update -y -q >/dev/null 2>&1
     sudo apt-get install gpg -y -qq >/dev/null 2>&1
 fi
@@ -380,7 +387,7 @@ fi
 # #
 
 if [ "${cfg_Storage_Clevis}" = true ] && [ ! -x "$(command -v clevis)" ]; then
-    echo -e "  ${GREYL}Installing package ${MAGENTA}Clevis${WHITE}"
+    echo -e "  ${GREY2}Installing package ${MAGENTA}Clevis${WHITE}"
     sudo apt-get update -y -q >/dev/null 2>&1
     sudo apt --fix-broken install >/dev/null 2>&1
     sudo apt-get install clevis clevis-udisks2 clevis-tpm2 -y -qq >/dev/null 2>&1
@@ -473,21 +480,21 @@ error_missing_file_base()
     fi
 
     echo -e 
-    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
+    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
     echo -e
-    echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Missing base config file${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}Create new ${FUCHSIA}${file_base_path}${WHITE} file and add the following lines:${NORMAL}"
+    echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Missing base config file${END}"
+    echo -e "  ${BOLD}${WHITE}Create new ${FUCHSIA1}${file_base_path}${WHITE} file and add the following lines:${END}"
     echo -e
-    echo -e "  ${BOLD}${WHITE}    ${DEVGREY}#!/bin/bash${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}    ${DEVGREY}PATH=\"/bin:/usr/bin:/sbin:/usr/sbin:${HOME}/bin\"${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GPG_KEY=${WHITE}XXXXXXXX${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GITHUB_NAME=${WHITE}YourName${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GITHUB_EMAIL=${WHITE}username@email.com${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}    ${GREY3}#!/bin/bash${END}"
+    echo -e "  ${BOLD}${WHITE}    ${GREY3}PATH=\"/bin:/usr/bin:/sbin:/usr/sbin:${HOME}/bin\"${END}"
+    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GPG_KEY=${WHITE}XXXXXXXX${END}"
+    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GITHUB_NAME=${WHITE}YourName${END}"
+    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GITHUB_EMAIL=${WHITE}username@email.com${END}"
     echo -e 
-    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
+    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
     echo -e
 
-    printf "  Press any key to abort ... ${NORMAL}"
+    printf "  Press any key to abort ... ${END}"
     read -n 1 -s -r -p ""
     echo -e
     echo -e
@@ -514,21 +521,21 @@ error_missing_value_gpg()
     fi
 
     echo -e 
-    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
+    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
     echo -e
-    echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}GPG_KEY value not specified${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}Make sure ${FUCHSIA}${file_base_path}${WHITE} exists and contains the following lines:${NORMAL}"
+    echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}GPG_KEY value not specified${END}"
+    echo -e "  ${BOLD}${WHITE}Make sure ${FUCHSIA1}${file_base_path}${WHITE} exists and contains the following lines:${END}"
     echo -e
-    echo -e "  ${BOLD}${WHITE}    ${DEVGREY}#!/bin/bash${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}    ${DEVGREY}PATH=\"/bin:/usr/bin:/sbin:/usr/sbin:${HOME}/bin\"${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GPG_KEY=${WHITE}XXXXXXXX${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GITHUB_NAME=${WHITE}YourName${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GITHUB_EMAIL=${WHITE}username@email.com${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}    ${GREY3}#!/bin/bash${END}"
+    echo -e "  ${BOLD}${WHITE}    ${GREY3}PATH=\"/bin:/usr/bin:/sbin:/usr/sbin:${HOME}/bin\"${END}"
+    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GPG_KEY=${WHITE}XXXXXXXX${END}"
+    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GITHUB_NAME=${WHITE}YourName${END}"
+    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GITHUB_EMAIL=${WHITE}username@email.com${END}"
     echo -e 
-    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
+    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
     echo -e
 
-    printf "  Press any key to abort ... ${NORMAL}"
+    printf "  Press any key to abort ... ${END}"
     read -n 1 -s -r -p ""
     echo -e
     echo -e
@@ -548,12 +555,12 @@ error_missing_value_gpg()
 opt_usage()
 {
     echo -e 
-    printf "  ${BLUE}${app_title}${NORMAL}\n" 1>&2
-    printf "  ${GREYL}${gui_about}${NORMAL}\n" 1>&2
+    printf "  ${BLUE}${app_title}${END}\n" 1>&2
+    printf "  ${GREY2}${gui_about}${END}\n" 1>&2
     echo -e 
     printf '  %-5s %-40s\n' "Usage:" "" 1>&2
-    printf '  %-5s %-40s\n' "    " "${0} [${GREYL}options${NORMAL}]" 1>&2
-    printf '  %-5s %-40s\n\n' "    " "${0} [${GREYL}-s${NORMAL}] [${GREYL}-t${NORMAL}] [${GREYL}-g${NORMAL}] [${GREYL}-p${NORMAL}] [${GREYL}-d${NORMAL}] [${GREYL}-n${NORMAL}] [${GREYL}-q${NORMAL}] [${GREYL}-u${NORMAL}] [${GREYL}-b main | dev${NORMAL}] [${GREYL}-r${NORMAL}]" 1>&2
+    printf '  %-5s %-40s\n' "    " "${0} [${GREY2}options${END}]" 1>&2
+    printf '  %-5s %-40s\n\n' "    " "${0} [${GREY2}-s${END}] [${GREY2}-t${END}] [${GREY2}-g${END}] [${GREY2}-p${END}] [${GREY2}-d${END}] [${GREY2}-n${END}] [${GREY2}-q${END}] [${GREY2}-u${END}] [${GREY2}-b main | dev${END}] [${GREY2}-r${END}]" 1>&2
     printf '  %-5s %-40s\n' "Options:" "" 1>&2
     printf '  %-5s %-18s %-40s\n' "    " "-s, --setup" "install script packages (git, wget, reprepro, etc.), setup gpg daemon, configure gpg key" 1>&2
     printf '  %-5s %-18s %-40s\n' "    " "-t, --onlyTest" "download packages from apt-get and LastVersion, do not push to git repo" 1>&2
@@ -611,15 +618,15 @@ opt_report()
     #   changes the color of the "secrets.sh" mode to a dark gray if clevis mode is enabled
     # #
 
-    clrSecretsModeSh_Title=$([ ${var_clevis_status} == "Enabled" ] && echo ${STRIKE}${DEVGREY} || echo ${LIME_YELLOW})
-    clrSecretsModeSh_Item=$([ ${var_clevis_status} == "Enabled" ] && echo ${DEVGREY} || echo ${POWDER_BLUE})
+    clrSecretsModeSh_Title=$([ ${var_clevis_status} == "Enabled" ] && echo ${STRIKE}${GREY3} || echo ${YELLOW3})
+    clrSecretsModeSh_Item=$([ ${var_clevis_status} == "Enabled" ] && echo ${GREY3} || echo ${BLUE2})
 
     # #
     #  Section > Header 
     # #
 
-    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
-    echo -e " ${GREEN}${BOLD} ${app_title} - v$(get_version)${NORMAL}${MAGENTA}"
+    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+    echo -e " ${GREEN}${BOLD} ${app_title} - v$(get_version)${END}${MAGENTA}"
     echo
     echo -e "  This is a package which handles the Proteus App Manager behind"
     echo -e "  the scene by grabbing from the list of registered packages"
@@ -631,20 +638,20 @@ opt_report()
     # #
 
     echo -e
-    echo -e "  ${LIME_YELLOW}${BOLD}[ Settings ]${NORMAL}"
+    echo -e "  ${YELLOW3}${BOLD}[ Settings ]${END}"
 
     Val_SecretMode=$([ ${var_clevis_status} == "Enabled" ] && echo "Clevis (Encrypted)" || echo "Secrets.sh (Unencrypted)")
     Val_Pkgs_Aptget=${#lst_packages[@]}
     Val_Pkgs_Github=${#lst_github[@]}
     Val_Pkgs_Arch=${#lst_arch[@]}
 
-    printf "%-5s %-40s %-40s %-40s\n" "" "${POWDER_BLUE}⚙️  Script" "${WHITE}${app_file_this}" "${NORMAL}"
-    printf "%-5s %-40s %-40s %-40s\n" "" "${POWDER_BLUE}⚙️  Path" "${WHITE}${app_dir}" "${NORMAL}"
-    printf "%-5s %-40s %-40s %-40s\n" "" "${POWDER_BLUE}⚙️  Version" "${WHITE}v$(get_version)" "${NORMAL}"
-    printf "%-5s %-40s %-40s %-40s\n" "" "${POWDER_BLUE}⚙️  Secret Mode" "${WHITE}${Val_SecretMode}" "${NORMAL}"
-    printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📦 Packages (Apt)" "${WHITE}${Val_Pkgs_Aptget}" "${NORMAL}"
-    printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📦 Packages (Github)" "${WHITE}${Val_Pkgs_Github}" "${NORMAL}"
-    printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📦 Architectures" "${WHITE}${Val_Pkgs_Arch}" "${NORMAL}"
+    printf "%-5s %-40s %-40s %-40s\n" "" "${BLUE2}⚙️  Script" "${WHITE}${app_file_this}" "${END}"
+    printf "%-5s %-40s %-40s %-40s\n" "" "${BLUE2}⚙️  Path" "${WHITE}${app_dir}" "${END}"
+    printf "%-5s %-40s %-40s %-40s\n" "" "${BLUE2}⚙️  Version" "${WHITE}v$(get_version)" "${END}"
+    printf "%-5s %-40s %-40s %-40s\n" "" "${BLUE2}⚙️  Secret Mode" "${WHITE}${Val_SecretMode}" "${END}"
+    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📦 Packages (Apt)" "${WHITE}${Val_Pkgs_Aptget}" "${END}"
+    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📦 Packages (Github)" "${WHITE}${Val_Pkgs_Github}" "${END}"
+    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📦 Architectures" "${WHITE}${Val_Pkgs_Arch}" "${END}"
 
     # #
     #  Section > Variables
@@ -652,15 +659,15 @@ opt_report()
 
     echo -e
     echo -e
-    echo -e "  ${LIME_YELLOW}${BOLD}[ Variables ]${NORMAL}"
+    echo -e "  ${YELLOW3}${BOLD}[ Variables ]${END}"
 
     bExists_Val_GPG=$([ -z "${GPG_KEY}" ] && echo "Missing" || echo "${GPG_KEY}")
     bExists_Val_GithubName=$([ -z "${GITHUB_NAME}" ] && echo "Missing" || echo "${GITHUB_NAME}")
     bExists_Val_GithubEmail=$([ -z "${GITHUB_EMAIL}" ] && echo "Missing" || echo "${GITHUB_EMAIL}")
 
-    printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}✎ GPG_KEY" "${WHITE}${bExists_Val_GPG}" "${NORMAL}"
-    printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}✎ GITHUB_NAME" "${WHITE}${bExists_Val_GithubName}" "${NORMAL}"
-    printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}✎ GITHUB_EMAIL" "${WHITE}${bExists_Val_GithubEmail}" "${NORMAL}"
+    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}✎ GPG_KEY" "${WHITE}${bExists_Val_GPG}" "${END}"
+    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}✎ GITHUB_NAME" "${WHITE}${bExists_Val_GithubName}" "${END}"
+    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}✎ GITHUB_EMAIL" "${WHITE}${bExists_Val_GithubEmail}" "${END}"
     echo -e
 
     # #
@@ -668,7 +675,7 @@ opt_report()
     # #
 
     echo -e
-    echo -e "  ${LIME_YELLOW}${BOLD}[ Paths - Clevis Mode]${NORMAL}"
+    echo -e "  ${YELLOW3}${BOLD}[ Paths - Clevis Mode]${END}"
 
     bExists_Fold_Secrets=$([ ! -d "${app_dir_secrets}" ] && echo "Missing" || echo "${app_dir_secrets}")
     bExists_File_Base=$([ ! -f "${app_file_secrets_general}" ] && echo "Missing" || echo "${app_file_secrets_general}")
@@ -677,12 +684,12 @@ opt_report()
     bExists_File_Passwd=$([ ! -f "${app_file_secrets_passwd}" ] && echo "Missing" || echo "${app_file_secrets_passwd}")
     bExists_File_PasswdGpg=$([ ! -f "${app_file_secrets_passwdgpg}" ] && echo "Missing" || echo "${app_file_secrets_passwdgpg}")
 
-    printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📁 .secrets" "${WHITE}${bExists_Fold_Secrets}" "${DEVGREY}${Val_SecretMode}${NORMAL}"
-    printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📄 .base" "${WHITE}${bExists_File_Base}${NORMAL}" ""
-    printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📄 .passwd" "${WHITE}${bExists_File_Passwd}${NORMAL}" ""
-    printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📄 .passwdgpg" "${WHITE}${bExists_File_PasswdGpg}${NORMAL}" ""
-    printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📄 .pat_github" "${WHITE}${bExists_File_Github}${NORMAL}" ""
-    printf "%-5s %-37s %-40s %-40s\n" "" "${POWDER_BLUE}📄 .pat_gitlab" "${WHITE}${bExists_File_Gitlab}${NORMAL}" ""
+    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📁 .secrets" "${WHITE}${bExists_Fold_Secrets}" "${GREY3}${Val_SecretMode}${END}"
+    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📄 .base" "${WHITE}${bExists_File_Base}${END}" ""
+    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📄 .passwd" "${WHITE}${bExists_File_Passwd}${END}" ""
+    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📄 .passwdgpg" "${WHITE}${bExists_File_PasswdGpg}${END}" ""
+    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📄 .pat_github" "${WHITE}${bExists_File_Github}${END}" ""
+    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📄 .pat_gitlab" "${WHITE}${bExists_File_Gitlab}${END}" ""
     echo -e
 
     # #
@@ -690,11 +697,11 @@ opt_report()
     # #
 
     echo -e
-    echo -e "  ${clrSecretsModeSh_Title}${BOLD}[ Paths - Secrets.sh Mode]${NORMAL}"
+    echo -e "  ${clrSecretsModeSh_Title}${BOLD}[ Paths - Secrets.sh Mode]${END}"
 
     bExists_File_SecretsSh=$([ ! -f "${app_file_secrets_sh}" ] && echo "Missing" || echo 'Found')
 
-    printf "%-5s %-37s %-40s %-40s\n" "" "${clrSecretsModeSh_Item}📄 secrets.sh" "${WHITE}${bExists_File_SecretsSh}" "${DEVGREY}${Val_SecretMode}${NORMAL}"
+    printf "%-5s %-37s %-40s %-40s\n" "" "${clrSecretsModeSh_Item}📄 secrets.sh" "${WHITE}${bExists_File_SecretsSh}" "${GREY3}${Val_SecretMode}${END}"
     echo -e
 
     # #
@@ -702,7 +709,7 @@ opt_report()
     # #
 
     echo -e
-    echo -e "  ${LIME_YELLOW}${BOLD}[ Dependencies ]${NORMAL}"
+    echo -e "  ${YELLOW3}${BOLD}[ Dependencies ]${END}"
 
     bInstalled_AptMove=$([ ! -x "$(command -v apt-move)" ] && echo "Missing" || echo 'Installed')
     bInstalled_Git=$([ ! -x "$(command -v git)" ] && echo "Missing" || echo 'Installed')
@@ -713,21 +720,21 @@ opt_report()
     bInstalled_Curl=$([ ! -x "$(command -v curl)" ] && echo "Missing" || echo 'Installed')
     bInstalled_Tree=$([ ! -x "$(command -v tree)" ] && echo "Missing" || echo 'Installed')
 
-    printf "%-5s %-38s %-40s\n" "" "${POWDER_BLUE}🗔  apt-move" "${WHITE}${bInstalled_AptMove}${NORMAL}"
-    printf "%-5s %-38s %-40s\n" "" "${POWDER_BLUE}🗔  git" "${WHITE}${bInstalled_Git}${NORMAL}"
-    printf "%-5s %-38s %-40s\n" "" "${POWDER_BLUE}🗔  clevis" "${WHITE}${bInstalled_Clevis}${NORMAL}"
-    printf "%-5s %-38s %-40s\n" "" "${POWDER_BLUE}🗔  reprepro" "${WHITE}${bInstalled_Reprepro}${NORMAL}"
-    printf "%-5s %-38s %-40s\n" "" "${POWDER_BLUE}🗔  gPG" "${WHITE}${bInstalled_GPG}${NORMAL}"
-    printf "%-5s %-38s %-40s\n" "" "${POWDER_BLUE}🗔  wget" "${WHITE}${bInstalled_Wget}${NORMAL}"
-    printf "%-5s %-38s %-40s\n" "" "${POWDER_BLUE}🗔  curl" "${WHITE}${bInstalled_Curl}${NORMAL}"
-    printf "%-5s %-38s %-40s\n" "" "${POWDER_BLUE}🗔  tree" "${WHITE}${bInstalled_Tree}${NORMAL}"
+    printf "%-5s %-38s %-40s\n" "" "${BLUE2}🗔  apt-move" "${WHITE}${bInstalled_AptMove}${END}"
+    printf "%-5s %-38s %-40s\n" "" "${BLUE2}🗔  git" "${WHITE}${bInstalled_Git}${END}"
+    printf "%-5s %-38s %-40s\n" "" "${BLUE2}🗔  clevis" "${WHITE}${bInstalled_Clevis}${END}"
+    printf "%-5s %-38s %-40s\n" "" "${BLUE2}🗔  reprepro" "${WHITE}${bInstalled_Reprepro}${END}"
+    printf "%-5s %-38s %-40s\n" "" "${BLUE2}🗔  gPG" "${WHITE}${bInstalled_GPG}${END}"
+    printf "%-5s %-38s %-40s\n" "" "${BLUE2}🗔  wget" "${WHITE}${bInstalled_Wget}${END}"
+    printf "%-5s %-38s %-40s\n" "" "${BLUE2}🗔  curl" "${WHITE}${bInstalled_Curl}${END}"
+    printf "%-5s %-38s %-40s\n" "" "${BLUE2}🗔  tree" "${WHITE}${bInstalled_Tree}${END}"
 
     # #
     #  Section > gpg-agent.conf 
     # #
 
     echo -e
-    echo -e "  ${LIME_YELLOW}${BOLD}[ gpg-agent.conf ]${NORMAL}"
+    echo -e "  ${YELLOW3}${BOLD}[ gpg-agent.conf ]${END}"
 
     gpgagent_cfg_file="${HOME}/.gnupg/gpg-agent.conf"
     if [ -f ${gpgagent_cfg_file} ]; then
@@ -738,7 +745,7 @@ opt_report()
     #  Section > Footer
     # #
 
-    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
+    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
     echo -e
     echo -e
 
@@ -795,15 +802,15 @@ while [ $# -gt 0 ]; do
   case "$1" in
     -d|--dev)
             OPT_DEV_ENABLE=true
-            echo -e "  ${FUCHSIA}${BLINK}Devmode Enabled${NORMAL}"
+            echo -e "  ${FUCHSIA1}${BLINK}Devmode Enabled${END}"
             ;;
 
     -dd*|--dist*)
             if [[ "$1" != *=* ]]; then shift; fi
             OPT_DISTRIBUTION="${1#*=}"
             if [ -z "${OPT_DISTRIBUTION}" ]; then
-                echo -e "  ${NORMAL}Must specify a valid distribution"
-                echo -e "  ${NORMAL}      Default:  ${YELLOW}${sys_code}${NORMAL}"
+                echo -e "  ${END}Must specify a valid distribution"
+                echo -e "  ${END}      Default:  ${YELLOW}${sys_code}${END}"
 
                 exit 1
             fi
@@ -837,8 +844,8 @@ while [ $# -gt 0 ]; do
             if [[ "$1" != *=* ]]; then shift; fi
             OPT_BRANCH="${1#*=}"
             if [ -z "${OPT_BRANCH}" ]; then
-                echo -e "  ${NORMAL}Must specify a valid branch"
-                echo -e "  ${NORMAL}      Default:  ${YELLOW}${app_repo_branch}${NORMAL}"
+                echo -e "  ${END}Must specify a valid branch"
+                echo -e "  ${END}      Default:  ${YELLOW}${app_repo_branch}${END}"
 
                 exit 1
             fi
@@ -846,12 +853,12 @@ while [ $# -gt 0 ]; do
 
     -n|--nullrun)
             OPT_DEV_NULLRUN=true
-            echo -e "  ${FUCHSIA}${BLINK}Devnull Enabled${NORMAL}"
+            echo -e "  ${FUCHSIA1}${BLINK}Devnull Enabled${END}"
             ;;
 
     -q|--quiet)
             OPT_NOLOG=true
-            echo -e "  ${FUCHSIA}${BLINK}Logging Disabled{NORMAL}"
+            echo -e "  ${FUCHSIA1}${BLINK}Logging Disabled{END}"
             ;;
 
     -u|--update)
@@ -860,9 +867,9 @@ while [ $# -gt 0 ]; do
 
     -v|--version)
             echo
-            echo -e "  ${GREEN}${BOLD}${app_title}${NORMAL} - v$(get_version)${NORMAL}"
-            echo -e "  ${GREYL}${BOLD}${app_repo_url}${NORMAL}"
-            echo -e "  ${GREYL}${BOLD}${OS} | ${OS_VER}${NORMAL}"
+            echo -e "  ${GREEN}${BOLD}${app_title}${END} - v$(get_version)${END}"
+            echo -e "  ${GREY2}${BOLD}${app_repo_url}${END}"
+            echo -e "  ${GREY2}${BOLD}${OS} | ${OS_VER}${END}"
             echo
             exit 1
             ;;
@@ -880,15 +887,15 @@ done
 if [ "${OPT_DEV_ENABLE}" = true ]; then
 
     echo -e
-    echo -e "  ${LIME_YELLOW}${BOLD}[ Arguments ]${NORMAL}"
-    [ "${OPT_DEV_ENABLE}" = true ] && printf "%-3s %-15s %-10s\n" "" "--dev" "${GREEN}${OPT_DEV_ENABLE}${NORMAL}"
-    [ "${OPT_DLPKG_ONLY_TEST}" = true ] && printf "%-3s %-15s %-10s\n" "" "--onlyTest" "${GREEN}${OPT_DLPKG_ONLY_TEST}${NORMAL}"
-    [ "${OPT_DLPKG_ONLY_LASTVER}" = true ] && printf "%-3s %-15s %-10s\n" "" "--onlyGithub" "${GREEN}${OPT_DLPKG_ONLY_LASTVER}${NORMAL}"
-    [ "${OPT_DL_ONLY_APTGET}" = true ] && printf "%-3s %-15s %-10s\n" "" "--onlyAptget" "${GREEN}${OPT_DL_ONLY_APTGET}${NORMAL}"
-    [ "${OPT_DEV_NULLRUN}" = true ] && printf "%-3s %-15s %-10s\n" "" "--nullrun" "${GREEN}${OPT_DEV_NULLRUN}${NORMAL}"
-    [ "${OPT_NOLOG}" = true ] && printf "%-3s %-15s %-10s\n" "" "--quiet" "${GREEN}${OPT_NOLOG}${NORMAL}"
-    [ -n "${OPT_DISTRIBUTION}" ] && printf "%-3s %-15s %-10s\n" "" "--dist" "${GREEN}${OPT_DISTRIBUTION}${NORMAL}"
-    [ -n "${OPT_BRANCH}" ] && printf "%-3s %-15s %-10s\n" "" "--branch" "${GREEN}${OPT_BRANCH}${NORMAL}"
+    echo -e "  ${YELLOW3}${BOLD}[ Arguments ]${END}"
+    [ "${OPT_DEV_ENABLE}" = true ] && printf "%-3s %-15s %-10s\n" "" "--dev" "${GREEN}${OPT_DEV_ENABLE}${END}"
+    [ "${OPT_DLPKG_ONLY_TEST}" = true ] && printf "%-3s %-15s %-10s\n" "" "--onlyTest" "${GREEN}${OPT_DLPKG_ONLY_TEST}${END}"
+    [ "${OPT_DLPKG_ONLY_LASTVER}" = true ] && printf "%-3s %-15s %-10s\n" "" "--onlyGithub" "${GREEN}${OPT_DLPKG_ONLY_LASTVER}${END}"
+    [ "${OPT_DL_ONLY_APTGET}" = true ] && printf "%-3s %-15s %-10s\n" "" "--onlyAptget" "${GREEN}${OPT_DL_ONLY_APTGET}${END}"
+    [ "${OPT_DEV_NULLRUN}" = true ] && printf "%-3s %-15s %-10s\n" "" "--nullrun" "${GREEN}${OPT_DEV_NULLRUN}${END}"
+    [ "${OPT_NOLOG}" = true ] && printf "%-3s %-15s %-10s\n" "" "--quiet" "${GREEN}${OPT_NOLOG}${END}"
+    [ -n "${OPT_DISTRIBUTION}" ] && printf "%-3s %-15s %-10s\n" "" "--dist" "${GREEN}${OPT_DISTRIBUTION}${END}"
+    [ -n "${OPT_BRANCH}" ] && printf "%-3s %-15s %-10s\n" "" "--branch" "${GREEN}${OPT_BRANCH}${END}"
     echo -e
 
     sleep 5
@@ -976,6 +983,8 @@ export SECONDS=0
 
 if [ "${cfg_Storage_Clevis}" = true ]; then
 
+    printf '%-30s %-40s\n' "  ${GREEN}OK${END}" "${GREY3}Clevis mode enabled${END}"
+
     # #
     #   the Clevis /.secrets directory doesnt exist
     #   create the folder and the needed files.
@@ -988,10 +997,12 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
 
     if [ ! -d "${app_dir_secrets}" ]; then
 
+        printf '%-30s %-40s\n' "  ${ORANGE}WARNING${END}" "${GREY3}Could not find ${app_dir_secrets}${END}"
+
         echo
-        echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE} Creating new secrets folder ${FUCHSIA}${app_dir_secrets}${WHITE}.${NORMAL}"
-        echo -e "  ${BOLD}${WHITE}Additional files will be created which you must open and add your Clevis encrypted secrets to.${NORMAL}"
-        echo -e "  ${BOLD}${WHITE}Relaunch Proteus when you are finished.${NORMAL}"
+        echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE} Creating new secrets folder ${FUCHSIA1}${app_dir_secrets}${WHITE}.${END}"
+        echo -e "  ${BOLD}${WHITE}Additional files will be created which you must open and add your Clevis encrypted secrets to.${END}"
+        echo -e "  ${BOLD}${WHITE}Relaunch Proteus when you are finished.${END}"
         echo
 
         mkdir -p ${app_dir_secrets}
@@ -1001,7 +1012,7 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
         touch ${app_file_secrets_passwd}
         touch ${app_file_secrets_passwdgpg}
 
-        printf "  Press any key to abort ... ${NORMAL}"
+        printf "  Press any key to abort ... ${END}"
         read -n 1 -s -r -p ""
         echo
         echo
@@ -1016,6 +1027,8 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
     # #
 
     else
+
+        printf '%-30s %-40s\n' "  ${GREEN}OK${END}" "${GREY3}Found ${BLUE2}${app_dir_secrets}${END}"
 
         # #
         #   SECRETS > CLEVIS > LOAD
@@ -1032,8 +1045,11 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
         #   clevis decrypt < /.secrets/.pat_github
         # #
 
-        echo -e
-        echo -e "  ${LIME_YELLOW}${BOLD}[ Public Values ]${NORMAL}"
+        if [ -f ${app_file_secrets_general} ]; then
+            printf '%-30s %-40s\n' "  ${GREEN}OK${END}" "${GREY3}Found ${BLUE2}${app_file_secrets_general}${END}"
+        else
+            printf '%-30s %-40s\n' "  ${ORANGE}WARNING${END}" "${GREY3}Could not find ${BLUE2}${app_file_secrets_general}${END}"
+        fi
 
         # #
         #   SECRETS > Base / General
@@ -1045,20 +1061,18 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
             #   base > load /.secrets/.base
             # #
 
-            if [ -f ${app_file_secrets_general} ]; then
-                source ${app_file_secrets_general}
-            fi
+            source ${app_file_secrets_general}
 
             # #
             #   base > verify gpg key
             # #
 
             if [ -z "${GPG_KEY}" ]; then
-                printf "%-3s %-15s %-10s\n" "" "GPG Key" "${LIME_YELLOW}GPG_KEY${ORANGE} empty or undefined in ${LIME_YELLOW}${app_file_secrets_general}${NORMAL}"
+                printf '%-30s %-40s\n' "  ${GREY1}GPG Key${END}" "  ${YELLOW3}GPG_KEY${ORANGE} empty or undefined in ${YELLOW3}${app_file_secrets_general}${END}"
             elif [ "${GPG_KEY}" == "!" ]; then
-                printf "%-3s %-15s %-10s\n" "" "GPG Key" "${RED}GPG_KEY${ORANGE} invalid key !${NORMAL}"
+                printf '%-30s %-40s\n' "  ${GREY1}GPG Key${END}" "  ${RED}GPG_KEY${ORANGE} invalid key !${END}"
             else
-                printf "%-3s %-15s %-10s\n" "" "GPG Key" "${GREEN}${GPG_KEY}${NORMAL}"
+                printf '%-30s %-40s\n' "  ${GREY1}GPG Key${END}" "  ${GREEN}${GPG_KEY}${END}"
             fi
 
             # #
@@ -1066,9 +1080,9 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
             # #
 
             if [ -z "${GITHUB_NAME}" ]; then
-                printf "%-3s %-15s %-10s\n" "" "Github Name" "${LIME_YELLOW}GITHUB_NAME${ORANGE} empty or undefined in ${LIME_YELLOW}${app_file_secrets_general}${NORMAL}"
+                printf '%-30s %-40s\n' "  ${GREY1}Github Name${END}" "  ${YELLOW3}GITHUB_NAME${ORANGE} empty or undefined in ${YELLOW3}${app_file_secrets_general}${END}"
             else
-                printf "%-3s %-15s %-10s\n" "" "Github Name" "${GREEN}${GITHUB_NAME}${NORMAL}"
+                printf '%-30s %-40s\n' "  ${GREY1}Github Name${END}" "  ${GREEN}${GITHUB_NAME}${END}"
             fi
 
             # #
@@ -1076,9 +1090,9 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
             # #
 
             if [ -z "${GITHUB_EMAIL}" ]; then
-                printf "%-3s %-15s %-10s\n" "" "Github Email" "${LIME_YELLOW}GITHUB_EMAIL${ORANGE} empty or undefined in ${LIME_YELLOW}${app_file_secrets_general}${NORMAL}"
+                printf '%-30s %-40s\n' "  ${GREY1}Github Email${END}" "  ${YELLOW3}GITHUB_EMAIL${ORANGE} empty or undefined in ${YELLOW3}${app_file_secrets_general}${END}"
             else
-                printf "%-3s %-15s %-10s\n" "" "Github Email" "${GREEN}${GITHUB_EMAIL}${NORMAL}"
+                printf '%-30s %-40s\n' "  ${GREY1}Github Email${END}" "  ${GREEN}${GITHUB_EMAIL}${END}"
             fi
 
         # #
@@ -1088,7 +1102,7 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
         # #
 
         else
-            printf "%-3s %-15s %-10s\n" "" "Base" "${RED}${app_file_secrets_passwd} Missing ${LIME_YELLOW}${app_file_secrets_general}${NORMAL}"
+            printf '%-30s %-40s\n' "  ${RED2}ERROR${END}" "  Missing ${BLUE2}${app_file_secrets_general}${END}"
 
             mkdir -p ${app_dir_secrets}
             touch ${app_file_secrets_general}
@@ -1096,8 +1110,10 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
             error_missing_file_base
         fi
 
-        echo -e
-        echo -e "  ${LIME_YELLOW}${BOLD}[ Secrets ]${NORMAL}"
+        if [ -f ${app_file_secrets_github} ]; then
+            printf '%-30s %-40s\n' "  ${GREEN}OK${END}" "${GREY3}Found ${BLUE2}${app_file_secrets_github}${END}"
+        fi
+
         bMissingSecret=false
 
         # #
@@ -1113,9 +1129,9 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
 
             if [ -n "${CSI_PAT_GITHUB}" ]; then
                 if [ "${OPT_DEV_ENABLE}" = true ]; then
-                    printf "%-3s %-15s %-10s\n" "" "Github PAT" "${GREEN}${CSI_PAT_GITHUB}${NORMAL}"
+                    printf '%-30s %-40s\n' "  ${GREY1}Github PAT${END}" "  ${GREEN}${CSI_PAT_GITHUB}${END}"
                 else
-                    printf "%-3s %-15s %-10s\n" "" "Github PAT" "${GREEN}***********${NORMAL}"
+                    printf '%-30s %-40s\n' "  ${GREY1}Github PAT${END}" "  ${GREEN}***********${CSI_PAT_GITHUB:(-8)}${END}"
                 fi
 
                 export GITHUB_API_TOKEN=${CSI_PAT_GITHUB}
@@ -1125,14 +1141,20 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
             # #
 
             else
-                printf "%-3s %-15s %-10s\n" "" "Github PAT" "${LIME_YELLOW}CSI_PAT_GITHUB${ORANGE} Not declared in ${LIME_YELLOW}${app_file_secrets_github}${NORMAL}"
+                printf '%-30s %-40s\n' "  ${GREY1}Github PAT${END}" "  ${YELLOW3}CSI_PAT_GITHUB${ORANGE} Not declared in ${YELLOW3}${app_file_secrets_github}${END}"
                 bMissingSecret=true
             fi
         else
-            printf "%-3s %-15s %-10s\n" "" "Github PAT" "${RED}${app_file_secrets_github} Missing ${LIME_YELLOW}${app_file_secrets_github}${NORMAL}"
+            printf '%-30s %-40s\n' "  ${GREY1}Github PAT${END}" "  ${RED}${app_file_secrets_github} Missing ${YELLOW3}${app_file_secrets_github}${END}"
 
             mkdir -p ${app_dir_secrets}
             touch ${app_file_secrets_github}
+        fi
+
+        if [ -f ${app_file_secrets_gitlab} ]; then
+            printf '%-30s %-40s\n' "  ${GREEN}OK${END}" "${GREY3}Found ${BLUE2}${app_file_secrets_gitlab}${END}"
+        else
+            printf '%-30s %-40s\n' "  ${ORANGE}WARNING${END}" "${GREY3}Could not find ${BLUE2}${app_file_secrets_gitlab}${END}"
         fi
 
         # #
@@ -1148,9 +1170,9 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
 
             if [ -n "${CSI_PAT_GITLAB}" ]; then
                 if [ "${OPT_DEV_ENABLE}" = true ]; then
-                    printf "%-3s %-15s %-10s\n" "" "Gitlab PAT" "${GREEN}${CSI_PAT_GITLAB}${NORMAL}"
+                    printf '%-30s %-40s\n' "  ${GREY1}Gitlab PAT${END}" "  ${GREEN}${CSI_PAT_GITLAB}${END}"
                 else
-                    printf "%-3s %-15s %-10s\n" "" "Gitlab PAT" "${GREEN}***********${NORMAL}"
+                    printf '%-30s %-40s\n' "  ${GREY1}Gitlab PAT${END}" "  ${GREEN}***********${CSI_PAT_GITLAB:(-8)}${END}"
                 fi
 
                 export GITLAB_PA_TOKEN=${CSI_PAT_GITLAB}
@@ -1160,7 +1182,7 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
             # #
 
             else
-                printf "%-3s %-15s %-10s\n" "" "Gitlab PAT" "${LIME_YELLOW}CSI_PAT_GITLAB${ORANGE} Not declared in ${LIME_YELLOW}${app_file_secrets_gitlab}${NORMAL}"
+                printf '%-30s %-40s\n' "  ${GREY1}Gitlab PAT${END}" "  ${YELLOW3}CSI_PAT_GITLAB${ORANGE} Not declared in ${YELLOW3}${app_file_secrets_gitlab}${END}"
 
                 # #
                 #   Only mark the Gitlab one as missing and show the error if they also havent specified one for Github.
@@ -1171,7 +1193,7 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
                 fi
             fi
         else
-            printf "%-3s %-15s %-10s\n" "" "Gitlab PAT" "${RED}${app_file_secrets_gitlab} Missing ${LIME_YELLOW}${app_file_secrets_gitlab}${NORMAL}"
+            printf '%-30s %-40s\n' "  ${GREY1}Gitlab PAT${END}" "  ${RED}${app_file_secrets_gitlab} Missing ${YELLOW3}${app_file_secrets_gitlab}${END}"
 
             mkdir -p ${app_dir_secrets}
             touch ${app_file_secrets_gitlab}
@@ -1190,9 +1212,9 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
 
             if [ -n "${CSI_SUDO_PASSWD}" ]; then
                 if [ "${OPT_DEV_ENABLE}" = true ]; then
-                    printf "%-3s %-15s %-10s\n" "" "Sudo Passwd" "${GREEN}${CSI_SUDO_PASSWD}${NORMAL}"
+                    printf '%-30s %-40s\n' "  ${GREY1}Sudo Passwd${END}" "  ${GREEN}${CSI_SUDO_PASSWD}${END}"
                 else
-                    printf "%-3s %-15s %-10s\n" "" "Sudo Passwd" "${GREEN}***********${NORMAL}"
+                    printf '%-30s %-40s\n' "  ${GREY1}Sudo Passwd${END}" "  ${GREEN}***********${END}"
                 fi
 
                 echo "$CSI_SUDO_PASSWD" | sudo -S su 2> /dev/null
@@ -1202,11 +1224,11 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
             # #
 
             else
-                printf "%-3s %-15s %-10s\n" "" "Sudo Passwd" "${LIME_YELLOW}CSI_SUDO_PASSWD${ORANGE} Not declared in ${LIME_YELLOW}${app_file_secrets_passwd}${NORMAL}"
+                printf '%-30s %-40s\n' "  ${GREY1}Sudo Passwd${END}" "  ${YELLOW3}CSI_SUDO_PASSWD${ORANGE} Not declared in ${YELLOW3}${app_file_secrets_passwd}${END}"
                 bMissingSecret=true
             fi
         else
-            printf "%-3s %-15s %-10s\n" "" "Sudo Passwd" "${RED}${app_file_secrets_passwd} Missing ${LIME_YELLOW}${app_file_secrets_passwd}${NORMAL}"
+            printf '%-30s %-40s\n' "  ${GREY1}Sudo Passwd${END}" "  ${RED}${app_file_secrets_passwd} Missing ${YELLOW3}${app_file_secrets_passwd}${END}"
 
             mkdir -p ${app_dir_secrets}
             touch ${app_file_secrets_passwd}
@@ -1225,9 +1247,9 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
 
             if [ -n "${CSI_GPG_PASSWD}" ]; then
                 if [ "${OPT_DEV_ENABLE}" = true ]; then
-                    printf "%-3s %-15s %-10s\n" "" "GPG Passwd" "${GREEN}${CSI_GPG_PASSWD}${NORMAL}"
+                    printf '%-30s %-40s\n' "  ${GREY1}GPG Passwd${END}" "  ${GREEN}${CSI_GPG_PASSWD}${END}"
                 else
-                    printf "%-3s %-15s %-10s\n" "" "GPG Passwd" "${GREEN}***********${NORMAL}"
+                    printf '%-30s %-40s\n' "  ${GREY1}GPG Passwd${END}" "  ${GREEN}***********${END}"
                 fi
 
                 echo "${CSI_GPG_PASSWD}" | gpg --batch --yes --pinentry-mode loopback --passphrase-fd 0 --output /dev/null --sign >> /dev/null 2>&1
@@ -1237,11 +1259,11 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
             # #
 
             else
-                printf "%-3s %-15s %-10s\n" "" "Gpg Passwd" "${LIME_YELLOW}CSI_GPG_PASSWD${ORANGE} Not declared in ${LIME_YELLOW}${app_file_secrets_passwdgpg}${NORMAL}"
+                printf '%-30s %-40s\n' "  ${GREY1}GPG Passwd${END}" "  ${YELLOW3}CSI_GPG_PASSWD${ORANGE} Not declared in ${YELLOW3}${app_file_secrets_passwdgpg}${END}"
                 bMissingSecret=true
             fi
         else
-            printf "%-3s %-15s %-10s\n" "" "Gpg Passwd" "${RED}${app_file_secrets_passwdgpg} Missing ${LIME_YELLOW}${app_file_secrets_passwdgpg}${NORMAL}"
+            printf '%-30s %-40s\n' "  ${GREY1}GPG Passwd${END}" "  ${RED}${app_file_secrets_passwdgpg} Missing ${YELLOW3}${app_file_secrets_passwdgpg}${END}"
 
             mkdir -p ${app_dir_secrets}
             touch ${app_file_secrets_passwdgpg}
@@ -1250,34 +1272,34 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
         if [ "${bMissingSecret}" = true ]; then
 
             echo -e
-            echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
+            echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
             echo -e
-            echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}You are missing required secrets.${NORMAL}"
-            echo -e "  ${BOLD}${WHITE}You must define your secrets within files inside ${RED}${app_dir_secrets}${NORMAL}"
-            echo -e "  ${BOLD}${WHITE}Each line belongs in its own file, and must be encrypted using Clevis${NORMAL}"
+            echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}You are missing required secrets.${END}"
+            echo -e "  ${BOLD}${WHITE}You must define your secrets within files inside ${RED}${app_dir_secrets}${END}"
+            echo -e "  ${BOLD}${WHITE}Each line belongs in its own file, and must be encrypted using Clevis${END}"
             echo -e 
-            printf "%-5s %-60s %-40s\n" "" "${POWDER_BLUE}${app_file_secrets_github}" "${WHITE}github_pat_xxxxxx_xxxxxx${NORMAL}"
-            printf "%-5s %-60s %-40s\n" "" "${POWDER_BLUE}${app_file_secrets_gitlab}" "${WHITE}glpat-xxxxxxx${NORMAL}"
-            printf "%-5s %-60s %-40s\n" "" "${POWDER_BLUE}${app_file_secrets_passwd}" "${WHITE}YourSudoPassword${NORMAL}"
-            printf "%-5s %-60s %-40s\n" "" "${POWDER_BLUE}${app_file_secrets_passwdgpg}" "${WHITE}YourGPGPassword${NORMAL}"
+            printf "%-5s %-60s %-40s\n" "" "${BLUE2}${app_file_secrets_github}" "${WHITE}github_pat_xxxxxx_xxxxxx${END}"
+            printf "%-5s %-60s %-40s\n" "" "${BLUE2}${app_file_secrets_gitlab}" "${WHITE}glpat-xxxxxxx${END}"
+            printf "%-5s %-60s %-40s\n" "" "${BLUE2}${app_file_secrets_passwd}" "${WHITE}YourSudoPassword${END}"
+            printf "%-5s %-60s %-40s\n" "" "${BLUE2}${app_file_secrets_passwdgpg}" "${WHITE}YourGPGPassword${END}"
             echo -e 
-            echo -e "  ${BOLD}${WHITE}(Left)   File you should create${NORMAL}"
-            echo -e "  ${BOLD}${WHITE}(Right)  What each file should have inside${NORMAL}"
+            echo -e "  ${BOLD}${WHITE}(Left)   File you should create${END}"
+            echo -e "  ${BOLD}${WHITE}(Right)  What each file should have inside${END}"
             echo -e 
-            echo -e "  ${BOLD}${WHITE}You can create and encrypt each file at the same time using these commands:${NORMAL}"
-            echo -e "      ${BOLD}${DEVGREY}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'github_pat_xxxxxx_xxxxxx' > .pat_github${NORMAL}"
-            echo -e "      ${BOLD}${DEVGREY}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'glpat-xxxxxxx' > .pat_gitlab${NORMAL}"
-            echo -e "      ${BOLD}${DEVGREY}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'YourSudoPassword' > .passwd${NORMAL}"
-            echo -e "      ${BOLD}${DEVGREY}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'YourGPGPassword' > .passwdgpg${NORMAL}"
+            echo -e "  ${BOLD}${WHITE}You can create and encrypt each file at the same time using these commands:${END}"
+            echo -e "      ${BOLD}${GREY3}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'github_pat_xxxxxx_xxxxxx' > .pat_github${END}"
+            echo -e "      ${BOLD}${GREY3}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'glpat-xxxxxxx' > .pat_gitlab${END}"
+            echo -e "      ${BOLD}${GREY3}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'YourSudoPassword' > .passwd${END}"
+            echo -e "      ${BOLD}${GREY3}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'YourGPGPassword' > .passwdgpg${END}"
             echo -e 
-            echo -e "  ${BOLD}${WHITE}You can decrypt these files using these commands:${NORMAL}"
-            echo -e "      ${BOLD}${DEVGREY}clevis decrypt < .pat_github${NORMAL}"
-            echo -e "      ${BOLD}${DEVGREY}clevis decrypt < .pat_github > .pat_github_decrypted${NORMAL}"
+            echo -e "  ${BOLD}${WHITE}You can decrypt these files using these commands:${END}"
+            echo -e "      ${BOLD}${GREY3}clevis decrypt < .pat_github${END}"
+            echo -e "      ${BOLD}${GREY3}clevis decrypt < .pat_github > .pat_github_decrypted${END}"
             echo -e 
-            echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
+            echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
             echo -e
 
-            printf "  Press any key to abort ... ${NORMAL}"
+            printf "  Press any key to abort ... ${END}"
             read -n 1 -s -r -p ""
             echo
             echo
@@ -1307,9 +1329,9 @@ else
 
     if [ ! -f ${app_file_secrets_sh} ]; then
         echo
-        echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}secrets.sh file not found! Creating a blank ${FUCHSIA}secrets.sh${WHITE} file.${NORMAL}"
-        echo -e "  ${BOLD}${WHITE}This file defines things such as your GPG key and Github Personal Token.${NORMAL}"
-        echo -e "  ${BOLD}${WHITE}Open the newly created ${FUCHSIA}secrets.sh${WHITE} file and add your secrets${NORMAL}"
+        echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}secrets.sh file not found! Creating a blank ${FUCHSIA1}secrets.sh${WHITE} file.${END}"
+        echo -e "  ${BOLD}${WHITE}This file defines things such as your GPG key and Github Personal Token.${END}"
+        echo -e "  ${BOLD}${WHITE}Open the newly created ${FUCHSIA1}secrets.sh${WHITE} file and add your secrets${END}"
         echo
 
         touch ${app_file_secrets_sh}
@@ -1324,7 +1346,7 @@ export GITHUB_NAME=
 export GITHUB_EMAIL=
 EOF
 
-        printf "  Press any key to abort ... ${NORMAL}"
+        printf "  Press any key to abort ... ${END}"
         read -n 1 -s -r -p ""
         echo
         echo
@@ -1364,7 +1386,7 @@ fi
 
 app_run_github_precheck( )
 {
-    echo -e "  ${GREYL}Configuring git config${WHITE}"
+    echo -e "  ${GREY2}Configuring git config${WHITE}"
 
     # #
     #   delete lock
@@ -1442,27 +1464,27 @@ app_run_github_precheck( )
 checkgit_signing=$( git config --global --get-all user.signingKey )
 if [ -z "${checkgit_signing}" ] || [ "${checkgit_signing}" == "!" ]; then
     echo
-    echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Missing ${YELLOW}user.signingKey${WHITE} in ${YELLOW}${HOME}/.gitconfig${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}You should have the below entries in your ${FUCHSIA}.gitconfig${WHITE}:${NORMAL}"
+    echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Missing ${YELLOW}user.signingKey${WHITE} in ${YELLOW}${HOME}/.gitconfig${END}"
+    echo -e "  ${BOLD}${WHITE}You should have the below entries in your ${FUCHSIA1}.gitconfig${WHITE}:${END}"
     echo
-    echo -e "  ${BOLD}${WHITE}    ${GREYL}[user]${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}         ${BLUE}signingKey${WHITE} = ${GPG_KEY}${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}    ${GREY2}[user]${END}"
+    echo -e "  ${BOLD}${WHITE}         ${BLUE}signingKey${WHITE} = ${GPG_KEY}${END}"
     echo
-    echo -e "  ${BOLD}${WHITE}    ${GREYL}[commit]${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}         ${BLUE}gpgsign${WHITE} = true${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}    ${GREY2}[commit]${END}"
+    echo -e "  ${BOLD}${WHITE}         ${BLUE}gpgsign${WHITE} = true${END}"
     echo
-    echo -e "  ${BOLD}${WHITE}    ${GREYL}[gpg]${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}         ${BLUE}program${WHITE} = gpg${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}    ${GREY2}[gpg]${END}"
+    echo -e "  ${BOLD}${WHITE}         ${BLUE}program${WHITE} = gpg${END}"
     echo
-    echo -e "  ${BOLD}${WHITE}    ${GREYL}[tag]${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}         ${BLUE}forceSignAnnotated${WHITE} = true${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}    ${GREY2}[tag]${END}"
+    echo -e "  ${BOLD}${WHITE}         ${BLUE}forceSignAnnotated${WHITE} = true${END}"
     echo
-    echo -e "  ${BOLD}${WHITE}    ${GREYL}[init]${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}         ${BLUE}defaultBranch${WHITE} = main${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}    ${GREY2}[init]${END}"
+    echo -e "  ${BOLD}${WHITE}         ${BLUE}defaultBranch${WHITE} = main${END}"
     echo
-    echo -e "  ${BOLD}${WHITE}    ${GREYL}[http]${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}         ${BLUE}postBuffer${WHITE} = 524288000${NORMAL}"
-    echo -e "  ${BOLD}${WHITE}         ${BLUE}lowSpeedLimit${WHITE} = 0${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}    ${GREY2}[http]${END}"
+    echo -e "  ${BOLD}${WHITE}         ${BLUE}postBuffer${WHITE} = 524288000${END}"
+    echo -e "  ${BOLD}${WHITE}         ${BLUE}lowSpeedLimit${WHITE} = 0${END}"
     echo
 
     git config --global gpg.program gpg
@@ -1476,7 +1498,7 @@ if [ -z "${checkgit_signing}" ] || [ "${checkgit_signing}" == "!" ]; then
 
     sleep 1
 
-    echo -e "  ${BOLD}${WHITE}Automatically adding these values to your ${FUCHSIA}.gitconfig${WHITE}:${NORMAL}"
+    echo -e "  ${BOLD}${WHITE}Automatically adding these values to your ${FUCHSIA1}.gitconfig${WHITE}:${END}"
 
     sleep 2
 
@@ -1488,12 +1510,12 @@ if [ -z "${checkgit_signing}" ] || [ "${checkgit_signing}" == "!" ]; then
     checkgit_signing=$( git config --global --get-all user.signingKey )
     if [ -z "${checkgit_signing}" ]; then
         echo -e
-        echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Could not add the above entries to ${YELLOW}${HOME}/.gitconfig${NORMAL}"
-        echo -e "  ${BOLD}${WHITE}You will need to manually add these entries.${WHITE}:${NORMAL}"
+        echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Could not add the above entries to ${YELLOW}${HOME}/.gitconfig${END}"
+        echo -e "  ${BOLD}${WHITE}You will need to manually add these entries.${WHITE}:${END}"
         echo -e
     else
         echo -e
-        echo -e "  ${BOLD}${GREEN}SUCCESS  ${WHITE}Entries added to ${YELLOW}${HOME}/.gitconfig${NORMAL}"
+        echo -e "  ${BOLD}${GREEN}SUCCESS  ${WHITE}Entries added to ${YELLOW}${HOME}/.gitconfig${END}"
         echo -e
     fi
 fi
@@ -1687,7 +1709,7 @@ spinner_halt()
 #   allows for prompting user with questions and to select their desired
 #   choice.
 #
-#   echo -e "  ${BOLD}${FUCHSIA}ATTENTION  ${WHITE}This is a question${NORMAL}"
+#   echo -e "  ${BOLD}${FUCHSIA1}ATTENTION  ${WHITE}This is a question${END}"
 #
 #   export CHOICES=( "Choice 1" "Choice 2" )
 #   cli_options
@@ -1710,11 +1732,11 @@ cli_options()
             if [[ "$i" == "$it" ]]; then
                 tput rev
                 printf '\e[1;33m'
-                printf '%4d. \e[1m\e[33m %s\t\e[0m\n' $i "${LIME_YELLOW}  ${CHOICES[$i]}  "
+                printf '%4d. \e[1m\e[33m %s\t\e[0m\n' $i "${YELLOW3}  ${CHOICES[$i]}  "
                 tput sgr0
             else
                 printf '\e[1;33m'
-                printf '%4d. \e[1m\e[33m %s\t\e[0m\n' $i "${LIME_YELLOW}  ${CHOICES[$i]}  "
+                printf '%4d. \e[1m\e[33m %s\t\e[0m\n' $i "${YELLOW3}  ${CHOICES[$i]}  "
             fi
             tput cuf 2
         done
@@ -1794,7 +1816,7 @@ cli_question( )
             def=
         fi
 
-        #printf '%-60s %13s %-5s' "    $1 " "${YELLOW}[$syntax]${NORMAL}" ""
+        #printf '%-60s %13s %-5s' "    $1 " "${YELLOW}[$syntax]${END}" ""
         echo -n "$1 [$syntax] "
 
         read response </dev/tty
@@ -1982,7 +2004,7 @@ app_update()
     echo -e
 
     sleep 2
-    echo -e "  ${BOLD}${GREEN}Update Complete!${NORMAL}" >&2
+    echo -e "  ${BOLD}${GREEN}Update Complete!${END}" >&2
     sleep 2
 
     finish
@@ -2014,8 +2036,8 @@ if [ ! -d .git ]; then
     echo -e
     echo -e "  ${ORANGE}Error${WHITE}"
     echo -e "  "
-    echo -e "  ${WHITE}Folder ${YELLOW}.git${NORMAL} does not exist."
-    echo -e "  ${WHITE}Must clone ${YELLOW}${app_repo_apt_url}${NORMAL} first."
+    echo -e "  ${WHITE}Folder ${YELLOW}.git${END} does not exist."
+    echo -e "  ${WHITE}Must clone ${YELLOW}${app_repo_apt_url}${END} first."
     echo -e
     echo -e "  Couldn't find .git folder in ${app_dir}"
     echo -e
@@ -2171,13 +2193,13 @@ app_setup()
 
     if [ -z "${GPG_KEY}" ]; then
         echo -e
-        echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}GPG Key not specified${NORMAL}"
-        echo -e "  ${BOLD}${WHITE}Must create ${FUCHSIA}secrets.sh${WHITE} file and define your GPG key.${NORMAL}"
+        echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}GPG Key not specified${END}"
+        echo -e "  ${BOLD}${WHITE}Must create ${FUCHSIA1}secrets.sh${WHITE} file and define your GPG key.${END}"
         echo
-        echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GPG_KEY=${WHITE}XXXXXXXX${NORMAL}"
+        echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GPG_KEY=${WHITE}XXXXXXXX${END}"
         echo -e
 
-        printf "  Press any key to abort ... ${NORMAL}"
+        printf "  Press any key to abort ... ${END}"
         read -n 1 -s -r -p ""
         echo -e
         echo -e
@@ -2195,7 +2217,7 @@ app_setup()
         gpg_id=$( gpg --list-secret-keys --keyid-format=long | grep $GPG_KEY )
         if [[ $? == 0 ]]; then 
             echo -e
-            echo -e "  ${WHITE}GPG key ${GREEN}${GPG_KEY}${NORMAL} found."
+            echo -e "  ${WHITE}GPG key ${GREEN}${GPG_KEY}${END} found."
             echo -e
 
             bGPGLoaded=true
@@ -2205,8 +2227,8 @@ app_setup()
             echo -e
             echo -e "  ${ORANGE}Error${WHITE}"
             echo -e "  "
-            echo -e "  ${WHITE}Specified GPG key ${YELLOW}${GPG_KEY}${NORMAL} not found in GnuPG key store."
-            echo -e "  ${WHITE}Searching ${YELLOW}$app_dir/.gpg/${NORMAL} for a GPG key to import."
+            echo -e "  ${WHITE}Specified GPG key ${YELLOW}${GPG_KEY}${END} not found in GnuPG key store."
+            echo -e "  ${WHITE}Searching ${YELLOW}$app_dir/.gpg/${END} for a GPG key to import."
             echo -e
 
             sleep 1
@@ -2221,7 +2243,7 @@ app_setup()
                 bGPGLoaded=true
 
                 echo -e
-                echo -e "  ${WHITE}Found ${YELLOW}$app_dir/.gpg/${gpg_file}${NORMAL} to import."
+                echo -e "  ${WHITE}Found ${YELLOW}$app_dir/.gpg/${gpg_file}${END} to import."
                 echo -e
 
             # #
@@ -2234,7 +2256,7 @@ app_setup()
                 bGPGLoaded=true
 
                 echo -e
-                echo -e "  ${WHITE}Found ${YELLOW}$app_dir/.gpg/${gpg_file}${NORMAL} to import."
+                echo -e "  ${WHITE}Found ${YELLOW}$app_dir/.gpg/${gpg_file}${END} to import."
                 echo -e
 
             # #
@@ -2244,7 +2266,7 @@ app_setup()
             else
                 if [ -z "${OPT_DLPKG_ONLY_TEST}" ]; then
                     echo -e
-                    echo -e "  ${WHITE}No GPG keys found to import. ${RED}Aborting${NORMAL}"
+                    echo -e "  ${WHITE}No GPG keys found to import. ${RED}Aborting${END}"
                     echo -e
 
                     set +m
@@ -2253,12 +2275,12 @@ app_setup()
                     set -m
                 else
                     echo -e
-                    echo -e "  ${WHITE}No GPG keys found to import. Since you are in ${YELLOW}--onlyTest${NORMAL} mode, ${YELLOW}Skipping${NORMAL}"
+                    echo -e "  ${WHITE}No GPG keys found to import. Since you are in ${YELLOW}--onlyTest${END} mode, ${YELLOW}Skipping${END}"
                     echo -e
                 fi
             fi
 
-            printf "  Press any key to continue ... ${NORMAL}"
+            printf "  Press any key to continue ... ${END}"
             read -n 1 -s -r -p ""
             echo -e
         fi
@@ -2275,18 +2297,18 @@ app_setup()
     if [ "$bGPGLoaded" = false ] && [ -z "${OPT_DLPKG_ONLY_TEST}" ]; then
         echo
         echo
-        echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Private GPG key not found${NORMAL}"
+        echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Private GPG key not found${END}"
         echo
-        echo -e "  ${WHITE}You must have a private GPG key imported to use this program.${NORMAL}"
-        echo -e "  ${WHITE}Your private GPG key is used to sign commits and the deb package${NORMAL}"
-        echo -e "  ${WHITE}repositories that you upload.${NORMAL}"
+        echo -e "  ${WHITE}You must have a private GPG key imported to use this program.${END}"
+        echo -e "  ${WHITE}Your private GPG key is used to sign commits and the deb package${END}"
+        echo -e "  ${WHITE}repositories that you upload.${END}"
         echo
-        echo -e "  ${WHITE}You must either add a private .gpg keyfile to the folder:${NORMAL}"
-        echo -e "       ${YELLOW}$app_dir/.gpg/${NORMAL}"
-        echo -e "  ${WHITE}Or manually import a GPG key to your system's GPG keyring${NORMAL}"
+        echo -e "  ${WHITE}You must either add a private .gpg keyfile to the folder:${END}"
+        echo -e "       ${YELLOW}$app_dir/.gpg/${END}"
+        echo -e "  ${WHITE}Or manually import a GPG key to your system's GPG keyring${END}"
         echo
 
-        printf "  Press any key to abort ... ${NORMAL}"
+        printf "  Press any key to abort ... ${END}"
         read -n 1 -s -r -p ""
         echo
         echo
@@ -2704,26 +2726,26 @@ show_header()
 
     sleep 0.3
 
-    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
-    echo -e " ${GREEN}${BOLD} ${app_title} - v$(get_version)${NORMAL}${MAGENTA}"
+    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+    echo -e " ${GREEN}${BOLD} ${app_title} - v$(get_version)${END}${MAGENTA}"
     echo
     echo -e "  This is a package which handles the Proteus App Manager behind"
     echo -e "  the scene by grabbing from the list of registered packages"
     echo -e "  and adding them to the queue to be updated."
     echo
 
-    printf '%-35s %-40s\n' "  ${BOLD}${DEVGREY}GPG KEY ${NORMAL}" "${BOLD}${FUCHSIA} $GPG_KEY ${NORMAL}"
+    printf '%-35s %-40s\n' "  ${BOLD}${GREY3}GPG KEY ${END}" "${BOLD}${FUCHSIA1} $GPG_KEY ${END}"
     echo
 
     if [ -n "${OPT_DEV_NULLRUN}" ]; then
-        printf '%-35s %-40s\n' "  ${BOLD}${DEVGREY}PID ${NORMAL}" "${BOLD}${FUCHSIA} $$ ${NORMAL}"
-        printf '%-35s %-40s\n' "  ${BOLD}${DEVGREY}USER ${NORMAL}" "${BOLD}${FUCHSIA} ${USER} ${NORMAL}"
-        printf '%-35s %-40s\n' "  ${BOLD}${DEVGREY}APPS ${NORMAL}" "${BOLD}${FUCHSIA} ${app_i} ${NORMAL}"
-        printf '%-35s %-40s\n' "  ${BOLD}${DEVGREY}DEV ${NORMAL}" "${BOLD}${FUCHSIA} $([ -n "${OPT_DEV_ENABLE}" ] && echo "Enabled" || echo "Disabled" ) ${NORMAL}"
+        printf '%-35s %-40s\n' "  ${BOLD}${GREY3}PID ${END}" "${BOLD}${FUCHSIA1} $$ ${END}"
+        printf '%-35s %-40s\n' "  ${BOLD}${GREY3}USER ${END}" "${BOLD}${FUCHSIA1} ${USER} ${END}"
+        printf '%-35s %-40s\n' "  ${BOLD}${GREY3}APPS ${END}" "${BOLD}${FUCHSIA1} ${app_i} ${END}"
+        printf '%-35s %-40s\n' "  ${BOLD}${GREY3}DEV ${END}" "${BOLD}${FUCHSIA1} $([ -n "${OPT_DEV_ENABLE}" ] && echo "Enabled" || echo "Disabled" ) ${END}"
         echo
     fi
 
-    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
+    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
     echo
 
     sleep 0.3
@@ -2886,9 +2908,9 @@ app_run_dl_aptget()
             # #
 
             if [ "$bNewPackage" = true ]; then
-                echo -e "     ${GREYL}|--- ${YELLOW}[ ${count} ]${FUCHSIA}${BOLD} Get ${pkg_arch:0:35}${NORMAL}"
+                echo -e "     ${GREY2}|--- ${YELLOW}[ ${count} ]${FUCHSIA1}${BOLD} Get ${pkg_arch:0:35}${END}"
             else
-                echo -e "               ${FUCHSIA}${BOLD} Get ${pkg_arch:0:35}${NORMAL}"
+                echo -e "               ${FUCHSIA1}${BOLD} Get ${pkg_arch:0:35}${END}"
             fi
 
             # #
@@ -2915,15 +2937,15 @@ app_run_dl_aptget()
             #   output > package info
             # #
 
-            echo -e "  ${WHITE}                Package         ${FUCHSIA}${pkg_arch}${NORMAL}"
-            echo -e "  ${WHITE}                File            ${FUCHSIA}${app_filename}${NORMAL}"
+            echo -e "  ${WHITE}                Package         ${FUCHSIA1}${pkg_arch}${END}"
+            echo -e "  ${WHITE}                File            ${FUCHSIA1}${app_filename}${END}"
 
             # #
             #   output > architecture doesn't exist for this package
             # #
 
             if echo "$apturl_query" | grep --quiet --ignore-case "find package" ; then
-                echo -e "  ${WHITE}                ${GREEN}Status:         ${FUCHSIA}🔍 ${arch:0:35}${NORMAL} doesn't exist for this package"
+                echo -e "  ${WHITE}                ${GREEN}Status:         ${FUCHSIA1}🔍 ${arch:0:35}${END} doesn't exist for this package"
             fi
 
             # #
@@ -2931,7 +2953,7 @@ app_run_dl_aptget()
             # #
 
             if echo "$apturl_query" | grep --quiet --ignore-case "It is held by process" ; then
-                echo -e "  ${WHITE}                ${GREEN}Status:         ${FUCHSIA}🗔 ${pkg_arch:0:35}${NORMAL} held up by process"
+                echo -e "  ${WHITE}                ${GREEN}Status:         ${FUCHSIA1}🗔 ${pkg_arch:0:35}${END} held up by process"
             fi
 
             # #
@@ -2947,7 +2969,7 @@ app_run_dl_aptget()
                 # #
 
                 if [[ "${arch}" == "all" ]] && [[ ${app_filename} == *all.deb ]]; then
-                    echo -e "  ${WHITE}                Download        ${FUCHSIA}${app_url}${NORMAL}"
+                    echo -e "  ${WHITE}                Download        ${FUCHSIA1}${app_url}${END}"
 
                     # #
                     #   architecture > all
@@ -2958,7 +2980,7 @@ app_run_dl_aptget()
 
                     mv "${app_dir}/${app_filename}" "${app_dir_storage}/all/"
 
-                    echo -e "  ${WHITE}                Move            ${FUCHSIA}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA}${app_dir_storage}/all/${NORMAL}"
+                    echo -e "  ${WHITE}                Move            ${FUCHSIA1}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA1}${app_dir_storage}/all/${END}"
 
                     if [ -n "${bRepreproInstalled}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
 
@@ -2978,8 +3000,8 @@ app_run_dl_aptget()
                         #       deb_package             incoming/proteus-git/jammy/all/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
                         # #
 
-                        echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
-                        echo -e "  ${WHITE}                                    ${FUCHSIA}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${NORMAL}"
+                        echo -e "  ${WHITE}                Reprepro        ${FUCHSIA1}${deb_package}${END} for dist ${FUCHSIA1}${app_repo_dist_sel}${END}"
+                        echo -e "  ${WHITE}                                    ${FUCHSIA1}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${END}"
 
                         reprepro_exit_code="0"
                         reprepro_output="$(reprepro -V \
@@ -2997,7 +3019,7 @@ app_run_dl_aptget()
                         # #
 
                         if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
-                            echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
+                            echo -e "  ${WHITE}                ${GREEN}Status:         ${END}💡 Already exists${END}"
                         fi
 
                         # #
@@ -3007,7 +3029,7 @@ app_run_dl_aptget()
                         # #
 
                         if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
-                            echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
+                            echo -e "  ${WHITE}                ${GREEN}Status:         ${END}✅ New package added${END}"
                         fi
                     fi
 
@@ -3019,7 +3041,7 @@ app_run_dl_aptget()
                 # #
 
                 elif [[ "${arch}" == "amd64" ]] && [[ ${app_filename} == *amd64.deb ]]; then
-                    echo -e "  ${WHITE}                Download        ${FUCHSIA}${app_url}${NORMAL}"
+                    echo -e "  ${WHITE}                Download        ${FUCHSIA1}${app_url}${END}"
 
                     # #
                     #   architecture > amd64
@@ -3030,7 +3052,7 @@ app_run_dl_aptget()
 
                     mv "${app_dir}/${app_filename}" "${app_dir_storage}/amd64/"
 
-                    echo -e "  ${WHITE}                Move            ${FUCHSIA}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA}${app_dir_storage}/amd64/${NORMAL}"
+                    echo -e "  ${WHITE}                Move            ${FUCHSIA1}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA1}${app_dir_storage}/amd64/${END}"
 
                     if [ -n "${bRepreproInstalled}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
 
@@ -3050,8 +3072,8 @@ app_run_dl_aptget()
                         #       deb_package             incoming/proteus-git/jammy/amd64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_amd64.deb
                         # #
 
-                        echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
-                        echo -e "  ${WHITE}                                    ${FUCHSIA}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${NORMAL}"
+                        echo -e "  ${WHITE}                Reprepro        ${FUCHSIA1}${deb_package}${END} for dist ${FUCHSIA1}${app_repo_dist_sel}${END}"
+                        echo -e "  ${WHITE}                                    ${FUCHSIA1}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${END}"
 
                         reprepro_exit_code="0"
                         reprepro_output="$(reprepro -V \
@@ -3070,7 +3092,7 @@ app_run_dl_aptget()
                         # #
 
                         if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
-                            echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
+                            echo -e "  ${WHITE}                ${GREEN}Status:         ${END}💡 Already exists${END}"
                         fi
 
                         # #
@@ -3080,7 +3102,7 @@ app_run_dl_aptget()
                         # #
 
                         if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
-                            echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
+                            echo -e "  ${WHITE}                ${GREEN}Status:         ${END}✅ New package added${END}"
                         fi
                     fi
 
@@ -3092,7 +3114,7 @@ app_run_dl_aptget()
                 # #
 
                 elif [[ "${arch}" == "arm64" ]] && [[ ${app_filename} == *arm64.deb ]]; then
-                    echo -e "  ${WHITE}                Download        ${FUCHSIA}${app_url}${NORMAL}"
+                    echo -e "  ${WHITE}                Download        ${FUCHSIA1}${app_url}${END}"
 
                     # #
                     #   architecture > arm64
@@ -3103,7 +3125,7 @@ app_run_dl_aptget()
 
                     mv "${app_dir}/${app_filename}" "${app_dir_storage}/arm64/"
 
-                    echo -e "  ${WHITE}                Move            ${FUCHSIA}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA}${app_dir_storage}/arm64/${NORMAL}"
+                    echo -e "  ${WHITE}                Move            ${FUCHSIA1}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA1}${app_dir_storage}/arm64/${END}"
 
                     if [ -n "${bRepreproInstalled}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
 
@@ -3123,8 +3145,8 @@ app_run_dl_aptget()
                         #       deb_package             incoming/proteus-git/jammy/arm64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_arm64.deb
                         # #
 
-                        echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
-                        echo -e "  ${WHITE}                                    ${FUCHSIA}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${NORMAL}"
+                        echo -e "  ${WHITE}                Reprepro        ${FUCHSIA1}${deb_package}${END} for dist ${FUCHSIA1}${app_repo_dist_sel}${END}"
+                        echo -e "  ${WHITE}                                    ${FUCHSIA1}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${END}"
 
                         reprepro_exit_code="0"
                         reprepro_output="$(reprepro -V \
@@ -3143,7 +3165,7 @@ app_run_dl_aptget()
                         # #
 
                         if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
-                            echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
+                            echo -e "  ${WHITE}                ${GREEN}Status:         ${END}💡 Already exists${END}"
                         fi
 
                         # #
@@ -3153,7 +3175,7 @@ app_run_dl_aptget()
                         # #
 
                         if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
-                            echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
+                            echo -e "  ${WHITE}                ${GREEN}Status:         ${END}✅ New package added${END}"
                         fi
                     fi
 
@@ -3165,7 +3187,7 @@ app_run_dl_aptget()
                 # #
 
                 elif [[ "$arch" == "i386" || "$arch" == "386" ]] && [[ $app_filename == *i386.deb || $app_filename == *i386*.deb || $app_filename == *386.deb || $app_filename == *386*.deb ]]; then
-                    echo -e "  ${WHITE}                Download        ${FUCHSIA}${app_url}${NORMAL}"
+                    echo -e "  ${WHITE}                Download        ${FUCHSIA1}${app_url}${END}"
 
                     # #
                     #   architecture > i386
@@ -3176,7 +3198,7 @@ app_run_dl_aptget()
 
                     mv "${app_dir}/${app_filename}" "${app_dir_storage}/i386/"
 
-                    echo -e "  ${WHITE}                Move            ${FUCHSIA}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA}${app_dir_storage}/i386/${NORMAL}"
+                    echo -e "  ${WHITE}                Move            ${FUCHSIA1}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA1}${app_dir_storage}/i386/${END}"
 
                     if [ -n "${bRepreproInstalled}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
 
@@ -3196,8 +3218,8 @@ app_run_dl_aptget()
                         #       deb_package             incoming/proteus-git/jammy/i386/networkd-dispatcher_2.1-2ubuntu0.22.04.i386.deb
                         # #
 
-                        echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
-                        echo -e "  ${WHITE}                                    ${FUCHSIA}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${NORMAL}"
+                        echo -e "  ${WHITE}                Reprepro        ${FUCHSIA1}${deb_package}${END} for dist ${FUCHSIA1}${app_repo_dist_sel}${END}"
+                        echo -e "  ${WHITE}                                    ${FUCHSIA1}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${END}"
 
                         reprepro_exit_code="0"
                         reprepro_output="$(reprepro -V \
@@ -3216,7 +3238,7 @@ app_run_dl_aptget()
                         # #
 
                         if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
-                            echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
+                            echo -e "  ${WHITE}                ${GREEN}Status:         ${END}💡 Already exists${END}"
                         fi
 
                         # #
@@ -3226,7 +3248,7 @@ app_run_dl_aptget()
                         # #
 
                         if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
-                            echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
+                            echo -e "  ${WHITE}                ${GREEN}Status:         ${END}✅ New package added${END}"
                         fi
                     fi
 
@@ -3241,7 +3263,7 @@ app_run_dl_aptget()
 
                 else
                     rm "${app_dir}/${app_filename}"
-                    echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}⭕ Double file detected ${FUCHSIA}${app_dir}/${app_filename}${NORMAL}${NORMAL}"
+                    echo -e "  ${WHITE}                ${GREEN}Status:         ${END}⭕ Double file detected ${FUCHSIA1}${app_dir}/${app_filename}${END}${END}"
                 fi
 
                 sleep 1
@@ -3394,9 +3416,9 @@ app_run_dl_lastver()
             # #
 
             if [ "$bNewPackage" = true ]; then
-                echo -e "     ${GREYL}|--- ${YELLOW}[ ${count} ]${FUCHSIA}${BOLD} Get ${app_filename:0:100}${NORMAL}"
+                echo -e "     ${GREY2}|--- ${YELLOW}[ ${count} ]${FUCHSIA1}${BOLD} Get ${app_filename:0:100}${END}"
             else
-                echo -e "               ${FUCHSIA}${BOLD} Get ${app_filename:0:100}${NORMAL}"
+                echo -e "               ${FUCHSIA1}${BOLD} Get ${app_filename:0:100}${END}"
             fi
 
             # #
@@ -3453,9 +3475,9 @@ app_run_dl_lastver()
                     # #
 
                     if [[ "$arch" == "all" ]] && [[ $app_filename == *all.deb || $app_filename == *all*.deb ]]; then
-                        echo -e "  ${WHITE}                Package         ${FUCHSIA}${arch}${NORMAL}"
-                        echo -e "  ${WHITE}                File            ${FUCHSIA}${app_filename}${NORMAL}"
-                        echo -e "  ${WHITE}                Download        ${FUCHSIA}${repo_file_url}${NORMAL}"
+                        echo -e "  ${WHITE}                Package         ${FUCHSIA1}${arch}${END}"
+                        echo -e "  ${WHITE}                File            ${FUCHSIA1}${app_filename}${END}"
+                        echo -e "  ${WHITE}                Download        ${FUCHSIA1}${repo_file_url}${END}"
 
                         # #
                         #   architecture > all
@@ -3465,7 +3487,7 @@ app_run_dl_lastver()
                         # #
 
                         mv "$app_dir/$app_filename" "$app_dir_storage/all/"
-                        echo -e "  ${WHITE}                Move            ${FUCHSIA}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA}${app_dir_storage}/all/${NORMAL}"
+                        echo -e "  ${WHITE}                Move            ${FUCHSIA1}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA1}${app_dir_storage}/all/${END}"
 
                         if [ -n "${bRepreproInstalled}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
 
@@ -3485,8 +3507,8 @@ app_run_dl_lastver()
                             #       deb_package             incoming/proteus-git/jammy/all/GitHubDesktop-linux-all-3.4.2-linux1.deb
                             # #
 
-                            echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
-                            echo -e "  ${WHITE}                                    ${FUCHSIA}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${NORMAL}"
+                            echo -e "  ${WHITE}                Reprepro        ${FUCHSIA1}${deb_package}${END} for dist ${FUCHSIA1}${app_repo_dist_sel}${END}"
+                            echo -e "  ${WHITE}                                    ${FUCHSIA1}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${END}"
 
                             reprepro_exit_code="0"
                             reprepro_output="$(reprepro -V \
@@ -3504,7 +3526,7 @@ app_run_dl_lastver()
                             # #
 
                             if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
-                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
+                                echo -e "  ${WHITE}                ${GREEN}Status:         ${END}💡 Already exists${END}"
                             fi
 
                             # #
@@ -3514,7 +3536,7 @@ app_run_dl_lastver()
                             # #
 
                             if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
-                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
+                                echo -e "  ${WHITE}                ${GREEN}Status:         ${END}✅ New package added${END}"
                             fi
                         fi
 
@@ -3522,9 +3544,9 @@ app_run_dl_lastver()
                         bNewPackage=false
 
                     elif [[ "$arch" == "amd64" ]] && [[ $app_filename == *amd64.deb || $app_filename == *amd64*.deb ]]; then
-                        echo -e "  ${WHITE}                Package         ${FUCHSIA}${arch}${NORMAL}"
-                        echo -e "  ${WHITE}                File            ${FUCHSIA}${app_filename}${NORMAL}"
-                        echo -e "  ${WHITE}                Download        ${FUCHSIA}${repo_file_url}${NORMAL}"
+                        echo -e "  ${WHITE}                Package         ${FUCHSIA1}${arch}${END}"
+                        echo -e "  ${WHITE}                File            ${FUCHSIA1}${app_filename}${END}"
+                        echo -e "  ${WHITE}                Download        ${FUCHSIA1}${repo_file_url}${END}"
 
                         # #
                         #   architecture > amd64
@@ -3534,7 +3556,7 @@ app_run_dl_lastver()
                         # #
 
                         mv "$app_dir/$app_filename" "$app_dir_storage/amd64/"
-                        echo -e "  ${WHITE}                Move            ${FUCHSIA}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA}${app_dir_storage}/amd64/${NORMAL}"
+                        echo -e "  ${WHITE}                Move            ${FUCHSIA1}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA1}${app_dir_storage}/amd64/${END}"
 
                         if [ -n "${bRepreproInstalled}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
 
@@ -3554,8 +3576,8 @@ app_run_dl_lastver()
                             #       deb_package             incoming/proteus-git/jammy/amd64/GitHubDesktop-linux-amd64-3.4.2-linux1.deb
                             # #
 
-                            echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
-                            echo -e "  ${WHITE}                                    ${FUCHSIA}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${NORMAL}"
+                            echo -e "  ${WHITE}                Reprepro        ${FUCHSIA1}${deb_package}${END} for dist ${FUCHSIA1}${app_repo_dist_sel}${END}"
+                            echo -e "  ${WHITE}                                    ${FUCHSIA1}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${END}"
 
                             reprepro_exit_code="0"
                             reprepro_output="$(reprepro -V \
@@ -3574,7 +3596,7 @@ app_run_dl_lastver()
                             # #
 
                             if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
-                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
+                                echo -e "  ${WHITE}                ${GREEN}Status:         ${END}💡 Already exists${END}"
                             fi
 
                             # #
@@ -3584,7 +3606,7 @@ app_run_dl_lastver()
                             # #
 
                             if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
-                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
+                                echo -e "  ${WHITE}                ${GREEN}Status:         ${END}✅ New package added${END}"
                             fi
                         fi
 
@@ -3592,9 +3614,9 @@ app_run_dl_lastver()
                         bNewPackage=false
  
                     elif [[ "$arch" == "arm64" ]] && [[ $app_filename == *arm64.deb || $app_filename == *arm64*.deb ]]; then
-                        echo -e "  ${WHITE}                Package         ${FUCHSIA}${arch}${NORMAL}"
-                        echo -e "  ${WHITE}                File            ${FUCHSIA}${app_filename}${NORMAL}"
-                        echo -e "  ${WHITE}                Download        ${FUCHSIA}${repo_file_url}${NORMAL}"
+                        echo -e "  ${WHITE}                Package         ${FUCHSIA1}${arch}${END}"
+                        echo -e "  ${WHITE}                File            ${FUCHSIA1}${app_filename}${END}"
+                        echo -e "  ${WHITE}                Download        ${FUCHSIA1}${repo_file_url}${END}"
 
                         # #
                         #   architecture > arm64
@@ -3604,7 +3626,7 @@ app_run_dl_lastver()
                         # #
 
                         mv "$app_dir/$app_filename" "$app_dir_storage/arm64/"
-                        echo -e "  ${WHITE}                Move            ${FUCHSIA}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA}${app_dir_storage}/arm64/${NORMAL}"
+                        echo -e "  ${WHITE}                Move            ${FUCHSIA1}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA1}${app_dir_storage}/arm64/${END}"
 
                         if [ -n "${bRepreproInstalled}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
 
@@ -3624,8 +3646,8 @@ app_run_dl_lastver()
                             #       deb_package             incoming/proteus-git/jammy/arm64/GitHubDesktop-linux-arm64-3.4.2-linux1.deb
                             # #
 
-                            echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
-                            echo -e "  ${WHITE}                                    ${FUCHSIA}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${NORMAL}"
+                            echo -e "  ${WHITE}                Reprepro        ${FUCHSIA1}${deb_package}${END} for dist ${FUCHSIA1}${app_repo_dist_sel}${END}"
+                            echo -e "  ${WHITE}                                    ${FUCHSIA1}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${END}"
 
                             reprepro_exit_code="0"
                             reprepro_output="$(reprepro -V \
@@ -3644,7 +3666,7 @@ app_run_dl_lastver()
                             # #
 
                             if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
-                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
+                                echo -e "  ${WHITE}                ${GREEN}Status:         ${END}💡 Already exists${END}"
                             fi
 
                             # #
@@ -3654,7 +3676,7 @@ app_run_dl_lastver()
                             # #
 
                             if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
-                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
+                                echo -e "  ${WHITE}                ${GREEN}Status:         ${END}✅ New package added${END}"
                             fi
                         fi
 
@@ -3662,9 +3684,9 @@ app_run_dl_lastver()
                         bNewPackage=false
 
                     elif [[ "$arch" == "i386" || "$arch" == "386" ]] && [[ $app_filename == *i386.deb || $app_filename == *i386*.deb || $app_filename == *386.deb || $app_filename == *386*.deb ]]; then
-                        echo -e "  ${WHITE}                Package         ${FUCHSIA}${arch}${NORMAL}"
-                        echo -e "  ${WHITE}                File            ${FUCHSIA}${app_filename}${NORMAL}"
-                        echo -e "  ${WHITE}                Download        ${FUCHSIA}${repo_file_url}${NORMAL}"
+                        echo -e "  ${WHITE}                Package         ${FUCHSIA1}${arch}${END}"
+                        echo -e "  ${WHITE}                File            ${FUCHSIA1}${app_filename}${END}"
+                        echo -e "  ${WHITE}                Download        ${FUCHSIA1}${repo_file_url}${END}"
 
                         # #
                         #   architecture > i386
@@ -3674,7 +3696,7 @@ app_run_dl_lastver()
                         # #
 
                         mv "$app_dir/$app_filename" "$app_dir_storage/i386/"
-                        echo -e "  ${WHITE}                Move            ${FUCHSIA}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA}${app_dir_storage}/i386/${NORMAL}"
+                        echo -e "  ${WHITE}                Move            ${FUCHSIA1}${app_dir}/${app_filename}${WHITE} > ${FUCHSIA1}${app_dir_storage}/i386/${END}"
 
                         if [ -n "${bRepreproInstalled}" ] && [ -z "${OPT_DEV_NULLRUN}" ]; then
 
@@ -3694,8 +3716,8 @@ app_run_dl_lastver()
                             #       deb_package             incoming/proteus-git/jammy/i386/GitHubDesktop-linux-i386-3.4.2-linux1.deb
                             # #
 
-                            echo -e "  ${WHITE}                Reprepro        ${FUCHSIA}${deb_package}${NORMAL} for dist ${FUCHSIA}${app_repo_dist_sel}${NORMAL}"
-                            echo -e "  ${WHITE}                                    ${FUCHSIA}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${NORMAL}"
+                            echo -e "  ${WHITE}                Reprepro        ${FUCHSIA1}${deb_package}${END} for dist ${FUCHSIA1}${app_repo_dist_sel}${END}"
+                            echo -e "  ${WHITE}                                    ${FUCHSIA1}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${END}"
 
                             reprepro_exit_code="0"
                             reprepro_output="$(reprepro -V \
@@ -3714,7 +3736,7 @@ app_run_dl_lastver()
                             # #
 
                             if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
-                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}💡 Already exists${NORMAL}"
+                                echo -e "  ${WHITE}                ${GREEN}Status:         ${END}💡 Already exists${END}"
                             fi
 
                             # #
@@ -3724,7 +3746,7 @@ app_run_dl_lastver()
                             # #
 
                             if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
-                                echo -e "  ${WHITE}                ${GREEN}Status:         ${NORMAL}✅ New package added${NORMAL}"
+                                echo -e "  ${WHITE}                ${GREEN}Status:         ${END}✅ New package added${END}"
                             fi
                         fi
 
@@ -3762,20 +3784,20 @@ app_run_gh_start()
         app_run_github_precheck
 
         #   add origin
-        echo -e "  ${GREYL}Git: ${LIME_YELLOW}git remote add origin https://github.com/${GITHUB_NAME}/${app_repo_apt}.git${WHITE}"
+        echo -e "  ${GREY2}Git: ${YELLOW3}git remote add origin https://github.com/${GITHUB_NAME}/${app_repo_apt}.git${WHITE}"
         git remote add origin https://github.com/${GITHUB_NAME}/${app_repo_apt}.git
 
         #   remove all changes and sync with remote repo
-        echo -e "  ${GREYL}Git: ${LIME_YELLOW}git fetch --prune${WHITE}"
+        echo -e "  ${GREY2}Git: ${YELLOW3}git fetch --prune${WHITE}"
         git fetch --prune
 
         #   force head to match with remote repo
-        echo -e "  ${GREYL}Git: ${LIME_YELLOW}git reset --hard origin/${app_repo_branch}${WHITE}"
+        echo -e "  ${GREY2}Git: ${YELLOW3}git reset --hard origin/${app_repo_branch}${WHITE}"
         git reset --hard origin/${app_repo_branch}
 
         #   must have at least one commit for this to work
         #   -m / --move flag to rename a branch in our local repository
-        echo -e "  ${GREYL}Git: ${LIME_YELLOW}git branch -m ${app_repo_branch}${WHITE}"
+        echo -e "  ${GREY2}Git: ${YELLOW3}git branch -m ${app_repo_branch}${WHITE}"
         git branch -m ${app_repo_branch}
 
         # #
@@ -3805,23 +3827,23 @@ EOF
 
         git_pull=$( git pull origin ${app_repo_branch} --allow-unrelated-histories )
 
-        echo -e "  ${WHITE}Git Pull: ${LIME_YELLOW}${git_pull}${NORMAL}"
+        echo -e "  ${WHITE}Git Pull: ${YELLOW3}${git_pull}${END}"
         echo
-        echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
+        echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
         echo
 
         # git add -A, --all     stages all changes
         # git add .             stages new files and modifications, without deletions (on the current directory and its subdirectories).
         # git add -u            stages modifications and deletions, without new files
 
-        echo -e "  ${GREYL}Git: ${LIME_YELLOW}git add --all${WHITE}"
+        echo -e "  ${GREY2}Git: ${YELLOW3}git add --all${WHITE}"
         git add --all
 
         sleep 1
 
         local NOW=$(date -u '+%m.%d.%Y %H:%M:%S')
         local app_repo_commit="[S] auto-update [ ${app_repo_dist_sel} ] @ ${NOW}"
-        echo -e "  ${WHITE}Starting commit ${FUCHSIA}${app_repo_commit}${NORMAL}"
+        echo -e "  ${WHITE}Starting commit ${FUCHSIA1}${app_repo_commit}${END}"
 
         # #
         #   The command below can throw the following errors:
@@ -3833,15 +3855,15 @@ EOF
         #       gpg: signing failed: No secret key
         # #
 
-        echo -e "  ${GREYL}Git: ${LIME_YELLOW}git commit -S -m ${app_repo_commit}${WHITE}"
+        echo -e "  ${GREY2}Git: ${YELLOW3}git commit -S -m ${app_repo_commit}${WHITE}"
         git commit -S -m "${app_repo_commit}"
 
         sleep 1
 
-        echo -e "  ${WHITE}Starting push ${FUCHSIA}${app_repo_branch}${NORMAL}"
+        echo -e "  ${WHITE}Starting push ${FUCHSIA1}${app_repo_branch}${END}"
 
         if [ "${OPT_DEV_ENABLE}" = true ]; then
-            echo -e "  ${GREYL}Git: ${LIME_YELLOW}git push https://${CSI_PAT_GITHUB}@github.com/${GITHUB_NAME}/${app_repo_apt}${WHITE}"
+            echo -e "  ${GREY2}Git: ${YELLOW3}git push https://${CSI_PAT_GITHUB}@github.com/${GITHUB_NAME}/${app_repo_apt}${WHITE}"
         fi
 
         git push https://${CSI_PAT_GITHUB}@github.com/${GITHUB_NAME}/${app_repo_apt}
@@ -3868,18 +3890,18 @@ app_run_gh_end()
         # #
 
         if compgen -G "${app_dir}/*.deb" > /dev/null; then
-            echo -e "  ${GREYL}Cleaning up left-over .deb: ${YELLOW}${app_dir}/*.deb${WHITE}"
+            echo -e "  ${GREY2}Cleaning up left-over .deb: ${YELLOW}${app_dir}/*.deb${WHITE}"
             rm "${app_dir}/*.deb" >/dev/null
         fi
 
         app_run_github_precheck
 
         echo
-        echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
+        echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
         echo
-        echo -e "  ${GREYL}Updating Github: $app_repo_branch${WHITE}"
+        echo -e "  ${GREY2}Updating Github: $app_repo_branch${WHITE}"
         echo
-        echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
+        echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
         echo
 
         #   must have at least one commit for this to work
@@ -4000,15 +4022,15 @@ app_start()
 
     if [ -z "${bRepreproInstalled}" ]; then
         echo
-        echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Reprepro Missing${NORMAL}"
-        echo -e "  ${BOLD}${WHITE}It appears the package ${FUCHSIA}Reprepro${WHITE} is missing.${NORMAL}"
+        echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Reprepro Missing${END}"
+        echo -e "  ${BOLD}${WHITE}It appears the package ${FUCHSIA1}Reprepro${WHITE} is missing.${END}"
         echo
-        echo -e "  ${BOLD}${WHITE}Try installing the package with:${NORMAL}"
-        echo -e "  ${BOLD}${WHITE}     sudo apt-get update${NORMAL}"
-        echo -e "  ${BOLD}${WHITE}     sudo apt-get install reprepro${NORMAL}"
+        echo -e "  ${BOLD}${WHITE}Try installing the package with:${END}"
+        echo -e "  ${BOLD}${WHITE}     sudo apt-get update${END}"
+        echo -e "  ${BOLD}${WHITE}     sudo apt-get install reprepro${END}"
         echo
 
-        printf "  Press any key to abort ... ${NORMAL}"
+        printf "  Press any key to abort ... ${END}"
         read -n 1 -s -r -p ""
         echo
         echo
@@ -4025,20 +4047,20 @@ app_start()
 
     if [ -n "${OPT_DLPKG_ONLY_LASTVER}" ]; then
         app_run_gh_start
-        app_run_dl_lastver
-        app_run_tree_update
-        app_run_gh_end
+       # app_run_dl_lastver
+       # app_run_tree_update
+       # app_run_gh_end
     elif [ -n "${OPT_DL_ONLY_APTGET}" ]; then
         app_run_gh_start
-        app_run_dl_aptget
-        app_run_tree_update
-        app_run_gh_end
+       # app_run_dl_aptget
+       # app_run_tree_update
+       # app_run_gh_end
     else
         app_run_gh_start
-        app_run_dl_aptget
-        app_run_dl_lastver
-        app_run_tree_update
-        app_run_gh_end
+       # app_run_dl_aptget
+       # app_run_dl_lastver
+       # app_run_tree_update
+       # app_run_gh_end
     fi
 
     # #
@@ -4051,11 +4073,11 @@ app_start()
     printf "%-57s %-15s\n\n\n\n" "${TIME}      ${elapsed}" | tee -a "${LOGS_FILE}" >/dev/null
 
     echo
-    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
+    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
     echo
-    echo -e "  ${GREYL}Total Execution Time: $elapsed${WHITE}"
+    echo -e "  ${GREY2}Total Execution Time: $elapsed${WHITE}"
     echo
-    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${NORMAL}"
+    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
     echo
 
     sleep 10

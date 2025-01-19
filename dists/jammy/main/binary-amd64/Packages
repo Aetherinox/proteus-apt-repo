@@ -86,7 +86,7 @@ Description: maintain Debian packages in a package pool
 
 Package: apt-transport-https
 Source: apt
-Version: 2.4.12
+Version: 2.4.13
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: APT Development Team <deity@lists.debian.org>
@@ -95,12 +95,12 @@ Depends: apt (>= 1.5~alpha4)
 Multi-Arch: foreign
 Priority: 0
 Section: utils
-Filename: pool/main/a/apt/apt-transport-https_2.4.12_all.deb
+Filename: pool/main/a/apt/apt-transport-https_2.4.13_all.deb
 Size: 1510
-SHA512: 4b95d12197d6243065a1fd234e15692d27d1f61a713a620b5c6ef13fa11894ac2e0673d5c87ac64bbc828455d39351b9db0e5b5be3f4bba421833b7a6360ccdb
-SHA256: c449b2ae950d0f0f62692cb143c2842e02013304ccc21aef3331c5622d1676b6
-SHA1: d0027b0e8c4fb135656a2f3eefc983a24017aba8
-MD5sum: a9b7487628e8ae7fa31955852dd38382
+SHA512: eebd6260b19f692d31d697f9936ab423747f27aca64e947662e3d13d8b62b6433c769fc4b4db9f85de6508e95ffd4303638ad5d26af3c9c9ed2628a23d481a39
+SHA256: 61b7cd853a291b32dfb75cfc896d09e6d5e88524a89053ef84640c33d7416cd3
+SHA1: f124ec5a1ddb0e76ea576f92d40a154edaa8ba4d
+MD5sum: ee68dbcc7edb8f3103d4fccbe3c937f1
 Description: transitional package for https support
  This is a dummy transitional package - https support has been moved into
  the apt package in 1.5. It can be safely removed.
@@ -123,20 +123,20 @@ Description: Fetches URLs for specified packages.
 
 Package: apt-utils
 Source: apt
-Version: 2.4.12
+Version: 2.4.13
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Original-Maintainer: APT Development Team <deity@lists.debian.org>
 Installed-Size: 792
-Depends: apt (= 2.4.12), libapt-pkg6.0 (>= 2.4.12), libc6 (>= 2.34), libdb5.3, libgcc-s1 (>= 3.3.1), libstdc++6 (>= 11)
+Depends: apt (= 2.4.13), libapt-pkg6.0 (>= 2.4.13), libc6 (>= 2.34), libdb5.3, libgcc-s1 (>= 3.3.1), libstdc++6 (>= 11)
 Priority: 0
 Section: utils
-Filename: pool/main/a/apt/apt-utils_2.4.12_amd64.deb
-Size: 210628
-SHA512: d94d9350d86d1b5b9c293d950fb78880428d9914ea5753d71d9978263b40e31f806fedcf5822f48e35f3e73fa7937a7c9542ae7042ec7252ff586a130e21e615
-SHA256: dc3dba6a7c75ea8a7635f3082a7872fd903f9d69afd0b63e2c73a904348c25e7
-SHA1: fdca537feaa0bcfd386a24f78e27dcacc2334873
-MD5sum: 9efe230c741267d460f8c71218321b1f
+Filename: pool/main/a/apt/apt-utils_2.4.13_amd64.deb
+Size: 210616
+SHA512: 576b81375ef77be0c0b5221986f21fa0bdee1e54661bbf5a839b02ae78193a9f239ca5c39e17033b06e2b631fae714ae5174d77c8eb7df5349941c027805fd0b
+SHA256: 5264fd4a6da0764f2a757304ad60f2ff4955ebab930f5cfdf44c7aa1c3c88faf
+SHA1: 2d16439c7bf91e2bf61c1496f2b45289a9243c08
+MD5sum: 3d94aa54366036a724f6ab00dae953c9
 Description: package management related utility programs
  This package contains some less used commandline utilities related
  to package management with APT.
