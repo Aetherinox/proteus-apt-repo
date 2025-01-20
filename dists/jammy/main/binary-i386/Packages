@@ -370,10 +370,10 @@ Description: Linux Key Management Utilities
 Original-Maintainer: Christian Kastner <ckk@debian.org>
 
 Package: lintian
-Version: 2.114.0ubuntu1.4
+Version: 2.114.0ubuntu1.5
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Installed-Size: 7260
+Installed-Size: 7259
 Depends: binutils, bzip2, diffstat, dpkg (>= 1.17.14), dpkg-dev, file, gettext, gpg, intltool-debian, libapt-pkg-perl, libarchive-zip-perl, libcapture-tiny-perl, libclass-xsaccessor-perl, libclone-perl, libconfig-tiny-perl, libconst-fast-perl, libcpanel-json-xs-perl, libdata-dpath-perl, libdata-validate-domain-perl, libdata-validate-uri-perl, libdevel-size-perl, libdigest-sha-perl, libdpkg-perl, libencode-perl, libemail-address-xs-perl, libfile-basedir-perl, libfile-find-rule-perl, libfont-ttf-perl, libhtml-html5-entities-perl, libio-interactive-perl, libio-prompt-tiny-perl, libipc-run3-perl, libjson-maybexs-perl, liblist-compare-perl, liblist-someutils-perl, liblist-utilsby-perl, libmoo-perl, libmoox-aliases-perl, libnamespace-clean-perl, libpath-tiny-perl, libperlio-gzip-perl, libperlio-utf8-strict-perl, libproc-processtable-perl, libsereal-decoder-perl, libsereal-encoder-perl, libsort-versions-perl, libsyntax-keyword-try-perl, libterm-readkey-perl, libtext-glob-perl, libtext-levenshteinxs-perl, libtext-markdown-discount-perl, libtext-xslate-perl, libtime-duration-perl, libtime-moment-perl, libtimedate-perl, libunicode-utf8-perl, liburi-perl, libxml-libxml-perl, libyaml-libyaml-perl, lzip | clzip, lzop, man-db, patchutils, perl, t1utils, unzip, xz-utils, perl:any
 Suggests: binutils-multiarch, libtext-template-perl
 Breaks: funny-manpages (<< 1.3-5.1), libconfig-model-dpkg-perl (<< 2.151), lintian-brush (<< 0.88), pkg-js-tools (<< 0.9.4), pkg-perl-tools (<< 0.53)
@@ -382,12 +382,12 @@ Multi-Arch: foreign
 Homepage: https://lintian.debian.org/
 Priority: 0
 Section: utils
-Filename: pool/main/l/lintian/lintian_2.114.0ubuntu1.4_all.deb
-Size: 1081166
-SHA512: af1e6aec7667f7c905cbf54867127620529b52dfbf8fc84a907f7d696297fc81bacfc7050bdb9e3695b5b6d37831c900c2acf0c8656b426e9756d14368156bea
-SHA256: d17d564715d671092dd2305c3dfb734871106457dee875a73750823be943bbf2
-SHA1: 3a4757f74703b0744a11cb1d62664075919542c1
-MD5sum: 58dc362b074cf99072e2e81c3e95d989
+Filename: pool/main/l/lintian/lintian_2.114.0ubuntu1.5_all.deb
+Size: 1081178
+SHA512: 43e8ad5ddb60c65844b93aaa8e38e25f06bf99b917d0efd2c105caffed53b03305444c28591148ea4c8030d782ae71212faf877585f86e5d2b7784678a3a3ea5
+SHA256: 09eabefe972e08cbba20095baf86c69f254895fe0cc881000a8c60f25012eef8
+SHA1: 813f3b98af40b18bb0cafd6d729b649381e9085a
+MD5sum: c4eef9e0c9c2739e140bf666aaac4736
 Description: Debian package checker
  Lintian dissects Debian packages and reports bugs and policy violations. It
  contains automated checks for many aspects of Debian policy as well as some
@@ -456,7 +456,7 @@ Original-Maintainer: Nobuhiro Iwamatsu <iwamatsu@debian.org>
 
 Package: mysql-client
 Source: mysql-8.0
-Version: 8.0.39-0ubuntu0.22.04.1
+Version: 8.0.40-0ubuntu0.22.04.1
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 35
@@ -464,12 +464,12 @@ Depends: mysql-client-8.0
 Homepage: http://dev.mysql.com/
 Priority: 0
 Section: utils
-Filename: pool/main/m/mysql-8.0/mysql-client_8.0.39-0ubuntu0.22.04.1_all.deb
+Filename: pool/main/m/mysql-8.0/mysql-client_8.0.40-0ubuntu0.22.04.1_all.deb
 Size: 9356
-SHA512: e03255f8350883764929b4cdbd82ee3077fe11256dff5897c8292f212bfab876aa748821ae549b18f19a643d81546212977c3b158fef4fa47acd00baaf770b89
-SHA256: 690dc1604b6aca5f45d5e424830de3551f1f72e78be111205d9157f1f1b36d97
-SHA1: b2f41f5101c60dd31a17ae630e8cfc3d26672ae4
-MD5sum: 286e86a727be065e2e29a5caddee8aa1
+SHA512: f0e315c6607ae1ed05d7c9cf4c2e32ee16c49129039ff3e5294f2a2f5a25a1b8fcff82eb9e58559c5dac9a239b234584e3c0654a6597e17162bc91336747db3f
+SHA256: 2b62f51b77db2e1c8d82ec76493a499e120ca35f223a82c5ee03ea89a18fdaec
+SHA1: b4cfa68f48b0f27d34567c2c516ccabd2dc9f588
+MD5sum: fd59140c1de94261a765de8753594d37
 Description: MySQL database client (metapackage depending on the latest version)
  This is an empty package that depends on the current "best" version of
  mysql-client (currently mysql-client-8.0), as determined by the MySQL
@@ -509,7 +509,7 @@ Description: MySQL database common files, e.g. /etc/mysql/my.cnf
 
 Package: mysql-server
 Source: mysql-8.0
-Version: 8.0.39-0ubuntu0.22.04.1
+Version: 8.0.40-0ubuntu0.22.04.1
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 35
@@ -517,12 +517,12 @@ Depends: mysql-server-8.0
 Homepage: http://dev.mysql.com/
 Priority: 0
 Section: utils
-Filename: pool/main/m/mysql-8.0/mysql-server_8.0.39-0ubuntu0.22.04.1_all.deb
-Size: 9468
-SHA512: 181925ab0858c014fb3823255165799555c29b69ff44c3340bbc686c6434be3a0a0a01df8aadbf5fe2f5c1b659d67e41406f9fc5f906fe9bfacf1114e8b83edd
-SHA256: 3a0a4270be2298b544093e53897d1fc0ee82c47cc0739bda92f7bf79291d2285
-SHA1: 3ac618cb1357757f052e784c8cb402b3749d527f
-MD5sum: e781bff18f4f08990856e80f27ccdf65
+Filename: pool/main/m/mysql-8.0/mysql-server_8.0.40-0ubuntu0.22.04.1_all.deb
+Size: 9464
+SHA512: a2c4c438f0fe45ed7f2d3f7db396b575901c8c46d61a392b0a57c277bdb44d4d396bf0bb57f265bce175b446fd4a66b197f0ff1829a62bd9827d99beacd34820
+SHA256: 57ec949b9b2bc47530119248b1431a785575c48a72f1e8277d1d5b666d64ce98
+SHA1: ffdca9d1e25fcd496b05d0024ab3aee2bfeda9d4
+MD5sum: 29501b9a3b8b97cd32fdd4b56df5dc3b
 Description: MySQL database server (metapackage depending on the latest version)
  This is an empty package that depends on the current "best" version of
  mysql-server (currently mysql-server-8.0), as determined by the MySQL
@@ -663,7 +663,7 @@ Original-Maintainer: Julian Andres Klode <jak@debian.org>
 
 Package: nginx-common
 Source: nginx
-Version: 1.18.0-6ubuntu14.4
+Version: 1.18.0-6ubuntu14.5
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 283
@@ -673,12 +673,12 @@ Multi-Arch: foreign
 Homepage: https://nginx.net
 Priority: 0
 Section: utils
-Filename: pool/main/n/nginx/nginx-common_1.18.0-6ubuntu14.4_all.deb
-Size: 39980
-SHA512: fd78eefb84ed125e3277eed2a527b4d4b9d2190a741955c9f88a4c8cb293ff52bc1c5a1ef165e14d7b7313f3e32ab56c1da72263eb2ea391e2d1608cf783f9a3
-SHA256: 8ee39aaf1050dc83ebf87c74895595596bf2b883585021322d48266f327060ab
-SHA1: 6b048489ed11250f2d08158c7a4dea6d61fd15c8
-MD5sum: 1cb26722996417ef4eb1c34ee033a126
+Filename: pool/main/n/nginx/nginx-common_1.18.0-6ubuntu14.5_all.deb
+Size: 40066
+SHA512: 10e2b67c4b22dfd1fe54ba3567e4bffe10f645efc542a24dd93c401efe75a1c5c91ff4ecea62d570851f1be41f25bfef0f1e5a312d9e9a5248b523c887d6ae8a
+SHA256: 2c7492bb4652a22d5b7dc745336ef5a5caaa25218d563589e95596f6e9883f95
+SHA1: 68249eb032d4e864ad0923d485442c6f1d13d301
+MD5sum: 552a92460ada561da15eb1f25982b18c
 Description: small, powerful, scalable web/proxy server - common files
  Nginx ("engine X") is a high-performance web and reverse proxy server
  created by Igor Sysoev. It can be used both as a standalone web server
@@ -690,7 +690,7 @@ Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-list
 
 Package: nginx-doc
 Source: nginx
-Version: 1.18.0-6ubuntu14.4
+Version: 1.18.0-6ubuntu14.5
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 84
@@ -698,12 +698,12 @@ Multi-Arch: foreign
 Homepage: https://nginx.net
 Priority: 0
 Section: utils
-Filename: pool/main/n/nginx/nginx-doc_1.18.0-6ubuntu14.4_all.deb
-Size: 14252
-SHA512: 823729595c2bbe36bf58a34453b845021e17e4ea7f464303db8691e1e8084a7169cb96249a12d7766d47d0befc40e28a38978b520564ca0bd46a77b9cbf10f4e
-SHA256: 0b69c158796cfdf767b014a9a08dcf480aef981da10b58cbae26ce6325a9d0f0
-SHA1: 7e4faa8cff449113f471e2b1ec673d3330540666
-MD5sum: 2a6cb6878698c1c2714733219428d62e
+Filename: pool/main/n/nginx/nginx-doc_1.18.0-6ubuntu14.5_all.deb
+Size: 14344
+SHA512: b194678ae023ff3a57baf56fcdb5d4e267bfb644517a6dbb5a2133d7543bc3c4ed5419a22e90599be81674f8bbd6c97895d542c7e9608b3eaf781416acee8cab
+SHA256: f77899b3a24a1c6cb3178f75f015b33625cbed51115958fc3f647119f70dfdfd
+SHA1: dd1794db63ecde660f562855e11b1d5b0723db14
+MD5sum: e2a4aa6d53354b0685ae9785ce92f601
 Description: small, powerful, scalable web/proxy server - documentation
  Nginx ("engine X") is a high-performance web and reverse proxy server
  created by Igor Sysoev. It can be used both as a standalone web server

@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `01.11.2025 00:32:26`
+Last generated on `01.20.2025 00:08:53`
 
 <br />
 
@@ -149,12 +149,12 @@ Last generated on `01.11.2025 00:32:26`
 │       │   ├── app-outlet
 │       │   │   └── app-outlet_2.1.0_amd64.deb
 │       │   ├── apt
-│       │   │   ├── apt-transport-https_2.4.12_all.deb
+│       │   │   ├── apt-transport-https_2.4.13_all.deb
 │       │   │   ├── apt-transport-https_2.6.0ubuntu0.1_all.deb
 │       │   │   ├── apt-transport-https_2.7.14build2_all.deb
 │       │   │   ├── apt-transport-https_2.7.3ubuntu0.1_all.deb
-│       │   │   ├── apt-utils_2.4.12_amd64.deb
-│       │   │   ├── apt-utils_2.4.12_i386.deb
+│       │   │   ├── apt-utils_2.4.13_amd64.deb
+│       │   │   ├── apt-utils_2.4.13_i386.deb
 │       │   │   ├── apt-utils_2.6.0ubuntu0.1_amd64.deb
 │       │   │   ├── apt-utils_2.6.0ubuntu0.1_arm64.deb
 │       │   │   ├── apt-utils_2.7.14build2_amd64.deb
@@ -177,7 +177,7 @@ Last generated on `01.11.2025 00:32:26`
 │       │   │   ├── php-bacon-qr-code_2.0.8-2_amd64.deb
 │       │   │   └── php-bacon-qr-code_2.0.8-2_arm64.deb
 │       │   └── bitwarden
-│       │       └── bitwarden_2024.7.1_amd64.deb
+│       │       └── bitwarden_2025.1.1_amd64.deb
 │       ├── c
 │       │   └── clevis
 │       │       ├── clevis_18-1ubuntu1_amd64.deb
@@ -216,29 +216,33 @@ Last generated on `01.11.2025 00:32:26`
 │       │       └── dialog_1.3-20240101-1_amd64.deb
 │       ├── f
 │       │   ├── firefox
-│       │   │   ├── firefox_129.0~build2_i386.deb
+│       │   │   ├── firefox_134.0.1~build1_i386.deb
 │       │   │   ├── firefox_1snap1-0ubuntu2_amd64.deb
 │       │   │   ├── firefox_1snap1-0ubuntu3_amd64.deb
 │       │   │   └── firefox_1snap1-0ubuntu5_amd64.deb
 │       │   ├── flatpak
+│       │   │   ├── flatpak_1.14.10-1~flatpak1~22.04.1_amd64.deb
 │       │   │   ├── flatpak_1.14.4-1ubuntu1_amd64.deb
 │       │   │   ├── flatpak_1.14.4-2_amd64.deb
-│       │   │   ├── flatpak_1.14.6-1~flatpak1~22.04.1_amd64.deb
 │       │   │   └── flatpak_1.14.6-1ubuntu0.1_amd64.deb
 │       │   └── freetube
 │       │       ├── freetube_0.21.2_amd64.deb
 │       │       ├── freetube_0.21.2_arm64.deb
 │       │       ├── freetube_0.21.3_amd64.deb
-│       │       └── freetube_0.21.3_arm64.deb
+│       │       ├── freetube_0.21.3_arm64.deb
+│       │       ├── freetube_0.22.1_amd64.deb
+│       │       └── freetube_0.22.1_arm64.deb
 │       ├── g
 │       │   ├── git
-│       │   │   ├── git_2.34.1-1ubuntu1.11_amd64.deb
-│       │   │   ├── git_2.34.1-1ubuntu1.11_i386.deb
+│       │   │   ├── git_2.34.1-1ubuntu1.12_amd64.deb
+│       │   │   ├── git_2.34.1-1ubuntu1.12_i386.deb
 │       │   │   ├── git_2.39.2-1ubuntu1.1_amd64.deb
 │       │   │   ├── git_2.40.1-1ubuntu1.1_amd64.deb
 │       │   │   └── git_2.43.0-1ubuntu7.1_amd64.deb
 │       │   ├── github-desktop
-│       │   │   └── github-desktop_3.4.2-linux1_arm64.deb
+│       │   │   ├── github-desktop_3.4.2-linux1_arm64.deb
+│       │   │   ├── github-desktop_3.4.8-linux1_amd64.deb
+│       │   │   └── github-desktop_3.4.8-linux1_arm64.deb
 │       │   ├── gitkraken-license-pro
 │       │   │   └── gitkraken-license-pro_1.0.0-1_all.deb
 │       │   ├── gnome-keyring
@@ -315,7 +319,7 @@ Last generated on `01.11.2025 00:32:26`
 │       │       └── kgpg_23.08.5-0ubuntu3_amd64.deb
 │       ├── l
 │       │   ├── lintian
-│       │   │   ├── lintian_2.114.0ubuntu1.4_all.deb
+│       │   │   ├── lintian_2.114.0ubuntu1.5_all.deb
 │       │   │   ├── lintian_2.116.3ubuntu1.1_all.deb
 │       │   │   ├── lintian_2.116.3ubuntu3.2_all.deb
 │       │   │   └── lintian_2.117.0ubuntu1.2_all.deb
@@ -376,14 +380,16 @@ Last generated on `01.11.2025 00:32:26`
 │       │   ├── makedeb-beta
 │       │   │   ├── makedeb-beta_16.1.0-beta1_amd64.deb
 │       │   │   └── makedeb-beta_16.1.0-beta1_arm64.deb
+│       │   ├── monkeysphere
+│       │   │   └── monkeysphere_0.41-1ubuntu1_all.deb
 │       │   ├── mysql-8.0
 │       │   │   ├── mysql-client_8.0.35-0ubuntu0.23.04.1_all.deb
 │       │   │   ├── mysql-client_8.0.37-0ubuntu0.23.10.2_all.deb
-│       │   │   ├── mysql-client_8.0.39-0ubuntu0.22.04.1_all.deb
+│       │   │   ├── mysql-client_8.0.40-0ubuntu0.22.04.1_all.deb
 │       │   │   ├── mysql-client_8.0.40-0ubuntu0.24.04.1_all.deb
 │       │   │   ├── mysql-server_8.0.35-0ubuntu0.23.04.1_all.deb
 │       │   │   ├── mysql-server_8.0.37-0ubuntu0.23.10.2_all.deb
-│       │   │   ├── mysql-server_8.0.39-0ubuntu0.22.04.1_all.deb
+│       │   │   ├── mysql-server_8.0.40-0ubuntu0.22.04.1_all.deb
 │       │   │   └── mysql-server_8.0.40-0ubuntu0.24.04.1_all.deb
 │       │   └── mysql-defaults
 │       │       ├── mysql-common_5.8+1.0.8_all.deb
@@ -453,67 +459,67 @@ Last generated on `01.11.2025 00:32:26`
 │       │   │   ├── whiptail_0.52.23-1ubuntu1_amd64.deb
 │       │   │   └── whiptail_0.52.23-1ubuntu1_arm64.deb
 │       │   ├── nginx
-│       │   │   ├── libnginx-mod-http-auth-pam_1.18.0-6ubuntu14.4_amd64.deb
+│       │   │   ├── libnginx-mod-http-auth-pam_1.18.0-6ubuntu14.5_amd64.deb
 │       │   │   ├── libnginx-mod-http-auth-pam_1.22.0-1ubuntu3_amd64.deb
 │       │   │   ├── libnginx-mod-http-auth-pam_1.22.0-1ubuntu3_arm64.deb
-│       │   │   ├── libnginx-mod-http-cache-purge_1.18.0-6ubuntu14.4_amd64.deb
+│       │   │   ├── libnginx-mod-http-cache-purge_1.18.0-6ubuntu14.5_amd64.deb
 │       │   │   ├── libnginx-mod-http-cache-purge_1.22.0-1ubuntu3_amd64.deb
 │       │   │   ├── libnginx-mod-http-cache-purge_1.22.0-1ubuntu3_arm64.deb
-│       │   │   ├── libnginx-mod-http-dav-ext_1.18.0-6ubuntu14.4_amd64.deb
+│       │   │   ├── libnginx-mod-http-dav-ext_1.18.0-6ubuntu14.5_amd64.deb
 │       │   │   ├── libnginx-mod-http-dav-ext_1.22.0-1ubuntu3_amd64.deb
 │       │   │   ├── libnginx-mod-http-dav-ext_1.22.0-1ubuntu3_arm64.deb
-│       │   │   ├── libnginx-mod-http-echo_1.18.0-6ubuntu14.4_amd64.deb
+│       │   │   ├── libnginx-mod-http-echo_1.18.0-6ubuntu14.5_amd64.deb
 │       │   │   ├── libnginx-mod-http-echo_1.22.0-1ubuntu3_amd64.deb
 │       │   │   ├── libnginx-mod-http-echo_1.22.0-1ubuntu3_arm64.deb
-│       │   │   ├── libnginx-mod-http-fancyindex_1.18.0-6ubuntu14.4_amd64.deb
+│       │   │   ├── libnginx-mod-http-fancyindex_1.18.0-6ubuntu14.5_amd64.deb
 │       │   │   ├── libnginx-mod-http-fancyindex_1.22.0-1ubuntu3_amd64.deb
 │       │   │   ├── libnginx-mod-http-fancyindex_1.22.0-1ubuntu3_arm64.deb
-│       │   │   ├── libnginx-mod-http-geoip_1.18.0-6ubuntu14.4_amd64.deb
+│       │   │   ├── libnginx-mod-http-geoip_1.18.0-6ubuntu14.5_amd64.deb
 │       │   │   ├── libnginx-mod-http-geoip_1.22.0-1ubuntu3_amd64.deb
 │       │   │   ├── libnginx-mod-http-geoip_1.22.0-1ubuntu3_arm64.deb
 │       │   │   ├── libnginx-mod-http-geoip_1.24.0-1ubuntu1_amd64.deb
 │       │   │   ├── libnginx-mod-http-geoip_1.24.0-2ubuntu7.1_amd64.deb
-│       │   │   ├── libnginx-mod-http-headers-more-filter_1.18.0-6ubuntu14.4_amd64.deb
+│       │   │   ├── libnginx-mod-http-headers-more-filter_1.18.0-6ubuntu14.5_amd64.deb
 │       │   │   ├── libnginx-mod-http-headers-more-filter_1.22.0-1ubuntu3_amd64.deb
 │       │   │   ├── libnginx-mod-http-headers-more-filter_1.22.0-1ubuntu3_arm64.deb
-│       │   │   ├── libnginx-mod-http-ndk_1.18.0-6ubuntu14.4_amd64.deb
+│       │   │   ├── libnginx-mod-http-ndk_1.18.0-6ubuntu14.5_amd64.deb
 │       │   │   ├── libnginx-mod-http-ndk_1.22.0-1ubuntu3_amd64.deb
 │       │   │   ├── libnginx-mod-http-ndk_1.22.0-1ubuntu3_arm64.deb
-│       │   │   ├── libnginx-mod-http-perl_1.18.0-6ubuntu14.4_amd64.deb
+│       │   │   ├── libnginx-mod-http-perl_1.18.0-6ubuntu14.5_amd64.deb
 │       │   │   ├── libnginx-mod-http-perl_1.22.0-1ubuntu3_amd64.deb
 │       │   │   ├── libnginx-mod-http-perl_1.22.0-1ubuntu3_arm64.deb
 │       │   │   ├── libnginx-mod-http-perl_1.24.0-1ubuntu1_amd64.deb
 │       │   │   ├── libnginx-mod-http-perl_1.24.0-2ubuntu7.1_amd64.deb
-│       │   │   ├── libnginx-mod-http-subs-filter_1.18.0-6ubuntu14.4_amd64.deb
+│       │   │   ├── libnginx-mod-http-subs-filter_1.18.0-6ubuntu14.5_amd64.deb
 │       │   │   ├── libnginx-mod-http-subs-filter_1.22.0-1ubuntu3_amd64.deb
 │       │   │   ├── libnginx-mod-http-subs-filter_1.22.0-1ubuntu3_arm64.deb
-│       │   │   ├── libnginx-mod-http-uploadprogress_1.18.0-6ubuntu14.4_amd64.deb
+│       │   │   ├── libnginx-mod-http-uploadprogress_1.18.0-6ubuntu14.5_amd64.deb
 │       │   │   ├── libnginx-mod-http-uploadprogress_1.22.0-1ubuntu3_amd64.deb
 │       │   │   ├── libnginx-mod-http-uploadprogress_1.22.0-1ubuntu3_arm64.deb
-│       │   │   ├── libnginx-mod-http-upstream-fair_1.18.0-6ubuntu14.4_amd64.deb
+│       │   │   ├── libnginx-mod-http-upstream-fair_1.18.0-6ubuntu14.5_amd64.deb
 │       │   │   ├── libnginx-mod-http-upstream-fair_1.22.0-1ubuntu3_amd64.deb
 │       │   │   ├── libnginx-mod-http-upstream-fair_1.22.0-1ubuntu3_arm64.deb
-│       │   │   ├── libnginx-mod-nchan_1.18.0-6ubuntu14.4_amd64.deb
+│       │   │   ├── libnginx-mod-nchan_1.18.0-6ubuntu14.5_amd64.deb
 │       │   │   ├── libnginx-mod-nchan_1.22.0-1ubuntu3_amd64.deb
 │       │   │   ├── libnginx-mod-nchan_1.22.0-1ubuntu3_arm64.deb
-│       │   │   ├── libnginx-mod-rtmp_1.18.0-6ubuntu14.4_amd64.deb
+│       │   │   ├── libnginx-mod-rtmp_1.18.0-6ubuntu14.5_amd64.deb
 │       │   │   ├── libnginx-mod-rtmp_1.22.0-1ubuntu3_amd64.deb
 │       │   │   ├── libnginx-mod-rtmp_1.22.0-1ubuntu3_arm64.deb
-│       │   │   ├── libnginx-mod-stream-geoip_1.18.0-6ubuntu14.4_amd64.deb
+│       │   │   ├── libnginx-mod-stream-geoip_1.18.0-6ubuntu14.5_amd64.deb
 │       │   │   ├── libnginx-mod-stream-geoip_1.22.0-1ubuntu3_amd64.deb
 │       │   │   ├── libnginx-mod-stream-geoip_1.22.0-1ubuntu3_arm64.deb
 │       │   │   ├── libnginx-mod-stream-geoip_1.24.0-1ubuntu1_amd64.deb
 │       │   │   ├── libnginx-mod-stream-geoip_1.24.0-2ubuntu7.1_amd64.deb
-│       │   │   ├── nginx_1.18.0-6ubuntu14.4_amd64.deb
+│       │   │   ├── nginx_1.18.0-6ubuntu14.5_amd64.deb
 │       │   │   ├── nginx_1.22.0-1ubuntu3_amd64.deb
 │       │   │   ├── nginx_1.22.0-1ubuntu3_arm64.deb
 │       │   │   ├── nginx_1.24.0-1ubuntu1_amd64.deb
 │       │   │   ├── nginx_1.24.0-2ubuntu7.1_amd64.deb
-│       │   │   ├── nginx-common_1.18.0-6ubuntu14.4_all.deb
+│       │   │   ├── nginx-common_1.18.0-6ubuntu14.5_all.deb
 │       │   │   ├── nginx-common_1.22.0-1ubuntu3_all.deb
 │       │   │   ├── nginx-common_1.24.0-1ubuntu1_all.deb
 │       │   │   ├── nginx-common_1.24.0-2ubuntu7.1_all.deb
-│       │   │   ├── nginx-core_1.18.0-6ubuntu14.4_amd64.deb
+│       │   │   ├── nginx-core_1.18.0-6ubuntu14.5_amd64.deb
 │       │   │   ├── nginx-core_1.22.0-1ubuntu3_amd64.deb
 │       │   │   ├── nginx-core_1.22.0-1ubuntu3_arm64.deb
 │       │   │   ├── nginx-core_1.24.0-1ubuntu1_all.deb
@@ -521,21 +527,21 @@ Last generated on `01.11.2025 00:32:26`
 │       │   │   ├── nginx-dev_1.22.0-1ubuntu3_all.deb
 │       │   │   ├── nginx-dev_1.24.0-1ubuntu1_all.deb
 │       │   │   ├── nginx-dev_1.24.0-2ubuntu7.1_all.deb
-│       │   │   ├── nginx-doc_1.18.0-6ubuntu14.4_all.deb
+│       │   │   ├── nginx-doc_1.18.0-6ubuntu14.5_all.deb
 │       │   │   ├── nginx-doc_1.22.0-1ubuntu3_all.deb
 │       │   │   ├── nginx-doc_1.24.0-1ubuntu1_all.deb
 │       │   │   ├── nginx-doc_1.24.0-2ubuntu7.1_all.deb
-│       │   │   ├── nginx-extras_1.18.0-6ubuntu14.4_amd64.deb
+│       │   │   ├── nginx-extras_1.18.0-6ubuntu14.5_amd64.deb
 │       │   │   ├── nginx-extras_1.22.0-1ubuntu3_amd64.deb
 │       │   │   ├── nginx-extras_1.22.0-1ubuntu3_arm64.deb
 │       │   │   ├── nginx-extras_1.24.0-1ubuntu1_amd64.deb
 │       │   │   ├── nginx-extras_1.24.0-2ubuntu7.1_amd64.deb
-│       │   │   ├── nginx-full_1.18.0-6ubuntu14.4_amd64.deb
+│       │   │   ├── nginx-full_1.18.0-6ubuntu14.5_amd64.deb
 │       │   │   ├── nginx-full_1.22.0-1ubuntu3_amd64.deb
 │       │   │   ├── nginx-full_1.22.0-1ubuntu3_arm64.deb
 │       │   │   ├── nginx-full_1.24.0-1ubuntu1_all.deb
 │       │   │   ├── nginx-full_1.24.0-2ubuntu7.1_all.deb
-│       │   │   ├── nginx-light_1.18.0-6ubuntu14.4_amd64.deb
+│       │   │   ├── nginx-light_1.18.0-6ubuntu14.5_amd64.deb
 │       │   │   ├── nginx-light_1.22.0-1ubuntu3_amd64.deb
 │       │   │   ├── nginx-light_1.22.0-1ubuntu3_arm64.deb
 │       │   │   ├── nginx-light_1.24.0-1ubuntu1_all.deb
@@ -546,7 +552,8 @@ Last generated on `01.11.2025 00:32:26`
 │       │       └── nginx-confgen_2.1-1_arm64.deb
 │       ├── o
 │       │   ├── obsidian
-│       │   │   └── obsidian_1.6.7_amd64.deb
+│       │   │   ├── obsidian_1.6.7_amd64.deb
+│       │   │   └── obsidian_1.7.7_amd64.deb
 │       │   ├── ocs-url
 │       │   │   └── ocs-url_3.1.0-0ubuntu1_amd64.deb
 │       │   ├── opengist
@@ -1153,8 +1160,8 @@ Last generated on `01.11.2025 00:32:26`
 │       │   │   └── snap_2013-11-29-11_amd64.deb
 │       │   └── snapd
 │       │       ├── snapd_2.59.1+23.04ubuntu1.2_amd64.deb
-│       │       ├── snapd_2.63+22.04ubuntu0.1_amd64.deb
 │       │       ├── snapd_2.63+23.10_amd64.deb
+│       │       ├── snapd_2.66.1+22.04_amd64.deb
 │       │       └── snapd_2.66.1+24.04_amd64.deb
 │       ├── t
 │       │   ├── tcptrack
@@ -1203,11 +1210,16 @@ Last generated on `01.11.2025 00:32:26`
 │       └── z
 │           └── zorin-pro-layouts
 │               └── zorin-pro-layouts_1.0.0-3_all.deb
+├── .secrets
+│   ├── .passwd
+│   ├── .pat_github
+│   └── .pat_gitlab
 ├── .gitattributes
 ├── .gitignore
 ├── proteus-git.sh
 ├── README.md
+├── secrets.sh
 └── tree.md
 
-197 directories, 1003 files
+198 directories, 1013 files
 ```
