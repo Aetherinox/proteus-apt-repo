@@ -4047,20 +4047,20 @@ app_start()
 
     if [ -n "${OPT_DLPKG_ONLY_LASTVER}" ]; then
         app_run_gh_start
-       # app_run_dl_lastver
-       # app_run_tree_update
-       # app_run_gh_end
+        app_run_dl_lastver
+        app_run_tree_update
+        app_run_gh_end
     elif [ -n "${OPT_DL_ONLY_APTGET}" ]; then
         app_run_gh_start
-       # app_run_dl_aptget
-       # app_run_tree_update
-       # app_run_gh_end
+        app_run_dl_aptget
+        app_run_tree_update
+        app_run_gh_end
     else
         app_run_gh_start
-       # app_run_dl_aptget
-       # app_run_dl_lastver
-       # app_run_tree_update
-       # app_run_gh_end
+        app_run_dl_aptget
+        app_run_dl_lastver
+        app_run_tree_update
+        app_run_gh_end
     fi
 
     # #
