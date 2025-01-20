@@ -1,7 +1,7 @@
 # #
 #   @author :           aetherinox
 #   @script :           Proteus Apt Git
-#   @date   :           2024-08-05 00:00:26
+#   @date   :           2025-01-19 00:00:00
 #   @url    :           https://github.com/Aetherinox/proteus-git
 #
 #   requires chmod +x proteus_git.sh
@@ -347,7 +347,7 @@ app_file_secrets_sh=${app_dir}/secrets.sh
 
 app_title="Proteus Apt Git"
 app_about="Internal system to Proteus App Manager which grabs debian packages."
-app_ver=("1" "2" "0" "0")
+app_ver=("1" "3" "0" "0")
 app_pid_spin=0
 app_pid=$BASHPID
 app_queue_url=()

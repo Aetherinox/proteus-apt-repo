@@ -150,26 +150,27 @@ Description: Script to "manage" .deb installs from 3rd party vendors/projects
  projects.
 
 Package: firefox
-Version: 129.0~build2
+Version: 134.0.1~build1
 Architecture: i386
 Maintainer: Mozilla Releng <release@mozilla.com>
-Installed-Size: 257888
-Depends: libasound2 (>= 1.0.16), libatk1.0-0 (>= 1.12.4), libc6 (>= 2.18), libcairo-gobject2 (>= 1.10.0), libcairo2 (>= 1.10.0), libdbus-1-3 (>= 1.5.12), libfontconfig1 (>= 2.11), libfreetype6 (>= 2.3.5), libgcc1 (>= 1:4.1.1), libgdk-pixbuf2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.37.0), libgtk-3-0 (>= 3.13.7), libpango-1.0-0 (>= 1.14.0), libpangocairo-1.0-0 (>= 1.14.0), libstdc++6 (>= 4.8), libx11-6, libx11-xcb1, libxcb-shm0, libxcb1, libxcomposite1 (>= 1:0.3-1), libxcursor1 (>> 1.1.2), libxdamage1 (>= 1:1.1), libxext6, libxfixes3, libxi6, libxrandr2 (>= 2:1.4.0), libxrender1
+Installed-Size: 270825
+Depends: libasound2 (>= 1.0.16), libatk1.0-0 (>= 1.12.4), libc6 (>= 2.18), libcairo-gobject2 (>= 1.10.0), libcairo2 (>= 1.10.0), libdbus-1-3 (>= 1.5.12), libfontconfig1 (>= 2.11), libfreetype6 (>= 2.3.5), libgcc1 (>= 1:4.1.1), libgdk-pixbuf2.0-0 (>= 2.22.0) | libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.37.0), libgtk-3-0 (>= 3.13.7), libpango-1.0-0 (>= 1.14.0), libpangocairo-1.0-0 (>= 1.14.0), libstdc++6 (>= 4.8), libx11-6, libx11-xcb1, libxcb-shm0, libxcb1, libxcomposite1 (>= 1:0.3-1), libxcursor1 (>> 1.1.2), libxdamage1 (>= 1:1.1), libxext6, libxfixes3, libxi6, libxrandr2 (>= 2:1.4.0), libxrender1
+Provides: gnome-www-browser, www-browser
 Priority: 0
 Section: utils
-Filename: pool/main/f/firefox/firefox_129.0~build2_i386.deb
-Size: 72498100
-SHA512: 989fe13be63a190563f6c9615ffb983e6d3087868c499724221dfb9b5080f7a1797178788122d85d6207be09b7b9a975624587610d33c04c89664f6ab9c75586
-SHA256: 77c02b659cd14994185f085420e4de745e2861df1cac4d5e07351c5eb8bedaae
-SHA1: fb11f032efde18362f0b4ec4333276b063fa04f6
-MD5sum: 303261e6106911ec143ef40d4614cd21
+Filename: pool/main/f/firefox/firefox_134.0.1~build1_i386.deb
+Size: 75568444
+SHA512: 5aea900f233cd986bc8487c9ed10fe00565e7bc69afe84b73e3a7c7573c86eeaad179a77d39d871841e507444e36e7a0f22359facca25f0f76fb801cee4d1b4b
+SHA256: 46499b0c3bfa0a7171db815fad01fef4c411a10caafca3dc58fb9f75d7e5532b
+SHA1: 24fc21e00a07155d386ada58ceee2052ab5051bb
+MD5sum: 55f64c4b1c386d3c2ad3015362bfadd8
 Description: Mozilla Firefox
 
 Package: git
-Version: 1:2.34.1-1ubuntu1.11
+Version: 1:2.34.1-1ubuntu1.12
 Architecture: i386
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Installed-Size: 34684
+Installed-Size: 34696
 Depends: libc6 (>= 2.34), libcurl3-gnutls (>= 7.56.1), libexpat1 (>= 2.0.1), libpcre2-8-0 (>= 10.34), zlib1g (>= 1:1.2.0), perl, liberror-perl, git-man (>> 1:2.34.1), git-man (<< 1:2.34.1-.)
 Recommends: ca-certificates, patch, less, ssh-client
 Suggests: gettext-base, git-daemon-run | git-daemon-sysvinit, git-doc, git-email, git-gui, gitk, gitweb, git-cvs, git-mediawiki, git-svn
@@ -179,12 +180,12 @@ Multi-Arch: foreign
 Homepage: https://git-scm.com/
 Priority: 0
 Section: utils
-Filename: pool/main/g/git/git_2.34.1-1ubuntu1.11_i386.deb
-Size: 4201026
-SHA512: 45d8848a85ca33248f0a41fea258a2f2332a2518e9fc0865525a6864d241bf74d22d7a894ab905a2918408a52b3a8f6406f2f6b0b6cf2177e39617c1543ec8c4
-SHA256: 034991d53f8f201d34d761de0302c6c2fb0db6ba2cd4e4551a73363dc9876d69
-SHA1: 0ac4c66781117c603406ae2b75d8dac4e0ac38d4
-MD5sum: 0214c9001a8ea2cc3df8b1f4f4c22214
+Filename: pool/main/g/git/git_2.34.1-1ubuntu1.12_i386.deb
+Size: 4195812
+SHA512: 52c654214465d50fd005c6491f650366e52c64972aa2d1277fff3a936ae38554cf3f87a82bf676fe97e7fe5cf74fb0395b941b9762bf683473f09681bb58bc3c
+SHA256: a9f99f22675b5d3ab6f6c34001f4245b754b8ed53721fbbe5297e2b71e18af3a
+SHA1: 84b2daca550d9eb864b6710620fd1087832e5607
+MD5sum: f252f6cc462c61106a27f8a0d88764ad
 Description: fast, scalable, distributed revision control system
  Git is popular version control system designed to handle very large
  projects with speed and efficiency; it is used for many high profile

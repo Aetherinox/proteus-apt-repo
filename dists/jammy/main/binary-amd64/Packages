@@ -374,24 +374,24 @@ Description: Transitional package - firefox -> firefox snap
  firefox is now replaced by the firefox snap.
 
 Package: flatpak
-Version: 1.14.6-1~flatpak1~22.04.1
+Version: 1.14.10-1~flatpak1~22.04.1
 Architecture: amd64
 Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
-Installed-Size: 5476
-Depends: adduser, default-dbus-system-bus | dbus-system-bus, fuse3, libappstream4 (>= 0.10.0), libarchive13 (>= 3.0.4), libc6 (>= 2.34), libcap2 (>= 1:2.10), libcurl3-gnutls (>= 7.16.2), libdconf1 (>= 0.26.0), libfuse3-3 (>= 3.2.3), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.67.3+git20210214), libjson-glib-1.0-0 (>= 1.5.2), libmalcontent-0-0 (>= 0.6.0), libostree-1-1 (>= 2020.8), libpolkit-agent-1-0 (>= 0.105), libpolkit-gobject-1-0 (>= 0.101), libseccomp2 (>= 2.5.2), libsystemd0, libxau6 (>= 1:1.0.9), libxml2 (>= 2.7.4), libzstd1 (>= 1.4.0)
-Recommends: ca-certificates, desktop-file-utils, hicolor-icon-theme, gtk-update-icon-cache, libpam-systemd, p11-kit, polkitd, shared-mime-info, xdg-desktop-portal (>= 1.6), xdg-desktop-portal-gtk (>= 1.6) | xdg-desktop-portal-backend, xdg-user-dirs
+Installed-Size: 5369
+Depends: adduser, bubblewrap (>= 0.10.0~), fuse3, xdg-dbus-proxy (>= 0.1.0), libappstream4 (>= 0.10.0), libarchive13 (>= 3.0.4), libc6 (>= 2.34), libcurl3-gnutls (>= 7.16.2), libdconf1 (>= 0.26.0), libfuse3-3 (>= 3.2.3), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.67.3+git20210214), libjson-glib-1.0-0 (>= 1.5.2), libmalcontent-0-0 (>= 0.6.0), libostree-1-1 (>= 2020.8), libpolkit-agent-1-0 (>= 0.105), libpolkit-gobject-1-0 (>= 0.101), libseccomp2 (>= 2.5.2), libsystemd0, libxau6 (>= 1:1.0.9), libxml2 (>= 2.7.4), libzstd1 (>= 1.4.0)
+Recommends: ca-certificates, default-dbus-system-bus | dbus-system-bus, desktop-file-utils, hicolor-icon-theme, gtk-update-icon-cache, libpam-systemd, p11-kit, polkitd, shared-mime-info, xdg-desktop-portal (>= 1.6), xdg-desktop-portal-gtk (>= 1.6) | xdg-desktop-portal-backend, xdg-user-dirs
 Suggests: avahi-daemon, malcontent-gui
 Conflicts: xdg-app
 Replaces: xdg-app
 Homepage: https://flatpak.org/
 Priority: 0
 Section: utils
-Filename: pool/main/f/flatpak/flatpak_1.14.6-1~flatpak1~22.04.1_amd64.deb
-Size: 1450078
-SHA512: 198d2b8aec1d3229190b830f4c049b410ed03a7fd158b2a3febe30144661cf37d7c616e3a485e841f6c6dcb50af18a6fff573a3149ce25fe25d002dd39b42d75
-SHA256: 1ea8f8e05b2a6a22287e8c4dc482c9b682be9efd7fdf75c6672f2401a8546759
-SHA1: e2b5b0809759c3d03f232fa3b7e777013d433d37
-MD5sum: 5290bd01455db172f476cfb2a10a05c2
+Filename: pool/main/f/flatpak/flatpak_1.14.10-1~flatpak1~22.04.1_amd64.deb
+Size: 1410714
+SHA512: 87498759d21383eec1390848bda1d67d5254f2bd7442ae858cc1619399f30e4c0db6945fad6427f816f0200ff0d30c0ed80b97d09dad969a61ae3977f7551d22
+SHA256: 59626812a9e99252e84f6d268ac8a9534e65a4f840880c48d7caa082a1c521e4
+SHA1: 79fe4a709419a89d162f6a4a823f90718e2c81f4
+MD5sum: 60e829813bdc8f4cee23189be5b7aa40
 Description: Application deployment framework for desktop apps
  Flatpak installs, manages and runs sandboxed desktop application bundles.
  Application bundles run partially isolated from the wider system, using
@@ -432,10 +432,10 @@ Description:
   A private YouTube client
 
 Package: git
-Version: 1:2.34.1-1ubuntu1.11
+Version: 1:2.34.1-1ubuntu1.12
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Installed-Size: 18484
+Installed-Size: 18488
 Depends: libc6 (>= 2.34), libcurl3-gnutls (>= 7.56.1), libexpat1 (>= 2.0.1), libpcre2-8-0 (>= 10.34), zlib1g (>= 1:1.2.0), perl, liberror-perl, git-man (>> 1:2.34.1), git-man (<< 1:2.34.1-.)
 Recommends: ca-certificates, patch, less, ssh-client
 Suggests: gettext-base, git-daemon-run | git-daemon-sysvinit, git-doc, git-email, git-gui, gitk, gitweb, git-cvs, git-mediawiki, git-svn
@@ -445,12 +445,12 @@ Multi-Arch: foreign
 Homepage: https://git-scm.com/
 Priority: 0
 Section: utils
-Filename: pool/main/g/git/git_2.34.1-1ubuntu1.11_amd64.deb
-Size: 3165458
-SHA512: 8496cbf4a226273ea33d46b0f41b65c86e00efa9d8b8b0006e8ff395c3cbf7afc5acc299c69c001fde938f395860fd0f8f0ac614c2b38686c2ad8f8ac539e558
-SHA256: 12cfd82c577eb39e8a2beaecfda3ea2257c3ec159aa5ad9a9084e0083b08757a
-SHA1: 94770916fd90fdad8b8947602159712b80285262
-MD5sum: ca16865de273a4387b376904a85bf824
+Filename: pool/main/g/git/git_2.34.1-1ubuntu1.12_amd64.deb
+Size: 3165354
+SHA512: f834666c016ce39b4af649c9e9aa11911d3336c7e3f4e040066c815e28723b22a7e8ffd21cba1fe8ccb81fb04f9e4ff6f52f5449adafca67cb14c7ec738639b6
+SHA256: d45d5f47e5bc6ed990848140a997e05ef80db48e45051fbff17aab9984652a50
+SHA1: bab506f8623dc575b931f421a6ca592e64a87a0b
+MD5sum: 8c8fc058d315692901a7b7d697d29930
 Description: fast, scalable, distributed revision control system
  Git is popular version control system designed to handle very large
  projects with speed and efficiency; it is used for many high profile
@@ -788,21 +788,21 @@ Description: server-side, HTML-embedded scripting language (Apache 2 module)
 
 Package: libnginx-mod-http-auth-pam
 Source: nginx
-Version: 1.18.0-6ubuntu14.4
+Version: 1.18.0-6ubuntu14.5
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 73
-Depends: nginx-common (= 1.18.0-6ubuntu14.4), libc6 (>= 2.14), libpam0g (>= 0.99.7.1)
+Depends: nginx-common (= 1.18.0-6ubuntu14.5), libc6 (>= 2.14), libpam0g (>= 0.99.7.1)
 Recommends: nginx
 Homepage: https://nginx.net
 Priority: 0
 Section: utils
-Filename: pool/main/n/nginx/libnginx-mod-http-auth-pam_1.18.0-6ubuntu14.4_amd64.deb
-Size: 10140
-SHA512: 6428f603895ecfd8d56559b4ee4525a14005a4df89b8ae48b316a7c10f1dc12f9120355b5c184bb78b151a88903b847a67430c9cfd96d48c8f38e30a08fbdaec
-SHA256: 220a499f7ecb3f81aada99107b1a0bcdb773858b7e3a236d7eac59a395bb4d2a
-SHA1: e389440129d16a7cbc626c60c8b3b9e30932cb5b
-MD5sum: 505c57826a73af427049775b0acab567
+Filename: pool/main/n/nginx/libnginx-mod-http-auth-pam_1.18.0-6ubuntu14.5_amd64.deb
+Size: 10218
+SHA512: a9231f0bf13c760fd131835a82996c27b3eb5e63a0eae99b6ef1391a5e89fe130151e848f873023e7e5cdca10fe7b1bbb57ad9a1ce2770517bb985a99565c608
+SHA256: 3abeeebc4290860fbfc4f8a782e5076cf1e258f2d38166e4e2005a7801eee104
+SHA1: 3860cb62f8f10ebdbeab855b7801f68726ecbe62
+MD5sum: 5162b07cc74196ba6a91e7cb9f733c6c
 Description: PAM authentication module for Nginx
  The nginx_http_auth_pam module enables authentication using PAM.
  .
@@ -812,21 +812,21 @@ Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-list
 
 Package: libnginx-mod-http-cache-purge
 Source: nginx
-Version: 1.18.0-6ubuntu14.4
+Version: 1.18.0-6ubuntu14.5
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 81
-Depends: nginx-common (= 1.18.0-6ubuntu14.4), libc6 (>= 2.14)
+Depends: nginx-common (= 1.18.0-6ubuntu14.5), libc6 (>= 2.14)
 Recommends: nginx
 Homepage: https://nginx.net
 Priority: 0
 Section: utils
-Filename: pool/main/n/nginx/libnginx-mod-http-cache-purge_1.18.0-6ubuntu14.4_amd64.deb
-Size: 12584
-SHA512: 7b3922c27ef624df0d42b084d385a2e6005cbabc7a1abbf5c63d0275be6bfed7a5e603b65620da8c12ef1ba5e1608245575dec8b4b004b299ffe4e8838e61faf
-SHA256: 37a7c24cd198d9f70ae5a675daceaac5c7aaaf360623f344ec734629c38c0667
-SHA1: ab6f3e33f2a1f1cd16282470bf7e7c128c3a2a75
-MD5sum: 6cec7efd58aef9d356c2bd88102a8b74
+Filename: pool/main/n/nginx/libnginx-mod-http-cache-purge_1.18.0-6ubuntu14.5_amd64.deb
+Size: 12672
+SHA512: fa32adc254df9249db294af47928a210dae1b68173a90cfa2a070b4c16224f8ae751c8edd6f3a3e85f2fb4be321a235dd97a33a9123ec5af2ea8b86edf9bc1a2
+SHA256: fcff3e8a4ae28a7c10ded619ff7ed575446cb351857fcf7da64ff24cd9389ad6
+SHA1: e08137274c3b2d5d5f4008d8855e646054f08ea4
+MD5sum: 15634c895243959b23cdb0d1d5cfe684
 Description: Purge content from Nginx caches
  Cache Purge module adds purging capabilities to Nginx. It allows purging
  content from caches used by all of Nginx proxy modules, like FastCGI, Proxy,
@@ -835,21 +835,21 @@ Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-list
 
 Package: libnginx-mod-http-dav-ext
 Source: nginx
-Version: 1.18.0-6ubuntu14.4
+Version: 1.18.0-6ubuntu14.5
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 94
-Depends: nginx-common (= 1.18.0-6ubuntu14.4), libc6 (>= 2.33), libxml2 (>= 2.7.4)
+Depends: nginx-common (= 1.18.0-6ubuntu14.5), libc6 (>= 2.33), libxml2 (>= 2.7.4)
 Recommends: nginx
 Homepage: https://nginx.net
 Priority: 0
 Section: utils
-Filename: pool/main/n/nginx/libnginx-mod-http-dav-ext_1.18.0-6ubuntu14.4_amd64.deb
-Size: 17968
-SHA512: 47728f7b5352110369e715d29640313ef2fce8c165dcfccfa5b4efe5f455ff59e15dde51f017cbfe2de47dba6df4b4b554b7b69cbf146f4856d56a2464331bde
-SHA256: 335046a36ee3461161feb0aebe0584c45dc67b0a555c4e9e7f4105b917c35020
-SHA1: 7a1477aa0f6e09bc9009e38b6fd4cc6bc253c7e6
-MD5sum: 44ad05a8440c9e305561926038d48967
+Filename: pool/main/n/nginx/libnginx-mod-http-dav-ext_1.18.0-6ubuntu14.5_amd64.deb
+Size: 18052
+SHA512: 7ebf88c130dab6444aa903a589a3461179dd2d5968da4b095759bdb12a2a123f80a8d96474f8c5b986ab90a739d9494ebdb814193acec0ecffbd17f06c8761d4
+SHA256: 8dff436d458afac2040bce4b6bc5946b343cc49faad863c3bf9873fc55c55f67
+SHA1: 57654ab07e757fba5fd41e21190ed809e1a9b624
+MD5sum: d003d0c565ac133f22eed12d60381f4f
 Description: WebDAV missing commands support for Nginx
  WebDAV Ext module complements the Nginx WebDAV module to provide a full
  WebDAV support.
@@ -859,21 +859,21 @@ Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-list
 
 Package: libnginx-mod-http-echo
 Source: nginx
-Version: 1.18.0-6ubuntu14.4
+Version: 1.18.0-6ubuntu14.5
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 103
-Depends: nginx-common (= 1.18.0-6ubuntu14.4), libc6 (>= 2.14)
+Depends: nginx-common (= 1.18.0-6ubuntu14.5), libc6 (>= 2.14)
 Recommends: nginx
 Homepage: https://nginx.net
 Priority: 0
 Section: utils
-Filename: pool/main/n/nginx/libnginx-mod-http-echo_1.18.0-6ubuntu14.4_amd64.deb
-Size: 22712
-SHA512: 22562a65346cd9a595dfaf72570a3dcb0c195c2b95ed55a62d63daba92d1cb0a1b59f6a2a2f50d3a068a29b021d2dd2fc7fd2a439e236a12fbe139452d345443
-SHA256: c8ff1afb98c8cdb154a6307fb874d280d37df4138e691839c838b0b0aabc41b5
-SHA1: 1a32617c8e22194290bbdf4d938e2e54e2791ebb
-MD5sum: 9b46ec07974d3421bb51307cdaeb37f3
+Filename: pool/main/n/nginx/libnginx-mod-http-echo_1.18.0-6ubuntu14.5_amd64.deb
+Size: 22794
+SHA512: b17489384c9041b3c787057742d3cb1c3be83306aa0576eedab468e89376788a7bad3926897917d11395dc1b194bde1a16380ba2005eb5fc94982ea96b37411b
+SHA256: 458e685e4f5d2c041140a752095711bfb2c63bf36a283a189049af3ac6a13b6f
+SHA1: f96f24cd8b55de1d870b8a011b84a709974f9a4b
+MD5sum: 4aa3f4369bbf519874f53fcc052fab96
 Description: Bring echo and more shell style goodies to Nginx
  Echo module wraps lots of Nginx internal APIs for streaming input and output,
  parallel/sequential subrequests, timers and sleeping, as well as various meta
@@ -895,21 +895,21 @@ Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-list
 
 Package: libnginx-mod-http-fancyindex
 Source: nginx
-Version: 1.18.0-6ubuntu14.4
+Version: 1.18.0-6ubuntu14.5
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 90
-Depends: nginx-common (= 1.18.0-6ubuntu14.4), libc6 (>= 2.33)
+Depends: nginx-common (= 1.18.0-6ubuntu14.5), libc6 (>= 2.33)
 Suggests: nginx
 Homepage: https://nginx.net
 Priority: 0
 Section: utils
-Filename: pool/main/n/nginx/libnginx-mod-http-fancyindex_1.18.0-6ubuntu14.4_amd64.deb
-Size: 15446
-SHA512: 0e33371122d8fe09e3cc46ea0fe72f942372e0f85175ef821580bbcdc3b22199fa057642f78de8275ab96adef76a296f6fe9501a148abe0240f476ef8941d43d
-SHA256: 89a3989dae48a1d57f387b930babeff5e25db66c1d6c72dd5285015c930ab1da
-SHA1: 406cb13a28deb666f3c3bc51da10cfba29df3a9e
-MD5sum: d2ca6b3fb21124ae81ff54ee905e99d7
+Filename: pool/main/n/nginx/libnginx-mod-http-fancyindex_1.18.0-6ubuntu14.5_amd64.deb
+Size: 15534
+SHA512: 9efa2bbb906f8911e825222b67941f1983bc19a421c32c910995ba718bf93fa85c9f8a6e9c447a99646f74a754ffdbf036acedbf2aae7cbdc9c5d5bb0eb2176a
+SHA256: b1504654607b56bc9e59e0654ed75d114dc5d3ab88a7e5fa1512c45556403ba3
+SHA1: 91d5a6e4cd157abb67bdef510a064340c2d7066f
+MD5sum: d9cb12aba66b177f5df77ed02beafc2a
 Description: Fancy indexes module for the Nginx
  The Fancy Index module makes possible the generation of file listings, like
  the built-in autoindex module does, but adding a touch of style by introducing
