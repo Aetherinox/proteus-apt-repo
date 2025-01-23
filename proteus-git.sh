@@ -3898,7 +3898,7 @@ app_run_gh_end()
 
         if compgen -G "${app_dir}/*.deb" > /dev/null; then
             echo -e "  ${GREY2}Cleaning up left-over .deb: ${YELLOW}${app_dir}/*.deb${WHITE}"
-            rm "${app_dir}/*.deb" >/dev/null
+            rm ${app_dir}/*.deb >/dev/null
         fi
 
         app_run_github_precheck
