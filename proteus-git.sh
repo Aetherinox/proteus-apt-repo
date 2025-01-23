@@ -1407,6 +1407,13 @@ app_run_github_precheck( )
     git config pull.rebase false
 
     # #
+    #   turn off lfs locksverify
+    # #
+
+    git config lfs.https://github.com.locksverify false
+    git config --global lfs.https://github.com.locksverify false
+
+    # #
     #   GIT > SAFE DIRECTORY
     #
     #   allow sharing across users in the same group (OU/no admin rights)
