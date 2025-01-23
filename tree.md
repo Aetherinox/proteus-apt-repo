@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `01.23.2025 14:00:01`
+Last generated on `01.23.2025 23:23:46`
 
 <br />
 
@@ -1214,17 +1214,11 @@ Last generated on `01.23.2025 14:00:01`
 │       └── z
 │           └── zorin-pro-layouts
 │               └── zorin-pro-layouts_1.0.0-3_all.deb
-├── .secrets
-│   ├── .passwd
-│   ├── .pat_github
-│   └── .pat_gitlab
 ├── .gitattributes
 ├── .gitignore
 ├── proteus-git.sh
 ├── README.md
-├── secrets.sh
-├── tree.md
-└── wget_1.21.2-2ubuntu1.1_i386.deb
+└── tree.md
 
-198 directories, 1018 files
+197 directories, 1013 files
 ```
