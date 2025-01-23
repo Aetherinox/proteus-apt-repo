@@ -13602,6 +13602,7 @@
             {"type":"file","name":"apt-utils_2.4.13_amd64.deb"},
             {"type":"file","name":"argon2_0~20171227-0.3_amd64.deb"},
             {"type":"file","name":"Bitwarden-2025.1.1-amd64.deb"},
+            {"type":"file","name":"Bitwarden-2025.1.2-amd64.deb"},
             {"type":"file","name":"clevis_18-1ubuntu1_amd64.deb"},
             {"type":"file","name":"clevis-dracut_18-1ubuntu1_amd64.deb"},
             {"type":"file","name":"clevis-tpm2_18-1ubuntu1_amd64.deb"},
@@ -13855,7 +13856,7 @@
             {"type":"file","name":"php-bacon-qr-code_2.0.8-2_arm64.deb"}
         ]},
           {"type":"directory","name":"bitwarden","contents":[
-            {"type":"file","name":"bitwarden_2025.1.1_amd64.deb"}
+            {"type":"file","name":"bitwarden_2025.1.2_amd64.deb"}
         ]}
       ]},
         {"type":"directory","name":"c","contents":[
@@ -15055,8 +15056,9 @@
     {"type":"file","name":"proteus-git.sh"},
     {"type":"file","name":"README.md"},
     {"type":"file","name":"secrets.sh"},
-    {"type":"file","name":"tree.md"}
+    {"type":"file","name":"tree.md"},
+    {"type":"file","name":"wget_1.21.2-2ubuntu1.1_i386.deb"}
   ]}
 ,
-  {"type":"report","directories":256,"files":14544}
+  {"type":"report","directories":256,"files":14546}
 ]
