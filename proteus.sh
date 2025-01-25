@@ -1345,14 +1345,14 @@ if [ "${mode_clevis}" = true ]; then
             echo -e "               ${GREY2}(Right)  What each file should have inside${END}"
             echo -e
             echo -e "               You can create and encrypt each file at the same time using these commands:${END}"
-            echo -e "                    ${GREY2}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'github_pat_xxxxxx_xxxxxx' > .pat_github${END}"
-            echo -e "                    ${GREY2}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'glpat-xxxxxxx' > .pat_gitlab${END}"
-            echo -e "                    ${GREY2}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'YourSudoPassword' > .passwd${END}"
-            echo -e "                    ${GREY2}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'YourGPGPassword' > .passwdgpg${END}"
+            echo -e "                    ${GREY2}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'github_pat_xxxxxx_xxxxxx' > ${app_file_secret_pat_github}${END}"
+            echo -e "                    ${GREY2}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'glpat-xxxxxxx' > ${app_file_secret_pat_gitlab}${END}"
+            echo -e "                    ${GREY2}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'YourSudoPassword' > ${app_file_secret_passwd_sudo}${END}"
+            echo -e "                    ${GREY2}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'YourGPGPassword' > ${app_file_secret_passwd_gpg}${END}"
             echo -e
             echo -e "               You can decrypt these files using these commands:${END}"
-            echo -e "                    ${GREY2}clevis decrypt < .pat_github${END}"
-            echo -e "                    ${GREY2}clevis decrypt < .pat_github > .pat_github_decrypted${END}"
+            echo -e "                    ${GREY2}clevis decrypt < ${app_file_secret_pat_github}${END}"
+            echo -e "                    ${GREY2}clevis decrypt < ${app_file_secret_pat_github} > ${app_file_secret_pat_github}_decrypted${END}"
             echo
             echo -e " ${BLUE}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
             echo -e
