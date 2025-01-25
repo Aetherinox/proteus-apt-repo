@@ -310,7 +310,7 @@ app_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 app_dir_home="${HOME}/bin"
 app_dir_storage="$app_dir/incoming/proteus-git/${sys_code}"
 app_dir_repo="incoming/proteus-git/${sys_code}"
-app_dir_secrets="${HOME}/.secrets"
+app_dir_secrets="/server/.secrets"
 
 # #
 #   Ensure we're in the correct directory
@@ -329,17 +329,24 @@ cd ${app_dir}
 #       app_file_secrets_gitlab
 #       app_file_secrets_passwd
 #       app_file_secrets_passwdgpg
-#       app_file_secrets_general
+#       app_file_secrets_base
 # #
 
-app_file_this=$(basename "$0")
-app_file_proteus="${app_dir_home}/proteus-git"
-app_file_secrets_general=${app_dir_secrets}/.base
-app_file_secrets_passwd=${app_dir_secrets}/.passwd
-app_file_secrets_passwdgpg=${app_dir_secrets}/.passwdgpg
-app_file_secrets_github=${app_dir_secrets}/.pat_github
-app_file_secrets_gitlab=${app_dir_secrets}/.pat_gitlab
-app_file_secrets_sh=${app_dir}/secrets.sh
+app_file_secret=secrets.sh
+app_file_secret_base=CSI_BASE
+app_file_secret_passwd_sudo=CSI_SUDO_PASSWD
+app_file_secret_passwd_gpg=CSI_GPG_PASSWD
+app_file_secret_pat_github=CSI_PAT_GITHUB
+app_file_secret_pat_gitlab=CSI_PAT_GITLAB
+
+app_file_this=$(basename "$0")                                                  # proteus-git.sh
+app_file_bin_binary="${app_dir_home}/proteus-git"                               # /home/$USER/bin/proteus-git
+app_file_secrets_base=${app_dir_secrets}/${app_file_secret_base}                # GPG_KEY, GITHUB_NAME, GITHUB_EMAIL
+app_file_secrets_passwd=${app_dir_secrets}/${app_file_secret_passwd_sudo}       # file for sudo passwd
+app_file_secrets_passwdgpg=${app_dir_secrets}/${app_file_secret_passwd_gpg}     # file for gpg passwd
+app_file_secrets_github=${app_dir_secrets}/${app_file_secret_pat_github}        # file for github PAT
+app_file_secrets_gitlab=${app_dir_secrets}/${app_file_secret_pat_gitlab}        # file for gitlab PAT
+app_file_secrets_sh=${app_dir}/${app_file_secret}                               # old version
 
 # #
 #   vars > app > general
@@ -429,7 +436,7 @@ logs/
 # ----------------------------------------
 # Secrets Files
 # ----------------------------------------
-secrets.sh
+${app_file_secret}
 secrets/*
 .secrets/*
 EOF
@@ -474,23 +481,23 @@ error_missing_file_base()
 {
     file_base_path="Unknown"
     if [ "${cfg_Storage_Clevis}" = true ]; then
-        file_base_path="${app_file_secrets_general}"
+        file_base_path="${app_file_secrets_base}"
     else
         file_base_path="${app_file_secrets_sh}"
     fi
 
     echo -e 
     echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+    echo
+    echo -e "  ${ORANGE}WARNING      ${WHITE}Missing ${YELLOW}${app_file_secrets_base}${END}"
+    echo -e "               Create new ${FUCHSIA1}${app_file_secrets_base}${END} file and add the following lines:${END}"
     echo -e
-    echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Missing base config file${END}"
-    echo -e "  ${BOLD}${WHITE}Create new ${FUCHSIA1}${file_base_path}${WHITE} file and add the following lines:${END}"
-    echo -e
-    echo -e "  ${BOLD}${WHITE}    ${GREY3}#!/bin/bash${END}"
-    echo -e "  ${BOLD}${WHITE}    ${GREY3}PATH=\"/bin:/usr/bin:/sbin:/usr/sbin:${HOME}/bin\"${END}"
-    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GPG_KEY=${WHITE}XXXXXXXX${END}"
-    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GITHUB_NAME=${WHITE}YourName${END}"
-    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GITHUB_EMAIL=${WHITE}username@email.com${END}"
-    echo -e 
+    echo -e "               ${GREY2}#!/bin/bash${END}"
+    echo -e "               ${GREY2}PATH=\"/bin:/usr/bin:/sbin:/usr/sbin:${HOME}/bin\"${END}"
+    echo -e "               ${RED}export ${GREEN}GPG_KEY=${WHITE}XXXXXXXX${END}"
+    echo -e "               ${RED}export ${GREEN}GITHUB_NAME=${WHITE}YourName${END}"
+    echo -e "               ${RED}export ${GREEN}GITHUB_EMAIL=${WHITE}username@email.com${END}"
+    echo
     echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
     echo -e
 
@@ -515,23 +522,24 @@ error_missing_value_gpg()
 {
     file_base_path="Unknown"
     if [ "${cfg_Storage_Clevis}" = true ]; then
-        file_base_path="${app_file_secrets_general}"
+        file_base_path="${app_file_secrets_base}"
     else
         file_base_path="${app_file_secrets_sh}"
     fi
 
     echo -e 
     echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+    echo
+    echo -e "  ${ORANGE}WARNING      ${YELLOW}GPG_KEY${WHITE} value not specified${END}"
+    echo -e "               Make sure ${FUCHSIA1}${file_base_path}${WHITE} exists and contains the following lines:${END}"
+    echo -e "               Relaunch Proteus when you are finished.${END}"
     echo -e
-    echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}GPG_KEY value not specified${END}"
-    echo -e "  ${BOLD}${WHITE}Make sure ${FUCHSIA1}${file_base_path}${WHITE} exists and contains the following lines:${END}"
-    echo -e
-    echo -e "  ${BOLD}${WHITE}    ${GREY3}#!/bin/bash${END}"
-    echo -e "  ${BOLD}${WHITE}    ${GREY3}PATH=\"/bin:/usr/bin:/sbin:/usr/sbin:${HOME}/bin\"${END}"
-    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GPG_KEY=${WHITE}XXXXXXXX${END}"
-    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GITHUB_NAME=${WHITE}YourName${END}"
-    echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GITHUB_EMAIL=${WHITE}username@email.com${END}"
-    echo -e 
+    echo -e "               ${GREY2}#!/bin/bash${END}"
+    echo -e "               ${GREY2}PATH=\"/bin:/usr/bin:/sbin:/usr/sbin:${HOME}/bin\"${END}"
+    echo -e "               ${RED}export ${GREEN}GPG_KEY=${WHITE}XXXXXXXX${END}"
+    echo -e "               ${RED}export ${GREEN}GITHUB_NAME=${WHITE}YourName${END}"
+    echo -e "               ${RED}export ${GREEN}GITHUB_EMAIL=${WHITE}username@email.com${END}"
+    echo
     echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
     echo -e
 
@@ -595,7 +603,7 @@ opt_report()
     file_base_path="Missing"
     var_clevis_status='Disabled'
     if [ "${cfg_Storage_Clevis}" = true ]; then
-        file_base_path="${app_file_secrets_general}"
+        file_base_path="${app_file_secrets_base}"
         var_clevis_status='Enabled'
     else
         file_base_path="${app_file_secrets_sh}"
@@ -606,8 +614,8 @@ opt_report()
     #   base > load /.secrets/.base
     # #
 
-    if [ -f ${app_file_secrets_general} ]; then
-        source ${app_file_secrets_general}
+    if [ -f ${app_file_secrets_base} ]; then
+        source ${app_file_secrets_base}
     elif [ -f ${app_file_secrets_sh} ]; then
         source ${app_file_secrets_sh}
     fi
@@ -618,7 +626,7 @@ opt_report()
     #   changes the color of the "secrets.sh" mode to a dark gray if clevis mode is enabled
     # #
 
-    clrSecretsModeSh_Title=$([ ${var_clevis_status} == "Enabled" ] && echo ${STRIKE}${GREY3} || echo ${YELLOW3})
+    clrSecretsModeSh_Title=$([ ${var_clevis_status} == "Enabled" ] && echo ${STRIKE}${GREY1} || echo ${YELLOW3})
     clrSecretsModeSh_Item=$([ ${var_clevis_status} == "Enabled" ] && echo ${GREY3} || echo ${BLUE2})
 
     # #
@@ -640,18 +648,18 @@ opt_report()
     echo -e
     echo -e "  ${YELLOW3}${BOLD}[ Settings ]${END}"
 
-    Val_SecretMode=$([ ${var_clevis_status} == "Enabled" ] && echo "Clevis (Encrypted)" || echo "Secrets.sh (Unencrypted)")
+    Val_SecretMode=$([ ${var_clevis_status} == "Enabled" ] && echo "Clevis Mode (Enabled)" || echo "Secrets.sh (Unencrypted)")
     Val_Pkgs_Aptget=${#lst_packages[@]}
     Val_Pkgs_Github=${#lst_github[@]}
     Val_Pkgs_Arch=${#lst_arch[@]}
 
-    printf "%-5s %-40s %-40s %-40s\n" "" "${BLUE2}⚙️  Script" "${WHITE}${app_file_this}" "${END}"
-    printf "%-5s %-40s %-40s %-40s\n" "" "${BLUE2}⚙️  Path" "${WHITE}${app_dir}" "${END}"
-    printf "%-5s %-40s %-40s %-40s\n" "" "${BLUE2}⚙️  Version" "${WHITE}v$(get_version)" "${END}"
-    printf "%-5s %-40s %-40s %-40s\n" "" "${BLUE2}⚙️  Secret Mode" "${WHITE}${Val_SecretMode}" "${END}"
-    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📦 Packages (Apt)" "${WHITE}${Val_Pkgs_Aptget}" "${END}"
-    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📦 Packages (Github)" "${WHITE}${Val_Pkgs_Github}" "${END}"
-    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📦 Architectures" "${WHITE}${Val_Pkgs_Arch}" "${END}"
+    printf "%-5s %-40s %-40s %-40s\n" "" "${BLUE2}⚙️  Script" "${END}${app_file_this}" "${END}"
+    printf "%-5s %-40s %-40s %-40s\n" "" "${BLUE2}⚙️  Path" "${END}${app_dir}" "${END}"
+    printf "%-5s %-40s %-40s %-40s\n" "" "${BLUE2}⚙️  Version" "${END}v$(get_version)" "${END}"
+    printf "%-5s %-40s %-40s %-40s\n" "" "${BLUE2}⚙️  Secret Mode" "${END}${Val_SecretMode}" "${END}"
+    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📦 Packages (Apt)" "${END}${Val_Pkgs_Aptget}" "${END}"
+    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📦 Packages (Github)" "${END}${Val_Pkgs_Github}" "${END}"
+    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📦 Architectures" "${END}${Val_Pkgs_Arch}" "${END}"
 
     # #
     #  Section > Variables
@@ -665,9 +673,9 @@ opt_report()
     bExists_Val_GithubName=$([ -z "${GITHUB_NAME}" ] && echo "Missing" || echo "${GITHUB_NAME}")
     bExists_Val_GithubEmail=$([ -z "${GITHUB_EMAIL}" ] && echo "Missing" || echo "${GITHUB_EMAIL}")
 
-    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}✎ GPG_KEY" "${WHITE}${bExists_Val_GPG}" "${END}"
-    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}✎ GITHUB_NAME" "${WHITE}${bExists_Val_GithubName}" "${END}"
-    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}✎ GITHUB_EMAIL" "${WHITE}${bExists_Val_GithubEmail}" "${END}"
+    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}✎ GPG_KEY" "${END}${bExists_Val_GPG}" "${END}"
+    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}✎ GITHUB_NAME" "${END}${bExists_Val_GithubName}" "${END}"
+    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}✎ GITHUB_EMAIL" "${END}${bExists_Val_GithubEmail}" "${END}"
     echo -e
 
     # #
@@ -678,18 +686,18 @@ opt_report()
     echo -e "  ${YELLOW3}${BOLD}[ Paths - Clevis Mode]${END}"
 
     bExists_Fold_Secrets=$([ ! -d "${app_dir_secrets}" ] && echo "Missing" || echo "${app_dir_secrets}")
-    bExists_File_Base=$([ ! -f "${app_file_secrets_general}" ] && echo "Missing" || echo "${app_file_secrets_general}")
+    bExists_File_Base=$([ ! -f "${app_file_secrets_base}" ] && echo "Missing" || echo "${app_file_secrets_base}")
     bExists_File_Github=$([ ! -f "${app_file_secrets_github}" ] && echo "Missing" || echo "${app_file_secrets_github}")
     bExists_File_Gitlab=$([ ! -f "${app_file_secrets_gitlab}" ] && echo "Missing" || echo "${app_file_secrets_gitlab}")
     bExists_File_Passwd=$([ ! -f "${app_file_secrets_passwd}" ] && echo "Missing" || echo "${app_file_secrets_passwd}")
     bExists_File_PasswdGpg=$([ ! -f "${app_file_secrets_passwdgpg}" ] && echo "Missing" || echo "${app_file_secrets_passwdgpg}")
 
-    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📁 .secrets" "${WHITE}${bExists_Fold_Secrets}" "${GREY3}${Val_SecretMode}${END}"
-    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📄 .base" "${WHITE}${bExists_File_Base}${END}" ""
-    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📄 .passwd" "${WHITE}${bExists_File_Passwd}${END}" ""
-    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📄 .passwdgpg" "${WHITE}${bExists_File_PasswdGpg}${END}" ""
-    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📄 .pat_github" "${WHITE}${bExists_File_Github}${END}" ""
-    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📄 .pat_gitlab" "${WHITE}${bExists_File_Gitlab}${END}" ""
+    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📁 ${app_dir_secrets}" "${END}${bExists_Fold_Secrets}" "${GREY3}${Val_SecretMode}${END}"
+    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📄 ${app_file_secret_base}" "${END}${bExists_File_Base}${END}" ""
+    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📄 ${app_file_secret_passwd_sudo}" "${END}${bExists_File_Passwd}${END}" ""
+    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📄 ${app_file_secret_passwd_gpg}" "${END}${bExists_File_PasswdGpg}${END}" ""
+    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📄 ${app_file_secret_pat_github}" "${END}${bExists_File_Github}${END}" ""
+    printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📄 ${app_file_secret_pat_gitlab}" "${END}${bExists_File_Gitlab}${END}" ""
     echo -e
 
     # #
@@ -697,11 +705,14 @@ opt_report()
     # #
 
     echo -e
-    echo -e "  ${clrSecretsModeSh_Title}${BOLD}[ Paths - Secrets.sh Mode]${END}"
+    echo -e "  ${clrSecretsModeSh_Title}${BOLD}[ Paths - ${app_file_secret} Mode]${END}"
 
     bExists_File_SecretsSh=$([ ! -f "${app_file_secrets_sh}" ] && echo "Missing" || echo 'Found')
+    if [ "$bExists_File_SecretsSh" == "Found" ] && [ "$var_clevis_status" == "Enabled" ]; then
+        bExists_File_SecretsSh="Not Loaded"
+    fi
 
-    printf "%-5s %-37s %-40s %-40s\n" "" "${clrSecretsModeSh_Item}📄 secrets.sh" "${WHITE}${bExists_File_SecretsSh}" "${GREY3}${Val_SecretMode}${END}"
+    printf "%-5s %-37s %-40s %-40s\n" "" "${clrSecretsModeSh_Item}📄 ${app_file_secret}" " ${END}${bExists_File_SecretsSh}" "${GREY3}${Val_SecretMode}${END}"
     echo -e
 
     # #
@@ -720,14 +731,14 @@ opt_report()
     bInstalled_Curl=$([ ! -x "$(command -v curl)" ] && echo "Missing" || echo 'Installed')
     bInstalled_Tree=$([ ! -x "$(command -v tree)" ] && echo "Missing" || echo 'Installed')
 
-    printf "%-5s %-38s %-40s\n" "" "${BLUE2}🗔  apt-move" "${WHITE}${bInstalled_AptMove}${END}"
-    printf "%-5s %-38s %-40s\n" "" "${BLUE2}🗔  git" "${WHITE}${bInstalled_Git}${END}"
-    printf "%-5s %-38s %-40s\n" "" "${BLUE2}🗔  clevis" "${WHITE}${bInstalled_Clevis}${END}"
-    printf "%-5s %-38s %-40s\n" "" "${BLUE2}🗔  reprepro" "${WHITE}${bInstalled_Reprepro}${END}"
-    printf "%-5s %-38s %-40s\n" "" "${BLUE2}🗔  gPG" "${WHITE}${bInstalled_GPG}${END}"
-    printf "%-5s %-38s %-40s\n" "" "${BLUE2}🗔  wget" "${WHITE}${bInstalled_Wget}${END}"
-    printf "%-5s %-38s %-40s\n" "" "${BLUE2}🗔  curl" "${WHITE}${bInstalled_Curl}${END}"
-    printf "%-5s %-38s %-40s\n" "" "${BLUE2}🗔  tree" "${WHITE}${bInstalled_Tree}${END}"
+    printf "%-5s %-38s %-40s\n" "" "${BLUE2}🗔  apt-move" "${END}${bInstalled_AptMove}${END}"
+    printf "%-5s %-38s %-40s\n" "" "${BLUE2}🗔  git" "${END}${bInstalled_Git}${END}"
+    printf "%-5s %-38s %-40s\n" "" "${BLUE2}🗔  clevis" "${END}${bInstalled_Clevis}${END}"
+    printf "%-5s %-38s %-40s\n" "" "${BLUE2}🗔  reprepro" "${END}${bInstalled_Reprepro}${END}"
+    printf "%-5s %-38s %-40s\n" "" "${BLUE2}🗔  gPG" "${END}${bInstalled_GPG}${END}"
+    printf "%-5s %-38s %-40s\n" "" "${BLUE2}🗔  wget" "${END}${bInstalled_Wget}${END}"
+    printf "%-5s %-38s %-40s\n" "" "${BLUE2}🗔  curl" "${END}${bInstalled_Curl}${END}"
+    printf "%-5s %-38s %-40s\n" "" "${BLUE2}🗔  tree" "${END}${bInstalled_Tree}${END}"
 
     # #
     #  Section > gpg-agent.conf 
@@ -979,34 +990,28 @@ export SECONDS=0
 
 # #
 #   SECRETS > METHOD > CLEVIS
+#       opens each file in /server/.secrets, reads the clevis encrypted string, decrypts
 # #
 
 if [ "${cfg_Storage_Clevis}" = true ]; then
 
-    printf '%-30s %-40s\n' "  ${GREEN}OK${END}" "${GREY3}Clevis mode enabled${END}"
+    printf '%-40s %-40s\n' "  ${GREEN}OK${END}" "${GREY3}Clevis mode enabled${END}"
 
     # #
-    #   the Clevis /.secrets directory doesnt exist
-    #   create the folder and the needed files.
-    #   make user re-launch proteus
-    # #
-
-    # #
-    #   /.secrets/ folder missing
+    #   SECRETS > METHOD > CLEVIS
+    #       /.secrets/ folder not found
     # #
 
     if [ ! -d "${app_dir_secrets}" ]; then
 
-        printf '%-30s %-40s\n' "  ${ORANGE}WARNING${END}" "${GREY3}Could not find ${app_dir_secrets}${END}"
-
         echo
-        echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE} Creating new secrets folder ${FUCHSIA1}${app_dir_secrets}${WHITE}.${END}"
-        echo -e "  ${BOLD}${WHITE}Additional files will be created which you must open and add your Clevis encrypted secrets to.${END}"
-        echo -e "  ${BOLD}${WHITE}Relaunch Proteus when you are finished.${END}"
+        echo -e "  ${ORANGE}WARNING      ${WHITE}Could not find ${FUCHSIA1}${app_dir_secrets} - Creating new secrets folder${END}"
+        echo -e "               Additional files will be created which you must open and add your Clevis encrypted secrets to.${END}"
+        echo -e "               Relaunch Proteus when you are finished.${END}"
         echo
 
         mkdir -p ${app_dir_secrets}
-        touch ${app_file_secrets_general}
+        touch ${app_file_secrets_base}
         touch ${app_file_secrets_github}
         touch ${app_file_secrets_gitlab}
         touch ${app_file_secrets_passwd}
@@ -1023,166 +1028,195 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
         set -m
 
     # #
-    #   /.secrets/ folder exists
+    #   SECRETS > METHOD > CLEVIS
+    #       /.secrets/ folder exists
     # #
 
     else
 
-        printf '%-30s %-40s\n' "  ${GREEN}OK${END}" "${GREY3}Found ${BLUE2}${app_dir_secrets}${END}"
+        printf '%-40s %-40s\n' "  ${GREEN}OK${END}" "${GREY3}Found ${BLUE2}${app_dir_secrets}${END}"
 
         # #
-        #   SECRETS > CLEVIS > LOAD
+        #   SECRETS > METHOD > CLEVIS
         #
-        #   loads clevis secured secrets from the following files:
-        #       ./secrets/.pat_github
-        #       ./secrets/.pat_gitlab
-        #       ./secrets/.passwd
+        #       loads clevis secret strings from files:
+        #           ./secrets/.pat_github
+        #           ./secrets/.pat_gitlab
+        #           ./secrets/.passwd
         #
-        #   the contents of the files should be encrypted using Clevis, either tpm
-        #   or a tang server.
+        #       the contents of the files should be encrypted using Clevis, either tpm or a tang server.
         #
-        #   clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'github_pat_XXXXXX' > /.secrets/.pat_github
-        #   clevis decrypt < /.secrets/.pat_github
+        #       clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'github_pat_XXXXXX' > /.secrets/.pat_github
+        #       clevis decrypt < /.secrets/.pat_github
         # #
 
-        if [ -f ${app_file_secrets_general} ]; then
-            printf '%-30s %-40s\n' "  ${GREEN}OK${END}" "${GREY3}Found ${BLUE2}${app_file_secrets_general}${END}"
+        #   /server/.secrets/BASE
+        if [ -f ${app_file_secrets_base} ]; then
+            printf '%-40s %-40s\n' "  ${GREEN}OK${END}" "${GREY3}Found ${BLUE2}${app_file_secrets_base}${END}"
         else
-            printf '%-30s %-40s\n' "  ${ORANGE}WARNING${END}" "${GREY3}Could not find ${BLUE2}${app_file_secrets_general}${END}"
+            printf '%-40s %-40s\n' "  ${ORANGE}WARNING${END}" "${GREY3}Could not find ${BLUE2}${app_file_secrets_base}${END}"
         fi
 
         # #
-        #   SECRETS > Base / General
+        #   SECRETS > METHOD > CLEVIS
+        #       /server/.secrets/BASE
         # #
 
-        if [ -f ${app_file_secrets_general} ]; then
+        if [ -f ${app_file_secrets_base} ]; then
 
             # #
-            #   base > load /.secrets/.base
+            #   SECRETS > METHOD > CLEVIS
+            #       load /server/.secrets/BASE
             # #
 
-            source ${app_file_secrets_general}
+            source ${app_file_secrets_base}
 
             # #
-            #   base > verify gpg key
+            #   SECRETS > METHOD > CLEVIS
+            #       verify GPG_KEY env var exists
             # #
 
             if [ -z "${GPG_KEY}" ]; then
-                printf '%-30s %-40s\n' "  ${GREY1}GPG Key${END}" "  ${YELLOW3}GPG_KEY${ORANGE} empty or undefined in ${YELLOW3}${app_file_secrets_general}${END}"
+                printf '%-40s %-40s\n' "  ${GREY1}GPG_KEY${END}" "  ${YELLOW3}GPG_KEY${ORANGE} empty or undefined in ${YELLOW3}${app_file_secrets_base}${END}"
             elif [ "${GPG_KEY}" == "!" ]; then
-                printf '%-30s %-40s\n' "  ${GREY1}GPG Key${END}" "  ${RED}GPG_KEY${ORANGE} invalid key !${END}"
+                printf '%-40s %-40s\n' "  ${GREY1}GPG_KEY${END}" "  ${RED}GPG_KEY${ORANGE} invalid key !${END}"
             else
-                printf '%-30s %-40s\n' "  ${GREY1}GPG Key${END}" "  ${GREEN}${GPG_KEY}${END}"
+                printf '%-40s %-40s\n' "  ${GREY1}GPG_KEY${END}" "  ${GREEN}${GPG_KEY}${END}"
             fi
 
             # #
-            #   base > github name
+            #   SECRETS > METHOD > CLEVIS
+            #       verify GITHUB_NAME env var exists
             # #
 
             if [ -z "${GITHUB_NAME}" ]; then
-                printf '%-30s %-40s\n' "  ${GREY1}Github Name${END}" "  ${YELLOW3}GITHUB_NAME${ORANGE} empty or undefined in ${YELLOW3}${app_file_secrets_general}${END}"
+                printf '%-40s %-40s\n' "  ${GREY1}GITHUB_NAME${END}" "  ${YELLOW3}GITHUB_NAME${ORANGE} empty or undefined in ${YELLOW3}${app_file_secrets_base}${END}"
             else
-                printf '%-30s %-40s\n' "  ${GREY1}Github Name${END}" "  ${GREEN}${GITHUB_NAME}${END}"
+                printf '%-40s %-40s\n' "  ${GREY1}GITHUB_NAME${END}" "  ${GREEN}${GITHUB_NAME}${END}"
             fi
 
             # #
-            #   base > github email
+            #   SECRETS > METHOD > CLEVIS
+            #       verify GITHUB_EMAIL env var exists
             # #
 
             if [ -z "${GITHUB_EMAIL}" ]; then
-                printf '%-30s %-40s\n' "  ${GREY1}Github Email${END}" "  ${YELLOW3}GITHUB_EMAIL${ORANGE} empty or undefined in ${YELLOW3}${app_file_secrets_general}${END}"
+                printf '%-40s %-40s\n' "  ${GREY1}GITHUB_EMAIL${END}" "  ${YELLOW3}GITHUB_EMAIL${ORANGE} empty or undefined in ${YELLOW3}${app_file_secrets_base}${END}"
             else
-                printf '%-30s %-40s\n' "  ${GREY1}Github Email${END}" "  ${GREEN}${GITHUB_EMAIL}${END}"
+                printf '%-40s %-40s\n' "  ${GREY1}GITHUB_EMAIL${END}" "  ${GREEN}${GITHUB_EMAIL}${END}"
             fi
 
+        else
+
         # #
-        #   SECRETS > Base File > Missing
-        #
-        #   create .base file, and throw warning to user, then exit
+        #   SECRETS > METHOD > CLEVIS
+        #       missing /server/.secrets/BASE
+        #       create BASE file, and throw error, then exit
         # #
 
-        else
-            printf '%-30s %-40s\n' "  ${RED2}ERROR${END}" "  Missing ${BLUE2}${app_file_secrets_general}${END}"
+            printf '%-40s %-40s\n' "  ${RED2}ERROR${END}" "  Missing ${BLUE2}${app_file_secrets_base}${END}"
 
             mkdir -p ${app_dir_secrets}
-            touch ${app_file_secrets_general}
+            touch ${app_file_secrets_base}
 
             error_missing_file_base
         fi
 
+        # #
+        #   SECRETS > METHOD > CLEVIS
+        #       found /server/.secrets/CSI_PAT_GITHUB
+        #       need this check twice to warn user
+        # #
+
         if [ -f ${app_file_secrets_github} ]; then
-            printf '%-30s %-40s\n' "  ${GREEN}OK${END}" "${GREY3}Found ${BLUE2}${app_file_secrets_github}${END}"
+            printf '%-40s %-40s\n' "  ${GREEN}OK${END}" "${GREY3}Found ${BLUE2}${app_file_secrets_github}${END}"
         fi
 
         bMissingSecret=false
 
         # #
-        #   SECRETS > Github PAT
+        #   SECRETS > METHOD > CLEVIS
+        #       found /server/.secrets/CSI_PAT_GITHUB
         # #
 
         if [ -f ${app_file_secrets_github} ]; then
             CSI_PAT_GITHUB=$(cat ${app_file_secrets_github} | clevis decrypt 2>/dev/null)
 
             # #
-            #   SECRETS > Github PAT > Valid
+            #   SECRETS > METHOD > CLEVIS
+            #       CSI_PAT_GITHUB valid (not empty)
             # #
 
             if [ -n "${CSI_PAT_GITHUB}" ]; then
                 if [ "${OPT_DEV_ENABLE}" = true ]; then
-                    printf '%-30s %-40s\n' "  ${GREY1}Github PAT${END}" "  ${GREEN}${CSI_PAT_GITHUB}${END}"
+                    printf '%-40s %-40s\n' "  ${GREY1}CSI_PAT_GITHUB${END}" "  ${GREEN}${CSI_PAT_GITHUB}${END}"
                 else
-                    printf '%-30s %-40s\n' "  ${GREY1}Github PAT${END}" "  ${GREEN}***********${CSI_PAT_GITHUB:(-8)}${END}"
+                    printf '%-40s %-40s\n' "  ${GREY1}CSI_PAT_GITHUB${END}" "  ${GREEN}***********${CSI_PAT_GITHUB:(-8)}${END}"
                 fi
 
                 export GITHUB_API_TOKEN=${CSI_PAT_GITHUB}
-
-            # #
-            #   SECRETS > Github PAT > Empty
-            # #
-
             else
-                printf '%-30s %-40s\n' "  ${GREY1}Github PAT${END}" "  ${YELLOW3}CSI_PAT_GITHUB${ORANGE} Not declared in ${YELLOW3}${app_file_secrets_github}${END}"
+                # #
+                #   SECRETS > METHOD > CLEVIS
+                #       CSI_PAT_GITHUB empty
+                # #
+
+                printf '%-40s %-40s\n' "  ${GREY1}CSI_PAT_GITHUB${END}" "  ${YELLOW3}CSI_PAT_GITHUB${ORANGE} Not declared in ${YELLOW3}${app_file_secrets_github}${END}"
                 bMissingSecret=true
             fi
         else
-            printf '%-30s %-40s\n' "  ${GREY1}Github PAT${END}" "  ${RED}${app_file_secrets_github} Missing ${YELLOW3}${app_file_secrets_github}${END}"
+
+            # #
+            #   SECRETS > METHOD > CLEVIS
+            #       missing /server/.secrets/CSI_PAT_GITHUB
+            # #
+
+            printf '%-40s %-40s\n' "  ${GREY1}CSI_PAT_GITHUB${END}" "  ${RED}${app_file_secrets_github} Missing ${YELLOW3}${app_file_secrets_github}${END}"
 
             mkdir -p ${app_dir_secrets}
             touch ${app_file_secrets_github}
         fi
 
+        # #
+        #   SECRETS > METHOD > CLEVIS
+        #       found /server/.secrets/CSI_PAT_GITLAB
+        #       need this check twice to warn user
+        # #
+
         if [ -f ${app_file_secrets_gitlab} ]; then
-            printf '%-30s %-40s\n' "  ${GREEN}OK${END}" "${GREY3}Found ${BLUE2}${app_file_secrets_gitlab}${END}"
+            printf '%-40s %-40s\n' "  ${GREEN}OK${END}" "${GREY3}Found ${BLUE2}${app_file_secrets_gitlab}${END}"
         else
-            printf '%-30s %-40s\n' "  ${ORANGE}WARNING${END}" "${GREY3}Could not find ${BLUE2}${app_file_secrets_gitlab}${END}"
+            printf '%-40s %-40s\n' "  ${ORANGE}WARNING${END}" "${GREY3}Could not find ${BLUE2}${app_file_secrets_gitlab}${END}"
         fi
 
         # #
-        #   SECRETS > Gitlab PAT
+        #   SECRETS > METHOD > CLEVIS
+        #       found /server/.secrets/CSI_PAT_GITLAB
         # #
 
         if [ -f ${app_file_secrets_gitlab} ]; then
             CSI_PAT_GITLAB=$(cat ${app_file_secrets_gitlab} | clevis decrypt 2>/dev/null)
 
             # #
-            #   SECRETS > Gitlab PAT > Valid
+            #   SECRETS > METHOD > CLEVIS
+            #       CSI_PAT_GITLAB valid (not empty)
             # #
 
             if [ -n "${CSI_PAT_GITLAB}" ]; then
                 if [ "${OPT_DEV_ENABLE}" = true ]; then
-                    printf '%-30s %-40s\n' "  ${GREY1}Gitlab PAT${END}" "  ${GREEN}${CSI_PAT_GITLAB}${END}"
+                    printf '%-40s %-40s\n' "  ${GREY1}CSI_PAT_GITLAB${END}" "  ${GREEN}${CSI_PAT_GITLAB}${END}"
                 else
-                    printf '%-30s %-40s\n' "  ${GREY1}Gitlab PAT${END}" "  ${GREEN}***********${CSI_PAT_GITLAB:(-8)}${END}"
+                    printf '%-40s %-40s\n' "  ${GREY1}CSI_PAT_GITLAB${END}" "  ${GREEN}***********${CSI_PAT_GITLAB:(-8)}${END}"
                 fi
 
                 export GITLAB_PA_TOKEN=${CSI_PAT_GITLAB}
-
-            # #
-            #   SECRETS > Gitlab PAT > Empty
-            # #
-
             else
-                printf '%-30s %-40s\n' "  ${GREY1}Gitlab PAT${END}" "  ${YELLOW3}CSI_PAT_GITLAB${ORANGE} Not declared in ${YELLOW3}${app_file_secrets_gitlab}${END}"
+                # #
+                #   SECRETS > METHOD > CLEVIS
+                #       CSI_PAT_GITLAB empty
+                # #
+
+                printf '%-40s %-40s\n' "  ${GREY1}CSI_PAT_GITLAB${END}" "  ${YELLOW3}CSI_PAT_GITLAB${ORANGE} Not declared in ${YELLOW3}${app_file_secrets_gitlab}${END}"
 
                 # #
                 #   Only mark the Gitlab one as missing and show the error if they also havent specified one for Github.
@@ -1193,42 +1227,54 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
                 fi
             fi
         else
-            printf '%-30s %-40s\n' "  ${GREY1}Gitlab PAT${END}" "  ${RED}${app_file_secrets_gitlab} Missing ${YELLOW3}${app_file_secrets_gitlab}${END}"
+            # #
+            #   SECRETS > METHOD > CLEVIS
+            #       missing /server/.secrets/CSI_PAT_GITLAB
+            # #
+
+            printf '%-40s %-40s\n' "  ${GREY1}CSI_PAT_GITLAB${END}" "  ${RED}${app_file_secrets_gitlab} Missing ${YELLOW3}${app_file_secrets_gitlab}${END}"
 
             mkdir -p ${app_dir_secrets}
             touch ${app_file_secrets_gitlab}
         fi
 
         # #
-        #   SECRETS > Sudo
+        #   SECRETS > METHOD > CLEVIS
+        #       found /server/.secrets/CSI_SUDO_PASSWD
         # #
 
         if [ -f ${app_file_secrets_passwd} ]; then
             CSI_SUDO_PASSWD=$(cat ${app_file_secrets_passwd} | clevis decrypt 2>/dev/null)
 
             # #
-            #   SECRETS > Sudo Passwd > Valid
+            #   SECRETS > METHOD > CLEVIS
+            #       CSI_SUDO_PASSWD valid (not empty)
             # #
 
             if [ -n "${CSI_SUDO_PASSWD}" ]; then
                 if [ "${OPT_DEV_ENABLE}" = true ]; then
-                    printf '%-30s %-40s\n' "  ${GREY1}Sudo Passwd${END}" "  ${GREEN}${CSI_SUDO_PASSWD}${END}"
+                    printf '%-40s %-40s\n' "  ${GREY1}CSI_SUDO_PASSWD${END}" "  ${GREEN}${CSI_SUDO_PASSWD}${END}"
                 else
-                    printf '%-30s %-40s\n' "  ${GREY1}Sudo Passwd${END}" "  ${GREEN}***********${END}"
+                    printf '%-40s %-40s\n' "  ${GREY1}CSI_SUDO_PASSWD${END}" "  ${GREEN}***********${END}"
                 fi
 
                 echo "$CSI_SUDO_PASSWD" | sudo -S su 2> /dev/null
-
-            # #
-            #   SECRETS > Sudo Passwd > Empty
-            # #
-
             else
-                printf '%-30s %-40s\n' "  ${GREY1}Sudo Passwd${END}" "  ${YELLOW3}CSI_SUDO_PASSWD${ORANGE} Not declared in ${YELLOW3}${app_file_secrets_passwd}${END}"
+                # #
+                #   SECRETS > METHOD > CLEVIS
+                #       CSI_SUDO_PASSWD empty
+                # #
+
+                printf '%-40s %-40s\n' "  ${GREY1}CSI_SUDO_PASSWD${END}" "  ${YELLOW3}CSI_SUDO_PASSWD${ORANGE} Not declared in ${YELLOW3}${app_file_secrets_passwd}${END}"
                 bMissingSecret=true
             fi
         else
-            printf '%-30s %-40s\n' "  ${GREY1}Sudo Passwd${END}" "  ${RED}${app_file_secrets_passwd} Missing ${YELLOW3}${app_file_secrets_passwd}${END}"
+            # #
+            #   SECRETS > METHOD > CLEVIS
+            #       missing /server/.secrets/CSI_SUDO_PASSWD
+            # #
+
+            printf '%-40s %-40s\n' "  ${GREY1}CSI_SUDO_PASSWD${END}" "  ${RED}${app_file_secrets_passwd} Missing ${YELLOW3}${app_file_secrets_passwd}${END}"
 
             mkdir -p ${app_dir_secrets}
             touch ${app_file_secrets_passwd}
@@ -1242,60 +1288,72 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
             CSI_GPG_PASSWD=$(cat ${app_file_secrets_passwdgpg} | clevis decrypt 2>/dev/null)
 
             # #
-            #   SECRETS > GPG Passwd > Valid
+            #   SECRETS > METHOD > CLEVIS
+            #       CSI_GPG_PASSWD valid (not empty)
             # #
 
             if [ -n "${CSI_GPG_PASSWD}" ]; then
                 if [ "${OPT_DEV_ENABLE}" = true ]; then
-                    printf '%-30s %-40s\n' "  ${GREY1}GPG Passwd${END}" "  ${GREEN}${CSI_GPG_PASSWD}${END}"
+                    printf '%-40s %-40s\n' "  ${GREY1}CSI_GPG_PASSWD${END}" "  ${GREEN}${CSI_GPG_PASSWD}${END}"
                 else
-                    printf '%-30s %-40s\n' "  ${GREY1}GPG Passwd${END}" "  ${GREEN}***********${END}"
+                    printf '%-40s %-40s\n' "  ${GREY1}CSI_GPG_PASSWD${END}" "  ${GREEN}***********${END}"
                 fi
 
                 echo "${CSI_GPG_PASSWD}" | gpg --batch --yes --pinentry-mode loopback --passphrase-fd 0 --output /dev/null --sign >> /dev/null 2>&1
-
-            # #
-            #   SECRETS > GPG Passwd > Empty
-            # #
-
             else
-                printf '%-30s %-40s\n' "  ${GREY1}GPG Passwd${END}" "  ${YELLOW3}CSI_GPG_PASSWD${ORANGE} Not declared in ${YELLOW3}${app_file_secrets_passwdgpg}${END}"
+                # #
+                #   SECRETS > METHOD > CLEVIS
+                #       CSI_GPG_PASSWD empty
+                # #
+
+                printf '%-40s %-40s\n' "  ${GREY1}CSI_GPG_PASSWD${END}" "  ${YELLOW3}CSI_GPG_PASSWD${ORANGE} Not declared in ${YELLOW3}${app_file_secrets_passwdgpg}${END}"
                 bMissingSecret=true
             fi
         else
-            printf '%-30s %-40s\n' "  ${GREY1}GPG Passwd${END}" "  ${RED}${app_file_secrets_passwdgpg} Missing ${YELLOW3}${app_file_secrets_passwdgpg}${END}"
+            # #
+            #   SECRETS > METHOD > CLEVIS
+            #       missing /server/.secrets/CSI_GPG_PASSWD
+            # #
+
+            printf '%-40s %-40s\n' "  ${GREY1}CSI_GPG_PASSWD${END}" "  ${RED}${app_file_secrets_passwdgpg} Missing ${YELLOW3}${app_file_secrets_passwdgpg}${END}"
 
             mkdir -p ${app_dir_secrets}
             touch ${app_file_secrets_passwdgpg}
         fi
 
+        # #
+        #   SECRETS > METHOD > CLEVIS
+        #       one of the required secrets are missing, abort
+        # #
+
         if [ "${bMissingSecret}" = true ]; then
 
-            echo -e
+            echo -e 
             echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+            echo
+            echo -e "  ${ORANGE}WARNING      ${WHITE}Missing Required Secrets${END}"
+            echo -e "               You must define your secrets within files inside ${RED}${app_dir_secrets}${END}"
+            echo -e "               Each line belongs in its own file, and must be encrypted using Clevis${END}"
             echo -e
-            echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}You are missing required secrets.${END}"
-            echo -e "  ${BOLD}${WHITE}You must define your secrets within files inside ${RED}${app_dir_secrets}${END}"
-            echo -e "  ${BOLD}${WHITE}Each line belongs in its own file, and must be encrypted using Clevis${END}"
-            echo -e 
-            printf "%-5s %-60s %-40s\n" "" "${BLUE2}${app_file_secrets_github}" "${WHITE}github_pat_xxxxxx_xxxxxx${END}"
-            printf "%-5s %-60s %-40s\n" "" "${BLUE2}${app_file_secrets_gitlab}" "${WHITE}glpat-xxxxxxx${END}"
-            printf "%-5s %-60s %-40s\n" "" "${BLUE2}${app_file_secrets_passwd}" "${WHITE}YourSudoPassword${END}"
-            printf "%-5s %-60s %-40s\n" "" "${BLUE2}${app_file_secrets_passwdgpg}" "${WHITE}YourGPGPassword${END}"
-            echo -e 
-            echo -e "  ${BOLD}${WHITE}(Left)   File you should create${END}"
-            echo -e "  ${BOLD}${WHITE}(Right)  What each file should have inside${END}"
-            echo -e 
-            echo -e "  ${BOLD}${WHITE}You can create and encrypt each file at the same time using these commands:${END}"
-            echo -e "      ${BOLD}${GREY3}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'github_pat_xxxxxx_xxxxxx' > .pat_github${END}"
-            echo -e "      ${BOLD}${GREY3}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'glpat-xxxxxxx' > .pat_gitlab${END}"
-            echo -e "      ${BOLD}${GREY3}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'YourSudoPassword' > .passwd${END}"
-            echo -e "      ${BOLD}${GREY3}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'YourGPGPassword' > .passwdgpg${END}"
-            echo -e 
-            echo -e "  ${BOLD}${WHITE}You can decrypt these files using these commands:${END}"
-            echo -e "      ${BOLD}${GREY3}clevis decrypt < .pat_github${END}"
-            echo -e "      ${BOLD}${GREY3}clevis decrypt < .pat_github > .pat_github_decrypted${END}"
-            echo -e 
+            printf "%-19s %-60s %-40s\n" "" "${BLUE2}${app_file_secrets_base}" "${WHITE}GPG_KEY, GITHUB_NAME, GITHUB_EMAIL${END}"
+            printf "%-19s %-60s %-40s\n" "" "${BLUE2}${app_file_secrets_github}" "${WHITE}github_pat_xxxxxx_xxxxxx${END}"
+            printf "%-19s %-60s %-40s\n" "" "${BLUE2}${app_file_secrets_gitlab}" "${WHITE}glpat-xxxxxxx${END}"
+            printf "%-19s %-60s %-40s\n" "" "${BLUE2}${app_file_secrets_passwd}" "${WHITE}YourSudoPassword${END}"
+            printf "%-19s %-60s %-40s\n" "" "${BLUE2}${app_file_secrets_passwdgpg}" "${WHITE}YourGPGPassword${END}"
+            echo -e
+            echo -e "               ${GREY2}(Left)   File you should create${END}"
+            echo -e "               ${GREY2}(Right)  What each file should have inside${END}"
+            echo -e
+            echo -e "               You can create and encrypt each file at the same time using these commands:${END}"
+            echo -e "                    ${GREY2}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'github_pat_xxxxxx_xxxxxx' > .pat_github${END}"
+            echo -e "                    ${GREY2}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'glpat-xxxxxxx' > .pat_gitlab${END}"
+            echo -e "                    ${GREY2}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'YourSudoPassword' > .passwd${END}"
+            echo -e "                    ${GREY2}clevis encrypt tang '{"url": "https://tang1.domain.com"}' <<< 'YourGPGPassword' > .passwdgpg${END}"
+            echo -e
+            echo -e "               You can decrypt these files using these commands:${END}"
+            echo -e "                    ${GREY2}clevis decrypt < .pat_github${END}"
+            echo -e "                    ${GREY2}clevis decrypt < .pat_github > .pat_github_decrypted${END}"
+            echo
             echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
             echo -e
 
@@ -1315,23 +1373,23 @@ if [ "${cfg_Storage_Clevis}" = true ]; then
     fi
 
 # #
-#   SECRETS > METHOD > SECRETS.SH (OLD)
+#   SECRETS > METHOD > SECRETS.SH (OLD METHOD)
+#       opens ${app_dir}/secrets.sh
 # #
 
 else
 
     # #
-    #   secrets.sh missing
-    #
-    #   warn the user.
-    #   create a new secrets.sh file
+    #   SECRETS > METHOD > SECRETS.SH
+    #       secrets.sh missing
     # #
 
     if [ ! -f ${app_file_secrets_sh} ]; then
+    
         echo
-        echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}secrets.sh file not found! Creating a blank ${FUCHSIA1}secrets.sh${WHITE} file.${END}"
-        echo -e "  ${BOLD}${WHITE}This file defines things such as your GPG key and Github Personal Token.${END}"
-        echo -e "  ${BOLD}${WHITE}Open the newly created ${FUCHSIA1}secrets.sh${WHITE} file and add your secrets${END}"
+        echo -e "  ${ORANGE}WARNING      ${WHITE}${FUCHSIA1}${app_file_secrets_sh}${WHITE} file not found! Creating a blank ${FUCHSIA1}${app_file_secret}${END}"
+        echo -e "               This file defines things such as your GPG key and Github Personal Token.${END}"
+        echo -e "               Open the newly created ${FUCHSIA1}${app_file_secrets_sh}${END} and add your secrets${END}"
         echo
 
         touch ${app_file_secrets_sh}
@@ -1339,8 +1397,9 @@ else
 sudo tee ${app_file_secrets_sh} << EOF > /dev/null
 #!/bin/bash
 PATH="/bin:/usr/bin:/sbin:/usr/sbin:${HOME}/bin"
-export GITHUB_API_TOKEN=github_pat_xxxxxxxxx
-export GITLAB_PA_TOKEN=glpat-xxxxxxxxxxxxxxx
+export CSI_PAT_GITHUB=github_pat_xxxxxxxxxxxxxxx
+export CSI_PAT_GITLAB=glpat-xxxxxxxxxxxxxxx
+export CSI_SUDO_PASSWD=xxxxxxxxxxxxxxx
 export GPG_KEY=
 export GITHUB_NAME=
 export GITHUB_EMAIL=
@@ -1357,17 +1416,40 @@ EOF
         set -m
 
     # #
-    #   secrets.sh found
-    #
-    #   load secrets.sh variables
+    #   SECRETS > METHOD > SECRETS.SH
+    #       secrets.sh found, load secrets
     # #
 
     else
         if [ -f ${app_file_secrets_sh} ]; then
             source ${app_file_secrets_sh}
+    
+            if [ -z "${CSI_PAT_GITHUB}" ] && [ -z "${CSI_PAT_GITLAB}" ]; then
+                printf '%-40s %-40s\n' "  ${ORANGE}WARNING${END}" "${GREY3}Could not find ${BLUE2}CSI_PAT_GITHUB${END} or ${BLUE2}CSI_PAT_GITLAB${END}"
+                exit 1
+            else
+                if [ -n "${CSI_PAT_GITHUB}" ]; then
+                    export GITHUB_API_TOKEN=${CSI_PAT_GITHUB}
+                fi
+
+                if [ -n "${CSI_PAT_GITLAB}" ]; then
+                    export GITLAB_PA_TOKEN=${CSI_PAT_GITLAB}
+                fi
+            fi
+
+            if [ -n "${CSI_SUDO_PASSWD}" ]; then
+                echo "$CSI_SUDO_PASSWD" | sudo -S su 2> /dev/null
+            else
+                printf '%-40s %-40s\n' "  ${ORANGE}WARNING${END}" "${GREY3}Could not find ${BLUE2}CSI_SUDO_PASSWD${END}"
+                exit 1
+            fi
+
+            if [ -z "${CSI_GPG_PASSWD}" ]; then
+                printf '%-40s %-40s\n' "  ${ORANGE}WARNING${END}" "${GREY3}Could not find ${BLUE2}CSI_GPG_PASSWD${END}"
+                exit 1
+            fi
         fi
     fi
-
 fi
 
 # #
@@ -1516,14 +1598,14 @@ if [ -z "${checkgit_signing}" ] || [ "${checkgit_signing}" == "!" ]; then
 
     checkgit_signing=$( git config --global --get-all user.signingKey )
     if [ -z "${checkgit_signing}" ]; then
-        echo -e
-        echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Could not add the above entries to ${YELLOW}${HOME}/.gitconfig${END}"
-        echo -e "  ${BOLD}${WHITE}You will need to manually add these entries.${WHITE}:${END}"
-        echo -e
+        echo
+        echo -e "  ${ORANGE}WARNING      ${WHITE}Could not add the above entries to ${YELLOW}${HOME}/.gitconfig${END}"
+        echo -e "               You will need to manually add these entries.${END}"
+        echo
     else
-        echo -e
-        echo -e "  ${BOLD}${GREEN}SUCCESS  ${WHITE}Entries added to ${YELLOW}${HOME}/.gitconfig${END}"
-        echo -e
+        echo
+        echo -e "  ${GREEN}SUCCESS      ${WHITE}Entries added to ${YELLOW}${HOME}/.gitconfig${END}"
+        echo
     fi
 fi
 
@@ -1990,22 +2072,22 @@ app_update()
     printf '%-50s %-5s' "    |--- Downloading update" ""
     sleep 1
     if [ -z "${OPT_DEV_NULLRUN}" ]; then
-        sudo wget -O "${app_file_proteus}" -q "${branch_uri}" >> ${LOGS_FILE} 2>&1
+        sudo wget -O "${app_file_bin_binary}" -q "${branch_uri}" >> ${LOGS_FILE} 2>&1
     fi
     echo -e "[ ${STATUS_OK} ]"
 
     printf '%-50s %-5s' "    |--- Set ownership to ${USER}" ""
     sleep 1
     if [ -z "${OPT_DEV_NULLRUN}" ]; then
-        sudo chgrp ${USER} ${app_file_proteus} >> ${LOGS_FILE} 2>&1
-        sudo chown ${USER} ${app_file_proteus} >> ${LOGS_FILE} 2>&1
+        sudo chgrp ${USER} ${app_file_bin_binary} >> ${LOGS_FILE} 2>&1
+        sudo chown ${USER} ${app_file_bin_binary} >> ${LOGS_FILE} 2>&1
     fi
     echo -e "[ ${STATUS_OK} ]"
 
     printf '%-50s %-5s' "    |--- Set perms to u+x" ""
     sleep 1
     if [ -z "${OPT_DEV_NULLRUN}" ]; then
-        sudo chmod u+x ${app_file_proteus} >> ${LOGS_FILE} 2>&1
+        sudo chmod u+x ${app_file_bin_binary} >> ${LOGS_FILE} 2>&1
     fi
     echo -e "[ ${STATUS_OK} ]"
     echo -e
@@ -2199,12 +2281,12 @@ app_setup()
     # #
 
     if [ -z "${GPG_KEY}" ]; then
-        echo -e
-        echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}GPG Key not specified${END}"
-        echo -e "  ${BOLD}${WHITE}Must create ${FUCHSIA1}secrets.sh${WHITE} file and define your GPG key.${END}"
         echo
-        echo -e "  ${BOLD}${WHITE}    ${RED}export ${GREEN}GPG_KEY=${WHITE}XXXXXXXX${END}"
+        echo -e "  ${ORANGE}WARNING      ${YELLOW}GPG_KEY${WHITE} Not Specified${END}"
+        echo -e "               Must create ${FUCHSIA1}${app_file_secrets_sh}${END} file and define your GPG key.${END}"
         echo -e
+        echo -e "                    ${GREY2}${RED}export ${GREEN}GPG_KEY=${WHITE}XXXXXXXX${END}"
+        echo
 
         printf "  Press any key to abort ... ${END}"
         read -n 1 -s -r -p ""
@@ -2302,18 +2384,22 @@ app_setup()
     # #
 
     if [ "$bGPGLoaded" = false ] && [ -z "${OPT_DLPKG_ONLY_TEST}" ]; then
+
+        echo -e 
+        echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
         echo
+        echo -e "  ${ORANGE}WARNING      ${WHITE}Missing Private GPG Key${END}"
+        echo -e "               You must have a private GPG key imported to use this program.${END}"
+        echo -e "               Your private GPG key is used to sign commits and the deb package${END}"
+        echo -e "               repositories that you upload.${END}"
+        echo -e
+        echo -e "               You must either add a private .gpg keyfile to the folder:${END}"
+        echo -e "                    ${GREY2}${YELLOW}${app_dir}/.gpg/${END}"
+        echo -e
+        echo -e "               Or manually import a GPG key to your system's GPG keyring${END}"
         echo
-        echo -e "  ${BOLD}${ORANGE}WARNING  ${WHITE}Private GPG key not found${END}"
-        echo
-        echo -e "  ${WHITE}You must have a private GPG key imported to use this program.${END}"
-        echo -e "  ${WHITE}Your private GPG key is used to sign commits and the deb package${END}"
-        echo -e "  ${WHITE}repositories that you upload.${END}"
-        echo
-        echo -e "  ${WHITE}You must either add a private .gpg keyfile to the folder:${END}"
-        echo -e "       ${YELLOW}$app_dir/.gpg/${END}"
-        echo -e "  ${WHITE}Or manually import a GPG key to your system's GPG keyring${END}"
-        echo
+        echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+        echo -e
 
         printf "  Press any key to abort ... ${END}"
         read -n 1 -s -r -p ""
@@ -2509,7 +2595,7 @@ app_setup()
     #   install proteus-git binary in ${HOME}/bin/proteus-git
     # #
 
-    if ! [ -f "$app_file_proteus" ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
+    if ! [ -f "$app_file_bin_binary" ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
         printf "%-50s %-5s\n" "${TIME}      Installing ${app_title}" | tee -a "${LOGS_FILE}" >/dev/null
         printf '%-50s %-5s' "    |--- Installing ${app_title}" ""
 
@@ -2519,10 +2605,10 @@ app_setup()
             mkdir -p "$app_dir_home"
 
             local branch_uri="${app_repo_script/BRANCH/"$app_repo_branch_sel"}"
-            sudo wget -O "${app_file_proteus}" -q "$branch_uri" >> $LOGS_FILE 2>&1
-            sudo chgrp ${USER} ${app_file_proteus} >> $LOGS_FILE 2>&1
-            sudo chown ${USER} ${app_file_proteus} >> $LOGS_FILE 2>&1
-            sudo chmod u+x ${app_file_proteus} >> $LOGS_FILE 2>&1
+            sudo wget -O "${app_file_bin_binary}" -q "$branch_uri" >> $LOGS_FILE 2>&1
+            sudo chgrp ${USER} ${app_file_bin_binary} >> $LOGS_FILE 2>&1
+            sudo chown ${USER} ${app_file_bin_binary} >> $LOGS_FILE 2>&1
+            sudo chmod u+x ${app_file_bin_binary} >> $LOGS_FILE 2>&1
         fi
 
         sleep 0.5
@@ -2700,7 +2786,8 @@ EOF
         CSI_GPG_PASSWD=$(cat ${app_file_secrets_passwdgpg} | clevis decrypt 2>/dev/null)
 
         # #
-        #   SECRETS > GPG Passwd > Valid
+        #   SECRETS > METHOD > CLEVIS
+        #       CSI_GPG_PASSWD valid (not empty)
         # #
 
         if [ -n "${CSI_GPG_PASSWD}" ]; then
