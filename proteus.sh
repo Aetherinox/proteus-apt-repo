@@ -31,7 +31,7 @@
 #   
 #   To test the functionality of this script without actually 
 #   writing anything to Github or Reprepro, you can use the command
-#       ./proteus-git.sh --onlyTest --dev
+#       ./proteus.sh --onlyTest --dev
 #   
 # #
 
@@ -152,13 +152,57 @@ sys_arch=$(dpkg --print-architecture)
 sys_code=$(lsb_release -cs)
 
 # #
+#   distro > freedesktop.org and systemd
+#       returns distro information.
+# #
+
+    if [ -f /etc/os-release ]; then
+        . /etc/os-release
+        SYS_OS=$NAME
+        SYS_OS_VER=$VERSION_ID
+
+# #
+#   distro > linuxbase.org
+# #
+
+    elif type lsb_release >/dev/null 2>&1; then
+        SYS_OS=$(lsb_release -si)
+        SYS_OS_VER=$(lsb_release -sr)
+
+# #
+#   distro > versions of Debian/Ubuntu without lsb_release cmd
+# #
+
+    elif [ -f /etc/lsb-release ]; then
+        . /etc/lsb-release
+        SYS_OS=$DISTRIB_ID
+        SYS_OS_VER=$DISTRIB_RELEASE
+
+# #
+#   distro > older Debian/Ubuntu/etc distros
+# #
+
+    elif [ -f /etc/debian_version ]; then
+        SYS_OS=Debian
+        SYS_OS_VER=$(cat /etc/debian_version)
+
+# #
+#   distro > fallback: uname, e.g. "Linux <version>", also works for BSD
+# #
+
+    else
+        SYS_OS=$(uname -s)
+        SYS_OS_VER=$(uname -r)
+    fi
+
+# #
 #   Define > dirs
 # #
 
 app_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 app_dir_home="${HOME}/bin"
-app_dir_storage="$app_dir/incoming/proteus-git/${sys_code}"
-app_dir_repo="incoming/proteus-git/${sys_code}"
+app_dir_storage="$app_dir/incoming/packages/${sys_code}"
+app_dir_repo="incoming/packages/${sys_code}"
 app_dir_secrets="/server/.secrets"
 app_dir_gpg=".gpg"
 
@@ -172,8 +216,8 @@ cd ${app_dir}
 #   Define > Files
 # #
 
-app_file_this=$(basename "$0")                                                      # proteus-git.sh
-app_file_binary="proteus-git"
+app_file_this=$(basename "$0")                                                      # proteus.sh
+app_file_binary="proteus"
 app_file_secret="secrets.sh"
 app_file_secret_base="CSI_BASE"
 app_file_secret_passwd_sudo="CSI_SUDO_PASSWD"
@@ -195,7 +239,7 @@ app_file_secret_pat_gitlab="CSI_PAT_GITLAB"
 #       path_file_secret_base
 # #
 
-path_file_bin_binary="${app_dir_home}/${app_file_binary}"                           # /home/$USER/bin/proteus-git
+path_file_bin_binary="${app_dir_home}/${app_file_binary}"                           # /home/$USER/bin/proteus
 path_file_secret_base=${app_dir_secrets}/${app_file_secret_base}                    # GPG_KEY, GITHUB_NAME, GITHUB_EMAIL
 path_file_secret_passwd_sudo=${app_dir_secrets}/${app_file_secret_passwd_sudo}      # file for sudo passwd
 path_file_secret_passwd_gpg=${app_dir_secrets}/${app_file_secret_passwd_gpg}        # file for gpg passwd
@@ -282,57 +326,6 @@ secrets/*
 EOF
 
 fi
-
-# #
-#   vars > system
-# #
-
-SYS_ARCH=$(dpkg --print-architecture)
-SYS_CODE=$(lsb_release -cs)
-
-# #
-#   distro > freedesktop.org and systemd
-#       returns distro information.
-# #
-
-    if [ -f /etc/os-release ]; then
-        . /etc/os-release
-        SYS_OS=$NAME
-        SYS_OS_VER=$VERSION_ID
-
-# #
-#   distro > linuxbase.org
-# #
-
-    elif type lsb_release >/dev/null 2>&1; then
-        SYS_OS=$(lsb_release -si)
-        SYS_OS_VER=$(lsb_release -sr)
-
-# #
-#   distro > versions of Debian/Ubuntu without lsb_release cmd
-# #
-
-    elif [ -f /etc/lsb-release ]; then
-        . /etc/lsb-release
-        SYS_OS=$DISTRIB_ID
-        SYS_OS_VER=$DISTRIB_RELEASE
-
-# #
-#   distro > older Debian/Ubuntu/etc distros
-# #
-
-    elif [ -f /etc/debian_version ]; then
-        SYS_OS=Debian
-        SYS_OS_VER=$(cat /etc/debian_version)
-
-# #
-#   distro > fallback: uname, e.g. "Linux <version>", also works for BSD
-# #
-
-    else
-        SYS_OS=$(uname -s)
-        SYS_OS_VER=$(uname -r)
-    fi
 
 # #
 #   func > get version
@@ -448,7 +441,7 @@ error_missing_value_gpg()
 # #
 #   Display Usage Help
 #
-#   activate using ./proteus-git.sh --help or -h
+#   activate using ./proteus.sh --help or -h
 # #
 
 opt_usage()
@@ -827,7 +820,7 @@ export TIME=$(date -u '+%H:%M:%S')
 export NOW=$(date -u '+%m.%d.%Y %H:%M:%S')
 export ARGS=$1
 export LOGS_DIR="${app_dir}/logs"
-export LOGS_FILE="${LOGS_DIR}/proteus-git-${DATE}.log"
+export LOGS_FILE="${LOGS_DIR}/proteus-${DATE}.log"
 export SECONDS=0
 
 # #
@@ -1869,7 +1862,7 @@ exit()
 
 envpath_add_proteus()
 {
-    local file_env=/etc/profile.d/proteus-git.sh
+    local file_env=/etc/profile.d/proteus.sh
     if [ "$2" = "force" ] || ! echo ${PATH} | $(which egrep) -q "(^|:)$1($|:)" ; then
         if [ "$2" = "after" ] ; then
             echo 'export PATH="$PATH:'$1'"' | sudo tee ${file_env} > /dev/null
@@ -1897,7 +1890,7 @@ envpath_add_lastversion()
 #   updates the /home/USER/bin/proteus file which allows proteus to be
 #   ran from anywhere.
 #
-#   activate using ./proteus-git --update or -u
+#   activate using ./proteus --update or -u
 # #
 
 app_update()
@@ -2434,7 +2427,7 @@ app_setup()
     fi
 
     # #
-    #   install proteus-git binary in ${HOME}/bin/proteus-git
+    #   install proteus binary in ${HOME}/bin/proteus
     # #
 
     if ! [ -f "$path_file_bin_binary" ] || [ -n "${OPT_DEV_NULLRUN}" ]; then
@@ -2740,7 +2733,7 @@ app_run_dl_aptget()
     #           Package         networkd-dispatcher:all
     #           File            networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
     #           Download        http://us.archive.ubuntu.com/ubuntu/pool/main/n/networkd-dispatcher/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
-    #           Move            /server/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb > /server/proteus/incoming/proteus-git/jammy/all/
+    #           Move            /server/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb > /server/proteus/incoming/packages/jammy/all/
     #           Status:         💡 Already exists
     #
     #       Get networkd-dispatcher:amd64
@@ -2911,7 +2904,7 @@ app_run_dl_aptget()
                     #   architecture > all
                     #   move package to its final location inside the reprepro directory
                     #       move    ${HOME}/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
-                    #       to      ${HOME}/proteus/incoming/proteus-git/jammy/all/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+                    #       to      ${HOME}/proteus/incoming/packages/jammy/all/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
                     # #
 
                     mv "${app_dir}/${app_filename}" "${app_dir_storage}/all/"
@@ -2933,7 +2926,7 @@ app_run_dl_aptget()
                         #   add package to reprepro database
                         #
                         #       app_repo_dist_sel       jammy
-                        #       deb_package             incoming/proteus-git/jammy/all/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
+                        #       deb_package             incoming/packages/jammy/all/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
                         # #
 
                         echo -e "  ${WHITE}                Reprepro        ${FUCHSIA1}${deb_package}${END} for dist ${FUCHSIA1}${app_repo_dist_sel}${END}"
@@ -2983,7 +2976,7 @@ app_run_dl_aptget()
                     #   architecture > amd64
                     #   move package to its final location inside the reprepro directory
                     #       move    ${HOME}/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_amd64.deb
-                    #       to      ${HOME}/proteus/incoming/proteus-git/jammy/amd64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_amd64.deb
+                    #       to      ${HOME}/proteus/incoming/packages/jammy/amd64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_amd64.deb
                     # #
 
                     mv "${app_dir}/${app_filename}" "${app_dir_storage}/amd64/"
@@ -2995,7 +2988,7 @@ app_run_dl_aptget()
                         # #
                         #   architecture > amd64 > full package path
                         #
-                        #       deb_package             incoming/proteus-git/jammy/amd64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_amd64.deb
+                        #       deb_package             incoming/packages/jammy/amd64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_amd64.deb
                         # #
 
                         deb_package="${app_dir_repo}/${arch}/${app_filename}"
@@ -3005,7 +2998,7 @@ app_run_dl_aptget()
                         #   add package to reprepro database
                         #
                         #       app_repo_dist_sel       jammy
-                        #       deb_package             incoming/proteus-git/jammy/amd64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_amd64.deb
+                        #       deb_package             incoming/packages/jammy/amd64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_amd64.deb
                         # #
 
                         echo -e "  ${WHITE}                Reprepro        ${FUCHSIA1}${deb_package}${END} for dist ${FUCHSIA1}${app_repo_dist_sel}${END}"
@@ -3056,7 +3049,7 @@ app_run_dl_aptget()
                     #   architecture > arm64
                     #   move package to its final location inside the reprepro directory
                     #       move    ${HOME}/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.2_arm64.deb
-                    #       to      ${HOME}/proteus/incoming/proteus-git/jammy/arm64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_arm64.deb
+                    #       to      ${HOME}/proteus/incoming/packages/jammy/arm64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_arm64.deb
                     # #
 
                     mv "${app_dir}/${app_filename}" "${app_dir_storage}/arm64/"
@@ -3068,7 +3061,7 @@ app_run_dl_aptget()
                         # #
                         #   architecture > arm64 > full package path
                         #
-                        #       deb_package             incoming/proteus-git/jammy/arm64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_arm64.deb
+                        #       deb_package             incoming/packages/jammy/arm64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_arm64.deb
                         # #
 
                         deb_package="${app_dir_repo}/${arch}/${app_filename}"
@@ -3078,7 +3071,7 @@ app_run_dl_aptget()
                         #   add package to reprepro database
                         #
                         #       app_repo_dist_sel       jammy
-                        #       deb_package             incoming/proteus-git/jammy/arm64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_arm64.deb
+                        #       deb_package             incoming/packages/jammy/arm64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_arm64.deb
                         # #
 
                         echo -e "  ${WHITE}                Reprepro        ${FUCHSIA1}${deb_package}${END} for dist ${FUCHSIA1}${app_repo_dist_sel}${END}"
@@ -3129,7 +3122,7 @@ app_run_dl_aptget()
                     #   architecture > i386
                     #   move package to its final location inside the reprepro directory
                     #       move    ${HOME}/proteus/networkd-dispatcher_2.1-2ubuntu0.22.04.i386.deb
-                    #       to      ${HOME}/proteus/incoming/proteus-git/jammy/i386/networkd-dispatcher_2.1-2ubuntu0.22.04.i386.deb
+                    #       to      ${HOME}/proteus/incoming/packages/jammy/i386/networkd-dispatcher_2.1-2ubuntu0.22.04.i386.deb
                     # #
 
                     mv "${app_dir}/${app_filename}" "${app_dir_storage}/i386/"
@@ -3141,7 +3134,7 @@ app_run_dl_aptget()
                         # #
                         #   architecture > i386 > full package path
                         #
-                        #       deb_package             incoming/proteus-git/jammy/i386/networkd-dispatcher_2.1-2ubuntu0.22.04.i386.deb
+                        #       deb_package             incoming/packages/jammy/i386/networkd-dispatcher_2.1-2ubuntu0.22.04.i386.deb
                         # #
 
                         deb_package="${app_dir_repo}/${arch}/${app_filename}"
@@ -3151,7 +3144,7 @@ app_run_dl_aptget()
                         #   add package to reprepro database
                         #
                         #       app_repo_dist_sel       jammy
-                        #       deb_package             incoming/proteus-git/jammy/i386/networkd-dispatcher_2.1-2ubuntu0.22.04.i386.deb
+                        #       deb_package             incoming/packages/jammy/i386/networkd-dispatcher_2.1-2ubuntu0.22.04.i386.deb
                         # #
 
                         echo -e "  ${WHITE}                Reprepro        ${FUCHSIA1}${deb_package}${END} for dist ${FUCHSIA1}${app_repo_dist_sel}${END}"
@@ -3263,16 +3256,16 @@ app_run_dl_lastver()
     #           Package         amd64
     #           File            GitHubDesktop-linux-amd64-3.4.2-linux1.deb
     #           Download        https://github.com/shiftkey/desktop/releases/download/release-3.4.2-linux1/GitHubDesktop-linux-amd64-3.4.2-linux1.deb
-    #           Move            ${HOME}/Repos/GitHubDesktop-linux-amd64-3.4.2-linux1.deb > ${HOME}/Repos/incoming/proteus-git/jammy/amd64/
-    #           Reprepro        incoming/proteus-git/jammy/amd64/GitHubDesktop-linux-amd64-3.4.2-linux1.deb for dist jammy
+    #           Move            ${HOME}/Repos/GitHubDesktop-linux-amd64-3.4.2-linux1.deb > ${HOME}/Repos/incoming/packages/jammy/amd64/
+    #           Reprepro        incoming/packages/jammy/amd64/GitHubDesktop-linux-amd64-3.4.2-linux1.deb for dist jammy
     #           Status:         💡 Already exists
     #
     #       Get GitHubDesktop-linux-arm64-3.4.2-linux1.deb
     #           Package         arm64
     #           File            GitHubDesktop-linux-arm64-3.4.2-linux1.deb
     #           Download        https://github.com/shiftkey/desktop/releases/download/release-3.4.2-linux1/GitHubDesktop-linux-arm64-3.4.2-linux1.deb
-    #           Move            ${HOME}/Repos/GitHubDesktop-linux-arm64-3.4.2-linux1.deb > ${HOME}/Repos/incoming/proteus-git/jammy/arm64/
-    #           Reprepro        incoming/proteus-git/jammy/arm64/GitHubDesktop-linux-arm64-3.4.2-linux1.deb for dist jammy
+    #           Move            ${HOME}/Repos/GitHubDesktop-linux-arm64-3.4.2-linux1.deb > ${HOME}/Repos/incoming/packages/jammy/arm64/
+    #           Reprepro        incoming/packages/jammy/arm64/GitHubDesktop-linux-arm64-3.4.2-linux1.deb for dist jammy
     #           Status:         💡 Already exists
     # #
 
@@ -3419,7 +3412,7 @@ app_run_dl_lastver()
                         #   architecture > all
                         #   move package to its final location inside the reprepro directory
                         #       move    ${HOME}/Repos/GitHubDesktop-linux-all-3.4.2-linux1.deb
-                        #       to      ${HOME}/Repos/incoming/proteus-git/jammy/all/
+                        #       to      ${HOME}/Repos/incoming/packages/jammy/all/
                         # #
 
                         mv "$app_dir/$app_filename" "$app_dir_storage/all/"
@@ -3430,7 +3423,7 @@ app_run_dl_lastver()
                             # #
                             #   architecture > all > full package path
                             #
-                            #       deb_package             incoming/proteus-git/jammy/all/GitHubDesktop-linux-all-3.4.2-linux1.deb
+                            #       deb_package             incoming/packages/jammy/all/GitHubDesktop-linux-all-3.4.2-linux1.deb
                             # #
 
                             deb_package="${app_dir_repo}/${arch}/${app_filename}"
@@ -3440,7 +3433,7 @@ app_run_dl_lastver()
                             #   add package to reprepro database
                             #
                             #       app_repo_dist_sel       jammy
-                            #       deb_package             incoming/proteus-git/jammy/all/GitHubDesktop-linux-all-3.4.2-linux1.deb
+                            #       deb_package             incoming/packages/jammy/all/GitHubDesktop-linux-all-3.4.2-linux1.deb
                             # #
 
                             echo -e "  ${WHITE}                Reprepro        ${FUCHSIA1}${deb_package}${END} for dist ${FUCHSIA1}${app_repo_dist_sel}${END}"
@@ -3488,7 +3481,7 @@ app_run_dl_lastver()
                         #   architecture > amd64
                         #   move package to its final location inside the reprepro directory
                         #       move    /home/aetherx/Repos/GitHubDesktop-linux-amd64-3.4.2-linux1.deb
-                        #       to      /home/aetherx/Repos/incoming/proteus-git/jammy/amd64/
+                        #       to      /home/aetherx/Repos/incoming/packages/jammy/amd64/
                         # #
 
                         mv "$app_dir/$app_filename" "$app_dir_storage/amd64/"
@@ -3499,7 +3492,7 @@ app_run_dl_lastver()
                             # #
                             #   architecture > amd64 > full package path
                             #
-                            #       deb_package             incoming/proteus-git/jammy/amd64/GitHubDesktop-linux-amd64-3.4.2-linux1.deb
+                            #       deb_package             incoming/packages/jammy/amd64/GitHubDesktop-linux-amd64-3.4.2-linux1.deb
                             # #
 
                             deb_package="$app_dir_repo/$arch/$app_filename"
@@ -3509,7 +3502,7 @@ app_run_dl_lastver()
                             #   add package to reprepro database
                             #
                             #       app_repo_dist_sel       jammy
-                            #       deb_package             incoming/proteus-git/jammy/amd64/GitHubDesktop-linux-amd64-3.4.2-linux1.deb
+                            #       deb_package             incoming/packages/jammy/amd64/GitHubDesktop-linux-amd64-3.4.2-linux1.deb
                             # #
 
                             echo -e "  ${WHITE}                Reprepro        ${FUCHSIA1}${deb_package}${END} for dist ${FUCHSIA1}${app_repo_dist_sel}${END}"
@@ -3558,7 +3551,7 @@ app_run_dl_lastver()
                         #   architecture > arm64
                         #   move package to its final location inside the reprepro directory
                         #       move    /home/aetherx/Repos/GitHubDesktop-linux-arm64-3.4.2-linux1.deb
-                        #       to      /home/aetherx/Repos/incoming/proteus-git/jammy/arm64/
+                        #       to      /home/aetherx/Repos/incoming/packages/jammy/arm64/
                         # #
 
                         mv "$app_dir/$app_filename" "$app_dir_storage/arm64/"
@@ -3569,7 +3562,7 @@ app_run_dl_lastver()
                             # #
                             #   architecture > arm64 > full package path
                             #
-                            #       deb_package             incoming/proteus-git/jammy/arm64/GitHubDesktop-linux-arm64-3.4.2-linux1.deb
+                            #       deb_package             incoming/packages/jammy/arm64/GitHubDesktop-linux-arm64-3.4.2-linux1.deb
                             # #
 
                             deb_package="$app_dir_repo/$arch/$app_filename"
@@ -3579,7 +3572,7 @@ app_run_dl_lastver()
                             #   add package to reprepro database
                             #
                             #       app_repo_dist_sel       jammy
-                            #       deb_package             incoming/proteus-git/jammy/arm64/GitHubDesktop-linux-arm64-3.4.2-linux1.deb
+                            #       deb_package             incoming/packages/jammy/arm64/GitHubDesktop-linux-arm64-3.4.2-linux1.deb
                             # #
 
                             echo -e "  ${WHITE}                Reprepro        ${FUCHSIA1}${deb_package}${END} for dist ${FUCHSIA1}${app_repo_dist_sel}${END}"
@@ -3628,7 +3621,7 @@ app_run_dl_lastver()
                         #   architecture > i386
                         #   move package to its final location inside the reprepro directory
                         #       move    /home/aetherx/Repos/GitHubDesktop-linux-i386-3.4.2-linux1.deb
-                        #       to      /home/aetherx/Repos/incoming/proteus-git/jammy/i386/
+                        #       to      /home/aetherx/Repos/incoming/packages/jammy/i386/
                         # #
 
                         mv "$app_dir/$app_filename" "$app_dir_storage/i386/"
@@ -3639,7 +3632,7 @@ app_run_dl_lastver()
                             # #
                             #   architecture > i386 > full package path
                             #
-                            #       deb_package             incoming/proteus-git/jammy/i386/GitHubDesktop-linux-i386-3.4.2-linux1.deb
+                            #       deb_package             incoming/packages/jammy/i386/GitHubDesktop-linux-i386-3.4.2-linux1.deb
                             # #
 
                             deb_package="$app_dir_repo/$arch/$app_filename"
@@ -3649,7 +3642,7 @@ app_run_dl_lastver()
                             #   add package to reprepro database
                             #
                             #       app_repo_dist_sel       jammy
-                            #       deb_package             incoming/proteus-git/jammy/i386/GitHubDesktop-linux-i386-3.4.2-linux1.deb
+                            #       deb_package             incoming/packages/jammy/i386/GitHubDesktop-linux-i386-3.4.2-linux1.deb
                             # #
 
                             echo -e "  ${WHITE}                Reprepro        ${FUCHSIA1}${deb_package}${END} for dist ${FUCHSIA1}${app_repo_dist_sel}${END}"
