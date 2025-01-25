@@ -13516,7 +13516,7 @@
       {"type":"file","name":"README.md"}
   ]},
     {"type":"directory","name":"incoming","contents":[
-      {"type":"directory","name":"proteus-git","contents":[
+      {"type":"directory","name":"packages","contents":[
         {"type":"directory","name":"jammy","contents":[
           {"type":"directory","name":"all","contents":[
             {"type":"file","name":"adduser_3.118ubuntu5_all.deb"},
@@ -13729,69 +13729,9 @@
         {"type":"file","name":"lunar.log"},
         {"type":"file","name":"mantic.log"}
     ]},
-      {"type":"file","name":"proteus-git-011125.log"},
-      {"type":"file","name":"proteus-git-011225.log"},
-      {"type":"file","name":"proteus-git-011325.log"},
-      {"type":"file","name":"proteus-git-011425.log"},
-      {"type":"file","name":"proteus-git-011525.log"},
-      {"type":"file","name":"proteus-git-011625.log"},
-      {"type":"file","name":"proteus-git-011725.log"},
-      {"type":"file","name":"proteus-git-011825.log"},
-      {"type":"file","name":"proteus-git-012425.log"},
-      {"type":"fifo","name":"proteus-git-012425.log.pipe"},
-      {"type":"file","name":"proteus-git-012525.log"},
-      {"type":"fifo","name":"proteus-git-012525.log.pipe"},
-      {"type":"file","name":"proteus-git-service-010125.log"},
-      {"type":"file","name":"proteus-git-service-010225.log"},
-      {"type":"file","name":"proteus-git-service-010325.log"},
-      {"type":"file","name":"proteus-git-service-010425.log"},
-      {"type":"file","name":"proteus-git-service-010525.log"},
-      {"type":"file","name":"proteus-git-service-010625.log"},
-      {"type":"file","name":"proteus-git-service-010725.log"},
-      {"type":"file","name":"proteus-git-service-010825.log"},
-      {"type":"file","name":"proteus-git-service-010925.log"},
-      {"type":"file","name":"proteus-git-service-011025.log"},
-      {"type":"file","name":"proteus-git-service-011125.log"},
-      {"type":"file","name":"proteus-git-service-011225.log"},
-      {"type":"file","name":"proteus-git-service-011325.log"},
-      {"type":"file","name":"proteus-git-service-011425.log"},
-      {"type":"file","name":"proteus-git-service-011525.log"},
-      {"type":"file","name":"proteus-git-service-011625.log"},
-      {"type":"file","name":"proteus-git-service-011725.log"},
-      {"type":"file","name":"proteus-git-service-012425.log"},
-      {"type":"file","name":"proteus-git-service-112924.log"},
-      {"type":"file","name":"proteus-git-service-113024.log"},
-      {"type":"file","name":"proteus-git-service-120124.log"},
-      {"type":"file","name":"proteus-git-service-120224.log"},
-      {"type":"file","name":"proteus-git-service-120324.log"},
-      {"type":"file","name":"proteus-git-service-120424.log"},
-      {"type":"file","name":"proteus-git-service-120524.log"},
-      {"type":"file","name":"proteus-git-service-120624.log"},
-      {"type":"file","name":"proteus-git-service-120724.log"},
-      {"type":"file","name":"proteus-git-service-120824.log"},
-      {"type":"file","name":"proteus-git-service-120924.log"},
-      {"type":"file","name":"proteus-git-service-121024.log"},
-      {"type":"file","name":"proteus-git-service-121124.log"},
-      {"type":"file","name":"proteus-git-service-121224.log"},
-      {"type":"file","name":"proteus-git-service-121324.log"},
-      {"type":"file","name":"proteus-git-service-121424.log"},
-      {"type":"file","name":"proteus-git-service-121524.log"},
-      {"type":"file","name":"proteus-git-service-121624.log"},
-      {"type":"file","name":"proteus-git-service-121724.log"},
-      {"type":"file","name":"proteus-git-service-121824.log"},
-      {"type":"file","name":"proteus-git-service-121924.log"},
-      {"type":"file","name":"proteus-git-service-122024.log"},
-      {"type":"file","name":"proteus-git-service-122124.log"},
-      {"type":"file","name":"proteus-git-service-122224.log"},
-      {"type":"file","name":"proteus-git-service-122324.log"},
-      {"type":"file","name":"proteus-git-service-122424.log"},
-      {"type":"file","name":"proteus-git-service-122524.log"},
-      {"type":"file","name":"proteus-git-service-122624.log"},
-      {"type":"file","name":"proteus-git-service-122724.log"},
-      {"type":"file","name":"proteus-git-service-122824.log"},
-      {"type":"file","name":"proteus-git-service-122924.log"},
-      {"type":"file","name":"proteus-git-service-123024.log"},
-      {"type":"file","name":"proteus-git-service-123124.log"}
+      {"type":"file","name":"proteus-012525.log"},
+      {"type":"fifo","name":"proteus-012525.log.pipe"},
+      {"type":"file","name":"proteus-service-012425.log"}
   ]},
     {"type":"directory","name":"pool","contents":[
       {"type":"directory","name":"main","contents":[
@@ -15030,18 +14970,13 @@
       ]}
     ]}
   ]},
-    {"type":"directory","name":".secrets","contents":[
-      {"type":"file","name":".passwd"},
-      {"type":"file","name":".pat_github"},
-      {"type":"file","name":".pat_gitlab"}
-  ]},
     {"type":"file","name":".gitattributes"},
     {"type":"file","name":".gitignore"},
-    {"type":"file","name":"proteus-git.sh"},
+    {"type":"file","name":"proteus.sh"},
     {"type":"file","name":"README.md"},
     {"type":"file","name":"secrets.sh"},
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":254,"files":14533}
+  {"type":"report","directories":253,"files":14470}
 ]
