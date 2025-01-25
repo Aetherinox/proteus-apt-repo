@@ -45,171 +45,6 @@ echo
 
 lst_packages=(
     'adduser'
-    'argon2'
-    'apt-move'
-    'apt-transport-https'
-    'apt-utils'
-    'clevis'
-    'clevis-dracut'
-    'clevis-udisks2'
-    'clevis-tpm2'
-    'dialog'
-    'firefox'
-    'flatpak'
-    'gnome-keyring'
-    'gnome-keysign'
-    'gnome-shell-extension-manager'
-    'git'
-    'gpg'
-    'gpgconf'
-    'gpgv'
-    'jose'
-    'keyutils'
-    'kgpg'
-    'libnginx-mod-http-auth-pam'
-    'libnginx-mod-http-cache-purge'
-    'libnginx-mod-http-dav-ext'
-    'libnginx-mod-http-echo'
-    'libnginx-mod-http-fancyindex'
-    'libnginx-mod-http-geoip'
-    'libnginx-mod-http-headers-more-filter'
-    'libnginx-mod-http-ndk'
-    'libnginx-mod-http-perl'
-    'libnginx-mod-http-subs-filter'
-    'libnginx-mod-http-uploadprogress'
-    'libnginx-mod-http-upstream-fair'
-    'libnginx-mod-nchan'
-    'libnginx-mod-rtmp'
-    'libnginx-mod-stream-geoip'
-    'lintian'
-    'lsb-base'
-    'lz4'
-    'mysql-client'
-    'mysql-common'
-    'mysql-server'
-    'net-tools'
-    'neofetch'
-    'network-manager-config-connectivity-ubuntu'
-    'network-manager-dev'
-    'network-manager-gnome'
-    'network-manager-openvpn-gnome'
-    'network-manager-openvpn'
-    'network-manager-pptp-gnome'
-    'network-manager-pptp'
-    'network-manager'
-    'networkd-dispatcher'
-    'nginx-common'
-    'nginx-confgen'
-    'nginx-core'
-    'nginx-dev'
-    'nginx-doc'
-    'nginx-extras'
-    'nginx-full'
-    'nginx-light'
-    'nginx'
-    'open-vm-tools-desktop'
-    'open-vm-tools-dev'
-    'open-vm-tools'
-    'pass'
-    'php-all-dev'
-    'php-amqp'
-    'php-amqplib'
-    'php-apcu-all-dev'
-    'php-apcu'
-    'php-ast-all-dev'
-    'php-ast'
-    'php-bacon-qr-code'
-    'php-bcmath'
-    'php-brick-math'
-    'php-brick-varexporter'
-    'php-bz2'
-    'php-cas'
-    'php-cgi'
-    'php-cli'
-    'php-code-lts-u2f-php-server'
-    'php-common'
-    'php-crypt-gpg'
-    'php-curl'
-    'php-db'
-    'php-dba'
-    'php-decimal'
-    'php-dev'
-    'php-ds-all-dev'
-    'php-ds'
-    'php-email-validator'
-    'php-embed'
-    'php-enchant'
-    'php-excimer'
-    'php-faker'
-    'php-fpm'
-    'php-fxsl'
-    'php-gd'
-    'php-gearman'
-    'php-gettext-languages'
-    'php-gmagick-all-dev'
-    'php-gmagick'
-    'php-gmp'
-    'php-gnupg-all-dev'
-    'php-gnupg'
-    'php-gnupg'
-    'php-grpc'
-    'php-http'
-    'php-igbinary'
-    'php-imagick'
-    'php-imap'
-    'php-inotify'
-    'php-interbase'
-    'php-intl'
-    'php-ldap'
-    'php-mailparse'
-    'php-maxminddb'
-    'php-mbstring'
-    'php-mcrypt'
-    'php-memcache'
-    'php-memcached'
-    'php-mongodb'
-    'php-msgpack'
-    'php-mysql'
-    'php-oauth'
-    'php-odbc'
-    'php-pcov'
-    'php-pgsql'
-    'php-phpdbg'
-    'php-ps'
-    'php-pspell'
-    'php-psr'
-    'php-raphf'
-    'php-readline'
-    'php-redis'
-    'php-rrd'
-    'php-smbclient'
-    'php-snmp'
-    'php-soap'
-    'php-solr'
-    'php-sqlite3'
-    'php-ssh2'
-    'php-stomp'
-    'php-sybase'
-    'php-tideways'
-    'php-tidy'
-    'php-uopz'
-    'php-uploadprogress'
-    'php-uuid'
-    'php-xdebug'
-    'php-xml'
-    'php-xmlrpc'
-    'php-yac'
-    'php-yaml'
-    'php-zip'
-    'php-zmq'
-    'php'
-    'sks'
-    'snap'
-    'snapd'
-    'tcptrack'
-    'trash-cli'
-    'tree'
-    'wget'
 )
 
 # #
@@ -543,7 +378,7 @@ error_missing_file_base()
     fi
 
     echo -e 
-    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+    echo -e " ${BLUE}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
     echo
     echo -e "  ${ORANGE}WARNING      ${WHITE}Missing ${YELLOW}${path_file_secret_base}${END}"
     echo -e "               Create new ${FUCHSIA1}${path_file_secret_base}${END} file and add the following lines:${END}"
@@ -554,7 +389,7 @@ error_missing_file_base()
     echo -e "               ${RED}export ${GREEN}GITHUB_NAME=${WHITE}YourName${END}"
     echo -e "               ${RED}export ${GREEN}GITHUB_EMAIL=${WHITE}username@email.com${END}"
     echo
-    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+    echo -e " ${BLUE}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
     echo -e
 
     printf "  Press any key to abort ... ${END}"
@@ -584,7 +419,7 @@ error_missing_value_gpg()
     fi
 
     echo -e 
-    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+    echo -e " ${BLUE}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
     echo
     echo -e "  ${ORANGE}WARNING      ${YELLOW}GPG_KEY${WHITE} value not specified${END}"
     echo -e "               Make sure ${FUCHSIA1}${file_base_path}${WHITE} exists and contains the following lines:${END}"
@@ -596,7 +431,7 @@ error_missing_value_gpg()
     echo -e "               ${RED}export ${GREEN}GITHUB_NAME=${WHITE}YourName${END}"
     echo -e "               ${RED}export ${GREEN}GITHUB_EMAIL=${WHITE}username@email.com${END}"
     echo
-    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+    echo -e " ${BLUE}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
     echo -e
 
     printf "  Press any key to abort ... ${END}"
@@ -689,7 +524,7 @@ opt_report()
     #  Section > Header 
     # #
 
-    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+    echo -e " ${BLUE}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
     echo -e " ${GREEN}${BOLD} ${app_title} - v$(get_version)${END}${MAGENTA}"
     echo
     echo -e "  This is a package which handles the Proteus App Manager behind"
@@ -812,7 +647,7 @@ opt_report()
     #  Section > Footer
     # #
 
-    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+    echo -e " ${BLUE}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
     echo -e
     echo -e
 
@@ -1336,7 +1171,7 @@ if [ "${mode_clevis}" = true ]; then
         if [ "${bMissingSecret}" = true ]; then
 
             echo -e 
-            echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+            echo -e " ${BLUE}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
             echo
             echo -e "  ${ORANGE}WARNING      ${WHITE}Missing Required Secrets${END}"
             echo -e "               You must define your secrets within files inside ${RED}${app_dir_secrets}${END}"
@@ -1361,7 +1196,7 @@ if [ "${mode_clevis}" = true ]; then
             echo -e "                    ${GREY2}clevis decrypt < .pat_github${END}"
             echo -e "                    ${GREY2}clevis decrypt < .pat_github > .pat_github_decrypted${END}"
             echo
-            echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+            echo -e " ${BLUE}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
             echo -e
 
             printf "  Press any key to abort ... ${END}"
@@ -2393,7 +2228,7 @@ app_setup()
     if [ "$bGPGLoaded" = false ] && [ -z "${OPT_DLPKG_ONLY_TEST}" ]; then
 
         echo -e 
-        echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+        echo -e " ${BLUE}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
         echo
         echo -e "  ${ORANGE}WARNING      ${WHITE}Missing Private GPG Key${END}"
         echo -e "               You must have a private GPG key imported to use this program.${END}"
@@ -2405,7 +2240,7 @@ app_setup()
         echo -e
         echo -e "               Or manually import a GPG key to your system's GPG keyring${END}"
         echo
-        echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+        echo -e " ${BLUE}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
         echo -e
 
         printf "  Press any key to abort ... ${END}"
@@ -2827,7 +2662,7 @@ show_header()
 
     sleep 0.3
 
-    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+    echo -e " ${BLUE}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
     echo -e " ${GREEN}${BOLD} ${app_title} - v$(get_version)${END}${MAGENTA}"
     echo
     echo -e "  This is a package which handles the Proteus App Manager behind"
@@ -2846,7 +2681,7 @@ show_header()
         echo
     fi
 
-    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+    echo -e " ${BLUE}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
     echo
 
     sleep 0.3
@@ -3930,7 +3765,7 @@ EOF
 
         echo -e "  ${WHITE}Git Pull: ${YELLOW3}${git_pull}${END}"
         echo
-        echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+        echo -e " ${BLUE}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
         echo
 
         # git add -A, --all     stages all changes
@@ -3998,11 +3833,11 @@ app_run_gh_end()
         app_run_github_precheck
 
         echo
-        echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+        echo -e " ${BLUE}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
         echo
         echo -e "  ${GREY2}Updating Github: $app_repo_branch${WHITE}"
         echo
-        echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+        echo -e " ${BLUE}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
         echo
 
         #   must have at least one commit for this to work
@@ -4174,11 +4009,11 @@ app_start()
     printf "%-57s %-15s\n\n\n\n" "${TIME}      ${elapsed}" | tee -a "${LOGS_FILE}" >/dev/null
 
     echo
-    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+    echo -e " ${BLUE}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
     echo
     echo -e "  ${GREY2}Total Execution Time: $elapsed${WHITE}"
     echo
-    echo -e " ${BLUE}---------------------------------------------------------------------------------------------------${END}"
+    echo -e " ${BLUE}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${END}"
     echo
 
     sleep 10
