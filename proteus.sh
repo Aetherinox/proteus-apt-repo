@@ -528,7 +528,7 @@ get_version_compare_gt()
 
 error_missing_file_base()
 {
-    file_base_path="Unknown"
+    local file_base_path="Unknown"
     if [ "${mode_clevis}" = true ]; then
         file_base_path="${path_file_secret_base}"
     else
@@ -569,7 +569,7 @@ error_missing_file_base()
 
 error_missing_value_gpg()
 {
-    file_base_path="Unknown"
+    local file_base_path="Unknown"
     if [ "${mode_clevis}" = true ]; then
         file_base_path="${path_file_secret_base}"
     else
@@ -649,7 +649,7 @@ opt_report()
 
     sleep 0.3
 
-    file_base_path="Missing"
+    local file_base_path="Missing"
     var_clevis_status='Disabled'
     if [ "${mode_clevis}" = true ]; then
         file_base_path="${path_file_secret_base}"
