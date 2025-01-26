@@ -3043,9 +3043,12 @@ app_setup()
 
     else
         gpg_id=$( gpg --list-secret-keys --keyid-format=long | grep $GPG_KEY )
+    
+        echo -e "  ${GREEN}OK           ${END}Found GPG key ${BLUE2}${gpg_id}${END}"
+    
         if [[ $? == 0 ]]; then 
             echo -e
-            echo -e "  ${WHITE}GPG key ${GREEN}${GPG_KEY}${END} found."
+            echo -e "  ${GREEN}OK           ${END}Loading GPG key ${BLUE2}${gpg_id}${END}"
             echo -e
 
             bGPGLoaded=true
@@ -3053,10 +3056,10 @@ app_setup()
             sleep 5
         else
             echo -e
-            echo -e "  ${ORANGE}Error${WHITE}"
+            echo -e "  ${ORANGE}Error${END}"
             echo -e "  "
-            echo -e "  ${WHITE}Specified GPG key ${YELLOW}${GPG_KEY}${END} not found in GnuPG key store."
-            echo -e "  ${WHITE}Searching ${YELLOW}${app_dir}/${app_dir_gpg}/${END} for a GPG key to import."
+            echo -e "  ${END}Specified GPG key ${YELLOW}${GPG_KEY}${END} not found in GnuPG key store."
+            echo -e "  ${END}Searching ${YELLOW}${app_dir}/${app_dir_gpg}/${END} for a GPG key to import."
             echo -e
 
             sleep 1
@@ -3071,7 +3074,7 @@ app_setup()
                 bGPGLoaded=true
 
                 echo -e
-                echo -e "  ${WHITE}Found ${YELLOW}${app_dir}/${app_dir_gpg}/${gpg_file}${END} to import."
+                echo -e "  ${GREEN}OK           ${END}Found ${YELLOW}${app_dir}/${app_dir_gpg}/${gpg_file}${END} to import.${END}"
                 echo -e
 
             # #
@@ -3084,7 +3087,7 @@ app_setup()
                 bGPGLoaded=true
 
                 echo -e
-                echo -e "  ${WHITE}Found ${YELLOW}${app_dir}/${app_dir_gpg}/${gpg_file}${END} to import."
+                echo -e "  ${GREEN}OK           ${END}Found ${YELLOW}${app_dir}/${app_dir_gpg}/${gpg_file}${END} to import.${END}"
                 echo -e
 
             # #
@@ -3094,7 +3097,7 @@ app_setup()
             else
                 if [ -z "${OPT_DLPKG_ONLY_TEST}" ]; then
                     echo -e
-                    echo -e "  ${WHITE}No GPG keys found to import. ${RED}Aborting${END}"
+                    echo -e "  ${RED2}ERROR        ${END}No GPG keys found to import. ${RED}Aborting${END}"
                     echo -e
 
                     set +m
@@ -3103,7 +3106,7 @@ app_setup()
                     set -m
                 else
                     echo -e
-                    echo -e "  ${WHITE}No GPG keys found to import. Since you are in ${YELLOW}--onlyTest${END} mode, ${YELLOW}Skipping${END}"
+                    echo -e "  ${RED2}WARN         ${END}No GPG keys found to import. Since you are in ${YELLOW}--onlyTest${END} mode, ${YELLOW}Skipping}${END}"
                     echo -e
                 fi
             fi
