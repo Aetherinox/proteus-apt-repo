@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `01.25.2025 01:24:33`
+Last generated on `01.26.2025 17:39:21`
 
 <br />
 
@@ -177,7 +177,7 @@ Last generated on `01.25.2025 01:24:33`
 │       │   │   ├── php-bacon-qr-code_2.0.8-2_amd64.deb
 │       │   │   └── php-bacon-qr-code_2.0.8-2_arm64.deb
 │       │   └── bitwarden
-│       │       └── bitwarden_2025.1.2_amd64.deb
+│       │       └── bitwarden_2025.1.3_amd64.deb
 │       ├── c
 │       │   └── clevis
 │       │       ├── clevis_18-1ubuntu1_amd64.deb
@@ -1214,6 +1214,10 @@ Last generated on `01.25.2025 01:24:33`
 │       └── z
 │           └── zorin-pro-layouts
 │               └── zorin-pro-layouts_1.0.0-3_all.deb
+├── .secrets
+│   ├── .passwd
+│   ├── .pat_github
+│   └── .pat_gitlab
 ├── .gitattributes
 ├── .gitignore
 ├── proteus.sh
@@ -1221,5 +1225,5 @@ Last generated on `01.25.2025 01:24:33`
 ├── secrets.sh
 └── tree.md
 
-197 directories, 1014 files
+198 directories, 1017 files
 ```
