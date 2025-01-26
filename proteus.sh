@@ -746,6 +746,7 @@ opt_report()
 
     sleep 0.3
 
+    local secrets_mode=$(get_mode)
     local file_base_path="Missing"
     var_clevis_status='Disabled'
     if [ "${mode_clevis}" = true ]; then
@@ -802,7 +803,7 @@ opt_report()
     printf "%-5s %-40s %-40s %-40s\n" "" "${BLUE2}⚙️  Script" "${END}${app_file_this}" "${END}"
     printf "%-5s %-40s %-40s %-40s\n" "" "${BLUE2}⚙️  Path" "${END}${app_dir}" "${END}"
     printf "%-5s %-40s %-40s %-40s\n" "" "${BLUE2}⚙️  Version" "${END}v$(get_version)" "${END}"
-    printf "%-5s %-40s %-40s %-40s\n" "" "${BLUE2}⚙️  Secret Mode" "${END}${Val_SecretMode}" "${END}"
+    printf "%-5s %-40s %-40s %-40s\n" "" "${BLUE2}⚙️  Secret Mode" "${END}${secrets_mode}" "${END}"
     printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📦 Packages (Apt)" "${END}${Val_Pkgs_Aptget}" "${END}"
     printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📦 Packages (Github)" "${END}${Val_Pkgs_Github}" "${END}"
     printf "%-5s %-37s %-40s %-40s\n" "" "${BLUE2}📦 Architectures" "${END}${Val_Pkgs_Arch}" "${END}"
@@ -910,6 +911,132 @@ opt_report()
 
     exit 1
 }
+
+# #
+#   command-line options
+#
+#   reminder that any functions which need executed must be defined BEFORE
+#   this point. Bash sucks like that.
+#
+#   --dev           show advanced printing
+#
+#   --dist          specifies a specific distribution
+#                   jammy, lunar, focal, noble, etc
+#
+#   --setup         installs all required dependencies for proteus script
+#                   apt-move, apt-url, curl, wget, tree, reprepro, lastversion
+#
+#   --gpg           adds new entries to "${HOME}/.gnupg/gpg-agent.conf"
+#
+#   --onlyTest      downloads packages from both apt-get and LastVersion
+#                   does not push packages to Github proteus repo
+#
+#   --onlyGithub    only downloads packages from github using LastVersion
+#                   does not download packages from apt-get
+#
+#   --onlyAptget    only downloads packages from apt-get
+#                   does not download packages from github using LastVersion
+#
+#   --help          show help and usage information
+#
+#   --branch        used in combination with --update
+#                   used to install proteus apt script from another github
+#                   branch such as development branch
+#
+#   --nullrun       used for testing functionality
+#                   does not download packages
+#                   does not modify file permissions
+#                   does not add packages to reprepro
+#                   does not push changes to github
+#
+#   --quiet         no logs output to pipe file
+#
+#   --update        downloads the latest proteus script to local folder
+#
+#   --version       display version information
+# #
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -d|--dev)
+            OPT_DEV_ENABLE=true
+            echo -e "  ${FUCHSIA1}${BLINK}Devmode Enabled${END}"
+            ;;
+
+    -dd*|--dist*)
+            if [[ "$1" != *=* ]]; then shift; fi
+            OPT_DISTRIBUTION="${1#*=}"
+            if [ -z "${OPT_DISTRIBUTION}" ]; then
+                echo -e "  ${END}Must specify a valid distribution"
+                echo -e "  ${END}      Default:  ${YELLOW}${sys_code}${END}"
+
+                exit 1
+            fi
+            ;;
+
+    -s*|--setup*)
+            app_setup
+            ;;
+
+    -t*|--onlyTest*)
+            OPT_DLPKG_ONLY_TEST=true
+            ;;
+
+    -g*|--onlyGithub*)
+            OPT_DLPKG_ONLY_LASTVER=true
+            ;;
+
+    -p*|--onlyAptget*)
+            OPT_DL_ONLY_APTGET=true
+            ;;
+
+    -h*|--help*)
+            opt_usage
+            ;;
+
+    -r*|--report*)
+            opt_report
+            ;;
+
+    -b*|--branch*)
+            if [[ "$1" != *=* ]]; then shift; fi
+            OPT_BRANCH="${1#*=}"
+            if [ -z "${OPT_BRANCH}" ]; then
+                echo -e "  ${END}Must specify a valid branch"
+                echo -e "  ${END}      Default:  ${YELLOW}${app_repo_branch}${END}"
+
+                exit 1
+            fi
+            ;;
+
+    -n|--nullrun)
+            OPT_DEV_NULLRUN=true
+            echo -e "  ${FUCHSIA1}${BLINK}Devnull Enabled${END}"
+            ;;
+
+    -q|--quiet)
+            OPT_NOLOG=true
+            echo -e "  ${FUCHSIA1}${BLINK}Logging Disabled{END}"
+            ;;
+
+    -u|--update)
+            OPT_UPDATE=true
+            ;;
+
+    -v|--version)
+            echo
+            echo -e "  ${GREEN}${BOLD}${app_title}${END} - v$(get_version)${END}"
+            echo -e "  ${GREY2}${BOLD}${app_repo_url}${END}"
+            echo -e "  ${GREY2}${BOLD}${SYS_OS} | ${SYS_OS_VER}${END}"
+            echo
+            exit 1
+            ;;
+    *)
+            opt_usage
+            ;;
+  esac
+  shift
+done
 
 # #
 #   Bash Logging > Disable
@@ -1054,39 +1181,41 @@ if [ -f "${path_usr_local_bin}/${app_file_bin_bws}" ] && [ -n "${BWS_ACCESS_TOKE
     #       gitlab pat
     # #
 
-    CSI_PAT_GITLAB_ID=$(bws secret list | jq -r ". | map(select(.key == \"CSI_PAT_GITLAB\").id)[0]")
+    if [ -z "$CSI_PAT_GITHUB" ]; then
+        CSI_PAT_GITLAB_ID=$(bws secret list | jq -r ". | map(select(.key == \"CSI_PAT_GITLAB\").id)[0]")
 
-    if [ -z "${CSI_PAT_GITLAB_ID}" ] || [ "${CSI_PAT_GITLAB_ID}" == "null" ]; then
-        echo
-        echo -e "  ${ORANGE}WARNING      ${WHITE}Missing CSI_PAT_GITLAB_ID${END}"
-        echo -e "               Could not locate the id ${GREEN}CSI_PAT_GITLAB_ID${END} in Bitwarden Secrets Manager CLI${END}"
-        echo -e
-        echo -e "               Script will now try other ways of obtaining your secrets${END}"
-        echo
-    elif [ "${OPT_VERBOSE_ENABLE}" = true ]; then
-        echo -e "  ${NAVY}DEV          ${END}+ var ${NAVY}\$CSI_PAT_GITLAB_ID${END} with value ${GREEN}${CSI_PAT_GITLAB_ID}${END}"
-    fi
+        if [ -z "${CSI_PAT_GITLAB_ID}" ] || [ "${CSI_PAT_GITLAB_ID}" == "null" ]; then
+            echo
+            echo -e "  ${ORANGE}WARNING      ${WHITE}Missing CSI_PAT_GITLAB_ID${END}"
+            echo -e "               Could not locate the id ${GREEN}CSI_PAT_GITLAB_ID${END} in Bitwarden Secrets Manager CLI${END}"
+            echo -e
+            echo -e "               Script will now try other ways of obtaining your secrets${END}"
+            echo
+        elif [ "${OPT_VERBOSE_ENABLE}" = true ]; then
+            echo -e "  ${NAVY}DEV          ${END}+ var ${NAVY}\$CSI_PAT_GITLAB_ID${END} with value ${GREEN}${CSI_PAT_GITLAB_ID}${END}"
+        fi
 
-    # #
-    #   SECRETS > METHOD > BWS
-    #       gitlab pat
-    # #
+        # #
+        #   SECRETS > METHOD > BWS
+        #       gitlab pat
+        # #
 
-    CSI_PAT_GITLAB=$(bws secret get $CSI_PAT_GITLAB_ID | jq -r ".value")
+        CSI_PAT_GITLAB=$(bws secret get $CSI_PAT_GITLAB_ID | jq -r ".value")
 
-    if [ -z "${CSI_PAT_GITLAB}" ]; then
-        echo
-        echo -e "  ${ORANGE}WARNING      ${WHITE}Missing CSI_PAT_GITLAB${END}"
-        echo -e "               Could not locate the env var ${GREEN}CSI_PAT_GITLAB${END} in Bitwarden Secrets Manager CLI${END}"
-        echo -e
-        echo -e "               Script will now try other ways of obtaining your secrets${END}"
-        echo
-    elif [ "${OPT_VERBOSE_ENABLE}" = true ]; then
-        echo -e "  ${NAVY}DEV          ${END}+ var ${NAVY}\$CSI_PAT_GITLAB${END} with value ${GREEN}${CSI_PAT_GITLAB}${END}"
-    fi
+        if [ -z "${CSI_PAT_GITLAB}" ]; then
+            echo
+            echo -e "  ${ORANGE}WARNING      ${WHITE}Missing CSI_PAT_GITLAB${END}"
+            echo -e "               Could not locate the env var ${GREEN}CSI_PAT_GITLAB${END} in Bitwarden Secrets Manager CLI${END}"
+            echo -e
+            echo -e "               Script will now try other ways of obtaining your secrets${END}"
+            echo
+        elif [ "${OPT_VERBOSE_ENABLE}" = true ]; then
+            echo -e "  ${NAVY}DEV          ${END}+ var ${NAVY}\$CSI_PAT_GITLAB${END} with value ${GREEN}${CSI_PAT_GITLAB}${END}"
+        fi
 
-    if [ -n "${CSI_PAT_GITLAB}" ]; then
-        export GITLAB_PA_TOKEN=${CSI_PAT_GITLAB}
+        if [ -n "${CSI_PAT_GITLAB}" ]; then
+            export GITLAB_PA_TOKEN=${CSI_PAT_GITLAB}
+        fi
     fi
 
 # #
@@ -1278,39 +1407,41 @@ elif [ ! -f "${path_usr_local_bin}/${app_file_bin_bws}" ] && [ -n "${BWS_ACCESS_
         #       gitlab pat
         # #
 
-        CSI_PAT_GITLAB_ID=$(bws secret list | jq -r ". | map(select(.key == \"CSI_PAT_GITLAB\").id)[0]")
+        if [ -z "$CSI_PAT_GITHUB" ]; then
+            CSI_PAT_GITLAB_ID=$(bws secret list | jq -r ". | map(select(.key == \"CSI_PAT_GITLAB\").id)[0]")
 
-        if [ -z "${CSI_PAT_GITLAB_ID}" ] || [ "${CSI_PAT_GITLAB_ID}" == "null" ]; then
-            echo
-            echo -e "  ${ORANGE}WARNING      ${WHITE}Missing CSI_PAT_GITLAB_ID${END}"
-            echo -e "               Could not locate the id ${GREEN}CSI_PAT_GITLAB_ID${END} in Bitwarden Secrets Manager CLI${END}"
-            echo -e
-            echo -e "               Script will now try other ways of obtaining your secrets${END}"
-            echo
-        elif [ "${OPT_VERBOSE_ENABLE}" = true ]; then
-            echo -e "  ${NAVY}DEV          ${END}+ var ${NAVY}\$CSI_PAT_GITLAB_ID${END} with value ${GREEN}${CSI_PAT_GITLAB_ID}${END}"
-        fi
+            if [ -z "${CSI_PAT_GITLAB_ID}" ] || [ "${CSI_PAT_GITLAB_ID}" == "null" ]; then
+                echo
+                echo -e "  ${ORANGE}WARNING      ${WHITE}Missing CSI_PAT_GITLAB_ID${END}"
+                echo -e "               Could not locate the id ${GREEN}CSI_PAT_GITLAB_ID${END} in Bitwarden Secrets Manager CLI${END}"
+                echo -e
+                echo -e "               Script will now try other ways of obtaining your secrets${END}"
+                echo
+            elif [ "${OPT_VERBOSE_ENABLE}" = true ]; then
+                echo -e "  ${NAVY}DEV          ${END}+ var ${NAVY}\$CSI_PAT_GITLAB_ID${END} with value ${GREEN}${CSI_PAT_GITLAB_ID}${END}"
+            fi
 
-        # #
-        #   SECRETS > METHOD > BWS
-        #       gitlab pat
-        # #
+            # #
+            #   SECRETS > METHOD > BWS
+            #       gitlab pat
+            # #
 
-        CSI_PAT_GITLAB=$(bws secret get $CSI_PAT_GITLAB_ID | jq -r ".value")
+            CSI_PAT_GITLAB=$(bws secret get $CSI_PAT_GITLAB_ID | jq -r ".value")
 
-        if [ -z "${CSI_PAT_GITLAB}" ]; then
-            echo
-            echo -e "  ${ORANGE}WARNING      ${WHITE}Missing CSI_PAT_GITLAB${END}"
-            echo -e "               Could not locate the env var ${GREEN}CSI_PAT_GITLAB${END} in Bitwarden Secrets Manager CLI${END}"
-            echo -e
-            echo -e "               Script will now try other ways of obtaining your secrets${END}"
-            echo
-        elif [ "${OPT_VERBOSE_ENABLE}" = true ]; then
-            echo -e "  ${NAVY}DEV          ${END}+ var ${NAVY}\$CSI_PAT_GITLAB${END} with value ${GREEN}${CSI_PAT_GITLAB}${END}"
-        fi
+            if [ -z "${CSI_PAT_GITLAB}" ]; then
+                echo
+                echo -e "  ${ORANGE}WARNING      ${WHITE}Missing CSI_PAT_GITLAB${END}"
+                echo -e "               Could not locate the env var ${GREEN}CSI_PAT_GITLAB${END} in Bitwarden Secrets Manager CLI${END}"
+                echo -e
+                echo -e "               Script will now try other ways of obtaining your secrets${END}"
+                echo
+            elif [ "${OPT_VERBOSE_ENABLE}" = true ]; then
+                echo -e "  ${NAVY}DEV          ${END}+ var ${NAVY}\$CSI_PAT_GITLAB${END} with value ${GREEN}${CSI_PAT_GITLAB}${END}"
+            fi
 
-        if [ -n "${CSI_PAT_GITLAB}" ]; then
-            export GITLAB_PA_TOKEN=${CSI_PAT_GITLAB}
+            if [ -n "${CSI_PAT_GITLAB}" ]; then
+                export GITLAB_PA_TOKEN=${CSI_PAT_GITLAB}
+            fi
         fi
 
     else
@@ -4797,131 +4928,5 @@ app_start()
 
     set -o history
 }
-
-# #
-#   command-line options
-#
-#   reminder that any functions which need executed must be defined BEFORE
-#   this point. Bash sucks like that.
-#
-#   --dev           show advanced printing
-#
-#   --dist          specifies a specific distribution
-#                   jammy, lunar, focal, noble, etc
-#
-#   --setup         installs all required dependencies for proteus script
-#                   apt-move, apt-url, curl, wget, tree, reprepro, lastversion
-#
-#   --gpg           adds new entries to "${HOME}/.gnupg/gpg-agent.conf"
-#
-#   --onlyTest      downloads packages from both apt-get and LastVersion
-#                   does not push packages to Github proteus repo
-#
-#   --onlyGithub    only downloads packages from github using LastVersion
-#                   does not download packages from apt-get
-#
-#   --onlyAptget    only downloads packages from apt-get
-#                   does not download packages from github using LastVersion
-#
-#   --help          show help and usage information
-#
-#   --branch        used in combination with --update
-#                   used to install proteus apt script from another github
-#                   branch such as development branch
-#
-#   --nullrun       used for testing functionality
-#                   does not download packages
-#                   does not modify file permissions
-#                   does not add packages to reprepro
-#                   does not push changes to github
-#
-#   --quiet         no logs output to pipe file
-#
-#   --update        downloads the latest proteus script to local folder
-#
-#   --version       display version information
-# #
-
-while [ $# -gt 0 ]; do
-  case "$1" in
-    -d|--dev)
-            OPT_DEV_ENABLE=true
-            echo -e "  ${FUCHSIA1}${BLINK}Devmode Enabled${END}"
-            ;;
-
-    -dd*|--dist*)
-            if [[ "$1" != *=* ]]; then shift; fi
-            OPT_DISTRIBUTION="${1#*=}"
-            if [ -z "${OPT_DISTRIBUTION}" ]; then
-                echo -e "  ${END}Must specify a valid distribution"
-                echo -e "  ${END}      Default:  ${YELLOW}${sys_code}${END}"
-
-                exit 1
-            fi
-            ;;
-
-    -s*|--setup*)
-            app_setup
-            ;;
-
-    -t*|--onlyTest*)
-            OPT_DLPKG_ONLY_TEST=true
-            ;;
-
-    -g*|--onlyGithub*)
-            OPT_DLPKG_ONLY_LASTVER=true
-            ;;
-
-    -p*|--onlyAptget*)
-            OPT_DL_ONLY_APTGET=true
-            ;;
-
-    -h*|--help*)
-            opt_usage
-            ;;
-
-    -r*|--report*)
-            opt_report
-            ;;
-
-    -b*|--branch*)
-            if [[ "$1" != *=* ]]; then shift; fi
-            OPT_BRANCH="${1#*=}"
-            if [ -z "${OPT_BRANCH}" ]; then
-                echo -e "  ${END}Must specify a valid branch"
-                echo -e "  ${END}      Default:  ${YELLOW}${app_repo_branch}${END}"
-
-                exit 1
-            fi
-            ;;
-
-    -n|--nullrun)
-            OPT_DEV_NULLRUN=true
-            echo -e "  ${FUCHSIA1}${BLINK}Devnull Enabled${END}"
-            ;;
-
-    -q|--quiet)
-            OPT_NOLOG=true
-            echo -e "  ${FUCHSIA1}${BLINK}Logging Disabled{END}"
-            ;;
-
-    -u|--update)
-            OPT_UPDATE=true
-            ;;
-
-    -v|--version)
-            echo
-            echo -e "  ${GREEN}${BOLD}${app_title}${END} - v$(get_version)${END}"
-            echo -e "  ${GREY2}${BOLD}${app_repo_url}${END}"
-            echo -e "  ${GREY2}${BOLD}${SYS_OS} | ${SYS_OS_VER}${END}"
-            echo
-            exit 1
-            ;;
-    *)
-            opt_usage
-            ;;
-  esac
-  shift
-done
 
 app_start
