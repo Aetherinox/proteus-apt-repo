@@ -37,10 +37,6 @@
 #   
 # #
 
-##!/bin/bash
-##PATH="/bin:/usr/bin:/sbin:/usr/sbin:${HOME}/bin"
-##echo 
-
 # #
 #   Define > colors
 #
@@ -108,171 +104,6 @@ CSI_GPG_PASSWD=
 
 lst_packages=(
     'adduser'
-    'argon2'
-    'apt-move'
-    'apt-transport-https'
-    'apt-utils'
-    'clevis'
-    'clevis-dracut'
-    'clevis-udisks2'
-    'clevis-tpm2'
-    'dialog'
-    'firefox'
-    'flatpak'
-    'gnome-keyring'
-    'gnome-keysign'
-    'gnome-shell-extension-manager'
-    'git'
-    'gpg'
-    'gpgconf'
-    'gpgv'
-    'jose'
-    'keyutils'
-    'kgpg'
-    'libnginx-mod-http-auth-pam'
-    'libnginx-mod-http-cache-purge'
-    'libnginx-mod-http-dav-ext'
-    'libnginx-mod-http-echo'
-    'libnginx-mod-http-fancyindex'
-    'libnginx-mod-http-geoip'
-    'libnginx-mod-http-headers-more-filter'
-    'libnginx-mod-http-ndk'
-    'libnginx-mod-http-perl'
-    'libnginx-mod-http-subs-filter'
-    'libnginx-mod-http-uploadprogress'
-    'libnginx-mod-http-upstream-fair'
-    'libnginx-mod-nchan'
-    'libnginx-mod-rtmp'
-    'libnginx-mod-stream-geoip'
-    'lintian'
-    'lsb-base'
-    'lz4'
-    'mysql-client'
-    'mysql-common'
-    'mysql-server'
-    'net-tools'
-    'neofetch'
-    'network-manager-config-connectivity-ubuntu'
-    'network-manager-dev'
-    'network-manager-gnome'
-    'network-manager-openvpn-gnome'
-    'network-manager-openvpn'
-    'network-manager-pptp-gnome'
-    'network-manager-pptp'
-    'network-manager'
-    'networkd-dispatcher'
-    'nginx-common'
-    'nginx-confgen'
-    'nginx-core'
-    'nginx-dev'
-    'nginx-doc'
-    'nginx-extras'
-    'nginx-full'
-    'nginx-light'
-    'nginx'
-    'open-vm-tools-desktop'
-    'open-vm-tools-dev'
-    'open-vm-tools'
-    'pass'
-    'php-all-dev'
-    'php-amqp'
-    'php-amqplib'
-    'php-apcu-all-dev'
-    'php-apcu'
-    'php-ast-all-dev'
-    'php-ast'
-    'php-bacon-qr-code'
-    'php-bcmath'
-    'php-brick-math'
-    'php-brick-varexporter'
-    'php-bz2'
-    'php-cas'
-    'php-cgi'
-    'php-cli'
-    'php-code-lts-u2f-php-server'
-    'php-common'
-    'php-crypt-gpg'
-    'php-curl'
-    'php-db'
-    'php-dba'
-    'php-decimal'
-    'php-dev'
-    'php-ds-all-dev'
-    'php-ds'
-    'php-email-validator'
-    'php-embed'
-    'php-enchant'
-    'php-excimer'
-    'php-faker'
-    'php-fpm'
-    'php-fxsl'
-    'php-gd'
-    'php-gearman'
-    'php-gettext-languages'
-    'php-gmagick-all-dev'
-    'php-gmagick'
-    'php-gmp'
-    'php-gnupg-all-dev'
-    'php-gnupg'
-    'php-gnupg'
-    'php-grpc'
-    'php-http'
-    'php-igbinary'
-    'php-imagick'
-    'php-imap'
-    'php-inotify'
-    'php-interbase'
-    'php-intl'
-    'php-ldap'
-    'php-mailparse'
-    'php-maxminddb'
-    'php-mbstring'
-    'php-mcrypt'
-    'php-memcache'
-    'php-memcached'
-    'php-mongodb'
-    'php-msgpack'
-    'php-mysql'
-    'php-oauth'
-    'php-odbc'
-    'php-pcov'
-    'php-pgsql'
-    'php-phpdbg'
-    'php-ps'
-    'php-pspell'
-    'php-psr'
-    'php-raphf'
-    'php-readline'
-    'php-redis'
-    'php-rrd'
-    'php-smbclient'
-    'php-snmp'
-    'php-soap'
-    'php-solr'
-    'php-sqlite3'
-    'php-ssh2'
-    'php-stomp'
-    'php-sybase'
-    'php-tideways'
-    'php-tidy'
-    'php-uopz'
-    'php-uploadprogress'
-    'php-uuid'
-    'php-xdebug'
-    'php-xml'
-    'php-xmlrpc'
-    'php-yac'
-    'php-yaml'
-    'php-zip'
-    'php-zmq'
-    'php'
-    'sks'
-    'snap'
-    'snapd'
-    'tcptrack'
-    'trash-cli'
-    'tree'
-    'wget'
 )
 
 # #
@@ -1048,6 +879,12 @@ set +o history
 #   SECRETS > METHOD > BWS
 #       Found BWS binary, found BWS token
 # #
+
+echo -e printenv
+printenv
+
+echo -e "BWS_ACCESS_TOKEN               $BWS_ACCESS_TOKEN"
+echo -e "Test"
 
 if [ -f "${path_usr_local_bin}/${app_file_bin_bws}" ] && [ -n "${BWS_ACCESS_TOKEN}" ]; then
     echo -e "  ${GREEN}OK           ${GREEN}BWS Mode Activated${END}"
@@ -2181,25 +2018,6 @@ if [ "${OPT_DEV_ENABLE}" = true ]; then
 
     sleep 5
 fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # #
 #   upload to github > precheck
