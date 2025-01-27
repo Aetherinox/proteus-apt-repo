@@ -13790,43 +13790,9 @@
         {"type":"file","name":"mantic.log"}
     ]},
       {"type":"file","name":"proteus-012625.log"},
-      {"type":"fifo","name":"proteus-012625.log.pipe"},
-      {"type":"file","name":"proteus-git-service-010125.log"},
-      {"type":"file","name":"proteus-git-service-012425.log"},
-      {"type":"file","name":"proteus-git-service-012525.log"},
-      {"type":"file","name":"proteus-git-service-112924.log"},
-      {"type":"file","name":"proteus-git-service-113024.log"},
-      {"type":"file","name":"proteus-git-service-120124.log"},
-      {"type":"file","name":"proteus-git-service-120224.log"},
-      {"type":"file","name":"proteus-git-service-120324.log"},
-      {"type":"file","name":"proteus-git-service-120424.log"},
-      {"type":"file","name":"proteus-git-service-120524.log"},
-      {"type":"file","name":"proteus-git-service-120624.log"},
-      {"type":"file","name":"proteus-git-service-120724.log"},
-      {"type":"file","name":"proteus-git-service-120824.log"},
-      {"type":"file","name":"proteus-git-service-120924.log"},
-      {"type":"file","name":"proteus-git-service-121024.log"},
-      {"type":"file","name":"proteus-git-service-121124.log"},
-      {"type":"file","name":"proteus-git-service-121224.log"},
-      {"type":"file","name":"proteus-git-service-121324.log"},
-      {"type":"file","name":"proteus-git-service-121424.log"},
-      {"type":"file","name":"proteus-git-service-121524.log"},
-      {"type":"file","name":"proteus-git-service-121624.log"},
-      {"type":"file","name":"proteus-git-service-121724.log"},
-      {"type":"file","name":"proteus-git-service-121824.log"},
-      {"type":"file","name":"proteus-git-service-121924.log"},
-      {"type":"file","name":"proteus-git-service-122024.log"},
-      {"type":"file","name":"proteus-git-service-122124.log"},
-      {"type":"file","name":"proteus-git-service-122224.log"},
-      {"type":"file","name":"proteus-git-service-122324.log"},
-      {"type":"file","name":"proteus-git-service-122424.log"},
-      {"type":"file","name":"proteus-git-service-122524.log"},
-      {"type":"file","name":"proteus-git-service-122624.log"},
-      {"type":"file","name":"proteus-git-service-122724.log"},
-      {"type":"file","name":"proteus-git-service-122824.log"},
-      {"type":"file","name":"proteus-git-service-122924.log"},
-      {"type":"file","name":"proteus-git-service-123024.log"},
-      {"type":"file","name":"proteus-git-service-123124.log"}
+      {"type":"file","name":"proteus-012725.log"},
+      {"type":"fifo","name":"proteus-012725.log.pipe"},
+      {"type":"file","name":"proteus-service-012625.log"}
   ]},
     {"type":"directory","name":"pool","contents":[
       {"type":"directory","name":"main","contents":[
@@ -15078,5 +15044,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":260,"files":14559}
+  {"type":"report","directories":260,"files":14525}
 ]
