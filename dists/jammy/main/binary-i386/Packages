@@ -150,20 +150,20 @@ Description: Script to "manage" .deb installs from 3rd party vendors/projects
  projects.
 
 Package: firefox
-Version: 134.0.2~build1
+Version: 135.0~build2
 Architecture: i386
-Maintainer: Mozilla Releng <release@mozilla.com>
-Installed-Size: 270833
+Maintainer: Mozilla <release@mozilla.com>
+Installed-Size: 275738
 Depends: libasound2 (>= 1.0.16), libatk1.0-0 (>= 1.12.4), libc6 (>= 2.18), libcairo-gobject2 (>= 1.10.0), libcairo2 (>= 1.10.0), libdbus-1-3 (>= 1.5.12), libfontconfig1 (>= 2.11), libfreetype6 (>= 2.3.5), libgcc1 (>= 1:4.1.1), libgdk-pixbuf2.0-0 (>= 2.22.0) | libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.37.0), libgtk-3-0 (>= 3.13.7), libpango-1.0-0 (>= 1.14.0), libpangocairo-1.0-0 (>= 1.14.0), libstdc++6 (>= 4.8), libx11-6, libx11-xcb1, libxcb-shm0, libxcb1, libxcomposite1 (>= 1:0.3-1), libxcursor1 (>> 1.1.2), libxdamage1 (>= 1:1.1), libxext6, libxfixes3, libxi6, libxrandr2 (>= 2:1.4.0), libxrender1
 Provides: gnome-www-browser, www-browser
 Priority: 0
 Section: utils
-Filename: pool/main/f/firefox/firefox_134.0.2~build1_i386.deb
-Size: 75602106
-SHA512: c95a7c6ac79e6c1b2a4c9c30e3ea5a8ec73768f3bee3f45cf1776e7873f4f675cb1d5dd82f277f837d6fa240b2930c22b98e9d180847f4f15e833089a6e12732
-SHA256: 4f5fe02a52186f5c103692a4b40424e1d6ca9ec774b6b61d211e59785cf76a6a
-SHA1: 6758eda5393d651e2b98dbaa5b311320dba1db88
-MD5sum: 8ce3aeb83216f03efbac13a8794fc67d
+Filename: pool/main/f/firefox/firefox_135.0~build2_i386.deb
+Size: 76899116
+SHA512: 1c3f662d5a797970a9128edf620e1f1126be8efcd8279e34b16a55e11fe98d657a89e36f9127adc531573ff86deddc3657261a5e38a3dfaad7822f6cafca6972
+SHA256: 866fe0de5e87b3d67a1223c12b35b29351c371955719bb37069b7a589606cfbd
+SHA1: b0f085e9e4ead61ba05b20f325bf0427c21bad71
+MD5sum: 8dd8e7e5e42bf6b2e7e947e3fbb433cb
 Description: Mozilla Firefox
 
 Package: git
@@ -456,7 +456,7 @@ Original-Maintainer: Nobuhiro Iwamatsu <iwamatsu@debian.org>
 
 Package: mysql-client
 Source: mysql-8.0
-Version: 8.0.40-0ubuntu0.22.04.1
+Version: 8.0.41-0ubuntu0.22.04.1
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 35
@@ -464,12 +464,12 @@ Depends: mysql-client-8.0
 Homepage: http://dev.mysql.com/
 Priority: 0
 Section: utils
-Filename: pool/main/m/mysql-8.0/mysql-client_8.0.40-0ubuntu0.22.04.1_all.deb
-Size: 9356
-SHA512: f0e315c6607ae1ed05d7c9cf4c2e32ee16c49129039ff3e5294f2a2f5a25a1b8fcff82eb9e58559c5dac9a239b234584e3c0654a6597e17162bc91336747db3f
-SHA256: 2b62f51b77db2e1c8d82ec76493a499e120ca35f223a82c5ee03ea89a18fdaec
-SHA1: b4cfa68f48b0f27d34567c2c516ccabd2dc9f588
-MD5sum: fd59140c1de94261a765de8753594d37
+Filename: pool/main/m/mysql-8.0/mysql-client_8.0.41-0ubuntu0.22.04.1_all.deb
+Size: 9352
+SHA512: 80e47c90dc0df623ba25bf95a88e066286c137c8b2254ff5e9c90b2a24bcd4c5b11207545fb0589ac84b896fcb52a2d2f4d85f9a8734951036dd1eae6bcb4b55
+SHA256: 32416fe4b6f678e1debadf77339bbfbf7e5d50c4cde36359e2a0842ad951372d
+SHA1: 50db15188308649f88eb2840ca8fb4cc955fceb9
+MD5sum: 2f1092d1f861bd12a44076572c1401c8
 Description: MySQL database client (metapackage depending on the latest version)
  This is an empty package that depends on the current "best" version of
  mysql-client (currently mysql-client-8.0), as determined by the MySQL
@@ -509,7 +509,7 @@ Description: MySQL database common files, e.g. /etc/mysql/my.cnf
 
 Package: mysql-server
 Source: mysql-8.0
-Version: 8.0.40-0ubuntu0.22.04.1
+Version: 8.0.41-0ubuntu0.22.04.1
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 35
@@ -517,12 +517,12 @@ Depends: mysql-server-8.0
 Homepage: http://dev.mysql.com/
 Priority: 0
 Section: utils
-Filename: pool/main/m/mysql-8.0/mysql-server_8.0.40-0ubuntu0.22.04.1_all.deb
-Size: 9464
-SHA512: a2c4c438f0fe45ed7f2d3f7db396b575901c8c46d61a392b0a57c277bdb44d4d396bf0bb57f265bce175b446fd4a66b197f0ff1829a62bd9827d99beacd34820
-SHA256: 57ec949b9b2bc47530119248b1431a785575c48a72f1e8277d1d5b666d64ce98
-SHA1: ffdca9d1e25fcd496b05d0024ab3aee2bfeda9d4
-MD5sum: 29501b9a3b8b97cd32fdd4b56df5dc3b
+Filename: pool/main/m/mysql-8.0/mysql-server_8.0.41-0ubuntu0.22.04.1_all.deb
+Size: 9460
+SHA512: 19da1cc77faee8260ca73e07f340d7fb5167a1e5241701e6cbf0e92e1cca8de1d27da2d0a2bf86fdccf85b2b204120cc282084b0b8d27a5312a8acc2d94c3f9d
+SHA256: 318d886ba1d2f90f34cf8b91691b07907c28a556aa0ae503bbf871e73a309f20
+SHA1: c003028415201cabc10c67ec3aa8d7821b2c5171
+MD5sum: 1aeb0aa0168084c49bac93a5bd673673
 Description: MySQL database server (metapackage depending on the latest version)
  This is an empty package that depends on the current "best" version of
  mysql-server (currently mysql-server-8.0), as determined by the MySQL
@@ -587,21 +587,21 @@ Original-Maintainer: net-tools Team <team+net-tools@tracker.debian.org>
 
 Package: network-manager-config-connectivity-ubuntu
 Source: network-manager
-Version: 1.36.6-0ubuntu2
+Version: 1.36.6-0ubuntu2.1
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 53
-Depends: network-manager (>= 1.36.6-0ubuntu2)
+Depends: network-manager (>= 1.36.6-0ubuntu2.1)
 Multi-Arch: foreign
 Homepage: https://wiki.gnome.org/Projects/NetworkManager
 Priority: 0
 Section: utils
-Filename: pool/main/n/network-manager/network-manager-config-connectivity-ubuntu_1.36.6-0ubuntu2_all.deb
-Size: 2234
-SHA512: 2d9789f92aa3269abfee83e806a2cb9f3b1eee7b79b4c6c2c91f47a2f55b1ffe99e5084d4ef1b655df2b06828038083b372da955b4161a6f055d98259a998ad7
-SHA256: 832d842eee8270b5663d8686d4c6187c4ddadd79a71f71af86e029f19bb4482e
-SHA1: dd159efb9d4372cdc9fbd021755e5a360260687c
-MD5sum: 773440b8c0d228fa5e67440091a5526b
+Filename: pool/main/n/network-manager/network-manager-config-connectivity-ubuntu_1.36.6-0ubuntu2.1_all.deb
+Size: 2238
+SHA512: d70200bb1fadb27516aa4168cf30be724409a9665762d01f0c34d15154ef9da9624efd90b542a2040d1f5f85104d70354ec680592f534a4e49dfe766286fcdac
+SHA256: fbe4090949cb830f2d5e6577365fa5083f5a71ee82582b760ff31b2aa020a3ae
+SHA1: e36717d321a0121b2eab42f24cfce7225f072010
+MD5sum: 248b0b6ac6ff8c27dadf74fdd34569e5
 Description: NetworkManager configuration to enable connectivity checking
  This package contains a configuration file which enables NetworkManager's
  connectivity checking functionality.
@@ -618,7 +618,7 @@ Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.aliot
 
 Package: network-manager-dev
 Source: network-manager
-Version: 1.36.6-0ubuntu2
+Version: 1.36.6-0ubuntu2.1
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 2418
@@ -626,12 +626,12 @@ Multi-Arch: foreign
 Homepage: https://wiki.gnome.org/Projects/NetworkManager
 Priority: 0
 Section: utils
-Filename: pool/main/n/network-manager/network-manager-dev_1.36.6-0ubuntu2_all.deb
-Size: 203654
-SHA512: ee769c6e5d215b826fcb7d54a3fe24ead656abc392755ed43d56daf86702370f02bba87fdc389251ec72a61f9eee2dd51733c2cea53ce61782574464e0cdd40f
-SHA256: fec3568d3115ce0201f47c940a86e6efb8edb3d35020aa40dc558bce866af91a
-SHA1: fda14ac6497641ebdbc98e0a609e16b46c4284ec
-MD5sum: 25dfa4f54b3d7cabf445a24da80797a2
+Filename: pool/main/n/network-manager/network-manager-dev_1.36.6-0ubuntu2.1_all.deb
+Size: 203810
+SHA512: 436460b0e2ffb446e3e1f8cf68172669f1f45fca0c36bf5cfbb47713dbda4ee8f40058a05e0391e31fda926c52a7eaf3384653e960e7b5fdf45414bc6aed0602
+SHA256: 709d072c9686f7d13af37dc75855123b3c79522d70cb97ed18160984fbab884d
+SHA1: 561bf061e494c8aefde2a2b8800d4e13e1fb819d
+MD5sum: 5b5474708915224d03f0b9ee42c76bbb
 Description: network management framework (development files)
  This package provides documentation of the NetworkManager D-Bus API, the
  configuration formats and command line utilities.

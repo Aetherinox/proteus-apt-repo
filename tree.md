@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `01.27.2025 03:49:08`
+Last generated on `02.13.2025 08:00:00`
 
 <br />
 
@@ -216,7 +216,7 @@ Last generated on `01.27.2025 03:49:08`
 │       │       └── dialog_1.3-20240101-1_amd64.deb
 │       ├── f
 │       │   ├── firefox
-│       │   │   ├── firefox_134.0.2~build1_i386.deb
+│       │   │   ├── firefox_135.0~build2_i386.deb
 │       │   │   ├── firefox_1snap1-0ubuntu2_amd64.deb
 │       │   │   ├── firefox_1snap1-0ubuntu3_amd64.deb
 │       │   │   └── firefox_1snap1-0ubuntu5_amd64.deb
@@ -230,8 +230,8 @@ Last generated on `01.27.2025 03:49:08`
 │       │       ├── freetube_0.21.2_arm64.deb
 │       │       ├── freetube_0.21.3_amd64.deb
 │       │       ├── freetube_0.21.3_arm64.deb
-│       │       ├── freetube_0.22.1_amd64.deb
-│       │       └── freetube_0.22.1_arm64.deb
+│       │       ├── freetube_0.23.1_amd64.deb
+│       │       └── freetube_0.23.1_arm64.deb
 │       ├── g
 │       │   ├── git
 │       │   │   ├── git_2.34.1-1ubuntu1.12_amd64.deb
@@ -240,9 +240,9 @@ Last generated on `01.27.2025 03:49:08`
 │       │   │   ├── git_2.40.1-1ubuntu1.1_amd64.deb
 │       │   │   └── git_2.43.0-1ubuntu7.1_amd64.deb
 │       │   ├── github-desktop
-│       │   │   ├── github-desktop_3.4.2-linux1_arm64.deb
-│       │   │   ├── github-desktop_3.4.8-linux1_amd64.deb
-│       │   │   └── github-desktop_3.4.8-linux1_arm64.deb
+│       │   │   ├── github-desktop_3.4.13-linux1_amd64.deb
+│       │   │   ├── github-desktop_3.4.13-linux1_arm64.deb
+│       │   │   └── github-desktop_3.4.2-linux1_arm64.deb
 │       │   ├── gitkraken-license-pro
 │       │   │   └── gitkraken-license-pro_1.0.0-1_all.deb
 │       │   ├── gnome-keyring
@@ -386,12 +386,12 @@ Last generated on `01.27.2025 03:49:08`
 │       │   ├── mysql-8.0
 │       │   │   ├── mysql-client_8.0.35-0ubuntu0.23.04.1_all.deb
 │       │   │   ├── mysql-client_8.0.37-0ubuntu0.23.10.2_all.deb
-│       │   │   ├── mysql-client_8.0.40-0ubuntu0.22.04.1_all.deb
 │       │   │   ├── mysql-client_8.0.40-0ubuntu0.24.04.1_all.deb
+│       │   │   ├── mysql-client_8.0.41-0ubuntu0.22.04.1_all.deb
 │       │   │   ├── mysql-server_8.0.35-0ubuntu0.23.04.1_all.deb
 │       │   │   ├── mysql-server_8.0.37-0ubuntu0.23.10.2_all.deb
-│       │   │   ├── mysql-server_8.0.40-0ubuntu0.22.04.1_all.deb
-│       │   │   └── mysql-server_8.0.40-0ubuntu0.24.04.1_all.deb
+│       │   │   ├── mysql-server_8.0.40-0ubuntu0.24.04.1_all.deb
+│       │   │   └── mysql-server_8.0.41-0ubuntu0.22.04.1_all.deb
 │       │   └── mysql-defaults
 │       │       ├── mysql-common_5.8+1.0.8_all.deb
 │       │       ├── mysql-common_5.8+1.1.0_all.deb
@@ -411,16 +411,16 @@ Last generated on `01.27.2025 03:49:08`
 │       │   │   ├── networkd-dispatcher_2.2.3-1_all.deb
 │       │   │   └── networkd-dispatcher_2.2.4-1_all.deb
 │       │   ├── network-manager
-│       │   │   ├── network-manager_1.36.6-0ubuntu2_amd64.deb
+│       │   │   ├── network-manager_1.36.6-0ubuntu2.1_amd64.deb
 │       │   │   ├── network-manager_1.42.4-1ubuntu2_amd64.deb
 │       │   │   ├── network-manager_1.42.4-1ubuntu2_arm64.deb
 │       │   │   ├── network-manager_1.44.2-1ubuntu1.2_amd64.deb
 │       │   │   ├── network-manager_1.46.0-1ubuntu2.2_amd64.deb
-│       │   │   ├── network-manager-config-connectivity-ubuntu_1.36.6-0ubuntu2_all.deb
+│       │   │   ├── network-manager-config-connectivity-ubuntu_1.36.6-0ubuntu2.1_all.deb
 │       │   │   ├── network-manager-config-connectivity-ubuntu_1.42.4-1ubuntu2_all.deb
 │       │   │   ├── network-manager-config-connectivity-ubuntu_1.44.2-1ubuntu1.2_all.deb
 │       │   │   ├── network-manager-config-connectivity-ubuntu_1.46.0-1ubuntu2.2_all.deb
-│       │   │   ├── network-manager-dev_1.36.6-0ubuntu2_all.deb
+│       │   │   ├── network-manager-dev_1.36.6-0ubuntu2.1_all.deb
 │       │   │   ├── network-manager-dev_1.42.4-1ubuntu2_all.deb
 │       │   │   ├── network-manager-dev_1.44.2-1ubuntu1.2_all.deb
 │       │   │   └── network-manager-dev_1.46.0-1ubuntu2.2_all.deb
@@ -554,7 +554,7 @@ Last generated on `01.27.2025 03:49:08`
 │       ├── o
 │       │   ├── obsidian
 │       │   │   ├── obsidian_1.6.7_amd64.deb
-│       │   │   └── obsidian_1.7.7_amd64.deb
+│       │   │   └── obsidian_1.8.4_amd64.deb
 │       │   ├── ocs-url
 │       │   │   └── ocs-url_3.1.0-0ubuntu1_amd64.deb
 │       │   ├── opengist
@@ -1218,12 +1218,14 @@ Last generated on `01.27.2025 03:49:08`
 │   ├── .passwd
 │   ├── .pat_github
 │   └── .pat_gitlab
+├── dialog_1.3-20211214-1_amd64.deb.1
 ├── .gitattributes
 ├── .gitignore
 ├── proteus.sh
 ├── README.md
 ├── secrets.sh
+├── trash-cli_0.17.1.14-5build1_all.deb.1
 └── tree.md
 
-198 directories, 1017 files
+198 directories, 1019 files
 ```

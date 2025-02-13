@@ -411,23 +411,23 @@ Description: Application deployment framework for desktop apps
  limited access to resources outside the sandbox.
 
 Package: freetube
-Version: 0.22.1
+Version: 0.23.1
 License: AGPL-3.0-or-later
 Vendor: PrestonN <FreeTubeApp@protonmail.com>
 Architecture: amd64
 Maintainer: PrestonN <FreeTubeApp@protonmail.com>
-Installed-Size: 275451
+Installed-Size: 272162
 Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
 Recommends: libappindicator3-1
 Homepage: https://github.com/FreeTubeApp/FreeTube#readme
 Priority: 0
 Section: utils
-Filename: pool/main/f/freetube/freetube_0.22.1_amd64.deb
-Size: 76861498
-SHA512: 1ba1a74750c185d3fbb825d90d378e427fe32a2e1e61f2299677be457e454248f4df1462f6f46e32122434e7c672776dbff55bdca0e1a6b7d944bec3eb1af0e4
-SHA256: 23316475faeb035ef40e1970e61ef53ee06ce6a4dfb12e0ba790f5f92059b9ae
-SHA1: 06f11d7daf337a23281d0e73b29bad01fbd6909c
-MD5sum: 30ec39ed525d1bd1f0dbe68713614b35
+Filename: pool/main/f/freetube/freetube_0.23.1_amd64.deb
+Size: 76358302
+SHA512: 3bf75a5e29d309cda74f36e3d1e3aa0e8af1bac4e4261ffd2868f9e799dbdd884bafc026771268771c80f54af6fe46692b13bd4c9fff1206cc3a1465d186f2bd
+SHA256: 6d3ca7c2415e0d739ff3140d3368f5f8268d26ee05e514d1969cb86551665775
+SHA1: 46f16e0121740744e3aaa763a5668a493f7f8420
+MD5sum: 027ad046a9ef426cfc63ce928bc6f166
 Description: 
   A private YouTube client
 
@@ -468,22 +468,22 @@ Description: fast, scalable, distributed revision control system
 Original-Maintainer: Jonathan Nieder <jrnieder@gmail.com>
 
 Package: github-desktop
-Version: 3.4.8-linux1
+Version: 3.4.13-linux1
 Architecture: amd64
-Depends: libgtk-3-0, libnotify4, libnss3, libxtst6, xdg-utils, libatspi2.0-0, libdrm2, libgbm1, libxcb-dri3-0, kde-cli-tools | kde-runtime | trash-cli | libglib2.0-bin | gvfs-bin, libcurl3 | libcurl4, libsecret-1-0, gnome-keyring
+Depends: libgtk-3-0, libnotify4, libnss3, xdg-utils, libatspi2.0-0, libdrm2, libgbm1, libxcb-dri3-0, kde-cli-tools | kde-runtime | trash-cli | libglib2.0-bin | gvfs-bin, libcurl3 | libcurl4, libsecret-1-0, gnome-keyring
 Recommends: pulseaudio | libasound2
 Suggests: gir1.2-gnomekeyring-1.0, libgnome-keyring0, lsb-release
-Installed-Size: 441865
+Installed-Size: 452816
 Maintainer: Brendan Forster <github@brendanforster.com>
 Homepage: https://github.com/shiftkey/desktop
 Priority: 0
 Section: utils
-Filename: pool/main/g/github-desktop/github-desktop_3.4.8-linux1_amd64.deb
-Size: 128543116
-SHA512: 484d08450c80eeeea601ec1f5b666867da3aa11649b0b62b0c1ed0a7ded36ba9a7e7420ff9b314367c87a3d53b5ce8d1c213e4dfb55265d0682424b9ffee073e
-SHA256: 20d6813659f3937b3a2e1abb507f0d5c2f051bf99da8c6ab1d42c4af2f3a8495
-SHA1: 54023ed5d99fd34690f83d1d7ea293bd6cef9b07
-MD5sum: 4ad629b031a6ab50a19f47da8e10067e
+Filename: pool/main/g/github-desktop/github-desktop_3.4.13-linux1_amd64.deb
+Size: 130450912
+SHA512: 40a140d9fce5eae10fffc4225426e118db1cebf8bb199ce0fe8d9ec3fcf4600f4903f6f11fcc1a85601fa9b3a28bda85a60b7229ed483db54e93a3b554220d14
+SHA256: 8b5577761c7900cac2896b5fbc1d88f5aea48b6ce771437262be2a66ab38d987
+SHA1: 2a0fe5950562e3bb310c7bc6db4b8814ffb23110
+MD5sum: 098526f2653209ceafab26c6f95a1ccb
 Description: Simple collaboration from your desktop
  This is the unofficial port of GitHub Desktop for Linux distributions
 
@@ -1333,7 +1333,7 @@ Provides: makedeb (= 16.1.0)
 
 Package: mysql-client
 Source: mysql-8.0
-Version: 8.0.40-0ubuntu0.22.04.1
+Version: 8.0.41-0ubuntu0.22.04.1
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 35
@@ -1341,12 +1341,12 @@ Depends: mysql-client-8.0
 Homepage: http://dev.mysql.com/
 Priority: 0
 Section: utils
-Filename: pool/main/m/mysql-8.0/mysql-client_8.0.40-0ubuntu0.22.04.1_all.deb
-Size: 9356
-SHA512: f0e315c6607ae1ed05d7c9cf4c2e32ee16c49129039ff3e5294f2a2f5a25a1b8fcff82eb9e58559c5dac9a239b234584e3c0654a6597e17162bc91336747db3f
-SHA256: 2b62f51b77db2e1c8d82ec76493a499e120ca35f223a82c5ee03ea89a18fdaec
-SHA1: b4cfa68f48b0f27d34567c2c516ccabd2dc9f588
-MD5sum: fd59140c1de94261a765de8753594d37
+Filename: pool/main/m/mysql-8.0/mysql-client_8.0.41-0ubuntu0.22.04.1_all.deb
+Size: 9352
+SHA512: 80e47c90dc0df623ba25bf95a88e066286c137c8b2254ff5e9c90b2a24bcd4c5b11207545fb0589ac84b896fcb52a2d2f4d85f9a8734951036dd1eae6bcb4b55
+SHA256: 32416fe4b6f678e1debadf77339bbfbf7e5d50c4cde36359e2a0842ad951372d
+SHA1: 50db15188308649f88eb2840ca8fb4cc955fceb9
+MD5sum: 2f1092d1f861bd12a44076572c1401c8
 Description: MySQL database client (metapackage depending on the latest version)
  This is an empty package that depends on the current "best" version of
  mysql-client (currently mysql-client-8.0), as determined by the MySQL
@@ -1386,7 +1386,7 @@ Description: MySQL database common files, e.g. /etc/mysql/my.cnf
 
 Package: mysql-server
 Source: mysql-8.0
-Version: 8.0.40-0ubuntu0.22.04.1
+Version: 8.0.41-0ubuntu0.22.04.1
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 35
@@ -1394,12 +1394,12 @@ Depends: mysql-server-8.0
 Homepage: http://dev.mysql.com/
 Priority: 0
 Section: utils
-Filename: pool/main/m/mysql-8.0/mysql-server_8.0.40-0ubuntu0.22.04.1_all.deb
-Size: 9464
-SHA512: a2c4c438f0fe45ed7f2d3f7db396b575901c8c46d61a392b0a57c277bdb44d4d396bf0bb57f265bce175b446fd4a66b197f0ff1829a62bd9827d99beacd34820
-SHA256: 57ec949b9b2bc47530119248b1431a785575c48a72f1e8277d1d5b666d64ce98
-SHA1: ffdca9d1e25fcd496b05d0024ab3aee2bfeda9d4
-MD5sum: 29501b9a3b8b97cd32fdd4b56df5dc3b
+Filename: pool/main/m/mysql-8.0/mysql-server_8.0.41-0ubuntu0.22.04.1_all.deb
+Size: 9460
+SHA512: 19da1cc77faee8260ca73e07f340d7fb5167a1e5241701e6cbf0e92e1cca8de1d27da2d0a2bf86fdccf85b2b204120cc282084b0b8d27a5312a8acc2d94c3f9d
+SHA256: 318d886ba1d2f90f34cf8b91691b07907c28a556aa0ae503bbf871e73a309f20
+SHA1: c003028415201cabc10c67ec3aa8d7821b2c5171
+MD5sum: 1aeb0aa0168084c49bac93a5bd673673
 Description: MySQL database server (metapackage depending on the latest version)
  This is an empty package that depends on the current "best" version of
  mysql-server (currently mysql-server-8.0), as determined by the MySQL
@@ -1463,23 +1463,23 @@ Description: NET-3 networking toolkit
 Original-Maintainer: net-tools Team <team+net-tools@tracker.debian.org>
 
 Package: network-manager
-Version: 1.36.6-0ubuntu2
+Version: 1.36.6-0ubuntu2.1
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Installed-Size: 7232
-Depends: libaudit1 (>= 1:2.2.1), libbluetooth3 (>= 4.91), libc6 (>= 2.34), libcurl3-gnutls (>= 7.24.0), libglib2.0-0 (>= 2.68.0), libgnutls30 (>= 3.7.2), libjansson4 (>= 2.0.1), libmm-glib0 (>= 1.4.0), libndp0 (>= 1.2), libnewt0.52 (>= 0.52.21), libnm0 (= 1.36.6-0ubuntu2), libpsl5 (>= 0.13.0), libreadline8 (>= 6.0), libselinux1 (>= 3.1~), libsystemd0 (>= 209), libteamdctl0 (>= 1.9), libudev1 (>= 183), dbus, isc-dhcp-client, udev, adduser, policykit-1
+Installed-Size: 7236
+Depends: libaudit1 (>= 1:2.2.1), libbluetooth3 (>= 4.91), libc6 (>= 2.34), libcurl3-gnutls (>= 7.24.0), libglib2.0-0 (>= 2.68.0), libgnutls30 (>= 3.7.2), libjansson4 (>= 2.0.1), libmm-glib0 (>= 1.4.0), libndp0 (>= 1.2), libnewt0.52 (>= 0.52.21), libnm0 (= 1.36.6-0ubuntu2.1), libpsl5 (>= 0.13.0), libreadline8 (>= 6.0), libselinux1 (>= 3.1~), libsystemd0 (>= 209), libteamdctl0 (>= 1.9), libudev1 (>= 183), dbus, isc-dhcp-client, udev, adduser, policykit-1
 Recommends: ppp, dnsmasq-base, modemmanager, network-manager-pptp, wireless-regdb, wpasupplicant, libpam-systemd
 Suggests: avahi-autoipd, libteam-utils, iptables
 Breaks: ppp (>= 2.4.9-2~), ppp (<< 2.4.9-1+~)
 Homepage: https://wiki.gnome.org/Projects/NetworkManager
 Priority: 0
 Section: utils
-Filename: pool/main/n/network-manager/network-manager_1.36.6-0ubuntu2_amd64.deb
-Size: 2202818
-SHA512: 5f34d5e798e5693da8f375404485d151e8c8859f81df91c4d61a61d3ae2a51cbae56ca4b232980c0d617c7847ab680af6117c5709e64d7e882edb6963f153282
-SHA256: 1893ffae677e46b8214636818dc8600608b392953f3317a63684a45025cc554f
-SHA1: e03b836dc01ba8fc91b17c4857d2c730097be6e2
-MD5sum: 48d8f221946cb4055637e77d8950246e
+Filename: pool/main/n/network-manager/network-manager_1.36.6-0ubuntu2.1_amd64.deb
+Size: 2202152
+SHA512: 57a14d56d947095a44fa40f72571b3413a2f98ea67e2976b9f2b736142fdb07cdc339b507b9f130a956b2fe205b3863407870ddcecb3eab87efebaca1f34451a
+SHA256: 6de1073742113f9866510f43acd5bf184c489c362b66b5d801b940235e88f7fa
+SHA1: 0a5ccbefa057218080195ec470fc2eab962608c3
+MD5sum: 4b3c48ea90d32d33673b9cd0e715322b
 Description: network management framework (daemon and userspace tools)
  NetworkManager is a system network service that manages your network devices
  and connections, attempting to keep active network connectivity when
@@ -1503,21 +1503,21 @@ Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.aliot
 
 Package: network-manager-config-connectivity-ubuntu
 Source: network-manager
-Version: 1.36.6-0ubuntu2
+Version: 1.36.6-0ubuntu2.1
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 53
-Depends: network-manager (>= 1.36.6-0ubuntu2)
+Depends: network-manager (>= 1.36.6-0ubuntu2.1)
 Multi-Arch: foreign
 Homepage: https://wiki.gnome.org/Projects/NetworkManager
 Priority: 0
 Section: utils
-Filename: pool/main/n/network-manager/network-manager-config-connectivity-ubuntu_1.36.6-0ubuntu2_all.deb
-Size: 2234
-SHA512: 2d9789f92aa3269abfee83e806a2cb9f3b1eee7b79b4c6c2c91f47a2f55b1ffe99e5084d4ef1b655df2b06828038083b372da955b4161a6f055d98259a998ad7
-SHA256: 832d842eee8270b5663d8686d4c6187c4ddadd79a71f71af86e029f19bb4482e
-SHA1: dd159efb9d4372cdc9fbd021755e5a360260687c
-MD5sum: 773440b8c0d228fa5e67440091a5526b
+Filename: pool/main/n/network-manager/network-manager-config-connectivity-ubuntu_1.36.6-0ubuntu2.1_all.deb
+Size: 2238
+SHA512: d70200bb1fadb27516aa4168cf30be724409a9665762d01f0c34d15154ef9da9624efd90b542a2040d1f5f85104d70354ec680592f534a4e49dfe766286fcdac
+SHA256: fbe4090949cb830f2d5e6577365fa5083f5a71ee82582b760ff31b2aa020a3ae
+SHA1: e36717d321a0121b2eab42f24cfce7225f072010
+MD5sum: 248b0b6ac6ff8c27dadf74fdd34569e5
 Description: NetworkManager configuration to enable connectivity checking
  This package contains a configuration file which enables NetworkManager's
  connectivity checking functionality.
@@ -1534,7 +1534,7 @@ Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.aliot
 
 Package: network-manager-dev
 Source: network-manager
-Version: 1.36.6-0ubuntu2
+Version: 1.36.6-0ubuntu2.1
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 2418
@@ -1542,12 +1542,12 @@ Multi-Arch: foreign
 Homepage: https://wiki.gnome.org/Projects/NetworkManager
 Priority: 0
 Section: utils
-Filename: pool/main/n/network-manager/network-manager-dev_1.36.6-0ubuntu2_all.deb
-Size: 203654
-SHA512: ee769c6e5d215b826fcb7d54a3fe24ead656abc392755ed43d56daf86702370f02bba87fdc389251ec72a61f9eee2dd51733c2cea53ce61782574464e0cdd40f
-SHA256: fec3568d3115ce0201f47c940a86e6efb8edb3d35020aa40dc558bce866af91a
-SHA1: fda14ac6497641ebdbc98e0a609e16b46c4284ec
-MD5sum: 25dfa4f54b3d7cabf445a24da80797a2
+Filename: pool/main/n/network-manager/network-manager-dev_1.36.6-0ubuntu2.1_all.deb
+Size: 203810
+SHA512: 436460b0e2ffb446e3e1f8cf68172669f1f45fca0c36bf5cfbb47713dbda4ee8f40058a05e0391e31fda926c52a7eaf3384653e960e7b5fdf45414bc6aed0602
+SHA256: 709d072c9686f7d13af37dc75855123b3c79522d70cb97ed18160984fbab884d
+SHA1: 561bf061e494c8aefde2a2b8800d4e13e1fb819d
+MD5sum: 5b5474708915224d03f0b9ee42c76bbb
 Description: network management framework (development files)
  This package provides documentation of the NetworkManager D-Bus API, the
  configuration formats and command line utilities.
@@ -1989,23 +1989,23 @@ Description: nginx web/proxy server (basic version)
 Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
 
 Package: obsidian
-Version: 1.7.7
+Version: 1.8.4
 License: UNLICENSED
 Vendor: Dynalist Inc.
 Architecture: amd64
 Maintainer: Dynalist Inc.
-Installed-Size: 294395
+Installed-Size: 291633
 Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
 Recommends: libappindicator3-1
 Homepage: https://obsidian.md
 Priority: 0
 Section: utils
-Filename: pool/main/o/obsidian/obsidian_1.7.7_amd64.deb
-Size: 81043738
-SHA512: cd8f95840b8ee2a804cffd516c57502f2af37dc8a3b18578f0b1fee296f686a95d08e81e339ae0b3ca73f00fc8a3631e4ff1057729ed0032ff99380310ad17e8
-SHA256: e41269fa5f120612cb8ba3cbb8a22b1d5c5d9969c4e9b2f9f802fd0141de6a89
-SHA1: 6d11315b26d2b684ffe3a1097e340d54b31c89c3
-MD5sum: 3f5420bddb669d53362d262a96b5c98d
+Filename: pool/main/o/obsidian/obsidian_1.8.4_amd64.deb
+Size: 80570924
+SHA512: bb790e45468fdbdbe097696b6d93bb3edeaa59068df21e32232628fa9478d55873e4b37213c059e18191e4adc6a9b35a235e7194da472ad22628bffd7b948c3c
+SHA256: be35311cf2b48500dfc05c469a0431ebdfbd8a94bca47007136ad5f2b2a21b32
+SHA1: a0bfeef740f769aa9bee320a229ae57ded5294cb
+MD5sum: 204cca3f6df6b469e6590933eeba3581
 Description: 
   Obsidian
 

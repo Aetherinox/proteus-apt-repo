@@ -13525,11 +13525,15 @@
             {"type":"file","name":"lintian_2.114.0ubuntu1.5_all.deb"},
             {"type":"file","name":"lsb-base_11.1.0ubuntu4_all.deb"},
             {"type":"file","name":"mysql-client_8.0.40-0ubuntu0.22.04.1_all.deb"},
+            {"type":"file","name":"mysql-client_8.0.41-0ubuntu0.22.04.1_all.deb"},
             {"type":"file","name":"mysql-common_5.8+1.0.8_all.deb"},
             {"type":"file","name":"mysql-server_8.0.40-0ubuntu0.22.04.1_all.deb"},
+            {"type":"file","name":"mysql-server_8.0.41-0ubuntu0.22.04.1_all.deb"},
             {"type":"file","name":"neofetch_7.1.0-3_all.deb"},
             {"type":"file","name":"networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb"},
+            {"type":"file","name":"network-manager-config-connectivity-ubuntu_1.36.6-0ubuntu2.1_all.deb"},
             {"type":"file","name":"network-manager-config-connectivity-ubuntu_1.36.6-0ubuntu2_all.deb"},
+            {"type":"file","name":"network-manager-dev_1.36.6-0ubuntu2.1_all.deb"},
             {"type":"file","name":"network-manager-dev_1.36.6-0ubuntu2_all.deb"},
             {"type":"file","name":"nginx-common_1.18.0-6ubuntu14.5_all.deb"},
             {"type":"file","name":"nginx-doc_1.18.0-6ubuntu14.5_all.deb"},
@@ -13587,6 +13591,7 @@
             {"type":"file","name":"apt-utils_2.4.13_amd64.deb"},
             {"type":"file","name":"argon2_0~20171227-0.3_amd64.deb"},
             {"type":"file","name":"Bitwarden-2025.1.3-amd64.deb"},
+            {"type":"file","name":"Bitwarden-2025.1.4-amd64.deb"},
             {"type":"file","name":"clevis_18-1ubuntu1_amd64.deb"},
             {"type":"file","name":"clevis-dracut_18-1ubuntu1_amd64.deb"},
             {"type":"file","name":"clevis-tpm2_18-1ubuntu1_amd64.deb"},
@@ -13595,7 +13600,10 @@
             {"type":"file","name":"firefox_1snap1-0ubuntu2_amd64.deb"},
             {"type":"file","name":"flatpak_1.14.10-1~flatpak1~22.04.1_amd64.deb"},
             {"type":"file","name":"freetube_0.22.1_amd64.deb"},
+            {"type":"file","name":"freetube_0.23.0_amd64.deb"},
+            {"type":"file","name":"freetube_0.23.1_amd64.deb"},
             {"type":"file","name":"git_2.34.1-1ubuntu1.12_amd64.deb"},
+            {"type":"file","name":"GitHubDesktop-linux-amd64-3.4.13-linux1.deb"},
             {"type":"file","name":"GitHubDesktop-linux-amd64-3.4.8-linux1.deb"},
             {"type":"file","name":"gnome-keyring_40.0-3ubuntu3_amd64.deb"},
             {"type":"file","name":"gnome-shell-extension-manager_0.3.0-0ubuntu2.1_amd64.deb"},
@@ -13623,6 +13631,7 @@
             {"type":"file","name":"lz4_1.9.3-2build2_amd64.deb"},
             {"type":"file","name":"makedeb-beta_16.1.0-beta1_amd64_jammy.deb"},
             {"type":"file","name":"net-tools_1.60+git20181103.0eebece-1ubuntu5_amd64.deb"},
+            {"type":"file","name":"network-manager_1.36.6-0ubuntu2.1_amd64.deb"},
             {"type":"file","name":"network-manager_1.36.6-0ubuntu2_amd64.deb"},
             {"type":"file","name":"network-manager-gnome_1.24.0-1ubuntu3_amd64.deb"},
             {"type":"file","name":"network-manager-openvpn_1.8.18-1_amd64.deb"},
@@ -13636,6 +13645,8 @@
             {"type":"file","name":"nginx-full_1.18.0-6ubuntu14.5_amd64.deb"},
             {"type":"file","name":"nginx-light_1.18.0-6ubuntu14.5_amd64.deb"},
             {"type":"file","name":"obsidian_1.7.7_amd64.deb"},
+            {"type":"file","name":"obsidian_1.8.3_amd64.deb"},
+            {"type":"file","name":"obsidian_1.8.4_amd64.deb"},
             {"type":"file","name":"open-vm-tools_12.3.5-3~ubuntu0.22.04.1_amd64.deb"},
             {"type":"file","name":"open-vm-tools-desktop_12.3.5-3~ubuntu0.22.04.1_amd64.deb"},
             {"type":"file","name":"open-vm-tools-dev_12.3.5-3~ubuntu0.22.04.1_amd64.deb"},
@@ -13691,6 +13702,9 @@
           {"type":"directory","name":"arm64","contents":[
             {"type":"file","name":"apt-url_1.0.0-2_arm64.deb"},
             {"type":"file","name":"freetube_0.22.1_arm64.deb"},
+            {"type":"file","name":"freetube_0.23.0_arm64.deb"},
+            {"type":"file","name":"freetube_0.23.1_arm64.deb"},
+            {"type":"file","name":"GitHubDesktop-linux-arm64-3.4.13-linux1.deb"},
             {"type":"file","name":"GitHubDesktop-linux-arm64-3.4.8-linux1.deb"},
             {"type":"file","name":"makedeb-beta_16.1.0-beta1_arm64_jammy.deb"}
         ]},
@@ -13698,6 +13712,7 @@
             {"type":"file","name":"apt-utils_2.4.13_i386.deb"},
             {"type":"file","name":"argon2_0~20171227-0.3_i386.deb"},
             {"type":"file","name":"firefox_134.0.2~build1_i386_8ce3aeb83216f03efbac13a8794fc67d.deb"},
+            {"type":"file","name":"firefox_135.0~build2_i386_8dd8e7e5e42bf6b2e7e947e3fbb433cb.deb"},
             {"type":"file","name":"git_2.34.1-1ubuntu1.12_i386.deb"},
             {"type":"file","name":"gpg_2.2.27-3ubuntu2.1_i386.deb"},
             {"type":"file","name":"gpgconf_2.2.27-3ubuntu2.1_i386.deb"},
@@ -13791,8 +13806,43 @@
     ]},
       {"type":"file","name":"proteus-012625.log"},
       {"type":"file","name":"proteus-012725.log"},
-      {"type":"fifo","name":"proteus-012725.log.pipe"},
-      {"type":"file","name":"proteus-service-012625.log"}
+      {"type":"file","name":"proteus-012825.log"},
+      {"type":"file","name":"proteus-012925.log"},
+      {"type":"file","name":"proteus-013025.log"},
+      {"type":"file","name":"proteus-013125.log"},
+      {"type":"file","name":"proteus-020125.log"},
+      {"type":"file","name":"proteus-020225.log"},
+      {"type":"file","name":"proteus-020325.log"},
+      {"type":"file","name":"proteus-020425.log"},
+      {"type":"file","name":"proteus-020525.log"},
+      {"type":"file","name":"proteus-020625.log"},
+      {"type":"file","name":"proteus-020725.log"},
+      {"type":"file","name":"proteus-020825.log"},
+      {"type":"file","name":"proteus-020925.log"},
+      {"type":"file","name":"proteus-021025.log"},
+      {"type":"file","name":"proteus-021125.log"},
+      {"type":"file","name":"proteus-021225.log"},
+      {"type":"file","name":"proteus-021325.log"},
+      {"type":"fifo","name":"proteus-021325.log.pipe"},
+      {"type":"file","name":"proteus-service-012625.log"},
+      {"type":"file","name":"proteus-service-012725.log"},
+      {"type":"file","name":"proteus-service-012825.log"},
+      {"type":"file","name":"proteus-service-012925.log"},
+      {"type":"file","name":"proteus-service-013025.log"},
+      {"type":"file","name":"proteus-service-013125.log"},
+      {"type":"file","name":"proteus-service-020125.log"},
+      {"type":"file","name":"proteus-service-020225.log"},
+      {"type":"file","name":"proteus-service-020325.log"},
+      {"type":"file","name":"proteus-service-020425.log"},
+      {"type":"file","name":"proteus-service-020525.log"},
+      {"type":"file","name":"proteus-service-020625.log"},
+      {"type":"file","name":"proteus-service-020725.log"},
+      {"type":"file","name":"proteus-service-020825.log"},
+      {"type":"file","name":"proteus-service-020925.log"},
+      {"type":"file","name":"proteus-service-021025.log"},
+      {"type":"file","name":"proteus-service-021125.log"},
+      {"type":"file","name":"proteus-service-021225.log"},
+      {"type":"file","name":"proteus-service-021325.log"}
   ]},
     {"type":"directory","name":"pool","contents":[
       {"type":"directory","name":"main","contents":[
@@ -13890,7 +13940,7 @@
       ]},
         {"type":"directory","name":"f","contents":[
           {"type":"directory","name":"firefox","contents":[
-            {"type":"file","name":"firefox_134.0.2~build1_i386.deb"},
+            {"type":"file","name":"firefox_135.0~build2_i386.deb"},
             {"type":"file","name":"firefox_1snap1-0ubuntu2_amd64.deb"},
             {"type":"file","name":"firefox_1snap1-0ubuntu3_amd64.deb"},
             {"type":"file","name":"firefox_1snap1-0ubuntu5_amd64.deb"}
@@ -13906,8 +13956,8 @@
             {"type":"file","name":"freetube_0.21.2_arm64.deb"},
             {"type":"file","name":"freetube_0.21.3_amd64.deb"},
             {"type":"file","name":"freetube_0.21.3_arm64.deb"},
-            {"type":"file","name":"freetube_0.22.1_amd64.deb"},
-            {"type":"file","name":"freetube_0.22.1_arm64.deb"}
+            {"type":"file","name":"freetube_0.23.1_amd64.deb"},
+            {"type":"file","name":"freetube_0.23.1_arm64.deb"}
         ]}
       ]},
         {"type":"directory","name":"g","contents":[
@@ -13919,9 +13969,9 @@
             {"type":"file","name":"git_2.43.0-1ubuntu7.1_amd64.deb"}
         ]},
           {"type":"directory","name":"github-desktop","contents":[
-            {"type":"file","name":"github-desktop_3.4.2-linux1_arm64.deb"},
-            {"type":"file","name":"github-desktop_3.4.8-linux1_amd64.deb"},
-            {"type":"file","name":"github-desktop_3.4.8-linux1_arm64.deb"}
+            {"type":"file","name":"github-desktop_3.4.13-linux1_amd64.deb"},
+            {"type":"file","name":"github-desktop_3.4.13-linux1_arm64.deb"},
+            {"type":"file","name":"github-desktop_3.4.2-linux1_arm64.deb"}
         ]},
           {"type":"directory","name":"gitkraken-license-pro","contents":[
             {"type":"file","name":"gitkraken-license-pro_1.0.0-1_all.deb"}
@@ -14103,12 +14153,12 @@
           {"type":"directory","name":"mysql-8.0","contents":[
             {"type":"file","name":"mysql-client_8.0.35-0ubuntu0.23.04.1_all.deb"},
             {"type":"file","name":"mysql-client_8.0.37-0ubuntu0.23.10.2_all.deb"},
-            {"type":"file","name":"mysql-client_8.0.40-0ubuntu0.22.04.1_all.deb"},
             {"type":"file","name":"mysql-client_8.0.40-0ubuntu0.24.04.1_all.deb"},
+            {"type":"file","name":"mysql-client_8.0.41-0ubuntu0.22.04.1_all.deb"},
             {"type":"file","name":"mysql-server_8.0.35-0ubuntu0.23.04.1_all.deb"},
             {"type":"file","name":"mysql-server_8.0.37-0ubuntu0.23.10.2_all.deb"},
-            {"type":"file","name":"mysql-server_8.0.40-0ubuntu0.22.04.1_all.deb"},
-            {"type":"file","name":"mysql-server_8.0.40-0ubuntu0.24.04.1_all.deb"}
+            {"type":"file","name":"mysql-server_8.0.40-0ubuntu0.24.04.1_all.deb"},
+            {"type":"file","name":"mysql-server_8.0.41-0ubuntu0.22.04.1_all.deb"}
         ]},
           {"type":"directory","name":"mysql-defaults","contents":[
             {"type":"file","name":"mysql-common_5.8+1.0.8_all.deb"},
@@ -14134,16 +14184,16 @@
             {"type":"file","name":"networkd-dispatcher_2.2.4-1_all.deb"}
         ]},
           {"type":"directory","name":"network-manager","contents":[
-            {"type":"file","name":"network-manager_1.36.6-0ubuntu2_amd64.deb"},
+            {"type":"file","name":"network-manager_1.36.6-0ubuntu2.1_amd64.deb"},
             {"type":"file","name":"network-manager_1.42.4-1ubuntu2_amd64.deb"},
             {"type":"file","name":"network-manager_1.42.4-1ubuntu2_arm64.deb"},
             {"type":"file","name":"network-manager_1.44.2-1ubuntu1.2_amd64.deb"},
             {"type":"file","name":"network-manager_1.46.0-1ubuntu2.2_amd64.deb"},
-            {"type":"file","name":"network-manager-config-connectivity-ubuntu_1.36.6-0ubuntu2_all.deb"},
+            {"type":"file","name":"network-manager-config-connectivity-ubuntu_1.36.6-0ubuntu2.1_all.deb"},
             {"type":"file","name":"network-manager-config-connectivity-ubuntu_1.42.4-1ubuntu2_all.deb"},
             {"type":"file","name":"network-manager-config-connectivity-ubuntu_1.44.2-1ubuntu1.2_all.deb"},
             {"type":"file","name":"network-manager-config-connectivity-ubuntu_1.46.0-1ubuntu2.2_all.deb"},
-            {"type":"file","name":"network-manager-dev_1.36.6-0ubuntu2_all.deb"},
+            {"type":"file","name":"network-manager-dev_1.36.6-0ubuntu2.1_all.deb"},
             {"type":"file","name":"network-manager-dev_1.42.4-1ubuntu2_all.deb"},
             {"type":"file","name":"network-manager-dev_1.44.2-1ubuntu1.2_all.deb"},
             {"type":"file","name":"network-manager-dev_1.46.0-1ubuntu2.2_all.deb"}
@@ -14285,7 +14335,7 @@
         {"type":"directory","name":"o","contents":[
           {"type":"directory","name":"obsidian","contents":[
             {"type":"file","name":"obsidian_1.6.7_amd64.deb"},
-            {"type":"file","name":"obsidian_1.7.7_amd64.deb"}
+            {"type":"file","name":"obsidian_1.8.4_amd64.deb"}
         ]},
           {"type":"directory","name":"ocs-url","contents":[
             {"type":"file","name":"ocs-url_3.1.0-0ubuntu1_amd64.deb"}
@@ -15036,13 +15086,15 @@
       {"type":"file","name":".pat_github"},
       {"type":"file","name":".pat_gitlab"}
   ]},
+    {"type":"file","name":"dialog_1.3-20211214-1_amd64.deb.1"},
     {"type":"file","name":".gitattributes"},
     {"type":"file","name":".gitignore"},
     {"type":"file","name":"proteus.sh"},
     {"type":"file","name":"README.md"},
     {"type":"file","name":"secrets.sh"},
+    {"type":"file","name":"trash-cli_0.17.1.14-5build1_all.deb.1"},
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":260,"files":14525}
+  {"type":"report","directories":260,"files":14577}
 ]
