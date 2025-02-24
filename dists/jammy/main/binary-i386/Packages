@@ -663,7 +663,7 @@ Original-Maintainer: Julian Andres Klode <jak@debian.org>
 
 Package: nginx-common
 Source: nginx
-Version: 1.18.0-6ubuntu14.5
+Version: 1.18.0-6ubuntu14.6
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 283
@@ -673,12 +673,12 @@ Multi-Arch: foreign
 Homepage: https://nginx.net
 Priority: 0
 Section: utils
-Filename: pool/main/n/nginx/nginx-common_1.18.0-6ubuntu14.5_all.deb
-Size: 40066
-SHA512: 10e2b67c4b22dfd1fe54ba3567e4bffe10f645efc542a24dd93c401efe75a1c5c91ff4ecea62d570851f1be41f25bfef0f1e5a312d9e9a5248b523c887d6ae8a
-SHA256: 2c7492bb4652a22d5b7dc745336ef5a5caaa25218d563589e95596f6e9883f95
-SHA1: 68249eb032d4e864ad0923d485442c6f1d13d301
-MD5sum: 552a92460ada561da15eb1f25982b18c
+Filename: pool/main/n/nginx/nginx-common_1.18.0-6ubuntu14.6_all.deb
+Size: 40098
+SHA512: 57112c69ab930361071c42f047ef7c02f9a81e1ef754e635d8f7c4ad691cfd12619e0ca837651502f2707f6729fd7cfa6e32f3ee8ceb082d6ed7dfa698fff261
+SHA256: 49b72a03280b68e35d687b13a9cc0ae8b85b1deb08f9d0f31aca6202ff682569
+SHA1: 90016b2ed6f26961d6c7d2b37cd20646d7f43db8
+MD5sum: b43492ee3dd3d804a00fef5174daa615
 Description: small, powerful, scalable web/proxy server - common files
  Nginx ("engine X") is a high-performance web and reverse proxy server
  created by Igor Sysoev. It can be used both as a standalone web server
@@ -690,7 +690,7 @@ Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-list
 
 Package: nginx-doc
 Source: nginx
-Version: 1.18.0-6ubuntu14.5
+Version: 1.18.0-6ubuntu14.6
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 84
@@ -698,12 +698,12 @@ Multi-Arch: foreign
 Homepage: https://nginx.net
 Priority: 0
 Section: utils
-Filename: pool/main/n/nginx/nginx-doc_1.18.0-6ubuntu14.5_all.deb
-Size: 14344
-SHA512: b194678ae023ff3a57baf56fcdb5d4e267bfb644517a6dbb5a2133d7543bc3c4ed5419a22e90599be81674f8bbd6c97895d542c7e9608b3eaf781416acee8cab
-SHA256: f77899b3a24a1c6cb3178f75f015b33625cbed51115958fc3f647119f70dfdfd
-SHA1: dd1794db63ecde660f562855e11b1d5b0723db14
-MD5sum: e2a4aa6d53354b0685ae9785ce92f601
+Filename: pool/main/n/nginx/nginx-doc_1.18.0-6ubuntu14.6_all.deb
+Size: 14376
+SHA512: fb9670655e1deec066f149a78cdbcfc43c174dac09c54babf39f7d2d7153984d7cfb1d75cf458389536893ce6dd24160de6a368ba92bdfc19e309d0bc7d4f535
+SHA256: d95a8652586848853b45ea80e5074272aa0850798e27617e51bcdd5edd049637
+SHA1: 806a594d03b8d11144ca4328d4e25e39b7b46658
+MD5sum: 7cd49dac0cd19a0d5c0a156b5f36ef2d
 Description: small, powerful, scalable web/proxy server - documentation
  Nginx ("engine X") is a high-performance web and reverse proxy server
  created by Igor Sysoev. It can be used both as a standalone web server
