@@ -13722,6 +13722,7 @@
             {"type":"file","name":"sks_1.1.6+git20210302.c3ba6d5a-4_amd64.deb"},
             {"type":"file","name":"snap_2013-11-29-11_amd64.deb"},
             {"type":"file","name":"snapd_2.66.1+22.04_amd64.deb"},
+            {"type":"file","name":"snapd_2.67.1+22.04_amd64.deb"},
             {"type":"file","name":"tcptrack_1.4.3-1_amd64.deb"},
             {"type":"file","name":"tree_2.0.2-1_amd64.deb"},
             {"type":"file","name":"wget_1.21.2-2ubuntu1.1_amd64.deb"}
@@ -15097,8 +15098,8 @@
           {"type":"directory","name":"snapd","contents":[
             {"type":"file","name":"snapd_2.59.1+23.04ubuntu1.2_amd64.deb"},
             {"type":"file","name":"snapd_2.63+23.10_amd64.deb"},
-            {"type":"file","name":"snapd_2.66.1+22.04_amd64.deb"},
-            {"type":"file","name":"snapd_2.66.1+24.04_amd64.deb"}
+            {"type":"file","name":"snapd_2.66.1+24.04_amd64.deb"},
+            {"type":"file","name":"snapd_2.67.1+22.04_amd64.deb"}
         ]}
       ]},
         {"type":"directory","name":"t","contents":[
@@ -15176,5 +15177,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":260,"files":14657}
+  {"type":"report","directories":260,"files":14658}
 ]
