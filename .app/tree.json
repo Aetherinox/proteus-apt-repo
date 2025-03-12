@@ -13754,78 +13754,6 @@
             {"type":"file","name":"wget_1.21.2-2ubuntu1.1_i386.deb"}
         ]}
       ]}
-    ]},
-      {"type":"directory","name":"proteus-git","contents":[
-        {"type":"directory","name":"jammy","contents":[
-          {"type":"directory","name":"all","contents":[
-            {"type":"file","name":"adduser_3.118ubuntu5_all.deb"},
-            {"type":"file","name":"apt-transport-https_2.4.12_all.deb"},
-            {"type":"file","name":"gnome-keysign_1.2.0-3_all.deb"},
-            {"type":"file","name":"lintian_2.114.0ubuntu1.4_all.deb"},
-            {"type":"file","name":"lsb-base_11.1.0ubuntu4_all.deb"},
-            {"type":"file","name":"mysql-client_8.0.37-0ubuntu0.22.04.3_all.deb"},
-            {"type":"file","name":"mysql-client_8.0.39-0ubuntu0.22.04.1_all.deb"},
-            {"type":"file","name":"mysql-common_5.8+1.0.8_all.deb"},
-            {"type":"file","name":"mysql-server_8.0.37-0ubuntu0.22.04.3_all.deb"},
-            {"type":"file","name":"mysql-server_8.0.39-0ubuntu0.22.04.1_all.deb"},
-            {"type":"file","name":"neofetch_7.1.0-3_all.deb"},
-            {"type":"file","name":"networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb"},
-            {"type":"file","name":"network-manager-config-connectivity-ubuntu_1.36.6-0ubuntu2_all.deb"},
-            {"type":"file","name":"network-manager-dev_1.36.6-0ubuntu2_all.deb"},
-            {"type":"file","name":"nginx-common_1.18.0-6ubuntu14.4_all.deb"},
-            {"type":"file","name":"nginx-doc_1.18.0-6ubuntu14.4_all.deb"},
-            {"type":"file","name":"pass_1.7.4-5_all.deb"},
-            {"type":"file","name":"php_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-all-dev_93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-amqplib_3.1.2-1_all.deb"},
-            {"type":"file","name":"php-apcu-all-dev_5.1.22+4.0.11-2+ubuntu22.04.1+deb.sury.org+1_all.deb"},
-            {"type":"file","name":"php-ast-all-dev_1.1.0-1+ubuntu22.04.1+deb.sury.org+1_all.deb"},
-            {"type":"file","name":"php-bcmath_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-bz2_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-cas_1.3.8-1_all.deb"},
-            {"type":"file","name":"php-cas_1.3.8-1ubuntu0.22.04.1_all.deb"},
-            {"type":"file","name":"php-cgi_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-cli_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-code-lts-u2f-php-server_1.2.1-2_all.deb"},
-            {"type":"file","name":"php-common_93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-crypt-gpg_1.6.7-2_all.deb"},
-            {"type":"file","name":"php-curl_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-db_1.10.0-1build4_all.deb"},
-            {"type":"file","name":"php-dev_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-ds-all-dev_1.4.0-5+ubuntu22.04.1+deb.sury.org+1_all.deb"},
-            {"type":"file","name":"php-email-validator_3.1.2-1_all.deb"},
-            {"type":"file","name":"php-enchant_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-fpm_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-fxsl_1.1.1-6_all.deb"},
-            {"type":"file","name":"php-gd_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-gettext-languages_2.6.0-2_all.deb"},
-            {"type":"file","name":"php-gmagick-all-dev_2.0.6~rc1++-1+ubuntu22.04.1+deb.sury.org+1_all.deb"},
-            {"type":"file","name":"php-gmp_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-gnupg-all-dev_1.5.1-3+ubuntu22.04.1+deb.sury.org+1_all.deb"},
-            {"type":"file","name":"php-imap_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-interbase_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-intl_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-ldap_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-mbstring_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-mysql_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-odbc_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-pgsql_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-phpdbg_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-pspell_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-readline_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-snmp_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-soap_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-sqlite3_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-sybase_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-tidy_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-xml_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"php-zip_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
-            {"type":"file","name":"trash-cli_0.17.1.14-5build1_all.deb"}
-        ]},
-          {"type":"directory","name":"amd64"},
-          {"type":"directory","name":"arm64"},
-          {"type":"directory","name":"i386"}
-      ]}
     ]}
   ]},
     {"type":"directory","name":"logs","contents":[
@@ -13880,7 +13808,8 @@
       {"type":"file","name":"proteus-030925.log"},
       {"type":"file","name":"proteus-031025.log"},
       {"type":"file","name":"proteus-031125.log"},
-      {"type":"fifo","name":"proteus-031125.log.pipe"},
+      {"type":"file","name":"proteus-031225.log"},
+      {"type":"fifo","name":"proteus-031225.log.pipe"},
       {"type":"file","name":"proteus-service-012625.log"},
       {"type":"file","name":"proteus-service-012725.log"},
       {"type":"file","name":"proteus-service-012825.log"},
@@ -13925,7 +13854,8 @@
       {"type":"file","name":"proteus-service-030825.log"},
       {"type":"file","name":"proteus-service-030925.log"},
       {"type":"file","name":"proteus-service-031025.log"},
-      {"type":"file","name":"proteus-service-031125.log"}
+      {"type":"file","name":"proteus-service-031125.log"},
+      {"type":"file","name":"proteus-service-031225.log"}
   ]},
     {"type":"directory","name":"pool","contents":[
       {"type":"directory","name":"main","contents":[
@@ -15170,12 +15100,11 @@
   ]},
     {"type":"file","name":".gitattributes"},
     {"type":"file","name":".gitignore"},
-    {"type":"file","name":"php-gd_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb.1"},
     {"type":"file","name":"proteus.sh"},
     {"type":"file","name":"README.md"},
     {"type":"file","name":"secrets.sh"},
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":260,"files":14658}
+  {"type":"report","directories":254,"files":14596}
 ]
