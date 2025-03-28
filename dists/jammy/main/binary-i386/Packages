@@ -150,20 +150,20 @@ Description: Script to "manage" .deb installs from 3rd party vendors/projects
  projects.
 
 Package: firefox
-Version: 136.0.1~build1
+Version: 136.0.4~build1
 Architecture: i386
 Maintainer: Mozilla <release@mozilla.com>
-Installed-Size: 275074
+Installed-Size: 275050
 Depends: libasound2 (>= 1.0.16), libatk1.0-0 (>= 1.12.4), libc6 (>= 2.18), libcairo-gobject2 (>= 1.10.0), libcairo2 (>= 1.10.0), libdbus-1-3 (>= 1.5.12), libfontconfig1 (>= 2.11), libfreetype6 (>= 2.3.5), libgcc1 (>= 1:4.1.1), libgdk-pixbuf2.0-0 (>= 2.22.0) | libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.37.0), libgtk-3-0 (>= 3.13.7), libpango-1.0-0 (>= 1.14.0), libpangocairo-1.0-0 (>= 1.14.0), libstdc++6 (>= 4.8.1), libx11-6, libx11-xcb1, libxcb-shm0, libxcb1, libxcomposite1 (>= 1:0.3-1), libxcursor1 (>> 1.1.2), libxdamage1 (>= 1:1.1), libxext6, libxfixes3, libxi6, libxrandr2 (>= 2:1.4.0), libxrender1
 Provides: gnome-www-browser, www-browser
 Priority: 0
 Section: utils
-Filename: pool/main/f/firefox/firefox_136.0.1~build1_i386.deb
-Size: 77112740
-SHA512: d01ef67acb9135ce2a62b95c471d9e1335da55d393129a5d4cc648c9968da104f06c27307a8985236799691108875db8e757927fec3ce650845bca47098bf1d6
-SHA256: bf9c0b1c6ecf6151422206aad46b4cfa154e9dec816fde2f6fa027aad1fa9813
-SHA1: 09881c965db3e49dea60d63ad14bc6a91edbd7f5
-MD5sum: b00896d5d63d92355799d78320c8e11e
+Filename: pool/main/f/firefox/firefox_136.0.4~build1_i386.deb
+Size: 77201352
+SHA512: 3d65359e6710fb10d5d77650976400c9803a860233fa53fed1024ec8844258cd222649ae085cee8dbda4d54680d0d94620809d12b7164492d4197dc915853a67
+SHA256: 7bc41a1d89b987416d9173f1d1c475d95ef194566a989ecabba90f59d931c7db
+SHA1: 89ebbd931ad0de0c308776b5b3f302084ea97091
+MD5sum: d665c663dbf868d6a3825cf221ba688a
 Description: Mozilla Firefox
 
 Package: git
