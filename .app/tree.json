@@ -15125,7 +15125,6 @@
   ]},
     {"type":"file","name":".gitattributes"},
     {"type":"file","name":".gitignore"},
-    {"type":"file","name":"network-manager-config-connectivity-ubuntu_1.36.6-0ubuntu2.1_all.deb"},
     {"type":"file","name":"network-manager-config-connectivity-ubuntu_1.36.6-0ubuntu2.1_all.deb.1"},
     {"type":"file","name":"proteus.sh"},
     {"type":"file","name":"README.md"},
@@ -15133,5 +15132,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":254,"files":14623}
+  {"type":"report","directories":254,"files":14622}
 ]
