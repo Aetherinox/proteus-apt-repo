@@ -13614,8 +13614,11 @@
             {"type":"file","name":"gnome-keyring_40.0-3ubuntu3_amd64.deb"},
             {"type":"file","name":"gnome-shell-extension-manager_0.3.0-0ubuntu2.1_amd64.deb"},
             {"type":"file","name":"gpg_2.2.27-3ubuntu2.1_amd64.deb"},
+            {"type":"file","name":"gpg_2.2.27-3ubuntu2.3_amd64.deb"},
             {"type":"file","name":"gpgconf_2.2.27-3ubuntu2.1_amd64.deb"},
+            {"type":"file","name":"gpgconf_2.2.27-3ubuntu2.3_amd64.deb"},
             {"type":"file","name":"gpgv_2.2.27-3ubuntu2.1_amd64.deb"},
+            {"type":"file","name":"gpgv_2.2.27-3ubuntu2.3_amd64.deb"},
             {"type":"file","name":"jose_11-2_amd64.deb"},
             {"type":"file","name":"keyutils_1.6.1-2ubuntu3_amd64.deb"},
             {"type":"file","name":"kgpg_21.12.3-0ubuntu1_amd64.deb"},
@@ -13751,8 +13754,11 @@
             {"type":"file","name":"firefox_137.0~build2_i386_75a93b70d1433cbb701e65ba2297868d.deb"},
             {"type":"file","name":"git_2.34.1-1ubuntu1.12_i386.deb"},
             {"type":"file","name":"gpg_2.2.27-3ubuntu2.1_i386.deb"},
+            {"type":"file","name":"gpg_2.2.27-3ubuntu2.3_i386.deb"},
             {"type":"file","name":"gpgconf_2.2.27-3ubuntu2.1_i386.deb"},
+            {"type":"file","name":"gpgconf_2.2.27-3ubuntu2.3_i386.deb"},
             {"type":"file","name":"gpgv_2.2.27-3ubuntu2.1_i386.deb"},
+            {"type":"file","name":"gpgv_2.2.27-3ubuntu2.3_i386.deb"},
             {"type":"file","name":"keyutils_1.6.1-2ubuntu3_i386.deb"},
             {"type":"file","name":"lz4_1.9.3-2build2_i386.deb"},
             {"type":"file","name":"net-tools_1.60+git20181103.0eebece-1ubuntu5_i386.deb"},
@@ -14052,8 +14058,8 @@
           {"type":"directory","name":"gnupg2","contents":[
             {"type":"file","name":"gpg_2.2.19-3ubuntu2_amd64.deb"},
             {"type":"file","name":"gpg_2.2.19-3ubuntu2_arm64.deb"},
-            {"type":"file","name":"gpg_2.2.27-3ubuntu2.1_amd64.deb"},
-            {"type":"file","name":"gpg_2.2.27-3ubuntu2.1_i386.deb"},
+            {"type":"file","name":"gpg_2.2.27-3ubuntu2.3_amd64.deb"},
+            {"type":"file","name":"gpg_2.2.27-3ubuntu2.3_i386.deb"},
             {"type":"file","name":"gpg_2.2.40-1.1ubuntu1_amd64.deb"},
             {"type":"file","name":"gpg_2.2.40-1.1ubuntu1_arm64.deb"},
             {"type":"file","name":"gpg_2.4.4-2ubuntu17_amd64.deb"},
@@ -14061,8 +14067,8 @@
             {"type":"file","name":"gpg-agent_2.2.19-3ubuntu2_arm64.deb"},
             {"type":"file","name":"gpgconf_2.2.19-3ubuntu2_amd64.deb"},
             {"type":"file","name":"gpgconf_2.2.19-3ubuntu2_arm64.deb"},
-            {"type":"file","name":"gpgconf_2.2.27-3ubuntu2.1_amd64.deb"},
-            {"type":"file","name":"gpgconf_2.2.27-3ubuntu2.1_i386.deb"},
+            {"type":"file","name":"gpgconf_2.2.27-3ubuntu2.3_amd64.deb"},
+            {"type":"file","name":"gpgconf_2.2.27-3ubuntu2.3_i386.deb"},
             {"type":"file","name":"gpgconf_2.2.40-1.1ubuntu1_amd64.deb"},
             {"type":"file","name":"gpgconf_2.2.40-1.1ubuntu1_arm64.deb"},
             {"type":"file","name":"gpgconf_2.4.4-2ubuntu17_amd64.deb"},
@@ -14070,8 +14076,8 @@
             {"type":"file","name":"gpgsm_2.2.19-3ubuntu2_arm64.deb"},
             {"type":"file","name":"gpgv_2.2.19-3ubuntu2_amd64.deb"},
             {"type":"file","name":"gpgv_2.2.19-3ubuntu2_arm64.deb"},
-            {"type":"file","name":"gpgv_2.2.27-3ubuntu2.1_amd64.deb"},
-            {"type":"file","name":"gpgv_2.2.27-3ubuntu2.1_i386.deb"},
+            {"type":"file","name":"gpgv_2.2.27-3ubuntu2.3_amd64.deb"},
+            {"type":"file","name":"gpgv_2.2.27-3ubuntu2.3_i386.deb"},
             {"type":"file","name":"gpgv_2.2.40-1.1ubuntu1_amd64.deb"},
             {"type":"file","name":"gpgv_2.2.40-1.1ubuntu1_arm64.deb"},
             {"type":"file","name":"gpgv_2.4.4-2ubuntu17_amd64.deb"},
@@ -15141,5 +15147,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":254,"files":14631}
+  {"type":"report","directories":254,"files":14637}
 ]

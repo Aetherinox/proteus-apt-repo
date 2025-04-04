@@ -257,24 +257,24 @@ Description: easy signing of OpenPGP keys over the local network
 
 Package: gpg
 Source: gnupg2
-Version: 2.2.27-3ubuntu2.1
+Version: 2.2.27-3ubuntu2.3
 Architecture: i386
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 1357
-Depends: gpgconf (= 2.2.27-3ubuntu2.1), libassuan0 (>= 2.5.0), libbz2-1.0, libc6 (>= 2.34), libgcrypt20 (>= 1.9.0), libgpg-error0 (>= 1.42), libreadline8 (>= 6.0), libsqlite3-0 (>= 3.7.15), zlib1g (>= 1:1.1.4)
-Recommends: gnupg (= 2.2.27-3ubuntu2.1)
+Depends: gpgconf (= 2.2.27-3ubuntu2.3), libassuan0 (>= 2.5.0), libbz2-1.0, libc6 (>= 2.34), libgcrypt20 (>= 1.9.0), libgpg-error0 (>= 1.42), libreadline8 (>= 6.0), libsqlite3-0 (>= 3.7.15), zlib1g (>= 1:1.1.4)
+Recommends: gnupg (= 2.2.27-3ubuntu2.3)
 Breaks: gnupg (<< 2.1.21-4)
 Replaces: gnupg (<< 2.1.21-4)
 Multi-Arch: foreign
 Homepage: https://www.gnupg.org/
 Priority: 0
 Section: utils
-Filename: pool/main/g/gnupg2/gpg_2.2.27-3ubuntu2.1_i386.deb
-Size: 579380
-SHA512: 987752e8b58c2eac0b65d2ef0d4f924c68a42610867a1fb69cc235dbb65a11491f1dcaef8a0ab320baf8905cefa3d56194dcba526d3eaa344376f5150419b186
-SHA256: 4a4ce6ca752197a4f78a4cb499e76fd73c31edd8bb9d86d5c5ee237511ecc575
-SHA1: e3624023a9165b3bd6f5bd51d71881ab09f79cda
-MD5sum: ba2ea9662f355e1051429e4b0df9edea
+Filename: pool/main/g/gnupg2/gpg_2.2.27-3ubuntu2.3_i386.deb
+Size: 579966
+SHA512: 616a7d43f23bd2507c798d5dd2d98192ef46154deba38ea17762806324ca9ecb0143507d329a62cb9ce56aac24735b6644690f8ca303ff7beedd81ad77fc98a5
+SHA256: 534623e4e4748cacd707b9200682e2f06e208fe5cda8a96a6458248a8346ca1e
+SHA1: 346dc5c1fbc2c98d414f9e86526e7e340574c650
+MD5sum: 12e5b0f9f8692a1ab353238abb65c4c4
 Description: GNU Privacy Guard -- minimalist public key operations
  GnuPG is GNU's tool for secure communication and data storage.
  It can be used to encrypt data and to create digital signatures.
@@ -290,7 +290,7 @@ Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debi
 
 Package: gpgconf
 Source: gnupg2
-Version: 2.2.27-3ubuntu2.1
+Version: 2.2.27-3ubuntu2.3
 Architecture: i386
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 399
@@ -301,12 +301,12 @@ Multi-Arch: foreign
 Homepage: https://www.gnupg.org/
 Priority: 0
 Section: utils
-Filename: pool/main/g/gnupg2/gpgconf_2.2.27-3ubuntu2.1_i386.deb
-Size: 138538
-SHA512: 1f0e3e74ac2bf0ae9b97246786ce4a6ddf270e76c3058df9b1d5610c85f21f36113d840d388793251f6f3c33daf8ad8255b7028d651e4196fd3ab166ba1df6be
-SHA256: 36ae821744542e16631b7cfd5147dec091431cf146d961d33d010958af2920df
-SHA1: ec33f0e68cc0bb32103e4fbc073e326d7fad396d
-MD5sum: 9d985318081ffd4a3ced6f81190a9cd8
+Filename: pool/main/g/gnupg2/gpgconf_2.2.27-3ubuntu2.3_i386.deb
+Size: 138758
+SHA512: 6dbf351c83b128e7dc6d4f82e3870cb8fab8cc42ee411b9231aa1e87b471e0685f75a74a7bfecd66908126b007fe5de1ca30b09304a71d55669079905e991f92
+SHA256: 35193a54f3dab2f22f112f75d52bf85dc415123e105155c7b9674a4b2662462d
+SHA1: 6b3a9f68027f79aff1fd7bac347f8e6fbc1f3bba
+MD5sum: 3632fbee71fcc6dfd6dadef234562a7b
 Description: GNU privacy guard - core configuration utilities
  GnuPG is GNU's tool for secure communication and data storage.
  .
@@ -318,10 +318,10 @@ Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debi
 
 Package: gpgv
 Source: gnupg2
-Version: 2.2.27-3ubuntu2.1
+Version: 2.2.27-3ubuntu2.3
 Architecture: i386
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Installed-Size: 574
+Installed-Size: 578
 Depends: libbz2-1.0, libc6 (>= 2.34), libgcrypt20 (>= 1.9.0), libgpg-error0 (>= 1.42), zlib1g (>= 1:1.1.4)
 Suggests: gnupg
 Breaks: gnupg2 (<< 2.0.21-2), gpgv2 (<< 2.1.11-7+exp1), python-debian (<< 0.1.29)
@@ -330,12 +330,12 @@ Multi-Arch: foreign
 Homepage: https://www.gnupg.org/
 Priority: 0
 Section: utils
-Filename: pool/main/g/gnupg2/gpgv_2.2.27-3ubuntu2.1_i386.deb
-Size: 235118
-SHA512: 9a29a9d4680a3e7ee84ff442876477f5996f2758c15bd603f57581c9bcef08519c6fcb4efccb25791cace1e41ee2e4039c051bc5e551a761c223ca139ed06945
-SHA256: 0adf6b4cecea093d93aedc522c36a697e86dab0ff1382480ded1e2f8ae2c34db
-SHA1: 4d60af75cc44fb05f6638ef2ad131e94545b3594
-MD5sum: 6d43ee06abe7f96393756a1801fdc153
+Filename: pool/main/g/gnupg2/gpgv_2.2.27-3ubuntu2.3_i386.deb
+Size: 235898
+SHA512: ff4ed493a530bf9911b4048bb6d7fbefa7e5da2a6687d85689ee4bc018e3f26c194539845f19133a29165463c74db3b73ba69144191c0836b383c432a396e4ce
+SHA256: ade2df0bc764ecf1d4647e1bc16490ce455a486ba21788197f07fa7144a0b020
+SHA1: 9d7fe1a8b5240e738245d23dd74bdeb0f4fec1b4
+MD5sum: 4e80f37351a51ed6c77a1a19930af2db
 Description: GNU privacy guard - signature verification tool
  GnuPG is GNU's tool for secure communication and data storage.
  .
