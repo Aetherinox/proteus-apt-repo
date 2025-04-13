@@ -13848,7 +13848,8 @@
       {"type":"file","name":"proteus-041025.log"},
       {"type":"file","name":"proteus-041125.log"},
       {"type":"file","name":"proteus-041225.log"},
-      {"type":"fifo","name":"proteus-041225.log.pipe"},
+      {"type":"file","name":"proteus-041325.log"},
+      {"type":"fifo","name":"proteus-041325.log.pipe"},
       {"type":"file","name":"proteus-service-012625.log"},
       {"type":"file","name":"proteus-service-012725.log"},
       {"type":"file","name":"proteus-service-012825.log"},
@@ -13916,7 +13917,8 @@
       {"type":"file","name":"proteus-service-040925.log"},
       {"type":"file","name":"proteus-service-041025.log"},
       {"type":"file","name":"proteus-service-041125.log"},
-      {"type":"file","name":"proteus-service-041225.log"}
+      {"type":"file","name":"proteus-service-041225.log"},
+      {"type":"file","name":"proteus-service-041325.log"}
   ]},
     {"type":"directory","name":"pool","contents":[
       {"type":"directory","name":"main","contents":[
@@ -15167,5 +15169,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":254,"files":14657}
+  {"type":"report","directories":254,"files":14659}
 ]
