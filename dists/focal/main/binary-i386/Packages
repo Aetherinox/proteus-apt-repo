@@ -1,0 +1,404 @@
+Package: adduser
+Version: 3.118ubuntu2
+Architecture: all
+Maintainer: Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 624
+Depends: passwd, debconf (>= 0.5) | debconf-2.0
+Suggests: liblocale-gettext-perl, perl, ecryptfs-utils (>= 67-1)
+Multi-Arch: foreign
+Priority: 0
+Section: utils
+Filename: pool/main/a/adduser/adduser_3.118ubuntu2_all.deb
+Size: 162792
+SHA512: 354b02811da38569be2a147957295aff7590964578a75367f0972ae5d19cea1ff63981a4e8e82c8e20ca1812ac0577482ab8f9cf73c69d6d0ae7c91545ad49ce
+SHA256: 5f7ea9d1d52a2a9c349468f89d160230e21c8542faed1b1a97c23bce873e17b4
+SHA1: 0a54d46fda725aeeb740b2dd94bc70a33c1e4145
+MD5sum: 56dad661bb4f005db0c2ac8e3d9b1600
+Description: add and remove users and groups
+ This package includes the 'adduser' and 'deluser' commands for creating
+ and removing users.
+ .
+  - 'adduser' creates new users and groups and adds existing users to
+    existing groups;
+  - 'deluser' removes users and groups and removes users from a given
+    group.
+ .
+ Adding users with 'adduser' is much easier than adding them manually.
+ Adduser will choose appropriate UID and GID values, create a home
+ directory, copy skeletal user configuration, and automate setting
+ initial values for the user's password, real name and so on.
+ .
+ Deluser can back up and remove users' home directories
+ and mail spool or all the files they own on the system.
+ .
+ A custom script can be executed after each of the commands.
+Original-Maintainer: Debian Adduser Developers <adduser@packages.debian.org>
+
+Package: apt-url
+Version: 1.0.0-2
+Architecture: all
+Depends: apt-move (>=4.0)
+Maintainer: Aetherinox <aetherinox@proton.me>
+Priority: 0
+Section: utils
+Filename: pool/main/a/apt-url/apt-url_1.0.0-2_all.deb
+Size: 2310
+SHA512: 5d04d99e636b897e39c7b7b834e845cd7bc98ed82e5ebb7657fc035819e05d585ddc3c7a8c6e2c9c3c47e56d4529d7b2b185addceb1c2115b6ea32982d6f6de6
+SHA256: 90d8e1a8bb35a880fa87ca1061974a8450d9edf26215f2fa7403f0d42d3b9f1c
+SHA1: 9ecc12edf4ece7ad8c0f8fc47998a340d2730b0a
+MD5sum: 447e1605cac9b953fe6797ae647e586a
+Description: Fetches URLs for specified packages.
+ Provides the download URL for a specified package.
+
+Package: deb-get
+Version: 0.3.9-1
+Architecture: all
+Maintainer: Martin Wimpress <code@wimpress.io>
+Installed-Size: 85
+Depends: apt, apt-transport-https, bash (>= 4.4~), coreutils (>= 8.25~), curl, dpkg, gpg, grep, libc-bin, lsb-release, sed, software-properties-common, sudo, wget
+Homepage: https://github.com/wimpysworld/deb-get
+Priority: 0
+Section: utils
+Filename: pool/main/d/deb-get/deb-get_0.3.9-1_all.deb
+Size: 22846
+SHA512: 733871d6bf3e7967fd1fb78e724493d8937e2370035942cf3fa914ca5ddd7312f9a5cf94cc27b9a7ade153e7fd570ddc887f09c4e03bc4bc0e159a0629b8aaaa
+SHA256: bc53225dd8342e9a2e5abda1d1461dbc6cb6ad3eba15c287fc3fe01e45a4d265
+SHA1: 555abe0d05e1c85959885476c6e30b8fa9b99114
+MD5sum: 2394fcfa6ab1b4d37ca0cd6fe1b4ca0a
+Description: Script to "manage" .deb installs from 3rd party vendors/projects
+ apt-get functionality for .debs officially published by 3rd party vendors and
+ projects.
+
+Package: gitkraken-license-pro
+Version: 1.0.0-1
+Architecture: all
+Maintainer: Aetherinox <aetherinox@proton.me>
+Priority: 0
+Section: utils
+Filename: pool/main/g/gitkraken-license-pro/gitkraken-license-pro_1.0.0-1_all.deb
+Size: 10808332
+SHA512: b172291bd1d20e08a226637acd36afbe167c70aea6be272aafd22003f5e8999fce886ffa4535eb7681adbce476b54e2cf6217b2b36444b1ad9a9aa31dd4bfe8d
+SHA256: 93f901f8fa48e1c4bc21f70e9220efbc709e9edd3f9e9629ef0d1f13accfa17a
+SHA1: bd2c562ea3d1070454faee93d38d7cf52f7b5bc7
+MD5sum: 7f42c18fdb36830829bf1ce9a4f4b9b5
+Description: Gitkraken License Generator
+ License generator and registration for Gitkraken Pro.
+
+Package: gnome-keysign
+Version: 1.2.0-2
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Sascha Steinbiss <satta@debian.org>
+Installed-Size: 1262
+Depends: magic-wormhole, python3-future, python3-qrcode, python3-requests, python3-twisted, python3:any, avahi-daemon, python3-bluetooth, python3-cairo, python3-dbus, python3-gi, python3-gi-cairo, python3-gpg, gir1.2-glib-2.0, gir1.2-gtk-3.0, gir1.2-gstreamer-1.0, gir1.2-gst-plugins-base-1.0, gstreamer1.0-plugins-bad, gstreamer1.0-plugins-good, gstreamer1.0-x, gstreamer1.0-gtk3
+Homepage: https://github.com/gnome-keysign/gnome-keysign
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnome-keysign/gnome-keysign_1.2.0-2_all.deb
+Size: 183504
+SHA512: 60addce07f218c62645a6f39f80063e244bf44f334f2e4ad7eb97e8090e4320ba57b1028a673616a42fbc7bc914caf6c8d14c3d861284bed413196c0edc9e49f
+SHA256: 9fac3a149473457925ec7a4c3710b656671b4fd794f174739f613a16fc7d3f4e
+SHA1: 6fbe34c8c01e38c27f0975d08979ada3cb33acd9
+MD5sum: e6226c5f5f495302e50a6550837e3e1b
+Description: easy signing of OpenPGP keys over the local network
+ GNOME Keysign is a tool for signing OpenPGP keys.
+ .
+ Its purpose is to ease signing other peoples' keys. It is similar to caff,
+ PIUS, or monkeysign. In fact, it is influenced a lot by these tools and
+ either reimplements ideas or reuses code. Consider either of the above
+ mentioned tools when you need a much more mature codebase.
+ .
+ In contrast to caff or monkeysign, this tool enables you to sign a key
+ without contacting a key server. It downloads an authenticated copy of the
+ key from the other party. For now, the key is authenticated by its fingerprint
+ which is securely transferred via a QR code. Alternatively, the user may type
+ the fingerprint manually, assuming that it has been transferred securely via
+ the audible channel.
+ .
+ After having obtained an authentic copy of the key, its UIDs are signed. The
+ signatures are then encrypted and sent via email. In contrast to monkeysign,
+ xdg-email is used to pop up a pre-filled email composer windows of the mail
+ client the user has configured to use. This greatly reduces complexity as no
+ SMTP configuration needs to be obtained and gives the user a well known
+ interface.
+
+Package: gnome-shell-extension-tilix-dropdown
+Version: 7-1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
+Installed-Size: 25
+Depends: gnome-shell, tilix
+Homepage: https://github.com/ivoarch/gnome-shell-TilixDropdown
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnome-shell-extension-tilix-dropdown/gnome-shell-extension-tilix-dropdown_7-1_all.deb
+Size: 5804
+SHA512: 8fffef0d83eb15554b15ba7c7c21540d737a77be299332a4d461b1e4889436572c544e2c726e657d62ba007003ae6eb97f112ef9ce0d79fb3cee357c0053e040
+SHA256: 0563bfbf324ef365f67ea2176a5d657649de4cc2ae57d36cdf9c6a4201a9b2c4
+SHA1: b0a1bb500bc41382255e893ef1b92f71dd02d557
+MD5sum: 45c7197a510347e6cf86e4fa35223f68
+Description: launch tilix in quake-mode from gnome-shell
+ Tilix (previosly known as terminix) is a graphical terminal
+ multiplexer for GNOME.
+ .
+ Quake-mode launched a quick terminal from the top similar in
+ style to the terminal found in the original quake game.
+ .
+ This extension adds a keyboard shortcut that allows you to
+ access tilix in quake-mode (default key: F10). You can also
+ configure this key in gnome-tweak-tool.
+
+Package: gnome-shell-extension-tilix-shortcut
+Version: 1.0.1-2
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Jonathan Carter <jcc@debian.org>
+Installed-Size: 26
+Depends: gnome-shell, tilix
+Homepage: https://git.bluemosh.com/bluemosh/gse-tilix-shortcut/
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnome-shell-extension-tilix-shortcut/gnome-shell-extension-tilix-shortcut_1.0.1-2_all.deb
+Size: 5452
+SHA512: adf79e3eb1f6ca86ae1f1c44f6d871d249cc788c34d40fe2520625e498eb80a3ad66f8fbf3eb28adba15098394258e7abe1058f3c18182531f763a461a13ab7f
+SHA256: 240e65ba848556467f6f606f2cb6bfc9c2d4bc6a913d398216269fd87d373106
+SHA1: 9c30610de052b467ffa1038c1056083b3dd0ab7b
+MD5sum: 3fa356d5bed1230a4831d04f87632fdd
+Description: Adds easy to use configurable keyboard shortcut for tilix
+ Configuring a system-wide default for launching a terminal in
+ GNOME is way more tedious than it needs to be.
+ .
+ This extension adds an easy method for configuring this system-wide.
+
+Package: monkeysphere
+Version: 0.41-1ubuntu1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 252
+Depends: adduser, gnupg, libcrypt-openssl-rsa-perl, libdigest-sha-perl, lockfile-progs | procmail
+Recommends: agent-transfer, cron-daemon, netcat-openbsd | netcat | socat, openssh-client, ssh-askpass
+Suggests: monkeysphere-validation-agent
+Enhances: openssh-client, openssh-server
+Homepage: http://web.monkeysphere.info/
+Priority: 0
+Section: utils
+Filename: pool/main/m/monkeysphere/monkeysphere_0.41-1ubuntu1_all.deb
+Size: 64784
+SHA512: 776d6692a38feba877baf96a9b4beaedbc0e787c0d044ede0e0353d5d134a7f8b0c889bde774c9e7ee9bdb8584ea40459c0d875326a7bd36abf7a7ebc2ddf61d
+SHA256: 0aabe56ca954af2bf1586f4eb560d8cf5a9ad2043f1a6b21fa6114c323992d81
+SHA1: b4869833c6203a67c77973579f966db618d42142
+MD5sum: f74c974cbe1a6f085ae3b90411693f86
+Description: leverage the OpenPGP web of trust for SSH and TLS authentication
+ SSH key-based authentication is tried-and-true, but it lacks a true
+ Public Key Infrastructure for key certification, revocation and
+ expiration.  Monkeysphere is a framework that uses the OpenPGP web of
+ trust for these PKI functions.  It can be used in both directions:
+ for users to get validated host keys, and for hosts to authenticate
+ users.  Current monkeysphere SSH tools are designed to integrate
+ with the OpenSSH implementation of the Secure Shell protocol.
+ .
+ Monkeysphere can also be used by a validation agent to validate TLS
+ connections (e.g. https).
+Original-Maintainer: Jameson Rollins <jrollins@finestructure.net>
+
+Package: neofetch
+Version: 7.0.0-1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Nobuhiro Iwamatsu <iwamatsu@debian.org>
+Installed-Size: 331
+Recommends: chafa
+Homepage: https://github.com/dylanaraps/neofetch
+Priority: 0
+Section: utils
+Filename: pool/main/n/neofetch/neofetch_7.0.0-1_all.deb
+Size: 77456
+SHA512: c100f75594858a089341a2da310341be0e8b6f856d3f370b78c7d94ed813d0ad5831f48fb284454c65e70f6c0439ef7e04003d1ebb359619ca745172db1caf6c
+SHA256: 196beedc24c51379466a636b4b120292280ba64e777b24426d36b08dc09eff99
+SHA1: 65df8dfba50629b04ae5bd4673ec4857bbd28b9d
+MD5sum: afb781458386f7c189497c774af4db46
+Description: Shows Linux System Information with Distribution Logo
+ Neoftech is a cross-platform and easy-to-use system information
+ command line script that collects your Linux system information
+ and display it on the terminal next to an image, it could be your
+ distributions logo or any ascii art of your choice.
+
+Package: php-code-lts-u2f-php-server
+Version: 1.2.1-2
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: William Desportes <williamdes@wdes.fr>
+Installed-Size: 47
+Depends: php-common
+Multi-Arch: foreign
+Homepage: https://github.com/code-lts/U2F-php-server#readme
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-code-lts-u2f-php-server/php-code-lts-u2f-php-server_1.2.1-2_all.deb
+Size: 13958
+SHA512: b228903711bd5a97cfee3d4e4cab77e563afb328a3f768d036acdc6a17e9da63d2268a3fb426db780d2676f5fc12a71ea1223e4267349f786303fc72aefeedff
+SHA256: 04ce50e855a6dc548d35945a8bbd5d3240f560c320ef399e8e159a9e1712f223
+SHA1: 48aeb755ddf368900e2c210084b19388dd9e921d
+MD5sum: cc644c0512e90113bc03e42c0ec19d5c
+Description: Server side handling class for FIDO U2F registration and authentication
+ This PHP library allows you to handle U2F registration and authentication.
+ FIDO's U2F enables you to add a simple unobtrusive method of 2nd factor
+ authentication, allowing users of your service and/or application
+ to link a hardware key to their account.
+
+Package: php-dasprid-enum
+Source: dasprid-enum
+Version: 1.0.3-3
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: William Desportes <williamdes@wdes.fr>
+Installed-Size: 50
+Depends: php-common
+Homepage: https://github.com/DASPRiD/Enum/
+Priority: 0
+Section: utils
+Filename: pool/main/d/dasprid-enum/php-dasprid-enum_1.0.3-3_all.deb
+Size: 10520
+SHA512: 7ba4b4ff90607c480335f29ba708a8c7403fba535da13bb5a14311de61f17c50a6b5c747793e5a983f612d2801e85f3e74ba8c75dd1105f736fba8b9aa6465d2
+SHA256: a6001e48377582d034fb84a774e56f1ea71af06666de3a41e6efaf0e49249bfb
+SHA1: 692eded950b9f75f89704eb3f624470315f2817b
+MD5sum: 829f3d3d5ab45a2d9176a9135a466e83
+Description: PHP 7.1 enum implementation
+ It is a well known fact that PHP is missing a basic enum type,
+ ignoring the rather incomplete SplEnum implementation
+ which is only available as a PECL extension.
+ This library tries to close that gap as far as PHP allows it to.
+
+Package: php8.2
+Version: 8.2.11-1+ubuntu20.04.1+deb.sury.org+1
+Architecture: all
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 69
+Depends: libapache2-mod-php8.2 | php8.2-fpm | php8.2-cgi, php8.2-common
+Provides: php
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2_8.2.11-1+ubuntu20.04.1+deb.sury.org+1_all.deb
+Size: 34508
+SHA512: e69112ff32fe6b7e036b4c2d3cddf10c5347e10bf7275001d91f3a680daec14389d8fc36b536b454429a2a4e95412e10ee4735c21962811cd484dfd0a3e8ada6
+SHA256: b443af226d121c7cab4aa1dfdb33dff9a2815dec6e9200105493ac0d96fd668a
+SHA1: 16013c51067536b6136934de51d2414652cd776c
+MD5sum: 9b856b3593c3d14bea9e4db0ad665cce
+Description: server-side, HTML-embedded scripting language (metapackage)
+ This package is a metapackage that, when installed, guarantees that you
+ have at least one of the four server-side versions of the PHP interpreter
+ installed. Removing this package won't remove PHP from your system, however
+ it may remove other packages that depend on this one.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.2-xsl
+Source: php8.2
+Version: 8.2.11-1+ubuntu20.04.1+deb.sury.org+1
+Architecture: all
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 66
+Depends: php8.2-common, php8.2-xml
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.2/php8.2-xsl_8.2.11-1+ubuntu20.04.1+deb.sury.org+1_all.deb
+Size: 34172
+SHA512: 687ad47110c4f6cdec6a0b0accb7d2c5924b1c29229b275f4072a4712a595a42e0322eb9e6a477d87821e6aab62fcb7fe4f4bf2019ae2734eb0790f48873d0d8
+SHA256: 52bbb29c4e53312721d3b5e0703c1669e332fac54fe24b4b257457588ab8f222
+SHA1: 87b12ece7c76658d22f675935a24732b0b440d2c
+MD5sum: 0a2dc3f071af4937f774ba47ddd5f595
+Description: XSL module for PHP (dummy)
+ This package is a transitional dummy package and can be safely
+ removed.
+
+Package: php8.3
+Version: 8.3.0~rc3-1+ubuntu20.04.1+deb.sury.org+1
+Architecture: all
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 61
+Depends: libapache2-mod-php8.3 | php8.3-fpm | php8.3-cgi, php8.3-common
+Provides: php
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3_8.3.0~rc3-1+ubuntu20.04.1+deb.sury.org+1_all.deb
+Size: 26532
+SHA512: 996ec614e4e27fb0a37461ca14a515d54b94045c5a0f0507dd0ea93fcf9627dd83b863081e9641b70ac401ffd0f22da0a85c661f5a4a7620786b58e494b7950f
+SHA256: 5e95fbcb2d42a06e90581a212f7665763f6f89773ed9a89e3f2825c8f95ad461
+SHA1: 153bf11cbe32f807b723d06718a96f841c4f512f
+MD5sum: e9c8bf4af61d978c23aca17a98b5cf79
+Description: server-side, HTML-embedded scripting language (metapackage)
+ This package is a metapackage that, when installed, guarantees that you
+ have at least one of the four server-side versions of the PHP interpreter
+ installed. Removing this package won't remove PHP from your system, however
+ it may remove other packages that depend on this one.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php8.3-xsl
+Source: php8.3
+Version: 8.3.0~rc3-1+ubuntu20.04.1+deb.sury.org+1
+Architecture: all
+Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 58
+Depends: php8.3-common, php8.3-xml
+Homepage: http://www.php.net/
+Priority: 0
+Section: utils
+Filename: pool/main/p/php8.3/php8.3-xsl_8.3.0~rc3-1+ubuntu20.04.1+deb.sury.org+1_all.deb
+Size: 26196
+SHA512: 0665a6b87c4eb606e7d8d87ed8136fe12a75e339596a4ea2fe53ce7820beb0e7e27d3a89061870ea64d28d366fd5c28308aa4bc6ec134d7e659852c2e1659201
+SHA256: d9775042a87cbdf13d7b344d458a0978b0b2e45d70055fb851f6aae61afd8897
+SHA1: 2fb3f6f81254b53c2376bb9d4ec36d3a6d3f1c65
+MD5sum: 2cf4b8c5d47c8d5b634f88b884b93210
+Description: XSL module for PHP (dummy)
+ This package is a transitional dummy package and can be safely
+ removed.
+
+Package: tilix-common
+Source: tilix
+Version: 1.9.3-4build3
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
+Installed-Size: 1225
+Breaks: terminix-common (<< 1.5.4-1~)
+Replaces: terminix-common (<< 1.5.4-1~)
+Homepage: https://gnunn1.github.io/tilix-web/
+Priority: 0
+Section: utils
+Filename: pool/main/t/tilix/tilix-common_1.9.3-4build3_all.deb
+Size: 208144
+SHA512: 7dd30514b7ad9eceb27c662d5349015ecd24d7980c887df7774c063bbaac6922cd79210dee4d96c685375a39fcb7eee48891ee72fba19c60e5c5fb95895cb82e
+SHA256: e99412d59fe1d7d5c6af0ac4b1119a715539760e00fb87f0d9f61457a2ba391e
+SHA1: d03f8eb53e7c9465e60ae326a4c79f02e259dcba
+MD5sum: d2ac85a723f04988035ef6da7f2eaca0
+Description: Tiling terminal emulator - data files
+ Tilix is a feature-rich tiling terminal emulator following the
+ GNOME human interface design guidelines.
+ .
+ This package contains architecture independent data.
+
+Package: zorin-pro-layouts
+Version: 1.0.0-3
+Architecture: all
+Maintainer: Aetherinox <aetherinox@proton.me>
+Depends: python3 (>=3.0)
+Priority: 0
+Section: utils
+Filename: pool/main/z/zorin-pro-layouts/zorin-pro-layouts_1.0.0-3_all.deb
+Size: 22072
+SHA512: 8b30c5b675a8b3363e933dc4a65debfe46b0bdbef796b4a0c5954a97e14bfecb691b0279b131685b9d5ee40dffd83f43f6c477a7718c91466d2444afdbc59e7e
+SHA256: eb210fa59ca9a98f7b61fd625883a74d7c0b3d23095f693f771583d556cbb833
+SHA1: 05959fe298ab25c98941d435abfa322328b3266d
+MD5sum: ccbd900331813a36d54106707a02f710
+Description: ZorinOS Pro Layouts
+ ZorinOS Pro layouts made available for Core and Lite users.
+
