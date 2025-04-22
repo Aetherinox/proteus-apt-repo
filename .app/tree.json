@@ -13634,6 +13634,7 @@
             {"type":"file","name":"nginx-extras_1.18.0-6ubuntu14.6_amd64.deb"},
             {"type":"file","name":"nginx-full_1.18.0-6ubuntu14.6_amd64.deb"},
             {"type":"file","name":"nginx-light_1.18.0-6ubuntu14.6_amd64.deb"},
+            {"type":"file","name":"obsidian_1.8.10_amd64.deb"},
             {"type":"file","name":"obsidian_1.8.9_amd64.deb"},
             {"type":"file","name":"open-vm-tools_12.3.5-3~ubuntu0.22.04.1_amd64.deb"},
             {"type":"file","name":"open-vm-tools-desktop_12.3.5-3~ubuntu0.22.04.1_amd64.deb"},
@@ -14365,7 +14366,7 @@
         {"type":"directory","name":"o","contents":[
           {"type":"directory","name":"obsidian","contents":[
             {"type":"file","name":"obsidian_1.6.7_amd64.deb"},
-            {"type":"file","name":"obsidian_1.8.9_amd64.deb"}
+            {"type":"file","name":"obsidian_1.8.10_amd64.deb"}
         ]},
           {"type":"directory","name":"ocs-url","contents":[
             {"type":"file","name":"ocs-url_3.1.0-0ubuntu1_amd64.deb"}
@@ -15129,5 +15130,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":254,"files":14619}
+  {"type":"report","directories":254,"files":14620}
 ]

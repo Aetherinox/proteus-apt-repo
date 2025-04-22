@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `04.22.2025 07:00:00`
+Last generated on `04.22.2025 19:00:00`
 
 <br />
 
@@ -554,7 +554,7 @@ Last generated on `04.22.2025 07:00:00`
 │       ├── o
 │       │   ├── obsidian
 │       │   │   ├── obsidian_1.6.7_amd64.deb
-│       │   │   └── obsidian_1.8.9_amd64.deb
+│       │   │   └── obsidian_1.8.10_amd64.deb
 │       │   ├── ocs-url
 │       │   │   └── ocs-url_3.1.0-0ubuntu1_amd64.deb
 │       │   ├── opengist
