@@ -1,0 +1,8 @@
+{
+    "name":             "Proteus Apt Git",
+    "version":          "1.2.0.0",
+    "author":           "Aetherinox",
+    "description":      "Internal system to Proteus App Manager which grabs debian packages.",
+    "distrib":          "zorin",
+    "url":              "https://github.com//proteus-git"
+}
