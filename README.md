@@ -55,6 +55,19 @@ This is a Proteus apt repository that is associated to the [Proteus App Manager]
 
 <br />
 
+The following packages are part of this repository:
+
+- [AppOutlet](https://github.com/AppOutlet/AppOutlet)
+- [Bitwarden](https://github.com/bitwarden/clients/releases)
+- [deb-apt-url](https://github.com/aetherinox/debian-apt-url/releases)
+- [Freetube](https://github.com/FreeTubeApp/FreeTube/releases)
+- [Github Desktop](https://github.com/shiftkey/desktop/releases)
+- [makedeb](https://github.com/makedeb/makedeb/releases)
+- [Obsidian.md](https://github.com/obsidianmd/obsidian-releases/releases)
+- [Opengist](https://github.com/thomiceli/opengist/releases)
+
+<br />
+
 ---
 
 <br />
