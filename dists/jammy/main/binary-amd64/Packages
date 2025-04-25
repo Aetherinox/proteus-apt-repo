@@ -467,26 +467,6 @@ Description: fast, scalable, distributed revision control system
  interface, is provided as separate git* packages.
 Original-Maintainer: Jonathan Nieder <jrnieder@gmail.com>
 
-Package: github-desktop
-Version: 3.4.13-linux1
-Architecture: amd64
-Depends: libgtk-3-0, libnotify4, libnss3, xdg-utils, libatspi2.0-0, libdrm2, libgbm1, libxcb-dri3-0, kde-cli-tools | kde-runtime | trash-cli | libglib2.0-bin | gvfs-bin, libcurl3 | libcurl4, libsecret-1-0, gnome-keyring
-Recommends: pulseaudio | libasound2
-Suggests: gir1.2-gnomekeyring-1.0, libgnome-keyring0, lsb-release
-Installed-Size: 452816
-Maintainer: Brendan Forster <github@brendanforster.com>
-Homepage: https://github.com/shiftkey/desktop
-Priority: 0
-Section: utils
-Filename: pool/main/g/github-desktop/github-desktop_3.4.13-linux1_amd64.deb
-Size: 130450912
-SHA512: 40a140d9fce5eae10fffc4225426e118db1cebf8bb199ce0fe8d9ec3fcf4600f4903f6f11fcc1a85601fa9b3a28bda85a60b7229ed483db54e93a3b554220d14
-SHA256: 8b5577761c7900cac2896b5fbc1d88f5aea48b6ce771437262be2a66ab38d987
-SHA1: 2a0fe5950562e3bb310c7bc6db4b8814ffb23110
-MD5sum: 098526f2653209ceafab26c6f95a1ccb
-Description: Simple collaboration from your desktop
- This is the unofficial port of GitHub Desktop for Linux distributions
-
 Package: gitkraken-license-pro
 Version: 1.0.0-1
 Architecture: all
