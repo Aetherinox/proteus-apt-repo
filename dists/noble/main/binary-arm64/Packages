@@ -79,23 +79,23 @@ Description: Fetches URLs for specified packages.
  Provides the download URL for a specified package.
 
 Package: freetube
-Version: 0.21.3
+Version: 0.23.4
 License: AGPL-3.0-or-later
 Vendor: PrestonN <FreeTubeApp@protonmail.com>
 Architecture: arm64
 Maintainer: PrestonN <FreeTubeApp@protonmail.com>
-Installed-Size: 273714
+Installed-Size: 287251
 Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
 Recommends: libappindicator3-1
 Homepage: https://github.com/FreeTubeApp/FreeTube#readme
 Priority: 0
 Section: utils
-Filename: pool/main/f/freetube/freetube_0.21.3_arm64.deb
-Size: 70995730
-SHA512: 62f194add237229c1d85362f5b883b0638dd8e52e293ae2421f29c26c17d757417a0d49ae4915acd4ce2234eb77e61e7d2edc7f0b135c8b8e562bdaae4da399d
-SHA256: 255eae1ad5603e718a50e6b08be1e33dfef63b6d2efc9dfe1141d56a87c3effc
-SHA1: 99cdd5e8d3578f41b380e000efdf8979703b68e3
-MD5sum: 606ee5f53e176acbb922459e9d507f2b
+Filename: pool/main/f/freetube/freetube_0.23.4_arm64.deb
+Size: 71839804
+SHA512: 9dea965fb21e7b653544b04b466d075c67c96acda6f7ddf5674e77650bee6c5e629dc6d9081f9b6ae9dbccf9e678a7740e86b7dbdcf3da7cdfbf0ae269ff7966
+SHA256: c69ef8d6535986501a41edb2fab16a2618edd7b97ce0d3e19d658b60d916b25a
+SHA1: 8c3424e95ec9441736f7cba56440dc0c118ee309
+MD5sum: 1a2dde645c6f2236f66d6175ef1ad691
 Description: 
   A private YouTube client
 

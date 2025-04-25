@@ -127,23 +127,23 @@ Description: Displays user-friendly dialog boxes from shell scripts
   editbox          Allows editing an existing file
 
 Package: freetube
-Version: 0.21.2
+Version: 0.23.4
 License: AGPL-3.0-or-later
 Vendor: PrestonN <FreeTubeApp@protonmail.com>
 Architecture: amd64
 Maintainer: PrestonN <FreeTubeApp@protonmail.com>
-Installed-Size: 268693
+Installed-Size: 272169
 Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
 Recommends: libappindicator3-1
 Homepage: https://github.com/FreeTubeApp/FreeTube#readme
 Priority: 0
 Section: utils
-Filename: pool/main/f/freetube/freetube_0.21.2_amd64.deb
-Size: 75678828
-SHA512: 729b29c57a7d39990edc1d294674b2a533481f25aa7f1a8da2bb3dfd7b01457c201230dffae00b3f18c9855556e672b37dbd3c994eeb8adca1ee2f5eb7d4aa2f
-SHA256: 9bee4f73cebbd5c095ae9099981c1cab39378df7f2c471d6f5dc02f106b8ab91
-SHA1: b3ecf8c7ac7afffc5c4b16cf90a5946483210ce4
-MD5sum: d6c4c37e14ee53930a73d30daa4d91bd
+Filename: pool/main/f/freetube/freetube_0.23.4_amd64.deb
+Size: 76360864
+SHA512: 4cca40f1a6e9f264d0ab3dc6f1fa518f4a06a437878944f937c6a71b0c633334eb4160f2e0e02ad668eab88e0a91e5c85485251ffa7a8c81e6d988082cb06cb3
+SHA256: 01120e2f039a179cdd342a55cab9608112d31497b80a5ef364da74d73e9fc18e
+SHA1: 767b220d1df2ac91e183fb7f7545fef443fc050e
+MD5sum: afc32ce669b10299f05a88e792a7b927
 Description: 
   A private YouTube client
 
@@ -775,23 +775,23 @@ Description: Shows Linux System Information with Distribution Logo
  distributions logo or any ascii art of your choice.
 
 Package: obsidian
-Version: 1.6.7
+Version: 1.8.10
 License: UNLICENSED
 Vendor: Dynalist Inc.
 Architecture: amd64
 Maintainer: Dynalist Inc.
-Installed-Size: 284926
+Installed-Size: 293235
 Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
 Recommends: libappindicator3-1
 Homepage: https://obsidian.md
 Priority: 0
 Section: utils
-Filename: pool/main/o/obsidian/obsidian_1.6.7_amd64.deb
-Size: 79172558
-SHA512: bbf913f6806a1d23d2a6bbb9d5572569b019c79c877c3165ff94938f01282e7d98b6ba660821dca7e38874413207846b025707161c8901983458bdf4add05336
-SHA256: 772da38d23b15f0f5d7cf17024a1948ff2c073b2195954743703178bf1254b36
-SHA1: 1ebede61696c77ee97394c6b0a3fcd8abaa299ed
-MD5sum: c993b303e6ee232504713062c38f3440
+Filename: pool/main/o/obsidian/obsidian_1.8.10_amd64.deb
+Size: 80536530
+SHA512: dadf9bf9f44a2bee63224ba150c4d2370079507f676371f8babe9401c9257f0bea29b05219616df40b88c26f83bd65d64c19aa9f4f3d0c4561272c7e9ab19a5d
+SHA256: da19b2755013e9def37271cf04ce7485c03a22fa02b0951e4108884dcd1bd774
+SHA1: edd62fc26b4825af1599774fdec83e9e626e4672
+MD5sum: 76f769c873431b0bd2b3207d11da20ef
 Description: 
   Obsidian
 

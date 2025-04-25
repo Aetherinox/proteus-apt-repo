@@ -379,23 +379,23 @@ Description: Application deployment framework for desktop apps
 Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
 
 Package: freetube
-Version: 0.21.3
+Version: 0.23.4
 License: AGPL-3.0-or-later
 Vendor: PrestonN <FreeTubeApp@protonmail.com>
 Architecture: amd64
 Maintainer: PrestonN <FreeTubeApp@protonmail.com>
-Installed-Size: 268696
+Installed-Size: 272169
 Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
 Recommends: libappindicator3-1
 Homepage: https://github.com/FreeTubeApp/FreeTube#readme
 Priority: 0
 Section: utils
-Filename: pool/main/f/freetube/freetube_0.21.3_amd64.deb
-Size: 75556992
-SHA512: 25aa0e13db28601047855c04dd59e032ca1569e6cc0dcc40e6da5943ec575308fe99c040756134256774dc39c356ffe450cb6ffbb5b31f2e38e75c6df31592c5
-SHA256: bf8649c7b384cd50178d6c887371472916bfdacb9971e939c35ddbe4ab3adc08
-SHA1: 9534464c64de49dcdae9c7897581eafdac52a9d2
-MD5sum: 844fec3dd9abf50a24eab6ca16d9a29d
+Filename: pool/main/f/freetube/freetube_0.23.4_amd64.deb
+Size: 76360864
+SHA512: 4cca40f1a6e9f264d0ab3dc6f1fa518f4a06a437878944f937c6a71b0c633334eb4160f2e0e02ad668eab88e0a91e5c85485251ffa7a8c81e6d988082cb06cb3
+SHA256: 01120e2f039a179cdd342a55cab9608112d31497b80a5ef364da74d73e9fc18e
+SHA1: 767b220d1df2ac91e183fb7f7545fef443fc050e
+MD5sum: afc32ce669b10299f05a88e792a7b927
 Description: 
   A private YouTube client
 
@@ -1854,23 +1854,23 @@ Description: nginx web/proxy server (basic version)
 Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
 
 Package: obsidian
-Version: 1.6.7
+Version: 1.8.10
 License: UNLICENSED
 Vendor: Dynalist Inc.
 Architecture: amd64
 Maintainer: Dynalist Inc.
-Installed-Size: 284926
+Installed-Size: 293235
 Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
 Recommends: libappindicator3-1
 Homepage: https://obsidian.md
 Priority: 0
 Section: utils
-Filename: pool/main/o/obsidian/obsidian_1.6.7_amd64.deb
-Size: 79172558
-SHA512: bbf913f6806a1d23d2a6bbb9d5572569b019c79c877c3165ff94938f01282e7d98b6ba660821dca7e38874413207846b025707161c8901983458bdf4add05336
-SHA256: 772da38d23b15f0f5d7cf17024a1948ff2c073b2195954743703178bf1254b36
-SHA1: 1ebede61696c77ee97394c6b0a3fcd8abaa299ed
-MD5sum: c993b303e6ee232504713062c38f3440
+Filename: pool/main/o/obsidian/obsidian_1.8.10_amd64.deb
+Size: 80536530
+SHA512: dadf9bf9f44a2bee63224ba150c4d2370079507f676371f8babe9401c9257f0bea29b05219616df40b88c26f83bd65d64c19aa9f4f3d0c4561272c7e9ab19a5d
+SHA256: da19b2755013e9def37271cf04ce7485c03a22fa02b0951e4108884dcd1bd774
+SHA1: edd62fc26b4825af1599774fdec83e9e626e4672
+MD5sum: 76f769c873431b0bd2b3207d11da20ef
 Description: 
   Obsidian
 
