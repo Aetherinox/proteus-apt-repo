@@ -994,6 +994,26 @@ while [ $# -gt 0 ]; do
             opt_report
             ;;
 
+    -c|--clean)
+            # #
+            #   originally to delete left-behind .deb files; we used compgen
+            #       if compgen -G "${app_dir}/*.deb" > /dev/null; then
+            #           echo -e "  ${GREY2}Cleaning up left-over .deb: ${YELLOW}${app_dir}/*.deb${WHITE}"
+            #           rm ${app_dir}/*.deb >/dev/null
+            #       fi
+            #
+            #   alternative method:
+            #       test command:       find . -maxdepth 1 -name "*.deb*" -type f
+            #       delete command:     find . -maxdepth 1 -name "*.deb*" -type f -delete
+            #
+            # #
+
+            if compgen -G "${app_dir}/*.deb*" > /dev/null; then
+                echo -e "  ${GREY2}Cleaning up left-over .deb: ${YELLOW}${app_dir}/*.deb${WHITE}"
+            fi
+            exit 1
+            ;;
+
     -b*|--branch*)
             if [[ "$1" != *=* ]]; then shift; fi
             OPT_BRANCH="${1#*=}"
