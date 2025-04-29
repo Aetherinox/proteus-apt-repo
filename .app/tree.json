@@ -13694,6 +13694,7 @@
             {"type":"file","name":"snapd_2.67.1+22.04_amd64.deb"},
             {"type":"file","name":"tcptrack_1.4.3-1_amd64.deb"},
             {"type":"file","name":"tree_2.0.2-1_amd64.deb"},
+            {"type":"file","name":"vnstat_2.9-1_amd64.deb"},
             {"type":"file","name":"wget_1.21.2-2ubuntu1.1_amd64.deb"}
         ]},
           {"type":"directory","name":"arm64","contents":[
@@ -14762,6 +14763,11 @@
             {"type":"file","name":"tree_2.1.1-2ubuntu3_amd64.deb"}
         ]}
       ]},
+        {"type":"directory","name":"v","contents":[
+          {"type":"directory","name":"vnstat","contents":[
+            {"type":"file","name":"vnstat_2.9-1_amd64.deb"}
+        ]}
+      ]},
         {"type":"directory","name":"w","contents":[
           {"type":"directory","name":"wget","contents":[
             {"type":"file","name":"wget_1.21.2-2ubuntu1.1_amd64.deb"},
@@ -14798,5 +14804,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":259,"files":14279}
+  {"type":"report","directories":261,"files":14281}
 ]

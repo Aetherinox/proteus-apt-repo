@@ -6205,6 +6205,30 @@ Description: displays an indented directory tree, in color
  listing of files, which is colorized ala dircolors if the LS_COLORS environment
  variable is set and output is to tty.
 
+Package: vnstat
+Version: 2.9-1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Christian Göttsche <cgzones@googlemail.com>
+Installed-Size: 302
+Pre-Depends: init-system-helpers (>= 1.54~)
+Depends: adduser, lsb-base, libc6 (>= 2.34), libsqlite3-0 (>= 3.7.6.1)
+Suggests: vnstati
+Homepage: https://humdi.net/vnstat/
+Priority: 0
+Section: utils
+Filename: pool/main/v/vnstat/vnstat_2.9-1_amd64.deb
+Size: 102928
+SHA512: 1e2f810af13af0fdf14128189185085c353c209eb702de5beb53e224a16ae2e5c1288496d9d951bfbf7fdfe9dd8a3dff7f8008e9e9fdbbcd6efbb10952d6160b
+SHA256: f41448a6b8aa63d9426225e223f5b384ebaf1886b1f70ab38104508920647293
+SHA1: 6d210151b952ab6d5be7f2e4ff55a026478c4baa
+MD5sum: bcd2f9b7c955d0bfdd27f186731bea8a
+Description: console-based network traffic monitor
+ vnStat is a network traffic monitor for Linux. It keeps a log of
+ daily network traffic for the selected interface(s). vnStat is not
+ a packet sniffer. The traffic information is analyzed from the /proc
+ filesystem, so vnStat can be used without root permissions.
+
 Package: wget
 Version: 1.21.2-2ubuntu1.1
 Architecture: amd64
