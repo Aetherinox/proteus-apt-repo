@@ -80,3 +80,26 @@ jobs:
 
                 git reflog expire --expire=now --all
                 git gc --prune=now --aggressive
+
+        # #
+        #   Commit > Precommit
+        # #
+
+        - name: "📦 Commit › Pre-commit"
+          id: task_commit_pre
+          run: |
+              now=$(date -u '+%m/%d/%Y %H:%M')
+              commit_label="Cleanup" >> $GITHUB_ENV
+              commit_message="\`️️🔒 $commit_label 🔒\` \`$now UTC\`" >> $GITHUB_ENV
+              echo "COMMIT_MESSAGE=$(echo $commit_message)" >> $GITHUB_ENV
+              echo "NOW=$(echo $now)" >> $GITHUB_ENV
+
+        # #
+        #   Commit > Commit
+        # #
+
+        - name: "📦 Commit › Execute"
+          id: task_commit_execute
+          uses: stefanzweifel/git-auto-commit-action@v5
+          with:
+              commit_message: ${{ env.COMMIT_MESSAGE }}
