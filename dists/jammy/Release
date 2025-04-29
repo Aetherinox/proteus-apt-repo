@@ -2,7 +2,7 @@ Origin: Aetherx
 Label: Jammy Jellyfish 22.04 LTS & ZorinOS v17
 Suite: stable
 Codename: jammy
-Date: Tue, 29 Apr 2025 06:39:28 UTC
+Date: Tue, 29 Apr 2025 19:03:37 UTC
 Architectures: amd64 arm64 i386
 Components: main
 Description: Ubuntu 22.04 (Jammy Jellyfish) LTS & ZorinOS v17
@@ -13,8 +13,8 @@ MD5Sum:
  382ed13432d296b607ac5e28a676014e 94316 main/binary-arm64/Packages
  70c56851e85dba56a36b05c6886f0708 29396 main/binary-arm64/Packages.gz
  c02822c5e4bbb3b71ce7681ac369faa3 160 main/binary-arm64/Release
- b78a35d814711c169a1f9f6ab33179f8 99297 main/binary-i386/Packages
- 6a19bf08b2496735459e7c65e431fdc2 30998 main/binary-i386/Packages.gz
+ e1f6c3256fa4d137ed26cadf3a3631a5 99293 main/binary-i386/Packages
+ e32fc1864b9c7f7e33afa35ecf215ed0 30997 main/binary-i386/Packages.gz
  b45fd21166f882fd61a4def5d33a858c 159 main/binary-i386/Release
  d41d8cd98f00b204e9800998ecf8427e 0 main/source/Sources
  7029066c27ac6f5ef18d660d5741979a 20 main/source/Sources.gz
@@ -26,8 +26,8 @@ SHA1:
  e859bff1b7248a30ba6689a6ef0bbf83dc5272c5 94316 main/binary-arm64/Packages
  e2cae70c47e260c2929beb3c4edae9be1ef6ef35 29396 main/binary-arm64/Packages.gz
  aaefecf1c50c09cfa48ce5b3b036cee2b80930d6 160 main/binary-arm64/Release
- 3327b3e3d05f44580d209718ef1fda6e31bcc450 99297 main/binary-i386/Packages
- 9f410ce0a93f287e0df5192bbad5c5547c28bfd3 30998 main/binary-i386/Packages.gz
+ 7761c292bec6c99f6c695b58a8f6e7ea6d60261e 99293 main/binary-i386/Packages
+ d013f907e417ec0fc1624c011205ba8b33756860 30997 main/binary-i386/Packages.gz
  83baedb47aba895a669b0c45f42174700cfb49d6 159 main/binary-i386/Release
  da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/source/Sources
  46c6643f07aa7f6bfe7118de926b86defc5087c4 20 main/source/Sources.gz
@@ -39,8 +39,8 @@ SHA256:
  513e5603768c9e38ae6ba4b976723e006886dade01d7a92987d85aa6f5acb711 94316 main/binary-arm64/Packages
  12ab7443a3d23692c5a87f172df755e0c2e3f9cc702a78c75a60130181eb1e33 29396 main/binary-arm64/Packages.gz
  0748525f41d87da34ee7dae4baeb346706f031aab5a6de4cb06c7e7eb5bfd6c3 160 main/binary-arm64/Release
- bc398fe097e67d20e617163d012930dbae5868b89d3f0d0894e715b4f0fa85a4 99297 main/binary-i386/Packages
- d36933001e08941e6baeb58b666cee4ccd2590ed26ca55b0a3f97df999a84172 30998 main/binary-i386/Packages.gz
+ 5872c1dad651eed80fa27a10514393ac8755873a601619740f03e660b4b9bbd2 99293 main/binary-i386/Packages
+ 2df42a5279a61ac11b2fbed1e8980b0fbecc5d9f9f35ec693840a46a38d9edab 30997 main/binary-i386/Packages.gz
  4f1b3acd727f0ec35b730d5ef2d68f54534353e641703792ed9e4a3010d8e1f2 159 main/binary-i386/Release
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/source/Sources
  59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2 20 main/source/Sources.gz
@@ -52,8 +52,8 @@ SHA512:
  a0fea0a2b5b1d6a9bbba125f56d9d3f8e95b1dc1f1c91c8ec60287424edf281aeeaad01d0fa399b328510f62601296bc192ac42f53fc900417b8f2f3502a5fa8 94316 main/binary-arm64/Packages
  a19a9ad961ed1129733f015e5b71ad6248ea146981503b05fa7a84279fa00cca9e5bd0feb7fff67545a82f3ebc16073751a2c72e133f0392cc1ecee524393143 29396 main/binary-arm64/Packages.gz
  93883aff3c9677d2a35babc864d4dfdacb356863d2fb3829565abe65322193f5bad81ac3a5357383f0f0ea2ee63779c97a18e96ea3727eec72b1e4020bc80f7c 160 main/binary-arm64/Release
- dea4a795a5acdb450131b08fb9389618fa40fbf01fbaebc5ca0c7d84cfda8c61b7d638670ad6d5ac99b934aa3649488e93db763ea8afce6c67652a13b2d05e42 99297 main/binary-i386/Packages
- 714bb752413363f33acd4a0326d51c64c5d42678047d4dba7556ef63a2e6e0d21100f262ea50d1a7ad5f93863f71528e7cf3026f9cc8bc2727e3871d6028fd0b 30998 main/binary-i386/Packages.gz
+ b2f62fbd1f9c1ee4984a668af22eb29faa99727c9c473287d614da4286f480b7c9e6f90dd92454ce0c61482b099736fe4a83d323dea598e287ccb18db58bbde6 99293 main/binary-i386/Packages
+ 458870467f4d1926cfe9f32c6b29db14df73bd01dc056290f6d0ef340d2ba4ec5c27734f7889636c2ad8799346b00f6dc2716be3ec2a73ecceff333d1d73cece 30997 main/binary-i386/Packages.gz
  14da0ade0ef5103fcfb0340ee4ac58bc97524eb843b8f03fa7e0d8869a75f6e7de24ae58f4f8631f50992a94abe1ad819d2a95c9a71dd010bfba66aa78e77638 159 main/binary-i386/Release
  cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e 0 main/source/Sources
  7e8e93f4a89ce7fae011403e14a1d53544c6e6f6b6010d61129dc27937806d2b03802610d7999eab33a4c36b0f9e001d9d76001b8354087634c1aa9c740c536f 20 main/source/Sources.gz
