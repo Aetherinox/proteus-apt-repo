@@ -4854,10 +4854,12 @@ EOF
     local NOW=$(date -u '+%m.%d.%Y %H:%M:%S')
     local app_repo_commit="\`️build(start): 📦 auto-update 📦\` \`${app_repo_dist_sel} | ${NOW} UTC\`"
     if [ -n "${argAptPackage}" ]; then
-        app_repo_commit="\`️build(start): 📦 pkg-update (apt-get) 📦\` \`${app_repo_dist_sel} | ${NOW} UTC\`"
+        local pkg=${lst_packages[0]}
+        app_repo_commit="\`️build(start): 📦 pkg-update (apt-get) - ${pkg} - 📦\` \`${app_repo_dist_sel} | ${NOW} UTC\`"
     fi
     if [ -n "${argGithubPackage}" ]; then
-        app_repo_commit="\`️build(start): 📦 pkg-update (github) 📦\` \`${app_repo_dist_sel} | ${NOW} UTC\`"
+        local pkg=${lst_github[0]}
+        app_repo_commit="\`️build(start): 📦 pkg-update (github) - ${pkg} - 📦\` \`${app_repo_dist_sel} | ${NOW} UTC\`"
     fi
 
     # #
@@ -4950,10 +4952,12 @@ app_run_gh_end()
     local NOW=$(date -u '+%m.%d.%Y %H:%M:%S')
     local app_repo_commit="\`️build(end): 📦 auto-update 📦\` \`${app_repo_dist_sel} | ${NOW} UTC\`"
     if [ -n "${argAptPackage}" ]; then
-        app_repo_commit="\`️build(end): 📦 pkg-update (apt-get) 📦\` \`${app_repo_dist_sel} | ${NOW} UTC\`"
+        local pkg=${lst_packages[0]}
+        app_repo_commit="\`️build(end): 📦 pkg-update (apt-get) - ${pkg} - 📦\` \`${app_repo_dist_sel} | ${NOW} UTC\`"
     fi
     if [ -n "${argGithubPackage}" ]; then
-        app_repo_commit="\`️build(end): 📦 pkg-update (github) 📦\` \`${app_repo_dist_sel} | ${NOW} UTC\`"
+        local pkg=${lst_github[0]}
+        app_repo_commit="\`️build(end): 📦 pkg-update (github) - ${pkg} - 📦\` \`${app_repo_dist_sel} | ${NOW} UTC\`"
     fi
 
     # #
@@ -5174,6 +5178,7 @@ app_start()
 #   -a, --apt-package           adds an individual apt-get package to repository
 #   -g, --github-package        adds an individual github / lastversion package to repository
 #   -f, --fixperms              fixes permissions and owner of proteus.sh script
+#   -l, --list-packages         show list of locally installed packages
 #   -dd, --dist                 specifies a specific distribution out of box, this script finds the distribution
 #                               of the machine you are running. you may override it with this option.
 #                                   jammy, lunar, focal, noble, etc
@@ -5224,7 +5229,7 @@ while [ $# -gt 0 ]; do
             )
             ;;
 
-        -f|-fp|--fixperms)
+        -f|-fp|--fixperms|--fix-perms)
             if [[ "$1" != *=* ]]; then shift; fi
             argChownOwner="${1#*=}"
             if [ -z "${argChownOwner}" ]; then
@@ -5298,6 +5303,11 @@ while [ $# -gt 0 ]; do
 
         -d|--dev)
             argDevEnabled=true
+            ;;
+
+        -l|--listpages|--list-packages)
+            apt list --installed
+            exit 1
             ;;
 
         -q|--quiet)
