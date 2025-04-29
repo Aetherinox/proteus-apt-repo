@@ -5305,8 +5305,13 @@ while [ $# -gt 0 ]; do
             argDevEnabled=true
             ;;
 
-        -l|--listpages|--list-packages)
+        -l|--list-packages)
             apt list --installed
+            exit 1
+            ;;
+
+        -L|--list-local|--list-packages-local)
+            comm -23 <(apt-mark showmanual | sort -u) <(gzip -dc /var/log/installer/initial-status.gz | sed -n 's/^Package: //p' | sort -u)
             exit 1
             ;;
 
