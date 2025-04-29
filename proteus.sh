@@ -44,6 +44,8 @@
 #                   ./proteus.sh -P                                     set owner root:root and permissions +x for proteus.sh
 #                   ./proteus.sh -P username                            set owner username:username and permissions +x for proteus.sh
 #                   ./proteus.sh -k                                     kill existing processes of proteus script
+#                   ./proteus -L                                        list locally / manually installed packages
+#                   ./proteus -l                                        list all installed packages
 #   
 # #
 
@@ -186,7 +188,7 @@ app_guid="1000"                                                                 
 app_uuid="1000"                                                                     # user id for permission assignment
 app_bFoundSafe=false                                                                # git safe.directory found
 now=`date '+%m.%d.%Y %H:%M:%S'`;                                                    # current date/time
-app_tang_domain="https://tang1.domain.lan"                                          # tang server domain
+app_tang_domain="https://tang.domain.lan"                                           # tang server domain
 app_repo_domain="Aetherinox/proteus-apt-repo"                                       # repo domain
 app_repo_developer="aetherinox"                                                     # repo developer
 app_repo_commit_msg="synchronize - $now"                                            # repo commit message
@@ -243,8 +245,10 @@ lst_packages=(
     'clevis-udisks2'
     'clevis-tpm2'
     'dialog'
+    'dos2unix'
     'firefox'
     'flatpak'
+    'geoipupdate'
     'gnome-keyring'
     'gnome-keysign'
     'gnome-shell-extension-manager'
@@ -392,6 +396,7 @@ lst_packages=(
     'php-zip'
     'php-zmq'
     'php'
+    'sirikali'
     'sks'
     'snap'
     'snapd'
@@ -399,6 +404,7 @@ lst_packages=(
     'trash-cli'
     'tree'
     'wget'
+    'zram-tools'
 )
 
 # #
@@ -5164,7 +5170,6 @@ app_start()
 
     set -o history
 }
-
 
 # #
 #   command-line options
