@@ -350,6 +350,36 @@ Description: Displays user-friendly dialog boxes from shell scripts
   background tail  Similar to tail but runs in the background.
   editbox          Allows editing an existing file
 
+Package: dos2unix
+Version: 7.4.2-2
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: tony mancill <tmancill@debian.org>
+Installed-Size: 1335
+Depends: libc6 (>= 2.34)
+Multi-Arch: foreign
+Homepage: https://waterlan.home.xs4all.nl/dos2unix.html
+Priority: 0
+Section: utils
+Filename: pool/main/d/dos2unix/dos2unix_7.4.2-2_amd64.deb
+Size: 383790
+SHA512: c480c713b4f8700159cc5b08e2603c592b6fee53eb0d411e59fb8cf76ef4617105bfc7ab20e5c5772c72ff3d50272e828772cc548aed194f270349e0fbfd6995
+SHA256: 821f4f4e51624ae94c650c5f83e3520732704c67b61cbdb64ec5883a6b250884
+SHA1: e816d433dc917f10c4f82fd43fd0edaad7efeff2
+MD5sum: 0feb833155e6064086d89c8504214ff2
+Description: convert text file line endings between CRLF and LF
+ This package contains utilities dos2unix, unix2dos, mac2unix,
+ unix2mac to convert the line endings of text files between UNIX (LF),
+ DOS (CRLF) and Mac (CR) formats.
+ .
+ Text files under Windows and DOS typically have two ASCII characters
+ at the end of each line: CR (carriage return) followed by LF (line
+ feed). Older Macs used just CR, while UNIX uses just LF. While most
+ modern editors can read all these formats, there may still be a need
+ to convert files between them.
+ .
+ This is the classic utility developed in 1989.
+
 Package: firefox
 Version: 1:1snap1-0ubuntu2
 Architecture: amd64

@@ -13594,6 +13594,7 @@
             {"type":"file","name":"clevis-tpm2_18-1ubuntu1.1_amd64.deb"},
             {"type":"file","name":"clevis-udisks2_18-1ubuntu1.1_amd64.deb"},
             {"type":"file","name":"dialog_1.3-20211214-1_amd64.deb"},
+            {"type":"file","name":"dos2unix_7.4.2-2_amd64.deb"},
             {"type":"file","name":"firefox_1snap1-0ubuntu2_amd64.deb"},
             {"type":"file","name":"flatpak_1.14.10-1~flatpak1~22.04.1_amd64.deb"},
             {"type":"file","name":"freetube_0.23.3_amd64.deb"},
@@ -13812,6 +13813,8 @@
       {"type":"fifo","name":"proteus-042725.log.pipe"},
       {"type":"file","name":"proteus-042825.log"},
       {"type":"fifo","name":"proteus-042825.log.pipe"},
+      {"type":"file","name":"proteus-042925.log"},
+      {"type":"fifo","name":"proteus-042925.log.pipe"},
       {"type":"file","name":"proteus-service-012625.log"},
       {"type":"file","name":"proteus-service-012725.log"},
       {"type":"file","name":"proteus-service-012825.log"},
@@ -13966,6 +13969,9 @@
             {"type":"file","name":"dialog_1.3-20211214-1_amd64.deb"},
             {"type":"file","name":"dialog_1.3-20211214-1_arm64.deb"},
             {"type":"file","name":"dialog_1.3-20240101-1_amd64.deb"}
+        ]},
+          {"type":"directory","name":"dos2unix","contents":[
+            {"type":"file","name":"dos2unix_7.4.2-2_amd64.deb"}
         ]}
       ]},
         {"type":"directory","name":"f","contents":[
@@ -14780,5 +14786,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":255,"files":14269}
+  {"type":"report","directories":256,"files":14273}
 ]
