@@ -5967,6 +5967,23 @@ Description: Debian package repository producer
  .
  This package also contains the changestool and rredtool helpers.
 
+Package: sirikali
+Version: 1.8.2-1
+Architecture: amd64
+Maintainer: Mhogo Mchungu <mhogomchungu@gmail.com>
+Installed-Size: 2545
+Depends: libc6 (>= 2.34), libgcc-s1 (>= 3.3.1), libgcrypt20 (>= 1.9.0), libqt5core5a (>= 5.15.1), libqt5dbus5 (>= 5.14.1), libqt5gui5 (>= 5.7.0) | libqt5gui5-gles (>= 5.7.0), libqt5network5 (>= 5.15.1), libqt5widgets5 (>= 5.14.1), libsecret-1-0 (>= 0.7), libstdc++6 (>= 11)
+Homepage: http://mhogomchungu.github.io/sirikali
+Priority: 0
+Section: utils
+Filename: pool/main/s/sirikali/sirikali_1.8.2-1_amd64.deb
+Size: 852690
+SHA512: 9731c38d0338c3b0103cdcd5b6da5485ff377d7c3f5eea76aaafd64b94bc3381f2f76b8b679294014bc0afecb5ab0b1dfd78577f61f6c81eebd58ba81f641910
+SHA256: 858288f45c396d6e92569213ae140fd63304cd92a39317f5d4ca59e7f3855e6c
+SHA1: df9486389bd093344f523089ab218a823dbd043a
+MD5sum: f15939b0f33f95920fde7d0a849f2a28
+Description: A Qt/C++ GUI front end to cryfs,gocryptfs,securefs and encfs.
+
 Package: sks
 Version: 1.1.6+git20210302.c3ba6d5a-4
 Architecture: amd64
