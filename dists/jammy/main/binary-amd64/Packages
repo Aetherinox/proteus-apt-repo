@@ -461,6 +461,26 @@ MD5sum: afc32ce669b10299f05a88e792a7b927
 Description: 
   A private YouTube client
 
+Package: geoipupdate
+Version: 7.1.0-0+maxmind1~jammy
+Architecture: amd64
+Maintainer: William Storey <wstorey@maxmind.com>
+Installed-Size: 5933
+Depends: libc6 (>= 2.34)
+Built-Using: golang-1.23 (= 1.23.3-1longsleep1+focal)
+Homepage: https://github.com/maxmind/geoipupdate
+Priority: 0
+Section: utils
+Filename: pool/main/g/geoipupdate/geoipupdate_7.1.0-0+maxmind1~jammy_amd64.deb
+Size: 2234046
+SHA512: 1a9391ffe429651bb38fdc275021989c0ca2582457d9e67ab4e07480125c4c72ef366e739b01662aed2464169e755818b56143c3e6f00b0a21e8896b219b79b1
+SHA256: cd50550a4a827ed44a4aed515627edd6f37dcbd1a4f1b04e8e6362050302f6f7
+SHA1: aa97159910824648b5c5a7b7ee31d2f1a7aeece6
+MD5sum: 6bbc601454b4e82d5b27bc8e27cc9d72
+Description: Tool for updating GeoIP and GeoLite databases
+ The GeoIP Update program performs automatic updates of GeoIP2 and GeoIP
+ Legacy binary databases.
+
 Package: git
 Version: 1:2.34.1-1ubuntu1.12
 Architecture: amd64

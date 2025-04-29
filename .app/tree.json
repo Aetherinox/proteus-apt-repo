@@ -13600,6 +13600,7 @@
             {"type":"file","name":"flatpak_1.14.10-1~flatpak1~22.04.1_amd64.deb"},
             {"type":"file","name":"freetube_0.23.3_amd64.deb"},
             {"type":"file","name":"freetube_0.23.4_amd64.deb"},
+            {"type":"file","name":"geoipupdate_7.1.0-0+maxmind1~jammy_amd64.deb"},
             {"type":"file","name":"git_2.34.1-1ubuntu1.12_amd64.deb"},
             {"type":"file","name":"gnome-keyring_40.0-3ubuntu3_amd64.deb"},
             {"type":"file","name":"gnome-shell-extension-manager_0.3.0-0ubuntu2.1_amd64.deb"},
@@ -13992,6 +13993,9 @@
         ]}
       ]},
         {"type":"directory","name":"g","contents":[
+          {"type":"directory","name":"geoipupdate","contents":[
+            {"type":"file","name":"geoipupdate_7.1.0-0+maxmind1~jammy_amd64.deb"}
+        ]},
           {"type":"directory","name":"git","contents":[
             {"type":"file","name":"git_2.34.1-1ubuntu1.12_amd64.deb"},
             {"type":"file","name":"git_2.34.1-1ubuntu1.12_i386.deb"},
@@ -14794,5 +14798,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":258,"files":14277}
+  {"type":"report","directories":259,"files":14279}
 ]
