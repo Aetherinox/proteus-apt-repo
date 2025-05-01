@@ -1856,7 +1856,7 @@ Description: Automatic Password generation
  remembering their position when memorizing only the word.
 
 Package: reprepro
-Version: 5.4.6-1
+Version: 5.4.7-1
 Architecture: arm64
 Maintainer: Bastian Germann <bage@debian.org>
 Installed-Size: 1361
@@ -1865,12 +1865,12 @@ Recommends: apt (>= 0.9.4)
 Suggests: pinentry-curses, gpg-agent, inoticoming, lzip (>= 1.11-2)
 Priority: 0
 Section: utils
-Filename: pool/main/r/reprepro/reprepro_5.4.6-1_arm64.deb
-Size: 435808
-SHA512: cd73044c7fbaab265b731ff8c5358db0ff2aad2b9e22a1d857d1ddc187ad79838dec6ac9b8eb5eb6ca6286d055981a8e816781527a613bb4a4a7b0907d6ced39
-SHA256: fa8e353269804a7fff4ede5a8fe28aec39bdcf2375f70fc8be5fd1bc897bba06
-SHA1: d24ea2078c479350f1fe1244768e5dc4c33f1b48
-MD5sum: 1f78c82080eb9c001e5e6f2e7bb33c6c
+Filename: pool/main/r/reprepro/reprepro_5.4.7-1_arm64.deb
+Size: 437148
+SHA512: 694c11cd510a9f0bbc27d9e0aaf175ea36258c736aa41235c9af977217dd2ff7313ea947dd9e3458414880871bf6b96ec88f26c4279381f0fcc5b96467a328d3
+SHA256: d55a791c5a7b3e0a542eb99d03c935989d35adcccb9cf8f4d8212bdaae445228
+SHA1: 4cc059c28a2b77b9179fff1e5bf6e89b101266cf
+MD5sum: ffa8c30de8a7dbb7a9741bae82f689b7
 Description: Debian package repository producer
  reprepro is a tool to manage a repository of Debian packages
  (.deb, .udeb, .dsc, ...). It stores files either being
