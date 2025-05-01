@@ -5519,13 +5519,13 @@ if [ -n "$argLocalPackage" ]; then
         fi
 
         if [ "${argDevEnabled}" = true ]; then
-            printf '%-29s %-65s\n' "  ${c[blue]}${c[end]}" "${c[grey2]}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package_path}${c[end]}"
+            printf '%-29s %-65s\n' "  ${c[blue]}${c[end]}" "${c[grey2]}reprepro -V --section ${c[blue]}utils${c[grey2]} --component ${c[blue]}main${c[grey2]} --priority ${c[blue]}0${c[grey2]} --architecture ${c[blue]}$argArchitecture${c[grey2]} includedeb ${c[blue]}${app_repo_dist_sel}${c[grey2]} ${deb_package_path}${c[end]}"
         fi
 
         if [ -n "${bRepreproInstalled}" ]; then
             reprepro_output=
             if [ "${argDryRun}" = false ]; then
-                printf '%-29s %-65s\n' "  ${c[yellow]}REPREPRO${c[end]}" "Adding new reprepro file ${c[yellow]}$deb_package_path${c[end]}"
+                printf '%-29s %-65s\n' "  ${c[yellow]}REPREPRO${c[end]}" "Adding new reprepro file ${c[yellow]}$deb_package_path${c[end]} for dist ${c[yellow]}$app_repo_dist_sel${c[end]} and arch ${c[yellow]}$argArchitecture${c[end]}"
                 reprepro_exit_code="0"
                 reprepro_output="$(reprepro -V \
                     --section utils \
