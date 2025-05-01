@@ -5402,7 +5402,7 @@ while [ $# -gt 0 ]; do
         # #
 
         -k|--kill)
-            kill -9 `pgrep proteus`
+            kill -9 `pgrep ${app_file_bin}`
             exit 1
             ;;
 
@@ -5513,6 +5513,13 @@ while [ $# -gt 0 ]; do
             argForceUpdate=true
             ;;
 
+        # #
+        #   shows version inforrmation about this script
+        #
+        #   @usage              proteus -v
+        #                       proteus --version
+        # #
+
         -v|--version)
             echo
             echo -e "  ${c[green]}${c[bold]}${app_title}${c[end]} - v$(get_version)${c[end]}"
@@ -5522,9 +5529,25 @@ while [ $# -gt 0 ]; do
             exit 1
             ;;
 
+        # #
+        #   shows help menu
+        #
+        #   @usage              proteus -h
+        #                       proteus --help
+        # #
+
         -h|--help)
             opt_usage
             ;;
+
+        # #
+        #   default action if invalid flag specified. shows the help menu if the flag specified by the user
+        #   does not really exist.
+        #
+        #   @usage              proteus -Z
+        #                       proteus --afgfsdg
+        # #
+
         *)
             opt_usage
             ;;
