@@ -5626,6 +5626,7 @@ if [ -n "$argLocalPackage" ]; then
             # #
 
             if [ ! -f "$app_dir_incoming/$argArchitecture/" ]; then
+                printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "Moving ${c[yellow]}${deb_package_path}${c[end]} to ${c[yellow]}$app_dir_incoming/$argArchitecture/${c[end]}"
                 mv "$deb_package_path" "$app_dir_incoming/$argArchitecture/"
             fi
         else
