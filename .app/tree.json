@@ -13590,6 +13590,7 @@
             {"type":"file","name":"apt-url_1.0.0-2_amd64.deb"},
             {"type":"file","name":"apt-utils_2.4.13_amd64.deb"},
             {"type":"file","name":"argon2_0~20171227-0.3_amd64.deb"},
+            {"type":"file","name":"Bitwarden-2025.4.2-amd64.deb"},
             {"type":"file","name":"clevis_18-1ubuntu1.1_amd64.deb"},
             {"type":"file","name":"clevis-dracut_18-1ubuntu1.1_amd64.deb"},
             {"type":"file","name":"clevis-tpm2_18-1ubuntu1.1_amd64.deb"},
@@ -13600,6 +13601,7 @@
             {"type":"file","name":"flatpak_1.14.10-1~flatpak1~22.04.1_amd64.deb"},
             {"type":"file","name":"freetube_0.23.3_amd64.deb"},
             {"type":"file","name":"freetube_0.23.4_amd64.deb"},
+            {"type":"file","name":"freetube_0.23.5_amd64.deb"},
             {"type":"file","name":"geoipupdate_7.1.0-0+maxmind1~jammy_amd64.deb"},
             {"type":"file","name":"git_2.34.1-1ubuntu1.12_amd64.deb"},
             {"type":"file","name":"gnome-keyring_40.0-3ubuntu3_amd64.deb"},
@@ -13704,6 +13706,7 @@
             {"type":"file","name":"apt-url_1.0.0-2_arm64.deb"},
             {"type":"file","name":"freetube_0.23.3_arm64.deb"},
             {"type":"file","name":"freetube_0.23.4_arm64.deb"},
+            {"type":"file","name":"freetube_0.23.5_arm64.deb"},
             {"type":"file","name":"github-desktop_3.4.2-linux1_arm64.deb"},
             {"type":"file","name":"makedeb-beta_16.1.0-beta1_arm64_jammy.deb"},
             {"type":"file","name":"opengist1.10.0-linux-arm64.deb"},
@@ -13956,7 +13959,7 @@
             {"type":"file","name":"php-bacon-qr-code_2.0.6-2_arm64.deb"}
         ]},
           {"type":"directory","name":"bitwarden","contents":[
-            {"type":"file","name":"bitwarden_2025.2.0_amd64.deb"}
+            {"type":"file","name":"bitwarden_2025.4.2_amd64.deb"}
         ]}
       ]},
         {"type":"directory","name":"c","contents":[
@@ -14004,7 +14007,9 @@
         ]},
           {"type":"directory","name":"freetube","contents":[
             {"type":"file","name":"freetube_0.23.4_amd64.deb"},
-            {"type":"file","name":"freetube_0.23.4_arm64.deb"}
+            {"type":"file","name":"freetube_0.23.4_arm64.deb"},
+            {"type":"file","name":"freetube_0.23.5_amd64.deb"},
+            {"type":"file","name":"freetube_0.23.5_arm64.deb"}
         ]}
       ]},
         {"type":"directory","name":"g","contents":[
@@ -14810,13 +14815,10 @@
   ]},
     {"type":"file","name":".gitattributes"},
     {"type":"file","name":".gitignore"},
-    {"type":"file","name":"open-vm-tools-desktop_12.3.5-3~ubuntu0.22.04.1_amd64.deb"},
-    {"type":"file","name":"open-vm-tools-dev_12.3.5-3~ubuntu0.22.04.1_amd64.deb"},
-    {"type":"file","name":"open-vm-tools-dev_12.3.5-3~ubuntu0.22.04.1_amd64.deb.1"},
     {"type":"file","name":"proteus.sh"},
     {"type":"file","name":"README.md"},
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":261,"files":14295}
+  {"type":"report","directories":261,"files":14297}
 ]

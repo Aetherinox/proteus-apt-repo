@@ -157,7 +157,7 @@ Description: Displays user-friendly dialog boxes from shell scripts
   editbox          Allows editing an existing file
 
 Package: freetube
-Version: 0.23.4
+Version: 0.23.5
 License: AGPL-3.0-or-later
 Vendor: PrestonN <FreeTubeApp@protonmail.com>
 Architecture: arm64
@@ -168,12 +168,12 @@ Recommends: libappindicator3-1
 Homepage: https://github.com/FreeTubeApp/FreeTube#readme
 Priority: 0
 Section: utils
-Filename: pool/main/f/freetube/freetube_0.23.4_arm64.deb
-Size: 71839804
-SHA512: 9dea965fb21e7b653544b04b466d075c67c96acda6f7ddf5674e77650bee6c5e629dc6d9081f9b6ae9dbccf9e678a7740e86b7dbdcf3da7cdfbf0ae269ff7966
-SHA256: c69ef8d6535986501a41edb2fab16a2618edd7b97ce0d3e19d658b60d916b25a
-SHA1: 8c3424e95ec9441736f7cba56440dc0c118ee309
-MD5sum: 1a2dde645c6f2236f66d6175ef1ad691
+Filename: pool/main/f/freetube/freetube_0.23.5_arm64.deb
+Size: 71832048
+SHA512: 60ba85c07386a3a461302b6eeab34f99fe63a5864a73b81d81a514579ff9bde16c79aa4277285c16e4f22be68ef255b56a0059b3de49a67df072394bfb425ca2
+SHA256: 75a9fe67046f3b0d03da71f7f0f8b86c560f77f7b27bb7fe4d57355edc560e87
+SHA1: 37d8b4bb421f3a69eddddf87e5133cd9d7a55bcd
+MD5sum: c63122cb50c924d907f962073d5663ba
 Description: 
   A private YouTube client
 
