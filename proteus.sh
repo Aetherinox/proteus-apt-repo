@@ -104,73 +104,73 @@ sys_code=$(lsb_release -cs)
 
 # #
 #   define > colors
-#   
+#
 #   Use the color table at:
 #       - https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797
 # #
 
 declare -A c=(
-    end $'\e[0m'
-    white $'\e[97m'
-    bold $'\e[1m'
-    dim $'\e[2m'
-    underline $'\e[4m'
-    strike $'\e[9m'
-    blink $'\e[5m'
-    inverted $'\e[7m'
-    hidden $'\e[8m'
-    black $'\e[38;5;0m'
-    fuchsia1 $'\e[38;5;205m'
-    fuchsia2 $'\e[38;5;198m'
-    red $'\e[38;5;160m'
-    red2 $'\e[38;5;196m'
-    orange $'\e[38;5;202m'
-    orange2 $'\e[38;5;208m'
-    magenta $'\e[38;5;5m'
-    blue $'\e[38;5;033m'
-    blue2 $'\e[38;5;033m'
-    blue3 $'\e[38;5;68m'
-    cyan $'\e[38;5;51m'
-    green $'\e[38;5;2m'
-    green2 $'\e[38;5;76m'
-    yellow $'\e[38;5;184m'
-    yellow2 $'\e[38;5;190m'
-    yellow3 $'\e[38;5;193m'
-    grey1 $'\e[38;5;240m'
-    grey2 $'\e[38;5;244m'
-    grey3 $'\e[38;5;250m'
-    navy $'\e[38;5;62m'
-    olive $'\e[38;5;144m'
-    peach $'\e[38;5;210m'
+    [end]=$'\e[0m'
+    [white]=$'\e[97m'
+    [bold]=$'\e[1m'
+    [dim]=$'\e[2m'
+    [underline]=$'\e[4m'
+    [strike]=$'\e[9m'
+    [blink]=$'\e[5m'
+    [inverted]=$'\e[7m'
+    [hidden]=$'\e[8m'
+    [black]=$'\e[38;5;0m'
+    [fuchsia1]=$'\e[38;5;205m'
+    [fuchsia2]=$'\e[38;5;198m'
+    [red]=$'\e[38;5;160m'
+    [red2]=$'\e[38;5;196m'
+    [orange]=$'\e[38;5;202m'
+    [orange2]=$'\e[38;5;208m'
+    [magenta]=$'\e[38;5;5m'
+    [blue]=$'\e[38;5;033m'
+    [blue2]=$'\e[38;5;033m'
+    [blue3]=$'\e[38;5;68m'
+    [cyan]=$'\e[38;5;51m'
+    [green]=$'\e[38;5;2m'
+    [green2]=$'\e[38;5;76m'
+    [yellow]=$'\e[38;5;184m'
+    [yellow2]=$'\e[38;5;190m'
+    [yellow3]=$'\e[38;5;193m'
+    [grey1]=$'\e[38;5;240m'
+    [grey2]=$'\e[38;5;244m'
+    [grey3]=$'\e[38;5;250m'
+    [navy]=$'\e[38;5;62m'
+    [olive]=$'\e[38;5;144m'
+    [peach]=$'\e[38;5;210m'
 )
 
 # #
-#   define > emojis (unicode)
+#   unicode for emojis
 #       https://apps.timwhitlock.info/emoji/tables/unicode
 # #
 
 declare -A icon=(
-    "symbolic link" $'\xF0\x9F\x94\x97' # 🔗
-    "regular file" $'\xF0\x9F\x93\x84' # 📄
-    "directory" $'\xF0\x9F\x93\x81' # 📁
-    "regular empty file" $'\xe2\xad\x95' # ⭕
-    "log" $'\xF0\x9F\x93\x9C' # 📜
-    "1" $'\xF0\x9F\x93\x9C' # 📜
-    "2" $'\xF0\x9F\x93\x9C' # 📜
-    "3" $'\xF0\x9F\x93\x9C' # 📜
-    "4" $'\xF0\x9F\x93\x9C' # 📜
-    "5" $'\xF0\x9F\x93\x9C' # 📜
-    "pem" $'\xF0\x9F\x94\x92' # 🔑
-    "pub" $'\xF0\x9F\x94\x91' # 🔒
-    "pfx" $'\xF0\x9F\x94\x92' # 🔑
-    "p12" $'\xF0\x9F\x94\x92' # 🔑
-    "key" $'\xF0\x9F\x94\x91' # 🔒
-    "crt" $'\xF0\x9F\xAA\xAA ' # 🪪
-    "gz" $'\xF0\x9F\x93\xA6' # 📦
-    "zip" $'\xF0\x9F\x93\xA6' # 📦
-    "gzip" $'\xF0\x9F\x93\xA6' # 📦
-    "deb" $'\xF0\x9F\x93\xA6' # 📦
-    "sh" $'\xF0\x9F\x97\x94' # 🗔
+    ["symbolic link"]=$'\xF0\x9F\x94\x97' # 🔗
+    ["regular file"]=$'\xF0\x9F\x93\x84' # 📄
+    ["directory"]=$'\xF0\x9F\x93\x81' # 📁
+    ["regular empty file"]=$'\xe2\xad\x95' # ⭕
+    ["log"]=$'\xF0\x9F\x93\x9C' # 📜
+    ["1"]=$'\xF0\x9F\x93\x9C' # 📜
+    ["2"]=$'\xF0\x9F\x93\x9C' # 📜
+    ["3"]=$'\xF0\x9F\x93\x9C' # 📜
+    ["4"]=$'\xF0\x9F\x93\x9C' # 📜
+    ["5"]=$'\xF0\x9F\x93\x9C' # 📜
+    ["pem"]=$'\xF0\x9F\x94\x92' # 🔑
+    ["pub"]=$'\xF0\x9F\x94\x91' # 🔒
+    ["pfx"]=$'\xF0\x9F\x94\x92' # 🔑
+    ["p12"]=$'\xF0\x9F\x94\x92' # 🔑
+    ["key"]=$'\xF0\x9F\x94\x91' # 🔒
+    ["crt"]=$'\xF0\x9F\xAA\xAA ' # 🪪
+    ["gz"]=$'\xF0\x9F\x93\xA6' # 📦
+    ["zip"]=$'\xF0\x9F\x93\xA6' # 📦
+    ["gzip"]=$'\xF0\x9F\x93\xA6' # 📦
+    ["deb"]=$'\xF0\x9F\x93\xA6' # 📦
+    ["sh"]=$'\xF0\x9F\x97\x94' # 🗔
 )
 
 # #
@@ -203,7 +203,6 @@ app_dir_this_dir="${PWD}"                                                       
 app_dir_bin="${HOME}/bin"                                                           # /home/$USER/bin
 app_dir_secrets="/server/.secrets"                                                  # path to .secrets folder
 app_dir_gpg=".gpg"                                                                  # .gpg folder
-app_dir_home="home"                                                                 # home folder
 app_dir_incoming="incoming/packages/${sys_code}"                                    # temp storage location for newly downloaded packages
 
 # #
@@ -5396,8 +5395,8 @@ while [ $# -gt 0 ]; do
             ;;
 
         # #
-        #   kills any proteus processes running
-        #   
+        #   kills any instances / processes of this script currently running
+        #
         #   @usage              proteus -k
         #                       proteus --kill
         # #
