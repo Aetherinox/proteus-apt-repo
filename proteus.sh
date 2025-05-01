@@ -38,15 +38,16 @@
 #       ./proteus.sh --dev --dryrun
 #   
 #   ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
-#   @usage          ./proteus.sh -d -n                                  test the entire script without actually making changes or updating packages
-#                   ./proteus.sh -d -n --package opensc                 test adding new apt-get package without actually adding
-#                   ./proteus.sh -d --package opensc                    add new apt-get package to current ubuntu distro
-#                   ./proteus.sh -P                                     set owner root:root and permissions +x for proteus.sh
-#                   ./proteus.sh -P username                            set owner username:username and permissions +x for proteus.sh
-#                   ./proteus.sh -k                                     kill existing processes of proteus script
-#                   ./proteus -L                                        list locally / manually installed packages
-#                   ./proteus -l                                        list all installed packages
-#   
+#   @usage          ./proteus.sh -d -D                                                          (dryrun) test the entire script without actually making changes or updating packages
+#                   ./proteus.sh -d -D --package opensc                                         (dryrun) test adding new apt-get package without actually adding
+#                   ./proteus.sh -d --package opensc                                            add new apt-get package to current ubuntu distro
+#                   ./proteus.sh -P                                                             set owner root:root and permissions +x for proteus.sh
+#                   ./proteus.sh -P username                                                    set owner username:username and permissions +x for proteus.sh
+#                   ./proteus.sh -k                                                             kill existing processes of proteus script
+#                   ./proteus -L                                                                list locally / manually installed packages
+#                   ./proteus -l                                                                list all installed packages
+#                   ./proteus -D -d -dd "focal" -a "amd64" -l "reprepro_5.4.7-1_amd64.deb"      (dryrun) add local package but don't push changes to reprepro or github
+#                   ./proteus -dd "focal" -a "amd64" -l "reprepro_5.4.7-1_amd64.deb"            (commit) add local package; push changes to reprepro or github
 # #
 
 # #
@@ -209,6 +210,7 @@ app_dir_incoming="incoming/packages/${sys_code}"                                
 #   define > vars
 # #
 
+argLocalPackage=
 argAptPackage=
 argGithubPackage=
 argDevEnabled=false
@@ -217,6 +219,7 @@ argDryRun=false
 argVerbose=false
 argBranch=
 argDistribution=
+argArchitecture=amd64
 argChownOwner=root
 app_repo_dist_sel=
 skip_clevis=false
@@ -2672,7 +2675,7 @@ Logs_Begin()
         exec 3>&1
         tee -a ${LOGS_OBJ} <$LOGS_PIPE >&3 &
         app_pid_tee=$!
-        printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}Assigning log / tee PID ${app_pid_tee}${c[end]}"
+        printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}Assigning log / tee ${c[navy]}PID ${app_pid_tee}${c[end]}"
         exec 1>$LOGS_PIPE
         PIPE_OPENED=1
 
@@ -4845,7 +4848,7 @@ EOF
     #   git add -u            stages modifications and deletions, without new files
     # #
 
-    printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "Adding changed files to branch ${c[yellow]}${app_repo_branch}${c[end]}"
+    printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "Committing new packages to git branch ${c[yellow]}${app_repo_branch}${c[end]}"
     if [ "${argDevEnabled}" = true ]; then
         printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}git add --all${c[end]}"
     fi
@@ -4880,7 +4883,7 @@ EOF
     #       gpg: signing failed: No secret key
     # #
 
-    printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "Starting commit with message: ${c[yellow]}${app_repo_commit}${c[end]}"
+    printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "Git commit message: ${c[yellow]}${app_repo_commit}${c[end]}"
     if [ "${argDevEnabled}" = true ]; then
         printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}git commit -S -m ${app_repo_commit}${c[end]}"
     fi
@@ -4888,7 +4891,7 @@ EOF
         git commit -S -m "${app_repo_commit}"
     fi
 
-    printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "Starting push to repo ${c[yellow]}${app_repo_branch}${c[end]}"
+    printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "Pushing changes to git repo ${c[yellow]}${app_repo_branch}${c[end]}"
     if [ "${argDevEnabled}" = true ]; then
         printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}git push https://${CSI_PAT_GITHUB}@github.com/${CSI_GITHUB_NAME}/${app_repo_apt}${c[end]}"
     fi
@@ -5180,10 +5183,11 @@ app_start()
 #                               LastVersion
 #   -G, --onlyGithub            only downloads packages from github using LastVersion does not download packages 
 #                               from apt-get
-#   -a, --apt-package           adds an individual apt-get package to repository
+#   -p, --apt-package           adds an individual apt-get package to repository
 #   -g, --github-package        adds an individual github / lastversion package to repository
+#   -l, --add-local-package     adds a new package from a local file
 #   -f, --fixperms              fixes permissions and owner of proteus.sh script
-#   -l, --list-packages         show list of locally installed packages
+#   -L, --list-packages         show list of locally installed packages
 #   -dd, --dist                 specifies a specific distribution out of box, this script finds the distribution
 #                               of the machine you are running. you may override it with this option.
 #                                   jammy, lunar, focal, noble, etc
@@ -5208,15 +5212,28 @@ app_start()
 
 while [ $# -gt 0 ]; do
     case "$1" in
+
+        # #
+        #   runs the script but only downloads packages from apt-get
+        # #
+
         -A|--onlyAptget)
             argOnlyAptget=true
             ;;
+
+        # #
+        #   runs the script but only downloads packages from github
+        # #
 
         -G|--onlyGithub)
             argOnlyGithub=true
             ;;
 
-        -a|-ap|--package|--add-package|--apt-package)
+        # #
+        #   downloads a package directly from apt-get using apt-move and apt-url
+        # #
+
+        -p|-ap|--package|--add-package|--apt-package)
             if [[ "$1" != *=* ]]; then shift; fi
             argAptPackage="${1#*=}"
 
@@ -5224,6 +5241,10 @@ while [ $# -gt 0 ]; do
                 "${argAptPackage}"
             )
             ;;
+
+        # #
+        #   downloads a package directly from a github repo
+        # #
 
         -g|-gp|--add-github-package|--github-package)
             if [[ "$1" != *=* ]]; then shift; fi
@@ -5233,6 +5254,19 @@ while [ $# -gt 0 ]; do
                 "${argGithubPackage}"
             )
             ;;
+
+        # #
+        #   adds a local .deb file without downloading it from github or apt-get
+        # #
+
+        -l|-lp|--add-local-package|--local-package)
+            if [[ "$1" != *=* ]]; then shift; fi
+            argLocalPackage="${1#*=}"
+            ;;
+
+        # #
+        #   fixes permissions on proteus.sh and sets +x
+        # #
 
         -f|-fp|--fixperms|--fix-perms)
             if [[ "$1" != *=* ]]; then shift; fi
@@ -5250,6 +5284,25 @@ while [ $# -gt 0 ]; do
             exit 1
             ;;
 
+        # #
+        #   sets the arch for the file
+        # #
+
+        -a|--arch|--arcitecture)
+            if [[ "$1" != *=* ]]; then shift; fi
+            argArchitecture="${1#*=}"
+            if [ -z "${argArchitecture}" ]; then
+                echo -e "  ${c[end]}Must specify a valid architecture"
+                echo -e "  ${c[end]}      Default:  ${c[yellow]}amd64, arm64, i386${c[end]}"
+
+                exit 1
+            fi
+            ;;
+
+        # #
+        #   sets the distribution for the file
+        # #
+
         -dd|--dist)
             if [[ "$1" != *=* ]]; then shift; fi
             argDistribution="${1#*=}"
@@ -5261,33 +5314,46 @@ while [ $# -gt 0 ]; do
             fi
             ;;
 
+        # #
+        #   runs through the process of doing all of the script actions, but doesn't actually commit to github repo
+        #   and doesn't register any new packages with Reprepro
+        # #
+    
         -D|--dryrun)
             argDryRun=true
             ;;
+
+        # #
+        #   kills any proteus processes running
+        # #
 
         -k|--kill)
             kill -9 `pgrep proteus`
             exit 1
             ;;
 
+        # #
+        #   gives a report to the user about set variables, paths, etc.
+        # #
+
         -r|--report)
             opt_report
             ;;
 
-        -c|--clean)
-            # #
-            #   originally to delete left-behind .deb files; we used compgen
-            #       if compgen -G "${app_dir}/*.deb" > /dev/null; then
-            #           echo -e "  ${c[grey2]}Cleaning up left-over .deb: ${c[yellow]}${app_dir}/*.deb${c[end]}"
-            #           rm ${app_dir}/*.deb >/dev/null
-            #       fi
-            #   
-            #   alternative method:
-            #       test command:       find . -maxdepth 1 -name "*.deb*" -type f
-            #       delete command:     find . -maxdepth 1 -name "*.deb*" -type f -delete
-            #   
-            # #
+        # #
+        #   originally to delete left-behind .deb files; we used compgen
+        #       if compgen -G "${app_dir}/*.deb" > /dev/null; then
+        #           echo -e "  ${c[grey2]}Cleaning up left-over .deb: ${c[yellow]}${app_dir}/*.deb${c[end]}"
+        #           rm ${app_dir}/*.deb >/dev/null
+        #       fi
+        #   
+        #   alternative method:
+        #       test command:       find . -maxdepth 1 -name "*.deb*" -type f
+        #       delete command:     find . -maxdepth 1 -name "*.deb*" -type f -delete
+        #   
+        # #
 
+        -c|--clean)
             if compgen -G "${app_dir}/*.deb*" > /dev/null; then
                 echo -e "  ${c[grey2]}Cleaning up left-over .deb: ${c[yellow]}${app_dir}/*.deb${c[end]}"
                 rm ${app_dir}/*.deb* >/dev/null
@@ -5310,7 +5376,7 @@ while [ $# -gt 0 ]; do
             argDevEnabled=true
             ;;
 
-        -l|--list-packages)
+        -L|--list-packages)
             apt list --installed
             exit 1
             ;;
@@ -5365,6 +5431,202 @@ app_repo_branch_sel=$( [[ -n "$argBranch" ]] && echo "$argBranch" || echo "$app_
 # #
 
 app_repo_dist_sel=$( [[ -n "$argDistribution" ]] && echo "$argDistribution" || echo "$sys_code"  )
+
+# #
+#   add local packages
+#   
+#   local packages being added must be placed inside
+#       /incoming/packages/jammy/amd64/package_name.deb
+#       /incoming/packages/jammy/arm64/package_name.deb
+#       /incoming/packages/jammy/i386/package_name.deb
+#   
+#   Add Local Package           ./proteus.sh --dist "jammy" --arch "amd64" --add-local-package "reprepro_5.4.7-1_amd64.deb"
+#   Dryrun Local Package        ./proteus.sh --dryrun --dev --dist "focal" --arch "amd64" --add-local-package "reprepro_5.4.7-1_amd64.deb"
+# #
+
+if [ -n "$argLocalPackage" ]; then
+    app_repo_dist_sel=$( [[ -n "$argDistribution" ]] && echo "$argDistribution" || echo "$sys_code"  )
+
+    if [ -z "${argArchitecture}" ]; then
+        printf '%-29s %-65s\n' "  ${c[red]}ERROR${c[end]}" "${c[end]}Must specify an ${c[orange]}architecture${c[end]} for the package to be categorized under${c[end]}"
+        printf '%-29s %-65s\n' "  ${c[yellow]}${c[end]}" "Use the following command:${c[end]}"
+        printf '%-34s %-65s\n' "  ${c[yellow]}${c[end]}" "${c[grey2]}./${app_file_this} --dist ${c[yellow]}\"jammy\"${c[grey2]} --arch ${c[yellow]}\"amd64\"${c[grey2]} --add-local-package ${c[yellow]}\"reprepro_5.4.7-1_amd64.deb\"${c[end]}"
+        printf '%-34s %-65s\n' "  ${c[yellow]}${c[end]}" "${c[grey2]}./${app_file_this} --dryrun --dev --dist ${c[yellow]}\"jammy\"${c[grey2]} --arch ${c[yellow]}\"amd64\"${c[grey2]} --add-local-package ${c[yellow]}\"reprepro_5.4.7-1_amd64.deb\"${c[end]}"
+        echo -e
+        exit 1
+    fi
+
+    if [ -z "${argDistribution}" ]; then
+        printf '%-29s %-65s\n' "  ${c[red]}ERROR${c[end]}" "${c[end]}Must specify an ${c[orange]}distribution${c[end]} for the package to be categorized under${c[end]}"
+        printf '%-29s %-65s\n' "  ${c[yellow]}${c[end]}" "Use the following command:${c[end]}"
+        printf '%-34s %-65s\n' "  ${c[yellow]}${c[end]}" "${c[grey2]}./${app_file_this} --dist ${c[yellow]}\"jammy\"${c[grey2]} --arch ${c[yellow]}\"amd64\"${c[grey2]} --add-local-package ${c[yellow]}\"reprepro_5.4.7-1_amd64.deb\"${c[end]}"
+        printf '%-34s %-65s\n' "  ${c[yellow]}${c[end]}" "${c[grey2]}./${app_file_this} --dryrun --dev --dist ${c[yellow]}\"jammy\"${c[grey2]} --arch ${c[yellow]}\"amd64\"${c[grey2]} --add-local-package ${c[yellow]}\"reprepro_5.4.7-1_amd64.deb\"${c[end]}"
+        echo -e
+        exit 1
+    fi
+
+    printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "Adding Local Package ${c[yellow]}$argLocalPackage${c[end]} to distribution ${c[yellow]}$app_repo_dist_sel${c[end]} for arch ${c[yellow]}$argArchitecture${c[end]} ${c[end]}"
+
+    # #
+    #   reprepro > add package
+    #   
+    #       deb_package_location_1          incoming/packages/jammy/amd64/reprepro_5.4.7-1_amd64.deb
+    #       deb_package_location_2          /server/proteus/reprepro_5.4.7-1_amd64.deb
+    # #
+
+    deb_package_path=false
+    deb_package_location_1="$app_dir_incoming/$argArchitecture/$argLocalPackage"
+    deb_package_location_2="$app_dir_this_dir/$argLocalPackage"
+
+    printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}Checking package location ${c[navy]}\$deb_package_location_1${c[grey1]} with value ${c[navy]}${deb_package_location_1}${c[end]}"
+    printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}Checking package location ${c[navy]}\$deb_package_location_2${c[grey1]} with value ${c[navy]}${deb_package_location_2}${c[end]}"
+
+    if [ -f "${deb_package_location_1}" ]; then
+        printf '%-29s %-65s\n' "  ${c[blue]}REPREPRO${c[end]}" "Found local package ${c[blue]}${deb_package_location_1}${c[end]} for distribution ${c[blue]}${app_repo_dist_sel}${c[end]} and arch ${c[blue]}$argArchitecture${c[end]}"
+        deb_package_path="${deb_package_location_1}"
+    elif [ -f "${deb_package_location_2}" ]; then
+        printf '%-29s %-65s\n' "  ${c[blue]}REPREPRO${c[end]}" "Found local package ${c[blue]}${deb_package_location_2}${c[end]} for distribution ${c[blue]}${app_repo_dist_sel}${c[end]} and arch ${c[blue]}$argArchitecture${c[end]}"
+        deb_package_path="${deb_package_location_2}"
+    else
+        printf '%-29s %-65s\n' "  ${c[red2]}REPREPRO${c[end]}" "❌ Local package does not exist in ${c[red2]}$deb_package_location_1${c[end]}"
+        printf '%-29s %-65s\n' "  ${c[red2]}REPREPRO${c[end]}" "❌ Local package does not exist in ${c[red2]}$deb_package_location_2${c[end]}"
+        deb_package_path=false
+    fi
+
+    # #
+    #   commit new package to github repository
+    # #
+
+    if [ "$deb_package_path" != false ] && [ -f "$deb_package_path" ]; then
+        export SECONDS=0
+
+        # #
+        #   check for reprepro
+        # #
+
+        if [ -x "$(command -v reprepro)" ]; then
+            bRepreproInstalled=true
+        fi
+
+        if [ "${argDevEnabled}" = true ]; then
+            printf '%-29s %-65s\n' "  ${c[blue]}${c[end]}" "${c[grey2]}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package_path}${c[end]}"
+        fi
+
+        if [ -n "${bRepreproInstalled}" ]; then
+            reprepro_output=
+            if [ "${argDryRun}" = false ]; then
+                printf '%-29s %-65s\n' "  ${c[yellow]}REPREPRO${c[end]}" "Adding new reprepro file ${c[yellow]}$deb_package_path${c[end]}"
+                reprepro_exit_code="0"
+                reprepro_output="$(reprepro -V \
+                    --section utils \
+                    --component main \
+                    --priority 0 \
+                    --architecture $arch \
+                    includedeb "${app_repo_dist_sel}" "${deb_package_path}" \
+                    "$@" 2>&1)" \
+                    || { reprepro_exit_code="$?" ; true; };
+            fi
+
+            printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}Reprepro response: ${c[navy]}$reprepro_output${c[end]}"
+
+            # #
+            #   architecture > i386 > reprepro
+            #
+            #   output > package already added to reprepro
+            # #
+
+            if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
+                printf '%-29s %-65s\n' "  ${c[blue]}${c[end]}" "${c[orange]}💡 Already exists${c[end]}"
+            fi
+
+            # #
+            #   architecture > i386 > reprepro
+            #
+            #   output > new package added
+            # #
+
+            if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
+                printf '%-29s %-65s\n' "  ${c[blue]}${c[end]}" "${c[green]}✅ New package added${c[end]}"
+            fi
+
+            # #
+            #   git add -A, --all     stages all changes
+            #   git add .             stages new files and modifications, without deletions (on the current directory and its subdirectories).
+            #   git add -u            stages modifications and deletions, without new files
+            # #
+
+            printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "Committing new packages to git branch ${c[yellow]}${app_repo_branch}${c[end]}"
+            if [ "${argDevEnabled}" = true ]; then
+                printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}git add --all${c[end]}"
+            fi
+            if [ "${argDryRun}" = false ]; then
+                git add --all
+            fi
+
+            # #
+            #   github > commit > start message
+            # #
+
+            NOW=$(date -u '+%m.%d.%Y %H:%M:%S')
+            app_repo_commit="\`️build(start): 📦 pkg-add (local) - ${argLocalPackage} - 📦\` \`${app_repo_dist_sel} | ${NOW} UTC\`"
+
+            # #
+            #   github > commit > start > run
+            #   
+            #   The command below can throw the following errors:
+            #   
+            #       error: gpg failed to sign the data:
+            #       gpg: skipped "!": No secret key
+            #       [GNUPG:] INV_SGNR 9 !
+            #       [GNUPG:] FAILURE sign 17
+            #       gpg: signing failed: No secret key
+            # #
+
+            printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "Git commit message: ${c[yellow]}${app_repo_commit}${c[end]}"
+            if [ "${argDevEnabled}" = true ]; then
+                printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}git commit -S -m ${app_repo_commit}${c[end]}"
+            fi
+            if [ "${argDryRun}" = false ]; then
+                git commit -S -m "${app_repo_commit}"
+            fi
+
+            printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "Pushing changes to git repo ${c[yellow]}${app_repo_branch}${c[end]}"
+            if [ "${argDevEnabled}" = true ]; then
+                printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}git push https://${CSI_PAT_GITHUB}@github.com/${CSI_GITHUB_NAME}/${app_repo_apt}${c[end]}"
+            fi
+            if [ "${argDryRun}" = false ]; then
+                git push https://${CSI_PAT_GITHUB}@github.com/${CSI_GITHUB_NAME}/${app_repo_apt}
+            fi
+
+            mv "$deb_package_path" "$app_dir_incoming/$argArchitecture/"
+        else
+            printf '%-29s %-65s\n' "  ${c[blue]}${c[end]}" "${c[yellow]}💡 Skip addition: reprepro not installed or running dryrun mode${c[end]}"
+        fi
+
+        # #
+        #   duration elapsed
+        # #
+
+        duration=${SECONDS}
+        elapsed="$((${duration} / 60)) minutes and $(( ${duration} % 60 )) seconds elapsed."
+
+        echo
+        echo -e " ${c[grey1]}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${c[end]}"
+        echo -e "  ${c[grey2]}Total Execution Time: $elapsed${c[end]}"
+        echo -e " ${c[grey1]}―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${c[end]}"
+        echo
+    else
+        printf '%-29s %-65s\n' "  ${c[red2]}REPREPRO${c[end]}" "❌ Local package not found; aborting without making changes${c[end]}"
+    fi
+
+    if compgen -G "${app_dir}/*.deb*" > /dev/null; then
+        echo -e "  ${c[grey2]}Cleaning up left-over .deb: ${c[yellow]}${app_dir}/*.deb${c[end]}"
+        rm ${app_dir}/*.deb* >/dev/null
+    fi
+
+    echo -e
+    exit 1
+fi
 
 # #
 #   start app
