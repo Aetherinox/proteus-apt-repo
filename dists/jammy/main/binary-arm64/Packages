@@ -558,23 +558,23 @@ Description: small, powerful, scalable web/proxy server - documentation
 Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
 
 Package: opengist
-Version: 1.7.3
+Version: 1.10.0
 Architecture: arm64
 Maintainer: Thomas Miceli <thomiceli@github.com>
 Depends: adduser
 Homepage: https://github.com/Aetherinox/opengist-debian
 Priority: 0
 Section: utils
-Filename: pool/main/o/opengist/opengist_1.7.3_arm64.deb
-Size: 18699014
-SHA512: 4fdff609b0452210d01471e20fbf81ade8c883df8ce0b510cc5471b62834c7bf9341921c6d507f96de8c3970a8de2b4379a3dece1dfaad76e6b4b46c921ac0f8
-SHA256: a5f4a7531874f2e50c73c869a9b729abc8da12f944777d38b042b88551d54a1b
-SHA1: dcb8b3c449e130f41854ea761c298e6e66576827
-MD5sum: abbd077cae7b09e1ceef0053b6e6dd31
+Filename: pool/main/o/opengist/opengist_1.10.0_arm64.deb
+Size: 23918692
+SHA512: 63b132a9a8f5be678431e3d1bf5c6caf691ae2d76182cc50012b482d6cf9853a37890d69d7fbdd423e9d2de08fa25e1a727ad70f2dffb1d04e3768cec3193799
+SHA256: 9531236109ab1599d534f06d54b66d61a4e64e5090209486c7b5b76e54557a97
+SHA1: 4efe43fb21c7ef44baa4af16fe99c277dac4db16
+MD5sum: fb9d7999988e3c108db8d325dbf3a348
 Description: Self-hosted pastebin powered by Git, open-source alternative to Github
  Gist. Opengist is a self-hosted pastebin powered by Git. All snippets are
  stored in a Git repository and can be read and/or modified using standard Git
- commands, or with the web interface. It is similar to GitHub Gist, but 
+ commands, or with the web interface. It is similar to GitHub Gist, but
  open-source and could be self-hosted.
 
 Package: pass
