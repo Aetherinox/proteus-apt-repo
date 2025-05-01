@@ -46,8 +46,8 @@
 #                   ./proteus.sh -k                                                             kill existing processes of proteus script
 #                   ./proteus -L                                                                list locally / manually installed packages
 #                   ./proteus -l                                                                list all installed packages
-#                   ./proteus -D -d -dd "focal" -a "amd64" -l "reprepro_5.4.7-1_amd64.deb"      (dryrun) add local package but don't push changes to reprepro or github
-#                   ./proteus -dd "focal" -a "amd64" -l "reprepro_5.4.7-1_amd64.deb"            (commit) add local package; push changes to reprepro or github
+#                   ./proteus -D -d -t "focal" -a "amd64" -l "reprepro_5.4.7-1_amd64.deb"       (dryrun) add local package but don't push changes to reprepro or github
+#                   ./proteus -t "focal" -a "amd64" -l "reprepro_5.4.7-1_amd64.deb"             (commit) add local package; push changes to reprepro or github
 # #
 
 # #
@@ -4769,7 +4769,6 @@ app_run_gh_start()
         git fetch --prune
     fi
 
-
     #   force head to match with remote repo
     if [ "${argDevEnabled}" = true ]; then
         printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}git reset --hard origin/${app_repo_branch}${c[end]}"
@@ -5191,8 +5190,9 @@ app_start()
 #   -g, --github-package        adds an individual github / lastversion package to repository
 #   -l, --add-local-package     adds a new package from a local file
 #   -f, --fixperms              fixes permissions and owner of proteus.sh script
+#   -R, --reset                 resets the local repo files back to the state of the remote proteus repo (git reset --hard origin/main)
 #   -L, --list-packages         show list of locally installed packages
-#   -dd, --dist                 specifies a specific distribution out of box, this script finds the distribution
+#   -t, --dist                  specifies a specific distribution out of box, this script finds the distribution
 #                               of the machine you are running. you may override it with this option.
 #                                   jammy, lunar, focal, noble, etc
 #   -D, --dryrun                used for testing functionality
@@ -5219,14 +5219,20 @@ while [ $# -gt 0 ]; do
 
         # #
         #   runs the script but only downloads packages from apt-get
+        #   
+        #   @usage              proteus -A
+        #                       proteus --onlyApt
         # #
 
-        -A|--onlyAptget)
+        -A|--onlyAptget|--onlyApt)
             argOnlyAptget=true
             ;;
 
         # #
         #   runs the script but only downloads packages from github
+        #   
+        #   @usage              proteus -G
+        #                       proteus --onlyGithub
         # #
 
         -G|--onlyGithub)
@@ -5235,9 +5241,12 @@ while [ $# -gt 0 ]; do
 
         # #
         #   downloads a package directly from apt-get using apt-move and apt-url
+        #   
+        #   @usage              proteus -p package-name
+        #                       proteus --add-apt-package reprepro
         # #
 
-        -p|-ap|--package|--add-package|--apt-package)
+        -p|-ap|--package|--add-package|--add-apt-package|--apt-package)
             if [[ "$1" != *=* ]]; then shift; fi
             argAptPackage="${1#*=}"
 
@@ -5247,7 +5256,11 @@ while [ $# -gt 0 ]; do
             ;;
 
         # #
-        #   downloads a package directly from a github repo
+        #   downloads a package directly from a github repo.
+        #   package names are usually the username/repo-name of the Github repository.
+        #   
+        #   @usage              proteus -g package-name
+        #                       proteus --add-github-package shiftkey/desktop
         # #
 
         -g|-gp|--add-github-package|--github-package)
@@ -5261,6 +5274,10 @@ while [ $# -gt 0 ]; do
 
         # #
         #   adds a local .deb file without downloading it from github or apt-get
+        #   
+        #   @usage              proteus --dev --dist "jammy" --arch "arm64" --add-local-package "reprepro_5.4.7-1_amd64.deb"
+        #                       proteus --dryrun --dev --dist "jammy" --arch "arm64" --add-local-package "reprepro_5.4.7-1_amd64.deb"
+        #                       proteus -d -t "focal" -a "amd64" -l "reprepro_5.4.7-1_amd64.deb"
         # #
 
         -l|-lp|--add-local-package|--local-package)
@@ -5269,7 +5286,33 @@ while [ $# -gt 0 ]; do
             ;;
 
         # #
+        #   resets the local repo files back to the state of the remote proteus repo (git reset --hard origin/main)
+        #   
+        #   @usage              proteus -R main
+        #                       proteus --reset main
+        # #
+
+        -R|--reset)
+            if [[ "$1" != *=* ]]; then shift; fi
+            argBranchReset="${1#*=}"
+            if [ -z "${argBranchReset}" ]; then
+                argBranchReset="${app_repo_branch}"
+                printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "${c[end]}Did not specify a branch; defaulting to ${c[yellow]}${argBranchReset}${c[end]}"
+                printf '%-29s %-65s\n' "  ${c[yellow]}${c[end]}" "Example Usage${c[end]}"
+                printf '%-34s %-65s\n' "  ${c[yellow]}${c[end]}" "${c[grey2]}./${app_file_this} --reset ${c[yellow]}\"${argBranchReset}\"${c[grey2]}${c[end]}"
+                printf '%-34s %-65s\n' "  ${c[yellow]}${c[end]}" "${c[grey2]}./${app_file_this} -R ${c[yellow]}\"main\"${c[grey2]}${c[end]}"
+            fi
+
+            printf '%-27s %-65s\n' "  ${c[green]}OK${c[end]}" "${c[end]}Resetting local repository back to remote status for branch ${c[yellow]}${argBranchReset}${c[end]}"
+            git reset --hard origin/${argBranchReset}
+            exit 1
+            ;;
+
+        # #
         #   fixes permissions on proteus.sh and sets +x
+        #   
+        #   @usage              proteus -f
+        #                       proteus --fixperms root
         # #
 
         -f|-fp|--fixperms|--fix-perms)
@@ -5277,12 +5320,16 @@ while [ $# -gt 0 ]; do
             argChownOwner="${1#*=}"
             if [ -z "${argChownOwner}" ]; then
                 argChownOwner=root
+                printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "${c[end]}Did not specify an owner; defaulting to ${c[yellow]}${argChownOwner}${c[end]}"
+                printf '%-29s %-65s\n' "  ${c[yellow]}${c[end]}" "Example Usage${c[end]}"
+                printf '%-34s %-65s\n' "  ${c[yellow]}${c[end]}" "${c[grey2]}./${app_file_this} --fixperms ${c[yellow]}\"${argChownOwner}\"${c[grey2]}${c[end]}"
+                printf '%-34s %-65s\n' "  ${c[yellow]}${c[end]}" "${c[grey2]}./${app_file_this} -f ${c[yellow]}\"username\"${c[grey2]}${c[end]}"
             fi
 
             sudo chown -R "${argChownOwner}:${argChownOwner}" "${app_dir}/${app_file_this}" >> ${LOGS_FILE} 2>&1
             sudo chmod +x "${app_dir}/${app_file_this}" >> ${LOGS_FILE} 2>&1
 
-            echo -e "  ${c[green]}OK           ${c[end]}Set perms on ${c[yellow]}${app_dir}/${app_file_this}${c[end]}; chown ${c[yellow]}${argChownOwner}:${argChownOwner}${c[end]}"
+            printf '%-27s %-65s\n' "  ${c[green]}OK${c[end]}" "${c[end]}Set perms on ${c[yellow]}${app_dir}/${app_file_this}${c[end]}; chown ${c[yellow]}${argChownOwner}:${argChownOwner}${c[end]}"
             echo -e
 
             exit 1
@@ -5290,14 +5337,23 @@ while [ $# -gt 0 ]; do
 
         # #
         #   sets the arch for the file
+        #       amd64, arm64, i386
+        #   
+        #   @usage              proteus -a amd64
+        #                       proteus --arch arm64
         # #
 
-        -a|--arch|--arcitecture)
+        -a|--arch|--architecture)
             if [[ "$1" != *=* ]]; then shift; fi
             argArchitecture="${1#*=}"
             if [ -z "${argArchitecture}" ]; then
-                echo -e "  ${c[end]}Must specify a valid architecture"
-                echo -e "  ${c[end]}      Default:  ${c[yellow]}amd64, arm64, i386${c[end]}"
+                printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "${c[end]}Did not specify an architecture; must specify one to continue${c[end]}"
+                printf '%-29s %-65s\n' "  ${c[yellow]}${c[end]}" "Example Usage${c[end]}"
+                printf '%-34s %-65s\n' "  ${c[yellow]}${c[end]}" "${c[grey2]}./${app_file_this} --architecture ${c[yellow]}\"amd64\"${c[grey2]}${c[end]}"
+                printf '%-34s %-65s\n' "  ${c[yellow]}${c[end]}" "${c[grey2]}./${app_file_this} -a ${c[yellow]}\"arm64\"${c[grey2]}${c[end]}"
+                echo -e
+                printf '%-29s %-65s\n' "  ${c[yellow]}${c[end]}" "Options${c[end]}"
+                printf '%-34s %-65s\n' "  ${c[yellow]}${c[end]}" "${c[grey2]}amd64, arm64, i386${c[end]}"
 
                 exit 1
             fi
@@ -5305,14 +5361,23 @@ while [ $# -gt 0 ]; do
 
         # #
         #   sets the distribution for the file
+        #       focal, jammy, lunar, noble
+        #   
+        #   @usage              proteus -t jammy
+        #                       proteus --dist lunar
         # #
 
-        -dd|--dist)
+        -t|--dist|--distro)
             if [[ "$1" != *=* ]]; then shift; fi
             argDistribution="${1#*=}"
             if [ -z "${argDistribution}" ]; then
-                echo -e "  ${c[end]}Must specify a valid distribution"
-                echo -e "  ${c[end]}      Default:  ${c[yellow]}${sys_code}${c[end]}"
+                printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "${c[end]}Did not specify an architecture; must specify one to continue${c[end]}"
+                printf '%-29s %-65s\n' "  ${c[yellow]}${c[end]}" "Example Usage${c[end]}"
+                printf '%-34s %-65s\n' "  ${c[yellow]}${c[end]}" "${c[grey2]}./${app_file_this} --distro ${c[yellow]}\"${sys_code}\"${c[grey2]}${c[end]}"
+                printf '%-34s %-65s\n' "  ${c[yellow]}${c[end]}" "${c[grey2]}./${app_file_this} -t ${c[yellow]}\"jammy\"${c[grey2]}${c[end]}"
+                echo -e
+                printf '%-29s %-65s\n' "  ${c[yellow]}${c[end]}" "Options${c[end]}"
+                printf '%-34s %-65s\n' "  ${c[yellow]}${c[end]}" "${c[grey2]}focal, jammy, lunar, noble${c[end]}"
 
                 exit 1
             fi
@@ -5321,6 +5386,9 @@ while [ $# -gt 0 ]; do
         # #
         #   runs through the process of doing all of the script actions, but doesn't actually commit to github repo
         #   and doesn't register any new packages with Reprepro
+        #   
+        #   @usage              proteus -D
+        #                       proteus --dryrun
         # #
     
         -D|--dryrun)
@@ -5329,6 +5397,9 @@ while [ $# -gt 0 ]; do
 
         # #
         #   kills any proteus processes running
+        #   
+        #   @usage              proteus -k
+        #                       proteus --kill
         # #
 
         -k|--kill)
@@ -5338,6 +5409,9 @@ while [ $# -gt 0 ]; do
 
         # #
         #   gives a report to the user about set variables, paths, etc.
+        #   
+        #   @usage              proteus -r
+        #                       proteus --report
         # #
 
         -r|--report)
@@ -5359,36 +5433,73 @@ while [ $# -gt 0 ]; do
 
         -c|--clean)
             if compgen -G "${app_dir}/*.deb*" > /dev/null; then
-                echo -e "  ${c[grey2]}Cleaning up left-over .deb: ${c[yellow]}${app_dir}/*.deb${c[end]}"
+                printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "${c[end]}Cleaning up left-over .deb: ${c[yellow]}${app_dir}/*.deb${c[end]}"
                 rm ${app_dir}/*.deb* >/dev/null
             fi
             exit 1
             ;;
 
+        # #
+        #   specifies a branch to fetch Proteus updates from
+        #   
+        #   @usage              proteus -b main
+        #                       proteus --branch dev
+        # #
+
         -b|--branch)
             if [[ "$1" != *=* ]]; then shift; fi
             argBranch="${1#*=}"
             if [ -z "${argBranch}" ]; then
-                echo -e "  ${c[end]}Must specify a valid branch"
-                echo -e "  ${c[end]}      Default:  ${c[yellow]}${app_repo_branch}${c[end]}"
+                printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "${c[end]}Did not specify a branch; must specify one to continue${c[end]}"
+                printf '%-29s %-65s\n' "  ${c[yellow]}${c[end]}" "Example Usage${c[end]}"
+                printf '%-34s %-65s\n' "  ${c[yellow]}${c[end]}" "${c[grey2]}./${app_file_this} --branch ${c[yellow]}\"${app_repo_branch}\"${c[grey2]}${c[end]}"
+                printf '%-34s %-65s\n' "  ${c[yellow]}${c[end]}" "${c[grey2]}./${app_file_this} -b ${c[yellow]}\"dev\"${c[grey2]}${c[end]}"
 
                 exit 1
             fi
             ;;
 
+        # #
+        #   enables developer mode; this outputs special debug prints when actions are performed.
+        #   
+        #   @usage              proteus -d
+        #                       proteus --dev
+        # #
+
         -d|--dev)
             argDevEnabled=true
             ;;
+
+        # #
+        #   lists all installed packages through `apt`
+        #   
+        #   @usage              proteus -L
+        #                       proteus --list-packages
+        # #
 
         -L|--list-packages)
             apt list --installed
             exit 1
             ;;
 
-        -L|--list-local|--list-packages-local)
+        # #
+        #   lists all manually installed packages through `apt`
+        #   
+        #   @usage              proteus -o
+        #                       proteus --list-packages-local
+        # #
+
+        -o|--list-local|--list-local-packages|--list-packages-local)
             comm -23 <(apt-mark showmanual | sort -u) <(gzip -dc /var/log/installer/initial-status.gz | sed -n 's/^Package: //p' | sort -u)
             exit 1
             ;;
+
+        # #
+        #   runs app normally; but does not run logs
+        #   
+        #   @usage              proteus -q
+        #                       proteus --quiet
+        # #
 
         -q|--quiet)
             argNoLogs=true
