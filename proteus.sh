@@ -5625,8 +5625,8 @@ if [ -n "$argLocalPackage" ]; then
             #   move .deb file from root project folder to incoming/ if it's not already there
             # #
 
-            if [ ! -f "$app_dir_incoming/$argArchitecture/" ]; then
-                printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "Moving ${c[yellow]}${deb_package_path}${c[end]} to ${c[yellow]}$app_dir_incoming/$argArchitecture/${c[end]}"
+            if [ ! -f "$app_dir_incoming/$argArchitecture/$argLocalPackage" ]; then
+                printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "Moving ${c[yellow]}${deb_package_path}${c[end]} to ${c[yellow]}$app_dir_incoming/$argArchitecture/$argLocalPackage${c[end]}"
                 mv "$deb_package_path" "$app_dir_incoming/$argArchitecture/"
             fi
         else
