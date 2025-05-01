@@ -1966,21 +1966,21 @@ Description: XSL module for PHP (dummy)
  removed.
 
 Package: reprepro
-Version: 5.4.6-1
+Version: 5.4.7-1
 Architecture: i386
 Maintainer: Bastian Germann <bage@debian.org>
-Installed-Size: 1369
+Installed-Size: 1385
 Depends: libarchive13t64 (>= 3.0.4), libbz2-1.0, libc6 (>= 2.38), libdb5.3t64, libgpg-error0 (>= 1.14), libgpgme11t64 (>= 1.23.2), liblzma5 (>= 5.1.1alpha+20120614), zlib1g (>= 1:1.2.0.2), zstd
 Recommends: apt (>= 0.9.4)
 Suggests: pinentry-curses, gpg-agent, inoticoming, lzip (>= 1.11-2)
 Priority: 0
 Section: utils
-Filename: pool/main/r/reprepro/reprepro_5.4.6-1_i386.deb
-Size: 489164
-SHA512: bda4c50e18ce7105b7adf1bd5289515bee88f3a3852e7596ee2006ce5450e82e2210b2f971f55272fde5c2edda0d56c05955e12dbdd9705b519d1ad6cc0de0a3
-SHA256: bf1b182ca962a911cf25da6471ec542677677c020cdf57a7fa13f5c4539c1bf3
-SHA1: b8ad6eb3715c5411bf085405be7285f0eb95c1d9
-MD5sum: 5ebb22b1d147bfb7503147720f2b8534
+Filename: pool/main/r/reprepro/reprepro_5.4.7-1_i386.deb
+Size: 492432
+SHA512: 9543e656e6000c6ae107fb7fc8144fa9836054be319cff7dcbc8c23dc3eaa5013b4fa6642548b7b6f8f047d43e1b26af70551762f22758c2f77658d984fcd735
+SHA256: 117355cb51d45578d8552f1bea0a13a43b0ee92b8dd4e1c76ba345c95a43827d
+SHA1: ead3734338ada74f8beeab8435c40c29d59dc936
+MD5sum: 974b00f005a2451bedc541645d5aff29
 Description: Debian package repository producer
  reprepro is a tool to manage a repository of Debian packages
  (.deb, .udeb, .dsc, ...). It stores files either being
