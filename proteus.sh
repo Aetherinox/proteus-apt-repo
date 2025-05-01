@@ -5527,6 +5527,11 @@ if [ -n "$argLocalPackage" ]; then
                     || { reprepro_exit_code="$?" ; true; };
             fi
 
+            echo -e "app_repo_dist_sel        ${app_repo_dist_sel}"
+            echo -e "deb_package_path         ${deb_package_path}"
+            echo -e "arch                     ${arch}"
+            echo -e "reprepro_exit_code       ${reprepro_exit_code}"
+
             printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}Reprepro response: ${c[navy]}$reprepro_output${c[end]}"
 
             # #
