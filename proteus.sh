@@ -5522,7 +5522,7 @@ if [ -n "$argLocalPackage" ]; then
                     --component main \
                     --priority 0 \
                     --architecture $arch \
-                    includedeb "${app_repo_dist_sel}" "${deb_package_path}" \
+                    includedeb ${app_repo_dist_sel} "${deb_package_path}" \
                     "$@" 2>&1)" \
                     || { reprepro_exit_code="$?" ; true; };
             fi
