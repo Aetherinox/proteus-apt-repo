@@ -5574,7 +5574,7 @@ if [ -n "$argLocalPackage" ]; then
             # #
 
             NOW=$(date -u '+%m.%d.%Y %H:%M:%S')
-            app_repo_commit="\`️build(start): 📦 pkg-add (local) - ${argLocalPackage} - 📦\` \`${app_repo_dist_sel} | ${NOW} UTC\`"
+            app_repo_commit="\`️build(run): 📦 pkg-add (local) - ${argLocalPackage} - 📦\` \`${app_repo_dist_sel} | ${NOW} UTC\`"
 
             # #
             #   github > commit > start > run

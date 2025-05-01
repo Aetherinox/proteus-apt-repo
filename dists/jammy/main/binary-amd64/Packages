@@ -5960,21 +5960,21 @@ Description: Automatic Password generation
  remembering their position when memorizing only the word.
 
 Package: reprepro
-Version: 5.4.6-1
+Version: 5.4.7-1
 Architecture: amd64
 Maintainer: Bastian Germann <bage@debian.org>
-Installed-Size: 1249
-Depends: libarchive13t64 (>= 3.0.4), libbz2-1.0, libc6 (>= 2.38), libdb5.3t64, libgpg-error0 (>= 1.14), libgpgme11t64 (>= 1.23.2), liblzma5 (>= 5.1.1alpha+20120614), zlib1g (>= 1:1.2.0.2), zstd
+Installed-Size: 1255
+Depends: libarchive13 (>= 3.0.4), libbz2-1.0, libc6 (>= 2.15), libdb5.3, libgpg-error0 (>= 1.14), libgpgme11 (>= 1.2.0), liblzma5 (>= 5.1.1alpha+20120614), zlib1g (>= 1:1.2.0.2), zstd
 Recommends: apt (>= 0.9.4)
 Suggests: pinentry-curses, gpg-agent, inoticoming, lzip (>= 1.11-2)
 Priority: 0
 Section: utils
-Filename: pool/main/r/reprepro/reprepro_5.4.6-1_amd64.deb
-Size: 466784
-SHA512: 71ecef75220bc33d7c1501465ef0e432d7ee401530251344f9821db73ede52d9ec8eb70b22d2f5d0e5dcba82a336a933f87674311c344f53423e7d33e327202b
-SHA256: c83f627d8f852fe8465cb50478e12bb426145cda743573833f7f2395c1163a0b
-SHA1: b590af16a9bf2db1eccee6bb5807e46da9e3fac1
-MD5sum: fcfe27f61bf762d30790920f62d6f621
+Filename: pool/main/r/reprepro/reprepro_5.4.7-1_amd64.deb
+Size: 472464
+SHA512: 692d6fb6872d56fc0191811f66fb8cb824cac49342865771db3c3692c9658d332498422c7ab165679e48279bfe0d8853034b19b9805d5a4f310f50097a697e68
+SHA256: a48e58990fc6283d0f38e1353cc32fc83354b1de9f2ed6a16c1b104b135a78f6
+SHA1: 77423c77328c68c0a839844f4cd7b6f8858df391
+MD5sum: 77a2b4402da4ade5a0fbd52d769660ff
 Description: Debian package repository producer
  reprepro is a tool to manage a repository of Debian packages
  (.deb, .udeb, .dsc, ...). It stores files either being

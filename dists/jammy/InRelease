@@ -5,13 +5,13 @@ Origin: Aetherx
 Label: Jammy Jellyfish 22.04 LTS & ZorinOS v17
 Suite: stable
 Codename: jammy
-Date: Tue, 29 Apr 2025 19:03:37 UTC
+Date: Thu, 01 May 2025 00:57:45 UTC
 Architectures: amd64 arm64 i386
 Components: main
 Description: Ubuntu 22.04 (Jammy Jellyfish) LTS & ZorinOS v17
 MD5Sum:
- ad937c1897e3c5e0c559acf7f4ea7b50 302667 main/binary-amd64/Packages
- b418b76e700996663494120781d77e42 88155 main/binary-amd64/Packages.gz
+ b57b177f263ca71ba20431d1c7e1623f 302657 main/binary-amd64/Packages
+ fe36263903aa7a64c7c6631a5d7472dc 88149 main/binary-amd64/Packages.gz
  5984084b34a9c03bd231fe6de8f737f4 160 main/binary-amd64/Release
  382ed13432d296b607ac5e28a676014e 94316 main/binary-arm64/Packages
  70c56851e85dba56a36b05c6886f0708 29396 main/binary-arm64/Packages.gz
@@ -23,8 +23,8 @@ MD5Sum:
  7029066c27ac6f5ef18d660d5741979a 20 main/source/Sources.gz
  a343835485798cee4b165a93bd76e01d 161 main/source/Release
 SHA1:
- 60441f934586d2f4de8ceca59476b29096db5078 302667 main/binary-amd64/Packages
- e88280241fb1c7c82265ba8993ecc87f53835b5e 88155 main/binary-amd64/Packages.gz
+ 96e84ca8a1d62171dc7fa0c656102f65409bebf9 302657 main/binary-amd64/Packages
+ 8fdba8708df76ecea0991f93f46f636f1f881163 88149 main/binary-amd64/Packages.gz
  4b1a7d805873d747b6b6611e0153e610e58f92d3 160 main/binary-amd64/Release
  e859bff1b7248a30ba6689a6ef0bbf83dc5272c5 94316 main/binary-arm64/Packages
  e2cae70c47e260c2929beb3c4edae9be1ef6ef35 29396 main/binary-arm64/Packages.gz
@@ -36,8 +36,8 @@ SHA1:
  46c6643f07aa7f6bfe7118de926b86defc5087c4 20 main/source/Sources.gz
  b4d551768643f5525adc1dffe69ca668534ab136 161 main/source/Release
 SHA256:
- 494a3abaeeedc8c46ea96bcf952597d2e2141c902f1d230a551d1e3c42022ad9 302667 main/binary-amd64/Packages
- e89870b8ad47e77793cd11287e61420e5ae7e7a3959d3c91f342cf819f3cc713 88155 main/binary-amd64/Packages.gz
+ 147a5bf0168d6c8fd9ac275bd9abd0b391af57216235ddb224920c48f2971b79 302657 main/binary-amd64/Packages
+ 46c34e2f6b2e759b50f58f655032f8e97b6384fe971b1e24c48439dff8a1bfb5 88149 main/binary-amd64/Packages.gz
  44e1d634c08339e31164975041e1d78856380adee1cb81876ce72e52a035455b 160 main/binary-amd64/Release
  513e5603768c9e38ae6ba4b976723e006886dade01d7a92987d85aa6f5acb711 94316 main/binary-arm64/Packages
  12ab7443a3d23692c5a87f172df755e0c2e3f9cc702a78c75a60130181eb1e33 29396 main/binary-arm64/Packages.gz
@@ -49,8 +49,8 @@ SHA256:
  59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2 20 main/source/Sources.gz
  0c31fdcf6065670f0e8130772e612bca55f3b2e53051cd9767681685ee26d51c 161 main/source/Release
 SHA512:
- cb8c6b895e0c2c12e08e4f51b53e310d1be66ba5b1f4fec0bee9e106fca2844a4c4a517cad11acdb0da4117f8d392df42211c3bd683dd8f9b5d63f11100fa420 302667 main/binary-amd64/Packages
- 7713b6f924463c16f576282f79e1c55b80279b474d0fc846dc987662ff349bedeb0a2a28616a639bc8b7f635cc100a69f4e60f83be5e3b32b294deb23d478abd 88155 main/binary-amd64/Packages.gz
+ f1355f7c84ef7beb84b8e1f13adefdf449ba996e8d85d700494841319a3ff3a06f8432afa0ff45da57e235f6187fc154b24238ee3fccb17f1086caa6cc560b83 302657 main/binary-amd64/Packages
+ 78971e578ee8f37042288cb03a8efc0531286c2a1988509d216569199cce6adac27c323df72af1283368e5b434ba112ce4d34a2dfabb811148dbf38d1217571d 88149 main/binary-amd64/Packages.gz
  1f179951afa8a2b41470908fd9b504d2bda3e9bdeb0551ef598e8300d07e92eeb704561d12eef3a0e59164b5d0d49d1a6545cdc321250093ca79ec1536ff6568 160 main/binary-amd64/Release
  a0fea0a2b5b1d6a9bbba125f56d9d3f8e95b1dc1f1c91c8ec60287424edf281aeeaad01d0fa399b328510f62601296bc192ac42f53fc900417b8f2f3502a5fa8 94316 main/binary-arm64/Packages
  a19a9ad961ed1129733f015e5b71ad6248ea146981503b05fa7a84279fa00cca9e5bd0feb7fff67545a82f3ebc16073751a2c72e133f0392cc1ecee524393143 29396 main/binary-arm64/Packages.gz
@@ -63,17 +63,17 @@ SHA512:
  2c7f1486298971db7900c6a00bd3f38406d35e7f722055f3a522a19d341953a8b463c3b846ee1e76006e707ef58e2992d45f40334baa029427a1234abf909249 161 main/source/Release
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCgAdFiEEdTFUq07Y5lsZuvhpy1xMMM0NQCgFAmgRIokACgkQy1xMMM0N
-QChaoA//eefEPbOMgebUNatJlRyR8ywTt4wmODEyFGolSlV0PGAPhiHNCc/kuXbN
-svTmEXqBLu86NXjESCsDQ3npe2/TsU+LIAMftwZQXr4aMN1Qxi700gEW8JncRv56
-qOQnBv1NOuiuS0vRZ5q3DWV1ELjBKlri/mAUsIxXn2AsfQtPiWEnX6xwpXKWPFGf
-E7dPLA0nidAbw2YjamcXMd/oUSDkhkWhlAnIdYvp7NKWRZ4idN8ESP+zMSD5Zilc
-VkcpZl1Jy3RzQmJY2sBaODHDgg/juX957uxyL9KMB0m4HAd7a1IB7Dv70RZxpMxx
-2da0bOHkXHeYFno4U4lmWHEtHD9r8jF8CeJvJ2jmzNK7tmlwf1xYXRV9CNX9JkDR
-Yc/o06msMtMeMJ2EAmsFUMaWnoVeC+iY8ZbOaaSJdjwNtvswawEUfbgkFtKshtQ3
-agkwo88g2+ECn3OwJXAyuHgIuis5APBxEqjd8z0QcyX/rvZZWJ50os0OYcDQwVwn
-R77W8cApwOKW6Ez4PlUAYynqfQ/7iv+0nyjE7IeBE4F7kMzCRJsKOf5Tsyo2Qqw3
-jqLAEwREWjslU4bflUZkMyjk4Bh+lnCyhLdKgsDCis/LLmHJJYZzapiCI3aYKpqu
-CjYtA5JdQzmesh6zs7fFCWcOeUFRNr4rUZ1cxYzAATWNN40ktRU=
-=LmhW
+iQIzBAEBCgAdFiEEdTFUq07Y5lsZuvhpy1xMMM0NQCgFAmgSxwoACgkQy1xMMM0N
+QCjUaA/7BkMO/CFxGYTqy+zePufd0Nf+f7NQKu685EGT/7dRW7wo7/kICwJXp44W
+yT6tXmgjav1vCRnOc1FDEInPpPbBKo92dULWTAQ1i461ccN6ndEkEkF83EiO9hs0
+b85Frnzqc92zZLISe/2xeu5wddCRcwarnyTxOTSxsPnEV6EeevcobZv78MHAGIkd
+uUJ0h7DQBmGp66VjmD5ZMOmvckFnQ+ejucynInigonlaCb135DVANYEB4obfSk7k
+9PnUGDsf1eHogtBH+ZSTcJdf90EEhone3DM8t9TCjo54Qtkrw3mtzsVQ+oM+YqEZ
+H55e+Ku9ku7dNRtEg0oTDjaj1/hcfy0xZjPuhVt26DD77WAVe1e1/0tMqls3Hh7G
+orax80k1L1dVK78ijHFJ3DSVIm3FO8KBK6BMKzYa9aFmJKcCve/cd6tR1Doy257H
+1iAVYJilHI/YIIf3BBrrCkhRrWkuSbGTjjCkmOn5At5MSocKjgZhZ0xpeOoGrNAB
+GynD2q2kULYqN4NxFa1xrErt16QCnm8CLOL+Xra8WeoPl5fGllioGzX1DS9m/X5i
+UyUnnIYRo2YNyLoWHQOaYD/hFpr20B+3s0T8+VX1QybR5+iGEPALk9RRQJ8FJY/I
+yCO1cFBsbYIE4bh8yecpNSRbpf/m7/zzgNLvaIfVCT+hhv4CW1M=
+=cAtS
 -----END PGP SIGNATURE-----
