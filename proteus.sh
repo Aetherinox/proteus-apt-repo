@@ -5535,12 +5535,12 @@ if [ -n "$argLocalPackage" ]; then
                     includedeb ${app_repo_dist_sel} "${deb_package_path}" \
                     "$@" 2>&1)" \
                     || { reprepro_exit_code="$?" ; true; };
+
+                    reprepro_output=${reprepro_output//$'\n'/}          # Remove all newlines.
+                    reprepro_output=${reprepro_output%$'\n'}            # Remove a trailing newline.
+
+                    printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}Reprepro response: ${c[navy]}$reprepro_output${c[end]}"
             fi
-
-            reprepro_output=${reprepro_output//$'\n'/}          # Remove all newlines.
-            reprepro_output=${reprepro_output%$'\n'}            # Remove a trailing newline.
-
-            printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}Reprepro response: ${c[navy]}$reprepro_output${c[end]}"
 
             # #
             #   architecture > i386 > reprepro
