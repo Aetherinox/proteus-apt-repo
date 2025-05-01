@@ -5586,6 +5586,35 @@ if [ -n "$argLocalPackage" ]; then
         exit 1
     fi
 
+    # #
+    #   check if the local package specified is a url / link, instead of a filename.
+    #   if so, download and process
+    # #
+
+    regex='(https?|ftp|file)://[-[:alnum:]\+&@#/%?=~_|!:,.;]*[-[:alnum:]\+&@#/%=~_|]'
+    argLocalPackageUrl=${argLocalPackage}
+    argLocalPackage=${argLocalPackage##*/}
+
+    if [[ $argLocalPackageUrl =~ $regex ]]; then 
+        printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "Valid link specified instead of local package ${c[yellow]}$argLocalPackage${c[end]} from ${c[yellow]}$argLocalPackageUrl${c[end]}${c[end]}"
+        if [[ "${argLocalPackage##*.}" == "deb" ]] ; then
+            printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "Valid link contains file ${c[yellow]}$argLocalPackage${c[end]} with correct detected extension ${c[yellow]}.deb${c[end]}"
+            if [ -f "${app_dir_this_dir}/${argLocalPackage}" ]; then
+                printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}Requested ${c[navy]}.deb${c[grey1]} file already exists; skipping download${c[end]}"
+            else
+                printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "Downloading package ${c[yellow]}${argLocalPackage}${c[end]} from ${c[yellow]}${argLocalPackageUrl}${c[end]} to ${c[yellow]}${app_dir_this_dir}/${argLocalPackage}${c[end]}"
+                curl --remote-name "${argLocalPackageUrl}" >> /dev/null 2>&1
+            fi
+        fi
+
+        if [ -f "${app_dir_this_dir}/${argLocalPackage}" ]; then
+            printf '%-27s %-65s\n' "  ${c[green]}OK${c[end]}" "${c[end]}Successfully downloaded package ${c[green]}${app_dir_this_dir}/${argLocalPackage}${c[end]} from ${c[green]}${argLocalPackageUrl}${c[end]}"
+        else
+            printf '%-29s %-65s\n' "  ${c[red]}ERROR${c[end]}" "${c[end]}Failed to download package ${c[red2]}${app_dir_this_dir}/${argLocalPackage}${c[end]} from ${c[yellow]}${argLocalPackageUrl}${c[end]}"
+            exit 1
+        fi
+    fi
+
     printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "Adding Local Package ${c[yellow]}$argLocalPackage${c[end]} to distribution ${c[yellow]}$app_repo_dist_sel${c[end]} for arch ${c[yellow]}$argArchitecture${c[end]} ${c[end]}"
 
     # #
