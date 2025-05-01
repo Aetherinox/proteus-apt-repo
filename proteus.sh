@@ -5519,7 +5519,7 @@ if [ -n "$argLocalPackage" ]; then
         fi
 
         if [ "${argDevEnabled}" = true ]; then
-            printf '%-29s %-65s\n' "  ${c[blue]}${c[end]}" "${c[grey2]}reprepro -V --section ${c[blue]}utils${c[grey2]} --component ${c[blue]}main${c[grey2]} --priority ${c[blue]}0${c[grey2]} --architecture ${c[blue]}$argArchitecture${c[grey2]} includedeb ${c[blue]}${app_repo_dist_sel}${c[grey2]} ${deb_package_path}${c[end]}"
+            printf '%-29s %-65s\n' "  ${c[blue]}${c[end]}" "${c[grey2]}reprepro -V --section ${c[blue]}utils${c[grey2]} --component ${c[blue]}main${c[grey2]} --priority ${c[blue]}0${c[grey2]} --architecture ${c[blue]}$argArchitecture${c[grey2]} includedeb ${c[blue]}${app_repo_dist_sel}${c[grey2]} ${c[blue]}${deb_package_path}${c[end]}"
         fi
 
         if [ -n "${bRepreproInstalled}" ]; then
