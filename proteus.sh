@@ -5537,6 +5537,9 @@ if [ -n "$argLocalPackage" ]; then
                     || { reprepro_exit_code="$?" ; true; };
             fi
 
+            reprepro_output=${reprepro_output//$'\n'/}          # Remove all newlines.
+            reprepro_output=${reprepro_output%$'\n'}            # Remove a trailing newline.
+
             printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}Reprepro response: ${c[navy]}$reprepro_output${c[end]}"
 
             # #
@@ -5580,14 +5583,14 @@ if [ -n "$argLocalPackage" ]; then
             fi
 
             # #
-            #   github > commit > start message
+            #   git > commit > start message
             # #
 
             NOW=$(date -u '+%m.%d.%Y %H:%M:%S')
             app_repo_commit="\`️build(run): 📦 pkg-add (local) - ${argLocalPackage} - 📦\` \`${app_repo_dist_sel} | ${NOW} UTC\`"
 
             # #
-            #   github > commit > start > run
+            #   git > commit
             #   
             #   The command below can throw the following errors:
             #   
@@ -5606,6 +5609,10 @@ if [ -n "$argLocalPackage" ]; then
                 git commit -S -m "${app_repo_commit}"
             fi
 
+            # #
+            #   git > push
+            # #
+
             printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "Pushing changes to git repo ${c[yellow]}${app_repo_branch}${c[end]}"
             if [ "${argDevEnabled}" = true ]; then
                 printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}git push https://${CSI_PAT_GITHUB}@github.com/${CSI_GITHUB_NAME}/${app_repo_apt}${c[end]}"
@@ -5614,7 +5621,13 @@ if [ -n "$argLocalPackage" ]; then
                 git push https://${CSI_PAT_GITHUB}@github.com/${CSI_GITHUB_NAME}/${app_repo_apt}
             fi
 
-            mv "$deb_package_path" "$app_dir_incoming/$argArchitecture/"
+            # #
+            #   move .deb file from root project folder to incoming/ if it's not already there
+            # #
+
+            if [ ! -f "$app_dir_incoming/$argArchitecture/" ]; then
+                mv "$deb_package_path" "$app_dir_incoming/$argArchitecture/"
+            fi
         else
             printf '%-29s %-65s\n' "  ${c[blue]}${c[end]}" "${c[yellow]}💡 Skip addition: reprepro not installed or running dryrun mode${c[end]}"
         fi
