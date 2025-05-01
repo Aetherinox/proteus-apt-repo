@@ -5433,6 +5433,12 @@ app_repo_branch_sel=$( [[ -n "$argBranch" ]] && echo "$argBranch" || echo "$app_
 app_repo_dist_sel=$( [[ -n "$argDistribution" ]] && echo "$argDistribution" || echo "$sys_code"  )
 
 # #
+#   start app
+# #
+
+load_secrets
+
+# #
 #   add local packages
 #   
 #   local packages being added must be placed inside
@@ -5627,12 +5633,6 @@ if [ -n "$argLocalPackage" ]; then
     echo -e
     exit 1
 fi
-
-# #
-#   start app
-# #
-
-load_secrets
 
 if [ "${argForceUpdate}" = true ]; then
     app_update ${app_repo_branch_sel}
