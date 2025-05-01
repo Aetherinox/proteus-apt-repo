@@ -4778,9 +4778,11 @@ app_run_gh_start()
         git reset --hard origin/${app_repo_branch}
     fi
 
-
+    # #
     #   must have at least one commit for this to work
     #   -m / --move flag to rename a branch in our local repository
+    # #
+
     if [ "${argDevEnabled}" = true ]; then
         printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}git branch -m ${app_repo_branch}${c[end]}"
     fi
@@ -5044,8 +5046,10 @@ EOF
     tree_output=$( sudo tree -a -I ".git" -I "logs" -I "docs" -I ".gpg" -I "incoming" --dirsfirst )
     sudo tree -a -I ".git" --dirsfirst -J > ${manifest_dir}/tree.json
 
+    # #
     #   useful for Gitea with HTML rendering plugin, not useful for Github
     #   tree -a --dirsfirst -I '.git' -H https://github.com/${CSI_GITHUB_NAME}/${app_repo_script}/src/branch/$app_repo_branch/ -o $app_dir/.data/tree.html
+    # #
 
     # #
     #   tree.md content
@@ -5554,6 +5558,12 @@ if [ -n "$argLocalPackage" ]; then
             if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
                 printf '%-29s %-65s\n' "  ${c[blue]}${c[end]}" "${c[green]}✅ New package added${c[end]}"
             fi
+
+            # #
+            #   update tree and README
+            # #
+
+            app_run_tree_update
 
             # #
             #   git add -A, --all     stages all changes

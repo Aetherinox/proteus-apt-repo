@@ -4221,21 +4221,21 @@ Description: ZeroMQ messaging bindings for PHP
 Original-Maintainer: Debian PHP PECL Maintainers <team+php-pecl@tracker.debian.org>
 
 Package: reprepro
-Version: 5.4.4-1
+Version: 5.4.7-1
 Architecture: amd64
 Maintainer: Bastian Germann <bage@debian.org>
-Installed-Size: 1234
-Depends: libarchive13 (>= 3.0.4), libbz2-1.0, libc6 (>= 2.34), libdb5.3, libgpg-error0 (>= 1.14), libgpgme11 (>= 1.2.0), liblzma5 (>= 5.1.1alpha+20120614), zlib1g (>= 1:1.2.0.2), zstd
+Installed-Size: 1255
+Depends: libarchive13 (>= 3.0.4), libbz2-1.0, libc6 (>= 2.15), libdb5.3, libgpg-error0 (>= 1.14), libgpgme11 (>= 1.2.0), liblzma5 (>= 5.1.1alpha+20120614), zlib1g (>= 1:1.2.0.2), zstd
 Recommends: apt (>= 0.9.4)
 Suggests: pinentry-curses, gpg-agent, inoticoming, lzip (>= 1.11-2)
 Priority: 0
 Section: utils
-Filename: pool/main/r/reprepro/reprepro_5.4.4-1_amd64.deb
-Size: 463440
-SHA512: d4bb13eb702a3e3f28cc8227b84bb840f3f586c226073dad8b9eeedbc32cb064d9e362a9dff8c8c9128b7cf82de97edcfac0f680d8c1f394a796d80752c6ae2f
-SHA256: 93eb8b519d2be8299043478c2091148415e65a99a5aba0ba8e3eede238ba05f3
-SHA1: 75c7470046b68a3ed94999092bbf4fd8b1946b52
-MD5sum: 82aafb2e62579660cc4f354fa2e59868
+Filename: pool/main/r/reprepro/reprepro_5.4.7-1_amd64.deb
+Size: 472464
+SHA512: 692d6fb6872d56fc0191811f66fb8cb824cac49342865771db3c3692c9658d332498422c7ab165679e48279bfe0d8853034b19b9805d5a4f310f50097a697e68
+SHA256: a48e58990fc6283d0f38e1353cc32fc83354b1de9f2ed6a16c1b104b135a78f6
+SHA1: 77423c77328c68c0a839844f4cd7b6f8858df391
+MD5sum: 77a2b4402da4ade5a0fbd52d769660ff
 Description: Debian package repository producer
  reprepro is a tool to manage a repository of Debian packages
  (.deb, .udeb, .dsc, ...). It stores files either being
