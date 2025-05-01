@@ -5521,16 +5521,11 @@ if [ -n "$argLocalPackage" ]; then
                     --section utils \
                     --component main \
                     --priority 0 \
-                    --architecture $arch \
+                    --architecture $argArchitecture \
                     includedeb ${app_repo_dist_sel} "${deb_package_path}" \
                     "$@" 2>&1)" \
                     || { reprepro_exit_code="$?" ; true; };
             fi
-
-            echo -e "app_repo_dist_sel        ${app_repo_dist_sel}"
-            echo -e "deb_package_path         ${deb_package_path}"
-            echo -e "arch                     ${arch}"
-            echo -e "reprepro_exit_code       ${reprepro_exit_code}"
 
             printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}Reprepro response: ${c[navy]}$reprepro_output${c[end]}"
 
