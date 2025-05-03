@@ -794,7 +794,8 @@ opt_usage()
     printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-l${c[grey1]},${c[blue2]}  --local-package ${c[yellow]}<string>${c[end]}   " "add new local .deb package in root folder ${c[navy]}${app_dir}${c[end]}" 1>&2
     printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-f${c[grey1]},${c[blue2]}  --fix-perms ${c[yellow]}<string>${c[end]}       " "fix permissions and owner for script ${c[navy]}${app_file_this}${c[end]}; optional owner arg ${c[navy]}<default> ${c[peach]}${argChownOwner}${c[end]}" 1>&2
     printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-R${c[grey1]},${c[blue2]}  --reset ${c[yellow]}<string>${c[end]}           " "reset local repo files to state of remote git branch by performing ${c[navy]}git reset --hard${c[end]}; optional git branch arg ${c[navy]}<default> ${c[peach]}${app_repo_branch}${c[end]}" 1>&2
-    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-L${c[grey1]},${c[blue2]}  --list-packages ${c[yellow]}${c[end]}           " "list locally installed apt-get packages${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-L${c[grey1]},${c[blue2]}  --list-packages ${c[yellow]}${c[end]}           " "list installed apt-get packages${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-L${c[grey1]},${c[blue2]}  --list-local ${c[yellow]}${c[end]}              " "list local manually installed packages${c[end]}" 1>&2
     printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-t${c[grey1]},${c[blue2]}  --dist ${c[yellow]}<string>${c[end]}            " "specify distribution for pkgs ${c[navy]}<default> ${c[peach]}${sys_code}${c[end]}" 1>&2
     printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}  ${c[grey1]} ${c[blue2]}      ${c[yellow]}${c[end]}                       " "   ${c[grey1]}focal, jammy, noble" 1>&2
     printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-S${c[grey1]},${c[blue2]}  --skip-commit ${c[yellow]}${c[end]}             " "runs script; but only registers new pkgs with reprepro; no github commits${c[end]}" 1>&2
@@ -5466,7 +5467,7 @@ while [ $# -gt 0 ]; do
         #                       proteus --add-apt-package reprepro
         # #
 
-        -p|-ap|--package|--add-package|--add-apt-package|--apt-package)
+        -p|-ap|--package|--add-package|--add-apt-package|--apt-package|--package-apt|--package-aptget)
             if [[ "$1" != *=* ]]; then shift; fi
             argAptPackage="${1#*=}"
 
@@ -5483,7 +5484,7 @@ while [ $# -gt 0 ]; do
         #                       proteus --add-github-package shiftkey/desktop
         # #
 
-        -g|-gp|--add-github-package|--github-package|--add-git-package|--git-package|--github-package)
+        -g|-gp|--add-github-package|--github-package|--add-git-package|--git-package|--github-package|--package-git|--package-github)
             if [[ "$1" != *=* ]]; then shift; fi
             argGithubPackage="${1#*=}"
 
@@ -5500,7 +5501,7 @@ while [ $# -gt 0 ]; do
         #                       proteus -d -t "focal" -a "amd64" -l "reprepro_5.4.7-1_amd64.deb"
         # #
 
-        -l|-lp|--add-local-package|--local-package)
+        -l|-lp|--add-local-package|--local-package|--package-local)
             if [[ "$1" != *=* ]]; then shift; fi
             argLocalPackage="${1#*=}"
             ;;
@@ -5611,7 +5612,7 @@ while [ $# -gt 0 ]; do
         #                       proteus --dryrun
         # #
     
-        -D|--dryrun)
+        -D|--dryrun|--dry)
             argDryRun=true
             ;;
 
@@ -5697,7 +5698,7 @@ while [ $# -gt 0 ]; do
         #                       proteus --list-packages
         # #
 
-        -L|--list-packages)
+        -L|--list-packages|--package-list|--packages-list)
             apt list --installed
             exit 1
             ;;
@@ -5709,7 +5710,7 @@ while [ $# -gt 0 ]; do
         #                       proteus --list-packages-local
         # #
 
-        -o|--list-local|--list-local-packages|--list-packages-local)
+        -o|--list-local|--list-local-packages|--list-packages-local|--packages-local)
             comm -23 <(apt-mark showmanual | sort -u) <(gzip -dc /var/log/installer/initial-status.gz | sed -n 's/^Package: //p' | sort -u)
             exit 1
             ;;
