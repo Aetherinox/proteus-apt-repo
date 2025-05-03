@@ -240,19 +240,189 @@ CSI_GPG_PASSWD=
 
 lst_packages=(
     'adduser'
+    'argon2'
+    'apt-move'
+    'apt-transport-https'
+    'apt-utils'
+    'clevis'
+    'clevis-dracut'
+    'clevis-udisks2'
+    'clevis-tpm2'
+    'dialog'
+    'dos2unix'
+    'firefox'
+    'flatpak'
+    'geoipupdate'
+    'gnome-keyring'
+    'gnome-keysign'
+    'gnome-shell-extension-manager'
+    'git'
+    'gpg'
+    'gpgconf'
+    'gpgv'
+    'jose'
+    'keyutils'
+    'kgpg'
+    'libnginx-mod-http-auth-pam'
+    'libnginx-mod-http-cache-purge'
+    'libnginx-mod-http-dav-ext'
+    'libnginx-mod-http-echo'
+    'libnginx-mod-http-fancyindex'
+    'libnginx-mod-http-geoip'
+    'libnginx-mod-http-headers-more-filter'
+    'libnginx-mod-http-ndk'
+    'libnginx-mod-http-perl'
+    'libnginx-mod-http-subs-filter'
+    'libnginx-mod-http-uploadprogress'
+    'libnginx-mod-http-upstream-fair'
+    'libnginx-mod-nchan'
+    'libnginx-mod-rtmp'
+    'libnginx-mod-stream-geoip'
+    'lintian'
+    'lsb-base'
+    'lz4'
+    'mysql-client'
+    'mysql-common'
+    'mysql-server'
+    'net-tools'
+    'neofetch'
+    'network-manager-config-connectivity-ubuntu'
+    'network-manager-dev'
+    'network-manager-gnome'
+    'network-manager-openvpn-gnome'
+    'network-manager-openvpn'
+    'network-manager-pptp-gnome'
+    'network-manager-pptp'
+    'network-manager'
+    'networkd-dispatcher'
+    'nginx-common'
+    'nginx-confgen'
+    'nginx-core'
+    'nginx-dev'
+    'nginx-doc'
+    'nginx-extras'
+    'nginx-full'
+    'nginx-light'
+    'nginx'
+    'open-vm-tools-desktop'
+    'open-vm-tools-dev'
+    'open-vm-tools'
+    'pass'
+    'php-all-dev'
+    'php-amqp'
+    'php-amqplib'
+    'php-apcu-all-dev'
+    'php-apcu'
+    'php-ast-all-dev'
+    'php-ast'
+    'php-bacon-qr-code'
+    'php-bcmath'
+    'php-brick-math'
+    'php-brick-varexporter'
+    'php-bz2'
+    'php-cas'
+    'php-cgi'
+    'php-cli'
+    'php-code-lts-u2f-php-server'
+    'php-common'
+    'php-crypt-gpg'
+    'php-curl'
+    'php-db'
+    'php-dba'
+    'php-decimal'
+    'php-dev'
+    'php-ds-all-dev'
+    'php-ds'
+    'php-email-validator'
+    'php-embed'
+    'php-enchant'
+    'php-excimer'
+    'php-faker'
+    'php-fpm'
+    'php-fxsl'
+    'php-gd'
+    'php-gearman'
+    'php-gettext-languages'
+    'php-gmagick-all-dev'
+    'php-gmagick'
+    'php-gmp'
+    'php-gnupg-all-dev'
+    'php-gnupg'
+    'php-gnupg'
+    'php-grpc'
+    'php-http'
+    'php-igbinary'
+    'php-imagick'
+    'php-imap'
+    'php-inotify'
+    'php-interbase'
+    'php-intl'
+    'php-ldap'
+    'php-mailparse'
+    'php-maxminddb'
+    'php-mbstring'
+    'php-mcrypt'
+    'php-memcache'
+    'php-memcached'
+    'php-mongodb'
+    'php-msgpack'
+    'php-mysql'
+    'php-oauth'
+    'php-odbc'
+    'php-pcov'
+    'php-pgsql'
+    'php-phpdbg'
+    'php-ps'
+    'php-pspell'
+    'php-psr'
+    'php-raphf'
+    'php-readline'
+    'php-redis'
+    'php-rrd'
+    'php-smbclient'
+    'php-snmp'
+    'php-soap'
+    'php-solr'
+    'php-sqlite3'
+    'php-ssh2'
+    'php-stomp'
+    'php-sybase'
+    'php-tideways'
+    'php-tidy'
+    'php-uopz'
+    'php-uploadprogress'
+    'php-uuid'
+    'php-xdebug'
+    'php-xml'
+    'php-xmlrpc'
+    'php-yac'
+    'php-yaml'
+    'php-zip'
+    'php-zmq'
+    'php'
+    'sirikali'
+    'sks'
+    'snap'
+    'snapd'
+    'tcptrack'
+    'trash-cli'
+    'tree'
+    'wget'
+    'zram-tools'
 )
-
-# #
-#   count packages
-# #
-
-app_count=${#lst_packages[@]}
 
 # #
 #   define > packages > Github Repos (LastVersion)
 # #
 
 lst_github=(
+    'obsidianmd/obsidian-releases'
+    'AppOutlet/AppOutlet'
+    'bitwarden/clients'
+    'shiftkey/desktop'
+    'FreeTubeApp/FreeTube'
+    'makedeb/makedeb'
+    'Aetherinox/debian-apt-url'
     'Aetherinox/opengist-debian'
 )
 
@@ -266,6 +436,12 @@ lst_arch=(
     'arm64'
     'i386'
 )
+
+# #
+#   count packages
+# #
+
+app_count=${#lst_packages[@]}
 
 # #
 #   ensure we're in the correct directory
@@ -589,30 +765,51 @@ error_missing_value_gpg()
 
 opt_usage()
 {
-    echo -e 
+    echo -e
     printf "  ${c[blue]}${app_title}${c[end]}\n" 1>&2
-    printf "  ${c[grey2]}${gui_about}${c[end]}\n" 1>&2
-    echo -e 
-    printf '  %-5s %-40s\n' "Usage:" "" 1>&2
-    printf '  %-5s %-40s\n' "    " "${0} [${c[grey2]}options${c[end]}]" 1>&2
-    printf '  %-5s %-40s\n\n' "    " "${0} [${c[grey2]}-s${c[end]}] [${c[grey2]}-t${c[end]}] [${c[grey2]}-g${c[end]}] [${c[grey2]}-p${c[end]}] [${c[grey2]}-d${c[end]}] [${c[grey2]}-n${c[end]}] [${c[grey2]}-q${c[end]}] [${c[grey2]}-u${c[end]}] [${c[grey2]}-b main | dev${c[end]}] [${c[grey2]}-r${c[end]}]" 1>&2
-    printf '  %-5s %-40s\n' "Options:" "" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-s, --setup" "install script packages (git, wget, reprepro, etc.), setup gpg daemon, configure gpg key" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-t, --onlyTest" "download packages from apt-get and LastVersion, do not push to git repo" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-g, --onlyGithub" "only update packages using LastVersion, push to git" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-p, --onlyAptget" "only update packages using AptGet, push to git" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-d, --dev" "dev mode (advanced logs)" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-n, --nullrun" "run script without adding packages to reprepro" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "" "simulate app installs (no changes)" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-q, --quiet" "disable logging" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-r, --report" "show info about ${app_file_this}" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "" "current paths, installed dependencies, etc." 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-u, --update" "update ${app_file_this} executable" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-b, --branch" "branch to use for downloading/updating this script" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-v, --version" "current version of app manager" 1>&2
-    printf '  %-5s %-18s %-40s\n' "    " "-h, --help" "show help menu" 1>&2
-    echo -e 
-    echo -e 
+    printf "  ${c[grey2]}${app_about}${c[end]}\n" 1>&2
+    printf "  ${c[fuchsia2]}${app_file_this}${c[end]} ${c[grey2]}--precheck ${c[end]} || ${c[grey2]}--current ${c[yellow]}\"1.10.0\"${c[end]} [ ${c[grey2]}--force${c[end]} ] \n" 1>&2
+    echo -e
+    echo -e
+    printf '  %-5s %-40s\n' "${c[grey1]}Syntax:${c[end]}" "" 1>&2
+    printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}Command${c[end]}           " "${c[fuchsia2]}${app_file_this}${c[end]} [ ${c[grey2]}-option${c[end]} [ ${c[yellow]}arg${c[end]} ]${c[end]} ]" 1>&2
+    printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}Options${c[end]}           " "${c[fuchsia2]}${app_file_this}${c[end]} [ ${c[grey2]}-h${c[end]} | ${c[grey2]}--help${c[end]} ]" 1>&2
+    printf '  %-5s %-48s %-40s\n' "    " "    ${c[grey2]}-A${c[end]}            " "required" 1>&2
+    printf '  %-5s %-48s %-40s\n' "    " "    ${c[grey2]}-A...${c[end]}         " "required; multiple can be specified" 1>&2
+    printf '  %-5s %-48s %-40s\n' "    " "    ${c[grey2]}[ -A ]${c[end]}        " "optional" 1>&2
+    printf '  %-5s %-48s %-40s\n' "    " "    ${c[grey2]}[ -A... ]${c[end]}     " "optional; multiple can be specified" 1>&2
+    printf '  %-5s %-48s %-40s\n' "    " "    ${c[grey2]}{ -A | -B }${c[end]}   " "one or the other; do not use both" 1>&2
+    printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}Arguments${c[end]}         " "${c[fuchsia2]}${app_file_this}${c[end]} [ ${c[grey2]}-r${c[yellow]} arg${c[end]} | ${c[grey2]}--repo ${c[yellow]}arg${c[end]} ] ${c[yellow]}arg${c[end]}" 1>&2
+    printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}Examples${c[end]}          " "${c[fuchsia2]}${app_file_this}${c[end]} ${c[grey2]}--current${c[yellow]} \"${argVerCurrent}\"${c[end]}" 1>&2
+    printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}${c[end]}                  " "${c[fuchsia2]}${app_file_this}${c[end]} ${c[grey2]}--precheck$${c[end]}" 1>&2
+    printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}${c[end]}                  " "${c[fuchsia2]}${app_file_this}${c[end]} ${c[grey2]}--current${c[yellow]} \"${argVerCurrent}\"${c[end]} ${c[grey2]}--name${c[yellow]} \"${argPackageName}\"${c[end]} ${c[grey2]}--dev${c[end]}" 1>&2
+
+    echo -e
+    printf '  %-5s %-40s\n' "${c[grey1]}Options:${c[end]}" "" 1>&2
+
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-A${c[grey1]},${c[blue2]}  --only-apt ${c[yellow]}${c[end]}                " "only download pkgs from apt-get; do not download packages from github using lastversion${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-G${c[grey1]},${c[blue2]}  --only-git ${c[yellow]}${c[end]}                " "only download pkgs from github using lastversion; do not download from apt-get${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-P${c[grey1]},${c[blue2]}  --apt-package ${c[yellow]}<string>${c[end]}     " "add new pkg available via apt-get; does not add pkg to bash script list (one-time update)${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-g${c[grey1]},${c[blue2]}  --git-package ${c[yellow]}<string>${c[end]}     " "add new pkg on github; does not add pkg to bash script list (one-time update)${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-l${c[grey1]},${c[blue2]}  --local-package ${c[yellow]}<string>${c[end]}   " "add new local .deb package in root folder ${c[navy]}${app_dir}${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-f${c[grey1]},${c[blue2]}  --fix-perms ${c[yellow]}<string>${c[end]}       " "fix permissions and owner for script ${c[navy]}${app_file_this}${c[end]}; optional owner arg ${c[navy]}<default> ${c[peach]}${argChownOwner}${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-R${c[grey1]},${c[blue2]}  --reset ${c[yellow]}<string>${c[end]}           " "reset local repo files to state of remote git branch by performing ${c[navy]}git reset --hard${c[end]}; optional git branch arg ${c[navy]}<default> ${c[peach]}${app_repo_branch}${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-L${c[grey1]},${c[blue2]}  --list-packages ${c[yellow]}${c[end]}           " "list locally installed apt-get packages${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-t${c[grey1]},${c[blue2]}  --dist ${c[yellow]}<string>${c[end]}            " "specify distribution for pkgs ${c[navy]}<default> ${c[peach]}${sys_code}${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}  ${c[grey1]} ${c[blue2]}      ${c[yellow]}${c[end]}                       " "   ${c[grey1]}focal, jammy, noble" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-S${c[grey1]},${c[blue2]}  --skip-commit ${c[yellow]}${c[end]}             " "runs script; but only registers new pkgs with reprepro; no github commits${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-D${c[grey1]},${c[blue2]}  --dryrun ${c[yellow]}${c[end]}                  " "runs script; does not download pkgs; does not add pkg to reprepro; does not commit to git${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-k${c[grey1]},${c[blue2]}  --kill ${c[yellow]}${c[end]}                    " "force running instances of script to be killed${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-r${c[grey1]},${c[blue2]}  --report ${c[yellow]}${c[end]}                  " "show stats about pkgs, variables, etc.${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-c${c[grey1]},${c[blue2]}  --clean ${c[yellow]}${c[end]}                   " "remove lingering .deb files from file structure left behind${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-s${c[grey1]},${c[blue2]}  --setup ${c[yellow]}${c[end]}                   " "runs initial setup; installs any pkgs required by script${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}  ${c[grey1]} ${c[blue2]}      ${c[yellow]}${c[end]}                       " "   ${c[grey1]}apt-move, apt-url, curl, wget, tree, reprepro, lastversion" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-u${c[grey1]},${c[blue2]}  --update ${c[yellow]}<string>${c[end]}          " "download new version of script from github${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-b${c[grey1]},${c[blue2]}  --branch ${c[yellow]}<string>${c[end]}          " "specifies update branch; used with option ${c[navy]}-u, --update ${c[navy]}<default> ${c[peach]}${app_repo_branch}${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-x${c[grey1]},${c[blue2]}  --dev ${c[yellow]}${c[end]}                     " "developer mode; verbose logging${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-h${c[grey1]},${c[blue2]}  --help ${c[yellow]}${c[end]}                    " "show this help menu${c[end]}" 1>&2
+    echo -e
+    echo -e
     exit 1
 }
 
@@ -5209,11 +5406,12 @@ app_start()
 #   -G, --onlyGithub            only downloads packages from github using LastVersion does not download packages 
 #                               from apt-get
 #   -p, --apt-package           adds an individual apt-get package to repository
-#   -g, --github-package        adds an individual github / lastversion package to repository
+#   -g, --git-package           adds an individual github / lastversion package to repository
 #   -l, --add-local-package     adds a new package from a local file
 #   -f, --fixperms              fixes permissions and owner of proteus.sh script
 #   -R, --reset                 resets the local repo files back to the state of the remote proteus repo (git reset --hard origin/main)
 #   -L, --list-packages         show list of locally installed packages
+#   -S, --skip-commit           runs the script, but only registers new packages with reprepro; changes not pushed to github repository
 #   -t, --dist                  specifies a specific distribution out of box, this script finds the distribution
 #                               of the machine you are running. you may override it with this option.
 #                                   jammy, lunar, focal, noble, etc
@@ -5246,7 +5444,7 @@ while [ $# -gt 0 ]; do
         #                       proteus --onlyApt
         # #
 
-        -A|--onlyAptget|--onlyApt)
+        -A|--onlyAptget|--onlyApt|--only-apt)
             argOnlyAptget=true
             ;;
 
@@ -5257,7 +5455,7 @@ while [ $# -gt 0 ]; do
         #                       proteus --onlyGithub
         # #
 
-        -G|--onlyGithub)
+        -G|--onlyGithub|--onlygit|--only-git)
             argOnlyGithub=true
             ;;
 
@@ -5285,7 +5483,7 @@ while [ $# -gt 0 ]; do
         #                       proteus --add-github-package shiftkey/desktop
         # #
 
-        -g|-gp|--add-github-package|--github-package)
+        -g|-gp|--add-github-package|--github-package|--add-git-package|--git-package|--github-package)
             if [[ "$1" != *=* ]]; then shift; fi
             argGithubPackage="${1#*=}"
 
