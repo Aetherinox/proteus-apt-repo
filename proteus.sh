@@ -42,8 +42,8 @@
 #                   ./proteus.sh -d -D                                                          (dryrun) test the entire script without actually making changes or updating packages
 #                   ./proteus.sh -d -D --package opensc                                         (dryrun) test adding new apt-get package without actually adding
 #                   ./proteus.sh -d --package opensc                                            add new apt-get package to current ubuntu distro
-#                   ./proteus.sh -P                                                             set owner root:root and permissions +x for proteus.sh
-#                   ./proteus.sh -P username                                                    set owner username:username and permissions +x for proteus.sh
+#                   ./proteus.sh -f                                                             set owner root:root and permissions +x for proteus.sh
+#                   ./proteus.sh -f username                                                    set owner username:username and permissions +x for proteus.sh
 #                   ./proteus.sh -k                                                             kill existing processes of proteus script
 #                   ./proteus -L                                                                list locally / manually installed packages
 #                   ./proteus -l                                                                list all installed packages
@@ -780,9 +780,14 @@ opt_usage()
     printf '  %-5s %-48s %-40s\n' "    " "    ${c[grey2]}[ -A... ]${c[end]}     " "optional; multiple can be specified" 1>&2
     printf '  %-5s %-48s %-40s\n' "    " "    ${c[grey2]}{ -A | -B }${c[end]}   " "one or the other; do not use both" 1>&2
     printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}Arguments${c[end]}         " "${c[fuchsia2]}${app_file_this}${c[end]} [ ${c[grey2]}-r${c[yellow]} arg${c[end]} | ${c[grey2]}--repo ${c[yellow]}arg${c[end]} ] ${c[yellow]}arg${c[end]}" 1>&2
-    printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}Examples${c[end]}          " "${c[fuchsia2]}${app_file_this}${c[end]} ${c[grey2]}--current${c[yellow]} \"${argVerCurrent}\"${c[end]}" 1>&2
-    printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}${c[end]}                  " "${c[fuchsia2]}${app_file_this}${c[end]} ${c[grey2]}--precheck$${c[end]}" 1>&2
-    printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}${c[end]}                  " "${c[fuchsia2]}${app_file_this}${c[end]} ${c[grey2]}--current${c[yellow]} \"${argVerCurrent}\"${c[end]} ${c[grey2]}--name${c[yellow]} \"${argPackageName}\"${c[end]} ${c[grey2]}--dev${c[end]}" 1>&2
+    printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}Examples${c[end]}          " "${c[fuchsia2]}${app_file_this}${c[end]}${c[end]}" 1>&2
+    printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}${c[end]}                  " "${c[fuchsia2]}${app_file_this}${c[end]} ${c[grey2]}--skip-commit --dev${c[end]}" 1>&2
+    printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}${c[end]}                  " "${c[fuchsia2]}${app_file_this}${c[end]} ${c[grey2]}--apt-package${c[yellow]} \"opensc\"${c[end]} ${c[grey2]}--dev${c[end]}" 1>&2
+    printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}${c[end]}                  " "${c[fuchsia2]}${app_file_this}${c[end]} ${c[grey2]}--fix-perms${c[yellow]} \"root\"${c[end]} ${c[grey2]}--dev${c[end]}" 1>&2
+    printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}${c[end]}                  " "${c[fuchsia2]}${app_file_this}${c[end]} ${c[grey2]}--kill${c[end]}" 1>&2
+    printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}${c[end]}                  " "${c[fuchsia2]}${app_file_this}${c[end]} ${c[grey2]}--reset${c[end]}" 1>&2
+    printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}${c[end]}                  " "${c[fuchsia2]}${app_file_this}${c[end]} ${c[grey2]}--dist${c[yellow]} \"focal\"${c[grey2]} --arch${c[yellow]} \"amd64\"${c[grey2]} --local-package${c[yellow]} \"reprepro_5.4.7-1_amd64.deb\"${c[end]}" 1>&2
+    printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}${c[end]}                  " "${c[fuchsia2]}${app_file_this}${c[end]} ${c[grey2]}--dist${c[yellow]} \"focal\"${c[grey2]} --arch${c[yellow]} \"amd64\"${c[grey2]} --local-package${c[yellow]} \"reprepro_5.4.7-1_amd64.deb\"${c[grey2]} --dryrun${c[end]}" 1>&2
 
     echo -e
     printf '  %-5s %-40s\n' "${c[grey1]}Options:${c[end]}" "" 1>&2
