@@ -566,11 +566,11 @@ Homepage: https://github.com/Aetherinox/opengist-debian
 Priority: 0
 Section: utils
 Filename: pool/main/o/opengist/opengist_1.10.0_arm64.deb
-Size: 23918692
-SHA512: 63b132a9a8f5be678431e3d1bf5c6caf691ae2d76182cc50012b482d6cf9853a37890d69d7fbdd423e9d2de08fa25e1a727ad70f2dffb1d04e3768cec3193799
-SHA256: 9531236109ab1599d534f06d54b66d61a4e64e5090209486c7b5b76e54557a97
-SHA1: 4efe43fb21c7ef44baa4af16fe99c277dac4db16
-MD5sum: fb9d7999988e3c108db8d325dbf3a348
+Size: 23918552
+SHA512: ce60d3629451e32c9cd686e8507363bb78848a13a943542315331863122c3acbf475316b98a2b805aed3ee3c396edd997e81aaeb1af578422ca1337ff4b142be
+SHA256: c4946ec447a91ef4626a1dfefc9094e379fbd05af052db2e30b1636934f93e20
+SHA1: dc58dbed47e06d3cd88402813abdf45b8ecbf610
+MD5sum: 203485e87e8331bc96e7d3704653282c
 Description: Self-hosted pastebin powered by Git, open-source alternative to Github
  Gist. Opengist is a self-hosted pastebin powered by Git. All snippets are
  stored in a Git repository and can be read and/or modified using standard Git

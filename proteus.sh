@@ -38,7 +38,8 @@
 #       ./proteus.sh --dev --dryrun
 #   
 #   ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
-#   @usage          ./proteus.sh -d -D                                                          (dryrun) test the entire script without actually making changes or updating packages
+#   @usage          ./proteus.sh -d -S                                                          (skip-commit) will add new packages to reprepro database, but will not commit to github
+#                   ./proteus.sh -d -D                                                          (dryrun) test the entire script without actually making changes or updating packages
 #                   ./proteus.sh -d -D --package opensc                                         (dryrun) test adding new apt-get package without actually adding
 #                   ./proteus.sh -d --package opensc                                            add new apt-get package to current ubuntu distro
 #                   ./proteus.sh -P                                                             set owner root:root and permissions +x for proteus.sh
@@ -214,6 +215,7 @@ argAptPackage=
 argGithubPackage=
 argDevEnabled=false
 argNoLogs=false
+argSkipGitCommit=false
 argDryRun=false
 argVerbose=false
 argBranch=
@@ -238,175 +240,6 @@ CSI_GPG_PASSWD=
 
 lst_packages=(
     'adduser'
-    'argon2'
-    'apt-move'
-    'apt-transport-https'
-    'apt-utils'
-    'clevis'
-    'clevis-dracut'
-    'clevis-udisks2'
-    'clevis-tpm2'
-    'dialog'
-    'dos2unix'
-    'firefox'
-    'flatpak'
-    'geoipupdate'
-    'gnome-keyring'
-    'gnome-keysign'
-    'gnome-shell-extension-manager'
-    'git'
-    'gpg'
-    'gpgconf'
-    'gpgv'
-    'jose'
-    'keyutils'
-    'kgpg'
-    'libnginx-mod-http-auth-pam'
-    'libnginx-mod-http-cache-purge'
-    'libnginx-mod-http-dav-ext'
-    'libnginx-mod-http-echo'
-    'libnginx-mod-http-fancyindex'
-    'libnginx-mod-http-geoip'
-    'libnginx-mod-http-headers-more-filter'
-    'libnginx-mod-http-ndk'
-    'libnginx-mod-http-perl'
-    'libnginx-mod-http-subs-filter'
-    'libnginx-mod-http-uploadprogress'
-    'libnginx-mod-http-upstream-fair'
-    'libnginx-mod-nchan'
-    'libnginx-mod-rtmp'
-    'libnginx-mod-stream-geoip'
-    'lintian'
-    'lsb-base'
-    'lz4'
-    'mysql-client'
-    'mysql-common'
-    'mysql-server'
-    'net-tools'
-    'neofetch'
-    'network-manager-config-connectivity-ubuntu'
-    'network-manager-dev'
-    'network-manager-gnome'
-    'network-manager-openvpn-gnome'
-    'network-manager-openvpn'
-    'network-manager-pptp-gnome'
-    'network-manager-pptp'
-    'network-manager'
-    'networkd-dispatcher'
-    'nginx-common'
-    'nginx-confgen'
-    'nginx-core'
-    'nginx-dev'
-    'nginx-doc'
-    'nginx-extras'
-    'nginx-full'
-    'nginx-light'
-    'nginx'
-    'open-vm-tools-desktop'
-    'open-vm-tools-dev'
-    'open-vm-tools'
-    'pass'
-    'php-all-dev'
-    'php-amqp'
-    'php-amqplib'
-    'php-apcu-all-dev'
-    'php-apcu'
-    'php-ast-all-dev'
-    'php-ast'
-    'php-bacon-qr-code'
-    'php-bcmath'
-    'php-brick-math'
-    'php-brick-varexporter'
-    'php-bz2'
-    'php-cas'
-    'php-cgi'
-    'php-cli'
-    'php-code-lts-u2f-php-server'
-    'php-common'
-    'php-crypt-gpg'
-    'php-curl'
-    'php-db'
-    'php-dba'
-    'php-decimal'
-    'php-dev'
-    'php-ds-all-dev'
-    'php-ds'
-    'php-email-validator'
-    'php-embed'
-    'php-enchant'
-    'php-excimer'
-    'php-faker'
-    'php-fpm'
-    'php-fxsl'
-    'php-gd'
-    'php-gearman'
-    'php-gettext-languages'
-    'php-gmagick-all-dev'
-    'php-gmagick'
-    'php-gmp'
-    'php-gnupg-all-dev'
-    'php-gnupg'
-    'php-gnupg'
-    'php-grpc'
-    'php-http'
-    'php-igbinary'
-    'php-imagick'
-    'php-imap'
-    'php-inotify'
-    'php-interbase'
-    'php-intl'
-    'php-ldap'
-    'php-mailparse'
-    'php-maxminddb'
-    'php-mbstring'
-    'php-mcrypt'
-    'php-memcache'
-    'php-memcached'
-    'php-mongodb'
-    'php-msgpack'
-    'php-mysql'
-    'php-oauth'
-    'php-odbc'
-    'php-pcov'
-    'php-pgsql'
-    'php-phpdbg'
-    'php-ps'
-    'php-pspell'
-    'php-psr'
-    'php-raphf'
-    'php-readline'
-    'php-redis'
-    'php-rrd'
-    'php-smbclient'
-    'php-snmp'
-    'php-soap'
-    'php-solr'
-    'php-sqlite3'
-    'php-ssh2'
-    'php-stomp'
-    'php-sybase'
-    'php-tideways'
-    'php-tidy'
-    'php-uopz'
-    'php-uploadprogress'
-    'php-uuid'
-    'php-xdebug'
-    'php-xml'
-    'php-xmlrpc'
-    'php-yac'
-    'php-yaml'
-    'php-zip'
-    'php-zmq'
-    'php'
-    'sirikali'
-    'sks'
-    'snap'
-    'snapd'
-    'tcptrack'
-    'trash-cli'
-    'tree'
-    'wget'
-    'zram-tools'
 )
 
 # #
@@ -420,13 +253,6 @@ app_count=${#lst_packages[@]}
 # #
 
 lst_github=(
-    'obsidianmd/obsidian-releases'
-    'AppOutlet/AppOutlet'
-    'bitwarden/clients'
-    'shiftkey/desktop'
-    'FreeTubeApp/FreeTube'
-    'makedeb/makedeb'
-    'Aetherinox/debian-apt-url'
     'Aetherinox/opengist-debian'
 )
 
@@ -3431,7 +3257,6 @@ app_setup()
 
         # change priority
         echo 'Package: * Pin: origin dl.google.com Pin-Priority: 1000' | sudo tee /etc/apt/preferences.d/google-chrome >/dev/null
-
         printf "%-50s %-5s\n" "${TIME}      Updating user repo list with apt-get update" | tee -a "${LOGS_FILE}" >/dev/null
 
         if [ "${argDryRun}" = false ]; then
@@ -3890,15 +3715,15 @@ app_run_dl_aptget()
             #   output > package info
             # #
 
-            echo -e "  ${c[end]}                Package         ${c[blue]}${pkg_arch}${c[end]}"
-            echo -e "  ${c[end]}                File            ${c[blue]}${app_filename}${c[end]}"
+            printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Package${c[end]}" "${c[fuchsia2]}${pkg_arch}${c[end]}"
+            printf '%-15s %-25s %-65s\n' "" "  ${c[end]}File${c[end]}" "${c[fuchsia2]}${app_filename}${c[end]}"
 
             # #
             #   output > architecture doesn't exist for this package
             # #
 
             if echo "$apturl_query" | grep --quiet --ignore-case "find package" ; then
-                echo -e "  ${c[end]}                ${c[green]}Status:         ${c[orange]}🔍 ${arch:0:35}${c[end]} doesn't exist for this package"
+                printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "🔍 ${c[orange]}${arch:0:35}${c[end]} doesn't exist for this package${c[end]}"
             fi
 
             # #
@@ -3906,7 +3731,7 @@ app_run_dl_aptget()
             # #
 
             if echo "$apturl_query" | grep --quiet --ignore-case "It is held by process" ; then
-                echo -e "  ${c[end]}                ${c[green]}Status:         ${c[red]}🗔 ${pkg_arch:0:35}${c[end]} held up by process"
+                printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "🗔 ${c[orange]}${pkg_arch:0:35}${c[end]} held up by process${c[end]}"
             fi
 
             # #
@@ -3922,7 +3747,7 @@ app_run_dl_aptget()
                 # #
 
                 if [[ "${arch}" == "all" ]] && [[ ${app_filename} == *all.deb ]]; then
-                    echo -e "  ${c[end]}                Download        ${c[blue]}${app_url}${c[end]}"
+                    printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Download${c[end]}" "${c[fuchsia2]}${app_url}${c[end]}"
 
                     # #
                     #   architecture > all
@@ -3932,7 +3757,7 @@ app_run_dl_aptget()
                     # #
 
                     if [ -f $app_dir/$app_filename ]; then
-                        echo -e "  ${c[end]}                Move            ${c[blue]}${app_dir}/${app_filename}${c[end]} moved to ${c[green]}$app_dir/$app_dir_incoming/all/${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Move${c[end]}" "${c[fuchsia2]}${app_dir}/${app_filename}${c[end]} to ${c[fuchsia2]}$app_dir/$app_dir_incoming/all/${c[end]}"
                         mv "${app_dir}/${app_filename}" "$app_dir/$app_dir_incoming/all/"
                     fi
 
@@ -3952,8 +3777,8 @@ app_run_dl_aptget()
                     #       deb_package             incoming/packages/jammy/all/networkd-dispatcher_2.1-2ubuntu0.22.04.2_all.deb
                     # #
 
-                    echo -e "  ${c[end]}                Reprepro        ${c[blue]}${deb_package}${c[end]} for dist ${c[blue]}${app_repo_dist_sel}${c[end]}"
-                    echo -e "  ${c[end]}                                    ${c[grey1]}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${c[end]}"
+                    printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Reprepro${c[end]}" "${c[fuchsia2]}${deb_package}${c[end]} for dist ${c[fuchsia2]}${app_repo_dist_sel}${c[end]}"
+                    printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Command${c[end]}" "${c[grey1]}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${c[end]}"
 
                     if [ -n "${bRepreproInstalled}" ] && [ "${argDryRun}" = false ]; then
                         reprepro_exit_code="0"
@@ -3972,7 +3797,27 @@ app_run_dl_aptget()
                         # #
 
                         if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
-                            echo -e "  ${c[end]}                ${c[green]}Status:         ${c[end]}💡 Already exists${c[end]}"
+                            printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "💡 Already exists (${c[yellow]}${deb_package}${c[end]}) for ${c[yellow]}${app_repo_dist_sel}${c[end]}"
+                        fi
+
+                        # #
+                        #   aptget > architecture > all > reprepro
+                        #
+                        #   output > package already added but checksums are different
+                        # #
+
+                        if echo "$reprepro_output" | grep --quiet --ignore-case "Already existing files" ; then
+                            printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "💡 Already exists; bad checksums. Removing ${c[yellow]}${app_filename}${c[end]} from ${c[yellow]}Reprepro${c[end]} and re-adding${c[end]}"
+                            reprepro remove "${app_repo_dist_sel}" "${app_filename}"
+
+                            reprepro_exit_code="0"
+                            reprepro_output="$(reprepro -V \
+                                --section utils \
+                                --component main \
+                                --priority 0 \
+                                includedeb "${app_repo_dist_sel}" "${deb_package}" \
+                                "$@" 2>&1)" \
+                                || { reprepro_exit_code="$?" ; true; };
                         fi
 
                         # #
@@ -3982,10 +3827,10 @@ app_run_dl_aptget()
                         # #
 
                         if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
-                            echo -e "  ${c[end]}                ${c[green]}Status:         ${c[end]}✅ New package added${c[end]}"
+                            printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "✅ New package added (${c[green]}${deb_package}${c[end]}) for ${c[green]}${app_repo_dist_sel}${c[end]}"
                         fi
                     else
-                        echo -e "  ${c[end]}                ${c[green]}Status:         ${c[end]}💡 Skip addition; reprepro not installed or in dryrun mode${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "💡 Skip addition; reprepro not installed or in dryrun mode (${c[yellow]}${deb_package}${c[end]}) for ${c[yellow]}${app_repo_dist_sel}${c[end]}"
                     fi
 
                     bNewPackage=false
@@ -3996,7 +3841,7 @@ app_run_dl_aptget()
                 # #
 
                 elif [[ "${arch}" == "amd64" ]] && [[ ${app_filename} == *amd64.deb ]]; then
-                    echo -e "  ${c[end]}                Download        ${c[blue]}${app_url}${c[end]}"
+                    printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Download${c[end]}" "${c[fuchsia2]}${app_url}${c[end]}"
 
                     # #
                     #   architecture > amd64
@@ -4006,7 +3851,7 @@ app_run_dl_aptget()
                     # #
 
                     if [ -f $app_dir/$app_filename ]; then
-                        echo -e "  ${c[end]}                Move            ${c[blue]}${app_dir}/${app_filename}${c[end]} moved to ${c[green]}$app_dir/$app_dir_incoming/amd64/${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Move${c[end]}" "${c[fuchsia2]}${app_dir}/${app_filename}${c[end]} to ${c[fuchsia2]}$app_dir/$app_dir_incoming/amd64/${c[end]}"
                         mv "${app_dir}/${app_filename}" "$app_dir/$app_dir_incoming/amd64/"
                     fi
 
@@ -4026,8 +3871,8 @@ app_run_dl_aptget()
                     #       deb_package             incoming/packages/jammy/amd64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_amd64.deb
                     # #
 
-                    echo -e "  ${c[end]}                Reprepro        ${c[blue]}${deb_package}${c[end]} for dist ${c[blue]}${app_repo_dist_sel}${c[end]}"
-                    echo -e "  ${c[end]}                                    ${c[grey1]}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${c[end]}"
+                    printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Reprepro${c[end]}" "${c[fuchsia2]}${deb_package}${c[end]} for dist ${c[fuchsia2]}${app_repo_dist_sel}${c[end]}"
+                    printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Command${c[end]}" "${c[grey1]}reprepro -V --section utils --component main --priority 0 --architecture $arch includedeb ${app_repo_dist_sel} ${deb_package}${c[end]}"
 
                     if [ -n "${bRepreproInstalled}" ] && [ "${argDryRun}" = false ]; then
                         reprepro_exit_code="0"
@@ -4047,7 +3892,28 @@ app_run_dl_aptget()
                         # #
 
                         if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
-                            echo -e "  ${c[end]}                ${c[green]}Status:         ${c[end]}💡 Already exists${c[end]}"
+                            printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "💡 Already exists (${c[yellow]}${deb_package}${c[end]}) for ${c[yellow]}${app_repo_dist_sel}${c[end]}"
+                        fi
+
+                        # #
+                        #   aptget > architecture > amd64 > reprepro
+                        #
+                        #   output > package already added but checksums are different
+                        # #
+
+                        if echo "$reprepro_output" | grep --quiet --ignore-case "Already existing files" ; then
+                            printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "💡 Already exists; bad checksums. Removing ${c[yellow]}${app_filename}${c[end]} from ${c[yellow]}Reprepro${c[end]} and re-adding${c[end]}"
+                            reprepro remove "${app_repo_dist_sel}" "${app_filename}"
+
+                            reprepro_exit_code="0"
+                            reprepro_output="$(reprepro -V \
+                                --section utils \
+                                --component main \
+                                --priority 0 \
+                                --architecture ${arch} \
+                                includedeb "${app_repo_dist_sel}" "${deb_package}" \
+                                "$@" 2>&1)" \
+                                || { reprepro_exit_code="$?" ; true; };
                         fi
 
                         # #
@@ -4057,10 +3923,10 @@ app_run_dl_aptget()
                         # #
 
                         if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
-                            echo -e "  ${c[end]}                ${c[green]}Status:         ${c[end]}✅ New package added${c[end]}"
+                            printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "✅ New package added (${c[green]}${deb_package}${c[end]}) for ${c[green]}${app_repo_dist_sel}${c[end]}"
                         fi
                     else
-                        echo -e "  ${c[end]}                ${c[green]}Status:         ${c[end]}💡 Skip addition; reprepro not installed or in dryrun mode${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "💡 Skip addition; reprepro not installed or in dryrun mode (${c[yellow]}${deb_package}${c[end]}) for ${c[yellow]}${app_repo_dist_sel}${c[end]}"
                     fi
 
                     bNewPackage=false
@@ -4071,7 +3937,7 @@ app_run_dl_aptget()
                 # #
 
                 elif [[ "${arch}" == "arm64" ]] && [[ ${app_filename} == *arm64.deb ]]; then
-                    echo -e "  ${c[end]}                Download        ${c[blue]}${app_url}${c[end]}"
+                    printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Download${c[end]}" "${c[fuchsia2]}${app_url}${c[end]}"
 
                     # #
                     #   architecture > arm64
@@ -4081,7 +3947,7 @@ app_run_dl_aptget()
                     # #
 
                     if [ -f $app_dir/$app_filename ]; then
-                        echo -e "  ${c[end]}                Move            ${c[blue]}${app_dir}/${app_filename}${c[end]} moved to ${c[green]}$app_dir/$app_dir_incoming/arm64/${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Move${c[end]}" "${c[fuchsia2]}${app_dir}/${app_filename}${c[end]} to ${c[fuchsia2]}$app_dir/$app_dir_incoming/arm64/${c[end]}"
                         mv "${app_dir}/${app_filename}" "$app_dir/$app_dir_incoming/arm64/"
                     fi
 
@@ -4101,8 +3967,8 @@ app_run_dl_aptget()
                     #       deb_package             incoming/packages/jammy/arm64/networkd-dispatcher_2.1-2ubuntu0.22.04.2_arm64.deb
                     # #
 
-                    echo -e "  ${c[end]}                Reprepro        ${c[blue]}${deb_package}${c[end]} for dist ${c[blue]}${app_repo_dist_sel}${c[end]}"
-                    echo -e "  ${c[end]}                                    ${c[grey1]}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${c[end]}"
+                    printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Reprepro${c[end]}" "${c[fuchsia2]}${deb_package}${c[end]} for dist ${c[fuchsia2]}${app_repo_dist_sel}${c[end]}"
+                    printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Command${c[end]}" "${c[grey1]}reprepro -V --section utils --component main --priority 0 --architecture $arch includedeb ${app_repo_dist_sel} ${deb_package}${c[end]}"
 
                     if [ -n "${bRepreproInstalled}" ] && [ "${argDryRun}" = false ]; then
                         reprepro_exit_code="0"
@@ -4122,7 +3988,28 @@ app_run_dl_aptget()
                         # #
 
                         if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
-                            echo -e "  ${c[end]}                ${c[green]}Status:         ${c[end]}💡 Already exists${c[end]}"
+                            printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "💡 Already exists (${c[yellow]}${deb_package}${c[end]}) for ${c[yellow]}${app_repo_dist_sel}${c[end]}"
+                        fi
+
+                        # #
+                        #   aptget > architecture > arm64 > reprepro
+                        #
+                        #   output > package already added but checksums are different
+                        # #
+
+                        if echo "$reprepro_output" | grep --quiet --ignore-case "Already existing files" ; then
+                            printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "💡 Already exists; bad checksums. Removing ${c[yellow]}${app_filename}${c[end]} from ${c[yellow]}Reprepro${c[end]} and re-adding${c[end]}"
+                            reprepro remove "${app_repo_dist_sel}" "${app_filename}"
+
+                            reprepro_exit_code="0"
+                            reprepro_output="$(reprepro -V \
+                                --section utils \
+                                --component main \
+                                --priority 0 \
+                                --architecture ${arch} \
+                                includedeb "${app_repo_dist_sel}" "${deb_package}" \
+                                "$@" 2>&1)" \
+                                || { reprepro_exit_code="$?" ; true; };
                         fi
 
                         # #
@@ -4132,10 +4019,10 @@ app_run_dl_aptget()
                         # #
 
                         if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
-                            echo -e "  ${c[end]}                ${c[green]}Status:         ${c[end]}✅ New package added${c[end]}"
+                            printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "✅ New package added (${c[green]}${deb_package}${c[end]}) for ${c[green]}${app_repo_dist_sel}${c[end]}"
                         fi
                     else
-                        echo -e "  ${c[end]}                ${c[green]}Status:         ${c[end]}💡 Skip addition; reprepro not installed or in dryrun mode${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "💡 Skip addition; reprepro not installed or in dryrun mode (${c[yellow]}${deb_package}${c[end]}) for ${c[yellow]}${app_repo_dist_sel}${c[end]}"
                     fi
 
                     bNewPackage=false
@@ -4146,7 +4033,7 @@ app_run_dl_aptget()
                 # #
 
                 elif [[ "$arch" == "i386" || "$arch" == "386" ]] && [[ $app_filename == *i386.deb || $app_filename == *i386*.deb || $app_filename == *386.deb || $app_filename == *386*.deb ]]; then
-                    echo -e "  ${c[end]}                Download        ${c[blue]}${app_url}${c[end]}"
+                    printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Download${c[end]}" "${c[fuchsia2]}${app_url}${c[end]}"
 
                     # #
                     #   architecture > i386
@@ -4156,7 +4043,7 @@ app_run_dl_aptget()
                     # #
 
                     if [ -f $app_dir/$app_filename ]; then
-                        echo -e "  ${c[end]}                Move            ${c[blue]}${app_dir}/${app_filename}${c[end]} moved to ${c[green]}$app_dir/$app_dir_incoming/i386/${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Move${c[end]}" "${c[fuchsia2]}${app_dir}/${app_filename}${c[end]} to ${c[fuchsia2]}$app_dir/$app_dir_incoming/i386/${c[end]}"
                         mv "${app_dir}/${app_filename}" "$app_dir/$app_dir_incoming/i386/"
                     fi
 
@@ -4176,8 +4063,8 @@ app_run_dl_aptget()
                     #       deb_package             incoming/packages/jammy/i386/networkd-dispatcher_2.1-2ubuntu0.22.04.i386.deb
                     # #
 
-                    echo -e "  ${c[end]}                Reprepro        ${c[blue]}${deb_package}${c[end]} for dist ${c[blue]}${app_repo_dist_sel}${c[end]}"
-                    echo -e "  ${c[end]}                                    ${c[grey1]}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${c[end]}"
+                    printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Reprepro${c[end]}" "${c[fuchsia2]}${deb_package}${c[end]} for dist ${c[fuchsia2]}${app_repo_dist_sel}${c[end]}"
+                    printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Command${c[end]}" "${c[grey1]}reprepro -V --section utils --component main --priority 0 --architecture $arch includedeb ${app_repo_dist_sel} ${deb_package}${c[end]}"
 
                     if [ -n "${bRepreproInstalled}" ] && [ "${argDryRun}" = false ]; then
                         reprepro_exit_code="0"
@@ -4197,7 +4084,28 @@ app_run_dl_aptget()
                         # #
 
                         if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
-                            echo -e "  ${c[end]}                ${c[green]}Status:         ${c[end]}💡 Already exists${c[end]}"
+                            printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "💡 Already exists (${c[yellow]}${deb_package}${c[end]}) for ${c[yellow]}${app_repo_dist_sel}${c[end]}"
+                        fi
+
+                        # #
+                        #   aptget > architecture > i386 > reprepro
+                        #
+                        #   output > package already added but checksums are different
+                        # #
+
+                        if echo "$reprepro_output" | grep --quiet --ignore-case "Already existing files" ; then
+                            printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "💡 Already exists; bad checksums. Removing ${c[yellow]}${app_filename}${c[end]} from ${c[yellow]}Reprepro${c[end]} and re-adding${c[end]}"
+                            reprepro remove "${app_repo_dist_sel}" "${app_filename}"
+
+                            reprepro_exit_code="0"
+                            reprepro_output="$(reprepro -V \
+                                --section utils \
+                                --component main \
+                                --priority 0 \
+                                --architecture ${arch} \
+                                includedeb "${app_repo_dist_sel}" "${deb_package}" \
+                                "$@" 2>&1)" \
+                                || { reprepro_exit_code="$?" ; true; };
                         fi
 
                         # #
@@ -4207,10 +4115,10 @@ app_run_dl_aptget()
                         # #
 
                         if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
-                            echo -e "  ${c[end]}                ${c[green]}Status:         ${c[end]}✅ New package added${c[end]}"
+                            printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "✅ New package added (${c[green]}${deb_package}${c[end]}) for ${c[green]}${app_repo_dist_sel}${c[end]}"
                         fi
                     else
-                        echo -e "  ${c[end]}                ${c[green]}Status:         ${c[end]}💡 Skip addition; reprepro not installed or in dryrun mode${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "💡 Skip addition; reprepro not installed or in dryrun mode (${c[yellow]}${deb_package}${c[end]}) for ${c[yellow]}${app_repo_dist_sel}${c[end]}"
                     fi
 
                     bNewPackage=false
@@ -4224,7 +4132,7 @@ app_run_dl_aptget()
 
                 else
                     rm "${app_dir}/${app_filename}"
-                    echo -e "  ${c[end]}                ${c[green]}Status:         ${c[end]}⭕ Double file detected ${c[orange]}${app_dir}/${app_filename}${c[end]}${c[end]}"
+                    printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "⭕ Already exists under different architecture ${c[orange]}${app_dir}/${app_filename}${c[end]}"
                 fi
             fi
 
@@ -4433,9 +4341,9 @@ app_run_dl_lastver()
                     # #
 
                     if [[ "$arch" == "all" ]] && [[ $app_filename == *all.deb || $app_filename == *all*.deb ]]; then
-                        echo -e "  ${c[end]}                Package         ${c[fuchsia1]}${arch}${c[end]}"
-                        echo -e "  ${c[end]}                File            ${c[fuchsia1]}${app_filename}${c[end]}"
-                        echo -e "  ${c[end]}                Download        ${c[fuchsia1]}${repo_file_url}${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Package${c[end]}" "${c[fuchsia2]}${arch}${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}File${c[end]}" "${c[fuchsia2]}${app_filename}${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Download${c[end]}" "${c[fuchsia2]}${repo_file_url}${c[end]}"
 
                         # #
                         #   architecture > all
@@ -4445,7 +4353,7 @@ app_run_dl_lastver()
                         # #
 
                         if [ -f $app_dir/$app_filename ]; then
-                            echo -e "  ${c[end]}                Move            ${c[fuchsia1]}${app_dir}/${app_filename}${c[end]} > ${c[fuchsia1]}$app_dir/$app_dir_incoming/all/${c[end]}"
+                            printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Move${c[end]}" "${c[fuchsia2]}${app_dir}/${app_filename}${c[end]} to ${c[fuchsia2]}$app_dir/$app_dir_incoming/all/${c[end]}"
                             mv "$app_dir/$app_filename" "$app_dir/$app_dir_incoming/all/"
                         fi
 
@@ -4465,8 +4373,8 @@ app_run_dl_lastver()
                         #       deb_package             incoming/packages/jammy/all/GitHubDesktop-linux-all-3.4.2-linux1.deb
                         # #
 
-                        echo -e "  ${c[end]}                Reprepro        ${c[fuchsia1]}${deb_package}${c[end]} for dist ${c[fuchsia1]}${app_repo_dist_sel}${c[end]}"
-                        echo -e "  ${c[end]}                                    ${c[fuchsia1]}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Reprepro${c[end]}" "${c[fuchsia2]}${deb_package}${c[end]} for dist ${c[fuchsia2]}${app_repo_dist_sel}${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Command${c[end]}" "${c[grey1]}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${c[end]}"
 
                         if [ -n "${bRepreproInstalled}" ] && [ "${argDryRun}" = false ]; then
                             reprepro_exit_code="0"
@@ -4478,6 +4386,11 @@ app_run_dl_lastver()
                                 "$@" 2>&1)" \
                                 || { reprepro_exit_code="$?" ; true; };
 
+                                reprepro_output=${reprepro_output//$'\n'/}          # Remove all newlines.
+                                reprepro_output=${reprepro_output%$'\n'}            # Remove a trailing newline.
+
+                                printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Response${c[end]}" "${c[grey1]}${reprepro_output}${c[end]}"
+
                             # #
                             #   architecture > all > reprepro
                             #
@@ -4485,7 +4398,30 @@ app_run_dl_lastver()
                             # #
 
                             if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
-                                echo -e "  ${c[end]}                ${c[green]}Status:         ${c[end]}💡 Already exists${c[end]}"
+                                printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "💡 Already exists (${c[yellow]}${deb_package}${c[end]}) for ${c[yellow]}${app_repo_dist_sel}${c[end]}"
+                            fi
+
+                            # #
+                            #   github > architecture > all > reprepro
+                            #
+                            #   output > package already added but checksums are different
+                            # #
+
+                            if echo "$reprepro_output" | grep --quiet --ignore-case "Already existing files" ; then
+                                local pkgRemove=${lst_github[0]}        #  Aetherinox/opengist-debian
+                                pkgRemove="${pkgRemove##*/}"            #  opengist-debian
+                                pkgRemove="${pkgRemove%-*}"             #  opengist
+                                printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "💡 Already exists; bad checksums. Removing ${c[yellow]}${app_filename}${c[end]} from ${c[yellow]}Reprepro${c[end]} and re-adding${c[end]}"
+                                reprepro remove "${app_repo_dist_sel}" "${pkgRemove}"
+
+                                reprepro_exit_code="0"
+                                reprepro_output="$(reprepro -V \
+                                    --section utils \
+                                    --component main \
+                                    --priority 0 \
+                                    includedeb "${app_repo_dist_sel}" "${deb_package}" \
+                                    "$@" 2>&1)" \
+                                    || { reprepro_exit_code="$?" ; true; };
                             fi
 
                             # #
@@ -4495,19 +4431,19 @@ app_run_dl_lastver()
                             # #
 
                             if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
-                                echo -e "  ${c[end]}                ${c[green]}Status:         ${c[end]}✅ New package added${c[end]}"
+                                printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "✅ New package added (${c[green]}${deb_package}${c[end]}) for ${c[green]}${app_repo_dist_sel}${c[end]}"
                             fi
                         else
-                            echo -e "  ${c[end]}                ${c[green]}Status:         ${c[end]}💡 Skip addition; reprepro not installed or in dryrun mode${c[end]}"
+                            printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "💡 Skip addition; reprepro not installed or in dryrun mode (${c[yellow]}${deb_package}${c[end]}) for ${c[yellow]}${app_repo_dist_sel}${c[end]}"
                         fi
 
                         echo -e
                         bNewPackage=false
 
                     elif [[ "$arch" == "amd64" ]] && [[ $app_filename == *amd64.deb || $app_filename == *amd64*.deb ]]; then
-                        echo -e "  ${c[end]}                Package         ${c[fuchsia1]}${arch}${c[end]}"
-                        echo -e "  ${c[end]}                File            ${c[fuchsia1]}${app_filename}${c[end]}"
-                        echo -e "  ${c[end]}                Download        ${c[fuchsia1]}${repo_file_url}${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Package${c[end]}" "${c[fuchsia2]}${arch}${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}File${c[end]}" "${c[fuchsia2]}${app_filename}${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Download${c[end]}" "${c[fuchsia2]}${repo_file_url}${c[end]}"
 
                         # #
                         #   architecture > amd64
@@ -4517,7 +4453,7 @@ app_run_dl_lastver()
                         # #
 
                         if [ -f $app_dir/$app_filename ]; then
-                            echo -e "  ${c[end]}                Move            ${c[fuchsia1]}${app_dir}/${app_filename}${c[end]} > ${c[fuchsia1]}$app_dir/$app_dir_incoming/amd64/${c[end]}"
+                            printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Move${c[end]}" "${c[fuchsia2]}${app_dir}/${app_filename}${c[end]} to ${c[fuchsia2]}$app_dir/$app_dir_incoming/amd64/${c[end]}"
                             mv "$app_dir/$app_filename" "$app_dir/$app_dir_incoming/amd64/"
                         fi
 
@@ -4537,8 +4473,8 @@ app_run_dl_lastver()
                         #       deb_package             incoming/packages/jammy/amd64/GitHubDesktop-linux-amd64-3.4.2-linux1.deb
                         # #
 
-                        echo -e "  ${c[end]}                Reprepro        ${c[fuchsia1]}${deb_package}${c[end]} for dist ${c[fuchsia1]}${app_repo_dist_sel}${c[end]}"
-                        echo -e "  ${c[end]}                                    ${c[fuchsia1]}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Reprepro${c[end]}" "${c[fuchsia2]}${deb_package}${c[end]} for dist ${c[fuchsia2]}${app_repo_dist_sel}${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Command${c[end]}" "${c[grey1]}reprepro -V --section utils --component main --priority 0 --architecture $arch includedeb ${app_repo_dist_sel} ${deb_package}${c[end]}"
 
                         if [ -n "${bRepreproInstalled}" ] && [ "${argDryRun}" = false ]; then
                             reprepro_exit_code="0"
@@ -4551,6 +4487,11 @@ app_run_dl_lastver()
                                 "$@" 2>&1)" \
                                 || { reprepro_exit_code="$?" ; true; };
 
+                                reprepro_output=${reprepro_output//$'\n'/}          # Remove all newlines.
+                                reprepro_output=${reprepro_output%$'\n'}            # Remove a trailing newline.
+
+                                printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Response${c[end]}" "${c[grey1]}${reprepro_output}${c[end]}"
+
                             # #
                             #   architecture > amd64 > reprepro
                             #
@@ -4558,7 +4499,31 @@ app_run_dl_lastver()
                             # #
 
                             if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
-                                echo -e "  ${c[end]}                ${c[green]}Status:         ${c[end]}💡 Already exists${c[end]}"
+                                printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "💡 Already exists (${c[yellow]}${deb_package}${c[end]}) for ${c[yellow]}${app_repo_dist_sel}${c[end]}"
+                            fi
+
+                            # #
+                            #   github > architecture > amd64 > reprepro
+                            #
+                            #   output > package already added but checksums are different
+                            # #
+
+                            if echo "$reprepro_output" | grep --quiet --ignore-case "Already existing files" ; then
+                                local pkgRemove=${lst_github[0]}        #  Aetherinox/opengist-debian
+                                pkgRemove="${pkgRemove##*/}"            #  opengist-debian
+                                pkgRemove="${pkgRemove%-*}"             #  opengist
+                                printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "💡 Already exists; bad checksums. Removing ${c[yellow]}${app_filename}${c[end]} from ${c[yellow]}Reprepro${c[end]} and re-adding${c[end]}"
+                                reprepro remove "${app_repo_dist_sel}" "${pkgRemove}"
+
+                                reprepro_exit_code="0"
+                                reprepro_output="$(reprepro -V \
+                                    --section utils \
+                                    --component main \
+                                    --priority 0 \
+                                    --architecture $arch \
+                                    includedeb "${app_repo_dist_sel}" "${deb_package}" \
+                                    "$@" 2>&1)" \
+                                    || { reprepro_exit_code="$?" ; true; };
                             fi
 
                             # #
@@ -4568,19 +4533,19 @@ app_run_dl_lastver()
                             # #
 
                             if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
-                                echo -e "  ${c[end]}                ${c[green]}Status:         ${c[end]}✅ New package added${c[end]}"
+                                printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "✅ New package added (${c[green]}${deb_package}${c[end]}) for ${c[green]}${app_repo_dist_sel}${c[end]}"
                             fi
                         else
-                            echo -e "  ${c[end]}                ${c[green]}Status:         ${c[end]}💡 Skip addition; reprepro not installed or in dryrun mode${c[end]}"
+                            printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "💡 Skip addition; reprepro not installed or in dryrun mode (${c[yellow]}${deb_package}${c[end]}) for ${c[yellow]}${app_repo_dist_sel}${c[end]}"
                         fi
 
                         echo -e
                         bNewPackage=false
  
                     elif [[ "$arch" == "arm64" ]] && [[ $app_filename == *arm64.deb || $app_filename == *arm64*.deb ]]; then
-                        echo -e "  ${c[end]}                Package         ${c[fuchsia1]}${arch}${c[end]}"
-                        echo -e "  ${c[end]}                File            ${c[fuchsia1]}${app_filename}${c[end]}"
-                        echo -e "  ${c[end]}                Download        ${c[fuchsia1]}${repo_file_url}${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Package${c[end]}" "${c[fuchsia2]}${arch}${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}File${c[end]}" "${c[fuchsia2]}${app_filename}${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Download${c[end]}" "${c[fuchsia2]}${repo_file_url}${c[end]}"
 
                         # #
                         #   architecture > arm64
@@ -4590,7 +4555,7 @@ app_run_dl_lastver()
                         # #
 
                         if [ -f $app_dir/$app_filename ]; then
-                            echo -e "  ${c[end]}                Move            ${c[fuchsia1]}${app_dir}/${app_filename}${c[end]} > ${c[fuchsia1]}$app_dir/$app_dir_incoming/arm64/${c[end]}"
+                            printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Move${c[end]}" "${c[fuchsia2]}${app_dir}/${app_filename}${c[end]} to ${c[fuchsia2]}$app_dir/$app_dir_incoming/arm64/${c[end]}"
                             mv "$app_dir/$app_filename" "$app_dir/$app_dir_incoming/arm64/"
                         fi
 
@@ -4610,8 +4575,8 @@ app_run_dl_lastver()
                         #       deb_package             incoming/packages/jammy/arm64/GitHubDesktop-linux-arm64-3.4.2-linux1.deb
                         # #
 
-                        echo -e "  ${c[end]}                Reprepro        ${c[fuchsia1]}${deb_package}${c[end]} for dist ${c[fuchsia1]}${app_repo_dist_sel}${c[end]}"
-                        echo -e "  ${c[end]}                                    ${c[fuchsia1]}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Reprepro${c[end]}" "${c[fuchsia2]}${deb_package}${c[end]} for dist ${c[fuchsia2]}${app_repo_dist_sel}${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Command${c[end]}" "${c[grey1]}reprepro -V --section utils --component main --priority 0 --architecture $arch includedeb ${app_repo_dist_sel} ${deb_package}${c[end]}"
 
                         if [ -n "${bRepreproInstalled}" ] && [ "${argDryRun}" = false ]; then
                             reprepro_exit_code="0"
@@ -4624,6 +4589,11 @@ app_run_dl_lastver()
                                 "$@" 2>&1)" \
                                 || { reprepro_exit_code="$?" ; true; };
 
+                                reprepro_output=${reprepro_output//$'\n'/}          # Remove all newlines.
+                                reprepro_output=${reprepro_output%$'\n'}            # Remove a trailing newline.
+
+                                printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Response${c[end]}" "${c[grey1]}${reprepro_output}${c[end]}"
+
                             # #
                             #   architecture > arm64 > reprepro
                             #
@@ -4631,7 +4601,31 @@ app_run_dl_lastver()
                             # #
 
                             if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
-                                echo -e "  ${c[end]}                ${c[green]}Status:         ${c[end]}💡 Already exists${c[end]}"
+                                printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "💡 Already exists (${c[yellow]}${deb_package}${c[end]}) for ${c[yellow]}${app_repo_dist_sel}${c[end]}"
+                            fi
+
+                            # #
+                            #   github > architecture > arm64 > reprepro
+                            #
+                            #   output > package already added but checksums are different
+                            # #
+
+                            if echo "$reprepro_output" | grep --quiet --ignore-case "Already existing files" ; then
+                                local pkgRemove=${lst_github[0]}        #  Aetherinox/opengist-debian
+                                pkgRemove="${pkgRemove##*/}"            #  opengist-debian
+                                pkgRemove="${pkgRemove%-*}"             #  opengist
+                                printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "💡 Already exists; bad checksums. Removing ${c[yellow]}${app_filename}${c[end]} from ${c[yellow]}Reprepro${c[end]} and re-adding${c[end]}"
+                                reprepro remove "${app_repo_dist_sel}" "${pkgRemove}"
+
+                                reprepro_exit_code="0"
+                                reprepro_output="$(reprepro -V \
+                                    --section utils \
+                                    --component main \
+                                    --priority 0 \
+                                    --architecture $arch \
+                                    includedeb "${app_repo_dist_sel}" "${deb_package}" \
+                                    "$@" 2>&1)" \
+                                    || { reprepro_exit_code="$?" ; true; };
                             fi
 
                             # #
@@ -4641,19 +4635,19 @@ app_run_dl_lastver()
                             # #
 
                             if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
-                                echo -e "  ${c[end]}                ${c[green]}Status:         ${c[end]}✅ New package added${c[end]}"
+                                printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "✅ New package added (${c[green]}${deb_package}${c[end]}) for ${c[green]}${app_repo_dist_sel}${c[end]}"
                             fi
                         else
-                            echo -e "  ${c[end]}                ${c[green]}Status:         ${c[end]}💡 Skip addition; reprepro not installed or in dryrun mode${c[end]}"
+                            printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "💡 Skip addition; reprepro not installed or in dryrun mode (${c[yellow]}${deb_package}${c[end]}) for ${c[yellow]}${app_repo_dist_sel}${c[end]}"
                         fi
 
                         echo -e
                         bNewPackage=false
 
                     elif [[ "$arch" == "i386" || "$arch" == "386" ]] && [[ $app_filename == *i386.deb || $app_filename == *i386*.deb || $app_filename == *386.deb || $app_filename == *386*.deb ]]; then
-                        echo -e "  ${c[end]}                Package         ${c[fuchsia1]}${arch}${c[end]}"
-                        echo -e "  ${c[end]}                File            ${c[fuchsia1]}${app_filename}${c[end]}"
-                        echo -e "  ${c[end]}                Download        ${c[fuchsia1]}${repo_file_url}${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Package${c[end]}" "${c[fuchsia2]}${arch}${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}File${c[end]}" "${c[fuchsia2]}${app_filename}${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Download${c[end]}" "${c[fuchsia2]}${repo_file_url}${c[end]}"
 
                         # #
                         #   architecture > i386
@@ -4663,7 +4657,7 @@ app_run_dl_lastver()
                         # #
 
                         if [ -f $app_dir/$app_filename ]; then
-                            echo -e "  ${c[end]}                Move            ${c[fuchsia1]}${app_dir}/${app_filename}${c[end]} > ${c[fuchsia1]}$app_dir/$app_dir_incoming/i386/${c[end]}"
+                            printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Move${c[end]}" "${c[fuchsia2]}${app_dir}/${app_filename}${c[end]} to ${c[fuchsia2]}$app_dir/$app_dir_incoming/i386/${c[end]}"
                             mv "$app_dir/$app_filename" "$app_dir/$app_dir_incoming/i386/"
                         fi
 
@@ -4683,8 +4677,8 @@ app_run_dl_lastver()
                         #       deb_package             incoming/packages/jammy/i386/GitHubDesktop-linux-i386-3.4.2-linux1.deb
                         # #
 
-                        echo -e "  ${c[end]}                Reprepro        ${c[fuchsia1]}${deb_package}${c[end]} for dist ${c[fuchsia1]}${app_repo_dist_sel}${c[end]}"
-                        echo -e "  ${c[end]}                                    ${c[fuchsia1]}reprepro -V --section utils --component main --priority 0 includedeb ${app_repo_dist_sel} ${deb_package}${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Reprepro${c[end]}" "${c[fuchsia2]}${deb_package}${c[end]} for dist ${c[fuchsia2]}${app_repo_dist_sel}${c[end]}"
+                        printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Command${c[end]}" "${c[grey1]}reprepro -V --section utils --component main --priority 0 --architecture $arch includedeb ${app_repo_dist_sel} ${deb_package}${c[end]}"
 
                         if [ -n "${bRepreproInstalled}" ] && [ "${argDryRun}" = false ]; then
                             reprepro_exit_code="0"
@@ -4697,6 +4691,11 @@ app_run_dl_lastver()
                                 "$@" 2>&1)" \
                                 || { reprepro_exit_code="$?" ; true; };
 
+                                reprepro_output=${reprepro_output//$'\n'/}          # Remove all newlines.
+                                reprepro_output=${reprepro_output%$'\n'}            # Remove a trailing newline.
+
+                                printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Response${c[end]}" "${c[grey1]}${reprepro_output}${c[end]}"
+
                             # #
                             #   architecture > i386 > reprepro
                             #
@@ -4704,7 +4703,31 @@ app_run_dl_lastver()
                             # #
 
                             if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
-                                echo -e "  ${c[end]}                ${c[green]}Status:         ${c[end]}💡 Already exists${c[end]}"
+                                printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "💡 Already exists (${c[yellow]}${deb_package}${c[end]}) for ${c[yellow]}${app_repo_dist_sel}${c[end]}"
+                            fi
+
+                            # #
+                            #   github > architecture > i386 > reprepro
+                            #
+                            #   output > package already added but checksums are different
+                            # #
+
+                            if echo "$reprepro_output" | grep --quiet --ignore-case "Already existing files" ; then
+                                local pkgRemove=${lst_github[0]}        #  Aetherinox/opengist-debian
+                                pkgRemove="${pkgRemove##*/}"            #  opengist-debian
+                                pkgRemove="${pkgRemove%-*}"             #  opengist
+                                printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "💡 Already exists; bad checksums. Removing ${c[yellow]}${app_filename}${c[end]} from ${c[yellow]}Reprepro${c[end]} and re-adding${c[end]}"
+                                reprepro remove "${app_repo_dist_sel}" "${pkgRemove}"
+
+                                reprepro_exit_code="0"
+                                reprepro_output="$(reprepro -V \
+                                    --section utils \
+                                    --component main \
+                                    --priority 0 \
+                                    --architecture $arch \
+                                    includedeb "${app_repo_dist_sel}" "${deb_package}" \
+                                    "$@" 2>&1)" \
+                                    || { reprepro_exit_code="$?" ; true; };
                             fi
 
                             # #
@@ -4714,10 +4737,10 @@ app_run_dl_lastver()
                             # #
 
                             if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
-                                echo -e "  ${c[end]}                ${c[green]}Status:         ${c[end]}✅ New package added${c[end]}"
+                                printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "✅ New package added (${c[green]}${deb_package}${c[end]}) for ${c[green]}${app_repo_dist_sel}${c[end]}"
                             fi
                         else
-                            echo -e "  ${c[end]}                ${c[green]}Status:         ${c[end]}💡 Skip addition; reprepro not installed or in dryrun mode${c[end]}"
+                            printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "💡 Skip addition; reprepro not installed or in dryrun mode (${c[yellow]}${deb_package}${c[end]}) for ${c[yellow]}${app_repo_dist_sel}${c[end]}"
                         fi
 
                         echo -e
@@ -4755,7 +4778,7 @@ app_run_gh_start()
     if [ "${argDevEnabled}" = true ]; then
         printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}git remote add origin https://github.com/${CSI_GITHUB_NAME}/${app_repo_apt}.git${c[end]}"
     fi
-    if [ "${argDryRun}" = false ]; then
+    if [ "${argDryRun}" = false ] && [ "${argSkipGitCommit}" = false ]; then
         git remote add origin https://github.com/${CSI_GITHUB_NAME}/${app_repo_apt}.git
     fi
 
@@ -4764,7 +4787,7 @@ app_run_gh_start()
     if [ "${argDevEnabled}" = true ]; then
         printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}git fetch --prune${c[end]}"
     fi
-    if [ "${argDryRun}" = false ]; then
+    if [ "${argDryRun}" = false ] && [ "${argSkipGitCommit}" = false ]; then
         git fetch --prune
     fi
 
@@ -4772,7 +4795,7 @@ app_run_gh_start()
     if [ "${argDevEnabled}" = true ]; then
         printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}git reset --hard origin/${app_repo_branch}${c[end]}"
     fi
-    if [ "${argDryRun}" = false ]; then
+    if [ "${argDryRun}" = false ] && [ "${argSkipGitCommit}" = false ]; then
         git reset --hard origin/${app_repo_branch}
     fi
 
@@ -4784,7 +4807,7 @@ app_run_gh_start()
     if [ "${argDevEnabled}" = true ]; then
         printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}git branch -m ${app_repo_branch}${c[end]}"
     fi
-    if [ "${argDryRun}" = false ]; then
+    if [ "${argDryRun}" = false ] && [ "${argSkipGitCommit}" = false ]; then
         git branch -m ${app_repo_branch}
     fi
 
@@ -4831,7 +4854,7 @@ EOF
     if [ "${argDevEnabled}" = true ]; then
         printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}git pull origin ${app_repo_branch} --allow-unrelated-histories${c[end]}"
     fi
-    if [ "${argDryRun}" = false ]; then
+    if [ "${argDryRun}" = false ] && [ "${argSkipGitCommit}" = false ]; then
         git_pull=$( git pull origin ${app_repo_branch} --allow-unrelated-histories )
     else
         git_pull="In Devnull Run"
@@ -4852,7 +4875,7 @@ EOF
     if [ "${argDevEnabled}" = true ]; then
         printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}git add --all${c[end]}"
     fi
-    if [ "${argDryRun}" = false ]; then
+    if [ "${argDryRun}" = false ] && [ "${argSkipGitCommit}" = false ]; then
         git add --all
     fi
 
@@ -4887,7 +4910,7 @@ EOF
     if [ "${argDevEnabled}" = true ]; then
         printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}git commit -S -m ${app_repo_commit}${c[end]}"
     fi
-    if [ "${argDryRun}" = false ]; then
+    if [ "${argDryRun}" = false ] && [ "${argSkipGitCommit}" = false ]; then
         git commit -S -m "${app_repo_commit}"
     fi
 
@@ -4895,7 +4918,7 @@ EOF
     if [ "${argDevEnabled}" = true ]; then
         printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}git push https://${CSI_PAT_GITHUB}@github.com/${CSI_GITHUB_NAME}/${app_repo_apt}${c[end]}"
     fi
-    if [ "${argDryRun}" = false ]; then
+    if [ "${argDryRun}" = false ] && [ "${argSkipGitCommit}" = false ]; then
         git push https://${CSI_PAT_GITHUB}@github.com/${CSI_GITHUB_NAME}/${app_repo_apt}
     fi
 
@@ -4948,7 +4971,7 @@ app_run_gh_end()
         printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}git add --all${c[end]}"
         printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}git add -u${c[end]}"
     fi
-    if [ "${argDryRun}" = false ]; then
+    if [ "${argDryRun}" = false ] && [ "${argSkipGitCommit}" = false ]; then
         git branch -m ${app_repo_branch}
         git add --all
         git add -u
@@ -4985,7 +5008,7 @@ app_run_gh_end()
         printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}git commit -S -m \"$app_repo_commit\"${c[end]}"
         printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}git push https://${CSI_PAT_GITHUB}@github.com/${CSI_GITHUB_NAME}/${app_repo_apt}${c[end]}"
     fi
-    if [ "${argDryRun}" = false ]; then
+    if [ "${argDryRun}" = false ] && [ "${argSkipGitCommit}" = false ]; then
         git commit -S -m "$app_repo_commit"
         # can use -u, --set-upstream
         git push https://${CSI_PAT_GITHUB}@github.com/${CSI_GITHUB_NAME}/${app_repo_apt}
@@ -5494,6 +5517,19 @@ while [ $# -gt 0 ]; do
             ;;
 
         # #
+        #   runs everything, but skips anything related to git.
+        #   no commits at all, but adds reprepro package
+        #   
+        #   @usage              proteus -S
+        #                       proteus --skip-commit
+        # #
+
+        -S|--skip-commit|--skip-git)
+            argSkipGitCommit=true
+            echo -e "  ${c[fuchsia1]}${c[blink]}Adding packages to Rerepro, but no commitsd{END}"
+            ;;
+
+        # #
         #   runs app normally; but does not run logs
         #   
         #   @usage              proteus -q
@@ -5646,7 +5682,7 @@ if [ -n "$argLocalPackage" ]; then
     #       deb_package_location_2          /server/proteus/reprepro_5.4.7-1_amd64.deb
     # #
 
-    deb_package_path=false
+    deb_package=false
     deb_package_location_1="$app_dir_incoming/$argArchitecture/$argLocalPackage"
     deb_package_location_2="$app_dir_this_dir/$argLocalPackage"
 
@@ -5655,21 +5691,21 @@ if [ -n "$argLocalPackage" ]; then
 
     if [ -f "${deb_package_location_1}" ]; then
         printf '%-29s %-65s\n' "  ${c[blue]}REPREPRO${c[end]}" "Found local package ${c[blue]}${deb_package_location_1}${c[end]} for distribution ${c[blue]}${app_repo_dist_sel}${c[end]} and arch ${c[blue]}$argArchitecture${c[end]}"
-        deb_package_path="${deb_package_location_1}"
+        deb_package="${deb_package_location_1}"
     elif [ -f "${deb_package_location_2}" ]; then
         printf '%-29s %-65s\n' "  ${c[blue]}REPREPRO${c[end]}" "Found local package ${c[blue]}${deb_package_location_2}${c[end]} for distribution ${c[blue]}${app_repo_dist_sel}${c[end]} and arch ${c[blue]}$argArchitecture${c[end]}"
-        deb_package_path="${deb_package_location_2}"
+        deb_package="${deb_package_location_2}"
     else
         printf '%-29s %-65s\n' "  ${c[red2]}REPREPRO${c[end]}" "❌ Local package does not exist in ${c[red2]}$deb_package_location_1${c[end]}"
         printf '%-29s %-65s\n' "  ${c[red2]}REPREPRO${c[end]}" "❌ Local package does not exist in ${c[red2]}$deb_package_location_2${c[end]}"
-        deb_package_path=false
+        deb_package=false
     fi
 
     # #
     #   commit new package to github repository
     # #
 
-    if [ "$deb_package_path" != false ] && [ -f "$deb_package_path" ]; then
+    if [ "$deb_package" != false ] && [ -f "$deb_package" ]; then
         export SECONDS=0
 
         # #
@@ -5681,27 +5717,27 @@ if [ -n "$argLocalPackage" ]; then
         fi
 
         if [ "${argDevEnabled}" = true ]; then
-            printf '%-29s %-65s\n' "  ${c[blue]}${c[end]}" "${c[grey2]}reprepro -V --section ${c[blue]}utils${c[grey2]} --component ${c[blue]}main${c[grey2]} --priority ${c[blue]}0${c[grey2]} --architecture ${c[blue]}$argArchitecture${c[grey2]} includedeb ${c[blue]}${app_repo_dist_sel}${c[grey2]} ${c[blue]}${deb_package_path}${c[end]}"
+            printf '%-29s %-65s\n' "  ${c[blue]}${c[end]}" "${c[grey2]}reprepro -V --section ${c[blue]}utils${c[grey2]} --component ${c[blue]}main${c[grey2]} --priority ${c[blue]}0${c[grey2]} --architecture ${c[blue]}$argArchitecture${c[grey2]} includedeb ${c[blue]}${app_repo_dist_sel}${c[grey2]} ${c[blue]}${deb_package}${c[end]}"
         fi
 
         if [ -n "${bRepreproInstalled}" ]; then
             reprepro_output=
             if [ "${argDryRun}" = false ]; then
-                printf '%-29s %-65s\n' "  ${c[yellow]}REPREPRO${c[end]}" "Adding new reprepro file ${c[yellow]}$deb_package_path${c[end]} for dist ${c[yellow]}$app_repo_dist_sel${c[end]} and arch ${c[yellow]}$argArchitecture${c[end]}"
+                printf '%-29s %-65s\n' "  ${c[yellow]}REPREPRO${c[end]}" "Adding new reprepro file ${c[yellow]}$deb_package${c[end]} for dist ${c[yellow]}$app_repo_dist_sel${c[end]} and arch ${c[yellow]}$argArchitecture${c[end]}"
                 reprepro_exit_code="0"
                 reprepro_output="$(reprepro -V \
                     --section utils \
                     --component main \
                     --priority 0 \
                     --architecture $argArchitecture \
-                    includedeb ${app_repo_dist_sel} "${deb_package_path}" \
+                    includedeb ${app_repo_dist_sel} "${deb_package}" \
                     "$@" 2>&1)" \
                     || { reprepro_exit_code="$?" ; true; };
 
                     reprepro_output=${reprepro_output//$'\n'/}          # Remove all newlines.
                     reprepro_output=${reprepro_output%$'\n'}            # Remove a trailing newline.
 
-                    printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}Reprepro response: ${c[navy]}$reprepro_output${c[end]}"
+                    printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Response${c[end]}" "${c[grey1]}${reprepro_output}${c[end]}"
             fi
 
             # #
@@ -5711,7 +5747,28 @@ if [ -n "$argLocalPackage" ]; then
             # #
 
             if echo "$reprepro_output" | grep --quiet --ignore-case "exists" ; then
-                printf '%-29s %-65s\n' "  ${c[blue]}${c[end]}" "${c[orange]}💡 Already exists${c[end]}"
+                printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "💡 Already exists (${c[yellow]}${deb_package}${c[end]}) for ${c[yellow]}${app_repo_dist_sel}${c[end]}"
+            fi
+
+            # #
+            #   local package > architecture > i386 > reprepro
+            #
+            #   output > package already added but checksums are different
+            # #
+
+            if echo "$reprepro_output" | grep --quiet --ignore-case "Already existing files" ; then
+                printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "💡 Already exists; bad checksums. Removing ${c[yellow]}${argLocalPackage}${c[end]} from ${c[yellow]}Reprepro${c[end]} and re-adding${c[end]}"
+                reprepro remove "${app_repo_dist_sel}" "${argLocalPackage}"
+
+                reprepro_exit_code="0"
+                reprepro_output="$(reprepro -V \
+                    --section utils \
+                    --component main \
+                    --priority 0 \
+                    --architecture $argArchitecture \
+                    includedeb ${app_repo_dist_sel} "${deb_package}" \
+                    "$@" 2>&1)" \
+                    || { reprepro_exit_code="$?" ; true; };
             fi
 
             # #
@@ -5721,7 +5778,7 @@ if [ -n "$argLocalPackage" ]; then
             # #
 
             if echo "$reprepro_output" | grep --quiet --ignore-case "Successfully created" ; then
-                printf '%-29s %-65s\n' "  ${c[blue]}${c[end]}" "${c[green]}✅ New package added${c[end]}"
+                printf '%-15s %-25s %-65s\n' "" "  ${c[end]}Status${c[end]}" "✅ New package added (${c[green]}${deb_package}${c[end]}) for ${c[green]}${app_repo_dist_sel}${c[end]}"
             fi
 
             # #
@@ -5740,7 +5797,7 @@ if [ -n "$argLocalPackage" ]; then
             if [ "${argDevEnabled}" = true ]; then
                 printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}git add --all${c[end]}"
             fi
-            if [ "${argDryRun}" = false ]; then
+            if [ "${argDryRun}" = false ] && [ "${argSkipGitCommit}" = false ]; then
                 git add --all
             fi
 
@@ -5767,7 +5824,7 @@ if [ -n "$argLocalPackage" ]; then
             if [ "${argDevEnabled}" = true ]; then
                 printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}git commit -S -m ${app_repo_commit}${c[end]}"
             fi
-            if [ "${argDryRun}" = false ]; then
+            if [ "${argDryRun}" = false ] && [ "${argSkipGitCommit}" = false ]; then
                 git commit -S -m "${app_repo_commit}"
             fi
 
@@ -5779,7 +5836,7 @@ if [ -n "$argLocalPackage" ]; then
             if [ "${argDevEnabled}" = true ]; then
                 printf '%-28s %-65s\n' "  ${c[navy]}DEV${c[end]}" "${c[grey1]}git push https://${CSI_PAT_GITHUB}@github.com/${CSI_GITHUB_NAME}/${app_repo_apt}${c[end]}"
             fi
-            if [ "${argDryRun}" = false ]; then
+            if [ "${argDryRun}" = false ] && [ "${argSkipGitCommit}" = false ]; then
                 git push https://${CSI_PAT_GITHUB}@github.com/${CSI_GITHUB_NAME}/${app_repo_apt}
             fi
 
@@ -5788,8 +5845,8 @@ if [ -n "$argLocalPackage" ]; then
             # #
 
             if [ ! -f "$app_dir_incoming/$argArchitecture/$argLocalPackage" ]; then
-                printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "Moving ${c[yellow]}${deb_package_path}${c[end]} to ${c[yellow]}$app_dir_incoming/$argArchitecture/$argLocalPackage${c[end]}"
-                mv "$deb_package_path" "$app_dir_incoming/$argArchitecture/"
+                printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "Moving ${c[yellow]}${deb_package}${c[end]} to ${c[yellow]}$app_dir_incoming/$argArchitecture/$argLocalPackage${c[end]}"
+                mv "$deb_package" "$app_dir_incoming/$argArchitecture/"
             fi
         else
             printf '%-29s %-65s\n' "  ${c[blue]}${c[end]}" "${c[yellow]}💡 Skip addition: reprepro not installed or running dryrun mode${c[end]}"
