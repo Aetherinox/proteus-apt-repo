@@ -13504,12 +13504,12 @@
       {"type":"directory","name":"workflows","contents":[
         {"type":"file","name":"deploy-clean.yml"},
         {"type":"file","name":"documentation.yml"},
-        {"type":"file","name":"history-clear.yml"},
+        {"type":"file","name":"history-clean.yml"},
         {"type":"file","name":"issues-accept.yml"},
         {"type":"file","name":"issues-new.yml"},
         {"type":"file","name":"issues-scan.yml"},
         {"type":"file","name":"issues-stale.yml"},
-        {"type":"file","name":"labels-clean..yml"},
+        {"type":"file","name":"labels-clean.yml"},
         {"type":"file","name":"labels-create.yml"},
         {"type":"file","name":"ping-developer.yml"}
     ]}
