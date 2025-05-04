@@ -798,14 +798,14 @@ opt_usage()
     printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-A${c[grey1]},${c[blue2]}  --only-apt ${c[yellow]}${c[end]}                " "only download pkgs from apt-get; do not download packages from github using lastversion${c[end]}" 1>&2
     printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-G${c[grey1]},${c[blue2]}  --only-git ${c[yellow]}${c[end]}                " "only download pkgs from github using lastversion; do not download from apt-get${c[end]}" 1>&2
     printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-p${c[grey1]},${c[blue2]}  --apt-package ${c[yellow]}<pkg>${c[end]}        " "add new pkg from apt-get for distro you are currently running${c[end]}" 1>&2
-    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}  ${c[grey1]},${c[blue2]}                ${c[yellow]}     ${c[end]}        " "cannot specify different distro (jammy, noble, etc)${c[end]}" 1>&2
-    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}  ${c[grey1]},${c[blue2]}                ${c[yellow]}     ${c[end]}        " "does not add pkg to bash script list (it is a one-time update)${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}  ${c[grey1]} ${c[blue2]}                ${c[yellow]}     ${c[end]}        " "cannot specify different distro (jammy, noble, etc)${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}  ${c[grey1]} ${c[blue2]}                ${c[yellow]}     ${c[end]}        " "does not add pkg to bash script list (it is a one-time update)${c[end]}" 1>&2
     printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-g${c[grey1]},${c[blue2]}  --git-package ${c[yellow]}<pkg>${c[end]}        " "add new pkg from github for distro you are currently running${c[end]}" 1>&2
-    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}  ${c[grey1]},${c[blue2]}                ${c[yellow]}     ${c[end]}        " "cannot specify different distro (jammy, noble, etc)${c[end]}" 1>&2
-    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}  ${c[grey1]},${c[blue2]}                ${c[yellow]}     ${c[end]}        " "does not add pkg to bash script list (it is a one-time update)${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}  ${c[grey1]} ${c[blue2]}                ${c[yellow]}     ${c[end]}        " "cannot specify different distro (jammy, noble, etc)${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}  ${c[grey1]} ${c[blue2]}                ${c[yellow]}     ${c[end]}        " "does not add pkg to bash script list (it is a one-time update)${c[end]}" 1>&2
     printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-l${c[grey1]},${c[blue2]}  --local-package ${c[yellow]}<pkg.deb>${c[end]}  " "add new local .deb package in root folder ${c[navy]}${app_dir}${c[end]}" 1>&2
-    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}  ${c[grey1]},${c[blue2]}                ${c[yellow]}     ${c[end]}        " "can specify different distro (jammy, noble, etc) using ${c[navy]}--dist \"${app_repo_dist_sel}\"${c[end]}" 1>&2
-    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}  ${c[grey1]},${c[blue2]}                ${c[yellow]}     ${c[end]}        " "can specify different arch (amd64, arm64, i386) using ${c[navy]}--arch \"${argArchitecture}\"${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}  ${c[grey1]} ${c[blue2]}                ${c[yellow]}     ${c[end]}        " "can specify different distro (jammy, noble, etc) using ${c[navy]}--dist \"${app_repo_dist_sel}\"${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}  ${c[grey1]} ${c[blue2]}                ${c[yellow]}     ${c[end]}        " "can specify different arch (amd64, arm64, i386) using ${c[navy]}--arch \"${argArchitecture}\"${c[end]}" 1>&2
     printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}  ${c[grey1]} ${c[blue2]}                ${c[yellow]}${c[end]}             " "   ${c[grey1]}${app_file_this} --dist \"${app_repo_dist_sel}\" --arch \"${argArchitecture}\" --local-package \"reprepro_5.4.7-1_amd64.deb\"${c[end]}" 1>&2
     printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-U${c[grey1]},${c[blue2]}  --url-package ${c[yellow]}<pkg>${c[end]}        " "get online repo url that a package is hosted from${c[end]}" 1>&2
     printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-L${c[grey1]},${c[blue2]}  --list-packages ${c[yellow]}${c[end]}           " "list installed apt-get packages${c[end]}" 1>&2
@@ -5462,7 +5462,7 @@ while [ $# -gt 0 ]; do
         #   runs the script but only downloads packages from apt-get
         #   
         #   @usage              proteus -A
-        #                       proteus --onlyApt
+        #                       proteus --only-apt
         # #
 
         -A|--onlyAptget|--onlyApt|--only-apt)
@@ -5473,10 +5473,10 @@ while [ $# -gt 0 ]; do
         #   runs the script but only downloads packages from github
         #   
         #   @usage              proteus -G
-        #                       proteus --onlyGithub
+        #                       proteus --only-git
         # #
 
-        -G|--onlyGithub|--onlygit|--only-git)
+        -G|--onlyGithub|--onlygit|--only-git|--only-github)
             argOnlyGithub=true
             ;;
 
@@ -5484,7 +5484,7 @@ while [ $# -gt 0 ]; do
         #   downloads a package directly from apt-get using apt-move and apt-url
         #   
         #   @usage              proteus -p package-name
-        #                       proteus --add-apt-package reprepro
+        #                       proteus --apt-package reprepro
         # #
 
         -p|-ap|--package|--add-package|--add-apt-package|--apt-package|--package-apt|--package-aptget|--package-apt-get|--package-apt)
