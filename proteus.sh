@@ -765,6 +765,8 @@ error_missing_value_gpg()
 
 opt_usage()
 {
+    app_repo_dist_sel=$( [[ -n "$argDistribution" ]] && echo "$argDistribution" || echo "$sys_code"  )
+
     echo -e
     printf "  ${c[blue]}${app_title}${c[end]}\n" 1>&2
     printf "  ${c[grey2]}${app_about}${c[end]}\n" 1>&2
@@ -783,26 +785,37 @@ opt_usage()
     printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}Examples${c[end]}          " "${c[fuchsia2]}${app_file_this}${c[end]}${c[end]}" 1>&2
     printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}${c[end]}                  " "${c[fuchsia2]}${app_file_this}${c[end]} ${c[grey2]}--skip-commit --dev${c[end]}" 1>&2
     printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}${c[end]}                  " "${c[fuchsia2]}${app_file_this}${c[end]} ${c[grey2]}--apt-package${c[yellow]} \"opensc\"${c[end]} ${c[grey2]}--dev${c[end]}" 1>&2
-    printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}${c[end]}                  " "${c[fuchsia2]}${app_file_this}${c[end]} ${c[grey2]}--fix-perms${c[yellow]} \"root\"${c[end]} ${c[grey2]}--dev${c[end]}" 1>&2
+    printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}${c[end]}                  " "${c[fuchsia2]}${app_file_this}${c[end]} ${c[grey2]}--fix-perms${c[yellow]} \"${argChownOwner}\"${c[end]} ${c[grey2]}--dev${c[end]}" 1>&2
     printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}${c[end]}                  " "${c[fuchsia2]}${app_file_this}${c[end]} ${c[grey2]}--kill${c[end]}" 1>&2
-    printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}${c[end]}                  " "${c[fuchsia2]}${app_file_this}${c[end]} ${c[grey2]}--reset${c[end]}" 1>&2
-    printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}${c[end]}                  " "${c[fuchsia2]}${app_file_this}${c[end]} ${c[grey2]}--dist${c[yellow]} \"focal\"${c[grey2]} --arch${c[yellow]} \"amd64\"${c[grey2]} --local-package${c[yellow]} \"reprepro_5.4.7-1_amd64.deb\"${c[end]}" 1>&2
-    printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}${c[end]}                  " "${c[fuchsia2]}${app_file_this}${c[end]} ${c[grey2]}--dist${c[yellow]} \"focal\"${c[grey2]} --arch${c[yellow]} \"amd64\"${c[grey2]} --local-package${c[yellow]} \"reprepro_5.4.7-1_amd64.deb\"${c[grey2]} --dryrun${c[end]}" 1>&2
+    printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}${c[end]}                  " "${c[fuchsia2]}${app_file_this}${c[end]} ${c[grey2]}--reset${c[yellow]} \"${app_repo_branch}\"${c[end]}" 1>&2
+    printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}${c[end]}                  " "${c[fuchsia2]}${app_file_this}${c[end]} ${c[grey2]}--dist${c[yellow]} \"${app_repo_dist_sel}\"${c[grey2]} --arch${c[yellow]} \"${argArchitecture}\"${c[grey2]} --local-package${c[yellow]} \"reprepro_5.4.7-1_amd64.deb\"${c[end]}" 1>&2
+    printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}${c[end]}                  " "${c[fuchsia2]}${app_file_this}${c[end]} ${c[grey2]}--dist${c[yellow]} \"${app_repo_dist_sel}\"${c[grey2]} --arch${c[yellow]} \"${argArchitecture}\"${c[grey2]} --local-package${c[yellow]} \"reprepro_5.4.7-1_amd64.deb\"${c[grey2]} --dryrun${c[end]}" 1>&2
+    printf '  %-5s %-48s %-40s\n' "    " "${c[grey1]}${c[end]}                  " "${c[fuchsia2]}${app_file_this}${c[end]} ${c[grey2]}--url-package${c[yellow]} \"reprepro\"${c[grey2]}${c[end]}" 1>&2
 
     echo -e
     printf '  %-5s %-40s\n' "${c[grey1]}Options:${c[end]}" "" 1>&2
 
     printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-A${c[grey1]},${c[blue2]}  --only-apt ${c[yellow]}${c[end]}                " "only download pkgs from apt-get; do not download packages from github using lastversion${c[end]}" 1>&2
     printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-G${c[grey1]},${c[blue2]}  --only-git ${c[yellow]}${c[end]}                " "only download pkgs from github using lastversion; do not download from apt-get${c[end]}" 1>&2
-    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-P${c[grey1]},${c[blue2]}  --apt-package ${c[yellow]}<string>${c[end]}     " "add new pkg available via apt-get; does not add pkg to bash script list (one-time update)${c[end]}" 1>&2
-    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-g${c[grey1]},${c[blue2]}  --git-package ${c[yellow]}<string>${c[end]}     " "add new pkg on github; does not add pkg to bash script list (one-time update)${c[end]}" 1>&2
-    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-l${c[grey1]},${c[blue2]}  --local-package ${c[yellow]}<string>${c[end]}   " "add new local .deb package in root folder ${c[navy]}${app_dir}${c[end]}" 1>&2
-    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-f${c[grey1]},${c[blue2]}  --fix-perms ${c[yellow]}<string>${c[end]}       " "fix permissions and owner for script ${c[navy]}${app_file_this}${c[end]}; optional owner arg ${c[navy]}<default> ${c[peach]}${argChownOwner}${c[end]}" 1>&2
-    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-R${c[grey1]},${c[blue2]}  --reset ${c[yellow]}<string>${c[end]}           " "reset local repo files to state of remote git branch by performing ${c[navy]}git reset --hard${c[end]}; optional git branch arg ${c[navy]}<default> ${c[peach]}${app_repo_branch}${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-p${c[grey1]},${c[blue2]}  --apt-package ${c[yellow]}<pkg>${c[end]}        " "add new pkg from apt-get for distro you are currently running${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}  ${c[grey1]},${c[blue2]}                ${c[yellow]}     ${c[end]}        " "cannot specify different distro (jammy, noble, etc)${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}  ${c[grey1]},${c[blue2]}                ${c[yellow]}     ${c[end]}        " "does not add pkg to bash script list (it is a one-time update)${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-g${c[grey1]},${c[blue2]}  --git-package ${c[yellow]}<pkg>${c[end]}        " "add new pkg from github for distro you are currently running${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}  ${c[grey1]},${c[blue2]}                ${c[yellow]}     ${c[end]}        " "cannot specify different distro (jammy, noble, etc)${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}  ${c[grey1]},${c[blue2]}                ${c[yellow]}     ${c[end]}        " "does not add pkg to bash script list (it is a one-time update)${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-l${c[grey1]},${c[blue2]}  --local-package ${c[yellow]}<pkg.deb>${c[end]}  " "add new local .deb package in root folder ${c[navy]}${app_dir}${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}  ${c[grey1]},${c[blue2]}                ${c[yellow]}     ${c[end]}        " "can specify different distro (jammy, noble, etc) using ${c[navy]}--dist \"${app_repo_dist_sel}\"${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}  ${c[grey1]},${c[blue2]}                ${c[yellow]}     ${c[end]}        " "can specify different arch (amd64, arm64, i386) using ${c[navy]}--arch \"${argArchitecture}\"${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}  ${c[grey1]} ${c[blue2]}                ${c[yellow]}${c[end]}             " "   ${c[grey1]}${app_file_this} --dist \"${app_repo_dist_sel}\" --arch \"${argArchitecture}\" --local-package \"reprepro_5.4.7-1_amd64.deb\"${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-U${c[grey1]},${c[blue2]}  --url-package ${c[yellow]}<pkg>${c[end]}        " "get online repo url that a package is hosted from${c[end]}" 1>&2
     printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-L${c[grey1]},${c[blue2]}  --list-packages ${c[yellow]}${c[end]}           " "list installed apt-get packages${c[end]}" 1>&2
-    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-L${c[grey1]},${c[blue2]}  --list-local ${c[yellow]}${c[end]}              " "list local manually installed packages${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-O${c[grey1]},${c[blue2]}  --list-packages-local ${c[yellow]}${c[end]}     " "list local manually installed packages; usually installed using ${c[navy]}dpkg -i packagename.deb${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-f${c[grey1]},${c[blue2]}  --fix-perms ${c[yellow]}<owner>${c[end]}        " "fix permissions and owner for script ${c[navy]}${app_file_this}${c[end]}; optional owner arg ${c[navy]}<default> ${c[peach]}${argChownOwner}${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-R${c[grey1]},${c[blue2]}  --reset ${c[yellow]}<string>${c[end]}           " "reset local repo files to state of remote git branch by performing ${c[navy]}git reset --hard origin/${app_repo_branch}${c[end]}; optional git branch arg ${c[navy]}<default> ${c[peach]}${app_repo_branch}${c[end]}" 1>&2
     printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-t${c[grey1]},${c[blue2]}  --dist ${c[yellow]}<string>${c[end]}            " "specify distribution for pkgs ${c[navy]}<default> ${c[peach]}${sys_code}${c[end]}" 1>&2
     printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}  ${c[grey1]} ${c[blue2]}      ${c[yellow]}${c[end]}                       " "   ${c[grey1]}focal, jammy, noble" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-a${c[grey1]},${c[blue2]}  --arch ${c[yellow]}<string>${c[end]}            " "specify architecture for pkgs when used with  ${c[navy]}-l, --local-package${c[end]} to add pkg to different dist; ${c[navy]}<default> ${c[peach]}${argArchitecture}${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}  ${c[grey1]} ${c[blue2]}         ${c[yellow]}${c[end]}                    " "   ${c[grey1]}amd64, arm64, i386" 1>&2
     printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-S${c[grey1]},${c[blue2]}  --skip-commit ${c[yellow]}${c[end]}             " "runs script; but only registers new pkgs with reprepro; no github commits${c[end]}" 1>&2
     printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-D${c[grey1]},${c[blue2]}  --dryrun ${c[yellow]}${c[end]}                  " "runs script; does not download pkgs; does not add pkg to reprepro; does not commit to git${c[end]}" 1>&2
     printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-k${c[grey1]},${c[blue2]}  --kill ${c[yellow]}${c[end]}                    " "force running instances of script to be killed${c[end]}" 1>&2
@@ -812,7 +825,7 @@ opt_usage()
     printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}  ${c[grey1]} ${c[blue2]}      ${c[yellow]}${c[end]}                       " "   ${c[grey1]}apt-move, apt-url, curl, wget, tree, reprepro, lastversion" 1>&2
     printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-u${c[grey1]},${c[blue2]}  --update ${c[yellow]}<string>${c[end]}          " "download new version of script from github${c[end]}" 1>&2
     printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-b${c[grey1]},${c[blue2]}  --branch ${c[yellow]}<string>${c[end]}          " "specifies update branch; used with option ${c[navy]}-u, --update ${c[navy]}<default> ${c[peach]}${app_repo_branch}${c[end]}" 1>&2
-    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-x${c[grey1]},${c[blue2]}  --dev ${c[yellow]}${c[end]}                     " "developer mode; verbose logging${c[end]}" 1>&2
+    printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-d${c[grey1]},${c[blue2]}  --dev ${c[yellow]}${c[end]}                     " "developer mode; verbose logging${c[end]}" 1>&2
     printf '  %-5s %-81s %-40s\n' "    " "${c[blue2]}-h${c[grey1]},${c[blue2]}  --help ${c[yellow]}${c[end]}                    " "show this help menu${c[end]}" 1>&2
     echo -e
     echo -e
@@ -5407,37 +5420,39 @@ app_start()
 #   
 #   reminder that any functions which need executed must be defined BEFORE this point. Bash sucks like that.
 #   
-#   -A, --onlyAptget            only downloads packages from apt-get does not download packages from github using 
-#                               LastVersion
-#   -G, --onlyGithub            only downloads packages from github using LastVersion does not download packages 
-#                               from apt-get
-#   -p, --apt-package           adds an individual apt-get package to repository
-#   -g, --git-package           adds an individual github / lastversion package to repository
-#   -l, --add-local-package     adds a new package from a local file
-#   -f, --fixperms              fixes permissions and owner of proteus.sh script
-#   -R, --reset                 resets the local repo files back to the state of the remote proteus repo (git reset --hard origin/main)
-#   -L, --list-packages         show list of locally installed packages
-#   -S, --skip-commit           runs the script, but only registers new packages with reprepro; changes not pushed to github repository
-#   -t, --dist                  specifies a specific distribution out of box, this script finds the distribution
-#                               of the machine you are running. you may override it with this option.
-#                                   jammy, lunar, focal, noble, etc
-#   -D, --dryrun                used for testing functionality
-#                                   does not download packages
-#                                   does not modify file permissions
-#                                   does not add packages to reprepro
-#                                   does not push changes to github
-#   -k, --kill                  forces any running instances of proteus to be killed
-#   -d, --dev                   show advanced printing / steps when executed
-#   -r, --report                shows statistical information about packages, variables, etc.
-#   -c, --clean                 removes any lingering .deb files where they do not belong
-#   -b, --branch                used in combination with --update used to install proteus apt script from another
-#                               github branch such as development branch
-#   -q, --quiet                 runs without no logs output to pipe file
-#   -s, --setup                 installs all required dependencies for proteus script
-#                                   apt-move, apt-url, curl, wget, tree, reprepro, lastversion
-#   -u, --update                downloads the latest proteus script to local folder
-#   -v, --version               display version information
-#   -h, --help                  show help information and command list
+#   -A, --only-apt                    only download pkgs from apt-get; do not download packages from github using lastversion
+#   -G, --only-git                    only download pkgs from github using lastversion; do not download from apt-get
+#   -p, --apt-package                 add new pkg from apt-get for distro you are currently running
+#                                     cannot specify different distro (jammy, noble, etc)
+#                                     does not add pkg to bash script list (it is a one-time update)
+#   -g, --git-package                 add new pkg from github for distro you are currently running
+#                                     cannot specify different distro (jammy, noble, etc)
+#                                     does not add pkg to bash script list (it is a one-time update)
+#   -l, --local-package               add new local .deb package in root folder of proteus
+#                                     can specify different distro (jammy, noble, etc) using --dist "jammy"
+#                                     can specify different arch (amd64, arm64, i386) using --arch "amd64"
+#                                         proteus --dist "jammy" --arch "amd64" --local-package "reprepro_5.4.7-1_amd64.deb"
+#   -U, --url-package                 get online repo url that a package is hosted from
+#   -L, --list-packages               list installed apt-get packages
+#   -O, --list-packages-local         list local manually installed packages; usually installed using dpkg -i "packagename.deb"
+#   -f, --fixperms                    fix permissions and owner for script proteus; optional owner arg root ($argChownOwner)
+#   -R, --reset                       reset local repo files to state of remote git branch by performing git reset --hard origin/main; optional git branch arg
+#   -t, --dist                        specifies a specific distribution out of box, this script finds the distribution
+#                                     of the machine you are running. you may override it with this option.
+#                                         jammy, lunar, focal, noble, etc
+#   -a, --arch                        specify architecture for pkgs when used with  -l, --local-package to add pkg to different dist; <default> amd64
+#                                         amd64, arm64, i386 
+#   -S,  --skip-commit                runs script; but only registers new pkgs with reprepro; no github commits
+#   -D,  --dryrun                     runs script; does not download pkgs; does not add pkg to reprepro; does not commit to git
+#   -k,  --kill                       force running instances of script to be killed
+#   -r,  --report                     show stats about pkgs, variables, etc.
+#   -c,  --clean                      remove lingering .deb files from file structure left behind
+#   -s,  --setup                      runs initial setup; installs any pkgs required by script
+#                                         apt-move, apt-url, curl, wget, tree, reprepro, lastversion
+#   -u,  --update <string>            download new version of script from github
+#   -b,  --branch <string>            specifies update branch; used with option -u, --update <default> main
+#   -d,  --dev                        developer mode; verbose logging     
+#   -h,  --help                       show this help menu   
 # #
 
 while [ $# -gt 0 ]; do
@@ -5472,7 +5487,7 @@ while [ $# -gt 0 ]; do
         #                       proteus --add-apt-package reprepro
         # #
 
-        -p|-ap|--package|--add-package|--add-apt-package|--apt-package|--package-apt|--package-aptget)
+        -p|-ap|--package|--add-package|--add-apt-package|--apt-package|--package-apt|--package-aptget|--package-apt-get|--package-apt)
             if [[ "$1" != *=* ]]; then shift; fi
             argAptPackage="${1#*=}"
 
@@ -5711,12 +5726,87 @@ while [ $# -gt 0 ]; do
         # #
         #   lists all manually installed packages through `apt`
         #   
-        #   @usage              proteus -o
+        #   @usage              proteus -O
         #                       proteus --list-packages-local
         # #
 
-        -o|--list-local|--list-local-packages|--list-packages-local|--packages-local)
+        -O|--list-local|--list-local-packages|--list-local-package|--list-packages-local|--packages-local)
             comm -23 <(apt-mark showmanual | sort -u) <(gzip -dc /var/log/installer/initial-status.gz | sed -n 's/^Package: //p' | sort -u)
+            exit 1
+            ;;
+
+        # #
+        #   gets the url to where a package originates from.
+        #   gets package url from two sources:
+        #       1. apt-get
+        #       2. apt-url
+        #   
+        #   @usage              proteus -U "neofetch"
+        #                       proteus --url-package "neofetch"
+        # #
+
+        -U|-pu|--url-package|--package-where|--package-url|--list-package-url|--get-package-url)
+            if [[ "$1" != *=* ]]; then shift; fi
+            argLocalPackage="${1#*=}"
+            if [ -z "${argLocalPackage}" ]; then
+                printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "${c[end]}Did not specify a package to get the URL for; must specify one to continue${c[end]}"
+                printf '%-29s %-65s\n' "  ${c[yellow]}${c[end]}" "Example Usage${c[end]}"
+                printf '%-34s %-65s\n' "  ${c[yellow]}${c[end]}" "${c[grey2]}./${app_file_this} --url-package ${c[yellow]}\"neofetch\"${c[grey2]}${c[end]}"
+                printf '%-34s %-65s\n' "  ${c[yellow]}${c[end]}" "${c[grey2]}./${app_file_this} -U ${c[yellow]}\"neofetch\"${c[grey2]}${c[end]}"
+
+                exit 1
+            fi
+
+            echo -e
+            printf '%-29s %-65s\n' "  ${c[yellow]}apt-url${c[end]}" "――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${c[end]}"
+
+            aptget_output=
+            aptget_exit_code="0"
+            aptget_output="$(apt-get download \
+                --print-uris \
+                ${argLocalPackage} \
+                "$@" 2>&1)" \
+                || { aptget_exit_code="$?" ; true; };
+
+            # #
+            #   break the apt get values up into separate variables
+            #       pkgName         neofetch_7.1.0-3_all.deb
+            #       pkgUrl          http://us.archive.ubuntu.com/ubuntu/pool/universe/n/neofetch/neofetch_7.1.0-3_all.deb
+            # #
+
+            IFS=' ' read -r pkgUrl pkgName <<< "$aptget_output"
+            pkgUrl=(${pkgUrl[@]//\'/})
+            pkgName=(${pkgName[@]//\'/})
+
+            printf '%-13s %-29s %-65s\n' " " "  ${c[grey2]}Name${c[end]}" "${c[green]}${pkgName}${c[end]}"
+            printf '%-13s %-29s %-65s\n' " " "  ${c[grey2]}URL${c[end]}" "${c[green]}${pkgUrl}${c[end]}"
+
+            echo -e
+
+            printf '%-29s %-65s\n' "  ${c[yellow]}apt-move${c[end]}" "――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――${c[end]}"
+            if [ -x "$(command -v apt-url)" ]; then
+                apturl_exit_code="0"
+                apturl_query="$(sudo apt-url "${argLocalPackage}" \
+                    "$@" 2>&1)" \
+                    || { apturl_exit_code="$?" ; true; };
+    
+                # #
+                #   break the two apturl values up into separate variables
+                #       pkgName         neofetch_7.1.0-3_all.deb
+                #       pkgUrl          http://us.archive.ubuntu.com/ubuntu/pool/universe/n/neofetch/neofetch_7.1.0-3_all.deb
+                # #
+
+                pkgName=$( echo "${apturl_query}" | head -n 1; )
+                pkgUrl=$( echo "${apturl_query}" | tail -n 1; )
+
+                printf '%-13s %-29s %-65s\n' " " "  ${c[grey2]}Name${c[end]}" "${c[green]}${pkgName}${c[end]}"
+                printf '%-13s %-29s %-65s\n' " " "  ${c[grey2]}URL${c[end]}" "${c[green]}${pkgUrl}${c[end]}"
+
+            else
+                printf '%-13s %-29s %-65s\n' " " "  ${c[red]}ERROR${c[end]}" "${c[end]}Package ${c[orange]}apt-url${c[end]} not installed; skipping${c[end]}"
+            fi
+
+            echo -e
             exit 1
             ;;
 
