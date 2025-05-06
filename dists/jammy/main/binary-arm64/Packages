@@ -156,6 +156,23 @@ Description: Displays user-friendly dialog boxes from shell scripts
   background tail  Similar to tail but runs in the background.
   editbox          Allows editing an existing file
 
+Package: duf
+Version: 0.8.1
+Architecture: arm64
+Maintainer: Christian Muehlhaeuser <muesli@gmail.com>
+Vendor: muesli
+Installed-Size: 2240
+Homepage: https://fribbledom.com/
+Priority: 0
+Section: utils
+Filename: pool/main/d/duf/duf_0.8.1_arm64.deb
+Size: 854558
+SHA512: 107e7864445e9e99482623ebcf20105b85b5030cadea475d9ccc9dfdb27b6ffb43d5c7f58c7ad7945d991473b629f38f3d859dfaa5716949ab58dcfb2873b912
+SHA256: 9efc030fb1b254865d3a965416b5873db027c5a96ce66504eae6b33b1a4e9ebb
+SHA1: b45436359330c3b0c216e9c7da1ecd7785640064
+MD5sum: 4228ce6026fe3979b88d1af09eafc2f7
+Description: Disk Usage/Free Utility
+
 Package: freetube
 Version: 0.23.5
 License: AGPL-3.0-or-later
@@ -328,7 +345,7 @@ Provides: makedeb (= 16.1.0)
 
 Package: mysql-client
 Source: mysql-8.0
-Version: 8.0.41-0ubuntu0.22.04.1
+Version: 8.0.42-0ubuntu0.22.04.1
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 35
@@ -336,12 +353,12 @@ Depends: mysql-client-8.0
 Homepage: http://dev.mysql.com/
 Priority: 0
 Section: utils
-Filename: pool/main/m/mysql-8.0/mysql-client_8.0.41-0ubuntu0.22.04.1_all.deb
-Size: 9352
-SHA512: 80e47c90dc0df623ba25bf95a88e066286c137c8b2254ff5e9c90b2a24bcd4c5b11207545fb0589ac84b896fcb52a2d2f4d85f9a8734951036dd1eae6bcb4b55
-SHA256: 32416fe4b6f678e1debadf77339bbfbf7e5d50c4cde36359e2a0842ad951372d
-SHA1: 50db15188308649f88eb2840ca8fb4cc955fceb9
-MD5sum: 2f1092d1f861bd12a44076572c1401c8
+Filename: pool/main/m/mysql-8.0/mysql-client_8.0.42-0ubuntu0.22.04.1_all.deb
+Size: 9356
+SHA512: 0180dde560361522665543fbc25a4c296554b54148ba2132bb6ca3e4cf9089f5ae2965da2dd84576b910ef0004d724cc29c1183a75e8f4ad7ad5919a1e366243
+SHA256: 92fd122075a03489973013503092a5d67b33df2a5ffea42b22567c9dbd8bce69
+SHA1: bce36925351d1d605c2fab1c3859f1d8049e360f
+MD5sum: eea7830155d465601666a64726871761
 Description: MySQL database client (metapackage depending on the latest version)
  This is an empty package that depends on the current "best" version of
  mysql-client (currently mysql-client-8.0), as determined by the MySQL
@@ -381,7 +398,7 @@ Description: MySQL database common files, e.g. /etc/mysql/my.cnf
 
 Package: mysql-server
 Source: mysql-8.0
-Version: 8.0.41-0ubuntu0.22.04.1
+Version: 8.0.42-0ubuntu0.22.04.1
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 35
@@ -389,12 +406,12 @@ Depends: mysql-server-8.0
 Homepage: http://dev.mysql.com/
 Priority: 0
 Section: utils
-Filename: pool/main/m/mysql-8.0/mysql-server_8.0.41-0ubuntu0.22.04.1_all.deb
-Size: 9460
-SHA512: 19da1cc77faee8260ca73e07f340d7fb5167a1e5241701e6cbf0e92e1cca8de1d27da2d0a2bf86fdccf85b2b204120cc282084b0b8d27a5312a8acc2d94c3f9d
-SHA256: 318d886ba1d2f90f34cf8b91691b07907c28a556aa0ae503bbf871e73a309f20
-SHA1: c003028415201cabc10c67ec3aa8d7821b2c5171
-MD5sum: 1aeb0aa0168084c49bac93a5bd673673
+Filename: pool/main/m/mysql-8.0/mysql-server_8.0.42-0ubuntu0.22.04.1_all.deb
+Size: 9462
+SHA512: 4cba61c12b72f93d85e0a6b0da1b3818ecddd4fc17326bc763f617da3034717999083a6a1c26a7d538907f9d9017abc3e97f30c96dbcf741eff28b3e4c443341
+SHA256: 1af65fc5f269c1baa3d7145081a5038db75c684d3d277da1c941a7e01469dc1c
+SHA1: 480d785e3075656dc03a5094278602dd0dcc0f3e
+MD5sum: 468f96e64bb37ec451e231f6c5d1cef3
 Description: MySQL database server (metapackage depending on the latest version)
  This is an empty package that depends on the current "best" version of
  mysql-server (currently mysql-server-8.0), as determined by the MySQL
