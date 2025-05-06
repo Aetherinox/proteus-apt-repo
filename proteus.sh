@@ -3782,7 +3782,7 @@ app_run_dl_aptget()
     #   all, amd64, arm54, i386
     # #
 
-    mkdir -p "$app_dir/$app_dir_incoming/{all,amd64,arm64,i386}"
+    mkdir -p $app_dir/$app_dir_incoming/{all,amd64,arm64,i386}
 
     # #
     #   set new package
