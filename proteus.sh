@@ -424,6 +424,7 @@ lst_github=(
     'makedeb/makedeb'
     'Aetherinox/debian-apt-url'
     'Aetherinox/opengist-debian'
+    'muesli/duf'
 )
 
 # #
