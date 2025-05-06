@@ -106,18 +106,18 @@ Description: transitional package for https support
  the apt package in 1.5. It can be safely removed.
 
 Package: apt-url
-Version: 1.0.0-2
+Version: 1.1.0-1
 Architecture: all
 Depends: apt-move (>=4.0)
 Maintainer: Aetherinox <aetherinox@proton.me>
 Priority: 0
 Section: utils
-Filename: pool/main/a/apt-url/apt-url_1.0.0-2_all.deb
-Size: 2310
-SHA512: 5d04d99e636b897e39c7b7b834e845cd7bc98ed82e5ebb7657fc035819e05d585ddc3c7a8c6e2c9c3c47e56d4529d7b2b185addceb1c2115b6ea32982d6f6de6
-SHA256: 90d8e1a8bb35a880fa87ca1061974a8450d9edf26215f2fa7403f0d42d3b9f1c
-SHA1: 9ecc12edf4ece7ad8c0f8fc47998a340d2730b0a
-MD5sum: 447e1605cac9b953fe6797ae647e586a
+Filename: pool/main/a/apt-url/apt-url_1.1.0-1_all.deb
+Size: 5150
+SHA512: ef130df08cd17fa9c8ba7f4057c243b8a799f4f8c69107e03b9c402cbfad3c1d860349d8aa22b35d9015a7fc1db97ca84619da4b7c531e53a2da012c24d1f363
+SHA256: 299251e42e2641a86835ae227b76f57730af878986ac533d443bf184c884ca87
+SHA1: d4b7774e3afe1ebfe946f8239e9b255c0e16684c
+MD5sum: 97593a78bf9e0c7e1386c10d26537922
 Description: Fetches URLs for specified packages.
  Provides the download URL for a specified package.
 
@@ -2017,27 +2017,6 @@ Description: nginx web/proxy server (basic version)
  .
  THIRD PARTY MODULES: Echo, GeoIP2
 Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
-
-Package: obsidian
-Version: 1.8.10
-License: UNLICENSED
-Vendor: Dynalist Inc.
-Architecture: amd64
-Maintainer: Dynalist Inc.
-Installed-Size: 293235
-Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
-Recommends: libappindicator3-1
-Homepage: https://obsidian.md
-Priority: 0
-Section: utils
-Filename: pool/main/o/obsidian/obsidian_1.8.10_amd64.deb
-Size: 80536530
-SHA512: dadf9bf9f44a2bee63224ba150c4d2370079507f676371f8babe9401c9257f0bea29b05219616df40b88c26f83bd65d64c19aa9f4f3d0c4561272c7e9ab19a5d
-SHA256: da19b2755013e9def37271cf04ce7485c03a22fa02b0951e4108884dcd1bd774
-SHA1: edd62fc26b4825af1599774fdec83e9e626e4672
-MD5sum: 76f769c873431b0bd2b3207d11da20ef
-Description: 
-  Obsidian
 
 Package: ocs-url
 Version: 3.1.0-0ubuntu1
