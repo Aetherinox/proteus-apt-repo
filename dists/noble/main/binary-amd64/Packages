@@ -317,6 +317,36 @@ Description: Displays user-friendly dialog boxes from shell scripts
   background tail  Similar to tail but runs in the background.
   editbox          Allows editing an existing file
 
+Package: dos2unix
+Version: 7.5.1-1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: tony mancill <tmancill@debian.org>
+Installed-Size: 1824
+Depends: libc6 (>= 2.34)
+Multi-Arch: foreign
+Homepage: https://waterlan.home.xs4all.nl/dos2unix.html
+Priority: 0
+Section: utils
+Filename: pool/main/d/dos2unix/dos2unix_7.5.1-1_amd64.deb
+Size: 501374
+SHA512: bc7a6451c5ce2bd511fd203e3852c80c1e02894f01d2ce132960ab6df14b0003ae28cfbfdede2923c6403ed21a531567f51ad70f4bc123b9a333138d783ce75d
+SHA256: c743df55dfe9c58f211c96b1046a57957583b80febad235d081ce62c569546cc
+SHA1: ee389dfc2fe59afaf2825e155b56a43166ab387c
+MD5sum: 6acc9fe39a63431fbde6fe443a4f147d
+Description: convert text file line endings between CRLF and LF
+ This package contains utilities dos2unix, unix2dos, mac2unix,
+ unix2mac to convert the line endings of text files between UNIX (LF),
+ DOS (CRLF) and Mac (CR) formats.
+ .
+ Text files under Windows and DOS typically have two ASCII characters
+ at the end of each line: CR (carriage return) followed by LF (line
+ feed). Older Macs used just CR, while UNIX uses just LF. While most
+ modern editors can read all these formats, there may still be a need
+ to convert files between them.
+ .
+ This is the classic utility developed in 1989.
+
 Package: firefox
 Version: 1:1snap1-0ubuntu5
 Architecture: amd64
@@ -399,8 +429,32 @@ MD5sum: afc32ce669b10299f05a88e792a7b927
 Description: 
   A private YouTube client
 
+Package: geoipupdate
+Version: 6.1.0-1ubuntu0.2
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 5906
+Depends: libc6 (>= 2.34), ca-certificates
+Suggests: mmdb-bin
+Static-Built-Using: golang-1.22 (= 1.22.2-2ubuntu0.3), golang-github-cenkalti-backoff (= 4.2.1-1), golang-github-gofrs-flock (= 0.8.1-1), golang-github-spf13-pflag (= 1.0.6~git20210604-d5e0c0615ace-1), golang-golang-x-sync (= 0.6.0-1)
+Homepage: https://dev.maxmind.com/geoip/updating-databases
+Priority: 0
+Section: utils
+Filename: pool/main/g/geoipupdate/geoipupdate_6.1.0-1ubuntu0.2_amd64.deb
+Size: 2107912
+SHA512: 350432d32b03c6ee2c343fe3abcbeb57bcc5d7e4f901b5be09e524337d75b6f40359d958abbaf06f776d50968e950f51632426947679dae78cc5f9ec6c71832f
+SHA256: 27f6846a7c10df823c5a025e0e5815dcf2d267ee5a8162b0560b32ece2fff2ff
+SHA1: d24c28901a98d4afd4052a87c024a568da8759b8
+MD5sum: 2b8cc4cc24058c6535d7c0185e9ff32c
+Description: MaxMind GeoIP/GeoIP2 database updates
+ The GeoIP Update program performs automatic updates of GeoIP2 and GeoLite2
+ binary databases, as supplied by MaxMind. These may be MaxMind's paid
+ products, or their GeoLite variants that are less accurate but provided
+ without charge.
+Original-Maintainer: Faidon Liambotis <paravoid@debian.org>
+
 Package: git
-Version: 1:2.43.0-1ubuntu7.1
+Version: 1:2.43.0-1ubuntu7.2
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 21692
@@ -413,12 +467,12 @@ Multi-Arch: foreign
 Homepage: https://git-scm.com/
 Priority: 0
 Section: utils
-Filename: pool/main/g/git/git_2.43.0-1ubuntu7.1_amd64.deb
-Size: 3678798
-SHA512: ba3ad62abdd5d75c4544a6485f054a6eff7682671e1efd30c80a6d8edd61036815190dc53862417b3af1e1a3152ece04820e97a5ffec553239eda4da8c65ca12
-SHA256: 3c989a916c2ecece2c55ea9c1c77c536228a6d9525d44d49880b00695aab0694
-SHA1: 04a93a8d4c7259ead57d09cc0a02a4d918a6a050
-MD5sum: c998fc60b0ce1303b09445f5249c202f
+Filename: pool/main/g/git/git_2.43.0-1ubuntu7.2_amd64.deb
+Size: 3678532
+SHA512: 55e4dd646745e401a0298d720b41bb6d452978bbbbaa4e60b6f3dad6bb55e6af5b273be244de990abf846235e0f02ec001358bf833fae0ca42d6aa5e3bf161f7
+SHA256: 30866369cd8e5ad7f4078bf8e310198473c8680b544846e347a8df40c72fd7fb
+SHA1: a978763471a955ab1a9861e39dde810d6381dd28
+MD5sum: b743a41c1ffb1b27ce75c9cd5036c217
 Description: fast, scalable, distributed revision control system
  Git is popular version control system designed to handle very large
  projects with speed and efficiency; it is used for many high profile
@@ -542,25 +596,25 @@ Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.aliot
 
 Package: gpg
 Source: gnupg2
-Version: 2.4.4-2ubuntu17
+Version: 2.4.4-2ubuntu17.2
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 1206
-Depends: gpgconf (= 2.4.4-2ubuntu17), libassuan0 (>= 2.5.0), libbz2-1.0, libc6 (>= 2.38), libgcrypt20 (>= 1.10.3), libgpg-error0 (>= 1.46), libnpth0t64 (>= 0.90), libreadline8t64 (>= 6.0), libsqlite3-0 (>= 3.7.15), zlib1g (>= 1:1.1.4)
+Depends: gpgconf (= 2.4.4-2ubuntu17.2), libassuan0 (>= 2.5.0), libbz2-1.0, libc6 (>= 2.38), libgcrypt20 (>= 1.10.3), libgpg-error0 (>= 1.46), libnpth0t64 (>= 0.90), libreadline8t64 (>= 6.0), libsqlite3-0 (>= 3.7.15), zlib1g (>= 1:1.1.4)
 Recommends: dirmngr, gpg-agent
-Suggests: gnupg (= 2.4.4-2ubuntu17), keyboxd
+Suggests: gnupg (= 2.4.4-2ubuntu17.2), keyboxd
 Breaks: gnupg (<< 2.1.21-4)
 Replaces: gnupg (<< 2.1.21-4)
 Multi-Arch: foreign
 Homepage: https://www.gnupg.org/
 Priority: 0
 Section: utils
-Filename: pool/main/g/gnupg2/gpg_2.4.4-2ubuntu17_amd64.deb
-Size: 564966
-SHA512: f4d17f25171afe735a3fe341590e6dea435b20a6c03bc3806709b722ed1599fcbca9c095dd031d74435f79b1aa6eb2fd9d731ab31cb3383378d61b16ae9d9f2b
-SHA256: 2329ce5333698fe40e6bf2f627842f589cfe1fcd2ab3038c1491f2bfc88546f7
-SHA1: 38437dfd317ccaf1c9a569d69312e8bd629f7202
-MD5sum: 1270fe41be0c6b99b41c23de8df40a3e
+Filename: pool/main/g/gnupg2/gpg_2.4.4-2ubuntu17.2_amd64.deb
+Size: 565088
+SHA512: 0ea59db07aa460ca8d1b73fa6b593b6ac196c1d95113c82eced9b84dc1852878742b83c06a8b43609d2f1a3707a1eb8804dd413aab1605b46e87fb6aefd09a78
+SHA256: 59283d6339b3739bacda6c5dc9ea16cdf8493ad6818ee69d8ed4f0cecdd09406
+SHA1: a7576c6d4ef1a20ce39dfb8dc9421aec1900702d
+MD5sum: 2d3e3306e6ad37875f167aae9a367a25
 Description: GNU Privacy Guard -- minimalist public key operations
  GnuPG is GNU's tool for secure communication and data storage.
  It can be used to encrypt data and to create digital signatures.
@@ -576,7 +630,7 @@ Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debi
 
 Package: gpgconf
 Source: gnupg2
-Version: 2.4.4-2ubuntu17
+Version: 2.4.4-2ubuntu17.2
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 257
@@ -587,12 +641,12 @@ Multi-Arch: foreign
 Homepage: https://www.gnupg.org/
 Priority: 0
 Section: utils
-Filename: pool/main/g/gnupg2/gpgconf_2.4.4-2ubuntu17_amd64.deb
-Size: 103228
-SHA512: 01df50020d6270d9454d016e3ed07bb749ff3316e5943af88f1df4b40858d03c347a1d916e6ce3d882d1adfd73963c8073f985d370964d073e96567f04a0a9aa
-SHA256: b165cb87da51dba16fb091fdd7feba6e50a9a81fd393a1c6a1e8d7d25a6bc95f
-SHA1: bc586447cc0b01a529ce8e887b8f36057f321100
-MD5sum: d87adf29348eab3afcffeb694a3dedd2
+Filename: pool/main/g/gnupg2/gpgconf_2.4.4-2ubuntu17.2_amd64.deb
+Size: 103498
+SHA512: 93d6f6d5bba3a4cfb7b15b6dc59f90e1eff9cdf1ba49ecdaff67c2889ceec5cdf7d9cf45995d86fd171403fb7702ec9c4bf9a650dd27ee972222f1206db9665b
+SHA256: c6b3173b76f1d23aaef5e41320210607d9ca520f7c9d2e2d07f332c9f3c518f4
+SHA1: db456ed0c3cfd2bbe6f7b088afce7c4b57cc94fc
+MD5sum: 5e91b38804267e985d32363ba64380f6
 Description: GNU privacy guard - core configuration utilities
  GnuPG is GNU's tool for secure communication and data storage.
  .
@@ -604,7 +658,7 @@ Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debi
 
 Package: gpgv
 Source: gnupg2
-Version: 2.4.4-2ubuntu17
+Version: 2.4.4-2ubuntu17.2
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 337
@@ -615,12 +669,12 @@ Multi-Arch: foreign
 Homepage: https://www.gnupg.org/
 Priority: 0
 Section: utils
-Filename: pool/main/g/gnupg2/gpgv_2.4.4-2ubuntu17_amd64.deb
-Size: 157184
-SHA512: f712e8b32a4389c8ebe1b91af2e316161175008ee90217335ae55bacac52ae17c63b55e666a786e9a7942eb0737c2c676af0de317d79048b79d4c4c0b03e89de
-SHA256: 59303f676f8002f2c82698ba76037f8dab4debad2c19619bf4d78bb817201a27
-SHA1: 3b0d004b351c46e77063d6670d2e404754c9228e
-MD5sum: ede7894609610cc365e8ffb69a8bb3e2
+Filename: pool/main/g/gnupg2/gpgv_2.4.4-2ubuntu17.2_amd64.deb
+Size: 157714
+SHA512: f76dccf66d9eb1401c4f1342d3241dd926149e8e9ef8c2ad088d24c321cef7de0453c5d489474928d9dd435d13f49e70676cec9df728687e959c65506f4be9e4
+SHA256: b5ba55520c7311baf621d3159d139fd0b2e2a9e3c84cd86b68c4e28b0cfc9d40
+SHA1: 700eaf98f12eb6564f635ca7c34fa9455e9103d6
+MD5sum: 4909aa8fc4ad515b3ecd058aefe4a3b1
 Description: GNU privacy guard - signature verification tool
  GnuPG is GNU's tool for secure communication and data storage.
  .
@@ -841,7 +895,7 @@ Description: Fancy indexes module for the Nginx
 
 Package: libnginx-mod-http-geoip
 Source: nginx
-Version: 1.24.0-2ubuntu7.1
+Version: 1.24.0-2ubuntu7.3
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 61
@@ -850,12 +904,12 @@ Recommends: nginx
 Homepage: https://nginx.org
 Priority: 0
 Section: utils
-Filename: pool/main/n/nginx/libnginx-mod-http-geoip_1.24.0-2ubuntu7.1_amd64.deb
-Size: 21832
-SHA512: 6dcea07f5fb5565a34325c78f7022edd2e218b957c6ac1de94bd6f1da069c2c99c6d136f87b6665df934e19785b41bdb0344dd34a3cb6fa376b71c47efae0089
-SHA256: 24d202da5ca659f26c989ef888c5b31719e7fe96cda9f972942eed672daa876d
-SHA1: 64ce78fd4e31e037368c43686be243ff7af029fd
-MD5sum: e5f487ed6182c28a927d928ccd9dacba
+Filename: pool/main/n/nginx/libnginx-mod-http-geoip_1.24.0-2ubuntu7.3_amd64.deb
+Size: 21928
+SHA512: 4cbd0f66aa76174364be1447f358503a7234fedb92a829b069d9401610ad180b21a5cd139ac80239b9cf89b4b67edf8a5f5bbabd6614d2f38c6d537a36027289
+SHA256: 8c4165ee65c67aaca0989a4038982cd398d5fd0573613f16eda4b8e6f6982911
+SHA1: 4620f1ca745ed151472cc32fa06b47aa5771211a
+MD5sum: 2ba5e168a2233e29ff6e066e9be53075
 Description: GeoIP HTTP module for Nginx
  The ngx_http_geoip module creates variables with values depending on the
  client IP address, using the precompiled MaxMind databases.
@@ -920,7 +974,7 @@ Description: Nginx Development Kit module
 
 Package: libnginx-mod-http-perl
 Source: nginx
-Version: 1.24.0-2ubuntu7.1
+Version: 1.24.0-2ubuntu7.3
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 109
@@ -929,12 +983,12 @@ Recommends: nginx
 Homepage: https://nginx.org
 Priority: 0
 Section: utils
-Filename: pool/main/n/nginx/libnginx-mod-http-perl_1.24.0-2ubuntu7.1_amd64.deb
-Size: 34466
-SHA512: 0d1c5cc932f2f0a00503e555ed2178a04e5921aeddf6f90a8e95c104bae3028607ea24b86cef39faec93d65478e4eb993c199d40d41eb5ad453f6dc226e6c879
-SHA256: 2cb82b1f84f91ae20f818908ee58721bac4dbd9ec34ed6e7e6334ca62a7e3547
-SHA1: 88f48009f7cefc9e2372fdfbd79096cf7bfd6203
-MD5sum: daaaa8ff5ae036cbbb0d1b01be7d068e
+Filename: pool/main/n/nginx/libnginx-mod-http-perl_1.24.0-2ubuntu7.3_amd64.deb
+Size: 34580
+SHA512: 25194a3c053865e7f63012ddc6eda1712325ae34d7eefdecf25dd76c75d642d61dff07b5bdb20e6f9a735048a3b309cba6cfb40238ebc76db3631dc666cb8f68
+SHA256: 8ea21413852ae318bf737e7e0ada766228f0662d42c87f4a1dfcfb83d88b9328
+SHA1: 59be36391d77da7a9296b1294ca4a3092188f269
+MD5sum: cf3858a16e514e4f8cf55f6f42572d48
 Description: Perl module for Nginx
  Embed Perl runtime into nginx.
  .
@@ -1076,21 +1130,21 @@ Description: RTMP support for Nginx
 
 Package: libnginx-mod-stream-geoip
 Source: nginx
-Version: 1.24.0-2ubuntu7.1
+Version: 1.24.0-2ubuntu7.3
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 57
-Depends: nginx-abi-1.24.0-1, libc6 (>= 2.14), libgeoip1t64 (>= 1.6.12), libnginx-mod-stream (= 1.24.0-2ubuntu7.1)
+Depends: nginx-abi-1.24.0-1, libc6 (>= 2.14), libgeoip1t64 (>= 1.6.12), libnginx-mod-stream (= 1.24.0-2ubuntu7.3)
 Recommends: nginx
 Homepage: https://nginx.org
 Priority: 0
 Section: utils
-Filename: pool/main/n/nginx/libnginx-mod-stream-geoip_1.24.0-2ubuntu7.1_amd64.deb
-Size: 9024
-SHA512: 0cbda986ca8a41f6ab96e98b06dec2bc4225220211904b89e26223a7a390a30568429c628b4fa45fc2115bfaa561d2ad96c07de1cad9ef65f157c79cdace76a4
-SHA256: ad88ff1b4015bc3ced2ff2c5b2be22d3a2e22868703197c2a4a19d8c2acb49c8
-SHA1: cc46a0418be207fa3acf9cd9abe2c53701cd7322
-MD5sum: 33ce4fc336e400dc0cac1c8ba572be9b
+Filename: pool/main/n/nginx/libnginx-mod-stream-geoip_1.24.0-2ubuntu7.3_amd64.deb
+Size: 9020
+SHA512: 5a8a28c97185aad1d6117664364fb7a8d216d0be4813c1a63554184f744e4d6d44445ef1dc0c81b76f5cd32644d596cccd707a3c3f13bb596854aa59cd40a231
+SHA256: caa076d90fc7dcd72f7acb8abc0d4a86ffedb940a96f0ebcc9dbe3950348f15d
+SHA1: cade1155aae1e92d6618df4783da15ea9b356ae4
+MD5sum: 9681f88bd5e2e186375d3816abadcc52
 Description: GeoIP Stream module for Nginx
  The ngx_stream_geoip module creates variables with values depending on the
  client IP address, using the precompiled MaxMind databases.
@@ -1182,7 +1236,7 @@ Original-Maintainer: Nobuhiro Iwamatsu <iwamatsu@debian.org>
 
 Package: mysql-client
 Source: mysql-8.0
-Version: 8.0.40-0ubuntu0.24.04.1
+Version: 8.0.42-0ubuntu0.24.04.1
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 40
@@ -1190,12 +1244,12 @@ Depends: mysql-client-8.0
 Homepage: http://dev.mysql.com/
 Priority: 0
 Section: utils
-Filename: pool/main/m/mysql-8.0/mysql-client_8.0.40-0ubuntu0.24.04.1_all.deb
-Size: 9416
-SHA512: da2d9d8d746292f11ba90e0e466d1b45674c1d3a7e96f0ed745ef8fa0571ad1c8f66c7fc4270e9bd6095ad569c93a43062c79d732e716f54f1e279c28e4f647b
-SHA256: 3286854060c31f7f4348f0c9152e9ce3f73e50f1a262774ff620b7806c5b2f66
-SHA1: 65cd4fb83bb18b0103340c3bb2809f69a4a37fc6
-MD5sum: 43a03c9b0fea205c08a7f186917c637b
+Filename: pool/main/m/mysql-8.0/mysql-client_8.0.42-0ubuntu0.24.04.1_all.deb
+Size: 9408
+SHA512: 4f5b2ac3ec455cbf5f45ccb1b750f49f76d8228f5e974041fe6a64bf5e8b1b901883f1c0412eac40e0542191da013c614398b44db433176b4ef2739b5a74ed49
+SHA256: ea298db2f048405e424192775d50ed6e94e22b7e6f8039833c2b3c6a6ba9c560
+SHA1: 29c891f1f3875219750d2a283cc2c873dbb6b8b6
+MD5sum: 421e12bc8c9e804c9deaffea86eedf22
 Description: MySQL database client (metapackage depending on the latest version)
  This is an empty package that depends on the current "best" version of
  mysql-client (currently mysql-client-8.0), as determined by the MySQL
@@ -1235,7 +1289,7 @@ Original-Maintainer: Debian MySQL Maintainers <pkg-mysql-maint@lists.alioth.debi
 
 Package: mysql-server
 Source: mysql-8.0
-Version: 8.0.40-0ubuntu0.24.04.1
+Version: 8.0.42-0ubuntu0.24.04.1
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 40
@@ -1243,12 +1297,12 @@ Depends: mysql-server-8.0
 Homepage: http://dev.mysql.com/
 Priority: 0
 Section: utils
-Filename: pool/main/m/mysql-8.0/mysql-server_8.0.40-0ubuntu0.24.04.1_all.deb
-Size: 9524
-SHA512: f365b2b00f16981be57664ace9004c98f5aacb26242a29b7aaeb589e861b2c2e5f95a76be60c75a2adf8850d55a531127b5e76d1622322e103bdbe05acb7aa47
-SHA256: 4a119416d9b351c458028b4bbd7d32605050687f073b98d83eb6b384031f6b23
-SHA1: cb0a820c6398ac97b9c91d837e01ad3d76c9b07a
-MD5sum: f8f91520b6f29c95c35def1e4a170b3f
+Filename: pool/main/m/mysql-8.0/mysql-server_8.0.42-0ubuntu0.24.04.1_all.deb
+Size: 9520
+SHA512: c5ed6121b2d236b1afaaa7cfe7a653c0c3a8a8d38d3d875de18c0ccfbd6bf2ce231012fd1ae85ae0ef42d9f3cca01ff6c49dfc7893fba8e6a24a2e8d5cd4a698
+SHA256: 18a727bdc5e1b93f8775db826433cb17febe270a026a1107c26ec606aa5bc568
+SHA1: de21b0dd6b768bfe7ac2673697555478dfd10f18
+MD5sum: 78640cf0d4df26974100883dbb2d39f2
 Description: MySQL database server (metapackage depending on the latest version)
  This is an empty package that depends on the current "best" version of
  mysql-server (currently mysql-server-8.0), as determined by the MySQL
@@ -1566,23 +1620,23 @@ Description: Dispatcher service for systemd-networkd connection status changes
  limited nature of systemd-networkd.
 
 Package: nginx
-Version: 1.24.0-2ubuntu7.1
+Version: 1.24.0-2ubuntu7.3
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 1320
-Depends: libc6 (>= 2.34), libcrypt1 (>= 1:4.1.0), libpcre2-8-0 (>= 10.22), libssl3t64 (>= 3.0.0), zlib1g (>= 1:1.1.4), iproute2, nginx-common (= 1.24.0-2ubuntu7.1)
+Depends: libc6 (>= 2.34), libcrypt1 (>= 1:4.1.0), libpcre2-8-0 (>= 10.22), libssl3t64 (>= 3.0.0), zlib1g (>= 1:1.1.4), iproute2, nginx-common (= 1.24.0-2ubuntu7.3)
 Breaks: nginx-core (<< 1.22.1-6~), nginx-extras (<< 1.22.1-6~), nginx-light (<< 1.22.1-6~)
 Replaces: nginx-core (<< 1.22.1-6~), nginx-extras (<< 1.22.1-6~), nginx-light (<< 1.22.1-6~)
 Provides: httpd, httpd-cgi, nginx-abi-1.24.0-1
 Homepage: https://nginx.org
 Priority: 0
 Section: utils
-Filename: pool/main/n/nginx/nginx_1.24.0-2ubuntu7.1_amd64.deb
-Size: 521026
-SHA512: 9372f18beba91f414faf71a2be122821e19777bf8cbf5cc80ad38b142b5b8d33a6d4bee1e69c23093b5c54f7345db60c17acca48a4dfeebe10c2fcc767265058
-SHA256: c130bff18b7618054e0bb6aa88a844f1e95ab3e7b3f529ae618ca71cbe5cec17
-SHA1: fd25b2d6839c4ec4acfc233417e1993da689b070
-MD5sum: 138115e0e1e1a40c30b1042cf0077cf2
+Filename: pool/main/n/nginx/nginx_1.24.0-2ubuntu7.3_amd64.deb
+Size: 519922
+SHA512: 7c7ace380dd8dab30051175bf726bc6267b95154d3ddf22388e25c4ec7de489258844609e43f4f409001552486c85ea1bce6348761a4f123e638a7d3b626f66d
+SHA256: 4c98c61b7fd147a970dea3e8393cb31b8fffebf1b665c9ef5e716d9053941056
+SHA1: d957fcc27b13027f90abe8376521f449b5e4bae9
+MD5sum: 24a95d5ad97ad5fb1fb3704a5fb19ba0
 Description: small, powerful, scalable web/proxy server
  Nginx ("engine X") is a high-performance web and reverse proxy server
  created by Igor Sysoev. It can be used both as a standalone web server
@@ -1591,11 +1645,11 @@ Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-list
 
 Package: nginx-common
 Source: nginx
-Version: 1.24.0-2ubuntu7.1
+Version: 1.24.0-2ubuntu7.3
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 239
-Depends: debconf (>= 0.5) | debconf-2.0, nginx (>= 1.24.0-2ubuntu7.1), nginx (<< 1.24.0-2ubuntu7.1.1~)
+Depends: debconf (>= 0.5) | debconf-2.0, nginx (>= 1.24.0-2ubuntu7.3), nginx (<< 1.24.0-2ubuntu7.3.1~)
 Suggests: fcgiwrap, nginx-doc, ssl-cert
 Breaks: nginx (<< 1.22.1-8)
 Replaces: nginx (<< 1.22.1-8)
@@ -1603,12 +1657,12 @@ Multi-Arch: foreign
 Homepage: https://nginx.org
 Priority: 0
 Section: utils
-Filename: pool/main/n/nginx/nginx-common_1.24.0-2ubuntu7.1_all.deb
-Size: 31226
-SHA512: 0dad77e3dceb9a8b479c7ea8b2be3c1e3204b1cd67981d74407a50b2baad5b0601551b77069acb314045d4a0b8ceaba4ec41e1438ef5435f2d8d441137d3e703
-SHA256: 2d2d3b506c5301118092fcf6657d447646dce483d0754dc80f530ca6a5945b6c
-SHA1: 9bd561936857db85dec9f921b619c82ffe16c4aa
-MD5sum: be6afe096f05b2e743fa5b66afb4c108
+Filename: pool/main/n/nginx/nginx-common_1.24.0-2ubuntu7.3_all.deb
+Size: 31220
+SHA512: 7ba032e5fcd0d551379141c1233fee16e44478a4d209600a9459f6d2a7568025a21768135121344501cf3b7cd97bd468ef98d9b65258089fc8f8defee5868d0d
+SHA256: 4694d620a571de7f079343a8fdfc29975426878d02d5f8d564f95f1f5c5465fc
+SHA1: dad40e9d3c075bc27b8cb33f5f100c2c1948005a
+MD5sum: 80c60f95b03e30924e4c8ec8f84360b3
 Description: small, powerful, scalable web/proxy server - common files
  Nginx ("engine X") is a high-performance web and reverse proxy server
  created by Igor Sysoev. It can be used both as a standalone web server
@@ -1643,22 +1697,22 @@ Description: nginx configuration file macro language and preprocessor
 
 Package: nginx-core
 Source: nginx
-Version: 1.24.0-2ubuntu7.1
+Version: 1.24.0-2ubuntu7.3
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 29
-Depends: libnginx-mod-http-geoip2 (>= 1:3.4-4), libnginx-mod-http-image-filter (>= 1.24.0-2ubuntu7.1), libnginx-mod-http-image-filter (<< 1.24.0-2ubuntu7.1.1~), libnginx-mod-http-xslt-filter (>= 1.24.0-2ubuntu7.1), libnginx-mod-http-xslt-filter (<< 1.24.0-2ubuntu7.1.1~), libnginx-mod-mail (>= 1.24.0-2ubuntu7.1), libnginx-mod-mail (<< 1.24.0-2ubuntu7.1.1~), libnginx-mod-stream (>= 1.24.0-2ubuntu7.1), libnginx-mod-stream (<< 1.24.0-2ubuntu7.1.1~), libnginx-mod-stream-geoip2 (>= 1:3.4-4), nginx (>= 1.24.0-2ubuntu7.1), nginx (<< 1.24.0-2ubuntu7.1.1~)
+Depends: libnginx-mod-http-geoip2 (>= 1:3.4-4), libnginx-mod-http-image-filter (>= 1.24.0-2ubuntu7.3), libnginx-mod-http-image-filter (<< 1.24.0-2ubuntu7.3.1~), libnginx-mod-http-xslt-filter (>= 1.24.0-2ubuntu7.3), libnginx-mod-http-xslt-filter (<< 1.24.0-2ubuntu7.3.1~), libnginx-mod-mail (>= 1.24.0-2ubuntu7.3), libnginx-mod-mail (<< 1.24.0-2ubuntu7.3.1~), libnginx-mod-stream (>= 1.24.0-2ubuntu7.3), libnginx-mod-stream (<< 1.24.0-2ubuntu7.3.1~), libnginx-mod-stream-geoip2 (>= 1:3.4-4), nginx (>= 1.24.0-2ubuntu7.3), nginx (<< 1.24.0-2ubuntu7.3.1~)
 Breaks: nginx-full (<< 1.18.0-1)
 Replaces: nginx-full (<< 1.18.0-1)
 Homepage: https://nginx.org
 Priority: 0
 Section: utils
-Filename: pool/main/n/nginx/nginx-core_1.24.0-2ubuntu7.1_all.deb
-Size: 4686
-SHA512: 6cd92fdea1db103f84774e30c8034ba93d640f059e646612aa8fd2e468c3d8762f7f12f405f4c7d9f0ab37cbaee446321410bf49f9b1d267ea0ca021b6e6366a
-SHA256: d6accbaa0531a5cca43a83b51b2ba37f2c7e6d5db34f5469083013814b328cdd
-SHA1: 8c1e2d3e2ff6334ede7a76c317b4b61e1ff635ea
-MD5sum: 5c5c0b1ce5ded48acef92d3955cb584a
+Filename: pool/main/n/nginx/nginx-core_1.24.0-2ubuntu7.3_all.deb
+Size: 4688
+SHA512: 43b87535974ba90daf730b1c23d7514ee8b783a5d958cf8d7a36419e52c174846195f36dd987e26d3e467d25922c8c29ece2bc8f9b8a8280add644c3e00abb18
+SHA256: 861947fe079bc58e925cb44332d1a2ce6c35f1966185b5789ddfe72db22e899f
+SHA1: 07a453e2b63b3c92b107545d3243cab5a7926a11
+MD5sum: 64db941bc0565ca5fad4955ac72af053
 Description: nginx web/proxy server (standard version)
  Nginx ("engine X") is a high-performance web and reverse proxy server
  created by Igor Sysoev. It can be used both as a standalone web server
@@ -1684,22 +1738,22 @@ Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-list
 
 Package: nginx-dev
 Source: nginx
-Version: 1.24.0-2ubuntu7.1
+Version: 1.24.0-2ubuntu7.3
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 775
-Depends: debhelper-compat (= 13), libexpat-dev, libgd-dev, libgeoip-dev, libpcre2-dev, libperl-dev, libssl-dev, libxslt1-dev, po-debconf, zlib1g-dev, nginx-abi-1.24.0-1, nginx (<< 1.24.0-2ubuntu7.1.1~), nginx (>= 1.24.0-2ubuntu7.1)
+Depends: debhelper-compat (= 13), libexpat-dev, libgd-dev, libgeoip-dev, libpcre2-dev, libperl-dev, libssl-dev, libxslt1-dev, po-debconf, zlib1g-dev, nginx-abi-1.24.0-1, nginx (<< 1.24.0-2ubuntu7.3.1~), nginx (>= 1.24.0-2ubuntu7.3)
 Provides: dh-sequence-nginx
 Multi-Arch: foreign
 Homepage: https://nginx.org
 Priority: 0
 Section: utils
-Filename: pool/main/n/nginx/nginx-dev_1.24.0-2ubuntu7.1_all.deb
-Size: 109768
-SHA512: 7bf9627b9d98005f7b189efb98436ffabeecb337cb528ef4b5b30c5dfb60c6ca71463bb30bc58e17172aaffc5dbeeed70b7f069b4d0aefcacac25140d8cc7010
-SHA256: 517fdaff4dde79ef468ff50675e9e9e57e925592e9876b6ee5467502f842aa7a
-SHA1: 6d8600410c75e409b2a62a996563fcf0c715869d
-MD5sum: 031d85897fce7bf85b0765e79ba5abdb
+Filename: pool/main/n/nginx/nginx-dev_1.24.0-2ubuntu7.3_all.deb
+Size: 109706
+SHA512: 30dfb15832a8a1c9421a6fbb3a877ee9b8b618d18d86ebfb0d5fd1cdd06de8b8e8b86b7adbb773d330fac0b889743789fc872549acd2b37611df3f0bf4ac08b8
+SHA256: 5ba0442002562ef2708f3696c034fd0c4b8f90695d38a8c5520c3dbb6be94eff
+SHA1: f24b8bcaee13f9b4716d4cf57c5cf132b7b06563
+MD5sum: d53fcf47ddb72151a05bc6af4070509b
 Description: nginx web/proxy server - development headers
  Nginx ("engine X") is a high-performance web and reverse proxy server
  created by Igor Sysoev. It can be used both as a standalone web server
@@ -1712,7 +1766,7 @@ Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-list
 
 Package: nginx-doc
 Source: nginx
-Version: 1.24.0-2ubuntu7.1
+Version: 1.24.0-2ubuntu7.3
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 63
@@ -1720,12 +1774,12 @@ Multi-Arch: foreign
 Homepage: https://nginx.org
 Priority: 0
 Section: utils
-Filename: pool/main/n/nginx/nginx-doc_1.24.0-2ubuntu7.1_all.deb
-Size: 24494
-SHA512: d82f74763aa9ceb95ff36d90380a0ac90e057cd54585f11e92d58c122c3b244aa316b693004c2cf4eaec0dd3ba16ea7ace10e2c4e80bb0ff0822b12cadb2c0b0
-SHA256: f6bc4f47466fc574da0aeeef4580aeaa471fe9ef4ebf6d69a913929c750f6f3d
-SHA1: f5f5aedfb3706d374a5ddea8ce6cbf3b9eb033c3
-MD5sum: 9fdd4f764793afdb02803ed159c01c8c
+Filename: pool/main/n/nginx/nginx-doc_1.24.0-2ubuntu7.3_all.deb
+Size: 24598
+SHA512: 58326eab4dbd2418cfe70896226cdb5c1a3c8633385c7ebd3d30d9ec7e9ccdbe0ab82eb51754f9134ba23f89c028fb2058ee6a5d84d69819132f9284b8ac968a
+SHA256: 1b610fc23a5202d0769bf3ddc3c4344063249acab639cc9fbc6bb86a910efe1e
+SHA1: 4392da087cafe721d442217c5f753a37b6c3bbbe
+MD5sum: 01fe9ea346475d79e6e3f20b3055f80d
 Description: small, powerful, scalable web/proxy server - documentation
  Nginx ("engine X") is a high-performance web and reverse proxy server
  created by Igor Sysoev. It can be used both as a standalone web server
@@ -1736,20 +1790,20 @@ Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-list
 
 Package: nginx-extras
 Source: nginx
-Version: 1.24.0-2ubuntu7.1
+Version: 1.24.0-2ubuntu7.3
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 29
-Depends: nginx (= 1.24.0-2ubuntu7.1), libnginx-mod-http-geoip (= 1.24.0-2ubuntu7.1), libnginx-mod-http-image-filter (= 1.24.0-2ubuntu7.1), libnginx-mod-http-perl (= 1.24.0-2ubuntu7.1), libnginx-mod-http-xslt-filter (= 1.24.0-2ubuntu7.1), libnginx-mod-mail (= 1.24.0-2ubuntu7.1), libnginx-mod-stream (= 1.24.0-2ubuntu7.1), libnginx-mod-stream-geoip (= 1.24.0-2ubuntu7.1), libnginx-mod-http-auth-pam (>= 1:1.5.3-4~), libnginx-mod-http-cache-purge (>= 1:2.3-5~), libnginx-mod-http-dav-ext (>= 1:3.0.0-4~), libnginx-mod-http-echo (>= 1:0.63-5~), libnginx-mod-http-fancyindex (>= 1:0.5.2-4~), libnginx-mod-http-geoip2 (>= 1:3.4-4~), libnginx-mod-http-headers-more-filter (>= 1:0.34-4~), libnginx-mod-http-subs-filter (>= 1:0.6.4-5~), libnginx-mod-http-uploadprogress (>= 1:0.9.2-4~), libnginx-mod-http-upstream-fair (>= 1:0.0~git20120408.a18b409-4~), libnginx-mod-nchan (>= 1:1.3.6+dfsg-3~), libnginx-mod-stream-geoip2 (>= 1:3.4-4~)
+Depends: nginx (= 1.24.0-2ubuntu7.3), libnginx-mod-http-geoip (= 1.24.0-2ubuntu7.3), libnginx-mod-http-image-filter (= 1.24.0-2ubuntu7.3), libnginx-mod-http-perl (= 1.24.0-2ubuntu7.3), libnginx-mod-http-xslt-filter (= 1.24.0-2ubuntu7.3), libnginx-mod-mail (= 1.24.0-2ubuntu7.3), libnginx-mod-stream (= 1.24.0-2ubuntu7.3), libnginx-mod-stream-geoip (= 1.24.0-2ubuntu7.3), libnginx-mod-http-auth-pam (>= 1:1.5.3-4~), libnginx-mod-http-cache-purge (>= 1:2.3-5~), libnginx-mod-http-dav-ext (>= 1:3.0.0-4~), libnginx-mod-http-echo (>= 1:0.63-5~), libnginx-mod-http-fancyindex (>= 1:0.5.2-4~), libnginx-mod-http-geoip2 (>= 1:3.4-4~), libnginx-mod-http-headers-more-filter (>= 1:0.34-4~), libnginx-mod-http-subs-filter (>= 1:0.6.4-5~), libnginx-mod-http-uploadprogress (>= 1:0.9.2-4~), libnginx-mod-http-upstream-fair (>= 1:0.0~git20120408.a18b409-4~), libnginx-mod-nchan (>= 1:1.3.6+dfsg-3~), libnginx-mod-stream-geoip2 (>= 1:3.4-4~)
 Homepage: https://nginx.org
 Priority: 0
 Section: utils
-Filename: pool/main/n/nginx/nginx-extras_1.24.0-2ubuntu7.1_amd64.deb
-Size: 4912
-SHA512: 0f6fa08e411b471e779c413ce4b9d51979835de551c44aa032c8601702151e758f6906864405329e185762c875d78819202829019b48e35e717947e7c93ef9c5
-SHA256: 146500ad70f7dcf9eb49ecde7cf006a0e956b887d5589966508374bbf36b38c5
-SHA1: f85a8a576f57860fbc18acd47c70366c743f3c0a
-MD5sum: 39f2eb34681621bc68d62f6e5f2b83c0
+Filename: pool/main/n/nginx/nginx-extras_1.24.0-2ubuntu7.3_amd64.deb
+Size: 4914
+SHA512: f8482aa5e6f64baf41c412fe15241c5ea9505614b4d7ff558d14715ef5a0da1cc480689506c39225429969d3a7b6850c998552de13b902232f4ff71a244dd584
+SHA256: c32765d1a0381734a7655591b7c3cca1df05e16b6095b24f681a2785002c1b3c
+SHA1: 6558752782140cfdefa2bfb4d2667a8103f1e4ce
+MD5sum: a070ec2efb17c10d25de354d2bf5e269
 Description: nginx web/proxy server (extended version)
  Nginx ("engine X") is a high-performance web and reverse proxy server
  created by Igor Sysoev. It can be used both as a standalone web server
@@ -1779,20 +1833,20 @@ Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-list
 
 Package: nginx-full
 Source: nginx
-Version: 1.24.0-2ubuntu7.1
+Version: 1.24.0-2ubuntu7.3
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 29
-Depends: libnginx-mod-http-auth-pam (>= 1:1.5.3-4~), libnginx-mod-http-dav-ext (>= 1:3.0.0-4~), libnginx-mod-http-echo (>= 1:0.63-5~), libnginx-mod-http-geoip2 (>= 1:3.4-4~), libnginx-mod-http-subs-filter (>= 1:0.6.4-5~), libnginx-mod-http-upstream-fair (>= 1:0.0~git20120408.a18b409-4~), libnginx-mod-stream-geoip2 (>= 1:3.4-4~), nginx (>= 1.24.0-2ubuntu7.1), nginx (<< 1.24.0-2ubuntu7.1.1~)
+Depends: libnginx-mod-http-auth-pam (>= 1:1.5.3-4~), libnginx-mod-http-dav-ext (>= 1:3.0.0-4~), libnginx-mod-http-echo (>= 1:0.63-5~), libnginx-mod-http-geoip2 (>= 1:3.4-4~), libnginx-mod-http-subs-filter (>= 1:0.6.4-5~), libnginx-mod-http-upstream-fair (>= 1:0.0~git20120408.a18b409-4~), libnginx-mod-stream-geoip2 (>= 1:3.4-4~), nginx (>= 1.24.0-2ubuntu7.3), nginx (<< 1.24.0-2ubuntu7.3.1~)
 Homepage: https://nginx.org
 Priority: 0
 Section: utils
-Filename: pool/main/n/nginx/nginx-full_1.24.0-2ubuntu7.1_all.deb
-Size: 4732
-SHA512: a97da386557043876e59f9ad812f8903c1cf142aaad2d3e635a877da0c585c25ab04afa1b8bf1d6a54379e062623332c3151458bc5f80b3dab8513a30badb582
-SHA256: c6f101fba7976f999bac545da29b254d1d18dc8c5b60921f1e501dc1ee02caac
-SHA1: 84605fd4b7e7cb99295b93b096c294aa767bf5b6
-MD5sum: 77142f8d546770f559ebc5c2a4236649
+Filename: pool/main/n/nginx/nginx-full_1.24.0-2ubuntu7.3_all.deb
+Size: 4730
+SHA512: 4bdd5e3ca5fc964d31908024ee8d2ab18b19ebf475dca5b810aa76ec928edf0e562890c6a7b4e4b2e160c76950ea33a28b61d19d7eb86334043a8236cd645abf
+SHA256: fc3225cd33fb06091890f243da46d71899ce4f73f4e2036dea931582d6399483
+SHA1: d3f1351fe099a60ed1bf67c32039a843536ae607
+MD5sum: aaad3840a9555500e6d7f9ad8cb94823
 Description: nginx web/proxy server (standard version with 3rd parties)
  Nginx ("engine X") is a high-performance web and reverse proxy server
  created by Igor Sysoev. It can be used both as a standalone web server
@@ -1821,20 +1875,20 @@ Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-list
 
 Package: nginx-light
 Source: nginx
-Version: 1.24.0-2ubuntu7.1
+Version: 1.24.0-2ubuntu7.3
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 29
-Depends: libnginx-mod-http-echo (>= 1:0.63-5~), nginx (>= 1.24.0-2ubuntu7.1), nginx (<< 1.24.0-2ubuntu7.1.1~)
+Depends: libnginx-mod-http-echo (>= 1:0.63-5~), nginx (>= 1.24.0-2ubuntu7.3), nginx (<< 1.24.0-2ubuntu7.3.1~)
 Homepage: https://nginx.org
 Priority: 0
 Section: utils
-Filename: pool/main/n/nginx/nginx-light_1.24.0-2ubuntu7.1_all.deb
+Filename: pool/main/n/nginx/nginx-light_1.24.0-2ubuntu7.3_all.deb
 Size: 4446
-SHA512: 154730325cf483d281c982a0779b360b16a1ea2f83395acd8b00776faf0d9996852d90765c731615c981a8e653cf98bd4c57528e7f339da6bfc8230fcb029070
-SHA256: 1c4514446d795a13d0d17bb7ee19bb46dab6058df9786c292986104f6bb5592d
-SHA1: cf21fc0f9d5109dcb1d14ae2eb141740d445b996
-MD5sum: fb38164a90c9b204bb8b898e43d391e0
+SHA512: e148a5c6180563d0464b1f9779d6ea7a868155aae6bbdfa5c861f75885131879548636c8d2a4d0e270d4ad6696ab3642d9bc774ea4508d490182960b5f53e11f
+SHA256: 02089d76879be30ed9ddd854a1cc1cea4848e6c70be88b6e87ab05e2fe96862d
+SHA1: 86d89dd9d8408085d7dad2e31f7dfd2803128f87
+MD5sum: cf61a741e584c5fdb59dea6d5026d40a
 Description: nginx web/proxy server (basic version)
  Nginx ("engine X") is a high-performance web and reverse proxy server
  created by Igor Sysoev. It can be used both as a standalone web server
@@ -2194,6 +2248,27 @@ Description: AST extension for PHP 7
  .
  This is empty package that depends on all PHP versions.
 Original-Maintainer: Debian PHP PECL Maintainers <team+php-pecl@tracker.debian.org>
+
+Package: php-bacon-qr-code
+Source: baconqrcode
+Version: 2.0.8-2
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: William Desportes <williamdes@wdes.fr>
+Installed-Size: 287
+Depends: php-imagick, php-common, php-dasprid-enum (>= 1.0.3), php-dasprid-enum (<< 2~~)
+Homepage: https://github.com/Bacon/BaconQrCode/
+Priority: 0
+Section: utils
+Filename: pool/main/b/baconqrcode/php-bacon-qr-code_2.0.8-2_amd64.deb
+Size: 41538
+SHA512: 8deba3a09845b285b543be00b2e0e6bf9599383b04d35ac3ad3c26330b47dac1a5a507cc28c648d3edb6099f98fba817da204ec96b12e197ff1ef7313bf74f78
+SHA256: 99263c27af9cca6ff02e7d26530440a9f5b5e1b41f6f285200a62aeeeadb7d9d
+SHA1: 2dcca4262963675d2b3a23fc3aa051a686a603e7
+MD5sum: f953285de5362f9a14a09e87657ed6c9
+Description: QR Code Generator for PHP
+ Port of QR code portion of the ZXing library. It currently only features the
+ encoder part, but could later receive the decoder part as well.
 
 Package: php-bcmath
 Source: php-defaults (93ubuntu2)
@@ -4248,6 +4323,28 @@ Description: Debian package repository producer
  .
  This package also contains the changestool and rredtool helpers.
 
+Package: sirikali
+Version: 1.5.1-1build2
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 2446
+Depends: libc6 (>= 2.34), libgcc-s1 (>= 3.3.1), libgcrypt20 (>= 1.10.0), libqt5core5t64 (>= 5.15.1), libqt5dbus5t64 (>= 5.14.1), libqt5gui5t64 (>= 5.7.0) | libqt5gui5-gles (>= 5.7.0), libqt5network5t64 (>= 5.15.1), libqt5widgets5t64 (>= 5.14.1), libsecret-1-0 (>= 0.7), libstdc++6 (>= 13.1)
+Recommends: cryfs
+Suggests: encfs, gocryptfs, ecryptfs-utils, sshfs
+Homepage: https://mhogomchungu.github.io/sirikali
+Priority: 0
+Section: utils
+Filename: pool/main/s/sirikali/sirikali_1.5.1-1build2_amd64.deb
+Size: 783160
+SHA512: 39049e3a88c6b8f62a7da12000ba4c08999eedc7860275f347fe6c33e04d02808d4704d3703b9474670cbdeed51c8efb7226e0595e8400019738fbd86adfad74
+SHA256: 78739919af5732e189b0b181be18dab98fa917ac8dc9fa2b511a4a70115d9989
+SHA1: 6752e289dc8f501d53977553a6dd63b6b5e47aec
+MD5sum: 47ada8d8570e844d019c06b87ede6d85
+Description: Manage user encrypted volumes
+ Sirikali provides a Qt/C++ GUI front end to cryfs,gocryptfs,securefs and encfs,
+ allowing the user to create, mount, and unmount encrypted volumes.
+Original-Maintainer: David Steele <steele@debian.org>
+
 Package: sks
 Version: 1.1.6+git20210302.c3ba6d5a-4build2
 Architecture: amd64
@@ -4296,10 +4393,10 @@ Description: location of genes from DNA sequence with hidden markov model
  Parser.
 
 Package: snapd
-Version: 2.66.1+24.04
+Version: 2.67.1+24.04
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
-Installed-Size: 113132
+Installed-Size: 113568
 Depends: adduser, apparmor (>= 2.10.95-0ubuntu2.2), ca-certificates, fuse3 (>= 3.10.5-1) | fuse, openssh-client, squashfs-tools, systemd, udev, default-dbus-session-bus | dbus-session-bus, libc6 (>= 2.38), libfuse3-3 (>= 3.12.0), liblzma5 (>= 5.1.1alpha+20120614), liblzo2-2 (>= 2.02), libudev1 (>= 183), zlib1g (>= 1:1.1.4)
 Recommends: gnupg
 Suggests: zenity | kdialog
@@ -4310,12 +4407,12 @@ Built-Using: apparmor (= 4.0.1really4.0.1-0ubuntu0.24.04.3), libcap2 (= 1:2.66-5
 Homepage: https://github.com/snapcore/snapd
 Priority: 0
 Section: utils
-Filename: pool/main/s/snapd/snapd_2.66.1+24.04_amd64.deb
-Size: 30031484
-SHA512: d56ed87344808aa15f56a15480952f399fb0a2b3aca92ec79e4d1b7f71c0cf9f54df9cd9440184fdadff948ff3ec478c935d6c29b702f53f94398e904648574e
-SHA256: 97d238b1016a86b28b47291bf4eeffacb62bc2ebfe2f87549378be44f1b9bb5a
-SHA1: fc8c205eab734440fe1284110de5df1fc9318112
-MD5sum: 33722bf656b39783f5aa86debe9d1f33
+Filename: pool/main/s/snapd/snapd_2.67.1+24.04_amd64.deb
+Size: 30112084
+SHA512: 60933553d5577a283d0307c285a61dd9350b807d41836f703218cb8abc8d3d34b06003d29f36b166d44e6e6d683e47b0fe2f8acfa05df5d40166b61ef4ec3bc3
+SHA256: 0d13ef56ba95f37a0560be1464eb47c05bb335862d402ea16ea257fb7ae38cab
+SHA1: eae4e2e5df75839b37fbeb6c7a3c952ef1e51b00
+MD5sum: afe411a4aabbc816082ac8929a7d1cc3
 Description: Daemon and tooling that enable snap packages
  Install, configure, refresh and remove snap packages. Snaps are
  'universal' packages that work across many different Linux systems,
@@ -4429,4 +4526,33 @@ Description: retrieves files from the web
  Wget supports proxy servers; this can lighten the network load,
  speed up retrieval, and provide access behind firewalls.
 Original-Maintainer: Noël Köthe <noel@debian.org>
+
+Package: zram-tools
+Version: 0.3.3.1-1.1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Jonathan Carter <jcc@debian.org>
+Installed-Size: 28
+Depends: bc
+Homepage: https://github.com/highvoltage/zram-tools
+Priority: 0
+Section: utils
+Filename: pool/main/z/zram-tools/zram-tools_0.3.3.1-1.1_all.deb
+Size: 5532
+SHA512: 037b3d95e0e621d0aed57327f2f9de1c3fc558dc327361a9bb21f8b33cf8c72ff842796a0493343a77996d0f328b663c217cc8f0f94c4d486989fe6479b5964d
+SHA256: 4bb2b5bd71c5abbff1da0ad5035636c444633e10962e6c27a349f871c9ce3c79
+SHA1: 1401580c06763a43be87f5933eb559ce67d332a4
+MD5sum: e2af7cc55cd34e2f4ddaa5f596ef35a6
+Description: utilities for working with zram
+ zram is a Linux kernel module that allows you to set up compressed
+ filesystems in RAM.
+ .
+ zram-tools uses this module to set up compressed swap space.
+ This is useful on systems with low memory or servers
+ running a large amount of services with data that's easily swappable
+ but that you may wish to swap back fast without sacrificing disk
+ bandwidth.
+ .
+ By default it allocates 100MB of RAM, you can configure this in
+ /etc/default/zramswap.
 

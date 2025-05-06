@@ -155,7 +155,7 @@ Description: transitional package for Linux Standard Base init script functional
 
 Package: mysql-client
 Source: mysql-8.0
-Version: 8.0.40-0ubuntu0.24.04.1
+Version: 8.0.42-0ubuntu0.24.04.1
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 40
@@ -163,12 +163,12 @@ Depends: mysql-client-8.0
 Homepage: http://dev.mysql.com/
 Priority: 0
 Section: utils
-Filename: pool/main/m/mysql-8.0/mysql-client_8.0.40-0ubuntu0.24.04.1_all.deb
-Size: 9416
-SHA512: da2d9d8d746292f11ba90e0e466d1b45674c1d3a7e96f0ed745ef8fa0571ad1c8f66c7fc4270e9bd6095ad569c93a43062c79d732e716f54f1e279c28e4f647b
-SHA256: 3286854060c31f7f4348f0c9152e9ce3f73e50f1a262774ff620b7806c5b2f66
-SHA1: 65cd4fb83bb18b0103340c3bb2809f69a4a37fc6
-MD5sum: 43a03c9b0fea205c08a7f186917c637b
+Filename: pool/main/m/mysql-8.0/mysql-client_8.0.42-0ubuntu0.24.04.1_all.deb
+Size: 9408
+SHA512: 4f5b2ac3ec455cbf5f45ccb1b750f49f76d8228f5e974041fe6a64bf5e8b1b901883f1c0412eac40e0542191da013c614398b44db433176b4ef2739b5a74ed49
+SHA256: ea298db2f048405e424192775d50ed6e94e22b7e6f8039833c2b3c6a6ba9c560
+SHA1: 29c891f1f3875219750d2a283cc2c873dbb6b8b6
+MD5sum: 421e12bc8c9e804c9deaffea86eedf22
 Description: MySQL database client (metapackage depending on the latest version)
  This is an empty package that depends on the current "best" version of
  mysql-client (currently mysql-client-8.0), as determined by the MySQL
@@ -208,7 +208,7 @@ Original-Maintainer: Debian MySQL Maintainers <pkg-mysql-maint@lists.alioth.debi
 
 Package: mysql-server
 Source: mysql-8.0
-Version: 8.0.40-0ubuntu0.24.04.1
+Version: 8.0.42-0ubuntu0.24.04.1
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 40
@@ -216,12 +216,12 @@ Depends: mysql-server-8.0
 Homepage: http://dev.mysql.com/
 Priority: 0
 Section: utils
-Filename: pool/main/m/mysql-8.0/mysql-server_8.0.40-0ubuntu0.24.04.1_all.deb
-Size: 9524
-SHA512: f365b2b00f16981be57664ace9004c98f5aacb26242a29b7aaeb589e861b2c2e5f95a76be60c75a2adf8850d55a531127b5e76d1622322e103bdbe05acb7aa47
-SHA256: 4a119416d9b351c458028b4bbd7d32605050687f073b98d83eb6b384031f6b23
-SHA1: cb0a820c6398ac97b9c91d837e01ad3d76c9b07a
-MD5sum: f8f91520b6f29c95c35def1e4a170b3f
+Filename: pool/main/m/mysql-8.0/mysql-server_8.0.42-0ubuntu0.24.04.1_all.deb
+Size: 9520
+SHA512: c5ed6121b2d236b1afaaa7cfe7a653c0c3a8a8d38d3d875de18c0ccfbd6bf2ce231012fd1ae85ae0ef42d9f3cca01ff6c49dfc7893fba8e6a24a2e8d5cd4a698
+SHA256: 18a727bdc5e1b93f8775db826433cb17febe270a026a1107c26ec606aa5bc568
+SHA1: de21b0dd6b768bfe7ac2673697555478dfd10f18
+MD5sum: 78640cf0d4df26974100883dbb2d39f2
 Description: MySQL database server (metapackage depending on the latest version)
  This is an empty package that depends on the current "best" version of
  mysql-server (currently mysql-server-8.0), as determined by the MySQL
@@ -336,11 +336,11 @@ Description: Dispatcher service for systemd-networkd connection status changes
 
 Package: nginx-common
 Source: nginx
-Version: 1.24.0-2ubuntu7.1
+Version: 1.24.0-2ubuntu7.3
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 239
-Depends: debconf (>= 0.5) | debconf-2.0, nginx (>= 1.24.0-2ubuntu7.1), nginx (<< 1.24.0-2ubuntu7.1.1~)
+Depends: debconf (>= 0.5) | debconf-2.0, nginx (>= 1.24.0-2ubuntu7.3), nginx (<< 1.24.0-2ubuntu7.3.1~)
 Suggests: fcgiwrap, nginx-doc, ssl-cert
 Breaks: nginx (<< 1.22.1-8)
 Replaces: nginx (<< 1.22.1-8)
@@ -348,12 +348,12 @@ Multi-Arch: foreign
 Homepage: https://nginx.org
 Priority: 0
 Section: utils
-Filename: pool/main/n/nginx/nginx-common_1.24.0-2ubuntu7.1_all.deb
-Size: 31226
-SHA512: 0dad77e3dceb9a8b479c7ea8b2be3c1e3204b1cd67981d74407a50b2baad5b0601551b77069acb314045d4a0b8ceaba4ec41e1438ef5435f2d8d441137d3e703
-SHA256: 2d2d3b506c5301118092fcf6657d447646dce483d0754dc80f530ca6a5945b6c
-SHA1: 9bd561936857db85dec9f921b619c82ffe16c4aa
-MD5sum: be6afe096f05b2e743fa5b66afb4c108
+Filename: pool/main/n/nginx/nginx-common_1.24.0-2ubuntu7.3_all.deb
+Size: 31220
+SHA512: 7ba032e5fcd0d551379141c1233fee16e44478a4d209600a9459f6d2a7568025a21768135121344501cf3b7cd97bd468ef98d9b65258089fc8f8defee5868d0d
+SHA256: 4694d620a571de7f079343a8fdfc29975426878d02d5f8d564f95f1f5c5465fc
+SHA1: dad40e9d3c075bc27b8cb33f5f100c2c1948005a
+MD5sum: 80c60f95b03e30924e4c8ec8f84360b3
 Description: small, powerful, scalable web/proxy server - common files
  Nginx ("engine X") is a high-performance web and reverse proxy server
  created by Igor Sysoev. It can be used both as a standalone web server
@@ -365,22 +365,22 @@ Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-list
 
 Package: nginx-core
 Source: nginx
-Version: 1.24.0-2ubuntu7.1
+Version: 1.24.0-2ubuntu7.3
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 29
-Depends: libnginx-mod-http-geoip2 (>= 1:3.4-4), libnginx-mod-http-image-filter (>= 1.24.0-2ubuntu7.1), libnginx-mod-http-image-filter (<< 1.24.0-2ubuntu7.1.1~), libnginx-mod-http-xslt-filter (>= 1.24.0-2ubuntu7.1), libnginx-mod-http-xslt-filter (<< 1.24.0-2ubuntu7.1.1~), libnginx-mod-mail (>= 1.24.0-2ubuntu7.1), libnginx-mod-mail (<< 1.24.0-2ubuntu7.1.1~), libnginx-mod-stream (>= 1.24.0-2ubuntu7.1), libnginx-mod-stream (<< 1.24.0-2ubuntu7.1.1~), libnginx-mod-stream-geoip2 (>= 1:3.4-4), nginx (>= 1.24.0-2ubuntu7.1), nginx (<< 1.24.0-2ubuntu7.1.1~)
+Depends: libnginx-mod-http-geoip2 (>= 1:3.4-4), libnginx-mod-http-image-filter (>= 1.24.0-2ubuntu7.3), libnginx-mod-http-image-filter (<< 1.24.0-2ubuntu7.3.1~), libnginx-mod-http-xslt-filter (>= 1.24.0-2ubuntu7.3), libnginx-mod-http-xslt-filter (<< 1.24.0-2ubuntu7.3.1~), libnginx-mod-mail (>= 1.24.0-2ubuntu7.3), libnginx-mod-mail (<< 1.24.0-2ubuntu7.3.1~), libnginx-mod-stream (>= 1.24.0-2ubuntu7.3), libnginx-mod-stream (<< 1.24.0-2ubuntu7.3.1~), libnginx-mod-stream-geoip2 (>= 1:3.4-4), nginx (>= 1.24.0-2ubuntu7.3), nginx (<< 1.24.0-2ubuntu7.3.1~)
 Breaks: nginx-full (<< 1.18.0-1)
 Replaces: nginx-full (<< 1.18.0-1)
 Homepage: https://nginx.org
 Priority: 0
 Section: utils
-Filename: pool/main/n/nginx/nginx-core_1.24.0-2ubuntu7.1_all.deb
-Size: 4686
-SHA512: 6cd92fdea1db103f84774e30c8034ba93d640f059e646612aa8fd2e468c3d8762f7f12f405f4c7d9f0ab37cbaee446321410bf49f9b1d267ea0ca021b6e6366a
-SHA256: d6accbaa0531a5cca43a83b51b2ba37f2c7e6d5db34f5469083013814b328cdd
-SHA1: 8c1e2d3e2ff6334ede7a76c317b4b61e1ff635ea
-MD5sum: 5c5c0b1ce5ded48acef92d3955cb584a
+Filename: pool/main/n/nginx/nginx-core_1.24.0-2ubuntu7.3_all.deb
+Size: 4688
+SHA512: 43b87535974ba90daf730b1c23d7514ee8b783a5d958cf8d7a36419e52c174846195f36dd987e26d3e467d25922c8c29ece2bc8f9b8a8280add644c3e00abb18
+SHA256: 861947fe079bc58e925cb44332d1a2ce6c35f1966185b5789ddfe72db22e899f
+SHA1: 07a453e2b63b3c92b107545d3243cab5a7926a11
+MD5sum: 64db941bc0565ca5fad4955ac72af053
 Description: nginx web/proxy server (standard version)
  Nginx ("engine X") is a high-performance web and reverse proxy server
  created by Igor Sysoev. It can be used both as a standalone web server
@@ -406,22 +406,22 @@ Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-list
 
 Package: nginx-dev
 Source: nginx
-Version: 1.24.0-2ubuntu7.1
+Version: 1.24.0-2ubuntu7.3
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 775
-Depends: debhelper-compat (= 13), libexpat-dev, libgd-dev, libgeoip-dev, libpcre2-dev, libperl-dev, libssl-dev, libxslt1-dev, po-debconf, zlib1g-dev, nginx-abi-1.24.0-1, nginx (<< 1.24.0-2ubuntu7.1.1~), nginx (>= 1.24.0-2ubuntu7.1)
+Depends: debhelper-compat (= 13), libexpat-dev, libgd-dev, libgeoip-dev, libpcre2-dev, libperl-dev, libssl-dev, libxslt1-dev, po-debconf, zlib1g-dev, nginx-abi-1.24.0-1, nginx (<< 1.24.0-2ubuntu7.3.1~), nginx (>= 1.24.0-2ubuntu7.3)
 Provides: dh-sequence-nginx
 Multi-Arch: foreign
 Homepage: https://nginx.org
 Priority: 0
 Section: utils
-Filename: pool/main/n/nginx/nginx-dev_1.24.0-2ubuntu7.1_all.deb
-Size: 109768
-SHA512: 7bf9627b9d98005f7b189efb98436ffabeecb337cb528ef4b5b30c5dfb60c6ca71463bb30bc58e17172aaffc5dbeeed70b7f069b4d0aefcacac25140d8cc7010
-SHA256: 517fdaff4dde79ef468ff50675e9e9e57e925592e9876b6ee5467502f842aa7a
-SHA1: 6d8600410c75e409b2a62a996563fcf0c715869d
-MD5sum: 031d85897fce7bf85b0765e79ba5abdb
+Filename: pool/main/n/nginx/nginx-dev_1.24.0-2ubuntu7.3_all.deb
+Size: 109706
+SHA512: 30dfb15832a8a1c9421a6fbb3a877ee9b8b618d18d86ebfb0d5fd1cdd06de8b8e8b86b7adbb773d330fac0b889743789fc872549acd2b37611df3f0bf4ac08b8
+SHA256: 5ba0442002562ef2708f3696c034fd0c4b8f90695d38a8c5520c3dbb6be94eff
+SHA1: f24b8bcaee13f9b4716d4cf57c5cf132b7b06563
+MD5sum: d53fcf47ddb72151a05bc6af4070509b
 Description: nginx web/proxy server - development headers
  Nginx ("engine X") is a high-performance web and reverse proxy server
  created by Igor Sysoev. It can be used both as a standalone web server
@@ -434,7 +434,7 @@ Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-list
 
 Package: nginx-doc
 Source: nginx
-Version: 1.24.0-2ubuntu7.1
+Version: 1.24.0-2ubuntu7.3
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 63
@@ -442,12 +442,12 @@ Multi-Arch: foreign
 Homepage: https://nginx.org
 Priority: 0
 Section: utils
-Filename: pool/main/n/nginx/nginx-doc_1.24.0-2ubuntu7.1_all.deb
-Size: 24494
-SHA512: d82f74763aa9ceb95ff36d90380a0ac90e057cd54585f11e92d58c122c3b244aa316b693004c2cf4eaec0dd3ba16ea7ace10e2c4e80bb0ff0822b12cadb2c0b0
-SHA256: f6bc4f47466fc574da0aeeef4580aeaa471fe9ef4ebf6d69a913929c750f6f3d
-SHA1: f5f5aedfb3706d374a5ddea8ce6cbf3b9eb033c3
-MD5sum: 9fdd4f764793afdb02803ed159c01c8c
+Filename: pool/main/n/nginx/nginx-doc_1.24.0-2ubuntu7.3_all.deb
+Size: 24598
+SHA512: 58326eab4dbd2418cfe70896226cdb5c1a3c8633385c7ebd3d30d9ec7e9ccdbe0ab82eb51754f9134ba23f89c028fb2058ee6a5d84d69819132f9284b8ac968a
+SHA256: 1b610fc23a5202d0769bf3ddc3c4344063249acab639cc9fbc6bb86a910efe1e
+SHA1: 4392da087cafe721d442217c5f753a37b6c3bbbe
+MD5sum: 01fe9ea346475d79e6e3f20b3055f80d
 Description: small, powerful, scalable web/proxy server - documentation
  Nginx ("engine X") is a high-performance web and reverse proxy server
  created by Igor Sysoev. It can be used both as a standalone web server
@@ -458,20 +458,20 @@ Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-list
 
 Package: nginx-full
 Source: nginx
-Version: 1.24.0-2ubuntu7.1
+Version: 1.24.0-2ubuntu7.3
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 29
-Depends: libnginx-mod-http-auth-pam (>= 1:1.5.3-4~), libnginx-mod-http-dav-ext (>= 1:3.0.0-4~), libnginx-mod-http-echo (>= 1:0.63-5~), libnginx-mod-http-geoip2 (>= 1:3.4-4~), libnginx-mod-http-subs-filter (>= 1:0.6.4-5~), libnginx-mod-http-upstream-fair (>= 1:0.0~git20120408.a18b409-4~), libnginx-mod-stream-geoip2 (>= 1:3.4-4~), nginx (>= 1.24.0-2ubuntu7.1), nginx (<< 1.24.0-2ubuntu7.1.1~)
+Depends: libnginx-mod-http-auth-pam (>= 1:1.5.3-4~), libnginx-mod-http-dav-ext (>= 1:3.0.0-4~), libnginx-mod-http-echo (>= 1:0.63-5~), libnginx-mod-http-geoip2 (>= 1:3.4-4~), libnginx-mod-http-subs-filter (>= 1:0.6.4-5~), libnginx-mod-http-upstream-fair (>= 1:0.0~git20120408.a18b409-4~), libnginx-mod-stream-geoip2 (>= 1:3.4-4~), nginx (>= 1.24.0-2ubuntu7.3), nginx (<< 1.24.0-2ubuntu7.3.1~)
 Homepage: https://nginx.org
 Priority: 0
 Section: utils
-Filename: pool/main/n/nginx/nginx-full_1.24.0-2ubuntu7.1_all.deb
-Size: 4732
-SHA512: a97da386557043876e59f9ad812f8903c1cf142aaad2d3e635a877da0c585c25ab04afa1b8bf1d6a54379e062623332c3151458bc5f80b3dab8513a30badb582
-SHA256: c6f101fba7976f999bac545da29b254d1d18dc8c5b60921f1e501dc1ee02caac
-SHA1: 84605fd4b7e7cb99295b93b096c294aa767bf5b6
-MD5sum: 77142f8d546770f559ebc5c2a4236649
+Filename: pool/main/n/nginx/nginx-full_1.24.0-2ubuntu7.3_all.deb
+Size: 4730
+SHA512: 4bdd5e3ca5fc964d31908024ee8d2ab18b19ebf475dca5b810aa76ec928edf0e562890c6a7b4e4b2e160c76950ea33a28b61d19d7eb86334043a8236cd645abf
+SHA256: fc3225cd33fb06091890f243da46d71899ce4f73f4e2036dea931582d6399483
+SHA1: d3f1351fe099a60ed1bf67c32039a843536ae607
+MD5sum: aaad3840a9555500e6d7f9ad8cb94823
 Description: nginx web/proxy server (standard version with 3rd parties)
  Nginx ("engine X") is a high-performance web and reverse proxy server
  created by Igor Sysoev. It can be used both as a standalone web server
@@ -500,20 +500,20 @@ Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-list
 
 Package: nginx-light
 Source: nginx
-Version: 1.24.0-2ubuntu7.1
+Version: 1.24.0-2ubuntu7.3
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Installed-Size: 29
-Depends: libnginx-mod-http-echo (>= 1:0.63-5~), nginx (>= 1.24.0-2ubuntu7.1), nginx (<< 1.24.0-2ubuntu7.1.1~)
+Depends: libnginx-mod-http-echo (>= 1:0.63-5~), nginx (>= 1.24.0-2ubuntu7.3), nginx (<< 1.24.0-2ubuntu7.3.1~)
 Homepage: https://nginx.org
 Priority: 0
 Section: utils
-Filename: pool/main/n/nginx/nginx-light_1.24.0-2ubuntu7.1_all.deb
+Filename: pool/main/n/nginx/nginx-light_1.24.0-2ubuntu7.3_all.deb
 Size: 4446
-SHA512: 154730325cf483d281c982a0779b360b16a1ea2f83395acd8b00776faf0d9996852d90765c731615c981a8e653cf98bd4c57528e7f339da6bfc8230fcb029070
-SHA256: 1c4514446d795a13d0d17bb7ee19bb46dab6058df9786c292986104f6bb5592d
-SHA1: cf21fc0f9d5109dcb1d14ae2eb141740d445b996
-MD5sum: fb38164a90c9b204bb8b898e43d391e0
+SHA512: e148a5c6180563d0464b1f9779d6ea7a868155aae6bbdfa5c861f75885131879548636c8d2a4d0e270d4ad6696ab3642d9bc774ea4508d490182960b5f53e11f
+SHA256: 02089d76879be30ed9ddd854a1cc1cea4848e6c70be88b6e87ab05e2fe96862d
+SHA1: 86d89dd9d8408085d7dad2e31f7dfd2803128f87
+MD5sum: cf61a741e584c5fdb59dea6d5026d40a
 Description: nginx web/proxy server (basic version)
  Nginx ("engine X") is a high-performance web and reverse proxy server
  created by Igor Sysoev. It can be used both as a standalone web server
@@ -1836,4 +1836,33 @@ Description: command line trashcan utility
  compliant with the FreeDesktop.org Trash Specification. It remembers
  the name, original path, deletion date, and permissions of each trashed
  file
+
+Package: zram-tools
+Version: 0.3.3.1-1.1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Jonathan Carter <jcc@debian.org>
+Installed-Size: 28
+Depends: bc
+Homepage: https://github.com/highvoltage/zram-tools
+Priority: 0
+Section: utils
+Filename: pool/main/z/zram-tools/zram-tools_0.3.3.1-1.1_all.deb
+Size: 5532
+SHA512: 037b3d95e0e621d0aed57327f2f9de1c3fc558dc327361a9bb21f8b33cf8c72ff842796a0493343a77996d0f328b663c217cc8f0f94c4d486989fe6479b5964d
+SHA256: 4bb2b5bd71c5abbff1da0ad5035636c444633e10962e6c27a349f871c9ce3c79
+SHA1: 1401580c06763a43be87f5933eb559ce67d332a4
+MD5sum: e2af7cc55cd34e2f4ddaa5f596ef35a6
+Description: utilities for working with zram
+ zram is a Linux kernel module that allows you to set up compressed
+ filesystems in RAM.
+ .
+ zram-tools uses this module to set up compressed swap space.
+ This is useful on systems with low memory or servers
+ running a large amount of services with data that's easily swappable
+ but that you may wish to swap back fast without sacrificing disk
+ bandwidth.
+ .
+ By default it allocates 100MB of RAM, you can configure this in
+ /etc/default/zramswap.
 
