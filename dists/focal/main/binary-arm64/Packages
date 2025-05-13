@@ -34,6 +34,27 @@ Description: add and remove users and groups
  A custom script can be executed after each of the commands.
 Original-Maintainer: Debian Adduser Developers <adduser@packages.debian.org>
 
+Package: apt-transport-https
+Source: apt
+Version: 2.0.10
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 158
+Depends: apt (>= 1.5~alpha4)
+Multi-Arch: foreign
+Priority: 0
+Section: utils
+Filename: pool/main/a/apt/apt-transport-https_2.0.10_all.deb
+Size: 1704
+SHA512: 81b99a97910e375b844c4f2cdd97e394cf7d80f4b34b2ad7315abab981cb561e6e608011a1045f724708de8451297ebbeecee31688df669faaa885f8d4267a6c
+SHA256: ceae8a4eeae0d131ddfbde6f01d7513a2fc293a4ca506418b64ec57e6506ef04
+SHA1: e90afcfae931aadf1b8a9c71fdf4cd9970d1a074
+MD5sum: 7907757c0e713d7470cefaec4d9249cd
+Description: transitional package for https support
+ This is a dummy transitional package - https support has been moved into
+ the apt package in 1.5. It can be safely removed.
+Original-Maintainer: APT Development Team <deity@lists.debian.org>
+
 Package: apt-url
 Version: 1.0.0-2
 Architecture: all
@@ -49,6 +70,28 @@ SHA1: 9ecc12edf4ece7ad8c0f8fc47998a340d2730b0a
 MD5sum: 447e1605cac9b953fe6797ae647e586a
 Description: Fetches URLs for specified packages.
  Provides the download URL for a specified package.
+
+Package: clevis-dracut
+Source: clevis
+Version: 12-1ubuntu2.3
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 25
+Depends: clevis-systemd, dracut-network
+Homepage: https://github.com/latchset/clevis
+Priority: 0
+Section: utils
+Filename: pool/main/c/clevis/clevis-dracut_12-1ubuntu2.3_all.deb
+Size: 3012
+SHA512: 622f97192f1461028af416e7cdff238a476fdeb2d88d0330f061fd48ca07910f051643e219759396807583ce9717a2c629bd31b5f5b4fae0e55f3d65045f4402
+SHA256: 65471895522771cca19ce43608ed45ba51acfa57e5c756c6d6f196481e073764
+SHA1: 7c3edf60a48acd66b8737a5870bd3e14d6483b77
+MD5sum: e3ba37b50a84fddd87183b5797c2e384
+Description: Clevis integration for dracut
+ Clevis is a plugable framework for automated decryption. This package
+ provides integration for dracut to automatically unlock LUKSv1 block
+ devices in early boot.
+Original-Maintainer: Christoph Biedl <debian.axhn@manchmal.in-ulm.de>
 
 Package: deb-get
 Version: 0.3.9-1
@@ -105,8 +148,25 @@ Description: Displays user-friendly dialog boxes from shell scripts
   background tail  Similar to tail but runs in the background.
   editbox          Allows editing an existing file
 
+Package: duf
+Version: 0.8.1
+Architecture: arm64
+Maintainer: Christian Muehlhaeuser <muesli@gmail.com>
+Vendor: muesli
+Installed-Size: 2240
+Homepage: https://fribbledom.com/
+Priority: 0
+Section: utils
+Filename: pool/main/d/duf/duf_0.8.1_arm64.deb
+Size: 854558
+SHA512: 107e7864445e9e99482623ebcf20105b85b5030cadea475d9ccc9dfdb27b6ffb43d5c7f58c7ad7945d991473b629f38f3d859dfaa5716949ab58dcfb2873b912
+SHA256: 9efc030fb1b254865d3a965416b5873db027c5a96ce66504eae6b33b1a4e9ebb
+SHA1: b45436359330c3b0c216e9c7da1ecd7785640064
+MD5sum: 4228ce6026fe3979b88d1af09eafc2f7
+Description: Disk Usage/Free Utility
+
 Package: freetube
-Version: 0.23.4
+Version: 0.23.5
 License: AGPL-3.0-or-later
 Vendor: PrestonN <FreeTubeApp@protonmail.com>
 Architecture: arm64
@@ -117,12 +177,12 @@ Recommends: libappindicator3-1
 Homepage: https://github.com/FreeTubeApp/FreeTube#readme
 Priority: 0
 Section: utils
-Filename: pool/main/f/freetube/freetube_0.23.4_arm64.deb
-Size: 71839804
-SHA512: 9dea965fb21e7b653544b04b466d075c67c96acda6f7ddf5674e77650bee6c5e629dc6d9081f9b6ae9dbccf9e678a7740e86b7dbdcf3da7cdfbf0ae269ff7966
-SHA256: c69ef8d6535986501a41edb2fab16a2618edd7b97ce0d3e19d658b60d916b25a
-SHA1: 8c3424e95ec9441736f7cba56440dc0c118ee309
-MD5sum: 1a2dde645c6f2236f66d6175ef1ad691
+Filename: pool/main/f/freetube/freetube_0.23.5_arm64.deb
+Size: 71832048
+SHA512: 60ba85c07386a3a461302b6eeab34f99fe63a5864a73b81d81a514579ff9bde16c79aa4277285c16e4f22be68ef255b56a0059b3de49a67df072394bfb425ca2
+SHA256: 75a9fe67046f3b0d03da71f7f0f8b86c560f77f7b27bb7fe4d57355edc560e87
+SHA1: 37d8b4bb421f3a69eddddf87e5133cd9d7a55bcd
+MD5sum: c63122cb50c924d907f962073d5663ba
 Description: 
   A private YouTube client
 
@@ -555,6 +615,64 @@ Description: GPGME - GnuPG Made Easy (library)
  .
  This package contains the library.
 
+Package: lintian
+Version: 2.62.0ubuntu2.5
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 5798
+Depends: binutils, bzip2, diffstat, dpkg (>= 1.17.14), dpkg-dev, file, gettext, gpg, intltool-debian, libapt-pkg-perl, libarchive-zip-perl, libcapture-tiny-perl, libclass-xsaccessor-perl, libclone-perl, libcpanel-json-xs-perl, libdevel-size-perl, libdigest-sha-perl, libdpkg-perl, libemail-valid-perl, libfile-basedir-perl, libfile-find-rule-perl, libfont-ttf-perl, libhtml-parser-perl, libio-async-perl, libio-async-loop-epoll-perl (>= 0.20), libipc-run-perl, libjson-maybexs-perl, liblist-compare-perl, liblist-moreutils-perl, libmoo-perl, libmoox-aliases-perl, libnamespace-clean-perl, libpath-tiny-perl, libsereal-decoder-perl, libsereal-encoder-perl, libtext-levenshtein-perl, libtimedate-perl, libtry-tiny-perl, libtype-tiny-perl, libunicode-utf8-perl, liburi-perl, libxml-libxml-perl, libxml-writer-perl, libyaml-libyaml-perl, man-db, patchutils, perl, t1utils, xz-utils, perl:any
+Recommends: libperlio-gzip-perl
+Suggests: binutils-multiarch, libtext-template-perl
+Breaks: funny-manpages (<< 1.3-5.1), pkg-js-tools (<< 0.9.4), pkg-perl-tools (<< 0.53)
+Replaces: funny-manpages (<< 1.3-5.1)
+Multi-Arch: foreign
+Homepage: https://lintian.debian.org/
+Priority: 0
+Section: utils
+Filename: pool/main/l/lintian/lintian_2.62.0ubuntu2.5_all.deb
+Size: 980452
+SHA512: 4651834e2fab5b0a4e13fa608a76eaa83f97ad903d9909fe3187e131c477f226f78878145e8db89f8428c6263c5755ab48ff6652a570d27a706917a53dffb8d5
+SHA256: 58a701896b05f18dae80eacbcb5faf7dea4d2bb865892481698724898d09b3f5
+SHA1: fa78d9ca166c5cdb9c0a4cf9ca0f4b9cf1f12444
+MD5sum: cffe4cc10972578e35fd35fbfc36f5f6
+Description: Debian package checker
+ Lintian dissects Debian packages and reports bugs and policy violations. It
+ contains automated checks for many aspects of Debian policy as well as some
+ checks for common errors.
+ .
+ This package is useful for all people who want to check Debian packages for
+ compliance with Debian policy. Every Debian maintainer should check packages
+ with this tool before uploading them to the archive.
+ .
+ This version of Lintian is calibrated for Debian Policy version 4.5.0.
+Original-Maintainer: Debian Lintian Maintainers <lintian-maint@debian.org>
+
+Package: lsb-base
+Source: lsb
+Version: 11.1.0ubuntu2
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 58
+Multi-Arch: foreign
+Homepage: https://wiki.linuxfoundation.org/lsb/start
+Priority: 0
+Section: utils
+Filename: pool/main/l/lsb/lsb-base_11.1.0ubuntu2_all.deb
+Size: 12076
+SHA512: 074df88924af4b9040f7cea8187f922e76468dae1ab2c414bba47459fdbf3a08725d74da5a33508da79e3e6a37d6f513c8583703fc19283afd69236d84234f7e
+SHA256: eb40f6e96189cbde27a9cc4681f7ba7b4d51552d1ad74b876aea6a7ccb83f628
+SHA1: 4c76da4489ce9fc352ab31b637810870b0a4df39
+MD5sum: a3160e6270cfa4ed80d848d70d58ce09
+Description: Linux Standard Base init script functionality
+ The Linux Standard Base (http://www.linuxbase.org/) is a standard
+ core system that third-party applications written for Linux can
+ depend upon.
+ .
+ This package only includes the init-functions shell library, which
+ may be used by other packages' initialization scripts for console
+ logging and other purposes.
+Original-Maintainer: Debian sysvinit maintainers <debian-init-diversity@chiark.greenend.org.uk>
+
 Package: monkeysphere
 Version: 0.41-1ubuntu1
 Architecture: all
@@ -586,6 +704,88 @@ Description: leverage the OpenPGP web of trust for SSH and TLS authentication
  connections (e.g. https).
 Original-Maintainer: Jameson Rollins <jrollins@finestructure.net>
 
+Package: mysql-client
+Source: mysql-8.0
+Version: 8.0.42-0ubuntu0.20.04.1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 35
+Depends: mysql-client-8.0
+Homepage: http://dev.mysql.com/
+Priority: 0
+Section: utils
+Filename: pool/main/m/mysql-8.0/mysql-client_8.0.42-0ubuntu0.20.04.1_all.deb
+Size: 9364
+SHA512: 46dc2f8eeaf25d31052d72643605e812e1cdd84fe18ee4c120f6dc5e9de8ec08b339e15b6d22609e58108c8b0e0a5d97fcca4d18ba0df8f2bf8918ea193a9bac
+SHA256: 8fa173e910052de9afa34c2468372a017daefd89b8632b3097ff59425be60404
+SHA1: e01c9c2709a93a0ac3d0b2a4fa1a567e21fa8fb4
+MD5sum: 8dd89db27f0583bac696e923970180ec
+Description: MySQL database client (metapackage depending on the latest version)
+ This is an empty package that depends on the current "best" version of
+ mysql-client (currently mysql-client-8.0), as determined by the MySQL
+ maintainers.  Install this package if in doubt about which MySQL version
+ you want, as this is the one considered to be in the best shape by the
+ Maintainers.
+Original-Maintainer: Debian MySQL Maintainers <pkg-mysql-maint@lists.alioth.debian.org>
+
+Package: mysql-common
+Source: mysql-defaults (1.0.5ubuntu2)
+Version: 5.8+1.0.5ubuntu2
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 34
+Conflicts: mariadb-server-5.5, mysql-common-5.6, mysql-server-5.5, percona-xtradb-cluster-common-5.5
+Breaks: mariadb-common (<< 10.0.20-3~)
+Replaces: mariadb-server-5.5, mysql-common-5.6, mysql-server-5.5, percona-xtradb-cluster-common-5.5
+Provides: mysql-common-5.6
+Multi-Arch: foreign
+Priority: 0
+Section: utils
+Filename: pool/main/m/mysql-defaults/mysql-common_5.8+1.0.5ubuntu2_all.deb
+Size: 7496
+SHA512: 441ec8478fee61774e414b85129f42dcf43518d6b2bca3564730ae1fb10931a6f7118fd61c565d95efbb9b36da92ff2ad9ab252eefa40f9c8b9ae843c0c1177f
+SHA256: 9fc5306519ff0648d3dfb9920db765c90e6982eec7fbb9fe52f0c351e9be7c9e
+SHA1: 19d7e82d4852b72bacc9a94882f107268edf2e9d
+MD5sum: cc1f61149a84c2ddd804787e2b224b2a
+Description: MySQL database common files, e.g. /etc/mysql/my.cnf
+ MySQL is a fast, stable and true multi-user, multi-threaded SQL database
+ server. SQL (Structured Query Language) is the most popular database query
+ language in the world. The main goals of MySQL are speed, robustness and
+ ease of use.
+ .
+ This package includes files needed by all versions of the client library,
+ e.g. /etc/mysql/my.cnf.
+Original-Maintainer: Debian MySQL Maintainers <pkg-mysql-maint@lists.alioth.debian.org>
+
+Package: mysql-server
+Source: mysql-8.0
+Version: 8.0.42-0ubuntu0.20.04.1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 35
+Depends: mysql-server-8.0
+Homepage: http://dev.mysql.com/
+Priority: 0
+Section: utils
+Filename: pool/main/m/mysql-8.0/mysql-server_8.0.42-0ubuntu0.20.04.1_all.deb
+Size: 9480
+SHA512: 689efb821e3f2ea379ce1821000589dd39452dfb9a9af4b9b89c5dc76854857fa9596012a03dd42212369ed7181bcc963f7f0eb38b139644b8f2d7eee4955d72
+SHA256: 32f77f045b827a660554c33755bec967a7630705d132ccda35cb19e946feef8e
+SHA1: 70660352d764fc8a648e9cd3a3373350e2478cd0
+MD5sum: df807fd9feb5409f548ca778662fc824
+Description: MySQL database server (metapackage depending on the latest version)
+ This is an empty package that depends on the current "best" version of
+ mysql-server (currently mysql-server-8.0), as determined by the MySQL
+ maintainers. Install this package if in doubt about which MySQL
+ version you need. That will install the version recommended by the
+ package maintainers.
+ .
+ MySQL is a fast, stable and true multi-user, multi-threaded SQL database
+ server. SQL (Structured Query Language) is the most popular database query
+ language in the world. The main goals of MySQL are speed, robustness and
+ ease of use.
+Original-Maintainer: Debian MySQL Maintainers <pkg-mysql-maint@lists.alioth.debian.org>
+
 Package: neofetch
 Version: 7.0.0-1
 Architecture: all
@@ -608,25 +808,263 @@ Description: Shows Linux System Information with Distribution Logo
  and display it on the terminal next to an image, it could be your
  distributions logo or any ascii art of your choice.
 
+Package: network-manager-config-connectivity-ubuntu
+Source: network-manager
+Version: 1.22.10-1ubuntu2.4
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 51
+Depends: network-manager (>= 1.22.10-1ubuntu2.4)
+Multi-Arch: foreign
+Homepage: https://wiki.gnome.org/Projects/NetworkManager
+Priority: 0
+Section: utils
+Filename: pool/main/n/network-manager/network-manager-config-connectivity-ubuntu_1.22.10-1ubuntu2.4_all.deb
+Size: 2520
+SHA512: 09eeca5c5cad956d965b39fb317369b0ccdd350c0da9ddaa778b681bd7d4fb2751f2f8ccba3fb3fc3abef558e3b06a5dfb0970bbd9d9ff9300225e13f258a8e0
+SHA256: c3652a8ccddfebad490810b7a548f4e3f9b32acdad6329e9d6d2ec9eae76eae7
+SHA1: 992d069f3e5317ac5ceac09571e629c80e023db6
+MD5sum: d51e4f0b8f60090db22a0440687d12d3
+Description: NetworkManager configuration to enable connectivity checking
+ This package contains a configuration file which enables NetworkManager's
+ connectivity checking functionality.
+ .
+ NetworkManager will try to connect to an Ubuntu server to determine the
+ connection status.
+ .
+ This is particularly useful for captive portal detection.
+ .
+ No user data is transmitted in the connectivity checks, but merely contacting
+ the Ubuntu connectivity check servers reveals that the user is running an
+ Ubuntu(-based) operating system with NetworkManager.
+Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
+
+Package: network-manager-dev
+Source: network-manager
+Version: 1.22.10-1ubuntu2.4
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 2096
+Multi-Arch: foreign
+Homepage: https://wiki.gnome.org/Projects/NetworkManager
+Priority: 0
+Section: utils
+Filename: pool/main/n/network-manager/network-manager-dev_1.22.10-1ubuntu2.4_all.deb
+Size: 176708
+SHA512: bb9b5331a58d84dc98421eada1286e767f418b7682a1967b3e2d4c4d5afc0c5a6483f47919061cd6cb3dd6be57a9701e3fc41a1108751c8dfb200d796adba3fc
+SHA256: c868495803e7b6d8d16f6bba6d716356f485421552fca612b1fc749568918ac9
+SHA1: 1694041d795f2f94cc5998323a9220ccc5f49975
+MD5sum: 3500308b0a96bd89fa57b224e9f647d1
+Description: network management framework (development files)
+ This package provides documentation of the NetworkManager D-Bus API, the
+ configuration formats and command line utilities.
+ It also provides D-Bus introspection files.
+Original-Maintainer: Utopia Maintenance Team <pkg-utopia-maintainers@lists.alioth.debian.org>
+
+Package: networkd-dispatcher
+Version: 2.1-2~ubuntu20.04.3
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 69
+Depends: dbus, gir1.2-glib-2.0, python3-dbus, python3-gi, python3:any
+Suggests: iw | wireless-tools
+Homepage: https://github.com/craftyguy/networkd-dispatcher
+Priority: 0
+Section: utils
+Filename: pool/main/n/networkd-dispatcher/networkd-dispatcher_2.1-2~ubuntu20.04.3_all.deb
+Size: 15476
+SHA512: d14c63255ef2e364f2a5479397038b7b9b9cd33b767a6c4f7a76f181136a43e52a8546a8c82ac936a53faeaea1b14dea2a9768506135f5679a434e8e3638ed3f
+SHA256: 9ebc149cbb2420ede9b3690687a427b95271d637a8151410f04d4c430b005f91
+SHA1: 0523ae32fd029acf0e1b7a298a8b96ef1b145f9d
+MD5sum: 61117ad62d4a4fe9e1805b950065faf6
+Description: Dispatcher service for systemd-networkd connection status changes
+ Networkd-dispatcher is a dispatcher daemon for systemd-networkd
+ connection status changes. It is similar to NetworkManager-dispatcher,
+ but is much more limited in the types of events it supports due to the
+ limited nature of systemd-networkd.
+Original-Maintainer: Julian Andres Klode <jak@debian.org>
+
+Package: nginx
+Version: 1.18.0-0ubuntu1.7
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 45
+Depends: nginx-core (<< 1.18.0-0ubuntu1.7.1~) | nginx-full (<< 1.18.0-0ubuntu1.7.1~) | nginx-light (<< 1.18.0-0ubuntu1.7.1~) | nginx-extras (<< 1.18.0-0ubuntu1.7.1~), nginx-core (>= 1.18.0-0ubuntu1.7) | nginx-full (>= 1.18.0-0ubuntu1.7) | nginx-light (>= 1.18.0-0ubuntu1.7) | nginx-extras (>= 1.18.0-0ubuntu1.7)
+Homepage: http://nginx.net
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/nginx_1.18.0-0ubuntu1.7_all.deb
+Size: 3620
+SHA512: e279cdda7326d7e276ce4d4797c85b8cf26f489a4609001ebcb475cf9429113e79a4024c6d8294400998ab5f3a357adae2f1f6cbe496b85cbf752b1407cc524c
+SHA256: 36dd4e31cc25944fcdb5cc13690cc25bfb508cf629ebdfb5eabf56cf1378c9b3
+SHA1: dea2a871a440b483afb53ec6ba60e4a259fc8525
+MD5sum: 61f928f7f43b54c76a08b37670603c41
+Description: small, powerful, scalable web/proxy server
+ Nginx ("engine X") is a high-performance web and reverse proxy server
+ created by Igor Sysoev. It can be used both as a standalone web server
+ and as a proxy to reduce the load on back-end HTTP or mail servers.
+ .
+ This is a dependency package to install either nginx-full (by default),
+ nginx-light or nginx-extras.
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@lists.alioth.debian.org>
+
+Package: nginx-common
+Source: nginx
+Version: 1.18.0-0ubuntu1.7
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 274
+Depends: lsb-base (>= 3.0-6), debconf (>= 0.5) | debconf-2.0
+Suggests: fcgiwrap, nginx-doc, ssl-cert
+Multi-Arch: foreign
+Homepage: http://nginx.net
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/nginx-common_1.18.0-0ubuntu1.7_all.deb
+Size: 37780
+SHA512: bfc247f4aa9bfa253e3aaae373a4ee77ccb2aacad84cc0d63865568e720cdd18eacc424658cb8eff14a5a05eb26833bfb6fb862b1a46e53adc1edc913bd309d6
+SHA256: 03743a0a5a37c7ceeb7441a632395807a5def33f631ca3a8343af40d70f70a1f
+SHA1: 7a1ca554d33530e71322bdea0653403a96f033ce
+MD5sum: 0342a1fc1a5ceaa81a55e5e45c14e54a
+Description: small, powerful, scalable web/proxy server - common files
+ Nginx ("engine X") is a high-performance web and reverse proxy server
+ created by Igor Sysoev. It can be used both as a standalone web server
+ and as a proxy to reduce the load on back-end HTTP or mail servers.
+ .
+ This package contains base configuration files used by all versions of
+ nginx.
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@lists.alioth.debian.org>
+
+Package: nginx-doc
+Source: nginx
+Version: 1.18.0-0ubuntu1.7
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 70
+Multi-Arch: foreign
+Homepage: http://nginx.net
+Priority: 0
+Section: utils
+Filename: pool/main/n/nginx/nginx-doc_1.18.0-0ubuntu1.7_all.deb
+Size: 17088
+SHA512: 6cfea5124b209185ff751ee29d07d08118a6b98f26574a7f6b16b59f6d1a355387a613e153b2f112c99754a189a19a6232bd344c913a4b02fa5bb4f9021af6ee
+SHA256: e28a626e5a263f1bedd892e5b7b24404fd402cf7c991375ae515c86fbaf75769
+SHA1: 468d8853f183e3067ea6fa94db122ebafa83b3ee
+MD5sum: e11b3f00e45ec010ddb9e13ac735e287
+Description: small, powerful, scalable web/proxy server - documentation
+ Nginx ("engine X") is a high-performance web and reverse proxy server
+ created by Igor Sysoev. It can be used both as a standalone web server
+ and as a proxy to reduce the load on back-end HTTP or mail servers.
+ .
+ This package provides extra documentation to help unleash the power of Nginx.
+Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@lists.alioth.debian.org>
+
 Package: opengist
-Version: 1.7.3
+Version: 1.10.0
 Architecture: arm64
 Maintainer: Thomas Miceli <thomiceli@github.com>
 Depends: adduser
 Homepage: https://github.com/Aetherinox/opengist-debian
 Priority: 0
 Section: utils
-Filename: pool/main/o/opengist/opengist_1.7.3_arm64.deb
-Size: 18699014
-SHA512: 4fdff609b0452210d01471e20fbf81ade8c883df8ce0b510cc5471b62834c7bf9341921c6d507f96de8c3970a8de2b4379a3dece1dfaad76e6b4b46c921ac0f8
-SHA256: a5f4a7531874f2e50c73c869a9b729abc8da12f944777d38b042b88551d54a1b
-SHA1: dcb8b3c449e130f41854ea761c298e6e66576827
-MD5sum: abbd077cae7b09e1ceef0053b6e6dd31
+Filename: pool/main/o/opengist/opengist_1.10.0_arm64.deb
+Size: 23918552
+SHA512: ce60d3629451e32c9cd686e8507363bb78848a13a943542315331863122c3acbf475316b98a2b805aed3ee3c396edd997e81aaeb1af578422ca1337ff4b142be
+SHA256: c4946ec447a91ef4626a1dfefc9094e379fbd05af052db2e30b1636934f93e20
+SHA1: dc58dbed47e06d3cd88402813abdf45b8ecbf610
+MD5sum: 203485e87e8331bc96e7d3704653282c
 Description: Self-hosted pastebin powered by Git, open-source alternative to Github
  Gist. Opengist is a self-hosted pastebin powered by Git. All snippets are
  stored in a Git repository and can be read and/or modified using standard Git
- commands, or with the web interface. It is similar to GitHub Gist, but 
+ commands, or with the web interface. It is similar to GitHub Gist, but
  open-source and could be self-hosted.
+
+Package: pass
+Source: password-store
+Version: 1.7.3-2
+Architecture: all
+Maintainer: Colin Watson <cjwatson@debian.org>
+Installed-Size: 153
+Depends: gnupg, tree (>= 1.7.0)
+Recommends: git, qrencode, xclip
+Suggests: python, python3, perl, libxml-simple-perl, ruby
+Homepage: https://www.passwordstore.org/
+Priority: 0
+Section: utils
+Filename: pool/main/p/password-store/pass_1.7.3-2_all.deb
+Size: 37560
+SHA512: 161b2c3be4445de861f27582659634da00bd45e1ba395650f19e9114c963c1b5c7948ba70a1332c96d5c7666c6b4b2d034987fa71fbafce4f161bb222f894e0e
+SHA256: c626e383ab65933bd855c3fb12b484a295e83560fcabf3e4ec1d46a9282def64
+SHA1: 9022dde2fc0e8a66ee1c3f953ee72b8ab19a86fe
+MD5sum: 87647250b1290adc4f4fe0dfcb62b266
+Description: lightweight directory-based password manager
+ Stores, retrieves, generates, and synchronizes passwords securely using
+ gpg and git.
+
+Package: php
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php7.4
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php_7.4+75_all.deb
+Size: 2712
+SHA512: 128ef02eadd6939d4661d339edc67159c44eb26358867d685d9485ec92f71d641831a76b47c69f26339edcceb24d6f27c2f0aaeaffc22675dcae628aedd200d9
+SHA256: 82c52f6820151da5a00e33bc8c0d00f5c33d771dccdd5fc54a9f5e0fdd0e4f57
+SHA1: 7a00635e7c99e1f7b4ee21ac276589f7bc028527
+MD5sum: 7ca5d4bcba640de5339d83a20a29761b
+Description: server-side, HTML-embedded scripting language (default)
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on latest stable
+ PHP version (currently 7.4).
+
+Package: php-all-dev
+Source: php-defaults (75)
+Version: 2:75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php7.4-dev, php7.4-json
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-all-dev_75_all.deb
+Size: 2616
+SHA512: 7f113ac41b3ad1f710c13405e70781ae7622dfd0fda0d3f87f130ad460963c9ded5dd1b92ddd08f32eec0988cc87d18d24a26470216e64cffb85937e882c065d
+SHA256: 9b2b6e8de4c40c076818110e6e285b6fa24d11dd126b7996beca8e9376dacab0
+SHA1: 95796f740671ceb58057cebbe6c1243e0981b16f
+MD5sum: 88a516ae8fc75839e3d8c3a41355dceb
+Description: package depending on all supported PHP development packages
+ This package is a dependency package used as a build dependency for other
+ packages to avoid hardcoded dependencies on specific PHP development
+ packages.
+
+Package: php-amqplib
+Version: 2.11.0-2
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP PEAR Maintainers <pkg-php-pear@lists.alioth.debian.org>
+Installed-Size: 410
+Depends: php-common, php-mbstring, php-phpseclib (>= 2.0.0), php-phpseclib (<< 3~~)
+Homepage: https://github.com/php-amqplib/php-amqplib
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-amqplib/php-amqplib_2.11.0-2_all.deb
+Size: 53952
+SHA512: 725aedec664475fd5376e913c196ef987c72b1f59b8bbdaf312dd07a186aa75fb105becb6e1fede0b49eaba75da8ca2467f4c38567be534d60d33c00b20a136f
+SHA256: 7853669b691d97c57b3dd93b5f066e9a264f7279236b5e0de7e6263261394f90
+SHA1: 22e8447c62a61b84deffb36441f07afed22289e6
+MD5sum: de7d75cd2f6491e3f0f3dbc91325d52c
+Description: pure PHP implementation of the AMQP protocol
+ Formerly videlalvaro/php-amqplib. This library is a pure PHP implementation of
+ the AMQP protocol. It's been tested against RabbitMQ.
 
 Package: php-bacon-qr-code
 Source: baconqrcode
@@ -648,6 +1086,139 @@ MD5sum: bc78c2412df75777d42789d1438cb0bc
 Description: QR Code Generator for PHP
  Port of QR code portion of the ZXing library. It currently only features the
  encoder part, but could later receive the decoder part as well.
+
+Package: php-bcmath
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php-common, php7.4-bcmath
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-bcmath_7.4+75_all.deb
+Size: 2004
+SHA512: f819e6120a557bbab7353b93dd026c70deffa6e89c0da4fb047234376f98d5a2df0cb0dde4d28e3be8e2a633be7e601c115f54e1caa39476b332db28a1a7ce02
+SHA256: 5807629a575c13c0987e39dce6a5fb1f80fc9a9da6936f67849c446117654218
+SHA1: 7f96ea0fbd0b42d4555d9eebd0829f5271261e56
+MD5sum: 5054e65e20dbf5cf3d9ba421d0d2777a
+Description: Bcmath module for PHP [default]
+ This package provides a Bcmath module for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Debian's default
+ PHP version (currently 7.4).
+
+Package: php-bz2
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php-common, php7.4-bz2
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-bz2_7.4+75_all.deb
+Size: 2004
+SHA512: 8d710fb0d96652eed20e6e7f44f73681894a2a01cc0697f9bfe85080b36983df359bcd4a9daba0375a5d572eee4fbee90466653764f65a7f2a35239581348d39
+SHA256: 7a2ec05844eae14b6e4bf82e43e9483f966da8d3b29491e8b0cdd94d2c9bc154
+SHA1: e63a1f30548d89314af3dbe7666e205a8e0a13b8
+MD5sum: 93fe120d52917b5e0fcd7286ef36d2f8
+Description: bzip2 module for PHP [default]
+ This package provides a bzip2 module for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Debian's default
+ PHP version (currently 7.4).
+
+Package: php-cas
+Version: 1.3.8-1ubuntu0.20.04.1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 448
+Depends: php, php-curl
+Breaks: ocsinventory-reports (<= 2.5+dfsg1-1ubuntu0.1~)
+Homepage: https://github.com/apereo/phpCAS
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-cas/php-cas_1.3.8-1ubuntu0.20.04.1_all.deb
+Size: 56472
+SHA512: 7f911ff0b0fbba320adaf9d5cf8a64968e85b53e3188f310f1802cdf2306f9b3e00b38778004ad4cf15a4dd76fe8a8708555f51a3fe11dce363d1bf06745ab88
+SHA256: 0c2fd9f500cc713d0728e4ff265a3aefa6d460ccd781e3d7ddbe96558e7f34b0
+SHA1: 74a0fa00c8bee6fea1ccfbed65ff94a88e834ac2
+MD5sum: 1d040d06c7966bbb57d810dd80286ae2
+Description: Central Authentication Service client library in php
+ phpCAS is an authentication library that allows PHP applications to easily
+ authenticate users via a Central Authentication Service (CAS) server.
+ .
+ Please see the phpCAS website for more information:
+ .
+ https://wiki.jasig.org/display/CASC/phpCAS
+Original-Maintainer: Xavier Guimard <yadd@debian.org>
+
+Package: php-cgi
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php7.4-cgi
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-cgi_7.4+75_all.deb
+Size: 2876
+SHA512: 0cba86a6305eb3ce1285a759103893f36ae15da1dbd6c36ad91b9bd57afa2a2fab99baed7180fedd44d8166cdea548708c4896a8116c4e9a0717fda640a74657
+SHA256: 395bb540b30cd4100e6d36ad9319055ce8d6384a6f5dcd7bfa5b20515428624b
+SHA1: cb237a6312c9c03522a17093c23c68061211a7bc
+MD5sum: 94099308552640fb9dceb1c29ec7c154
+Description: server-side, HTML-embedded scripting language (CGI binary) (default)
+ This package provides the /usr/lib/cgi-bin/php CGI interpreter built
+ for use in Apache 2 with mod_actions, or any other CGI httpd that
+ supports a similar mechanism.  Note that MOST users probably
+ want the php-fpm package that provide FastCGI support.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on latest stable
+ PHP version (currently 7.4).
+
+Package: php-cli
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php7.4-cli
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-cli_7.4+75_all.deb
+Size: 2792
+SHA512: 4b0d70cd2168c7391f33c146d9a9345b0c6c556b50f675aec2f4003a37a45fefc1c11142ebf0b912283c5a2a20516fdb186bafb892ddc39f578ef782c10596a1
+SHA256: 64f9c8b1c79d8d093587719bf37962c6d5a1cea55b202a8261599832100c3525
+SHA1: c1946f04f762348814d2394846156a90e9a90781
+MD5sum: 18873fffa99a91089bafe99dfb080c88
+Description: command-line interpreter for the PHP scripting language (default)
+ This package provides the /usr/bin/php command interpreter, useful for
+ testing PHP scripts from a shell or performing general shell scripting tasks.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on latest stable
+ PHP version (currently 7.4).
 
 Package: php-code-lts-u2f-php-server
 Version: 1.2.1-2
@@ -672,6 +1243,57 @@ Description: Server side handling class for FIDO U2F registration and authentica
  authentication, allowing users of your service and/or application
  to link a hardware key to their account.
 
+Package: php-common
+Source: php-defaults (75)
+Version: 2:75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 73
+Depends: psmisc (>= 22.15-1~), sed (>= 4.1.1-1)
+Breaks: php-amqp (<< 1.7.0~alpha2-4~), php-apcu (<< 5.1.3+4.0.10-2~), php-apcu-bc (<< 1.0.3-2~), php-ast (<< 0.1.1-2~), php-geoip (<< 1.1.0-4~), php-gmagick (<< 2.0.1~rc3+1.1.7~rc3-2~), php-igbinary (<< 1.2.1-10-ge0e66b9+1.2.1-2~), php-imagick (<< 3.4.0~rc6-2~), php-memcache (<< 3.0.9~20151130.fdbd46b-2~), php-memcached (<< 2.2.0-95-g6ace07d+2.2.0-2~), php-mongodb (<< 1.1.2-3~), php-msgpack (<< 2.0.0+0.5.7-2~), php-radius (<< 1.4.0~b1-2~), php-redis (<< 2.2.7-355-g799e0bc+2.2.7-4~), php-rrd (<< 2.0.0+1.1.3-4~), php-smbclient (<< 0.8.0~rc1-2~), php-ssh2 (<< 0.12-39-g3dfe336+0.12-2~), php-uploadprogress (<< 1.0.3.1-4-g95d8a0f-2~), php-uuid (<< 1.0.4-2~), php-xdebug (<< 2.4.0~rc4-2~), php-zmq (<< 1.1.3-3~), php5.6-common (<< 5.6.18+dfsg-10~), php5.6-json (<< 1.3.9-2~), php7.0-common (<< 7.0.3-11~)
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-common_75_all.deb
+Size: 11948
+SHA512: ad9e6f4cece56856304be2ad53e1b13b1ec72f34735cf2c8c13c4f79c447e97c5fd326ee5c6d649ec911b45f885fcb04a9be2707b42ff8d994c1adb32da6cb4b
+SHA256: bbac6f060d1de7cc56a0d4c0e37469a7932533d963b459444eb9282493b74b00
+SHA1: 9dab8a532eb3e3df42a6395aa67475d760020179
+MD5sum: c6054836005eb7b0f42436e5799079b4
+Description: Common files for PHP packages
+ This package contains common utilities shared among all packaged PHP
+ versions.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+
+Package: php-curl
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php-common, php7.4-curl
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-curl_7.4+75_all.deb
+Size: 2000
+SHA512: f63f39e7e104194f7ee875f9a19436f6fef257b8679da1d5e3b8530729febe92c24ffb599dfd01ff5285d086a7db60879308e5a9d7e2918b5448c8544ddf80c2
+SHA256: ebfecaddf43ac67c70d3b1f235916a43c9638819c7215306805fafbb77fd53cb
+SHA1: 0c904e6f35eb16ab686ac2b9a66c46b1452428ed
+MD5sum: bcd6745a16ba975e641625bf69de411a
+Description: CURL module for PHP [default]
+ This package provides a CURL module for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Debian's default
+ PHP version (currently 7.4).
+
 Package: php-dasprid-enum
 Source: dasprid-enum
 Version: 1.0.3-3
@@ -694,6 +1316,752 @@ Description: PHP 7.1 enum implementation
  ignoring the rather incomplete SplEnum implementation
  which is only available as a PECL extension.
  This library tries to close that gap as far as PHP allows it to.
+
+Package: php-db
+Version: 1.9.3-1build1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP PEAR Maintainers <pkg-php-pear@lists.alioth.debian.org>
+Installed-Size: 563
+Depends: php-common, php-pear (>= 1.10.0)
+Homepage: https://pear.php.net/package/DB
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-db/php-db_1.9.3-1build1_all.deb
+Size: 71408
+SHA512: d55f16f4b902cf7ba0651dfd8b186b6a8aaa0ae957afeccd9d4d42a4fbf538c511e2ad62f8536a1f2dc4cb147cfe86ff849445a490ad11ff0b600443cdf7994e
+SHA256: d80b349ce6125e4ec45b376cc20ce72100628cd320971e5af25128e75276c7f7
+SHA1: db7a1634f85e39196bb1088b51c8ee118e26534c
+MD5sum: 1c21d87112988c3d87e85c87484c86a7
+Description: Database Abstraction Layer
+ DB is a database abstraction layer providing:
+  * an OO-style query API
+  * portability features that make programs written for one DBMS work with
+ other DBMS's
+  * a DSN (data source name) format for specifying database servers
+  * prepare/execute (bind) emulation for databases that don't support it
+ natively
+  * a result object for each query response
+  * portable error codes
+  * sequence emulation
+  * sequential and non-sequential row fetching as well as bulk fetching
+  * formats fetched rows as associative arrays, ordered arrays or objects
+  * row limit support
+  * transactions support
+  * table information interface
+  * DocBook and phpDocumentor API documentation
+ .
+ DB layers itself on top of PHP's existing
+ database extensions.
+ .
+ Drivers for the following extensions pass
+ the complete test suite and provide
+ interchangeability when all of DB's
+ portability options are enabled:
+ .
+ fbsql, ibase, informix, msql, mssql,
+ mysql, mysqli, oci8, odbc, pgsql,
+ sqlite and sybase.
+ .
+ There is also a driver for the dbase
+ extension, but it can't be used
+ interchangeably because dbase doesn't
+ support many standard DBMS features.
+ .
+ DB is compatible with PHP 5 and PHP 7.
+
+Package: php-dev
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php7.4-dev
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-dev_7.4+75_all.deb
+Size: 2744
+SHA512: 87cf86bf504a16371de2f00a76bb55dd520f88b4b3894699f1e2ebd24add08f9fa89cf4f95489a5e9d1a215c55078de6f5fdc475935b991b9116e7b4f7604405
+SHA256: 93302306d39372333fe6f200f631b8ed2e34194fbc0c6ea79658c5d13c0b5460
+SHA1: 8d2b7e9753e4f017928a44cc13b3c1e40e16d911
+MD5sum: d8c1d4f11d883633badeeb3497afde12
+Description: Files for PHP module development (default)
+ Headers and other PHP needed for compiling additional modules.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on latest stable
+ PHP version (currently 7.4).
+
+Package: php-email-validator
+Version: 2.1.17-1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP PEAR Maintainers <pkg-php-pear@lists.alioth.debian.org>
+Installed-Size: 132
+Depends: php-common, php-doctrine-lexer (>= 1.0.1), php-doctrine-lexer (<< 2~~), php-intl
+Homepage: https://github.com/egulias/EmailValidator
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-email-validator/php-email-validator_2.1.17-1_all.deb
+Size: 16244
+SHA512: 66d088ae9ad83b55831da3a18856b1081cf18cb13780d3c87b7f21682289c60cd0a960c8703ef41dd189ef1e1fb42101b33e1116c004c49045f4bc57c689fa75
+SHA256: 8eb912db221d9d6a983bf7983cd11f697e62dd48779559be5fbde2326dae2137
+SHA1: 484b27fe6d537279cea279c9a102e6016d09d04a
+MD5sum: d27c4874b6863a65f2c0b9c03440d369
+Description: A library for validating emails against several RFCs
+ EmailValidator can be used for strict (RFC compliant) email validation.
+
+Package: php-embed
+Version: 3.3.9-1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Teckids Debian Task Force <tdtf@lists.teckids.org>
+Installed-Size: 420
+Depends: php-common, php-curl, php-mbstring, php-composer-ca-bundle (>= 1.0), php-composer-ca-bundle (<< 2~~)
+Homepage: https://github.com/oscarotero/Embed
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-embed/php-embed_3.3.9-1_all.deb
+Size: 64272
+SHA512: 61ae6d5e9bfc3ceaf1729bea31f8f4bcee9a89e47c79b35a27dc42685337bce4e54b26751727c3363d3570086121b200f326ace2fe21e3ef0bc029195af852f4
+SHA256: f258655160f37e26429fba7be00efdb6996f47c69fe85b09044f7c545c756537
+SHA1: 9ac85cb68293f0a9e8a2cba9de657aac3adf58df
+MD5sum: c938087768772d84ee2838c2bef79eb6
+Description: Get info from any web service or page
+ PHP library to get information from any web page (using oembed,
+ opengraph, twitter-cards, scrapping the html, etc). It's compatible
+ with any web service (youtube, vimeo, flickr, instagram, etc) and
+ has adapters to some sites like (archive.org, github, facebook, etc).
+
+Package: php-enchant
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php-common, php7.4-enchant
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-enchant_7.4+75_all.deb
+Size: 2008
+SHA512: 0296fd0effdff65897c536b6b5bec8f919398d211dddb5b2dde208b7b6ace4307fb56ddb0b31ed13754235d4155f3fe5655b6d36841a49d7b8636541d1495f84
+SHA256: 8c47c3ea11bf3bc146e1f8ce31c58a20c6eaea6566999f0b11e5e0f2c8466f5c
+SHA1: dcfbfb9988340008d41c6c3d8c9190fb26515276
+MD5sum: 025ec703d69b716bca288f28d82bf881
+Description: Enchant module for PHP [default]
+ This package provides a Enchant module for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Debian's default
+ PHP version (currently 7.4).
+
+Package: php-fpm
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php7.4-fpm
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-fpm_7.4+75_all.deb
+Size: 2792
+SHA512: 8ff9af30b25327c0b459080117f8de52b99d7ff2fe969e549339fe149a3cb74e89be1e0c520f11a8e1bee4038144fc441cf232e2647a52603b04d8916d4d9678
+SHA256: b774536584b4bf61a4d05b27541b2eb1f17dc2fe1621a6f680c4f1474bb13446
+SHA1: 0e793f0ba5db53c7c7b3b23aa4a94ffa3d784b61
+MD5sum: d8bcf70f88eee0f8cf4be78fa8e939ec
+Description: server-side, HTML-embedded scripting language (FPM-CGI binary) (default)
+ This package provides the Fast Process Manager interpreter that runs
+ as a daemon and receives Fast/CGI requests.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on latest stable
+ PHP version (currently 7.4).
+
+Package: php-fxsl
+Version: 1.1.1-4
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP PEAR Maintainers <pkg-php-pear@lists.alioth.debian.org>
+Installed-Size: 40
+Depends: php-common, php-xml
+Homepage: https://github.com/theseer/fXSL
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-fxsl/php-fxsl_1.1.1-4_all.deb
+Size: 7812
+SHA512: 4f3d36c16606765e15b52def79b1b3577fbcdd746e5328611325ee548a1d3ac7fc5c0de1eda076e9c974b6ef37ff0bb15746408cd10cc426e07dcb7e7130e915
+SHA256: a4fbf31e83a5754e1d5ffa49fac1c07463d21552379f388ed4f53a614dd7e12c
+SHA1: b550f341b1f6f3b98d3206649beebbc2990bfc22
+MD5sum: 3355cbdedd5fb5a6fc4d04f6287966e5
+Description: XSL wrapper and extension to XSLTProcessor
+ An XSL wrapper / extension to the PHP 5.x XSLTProcessor with Exception and
+ extended Callback support.
+ .
+ The fXSL classes extend the standard XSLTProcessor to use exceptions at
+ all occasions of errors instead of PHP warnings, notices, or semi
+ completed transformations. They also add various custom methods and
+ shortcuts for convenience and to allow a nicer API to implement
+ callbacks to the PHP stack.
+
+Package: php-gd
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php-common, php7.4-gd
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-gd_7.4+75_all.deb
+Size: 2000
+SHA512: 911ae65d73bcc5b3f025c190780a0e645bc1cfa183ad1892e578b750149b478c787cd5399d63226f40039abd531b2e165307b5bf28b916003198dea94c1da4aa
+SHA256: ecc7517cbac0d19661e4444fec42370535de1295d821420121d2137184fbc2f4
+SHA1: 3efc30bbf84e7b8bef8c4825447fa3f7cbb4f165
+MD5sum: 243d0b4e99a5b602499a12c12ee09961
+Description: GD module for PHP [default]
+ This package provides a GD module for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Debian's default
+ PHP version (currently 7.4).
+
+Package: php-gmp
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php-common, php7.4-gmp
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-gmp_7.4+75_all.deb
+Size: 1996
+SHA512: a3453211a95fa25beceac8860022a6efca2ac423b291b561966b3455fdc4270a50dd318dee661bfefe3c37686de56b62062664bb9c3b18a34ffde154b3421b19
+SHA256: 00b6aa37655008ee60a7d97170587001f5dafb4e1550fb89e82ac3e19455c1c2
+SHA1: 8881b33a73d3367e2f3020a7beae1421628dcb27
+MD5sum: 37147a8916a0fde97c6b9df25c46adcf
+Description: GMP module for PHP [default]
+ This package provides a GMP module for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Debian's default
+ PHP version (currently 7.4).
+
+Package: php-imap
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php-common, php7.4-imap
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-imap_7.4+75_all.deb
+Size: 2004
+SHA512: 53d7e6c37ad5ab9da2bd6e8ba84f4659cc90a2ecff521094e4632eb2f995912abde66131de9a622a502ef327f6331e2aa8a56b04e5c3bd1197ae772b26ee37bf
+SHA256: bc6f57077b01b63c5020f034bb59dc5607d59fd368b61e68375ac8b724c39b07
+SHA1: a3816fd36e88b242ffba806024ab4715cd059052
+MD5sum: 5d557280f88988f4514624608a667382
+Description: IMAP module for PHP [default]
+ This package provides a IMAP module for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Debian's default
+ PHP version (currently 7.4).
+
+Package: php-interbase
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php-common, php7.4-interbase
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-interbase_7.4+75_all.deb
+Size: 2008
+SHA512: 50486b356e8ca47bf6557329f9eb8b781895e0bf63f2c166cac807ba8f1a1602c32ee07131035a56f91d9e635332ede4f6126b248831d03073c89266ff8037ff
+SHA256: e14fd9b7d7cd3deab43212d61ceee44f72309a35ac42971a0b4b9dd7de3914b7
+SHA1: 3675bdacaa9a0d29cf263ef883901fac1b7371ad
+MD5sum: d300bcd9a06aa5a66ee090e9905f4b6f
+Description: Interbase module for PHP [default]
+ This package provides a Interbase module for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Debian's default
+ PHP version (currently 7.4).
+
+Package: php-intl
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php-common, php7.4-intl
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-intl_7.4+75_all.deb
+Size: 2012
+SHA512: e760ccdd1d445d622a584b9e2395bdf4d5f9455bf31e3a57f12e827fa37c16d12e699dd51a5df1f2a6b9e26161cd463b2c71ba4644bcff57fc50a5780b7d11fd
+SHA256: c292f1e87f092f4b97c6b508b891ec13e5ed937c210ca639fca96719f6089ed6
+SHA1: e267b7964913cfe0cb3ff565c8a12744a14babfc
+MD5sum: d2a0128f674ddc95938edc376f9ab3ec
+Description: Internationalisation module for PHP [default]
+ This package provides a Internationalisation module for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Debian's default
+ PHP version (currently 7.4).
+
+Package: php-ldap
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php-common, php7.4-ldap
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-ldap_7.4+75_all.deb
+Size: 2004
+SHA512: e30e226ffd4da0e5217213fe27d97d07a9be3c8ef3352fa4e3697f29cf369a55d61c67be4af64cda777fa1adc3924c582030f106bea515fcfce36dc4dd447755
+SHA256: 8c5b7b1e45c16bc630c1152cdbc53c7b3b354f9d81b2d3d66478f3fd8dfd7fe5
+SHA1: 1acdf42f840250b4d22c1947d7dbb9852ee5c8c2
+MD5sum: 108638a6e68ba7266985182a507bf1b8
+Description: LDAP module for PHP [default]
+ This package provides a LDAP module for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Debian's default
+ PHP version (currently 7.4).
+
+Package: php-mbstring
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php-common, php7.4-mbstring
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-mbstring_7.4+75_all.deb
+Size: 2012
+SHA512: 545360cc2b2e749241cdb5bf40cea27bf97b8de04710b6cb26e4157e3dc42cbf82e77cfe767af995a94b9321876c3d3ce5afcdd425030456dd63c3a65c4bfd65
+SHA256: ef5f5eb793592cc8616bf6ca415ed7d095b7e5ce6595fd8a2e0afdcfcf3c238a
+SHA1: 5d768d3ce7e8ae37f0f0a841bf125f755ec851cc
+MD5sum: ebd1e4c546c3343c51c229f56192d270
+Description: MBSTRING module for PHP [default]
+ This package provides a MBSTRING module for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Debian's default
+ PHP version (currently 7.4).
+
+Package: php-mysql
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php-common, php7.4-mysql
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-mysql_7.4+75_all.deb
+Size: 2000
+SHA512: 4bcc39f08691d9de338f1de3cbb8008b4d7c2233a23d611ec48ffd31a2e984ff22b62f65695cb300129e8e0ea0a8cea5b6eee70900d6546ce625b7cb534583f8
+SHA256: 082665212adffa064ff86b47f9dd2e8c4616e33702cd5e04ee7e4e8927543b93
+SHA1: 725266c743b5629dfb0f578d1e6eafd8340b212c
+MD5sum: 17e0d3f87861f893d855950a52f1b733
+Description: MySQL module for PHP [default]
+ This package provides a MySQL module for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Debian's default
+ PHP version (currently 7.4).
+
+Package: php-odbc
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php-common, php7.4-odbc
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-odbc_7.4+75_all.deb
+Size: 2000
+SHA512: e69638e0829d82b2e7e4a6c3fc440a97609fd61bc237de3af5cc57c1e3728b09f54c04f0d3e0b26d68e61de10f64b6deaa1770f4eec4b034bbbd529b47f386ad
+SHA256: 2f642acecf3b446f9d5b243cd3b8ee664e0f79b48220d6f64e0929427b4f1e0a
+SHA1: 1acdab6f8f8300155fd99b1d5745f9946f94d6fc
+MD5sum: d293cce8dca4d8ae1749f554acb11cd2
+Description: ODBC module for PHP [default]
+ This package provides a ODBC module for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Debian's default
+ PHP version (currently 7.4).
+
+Package: php-pgsql
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php-common, php7.4-pgsql
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-pgsql_7.4+75_all.deb
+Size: 2008
+SHA512: fef1d1440b837cc86dc05f7106ab48e219eccea6f517d3b32ae348591fbd17b9a79f497538090d389aeb6b81612d3b8232ee403b778e99986b153ce8d7d8f085
+SHA256: 3d825273ca396ef83ee0d546d1520cfa54df7be871df5f0161b389bb7904c13c
+SHA1: f39ec7a4a3beb592e07fb4bb7425d30cadd68494
+MD5sum: 0097788d5c4972f5e1bf8a04ebdf2b02
+Description: PostgreSQL module for PHP [default]
+ This package provides a PostgreSQL module for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Debian's default
+ PHP version (currently 7.4).
+
+Package: php-phpdbg
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php7.4-phpdbg
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-phpdbg_7.4+75_all.deb
+Size: 2796
+SHA512: ad8ee419bc9dccff80767787d73b68ee3b58aca952620296ba679f04af485982b9c517097e96fe38425a5506dd271f8d07e4206bdb2dbe3720330c8055fdd8b5
+SHA256: 5926ff3b3d42f4e56ec538d19303205d8e6fa1a9ab77d599cb4e4b6b67e38bfe
+SHA1: 8d8029f4147b39ff35fd1ff09aa0769d400c576b
+MD5sum: dd744dcb335ee4f5edfc4316fb854367
+Description: server-side, HTML-embedded scripting language (PHPDBG binary) (default)
+ This package provides the /usr/bin/phpdbg command interpreter, useful for
+ stepthrough debugging of PHP code.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on latest stable
+ PHP version (currently 7.4).
+
+Package: php-pspell
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php-common, php7.4-pspell
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-pspell_7.4+75_all.deb
+Size: 2004
+SHA512: f973cf16d9e57e33c870f336676b56f1841e79e41705d3e59a53aa810fbe675c73423c080df2cdca846358da5c7ffa1ea69e0b2492b87a2a864fb31d85adec65
+SHA256: 377c44591d530c780bf07d36177936ef1386a02db4336f09768ce2a6736d7ed0
+SHA1: 1da0a9629649912756f838c7fd0552d84d23da97
+MD5sum: d91bfb257d7359fa08ac76244f41eaaf
+Description: pspell module for PHP [default]
+ This package provides a pspell module for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Debian's default
+ PHP version (currently 7.4).
+
+Package: php-readline
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php-common, php7.4-readline
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-readline_7.4+75_all.deb
+Size: 2008
+SHA512: ce0ba22d689754230d09b0058b4593aa76a5dac6c5b11d9a65308c8c39e509ed9c8de30d12bc9e3f953b3b45d4991bc4efaa49d438e8d796b25f68ba6de1c9f1
+SHA256: 4e23c322dfe48b514c0a1a0efe16b0356aced8a871e373b40f4cdda44f95e9de
+SHA1: 7ab7476d9a2fff43e88de33690ea3a3c3093c2d3
+MD5sum: 80e2bff68f966b611cf5b3d55bd6e1d9
+Description: readline module for PHP [default]
+ This package provides a readline module for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Debian's default
+ PHP version (currently 7.4).
+
+Package: php-snmp
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php-common, php7.4-snmp
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-snmp_7.4+75_all.deb
+Size: 2004
+SHA512: 5252ced614bb40475a727effa85391e26321786e543058ac1b3744a13dd57de4a202d82ef1f1cbcc14ef06f7f1745ab13458aef6922d96479d61fd8e2bf95a04
+SHA256: b8d39b638fd8e01568153c6565d46ef523018b3beaabbb7d220f7b231596fd5d
+SHA1: 4aad596633fee83b520b3adc5533f1a385194377
+MD5sum: 8b5878a2162b1195c97de038006be715
+Description: SNMP module for PHP [default]
+ This package provides a SNMP module for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Debian's default
+ PHP version (currently 7.4).
+
+Package: php-soap
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php-common, php7.4-soap
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-soap_7.4+75_all.deb
+Size: 2004
+SHA512: df5a4435c6f34d363a89ca8e96c04574ab3663af27f9e85c481b06ffc866857e7c70421ed39bdf2c0921e9ae492d46a2a4e40d4391ffe618de39900592919e74
+SHA256: c6823fd8718645a2cbe6ba0ea487ac35adb34fdf8c40af1b5da484ad4f4cd89e
+SHA1: a0bfdea0f76fa8ae7cadeb9b39e78f80b51cf04f
+MD5sum: 493b710d83bb468d9c845ed1796732b6
+Description: SOAP module for PHP [default]
+ This package provides a SOAP module for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Debian's default
+ PHP version (currently 7.4).
+
+Package: php-sqlite3
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php-common, php7.4-sqlite3
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-sqlite3_7.4+75_all.deb
+Size: 2004
+SHA512: 189427a8cba92abc884bc5483ccdce46895c32fba461d187248cc0b1e10b6582b84014fbaafba433128e5240b0280d7585225ae105f367147a38cd181200430e
+SHA256: 1bfc845d5ac4d052cb9562b9123ced45acda09ebfcf6021b62133c741b8cdf29
+SHA1: dacf69663329447673a0fd261bcfc6b133fa59de
+MD5sum: ad15c584fbb451e54a49ca2e255e0bc3
+Description: SQLite3 module for PHP [default]
+ This package provides a SQLite3 module for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Debian's default
+ PHP version (currently 7.4).
+
+Package: php-sybase
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php-common, php7.4-sybase
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-sybase_7.4+75_all.deb
+Size: 2004
+SHA512: 1bcde63c1b8edd5c073c11c75b2ad8c6241a8fd5ce87d0c7c5f65bf3b1da2e4e3a184ead6b1590ce4727eaadbf400bfa39502981a0871063cb6c71117de141f7
+SHA256: b5ec35ea3d9fb103addae44cf780bbf3a3fee8d104469838ee00fc23b4cd0914
+SHA1: 6fcf8c28ec1530fe13b7673541625d5a6f06bd59
+MD5sum: f14b17e9cb01cae527a6ca421bc7e249
+Description: Sybase module for PHP [default]
+ This package provides a Sybase module for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Debian's default
+ PHP version (currently 7.4).
+
+Package: php-tidy
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php-common, php7.4-tidy
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-tidy_7.4+75_all.deb
+Size: 2000
+SHA512: 06dfde713b1141f226677ee1f0e3c2ad5484d1e3a630d2523767cda1a2f74fcd31a40f99e1ed75957efb0beb211acdb64a5469fd6952d8b6c0ee957247ced32f
+SHA256: 468d822ae39145af600f5a66c862dd5b24c8ea24f1017bf6cdb472b02a94521a
+SHA1: bcbf3de2975fa80e2174053ce380609028a55f35
+MD5sum: 2b59b6ab492306b552fb2a188a9a1a30
+Description: tidy module for PHP [default]
+ This package provides a tidy module for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Debian's default
+ PHP version (currently 7.4).
+
+Package: php-xml
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php-common, php7.4-xml
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-xml_7.4+75_all.deb
+Size: 2028
+SHA512: ba13888ad9666d826dfabd8919bcb7e9bcf018af12543e8017a28598a92de7ae46ddfae7281b567b3f1e1454171c905512a54ef58b62854daf60316122ce25a3
+SHA256: 51b4fe477b57e0aa253b5aceccc0ed907270dfb73db39cca01cee68d9790d06a
+SHA1: e0bc1fe237cd300afa08654111c7f17b33f0f1a5
+MD5sum: e832269a4cc77a3ed1ef14630a8e407f
+Description: DOM, SimpleXML, WDDX, XML, and XSL module for PHP [default]
+ This package provides a DOM, SimpleXML, WDDX, XML, and XSL module for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Debian's default
+ PHP version (currently 7.4).
+
+Package: php-xmlrpc
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php-common, php7.4-xmlrpc
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-xmlrpc_7.4+75_all.deb
+Size: 2008
+SHA512: 9d1412da0863deb2d5a2b73956c088a0edd2f9a928497cca8264417992c9ae6ede68564a1bf34bbb2227ad98022c19d2920339640fc9ff972cc39ddf34fb56a8
+SHA256: 7ac8a72a53864395d6362a7acb5086d49ba19c85f20908d3beb2afc0e806cf63
+SHA1: 37b782a20d7f89cc82a76cc352b0584471a3aaee
+MD5sum: 5c28420af57c0bab79543e8aa047bc63
+Description: XMLRPC-EPI module for PHP [default]
+ This package provides a XMLRPC-EPI module for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Debian's default
+ PHP version (currently 7.4).
+
+Package: php-zip
+Source: php-defaults (75)
+Version: 2:7.4+75
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian PHP Maintainers <team+pkg-php@tracker.debian.org>
+Installed-Size: 13
+Depends: php-common, php7.4-zip
+Priority: 0
+Section: utils
+Filename: pool/main/p/php-defaults/php-zip_7.4+75_all.deb
+Size: 1996
+SHA512: 95f2a4a50c7d70749807e08224c94bc204eae49696e7cfc3e2d21ea22123a2173e8ea8747bbf8e1f3604ebcf381ae44efab860c0e429b7906c4dc906cb822556
+SHA256: 7ea7e8983abd6793d12e5250572c8e74ccd48c9a92d3fbe4ccbb6c7f36ea416b
+SHA1: 96cb4f167a1cf9547cb6ffc7427dec470f926ded
+MD5sum: 743aa6c651dacf0aed23d0ebf2239e68
+Description: Zip module for PHP [default]
+ This package provides a Zip module for PHP.
+ .
+ PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
+ open source general-purpose scripting language that is especially suited
+ for web development and can be embedded into HTML.
+ .
+ This package is a dependency package, which depends on Debian's default
+ PHP version (currently 7.4).
 
 Package: php8.2
 Version: 8.2.11-1+ubuntu20.04.1+deb.sury.org+1
@@ -898,6 +2266,28 @@ Description: Tiling terminal emulator - data files
  .
  This package contains architecture independent data.
 
+Package: trash-cli
+Version: 0.17.1.14-2ubuntu1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Stefano Karapetsas <stefano@karapetsas.com>
+Installed-Size: 108
+Depends: python2:any (<< 2.8), python2:any (>= 2.7~), python-pkg-resources
+Homepage: https://github.com/andreafrancia/trash-cli
+Priority: 0
+Section: utils
+Filename: pool/main/t/trash-cli/trash-cli_0.17.1.14-2ubuntu1_all.deb
+Size: 24216
+SHA512: abd8316977979c50785da05afb1764ea0d7a4c52d147a0867e9bf9f3968ea1eea0a1759410a4ca7510e450f3c8aaf52d66374df3e30801c1fd04f6f85ac2b2d8
+SHA256: 777042d1e84e37c29f47725c9bc67b536d438954fd1a5a01646f47e4deab8653
+SHA1: 6e22ff1bf874928f042cb62638c9de7cc997b432
+MD5sum: 9126da3174114adb3585f29cd88572ff
+Description: command line trashcan utility
+ This package provides a command line interface trashcan utility
+ compliant with the FreeDesktop.org Trash Specification. It remembers
+ the name, original path, deletion date, and permissions of each trashed
+ file
+
 Package: whiptail
 Source: newt
 Version: 0.52.21-4ubuntu2
@@ -937,4 +2327,33 @@ SHA1: 05959fe298ab25c98941d435abfa322328b3266d
 MD5sum: ccbd900331813a36d54106707a02f710
 Description: ZorinOS Pro Layouts
  ZorinOS Pro layouts made available for Core and Lite users.
+
+Package: zram-tools
+Version: 0.3.2.1-1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Jonathan Carter <jcc@debian.org>
+Installed-Size: 28
+Depends: bc
+Homepage: https://github.com/highvoltage/zram-tools
+Priority: 0
+Section: utils
+Filename: pool/main/z/zram-tools/zram-tools_0.3.2.1-1_all.deb
+Size: 5576
+SHA512: f96d2fe8002010f5c392e7b46555104e62ab1064c2f1919d346b7e33dc1408fc5a610be0e895ab6c4cc415c6e5bc57b1d2ab48e0a78ca0b94a8291474f3d520c
+SHA256: 63f89447b8aab96972b1fc0c4a52c81ff84d8fbae95bb79948eb8de85a897642
+SHA1: 6bb740d96acaa2a16963d72d09eef2fc7b01ff53
+MD5sum: e1603b9c0f12e1f350ebffe20d92df1c
+Description: utilities for working with zram
+ zram is a Linux kernel module that allows you to set up compressed
+ filesystems in RAM.
+ .
+ zram-tools uses this module to set up compressed swap space.
+ This is useful on systems with low memory or servers
+ running a large amount of services with data that's easily swappable
+ but that you may wish to swap back fast without sacrificing disk
+ bandwidth.
+ .
+ By default it allocates 100MB of RAM, you can configure this in
+ /etc/default/zramswap.
 
