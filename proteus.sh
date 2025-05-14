@@ -255,6 +255,7 @@ lst_packages=(
     'debhelper'
     'dialog'
     'dos2unix'
+    'fastfetch'
     'firefox'
     'flatpak'
     'geoipupdate'
@@ -3192,12 +3193,9 @@ app_ppa_register()
     #       ppa:zhangsongcui3371/fastfetch
     # #
 
-    for i in "${!lst_ppa[@]}"
-    do
-
+    for i in "${!lst_ppa[@]}"; do
         ppa=${lst_ppa[$i]}
         sudo add-apt-repository $ppa
-
     done
 
     if [ "${argDryRun}" = false ]; then
