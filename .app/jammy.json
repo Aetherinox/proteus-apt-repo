@@ -5,7 +5,7 @@
     "description":      "Internal system to Proteus App Manager which grabs debian packages.",
     "distrib":          "jammy",
     "url":              "https://github.com//proteus-git",
-    "last_duration":    "56m 23s",
-    "last_update":      "05.13.2025 19:00:00",
-    "last_update_ts":   "1747162800"
+    "last_duration":    "0m 1s",
+    "last_update":      "05.14.2025 00:39:47",
+    "last_update_ts":   "1747183187"
 }
