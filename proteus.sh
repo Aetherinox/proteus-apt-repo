@@ -5179,14 +5179,14 @@ EOF
     # #
 
     local NOW=$(date -u '+%m.%d.%Y %H:%M:%S')
-    local app_repo_commit="build(start): \`️📦 auto-update 📦\` \`${app_repo_dist_sel} | ${NOW} UTC\`"
+    local app_repo_commit="build(start): 📦 \`️auto-update\` 📦 \`${app_repo_dist_sel} | ${NOW} UTC\`"
     if [ -n "${argAptPackage}" ]; then
         local pkg=${lst_packages[0]}
-        app_repo_commit="build(start): \`📦 pkg-update (apt-get) : ${pkg} 📦\` \`${app_repo_dist_sel} | ${NOW} UTC\`"
+        app_repo_commit="build(start): 📦 \`pkg-update (apt-get) : ${pkg}\` 📦 \`${app_repo_dist_sel} | ${NOW} UTC\`"
     fi
     if [ -n "${argGithubPackage}" ]; then
         local pkg=${lst_github[0]}
-        app_repo_commit="build(start): \`📦 pkg-update (github) : ${pkg} 📦\` \`${app_repo_dist_sel} | ${NOW} UTC\`"
+        app_repo_commit="build(start): 📦 \`pkg-update (github) : ${pkg}\` 📦 \`${app_repo_dist_sel} | ${NOW} UTC\`"
     fi
 
     # #
@@ -5277,14 +5277,14 @@ app_run_gh_end()
     # #
 
     local NOW=$(date -u '+%m.%d.%Y %H:%M:%S')
-    local app_repo_commit="build(end): \`📦 auto-update 📦\` \`${app_repo_dist_sel} | ${NOW} UTC\`"
+    local app_repo_commit="build(end): 📦 \`auto-update\` 📦 \`${app_repo_dist_sel} | ${NOW} UTC\`"
     if [ -n "${argAptPackage}" ]; then
         local pkg=${lst_packages[0]}
-        app_repo_commit="build(end): \`📦 pkg-update (apt-get) : ${pkg} 📦\` \`${app_repo_dist_sel} | ${NOW} UTC\`"
+        app_repo_commit="build(end): 📦 \`pkg-update (apt-get) : ${pkg}\` 📦 \`${app_repo_dist_sel} | ${NOW} UTC\`"
     fi
     if [ -n "${argGithubPackage}" ]; then
         local pkg=${lst_github[0]}
-        app_repo_commit="build(end): \`📦 pkg-update (github) : ${pkg} 📦\` \`${app_repo_dist_sel} | ${NOW} UTC\`"
+        app_repo_commit="build(end): 📦 \`pkg-update (github) : ${pkg}\` 📦 \`${app_repo_dist_sel} | ${NOW} UTC\`"
     fi
 
     # #
@@ -6179,7 +6179,7 @@ if [ -n "$argLocalPackage" ]; then
             # #
 
             NOW=$(date -u '+%m.%d.%Y %H:%M:%S')
-            app_repo_commit="build(run): \`️📦 pkg-add (local): ${argLocalPackage} 📦\` \`${app_repo_dist_sel} | ${NOW} UTC\`"
+            app_repo_commit="build(run): 📦 \`️pkg-add (local): ${argLocalPackage}\` 📦 \`${app_repo_dist_sel} | ${NOW} UTC\`"
 
             # #
             #   git > commit
