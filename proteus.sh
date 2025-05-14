@@ -441,6 +441,14 @@ lst_github=(
 )
 
 # #
+#   define > packages > PPAs
+# #
+
+lst_ppa=(
+    'ppa:zhangsongcui3371/fastfetch'
+)
+
+# #
 #   list > architectures
 # #
 
@@ -3169,6 +3177,33 @@ if [ ! -d .git ]; then
     # git pull origin ${app_repo_branch} --allow-unrelated-histories
     # git push --set-upstream origin main 
 fi
+
+# #
+#   func > Register PPAs
+# #
+
+app_ppa_register()
+{
+    printf '%-29s %-65s\n' "  ${c[yellow]}STATUS${c[end]}" "Registering ${c[blue]}PPAs${c[end]}"
+
+    # #
+    #   loop PPAs
+    #   
+    #       ppa:zhangsongcui3371/fastfetch
+    # #
+
+    for i in "${!lst_ppa[@]}"
+    do
+
+        ppa=${lst_ppa[$i]}
+        sudo add-apt-repository $ppa
+
+    done
+
+    if [ "${argDryRun}" = false ]; then
+        sudo apt-get update -y -q >/dev/null
+    fi
+}
 
 # #
 #   func > first time setup
@@ -6220,5 +6255,6 @@ if [ "${argForceUpdate}" = true ]; then
     app_update ${app_repo_branch_sel}
 fi
 
+app_ppa_register
 app_setup
 app_start
