@@ -1900,6 +1900,35 @@ Description: Debian package repository producer
  .
  This package also contains the changestool and rredtool helpers.
 
+Package: reprepro
+Version: 5.3.0-1.4
+Architecture: arm64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Bernhard R. Link <brlink@debian.org>
+Installed-Size: 1102
+Depends: libarchive13 (>= 3.0.4), libbz2-1.0, libc6 (>= 2.34), libdb5.3, libgpg-error0 (>= 1.14), libgpgme11 (>= 1.2.0), liblzma5 (>= 5.1.1alpha+20120614), zlib1g (>= 1:1.2.0.2), zstd
+Recommends: apt (>= 0.9.4)
+Suggests: pinentry-curses, gnupg-agent, inoticoming, lzip (>= 1.11-2)
+Priority: 0
+Section: utils
+Filename: pool/main/r/reprepro/reprepro_5.3.0-1.4_arm64.deb
+Size: 448672
+SHA512: aff4d3838a2930623c4e432acef81f36909030f4ea78629ea645a78b9660a5c441685dfe2cd242d073dcb3e4c015205c98e3841804b847ebacd41b4dc82f6901
+SHA256: d6d4be3fbd46eb220008b61e047e05f63720b8bc737ece86e902dad3eb62ff2c
+SHA1: 546f3dcceb98387d37175e72dbe1a8bc3c241b50
+MD5sum: 756daacac059f9cfbda1f5fe8da60cea
+Description: Debian package repository producer
+ reprepro is a tool to manage a repository of Debian packages
+ (.deb, .udeb, .dsc, ...). It stores files either being
+ injected manually or downloaded from some other repository
+ (partially) mirrored into one pool/ hierarchy.
+ Managed packages and files are stored in a Berkeley DB,
+ so no database server is needed.
+ Checking signatures of mirrored repositories and creating
+ signatures of the generated Package indices is supported.
+ .
+ This package also contains the changestool and rredtool helpers.
+
 Package: tilix
 Version: 1.9.4-2build1
 Architecture: arm64
