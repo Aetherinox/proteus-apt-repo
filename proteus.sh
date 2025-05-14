@@ -241,13 +241,18 @@ CSI_GPG_PASSWD=
 lst_packages=(
     'adduser'
     'argon2'
+    'aptly'
+    'aptly-api'
     'apt-move'
     'apt-transport-https'
     'apt-utils'
+    'bash'
+    'ca-certificates'
     'clevis'
     'clevis-dracut'
     'clevis-udisks2'
     'clevis-tpm2'
+    'debhelper'
     'dialog'
     'dos2unix'
     'firefox'
@@ -260,7 +265,9 @@ lst_packages=(
     'gpg'
     'gpgconf'
     'gpgv'
+    'iproute2'
     'jose'
+    'jq'
     'keyutils'
     'kgpg'
     'libnginx-mod-http-auth-pam'
@@ -284,6 +291,7 @@ lst_packages=(
     'mysql-client'
     'mysql-common'
     'mysql-server'
+    'nano'
     'net-tools'
     'neofetch'
     'network-manager-config-connectivity-ubuntu'
@@ -404,10 +412,15 @@ lst_packages=(
     'sks'
     'snap'
     'snapd'
+    'software-properties-common'
+    'sudo'
     'tcptrack'
     'trash-cli'
     'tree'
+    'tzdata'
+    'vnstat'
     'wget'
+    'whohas'
     'zram-tools'
 )
 
@@ -3193,6 +3206,7 @@ app_setup()
     local bMissingGPG=false
     local bMissingGChrome=false
     local bMissingMFirefox=false
+    local bMissingAptly=false
     local bMissingRepo=false
     local bMissingReprepro=false
     local bGPGLoaded=false
@@ -3257,6 +3271,14 @@ app_setup()
     fi
 
     # #
+    #   Missing list aptly
+    # #
+
+    if ! [ -f "/etc/apt/sources.list.d/aptly.list" ]; then
+        bMissingAptly=true
+    fi
+
+    # #
     #   Missing proteus-apt-repo .list
     # #
 
@@ -3266,7 +3288,7 @@ app_setup()
 
     # Check if contains title
     # If so, called from another function
-    if [ "$bMissingAptMove" = true ] || [ "$bMissingAptUrl" = true ] || [ "$bMissingCurl" = true ] || [ "$bMissingWget" = true ] || [ "$bMissingTree" = true ] || [ "$bMissingGPG" = true ] ||  [ "$bMissingGChrome" = true ]  || [ "$bMissingMFirefox" = true ] || [ "$bMissingRepo" = true ] || [ "$bMissingReprepro" = true ]; then
+    if [ "$bMissingAptMove" = true ] || [ "$bMissingAptUrl" = true ] || [ "$bMissingCurl" = true ] || [ "$bMissingWget" = true ] || [ "$bMissingTree" = true ] || [ "$bMissingGPG" = true ] ||  [ "$bMissingGChrome" = true ]  || [ "$bMissingMFirefox" = true ] || [ "$bMissingAptly" = true ] || [ "$bMissingRepo" = true ] || [ "$bMissingReprepro" = true ]; then
         echo
         title "Addressing Dependencies ..."
         echo
@@ -3503,6 +3525,28 @@ app_setup()
         # change priority
         echo 'Package: * Pin: origin packages.mozilla.org Pin-Priority: 1000' | sudo tee /etc/apt/preferences.d/mozilla >/dev/null
         printf "%-50s %-5s\n" "${TIME}      Updating user repo list with apt-get update" | tee -a "${LOGS_FILE}" >/dev/null
+
+        if [ "${argDryRun}" = false ]; then
+            sudo apt-get update -y -q >/dev/null
+        fi
+    fi
+
+    # #
+    #   missing aptly
+    # #
+
+    if [ "$bMissingAptly" = true ]; then
+        printf "%-50s %-5s\n" "${TIME}      Registering Aptly: /etc/apt/sources.list.d/aptly.list" | tee -a "${LOGS_FILE}" >/dev/null
+        printf '%-50s %-5s' "    |--- Registering Aptly" ""
+
+        sudo install -d -m 0755 /etc/apt/keyrings
+        sudo wget -qO - "http://www.aptly.info/pubkey.txt" | sudo tee /etc/apt/keyrings/aptly.asc > /dev/null
+
+        if [ "${argDryRun}" = false ]; then
+            echo "deb [signed-by=/etc/apt/keyrings/aptly.asc] http://repo.aptly.info/release $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/aptly.list >/dev/null
+        fi
+
+        printf "%-50s %-5s\n" "${TIME}      Updating Aptly repo with apt-get update" | tee -a "${LOGS_FILE}" >/dev/null
 
         if [ "${argDryRun}" = false ]; then
             sudo apt-get update -y -q >/dev/null
