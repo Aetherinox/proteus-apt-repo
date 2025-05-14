@@ -13523,6 +13523,8 @@
           {"type":"directory","name":"all","contents":[
             {"type":"file","name":"adduser_3.118ubuntu5_all.deb"},
             {"type":"file","name":"apt-transport-https_2.4.13_all.deb"},
+            {"type":"file","name":"ca-certificates_20240203~22.04.1_all.deb"},
+            {"type":"file","name":"debhelper_13.6ubuntu1_all.deb"},
             {"type":"file","name":"gnome-keysign_1.2.0-3_all.deb"},
             {"type":"file","name":"lintian_2.114.0ubuntu1.5_all.deb"},
             {"type":"file","name":"lsb-base_11.1.0ubuntu4_all.deb"},
@@ -13582,25 +13584,33 @@
             {"type":"file","name":"php-tidy_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
             {"type":"file","name":"php-xml_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
             {"type":"file","name":"php-zip_8.2+93+ubuntu22.04.1+deb.sury.org+2_all.deb"},
+            {"type":"file","name":"software-properties-common_0.99.22.9+zorin1_all.deb"},
             {"type":"file","name":"trash-cli_0.17.1.14-5build1_all.deb"},
+            {"type":"file","name":"tzdata_2025b-0ubuntu0.22.04_all.deb"},
+            {"type":"file","name":"whohas_0.29.1-1.1_all.deb"},
             {"type":"file","name":"zram-tools_0.3.3.1-1_all.deb"}
         ]},
           {"type":"directory","name":"{all,amd64,arm64,i386}"},
           {"type":"directory","name":"amd64","contents":[
             {"type":"file","name":"app-outlet_2.1.0_amd64.deb"},
+            {"type":"file","name":"aptly_1.6.1_amd64.deb"},
+            {"type":"file","name":"aptly-api_1.6.1_amd64.deb"},
             {"type":"file","name":"apt-move_4.2.27-6_amd64.deb"},
             {"type":"file","name":"apt-url_1.0.0-2_amd64.deb"},
             {"type":"file","name":"apt-url_1.1.0-1_amd64.deb"},
             {"type":"file","name":"apt-utils_2.4.13_amd64.deb"},
             {"type":"file","name":"argon2_0~20171227-0.3_amd64.deb"},
+            {"type":"file","name":"bash_5.1-6ubuntu1.1_amd64.deb"},
             {"type":"file","name":"Bitwarden-2025.4.2-amd64.deb"},
             {"type":"file","name":"clevis_18-1ubuntu1.1_amd64.deb"},
             {"type":"file","name":"clevis-dracut_18-1ubuntu1.1_amd64.deb"},
             {"type":"file","name":"clevis-tpm2_18-1ubuntu1.1_amd64.deb"},
             {"type":"file","name":"clevis-udisks2_18-1ubuntu1.1_amd64.deb"},
+            {"type":"file","name":"dbeaver-ce_25.0.4_amd64.deb"},
             {"type":"file","name":"dialog_1.3-20211214-1_amd64.deb"},
             {"type":"file","name":"dos2unix_7.4.2-2_amd64.deb"},
             {"type":"file","name":"duf_0.8.1_linux_amd64.deb"},
+            {"type":"file","name":"fastfetch_2.43.0_amd64.deb"},
             {"type":"file","name":"firefox_1snap1-0ubuntu2_amd64.deb"},
             {"type":"file","name":"flatpak_1.14.10-1~flatpak1~22.04.1_amd64.deb"},
             {"type":"file","name":"freetube_0.23.3_amd64.deb"},
@@ -13613,7 +13623,9 @@
             {"type":"file","name":"gpg_2.2.27-3ubuntu2.3_amd64.deb"},
             {"type":"file","name":"gpgconf_2.2.27-3ubuntu2.3_amd64.deb"},
             {"type":"file","name":"gpgv_2.2.27-3ubuntu2.3_amd64.deb"},
+            {"type":"file","name":"iproute2_5.15.0-1ubuntu2_amd64.deb"},
             {"type":"file","name":"jose_11-2_amd64.deb"},
+            {"type":"file","name":"jq_1.6-2.1ubuntu3_amd64.deb"},
             {"type":"file","name":"keybase_amd64.deb"},
             {"type":"file","name":"keyutils_1.6.1-2ubuntu3_amd64.deb"},
             {"type":"file","name":"kgpg_21.12.3-0ubuntu1_amd64.deb"},
@@ -13634,6 +13646,7 @@
             {"type":"file","name":"libnginx-mod-stream-geoip_1.18.0-6ubuntu14.6_amd64.deb"},
             {"type":"file","name":"lz4_1.9.3-2build2_amd64.deb"},
             {"type":"file","name":"makedeb-beta_16.1.0-beta1_amd64_jammy.deb"},
+            {"type":"file","name":"nano_6.2-1ubuntu0.1_amd64.deb"},
             {"type":"file","name":"net-tools_1.60+git20181103.0eebece-1ubuntu5_amd64.deb"},
             {"type":"file","name":"network-manager_1.36.6-0ubuntu2.1_amd64.deb"},
             {"type":"file","name":"network-manager-gnome_1.24.0-1ubuntu3_amd64.deb"},
@@ -13708,6 +13721,7 @@
             {"type":"file","name":"sks_1.1.6+git20210302.c3ba6d5a-4_amd64.deb"},
             {"type":"file","name":"snap_2013-11-29-11_amd64.deb"},
             {"type":"file","name":"snapd_2.67.1+22.04_amd64.deb"},
+            {"type":"file","name":"sudo_1.9.9-1ubuntu2.4_amd64.deb"},
             {"type":"file","name":"tcptrack_1.4.3-1_amd64.deb"},
             {"type":"file","name":"tree_2.0.2-1_amd64.deb"},
             {"type":"file","name":"vnstat_2.9-1_amd64.deb"},
@@ -13725,11 +13739,15 @@
             {"type":"file","name":"opengist1.10.0-linux-arm64.deb"},
             {"type":"file","name":"reprepro_5.3.0-1.1_arm64.deb"},
             {"type":"file","name":"reprepro_5.3.0-1.4_arm64.deb"},
+            {"type":"file","name":"reprepro_5.3.1-5build4_arm64.deb"},
             {"type":"file","name":"reprepro_5.4.7-1_arm64.deb"}
         ]},
           {"type":"directory","name":"i386","contents":[
+            {"type":"file","name":"aptly_1.6.1_i386.deb"},
+            {"type":"file","name":"aptly-api_1.6.1_i386.deb"},
             {"type":"file","name":"apt-utils_2.4.13_i386.deb"},
             {"type":"file","name":"argon2_0~20171227-0.3_i386.deb"},
+            {"type":"file","name":"bash_5.1-6ubuntu1.1_i386.deb"},
             {"type":"file","name":"duf_0.8.1_linux_386.deb"},
             {"type":"file","name":"firefox_137.0.1~build1_i386_532397660d3c4ba152acbf9e78450851.deb"},
             {"type":"file","name":"firefox_137.0.2~build1_i386_454cb81fd8aa03e70e38cf080de859f7.deb"},
@@ -13740,11 +13758,14 @@
             {"type":"file","name":"gpg_2.2.27-3ubuntu2.3_i386.deb"},
             {"type":"file","name":"gpgconf_2.2.27-3ubuntu2.3_i386.deb"},
             {"type":"file","name":"gpgv_2.2.27-3ubuntu2.3_i386.deb"},
+            {"type":"file","name":"iproute2_5.15.0-1ubuntu2_i386.deb"},
+            {"type":"file","name":"jq_1.6-2.1ubuntu3_i386.deb"},
             {"type":"file","name":"keyutils_1.6.1-2ubuntu3_i386.deb"},
             {"type":"file","name":"lz4_1.9.3-2build2_i386.deb"},
             {"type":"file","name":"net-tools_1.60+git20181103.0eebece-1ubuntu5_i386.deb"},
             {"type":"file","name":"opengist1.10.0-linux-i386.deb"},
             {"type":"file","name":"reprepro_5.4.7-1_i386.deb"},
+            {"type":"file","name":"sudo_1.9.9-1ubuntu2.4_i386.deb"},
             {"type":"file","name":"wget_1.21.2-2ubuntu1.1_i386.deb"}
         ]}
       ]}
@@ -13961,7 +13982,8 @@
       {"type":"file","name":"proteus-service-051025.log"},
       {"type":"file","name":"proteus-service-051125.log"},
       {"type":"file","name":"proteus-service-051225.log"},
-      {"type":"file","name":"proteus-service-051325.log"}
+      {"type":"file","name":"proteus-service-051325.log"},
+      {"type":"file","name":"proteus-service-051425.log"}
   ]},
     {"type":"directory","name":"pool","contents":[
       {"type":"directory","name":"main","contents":[
@@ -13982,6 +14004,12 @@
             {"type":"file","name":"apt-utils_2.4.13_amd64.deb"},
             {"type":"file","name":"apt-utils_2.4.13_i386.deb"},
             {"type":"file","name":"apt-utils_2.7.14build2_amd64.deb"}
+        ]},
+          {"type":"directory","name":"aptly","contents":[
+            {"type":"file","name":"aptly_1.6.1_amd64.deb"},
+            {"type":"file","name":"aptly_1.6.1_i386.deb"},
+            {"type":"file","name":"aptly-api_1.6.1_amd64.deb"},
+            {"type":"file","name":"aptly-api_1.6.1_i386.deb"}
         ]},
           {"type":"directory","name":"apt-move","contents":[
             {"type":"file","name":"apt-move_4.2.27-5ubuntu2_amd64.deb"},
@@ -14006,11 +14034,18 @@
             {"type":"file","name":"php-bacon-qr-code_2.0.6-2_arm64.deb"},
             {"type":"file","name":"php-bacon-qr-code_2.0.8-2_amd64.deb"}
         ]},
+          {"type":"directory","name":"bash","contents":[
+            {"type":"file","name":"bash_5.1-6ubuntu1.1_amd64.deb"},
+            {"type":"file","name":"bash_5.1-6ubuntu1.1_i386.deb"}
+        ]},
           {"type":"directory","name":"bitwarden","contents":[
             {"type":"file","name":"bitwarden_2025.4.2_amd64.deb"}
         ]}
       ]},
         {"type":"directory","name":"c","contents":[
+          {"type":"directory","name":"ca-certificates","contents":[
+            {"type":"file","name":"ca-certificates_20240203~22.04.1_all.deb"}
+        ]},
           {"type":"directory","name":"clevis","contents":[
             {"type":"file","name":"clevis_12-1ubuntu2.3_amd64.deb"},
             {"type":"file","name":"clevis_18-1ubuntu1.1_amd64.deb"},
@@ -14030,8 +14065,14 @@
           {"type":"directory","name":"dasprid-enum","contents":[
             {"type":"file","name":"php-dasprid-enum_1.0.3-3_all.deb"}
         ]},
+          {"type":"directory","name":"dbeaver-ce","contents":[
+            {"type":"file","name":"dbeaver-ce_25.0.4_amd64.deb"}
+        ]},
           {"type":"directory","name":"deb-get","contents":[
             {"type":"file","name":"deb-get_0.3.9-1_all.deb"}
+        ]},
+          {"type":"directory","name":"debhelper","contents":[
+            {"type":"file","name":"debhelper_13.6ubuntu1_all.deb"}
         ]},
           {"type":"directory","name":"deb-pacman","contents":[
             {"type":"file","name":"deb-pacman_2.0-0_all.deb"}
@@ -14055,6 +14096,9 @@
         ]}
       ]},
         {"type":"directory","name":"f","contents":[
+          {"type":"directory","name":"fastfetch","contents":[
+            {"type":"file","name":"fastfetch_2.43.0_amd64.deb"}
+        ]},
           {"type":"directory","name":"firefox","contents":[
             {"type":"file","name":"firefox_138.0.1~build1_i386.deb"},
             {"type":"file","name":"firefox_138.0.3~build1_i386.deb"},
@@ -14142,11 +14186,21 @@
             {"type":"file","name":"libgpgme11_1.13.1-7ubuntu2_arm64.deb"}
         ]}
       ]},
+        {"type":"directory","name":"i","contents":[
+          {"type":"directory","name":"iproute2","contents":[
+            {"type":"file","name":"iproute2_5.15.0-1ubuntu2_amd64.deb"},
+            {"type":"file","name":"iproute2_5.15.0-1ubuntu2_i386.deb"}
+        ]}
+      ]},
         {"type":"directory","name":"j","contents":[
           {"type":"directory","name":"jose","contents":[
             {"type":"file","name":"jose_10-2build2_amd64.deb"},
             {"type":"file","name":"jose_11-2_amd64.deb"},
             {"type":"file","name":"jose_13-1_amd64.deb"}
+        ]},
+          {"type":"directory","name":"jq","contents":[
+            {"type":"file","name":"jq_1.6-2.1ubuntu3_amd64.deb"},
+            {"type":"file","name":"jq_1.6-2.1ubuntu3_i386.deb"}
         ]}
       ]},
         {"type":"directory","name":"k","contents":[
@@ -14253,6 +14307,9 @@
         ]}
       ]},
         {"type":"directory","name":"n","contents":[
+          {"type":"directory","name":"nano","contents":[
+            {"type":"file","name":"nano_6.2-1ubuntu0.1_amd64.deb"}
+        ]},
           {"type":"directory","name":"neofetch","contents":[
             {"type":"file","name":"neofetch_7.0.0-1_all.deb"},
             {"type":"file","name":"neofetch_7.1.0-3_all.deb"},
@@ -14942,6 +14999,13 @@
             {"type":"file","name":"snapd_2.67.1+20.04_amd64.deb"},
             {"type":"file","name":"snapd_2.67.1+22.04_amd64.deb"},
             {"type":"file","name":"snapd_2.67.1+24.04_amd64.deb"}
+        ]},
+          {"type":"directory","name":"software-properties","contents":[
+            {"type":"file","name":"software-properties-common_0.99.22.9+zorin1_all.deb"}
+        ]},
+          {"type":"directory","name":"sudo","contents":[
+            {"type":"file","name":"sudo_1.9.9-1ubuntu2.4_amd64.deb"},
+            {"type":"file","name":"sudo_1.9.9-1ubuntu2.4_i386.deb"}
         ]}
       ]},
         {"type":"directory","name":"t","contents":[
@@ -14972,6 +15036,9 @@
             {"type":"file","name":"tree_1.8.0-1_amd64.deb"},
             {"type":"file","name":"tree_2.0.2-1_amd64.deb"},
             {"type":"file","name":"tree_2.1.1-2ubuntu3_amd64.deb"}
+        ]},
+          {"type":"directory","name":"tzdata","contents":[
+            {"type":"file","name":"tzdata_2025b-0ubuntu0.22.04_all.deb"}
         ]}
       ]},
         {"type":"directory","name":"v","contents":[
@@ -14985,6 +15052,9 @@
             {"type":"file","name":"wget_1.21.2-2ubuntu1.1_amd64.deb"},
             {"type":"file","name":"wget_1.21.2-2ubuntu1.1_i386.deb"},
             {"type":"file","name":"wget_1.21.4-1ubuntu4.1_amd64.deb"}
+        ]},
+          {"type":"directory","name":"whohas","contents":[
+            {"type":"file","name":"whohas_0.29.1-1.1_all.deb"}
         ]}
       ]},
         {"type":"directory","name":"x","contents":[
@@ -15015,9 +15085,8 @@
     {"type":"file","name":".gitignore"},
     {"type":"file","name":"proteus.sh"},
     {"type":"file","name":"README.md"},
-    {"type":"file","name":"reprepro_5.3.1-5build4_arm64.deb"},
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":262,"files":14494}
+  {"type":"report","directories":276,"files":14535}
 ]

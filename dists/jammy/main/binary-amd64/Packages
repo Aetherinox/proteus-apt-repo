@@ -147,6 +147,69 @@ Description: package management related utility programs
     needed to publish an archive of Debian packages
   * apt-sortpkgs is a Packages/Sources file normalizer.
 
+Package: aptly
+Version: 1.6.1
+Architecture: amd64
+Maintainer: André Roth <neolynx@gmail.com>
+Installed-Size: 45754
+Depends: libc6 (>= 2.34), bzip2, xz-utils, gpgv, gpg
+Suggests: graphviz
+Conflicts: gnupg1, gpgv1
+Homepage: https://www.aptly.info
+Priority: 0
+Section: utils
+Filename: pool/main/a/aptly/aptly_1.6.1_amd64.deb
+Size: 11349626
+SHA512: 67b848c6e7e0d9b734d6a7407b2c2b37f5be109656eadab3eeee5545646e36ef99f53f67004a0dbec3bb20207000310b8d739e2192c318e71ec1dd8e7ba06355
+SHA256: 1f251d69e1a9ed072ebb5e2aeb7b1ab1f1a553a3328060e039c9842083232689
+SHA1: bd5ab3a73f22b3a8eeb217058fa195753ee79754
+MD5sum: 54a63ce84c582d81456123caf55fc156
+Description: Swiss army knife for Debian repository management - main package
+ It offers several features making it easy to manage Debian package
+ repositories:
+ .
+  - make mirrors of remote Debian/Ubuntu repositories, limiting by
+    components/architectures
+  - take snapshots of mirrors at any point in time, fixing state of
+    repository at some moment of time
+  - publish snapshot as Debian repository, ready to be consumed by apt
+  - controlled update of one or more packages in snapshot from upstream
+    mirror, tracking dependencies
+  - merge two or more snapshots into one
+ .
+ This is the main package, it contains the aptly command-line utility.
+
+Package: aptly-api
+Source: aptly
+Version: 1.6.1
+Architecture: amd64
+Maintainer: André Roth <neolynx@gmail.com>
+Installed-Size: 36
+Depends: aptly
+Homepage: https://www.aptly.info
+Priority: 0
+Section: utils
+Filename: pool/main/a/aptly/aptly-api_1.6.1_amd64.deb
+Size: 8480
+SHA512: eacc61821af7514418630e2198feef75c5286b1f8313630fd1e6561b4d1abd90cd61794f9bc5181930e219b412a1c56b22c6c9d7b0816500ca00cfeeaf78355d
+SHA256: 98d882ab6e3579dd9df5a4699e3ee8dd4a92db3c841bfc2765e637d977a8211e
+SHA1: 7ef046eed25830cad257d4c54ed254c1f4928178
+MD5sum: edf632e1f227495570b944a82c3f7b74
+Description: Swiss army knife for Debian repository management - API
+ It offers several features making it easy to manage Debian package
+ repositories:
+ .
+  - make mirrors of remote Debian/Ubuntu repositories, limiting by
+    components/architectures
+  - take snapshots of mirrors at any point in time, fixing state of
+    repository at some moment of time
+  - publish snapshot as Debian repository, ready to be consumed by apt
+  - controlled update of one or more packages in snapshot from upstream
+    mirror, tracking dependencies
+  - merge two or more snapshots into one
+ .
+ This package contains the aptly-api service.
+
 Package: argon2
 Version: 0~20171227-0.3
 Architecture: amd64
@@ -180,6 +243,40 @@ Description: memory-hard hashing function - utility
  .
  This package contains the argon2 tool for hashing data on the command-line.
 
+Package: bash
+Version: 5.1-6ubuntu1.1
+Architecture: amd64
+Essential: yes
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 1864
+Pre-Depends: libc6 (>= 2.34), libtinfo6 (>= 6)
+Depends: base-files (>= 2.1.12), debianutils (>= 2.15)
+Recommends: bash-completion (>= 20060301-0)
+Suggests: bash-doc
+Conflicts: bash-completion (<< 20060301-0)
+Replaces: bash-completion (<< 20060301-0), bash-doc (<= 2.05-1)
+Multi-Arch: foreign
+Homepage: http://tiswww.case.edu/php/chet/bash/bashtop.html
+Priority: 0
+Section: utils
+Filename: pool/main/b/bash/bash_5.1-6ubuntu1.1_amd64.deb
+Size: 768646
+SHA512: 4f3b4481a27fb7d76aabf58a4bb7571363886739cccbf4fa4b8b4a3f7aabb84fc608bb02194fd1f892e213d4650c89455626688b5e58969eb5e6ae9c7dfa9c54
+SHA256: ada09ec56baa774af85b01ab8aad32f10ce82aeccbd2889110db318d46e26914
+SHA1: 429c43bad88f1efe895e3ee581a0cbb913a44b41
+MD5sum: 839255d7d981045fa5d2ae75aec96185
+Description: GNU Bourne Again SHell
+ Bash is an sh-compatible command language interpreter that executes
+ commands read from the standard input or from a file.  Bash also
+ incorporates useful features from the Korn and C shells (ksh and csh).
+ .
+ Bash is ultimately intended to be a conformant implementation of the
+ IEEE POSIX Shell and Tools specification (IEEE Working Group 1003.2).
+ .
+ The Programmable Completion Code, by Ian Macdonald, is now found in
+ the bash-completion package.
+Original-Maintainer: Matthias Klose <doko@debian.org>
+
 Package: bitwarden
 Version: 2025.4.2
 License: GPL-3.0
@@ -200,6 +297,34 @@ SHA1: 38286a4182a29902fbe6d4a50edd1c4b739e127a
 MD5sum: 800f44b492f60fc848afa81715008f1b
 Description: A secure and free password manager for all of your devices.
   A secure and free password manager for all of your devices.
+
+Package: ca-certificates
+Version: 20240203~22.04.1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 399
+Depends: openssl (>= 1.1.1), debconf (>= 0.5) | debconf-2.0
+Enhances: openssl
+Breaks: ca-certificates-java (<< 20121112+nmu1)
+Multi-Arch: foreign
+Priority: 0
+Section: utils
+Filename: pool/main/c/ca-certificates/ca-certificates_20240203~22.04.1_all.deb
+Size: 162162
+SHA512: 9a81fdac73affd8ea4007bbc6475470deaae5d7f73a13cd81d61db080bc9bfd37aa6ec2d9a49be486b39fa4b28aaf1ff8e3e95c0cc6be70e01ffba995df2689c
+SHA256: 7b6d6a66bc70a0c0e87893cbe3d0db28e909710ea2f7c6be4d2b74806b1eef75
+SHA1: 0a84b21334d0c561cf172c9221525be580ad9138
+MD5sum: e4f1c3716b1c0ae46797b9feabf5fc22
+Description: Common CA certificates
+ Contains the certificate authorities shipped with Mozilla's browser to allow
+ SSL-based applications to check for the authenticity of SSL connections.
+ .
+ Please note that Debian can neither confirm nor deny whether the
+ certificate authorities whose certificates are included in this package
+ have in any way been audited for trustworthiness or RFC 3647 compliance.
+ Full responsibility to assess them belongs to the local system
+ administrator.
+Original-Maintainer: Julien Cristau <jcristau@debian.org>
 
 Package: clevis
 Version: 18-1ubuntu1.1
@@ -294,6 +419,24 @@ Description: UDisks2/Storaged integration for clevis
  environments that use UDisks2 or storaged.
 Original-Maintainer: Christoph Biedl <debian.axhn@manchmal.in-ulm.de>
 
+Package: dbeaver-ce
+Version: 25.0.4
+Architecture: amd64
+Replaces: dbeaver-ce
+Installed-Size: 167594
+Maintainer: DBeaver Corp <support@dbeaver.com>
+Homepage: https://dbeaver.io/
+Priority: 0
+Section: utils
+Filename: pool/main/d/dbeaver-ce/dbeaver-ce_25.0.4_amd64.deb
+Size: 132176612
+SHA512: 021f851602b7309323ec4e60a22cbcffbd2ace8e01b72eb180b92f48bf692a912d2c64c8f324d5dc51ad9af2fe8c0bea48b5b668e929a0e95c3889f11c59e28a
+SHA256: 57c8ad6cf381c35bc7a3913b7ffa8b6a834ea2ee7d3a36a9d9b2bc377f707c2f
+SHA1: 336140525dd1809c914e3c3b902ee2b63a39c25c
+MD5sum: a00442db657c6572071a4a1c370b83ea
+Description: DBeaver Community
+ Universal Database Manager and SQL Client
+
 Package: deb-get
 Version: 0.3.9-1
 Architecture: all
@@ -312,6 +455,33 @@ MD5sum: 2394fcfa6ab1b4d37ca0cd6fe1b4ca0a
 Description: Script to "manage" .deb installs from 3rd party vendors/projects
  apt-get functionality for .debs officially published by 3rd party vendors and
  projects.
+
+Package: debhelper
+Version: 13.6ubuntu1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 1521
+Depends: autotools-dev, dh-autoreconf (>= 17~), dh-strip-nondeterminism (>= 0.028~), dpkg (>= 1.18.0~), dpkg-dev (>= 1.18.2~), debugedit, dwz (>= 0.12.20190711), file (>= 3.23), libdpkg-perl (>= 1.17.14), man-db, libdebhelper-perl (= 13.6ubuntu1), po-debconf, awk, perl:any
+Suggests: dh-make
+Breaks: cmake (<< 3.9~), meson (<< 0.40.0~)
+Provides: debhelper-compat (= 9), debhelper-compat (= 10), debhelper-compat (= 11), debhelper-compat (= 12), debhelper-compat (= 13), dh-sequence-dwz, dh-sequence-elf-tools, dh-sequence-installinitramfs, dh-sequence-single-binary, dh-sequence-systemd
+Multi-Arch: foreign
+Priority: 0
+Section: utils
+Filename: pool/main/d/debhelper/debhelper_13.6ubuntu1_all.deb
+Size: 923308
+SHA512: d26249995bf772d29e35b22c1673824ff70900f179d478dd6cec9039b9ec9a51d9db0239c0a0e72f6b78cbceec2590e1b5962db6a7aa2abdab4bb6af8e8bac0c
+SHA256: 7ef0cf040c9d3ac9e3a5ae75068f02b4e62fded074fc2498c433c90e27fffad5
+SHA1: 38028bf2d4d94a362dea0312a998594792cb29da
+MD5sum: 6a3a0da1f7d0829ded2458a79b8f9beb
+Description: helper programs for debian/rules
+ A collection of programs that can be used in a debian/rules file to
+ automate common tasks related to building Debian packages. Programs
+ are included to install various files into your package, compress
+ files, fix file permissions, integrate your package with the Debian
+ menu system, debconf, doc-base, etc. Most Debian packages use debhelper
+ as part of their build process.
+Original-Maintainer: Debhelper Maintainers <debhelper@packages.debian.org>
 
 Package: dialog
 Version: 1.3-20211214-1
@@ -396,6 +566,24 @@ SHA256: 746983b4065e80b14f2e5af70c58e2283bb8b3a128cb076954d7329d476d5fad
 SHA1: e26df75876313152edde4ab530607904fb75d9ec
 MD5sum: d7cba56783ca18902c4358d88fe5ac25
 Description: Disk Usage/Free Utility
+
+Package: fastfetch
+Version: 2.43.0
+Architecture: amd64
+Maintainer: Carter Li <zhangsongcui@live.cn>
+Installed-Size: 3175
+Depends: libc6 (>= 2.34)
+Homepage: https://github.com/fastfetch-cli/fastfetch
+Priority: 0
+Section: utils
+Filename: pool/main/f/fastfetch/fastfetch_2.43.0_amd64.deb
+Size: 671608
+SHA512: 64cc46e0c53eef0dbf943d6f23a9a5e2405751f7306f49b3e7eef4c45dba1aa4c7b768c7be4dd0e7f2b275541fa1d1835f3747b9cef396c0d1eb09d5860893e9
+SHA256: de99276ab62d62a443d1760c71e651376ff6c51ca0e8aad427571ed750a10188
+SHA1: bc825c4e8b40a894a13b8570e85311d22f31d745
+MD5sum: c5b3851eb4779d86eb3f6298cc8bed4e
+Description: Fastfetch is a neofetch-like tool for fetching system information and displaying them in a pretty way.
+ It is written mainly in C, with performance and customizability in mind.
 
 Package: firefox
 Version: 1:1snap1-0ubuntu2
@@ -726,6 +914,36 @@ Description: GNU privacy guard - signature verification tool
  files and only a few options are implemented.
 Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>
 
+Package: iproute2
+Version: 5.15.0-1ubuntu2
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 2880
+Depends: debconf (>= 0.5) | debconf-2.0, libbpf0 (>= 1:0.2), libbsd0 (>= 0.0), libc6 (>= 2.34), libcap2 (>= 1:2.10), libdb5.3, libelf1 (>= 0.131), libmnl0 (>= 1.0.3-4~), libselinux1 (>= 3.1~), libxtables12 (>= 1.6.0+snapshot20161117), libcap2-bin
+Recommends: libatm1 (>= 2.4.1-17~)
+Suggests: iproute2-doc
+Conflicts: arpd, iproute (<< 20130000-1)
+Replaces: iproute
+Provides: arpd
+Multi-Arch: foreign
+Homepage: https://wiki.linuxfoundation.org/networking/iproute2
+Priority: 0
+Section: utils
+Filename: pool/main/i/iproute2/iproute2_5.15.0-1ubuntu2_amd64.deb
+Size: 1070038
+SHA512: c7a98d73152f51d844d9868b8b7bc6ff2d8be4d07ec579c4ff6a15e14663c7c8dc3e3b7d40124f7d1d062dafbb98fad4a87031b04dd2df171320d1a48c727ce8
+SHA256: fd3d3ce97525be164ed723e49c1e4d84328506a443d7eb2348401d26612b6a79
+SHA1: 2c68290bfb59aece17166971c67709252163455e
+MD5sum: 17734e1c651e12247a20f12978e04b42
+Description: networking and traffic control tools
+ The iproute2 suite is a collection of utilities for networking and
+ traffic control.
+ .
+ These tools communicate with the Linux kernel via the (rt)netlink
+ interface, providing advanced features not available through the
+ legacy net-tools commands 'ifconfig' and 'route'.
+Original-Maintainer: Alexander Wirt <formorer@debian.org>
+
 Package: jose
 Version: 11-2
 Architecture: amd64
@@ -754,6 +972,37 @@ Description: C implementation of Javascript Object Signing and Encryption standa
    RFC 7519 - JSON Web Token (JWT)
    RFC 7520 - Examples of ... JOSE
    RFC 7638 - JSON Web Key (JWK) Thumbprint
+
+Package: jq
+Version: 1.6-2.1ubuntu3
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 100
+Depends: libjq1 (= 1.6-2.1ubuntu3), libc6 (>= 2.34)
+Multi-Arch: foreign
+Homepage: https://github.com/stedolan/jq
+Priority: 0
+Section: utils
+Filename: pool/main/j/jq/jq_1.6-2.1ubuntu3_amd64.deb
+Size: 52506
+SHA512: 69c84700fdf4c1a5cf1672e1bb085d108dc3ca51b06aa388f0e047912a3f2347773b87691db6d88e718c89e4a2d7ac61f67206eddc76ba6663d02c068ae99a2f
+SHA256: d7dd9f0441f1aea2e30e067e5fabbff96d4960b5d348de2c48fab90f37720224
+SHA1: b985d5815b743fc2f406b74f1d40ff638dc1efdd
+MD5sum: cf8b305b48fbc2a47863e56ca01211c7
+Description: lightweight and flexible command-line JSON processor
+ jq is like sed for JSON data – you can use it to slice
+ and filter and map and transform structured data with
+ the same ease that sed, awk, grep and friends let you
+ play with text.
+ .
+ It is written in portable C, and it has minimal runtime
+ dependencies.
+ .
+ jq can mangle the data format that you have into the
+ one that you want with very little effort, and the
+ program to do so is often shorter and simpler than
+ you’d expect.
+Original-Maintainer: ChangZhuo Chen (陳昌倬) <czchen@debian.org>
 
 Package: keyutils
 Version: 1.6.1-2ubuntu3
@@ -1459,6 +1708,45 @@ Description: MySQL database server (metapackage depending on the latest version)
  language in the world. The main goals of MySQL are speed, robustness and
  ease of use.
 Original-Maintainer: Debian MySQL Maintainers <pkg-mysql-maint@lists.alioth.debian.org>
+
+Package: nano
+Version: 6.2-1ubuntu0.1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 860
+Depends: libc6 (>= 2.34), libncursesw6 (>= 6), libtinfo6 (>= 6)
+Suggests: hunspell
+Conflicts: pico
+Breaks: nano-tiny (<< 2.8.6-2)
+Replaces: nano-tiny (<< 2.8.6-2), pico
+Homepage: https://www.nano-editor.org/
+Priority: 0
+Section: utils
+Filename: pool/main/n/nano/nano_6.2-1ubuntu0.1_amd64.deb
+Size: 279714
+SHA512: cdd0de2530d187228c27847c7a26290f91ce421de9082322e732e87b21561036554c2d6f73e41db1ebd172af31fb946994186648625866b1635ff491414f5597
+SHA256: 5fb2c4c40cb852fef6ee1a1df71ca98f2ebaffbaedb567456706f6ca90aa6cfb
+SHA1: 7aca6998088a7cec69423e7b8ba7143c2a58bebc
+MD5sum: 77a57993b7f5d9e847afe78b5a4690f1
+Description: small, friendly text editor inspired by Pico
+ GNU nano is an easy-to-use text editor originally designed as a replacement
+ for Pico, the ncurses-based editor from the non-free mailer package Pine
+ (itself now available under the Apache License as Alpine).
+ .
+ However, GNU nano also implements many features missing in Pico, including:
+  - undo/redo
+  - line numbering
+  - syntax coloring
+  - soft-wrapping of overlong lines
+  - selecting text by holding Shift
+  - interactive search and replace (with regular expression support)
+  - a go-to line (and column) command
+  - support for multiple file buffers
+  - auto-indentation
+  - tab completion of filenames and search terms
+  - toggling features while running
+  - and full internationalization support
+Original-Maintainer: Jordi Mallach <jordi@debian.org>
 
 Package: neofetch
 Version: 7.1.0-3
@@ -6188,6 +6476,57 @@ Description: Daemon and tooling that enable snap packages
  .
  Start with 'snap list' to see installed snaps.
 
+Package: software-properties-common
+Source: software-properties
+Version: 0.99.22.9+zorin1
+Architecture: all
+Maintainer: Michael Vogt <michael.vogt@ubuntu.com>
+Installed-Size: 481
+Depends: ca-certificates, gir1.2-glib-2.0, gir1.2-packagekitglib-1.0 (>= 1.1.0-2), packagekit, python-apt-common (>= 0.9), python3, python3-dbus, python3-gi, python3-software-properties (= 0.99.22.9+zorin1), python3:any
+Breaks: python-software-properties (<< 0.85), python3-software-properties (<< 0.85)
+Replaces: python-software-properties (<< 0.85), python3-software-properties (<< 0.85)
+Priority: 0
+Section: utils
+Filename: pool/main/s/software-properties/software-properties-common_0.99.22.9+zorin1_all.deb
+Size: 101240
+SHA512: 2c2e763f71cd77b469ed95b1c780d0f15a3f32801e8d5fe0b1ec7921963a893ef873136c30c7e33e261345a0eb9a801747a238fa763d6261badfacb473a47e30
+SHA256: 3478fa6f1353c16713c439422778c70b0dd636703b11961ae3f6147cbaf660c5
+SHA1: 45265d1704739f5219a15b2fe71cb1352d90860a
+MD5sum: 4a35bc47e418e6f36a2b1397f04b95c9
+Description: manage the repositories that you install software from (common)
+ This software provides an abstraction of the used apt repositories.
+ It allows you to easily manage your distribution and independent software
+ vendor software sources.
+ .
+ This package contains the common files for software-properties like the
+ D-Bus backend.
+
+Package: sudo
+Version: 1.9.9-1ubuntu2.4
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 2508
+Depends: libaudit1 (>= 1:2.2.1), libc6 (>= 2.34), libpam0g (>= 0.99.7.1), libselinux1 (>= 3.1~), zlib1g (>= 1:1.2.0.2), libpam-modules, lsb-base
+Conflicts: sudo-ldap
+Replaces: sudo-ldap
+Homepage: https://www.sudo.ws/
+Priority: 0
+Section: utils
+Filename: pool/main/s/sudo/sudo_1.9.9-1ubuntu2.4_amd64.deb
+Size: 820584
+SHA512: 848f5ba5ef22b3b10039bb9fc51bf2b0934630a44621086c25fae47ebd4f7ac8e3821546a633d76481d3c66d8b65edcafd06cb1bff5131fd83e0bbd51307f5f1
+SHA256: 42638252009ddc23e707dda08fad948c85ed925f2df8fdc1e3d8353d61a920f3
+SHA1: df437fbf2d018005da46b705d0b43ec6256de0ca
+MD5sum: 47ba5a9120282af2f9d3ca5595199e05
+Description: Provide limited super user privileges to specific users
+ Sudo is a program designed to allow a sysadmin to give limited root
+ privileges to users and log root activity.  The basic philosophy is to give
+ as few privileges as possible but still allow people to get their work done.
+ .
+ This version is built with minimal shared library dependencies, use the
+ sudo-ldap package instead if you need LDAP support for sudoers.
+Original-Maintainer: Sudo Maintainers <sudo@packages.debian.org>
+
 Package: tcptrack
 Version: 1.4.3-1
 Architecture: amd64
@@ -6313,6 +6652,31 @@ Description: displays an indented directory tree, in color
  listing of files, which is colorized ala dircolors if the LS_COLORS environment
  variable is set and output is to tty.
 
+Package: tzdata
+Version: 2025b-0ubuntu0.22.04
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 3910
+Depends: debconf (>= 0.5) | debconf-2.0
+Provides: tzdata-bookworm
+Multi-Arch: foreign
+Homepage: https://www.iana.org/time-zones
+Priority: 0
+Section: utils
+Filename: pool/main/t/tzdata/tzdata_2025b-0ubuntu0.22.04_all.deb
+Size: 347026
+SHA512: b8534e04cd5b7d5cbe01bbc6fbdf9ecdc76e23a60eda3d25b96b31264f554b2e46e7c0c78d7001f79dc28b50365f171ce71a5de9e80d9849a7f695faed3d1f71
+SHA256: da075e1264859fed37edd35c711f4771abc6c0630584a318b5d88a486cce9a7a
+SHA1: 83b1cd52d5b5df12f5ac07acfc063f1103c8bf48
+MD5sum: 768c38d7a6384a552c592e5cc720bc7b
+Description: time zone and daylight-saving time data
+ This package contains data required for the implementation of
+ standard local time for many representative locations around the
+ globe. It is updated periodically to reflect changes made by
+ political bodies to time zone boundaries, UTC offsets, and
+ daylight-saving rules.
+Original-Maintainer: GNU Libc Maintainers <debian-glibc@lists.debian.org>
+
 Package: vnstat
 Version: 2.9-1
 Architecture: amd64
@@ -6399,6 +6763,36 @@ Description: Displays user-friendly dialog boxes from shell scripts
  from shell scripts. This allows a developer of a script to interact with
  the user in a much friendlier manner.
 Original-Maintainer: Alastair McKinstry <mckinstry@debian.org>
+
+Package: whohas
+Version: 0.29.1-1.1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Paul Wise <pabs@debian.org>
+Installed-Size: 258
+Depends: libforks-perl, libwww-perl, perl
+Recommends: libsys-cpu-perl
+Homepage: http://www.philippwesche.org/200811/whohas/intro.html
+Priority: 0
+Section: utils
+Filename: pool/main/w/whohas/whohas_0.29.1-1.1_all.deb
+Size: 183708
+SHA512: 0a87691ec84aecf925263a6564dc722022dd9a855aa18ed2b841623c0ed7247919d381687b87827568ab020a5a770333ba59b986116e9f0e238178602bc24270
+SHA256: f397ed0b477343935ef0e4b98da6b25b269981dbf884cea66aa55ab68b057085
+SHA1: 7dea089330f329b802a5b8d1ce88246c9cce4a8c
+MD5sum: fcfe3c14ca854e69832ba344944918ff
+Description: query multiple distributions' package archives
+ whohas is a command line tool that allows you to query several package
+ collections at once.
+ .
+ It supports Arch Linux, AUR, Debian, Fedora, Gentoo, openSUSE, Slackware,
+ Source Mage, Ubuntu, FreeBSD, NetBSD, OpenBSD, Fink, Mandriva and MacPorts.
+ .
+ whohas was designed to help package maintainers find ebuilds, pkgbuilds, and
+ similar package definitions from other distributions to learn from. However, it
+ can also be used by normal users who want to know which distribution provides
+ certain packages, and which version of a given package is in use in each
+ distribution or in each release of a distribution.
 
 Package: zram-tools
 Version: 0.3.3.1-1

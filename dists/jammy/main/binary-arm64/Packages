@@ -100,6 +100,34 @@ MD5sum: 447e1605cac9b953fe6797ae647e586a
 Description: Fetches URLs for specified packages.
  Provides the download URL for a specified package.
 
+Package: ca-certificates
+Version: 20240203~22.04.1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 399
+Depends: openssl (>= 1.1.1), debconf (>= 0.5) | debconf-2.0
+Enhances: openssl
+Breaks: ca-certificates-java (<< 20121112+nmu1)
+Multi-Arch: foreign
+Priority: 0
+Section: utils
+Filename: pool/main/c/ca-certificates/ca-certificates_20240203~22.04.1_all.deb
+Size: 162162
+SHA512: 9a81fdac73affd8ea4007bbc6475470deaae5d7f73a13cd81d61db080bc9bfd37aa6ec2d9a49be486b39fa4b28aaf1ff8e3e95c0cc6be70e01ffba995df2689c
+SHA256: 7b6d6a66bc70a0c0e87893cbe3d0db28e909710ea2f7c6be4d2b74806b1eef75
+SHA1: 0a84b21334d0c561cf172c9221525be580ad9138
+MD5sum: e4f1c3716b1c0ae46797b9feabf5fc22
+Description: Common CA certificates
+ Contains the certificate authorities shipped with Mozilla's browser to allow
+ SSL-based applications to check for the authenticity of SSL connections.
+ .
+ Please note that Debian can neither confirm nor deny whether the
+ certificate authorities whose certificates are included in this package
+ have in any way been audited for trustworthiness or RFC 3647 compliance.
+ Full responsibility to assess them belongs to the local system
+ administrator.
+Original-Maintainer: Julien Cristau <jcristau@debian.org>
+
 Package: deb-get
 Version: 0.3.9-1
 Architecture: all
@@ -118,6 +146,33 @@ MD5sum: 2394fcfa6ab1b4d37ca0cd6fe1b4ca0a
 Description: Script to "manage" .deb installs from 3rd party vendors/projects
  apt-get functionality for .debs officially published by 3rd party vendors and
  projects.
+
+Package: debhelper
+Version: 13.6ubuntu1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 1521
+Depends: autotools-dev, dh-autoreconf (>= 17~), dh-strip-nondeterminism (>= 0.028~), dpkg (>= 1.18.0~), dpkg-dev (>= 1.18.2~), debugedit, dwz (>= 0.12.20190711), file (>= 3.23), libdpkg-perl (>= 1.17.14), man-db, libdebhelper-perl (= 13.6ubuntu1), po-debconf, awk, perl:any
+Suggests: dh-make
+Breaks: cmake (<< 3.9~), meson (<< 0.40.0~)
+Provides: debhelper-compat (= 9), debhelper-compat (= 10), debhelper-compat (= 11), debhelper-compat (= 12), debhelper-compat (= 13), dh-sequence-dwz, dh-sequence-elf-tools, dh-sequence-installinitramfs, dh-sequence-single-binary, dh-sequence-systemd
+Multi-Arch: foreign
+Priority: 0
+Section: utils
+Filename: pool/main/d/debhelper/debhelper_13.6ubuntu1_all.deb
+Size: 923308
+SHA512: d26249995bf772d29e35b22c1673824ff70900f179d478dd6cec9039b9ec9a51d9db0239c0a0e72f6b78cbceec2590e1b5962db6a7aa2abdab4bb6af8e8bac0c
+SHA256: 7ef0cf040c9d3ac9e3a5ae75068f02b4e62fded074fc2498c433c90e27fffad5
+SHA1: 38028bf2d4d94a362dea0312a998594792cb29da
+MD5sum: 6a3a0da1f7d0829ded2458a79b8f9beb
+Description: helper programs for debian/rules
+ A collection of programs that can be used in a debian/rules file to
+ automate common tasks related to building Debian packages. Programs
+ are included to install various files into your package, compress
+ files, fix file permissions, integrate your package with the Debian
+ menu system, debconf, doc-base, etc. Most Debian packages use debhelper
+ as part of their build process.
+Original-Maintainer: Debhelper Maintainers <debhelper@packages.debian.org>
 
 Package: dialog
 Version: 1.3-20211214-1
@@ -1929,6 +1984,31 @@ Description: Debian package repository producer
  .
  This package also contains the changestool and rredtool helpers.
 
+Package: software-properties-common
+Source: software-properties
+Version: 0.99.22.9+zorin1
+Architecture: all
+Maintainer: Michael Vogt <michael.vogt@ubuntu.com>
+Installed-Size: 481
+Depends: ca-certificates, gir1.2-glib-2.0, gir1.2-packagekitglib-1.0 (>= 1.1.0-2), packagekit, python-apt-common (>= 0.9), python3, python3-dbus, python3-gi, python3-software-properties (= 0.99.22.9+zorin1), python3:any
+Breaks: python-software-properties (<< 0.85), python3-software-properties (<< 0.85)
+Replaces: python-software-properties (<< 0.85), python3-software-properties (<< 0.85)
+Priority: 0
+Section: utils
+Filename: pool/main/s/software-properties/software-properties-common_0.99.22.9+zorin1_all.deb
+Size: 101240
+SHA512: 2c2e763f71cd77b469ed95b1c780d0f15a3f32801e8d5fe0b1ec7921963a893ef873136c30c7e33e261345a0eb9a801747a238fa763d6261badfacb473a47e30
+SHA256: 3478fa6f1353c16713c439422778c70b0dd636703b11961ae3f6147cbaf660c5
+SHA1: 45265d1704739f5219a15b2fe71cb1352d90860a
+MD5sum: 4a35bc47e418e6f36a2b1397f04b95c9
+Description: manage the repositories that you install software from (common)
+ This software provides an abstraction of the used apt repositories.
+ It allows you to easily manage your distribution and independent software
+ vendor software sources.
+ .
+ This package contains the common files for software-properties like the
+ D-Bus backend.
+
 Package: tilix
 Version: 1.9.4-2build1
 Architecture: arm64
@@ -2009,6 +2089,31 @@ Description: command line trashcan utility
  file
 Original-Maintainer: Stefano Karapetsas <stefano@karapetsas.com>
 
+Package: tzdata
+Version: 2025b-0ubuntu0.22.04
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 3910
+Depends: debconf (>= 0.5) | debconf-2.0
+Provides: tzdata-bookworm
+Multi-Arch: foreign
+Homepage: https://www.iana.org/time-zones
+Priority: 0
+Section: utils
+Filename: pool/main/t/tzdata/tzdata_2025b-0ubuntu0.22.04_all.deb
+Size: 347026
+SHA512: b8534e04cd5b7d5cbe01bbc6fbdf9ecdc76e23a60eda3d25b96b31264f554b2e46e7c0c78d7001f79dc28b50365f171ce71a5de9e80d9849a7f695faed3d1f71
+SHA256: da075e1264859fed37edd35c711f4771abc6c0630584a318b5d88a486cce9a7a
+SHA1: 83b1cd52d5b5df12f5ac07acfc063f1103c8bf48
+MD5sum: 768c38d7a6384a552c592e5cc720bc7b
+Description: time zone and daylight-saving time data
+ This package contains data required for the implementation of
+ standard local time for many representative locations around the
+ globe. It is updated periodically to reflect changes made by
+ political bodies to time zone boundaries, UTC offsets, and
+ daylight-saving rules.
+Original-Maintainer: GNU Libc Maintainers <debian-glibc@lists.debian.org>
+
 Package: whiptail
 Source: newt
 Version: 0.52.21-5ubuntu2
@@ -2032,6 +2137,36 @@ Description: Displays user-friendly dialog boxes from shell scripts
  from shell scripts. This allows a developer of a script to interact with
  the user in a much friendlier manner.
 Original-Maintainer: Alastair McKinstry <mckinstry@debian.org>
+
+Package: whohas
+Version: 0.29.1-1.1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Paul Wise <pabs@debian.org>
+Installed-Size: 258
+Depends: libforks-perl, libwww-perl, perl
+Recommends: libsys-cpu-perl
+Homepage: http://www.philippwesche.org/200811/whohas/intro.html
+Priority: 0
+Section: utils
+Filename: pool/main/w/whohas/whohas_0.29.1-1.1_all.deb
+Size: 183708
+SHA512: 0a87691ec84aecf925263a6564dc722022dd9a855aa18ed2b841623c0ed7247919d381687b87827568ab020a5a770333ba59b986116e9f0e238178602bc24270
+SHA256: f397ed0b477343935ef0e4b98da6b25b269981dbf884cea66aa55ab68b057085
+SHA1: 7dea089330f329b802a5b8d1ce88246c9cce4a8c
+MD5sum: fcfe3c14ca854e69832ba344944918ff
+Description: query multiple distributions' package archives
+ whohas is a command line tool that allows you to query several package
+ collections at once.
+ .
+ It supports Arch Linux, AUR, Debian, Fedora, Gentoo, openSUSE, Slackware,
+ Source Mage, Ubuntu, FreeBSD, NetBSD, OpenBSD, Fink, Mandriva and MacPorts.
+ .
+ whohas was designed to help package maintainers find ebuilds, pkgbuilds, and
+ similar package definitions from other distributions to learn from. However, it
+ can also be used by normal users who want to know which distribution provides
+ certain packages, and which version of a given package is in use in each
+ distribution or in each release of a distribution.
 
 Package: zram-tools
 Version: 0.3.3.1-1

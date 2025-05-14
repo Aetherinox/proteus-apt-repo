@@ -97,6 +97,69 @@ Description: package management related utility programs
     needed to publish an archive of Debian packages
   * apt-sortpkgs is a Packages/Sources file normalizer.
 
+Package: aptly
+Version: 1.6.1
+Architecture: i386
+Maintainer: André Roth <neolynx@gmail.com>
+Installed-Size: 42062
+Depends: libc6:i386 (>= 2.35), bzip2, xz-utils, gpgv, gpg
+Suggests: graphviz
+Conflicts: gnupg1, gpgv1
+Homepage: https://www.aptly.info
+Priority: 0
+Section: utils
+Filename: pool/main/a/aptly/aptly_1.6.1_i386.deb
+Size: 11439654
+SHA512: c6de2cb5ea89600c0ca9000e794b04fdc9791a2a5b95f61ee3495b4bbc5eeae8cc1549ebe6a9e070c3e6f231a7b96af913fd240800101af2a72f32e7c6fdc708
+SHA256: d68e199545a1ac6145f864de2c592be236dd9e4ba9ce3ced81f1a9756fe1dc3e
+SHA1: dc84c20f05ca2023462d035f3e6d8266db45056f
+MD5sum: c5295e784a701e8a36d626122e0e198b
+Description: Swiss army knife for Debian repository management - main package
+ It offers several features making it easy to manage Debian package
+ repositories:
+ .
+  - make mirrors of remote Debian/Ubuntu repositories, limiting by
+    components/architectures
+  - take snapshots of mirrors at any point in time, fixing state of
+    repository at some moment of time
+  - publish snapshot as Debian repository, ready to be consumed by apt
+  - controlled update of one or more packages in snapshot from upstream
+    mirror, tracking dependencies
+  - merge two or more snapshots into one
+ .
+ This is the main package, it contains the aptly command-line utility.
+
+Package: aptly-api
+Source: aptly
+Version: 1.6.1
+Architecture: i386
+Maintainer: André Roth <neolynx@gmail.com>
+Installed-Size: 36
+Depends: aptly
+Homepage: https://www.aptly.info
+Priority: 0
+Section: utils
+Filename: pool/main/a/aptly/aptly-api_1.6.1_i386.deb
+Size: 8482
+SHA512: e564c6221aa6a6e5be3230dc2fe07c5ec9dfdcf9b5c2cf308c5c3ca466eaa0569c4526f716b7bc68d9aa663cb1014d836332b659fb717560ad0a66cdeb4d53e8
+SHA256: a7de7617ab5fa30b3d81ec62d1c934b9d5e63114694cc2f451a888afe095f0e4
+SHA1: 729fec5b3f7ae1568a3fe8b5335662780978449b
+MD5sum: 9a6359ff554dfefe800e5b787e273acc
+Description: Swiss army knife for Debian repository management - API
+ It offers several features making it easy to manage Debian package
+ repositories:
+ .
+  - make mirrors of remote Debian/Ubuntu repositories, limiting by
+    components/architectures
+  - take snapshots of mirrors at any point in time, fixing state of
+    repository at some moment of time
+  - publish snapshot as Debian repository, ready to be consumed by apt
+  - controlled update of one or more packages in snapshot from upstream
+    mirror, tracking dependencies
+  - merge two or more snapshots into one
+ .
+ This package contains the aptly-api service.
+
 Package: argon2
 Version: 0~20171227-0.3
 Architecture: i386
@@ -130,6 +193,68 @@ Description: memory-hard hashing function - utility
  .
  This package contains the argon2 tool for hashing data on the command-line.
 
+Package: bash
+Version: 5.1-6ubuntu1.1
+Architecture: i386
+Essential: yes
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 1848
+Pre-Depends: libc6 (>= 2.34), libtinfo6 (>= 6)
+Depends: base-files (>= 2.1.12), debianutils (>= 2.15)
+Recommends: bash-completion (>= 20060301-0)
+Suggests: bash-doc
+Conflicts: bash-completion (<< 20060301-0)
+Replaces: bash-completion (<< 20060301-0), bash-doc (<= 2.05-1)
+Multi-Arch: foreign
+Homepage: http://tiswww.case.edu/php/chet/bash/bashtop.html
+Priority: 0
+Section: utils
+Filename: pool/main/b/bash/bash_5.1-6ubuntu1.1_i386.deb
+Size: 747212
+SHA512: 15fa5623d9dce73a85e7b05a1efd3d94a131a796349a0d225df124a2d9f58297f9119dd2eab12ae7e641fec74133ae547070f4774acd2b8d263f883e964be2c7
+SHA256: 1383ec36b7c26b91b37d53e1a339f21f46ccf8a643ef057153d7350a4ce3ac73
+SHA1: 38269693a2b21130c11786be5a9ea29adf6f2a56
+MD5sum: 1a6b5e81cf12ea9ff0aeb4491578e690
+Description: GNU Bourne Again SHell
+ Bash is an sh-compatible command language interpreter that executes
+ commands read from the standard input or from a file.  Bash also
+ incorporates useful features from the Korn and C shells (ksh and csh).
+ .
+ Bash is ultimately intended to be a conformant implementation of the
+ IEEE POSIX Shell and Tools specification (IEEE Working Group 1003.2).
+ .
+ The Programmable Completion Code, by Ian Macdonald, is now found in
+ the bash-completion package.
+Original-Maintainer: Matthias Klose <doko@debian.org>
+
+Package: ca-certificates
+Version: 20240203~22.04.1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 399
+Depends: openssl (>= 1.1.1), debconf (>= 0.5) | debconf-2.0
+Enhances: openssl
+Breaks: ca-certificates-java (<< 20121112+nmu1)
+Multi-Arch: foreign
+Priority: 0
+Section: utils
+Filename: pool/main/c/ca-certificates/ca-certificates_20240203~22.04.1_all.deb
+Size: 162162
+SHA512: 9a81fdac73affd8ea4007bbc6475470deaae5d7f73a13cd81d61db080bc9bfd37aa6ec2d9a49be486b39fa4b28aaf1ff8e3e95c0cc6be70e01ffba995df2689c
+SHA256: 7b6d6a66bc70a0c0e87893cbe3d0db28e909710ea2f7c6be4d2b74806b1eef75
+SHA1: 0a84b21334d0c561cf172c9221525be580ad9138
+MD5sum: e4f1c3716b1c0ae46797b9feabf5fc22
+Description: Common CA certificates
+ Contains the certificate authorities shipped with Mozilla's browser to allow
+ SSL-based applications to check for the authenticity of SSL connections.
+ .
+ Please note that Debian can neither confirm nor deny whether the
+ certificate authorities whose certificates are included in this package
+ have in any way been audited for trustworthiness or RFC 3647 compliance.
+ Full responsibility to assess them belongs to the local system
+ administrator.
+Original-Maintainer: Julien Cristau <jcristau@debian.org>
+
 Package: deb-get
 Version: 0.3.9-1
 Architecture: all
@@ -148,6 +273,33 @@ MD5sum: 2394fcfa6ab1b4d37ca0cd6fe1b4ca0a
 Description: Script to "manage" .deb installs from 3rd party vendors/projects
  apt-get functionality for .debs officially published by 3rd party vendors and
  projects.
+
+Package: debhelper
+Version: 13.6ubuntu1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 1521
+Depends: autotools-dev, dh-autoreconf (>= 17~), dh-strip-nondeterminism (>= 0.028~), dpkg (>= 1.18.0~), dpkg-dev (>= 1.18.2~), debugedit, dwz (>= 0.12.20190711), file (>= 3.23), libdpkg-perl (>= 1.17.14), man-db, libdebhelper-perl (= 13.6ubuntu1), po-debconf, awk, perl:any
+Suggests: dh-make
+Breaks: cmake (<< 3.9~), meson (<< 0.40.0~)
+Provides: debhelper-compat (= 9), debhelper-compat (= 10), debhelper-compat (= 11), debhelper-compat (= 12), debhelper-compat (= 13), dh-sequence-dwz, dh-sequence-elf-tools, dh-sequence-installinitramfs, dh-sequence-single-binary, dh-sequence-systemd
+Multi-Arch: foreign
+Priority: 0
+Section: utils
+Filename: pool/main/d/debhelper/debhelper_13.6ubuntu1_all.deb
+Size: 923308
+SHA512: d26249995bf772d29e35b22c1673824ff70900f179d478dd6cec9039b9ec9a51d9db0239c0a0e72f6b78cbceec2590e1b5962db6a7aa2abdab4bb6af8e8bac0c
+SHA256: 7ef0cf040c9d3ac9e3a5ae75068f02b4e62fded074fc2498c433c90e27fffad5
+SHA1: 38028bf2d4d94a362dea0312a998594792cb29da
+MD5sum: 6a3a0da1f7d0829ded2458a79b8f9beb
+Description: helper programs for debian/rules
+ A collection of programs that can be used in a debian/rules file to
+ automate common tasks related to building Debian packages. Programs
+ are included to install various files into your package, compress
+ files, fix file permissions, integrate your package with the Debian
+ menu system, debconf, doc-base, etc. Most Debian packages use debhelper
+ as part of their build process.
+Original-Maintainer: Debhelper Maintainers <debhelper@packages.debian.org>
 
 Package: duf
 Version: 0.8.1
@@ -379,6 +531,67 @@ Description: GNU privacy guard - signature verification tool
  used to make the signature are valid. There are no configuration
  files and only a few options are implemented.
 Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>
+
+Package: iproute2
+Version: 5.15.0-1ubuntu2
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 3640
+Depends: debconf (>= 0.5) | debconf-2.0, libbpf0 (>= 1:0.2), libbsd0 (>= 0.0), libc6 (>= 2.34), libcap2 (>= 1:2.10), libdb5.3, libelf1 (>= 0.131), libmnl0 (>= 1.0.3-4~), libselinux1 (>= 3.1~), libxtables12 (>= 1.6.0+snapshot20161117), libcap2-bin
+Recommends: libatm1 (>= 2.4.1-17~)
+Suggests: iproute2-doc
+Conflicts: arpd, iproute (<< 20130000-1)
+Replaces: iproute
+Provides: arpd
+Multi-Arch: foreign
+Homepage: https://wiki.linuxfoundation.org/networking/iproute2
+Priority: 0
+Section: utils
+Filename: pool/main/i/iproute2/iproute2_5.15.0-1ubuntu2_i386.deb
+Size: 1136986
+SHA512: 9687db18cdaa6c899503b02ab8c67c01f1fc31f5c08e2b914c6a55cc68312faf72ba541cc85a857f236e2c499949e4828c61b05958f0f4b21ebd8eb6c6abc2c1
+SHA256: 74a13612f95bb705cb1df0fbe7a993bf68757b9523995326a393dad3d719e492
+SHA1: a329c0fce68bbbac704ebdfbc01413c545cb9ecf
+MD5sum: 3a679ffd10a4bdef675c34d40db67a17
+Description: networking and traffic control tools
+ The iproute2 suite is a collection of utilities for networking and
+ traffic control.
+ .
+ These tools communicate with the Linux kernel via the (rt)netlink
+ interface, providing advanced features not available through the
+ legacy net-tools commands 'ifconfig' and 'route'.
+Original-Maintainer: Alexander Wirt <formorer@debian.org>
+
+Package: jq
+Version: 1.6-2.1ubuntu3
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 99
+Depends: libjq1 (= 1.6-2.1ubuntu3), libc6 (>= 2.34)
+Multi-Arch: foreign
+Homepage: https://github.com/stedolan/jq
+Priority: 0
+Section: utils
+Filename: pool/main/j/jq/jq_1.6-2.1ubuntu3_i386.deb
+Size: 53688
+SHA512: 0f23968956a6aa8d2131da7c1203fd84660f4f4abde0a476b669edf1646d609c3c1aff81349670d51682160ef0663dd3b28b385e5fd95dfdf4408eae41233388
+SHA256: 80f4e50d9db7fd3521003afc434d2949b37b9af2e594d54475a023b2cfffa154
+SHA1: 12c7f81fb5631d4cf5434feb03cd021b844cab57
+MD5sum: 05910be2c8ca4a2322ef9ab52d7fa801
+Description: lightweight and flexible command-line JSON processor
+ jq is like sed for JSON data – you can use it to slice
+ and filter and map and transform structured data with
+ the same ease that sed, awk, grep and friends let you
+ play with text.
+ .
+ It is written in portable C, and it has minimal runtime
+ dependencies.
+ .
+ jq can mangle the data format that you have into the
+ one that you want with very little effort, and the
+ program to do so is often shorter and simpler than
+ you’d expect.
+Original-Maintainer: ChangZhuo Chen (陳昌倬) <czchen@debian.org>
 
 Package: keyutils
 Version: 1.6.1-2ubuntu3
@@ -2027,6 +2240,57 @@ Description: Debian package repository producer
  .
  This package also contains the changestool and rredtool helpers.
 
+Package: software-properties-common
+Source: software-properties
+Version: 0.99.22.9+zorin1
+Architecture: all
+Maintainer: Michael Vogt <michael.vogt@ubuntu.com>
+Installed-Size: 481
+Depends: ca-certificates, gir1.2-glib-2.0, gir1.2-packagekitglib-1.0 (>= 1.1.0-2), packagekit, python-apt-common (>= 0.9), python3, python3-dbus, python3-gi, python3-software-properties (= 0.99.22.9+zorin1), python3:any
+Breaks: python-software-properties (<< 0.85), python3-software-properties (<< 0.85)
+Replaces: python-software-properties (<< 0.85), python3-software-properties (<< 0.85)
+Priority: 0
+Section: utils
+Filename: pool/main/s/software-properties/software-properties-common_0.99.22.9+zorin1_all.deb
+Size: 101240
+SHA512: 2c2e763f71cd77b469ed95b1c780d0f15a3f32801e8d5fe0b1ec7921963a893ef873136c30c7e33e261345a0eb9a801747a238fa763d6261badfacb473a47e30
+SHA256: 3478fa6f1353c16713c439422778c70b0dd636703b11961ae3f6147cbaf660c5
+SHA1: 45265d1704739f5219a15b2fe71cb1352d90860a
+MD5sum: 4a35bc47e418e6f36a2b1397f04b95c9
+Description: manage the repositories that you install software from (common)
+ This software provides an abstraction of the used apt repositories.
+ It allows you to easily manage your distribution and independent software
+ vendor software sources.
+ .
+ This package contains the common files for software-properties like the
+ D-Bus backend.
+
+Package: sudo
+Version: 1.9.9-1ubuntu2.4
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 2980
+Depends: libaudit1 (>= 1:2.2.1), libc6 (>= 2.34), libpam0g (>= 0.99.7.1), libselinux1 (>= 3.1~), zlib1g (>= 1:1.2.3.4), libpam-modules, lsb-base
+Conflicts: sudo-ldap
+Replaces: sudo-ldap
+Homepage: https://www.sudo.ws/
+Priority: 0
+Section: utils
+Filename: pool/main/s/sudo/sudo_1.9.9-1ubuntu2.4_i386.deb
+Size: 835498
+SHA512: f3732c9bf343a8de04caa21ea3df31af3acdadd2d9028d8dd015d4a6bf3155b15951b6f0506b2b67a2692855e7d32fd43d5d3f2cc356610392802effe9eb4793
+SHA256: ef09fc274869b7110efbe2be7626cdbafaf80689d940c6f10bb4f889f87d0fdc
+SHA1: d9466fb3acd35ebc7aa02ed116b87682e296d310
+MD5sum: 13398d9b106e0dad455f226bd5b1fb35
+Description: Provide limited super user privileges to specific users
+ Sudo is a program designed to allow a sysadmin to give limited root
+ privileges to users and log root activity.  The basic philosophy is to give
+ as few privileges as possible but still allow people to get their work done.
+ .
+ This version is built with minimal shared library dependencies, use the
+ sudo-ldap package instead if you need LDAP support for sudoers.
+Original-Maintainer: Sudo Maintainers <sudo@packages.debian.org>
+
 Package: tilix-common
 Source: tilix
 Version: 1.9.4-2build1
@@ -2073,6 +2337,31 @@ Description: command line trashcan utility
  file
 Original-Maintainer: Stefano Karapetsas <stefano@karapetsas.com>
 
+Package: tzdata
+Version: 2025b-0ubuntu0.22.04
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 3910
+Depends: debconf (>= 0.5) | debconf-2.0
+Provides: tzdata-bookworm
+Multi-Arch: foreign
+Homepage: https://www.iana.org/time-zones
+Priority: 0
+Section: utils
+Filename: pool/main/t/tzdata/tzdata_2025b-0ubuntu0.22.04_all.deb
+Size: 347026
+SHA512: b8534e04cd5b7d5cbe01bbc6fbdf9ecdc76e23a60eda3d25b96b31264f554b2e46e7c0c78d7001f79dc28b50365f171ce71a5de9e80d9849a7f695faed3d1f71
+SHA256: da075e1264859fed37edd35c711f4771abc6c0630584a318b5d88a486cce9a7a
+SHA1: 83b1cd52d5b5df12f5ac07acfc063f1103c8bf48
+MD5sum: 768c38d7a6384a552c592e5cc720bc7b
+Description: time zone and daylight-saving time data
+ This package contains data required for the implementation of
+ standard local time for many representative locations around the
+ globe. It is updated periodically to reflect changes made by
+ political bodies to time zone boundaries, UTC offsets, and
+ daylight-saving rules.
+Original-Maintainer: GNU Libc Maintainers <debian-glibc@lists.debian.org>
+
 Package: wget
 Version: 1.21.2-2ubuntu1.1
 Architecture: i386
@@ -2111,6 +2400,36 @@ Description: retrieves files from the web
  Wget supports proxy servers; this can lighten the network load,
  speed up retrieval, and provide access behind firewalls.
 Original-Maintainer: Noël Köthe <noel@debian.org>
+
+Package: whohas
+Version: 0.29.1-1.1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Paul Wise <pabs@debian.org>
+Installed-Size: 258
+Depends: libforks-perl, libwww-perl, perl
+Recommends: libsys-cpu-perl
+Homepage: http://www.philippwesche.org/200811/whohas/intro.html
+Priority: 0
+Section: utils
+Filename: pool/main/w/whohas/whohas_0.29.1-1.1_all.deb
+Size: 183708
+SHA512: 0a87691ec84aecf925263a6564dc722022dd9a855aa18ed2b841623c0ed7247919d381687b87827568ab020a5a770333ba59b986116e9f0e238178602bc24270
+SHA256: f397ed0b477343935ef0e4b98da6b25b269981dbf884cea66aa55ab68b057085
+SHA1: 7dea089330f329b802a5b8d1ce88246c9cce4a8c
+MD5sum: fcfe3c14ca854e69832ba344944918ff
+Description: query multiple distributions' package archives
+ whohas is a command line tool that allows you to query several package
+ collections at once.
+ .
+ It supports Arch Linux, AUR, Debian, Fedora, Gentoo, openSUSE, Slackware,
+ Source Mage, Ubuntu, FreeBSD, NetBSD, OpenBSD, Fink, Mandriva and MacPorts.
+ .
+ whohas was designed to help package maintainers find ebuilds, pkgbuilds, and
+ similar package definitions from other distributions to learn from. However, it
+ can also be used by normal users who want to know which distribution provides
+ certain packages, and which version of a given package is in use in each
+ distribution or in each release of a distribution.
 
 Package: zram-tools
 Version: 0.3.3.1-1
