@@ -439,7 +439,6 @@ lst_github=(
     'Aetherinox/debian-apt-url'
     'Aetherinox/opengist-debian'
     'muesli/duf'
-    'dbeaver/dbeaver'
 )
 
 # #
