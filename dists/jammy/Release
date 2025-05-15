@@ -2,7 +2,7 @@ Origin: Aetherx
 Label: Jammy Jellyfish 22.04 LTS & ZorinOS v17
 Suite: stable
 Codename: jammy
-Date: Wed, 14 May 2025 21:16:01 UTC
+Date: Thu, 15 May 2025 02:24:53 UTC
 Architectures: amd64 arm64 i386
 Components: main
 Description: Ubuntu 22.04 (Jammy Jellyfish) LTS & ZorinOS v17
@@ -10,8 +10,8 @@ MD5Sum:
  7da93bf62adae7f6a9212ae62372350c 328960 main/binary-amd64/Packages
  0526d02d81503f1f5dc95c8d30119465 96151 main/binary-amd64/Packages.gz
  5984084b34a9c03bd231fe6de8f737f4 160 main/binary-amd64/Release
- 2bd7a34014645224a00a1b84487ff51e 103099 main/binary-arm64/Packages
- ccc327d8c9934b61e9ab29cafad900c2 32582 main/binary-arm64/Packages.gz
+ 5aff63f86ffb52c88bede9ce1e68acf6 104449 main/binary-arm64/Packages
+ 1e41c6e9a60a56d2abff0b750e74ab05 32786 main/binary-arm64/Packages.gz
  c02822c5e4bbb3b71ce7681ac369faa3 160 main/binary-arm64/Release
  96086742cfc43cb641d6acbd14caa2ff 115680 main/binary-i386/Packages
  d921c645521ca652642d830bb6d317e3 37043 main/binary-i386/Packages.gz
@@ -23,8 +23,8 @@ SHA1:
  761fd29fa4894fac0822474aa78efef5af832877 328960 main/binary-amd64/Packages
  59b02f21f9d19d44a2b55813a7de9ffeb65e3259 96151 main/binary-amd64/Packages.gz
  4b1a7d805873d747b6b6611e0153e610e58f92d3 160 main/binary-amd64/Release
- 62f94662a30806e33c82f9db5e77138289d6e544 103099 main/binary-arm64/Packages
- 9b9e4c09ca33079fd783b56a11cc2b6bad9085b6 32582 main/binary-arm64/Packages.gz
+ fa352f27fb9981db24ce1e44268c830809c98432 104449 main/binary-arm64/Packages
+ 5c97554317cb9f2c4dcfe03264bbc2772d0753b4 32786 main/binary-arm64/Packages.gz
  aaefecf1c50c09cfa48ce5b3b036cee2b80930d6 160 main/binary-arm64/Release
  2c534438e991a898a56d68ba4a2df32d5a4e0504 115680 main/binary-i386/Packages
  21de35d124f8944a0e5b20f93db8e7793d3018ae 37043 main/binary-i386/Packages.gz
@@ -36,8 +36,8 @@ SHA256:
  27cd0ff4601fb370a08c6c7d4ae22d2c4418750ba041b09db6d6375c5bcde3b6 328960 main/binary-amd64/Packages
  43809a21d04b61fdbb6972d5ee602079aca401ddc42f0310bafa2149269c776b 96151 main/binary-amd64/Packages.gz
  44e1d634c08339e31164975041e1d78856380adee1cb81876ce72e52a035455b 160 main/binary-amd64/Release
- ff2cce07b751f4ace0bb0e7d0482bb7b5984f4fc20b651431418c1433185a788 103099 main/binary-arm64/Packages
- be52c89f5cbe023b1dfbc79548f9069c49f581045e63622f766e714684123117 32582 main/binary-arm64/Packages.gz
+ 0cd9ee101d5c1afac4b06e44a05eddc3336198c57fca8910eb4bddd26ca147a9 104449 main/binary-arm64/Packages
+ 63fd540dc958c2755fc0cbf0e44ec09c7895e185da6ad9cd6915c94d16a64b9b 32786 main/binary-arm64/Packages.gz
  0748525f41d87da34ee7dae4baeb346706f031aab5a6de4cb06c7e7eb5bfd6c3 160 main/binary-arm64/Release
  69c0f8be75fd10cb8c871b9c92036c8fcadd85cfcfbe3116b65cf6c5890528a4 115680 main/binary-i386/Packages
  f082e3d6926761387ffc5b9ce1d72d30304e1de21e91697cf850b11758d4524e 37043 main/binary-i386/Packages.gz
@@ -49,8 +49,8 @@ SHA512:
  84159bb43427229ac3379ffde310921eb05c1ef45fda885c040c02a7d2aefc7daf6687a3987a07e4f09846c58ef2ed70b83a88f8d4d79454f188a101027a1bd2 328960 main/binary-amd64/Packages
  fe1bba1273cdca360c807f709a773aefc9a53124c03394a2514b08414045d74a8073c57ba01ed41e93e136b3011c4ac0a47ca3a67b018af0378c535efaba9f1b 96151 main/binary-amd64/Packages.gz
  1f179951afa8a2b41470908fd9b504d2bda3e9bdeb0551ef598e8300d07e92eeb704561d12eef3a0e59164b5d0d49d1a6545cdc321250093ca79ec1536ff6568 160 main/binary-amd64/Release
- 192c90104cec667a87e7057c7afcd187861f51c8e794194210e4484689d5ec0fe0b8425a6583e138fc68f4b11be5e9b13c7f43ebcc3bb27b09591a7fa801d706 103099 main/binary-arm64/Packages
- 19aa406d2a69f80cc25b7c9581e10e7d0d955961fc02813019b3a788f4951273205dd9d1451cf7346c839af77282124eb729811e2a8826d551e7e4275be63e0d 32582 main/binary-arm64/Packages.gz
+ 899406ba722e7a6f7475e02db3b8cfd4e9b7b4e85b6e32af482716df714e282b4793b7869684bf2cd6ad10bb6c7d609f3865be5420f4963daf0c81c5e94904f9 104449 main/binary-arm64/Packages
+ 026d9ee1d358698ebe56ac03d9f3da9989378bb3b358a88f9f9ab7d50998ab1aa2e9151dfe7d013dc88e02b474c62df3177e7a4f111e07f27102a99ef06d1f06 32786 main/binary-arm64/Packages.gz
  93883aff3c9677d2a35babc864d4dfdacb356863d2fb3829565abe65322193f5bad81ac3a5357383f0f0ea2ee63779c97a18e96ea3727eec72b1e4020bc80f7c 160 main/binary-arm64/Release
  6a5cd20ebcfb172a8e69c7cd3bc243ab2cfd56239e26526e44499673ebc1ed16aec8fbc26dc0dc3f204dc387af24c36abbabf5ed0832a152a96feb01694b4ecf 115680 main/binary-i386/Packages
  c607f460f4715aa8649fe3521243de5f6f2f03ca5033ef166109fbe5384e2f3e06db420d627b3d161ab5bae6456c30315ade495134f9cd1d52d3cd95c3d565c4 37043 main/binary-i386/Packages.gz
