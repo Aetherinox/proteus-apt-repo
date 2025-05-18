@@ -13757,6 +13757,7 @@
             {"type":"file","name":"firefox_137.0.2~build1_i386_454cb81fd8aa03e70e38cf080de859f7.deb"},
             {"type":"file","name":"firefox_138.0.1~build1_i386_4c3b86185df16d732e95e522041926ed.deb"},
             {"type":"file","name":"firefox_138.0.3~build1_i386_c7ee86e8b8b52886c61d4e62f7ec7e18.deb"},
+            {"type":"file","name":"firefox_138.0.4~build1_i386_421ba7be4ffbaa05766527c3663bdfbb.deb"},
             {"type":"file","name":"firefox_138.0~build1_i386_9be0bc54584ee75516ab221d34cc215b.deb"},
             {"type":"file","name":"git_2.34.1-1ubuntu1.12_i386.deb"},
             {"type":"file","name":"gpg_2.2.27-3ubuntu2.3_i386.deb"},
@@ -13892,7 +13893,8 @@
       {"type":"file","name":"proteus-051525.log"},
       {"type":"file","name":"proteus-051625.log"},
       {"type":"file","name":"proteus-051725.log"},
-      {"type":"fifo","name":"proteus-051725.log.pipe"},
+      {"type":"file","name":"proteus-051825.log"},
+      {"type":"fifo","name":"proteus-051825.log.pipe"},
       {"type":"file","name":"proteus-service-012625.log"},
       {"type":"file","name":"proteus-service-012725.log"},
       {"type":"file","name":"proteus-service-012825.log"},
@@ -13995,7 +13997,8 @@
       {"type":"file","name":"proteus-service-051425.log"},
       {"type":"file","name":"proteus-service-051525.log"},
       {"type":"file","name":"proteus-service-051625.log"},
-      {"type":"file","name":"proteus-service-051725.log"}
+      {"type":"file","name":"proteus-service-051725.log"},
+      {"type":"file","name":"proteus-service-051825.log"}
   ]},
     {"type":"directory","name":"pool","contents":[
       {"type":"directory","name":"main","contents":[
@@ -14111,6 +14114,7 @@
           {"type":"directory","name":"firefox","contents":[
             {"type":"file","name":"firefox_138.0.1~build1_i386.deb"},
             {"type":"file","name":"firefox_138.0.3~build1_i386.deb"},
+            {"type":"file","name":"firefox_138.0.4~build1_i386.deb"},
             {"type":"file","name":"firefox_1snap1-0ubuntu2_amd64.deb"},
             {"type":"file","name":"firefox_1snap1-0ubuntu5_amd64.deb"}
         ]},
@@ -15102,5 +15106,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":275,"files":14551}
+  {"type":"report","directories":275,"files":14555}
 ]
