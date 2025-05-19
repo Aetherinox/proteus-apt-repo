@@ -5359,7 +5359,7 @@ EOF
     sudo chown -R "${USER}:${USER}" "${app_dir}/.app" >> ${LOGS_FILE} 2>&1
 
     tree_output=$( sudo tree -a -I ".git" -I "logs" -I "docs" -I ".gpg" -I "incoming" --dirsfirst )
-    sudo tree -a -I ".git" --dirsfirst -J > ${manifest_dir}/tree.json
+    sudo tree -a -I ".git" -I "logs" -I "docs" -I ".gpg" -I "incoming" --dirsfirst -J > ${manifest_dir}/tree.json
 
     # #
     #   useful for Gitea with HTML rendering plugin, not useful for Github
