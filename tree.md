@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `05.19.2025 07:00:00`
+Last generated on `05.19.2025 19:00:01`
 
 <br />
 
@@ -128,18 +128,6 @@ Last generated on `05.19.2025 07:00:00`
 │       ├── InRelease
 │       ├── Release
 │       └── Release.gpg
-├── .github
-│   └── workflows
-│       ├── deploy-clean.yml
-│       ├── documentation.yml
-│       ├── history-clean.yml
-│       ├── issues-accept.yml
-│       ├── issues-new.yml
-│       ├── issues-scan.yml
-│       ├── issues-stale.yml
-│       ├── labels-clean.yml
-│       ├── labels-create.yml
-│       └── ping-developer.yml
 ├── pool
 │   └── main
 │       ├── a
@@ -1053,15 +1041,11 @@ Last generated on `05.19.2025 07:00:00`
 │               ├── zram-tools_0.3.2.1-1_all.deb
 │               ├── zram-tools_0.3.3.1-1.1_all.deb
 │               └── zram-tools_0.3.3.1-1_all.deb
-├── .secrets
-│   ├── .passwd
-│   ├── .pat_github
-│   └── .pat_gitlab
 ├── .gitattributes
 ├── .gitignore
 ├── proteus.sh
 ├── README.md
 └── tree.md
 
-218 directories, 835 files
+215 directories, 822 files
 ```
