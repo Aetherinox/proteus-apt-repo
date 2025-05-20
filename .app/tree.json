@@ -385,6 +385,7 @@
         {"type":"directory","name":"l","contents":[
           {"type":"directory","name":"lintian","contents":[
             {"type":"file","name":"lintian_2.114.0ubuntu1.5_all.deb"},
+            {"type":"file","name":"lintian_2.114.0ubuntu1.6_all.deb"},
             {"type":"file","name":"lintian_2.117.0ubuntu1.2_all.deb"},
             {"type":"file","name":"lintian_2.62.0ubuntu2.5_all.deb"}
         ]},
@@ -1254,5 +1255,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":215,"files":822}
+  {"type":"report","directories":215,"files":823}
 ]
