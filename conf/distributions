@@ -7,6 +7,7 @@ Components: main
 Description: Ubuntu 20.04 (Focal Fossa) LTS & ZorinOS v16
 SignWith: BD3DC629
 Log: repos/focal.log
+Update: focal
 Limit: 0
 
 Origin: Aetherx

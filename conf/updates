@@ -1,0 +1,8 @@
+Name: focal
+Method: http://ports.ubuntu.com/ubuntu-ports/
+Suite: focal
+Architectures: source i386 amd64 arm64
+Components: main
+UDebComponents:
+VerifyRelease: blindtrust
+#VerifyRelease: 3F272F5B|437D05B5|8D8AEBF1|3B4FE6ACC0B21F32|871920D1991BC93C
