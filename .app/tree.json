@@ -10,7 +10,8 @@
       {"type":"file","name":"zorin.json"}
   ]},
     {"type":"directory","name":"conf","contents":[
-      {"type":"file","name":"distributions"}
+      {"type":"file","name":"distributions"},
+      {"type":"file","name":"updates"}
   ]},
     {"type":"directory","name":"db","contents":[
       {"type":"file","name":"checksums.db"},
@@ -152,6 +153,22 @@
         {"type":"file","name":"Release"},
         {"type":"file","name":"Release.gpg"}
     ]}
+  ]},
+    {"type":"directory","name":"lists","contents":[
+      {"type":"file","name":"focal_focal_InRelease"},
+      {"type":"file","name":"focal_focal_main_amd64_Packages"},
+      {"type":"file","name":"focal_focal_main_arm64_Packages"},
+      {"type":"file","name":"focal_focal_main_i386_Packages"},
+      {"type":"file","name":"focal_focal_main_Sources"},
+      {"type":"file","name":"local_noble_InRelease"},
+      {"type":"file","name":"local_noble_main_amd64_Packages"},
+      {"type":"file","name":"local_noble_main_arm64_Packages"},
+      {"type":"file","name":"local_noble_main_i386_Packages"},
+      {"type":"file","name":"local_noble_main_Sources"},
+      {"type":"file","name":"noble_noble_InRelease"},
+      {"type":"file","name":"noble_noble_main_amd64_Packages"},
+      {"type":"file","name":"noble_noble_main_i386_Packages"},
+      {"type":"file","name":"noble_noble_main_Sources"}
   ]},
     {"type":"directory","name":"pool","contents":[
       {"type":"directory","name":"main","contents":[
@@ -1255,5 +1272,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":215,"files":823}
+  {"type":"report","directories":216,"files":838}
 ]
