@@ -1,11 +1,11 @@
 {
-    "name":             "Proteus Apt Git",
-    "version":          "1.4.0.0",
-    "author":           "Aetherinox",
-    "description":      "Internal system to Proteus App Manager which grabs debian packages.",
-    "distrib":          "jammy",
-    "url":              "https://github.com//proteus-git",
-    "last_duration":    "51m 15s",
-    "last_update":      "05.23.2025 19:00:00",
-    "last_update_ts":   "1748026800"
+"name":             "Proteus Apt Git",
+"version":          "1.4.0.0",
+"author":           "Aetherinox",
+"description":      "Internal system to Proteus App Manager which grabs debian packages.",
+"distrib":          "jammy",
+"url":              "https://github.com//proteus-git",
+"last_duration":    "...........",
+"last_update":      "Running ...............",
+"last_update_ts":   "1748070000"
 }
