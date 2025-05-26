@@ -568,6 +568,24 @@ MD5sum: d7cba56783ca18902c4358d88fe5ac25
 Description: Disk Usage/Free Utility
 
 Package: fastfetch
+Version: 2.44.0
+Architecture: amd64
+Maintainer: Carter Li <zhangsongcui@live.cn>
+Installed-Size: 3191
+Depends: libc6 (>= 2.34)
+Homepage: https://github.com/fastfetch-cli/fastfetch
+Priority: 0
+Section: utils
+Filename: pool/main/f/fastfetch/fastfetch_2.44.0_amd64.deb
+Size: 672222
+SHA512: b67e2182e5360d1eacd0b1be2551f2c50e428e4272d41983da02557762cc7c35ea7ce6c49933c63db9a81614a729e68dc0486016b37792d3b1e3f154292a35e0
+SHA256: f4b63542873c45ddeed15dcaed947c767d8d990f01e0efd4858968a00dfd2401
+SHA1: e5bfd3e410ee66bb61f14f24d26fdb6184f97f07
+MD5sum: fb71427d5b8286f7f9b72021d3b6e684
+Description: Fastfetch is a neofetch-like tool for fetching system information and displaying them in a pretty way.
+ It is written mainly in C, with performance and customizability in mind.
+
+Package: fastfetch
 Version: 2.43.0
 Architecture: amd64
 Maintainer: Carter Li <zhangsongcui@live.cn>
@@ -2353,27 +2371,6 @@ Description: nginx web/proxy server (basic version)
  .
  THIRD PARTY MODULES: Echo, GeoIP2
 Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
-
-Package: obsidian
-Version: 1.8.10
-License: UNLICENSED
-Vendor: Dynalist Inc.
-Architecture: amd64
-Maintainer: Dynalist Inc.
-Installed-Size: 293235
-Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
-Recommends: libappindicator3-1
-Homepage: https://obsidian.md
-Priority: 0
-Section: utils
-Filename: pool/main/o/obsidian/obsidian_1.8.10_amd64.deb
-Size: 80536530
-SHA512: dadf9bf9f44a2bee63224ba150c4d2370079507f676371f8babe9401c9257f0bea29b05219616df40b88c26f83bd65d64c19aa9f4f3d0c4561272c7e9ab19a5d
-SHA256: da19b2755013e9def37271cf04ce7485c03a22fa02b0951e4108884dcd1bd774
-SHA1: edd62fc26b4825af1599774fdec83e9e626e4672
-MD5sum: 76f769c873431b0bd2b3207d11da20ef
-Description: 
-  Obsidian
 
 Package: ocs-url
 Version: 3.1.0-0ubuntu1

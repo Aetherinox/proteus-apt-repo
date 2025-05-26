@@ -279,7 +279,8 @@
       ]},
         {"type":"directory","name":"f","contents":[
           {"type":"directory","name":"fastfetch","contents":[
-            {"type":"file","name":"fastfetch_2.43.0_amd64.deb"}
+            {"type":"file","name":"fastfetch_2.43.0_amd64.deb"},
+            {"type":"file","name":"fastfetch_2.44.0_amd64.deb"}
         ]},
           {"type":"directory","name":"firefox","contents":[
             {"type":"file","name":"firefox_138.0.1~build1_i386.deb"},
@@ -1272,5 +1273,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":216,"files":838}
+  {"type":"report","directories":216,"files":839}
 ]
