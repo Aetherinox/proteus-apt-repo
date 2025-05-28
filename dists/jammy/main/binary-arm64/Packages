@@ -2149,6 +2149,31 @@ Description: command line trashcan utility
 Original-Maintainer: Stefano Karapetsas <stefano@karapetsas.com>
 
 Package: tzdata
+Version: 2025b-0ubuntu0.22.04.1
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 3912
+Depends: debconf (>= 0.5) | debconf-2.0
+Provides: tzdata-bookworm
+Multi-Arch: foreign
+Homepage: https://www.iana.org/time-zones
+Priority: 0
+Section: utils
+Filename: pool/main/t/tzdata/tzdata_2025b-0ubuntu0.22.04.1_all.deb
+Size: 347006
+SHA512: 98429f5a995b1f8c875e42942c0a8285a64f1a6ef4103ac5155b3a584bacef61312767d17c5cb9963d73b4511d9c9840e9660f66451442c7bcab8c55aae06149
+SHA256: edd2abc00d49d924b3e149a696372595bbb9abd24c4e31034d3cbb3a227d9c69
+SHA1: e1ca957aeae310ec589c45e00cbbead7d01d836b
+MD5sum: 050cd2ae698fb418cab1e4747122b857
+Description: time zone and daylight-saving time data
+ This package contains data required for the implementation of
+ standard local time for many representative locations around the
+ globe. It is updated periodically to reflect changes made by
+ political bodies to time zone boundaries, UTC offsets, and
+ daylight-saving rules.
+Original-Maintainer: GNU Libc Maintainers <debian-glibc@lists.debian.org>
+
+Package: tzdata
 Version: 2025b-0ubuntu0.22.04
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
