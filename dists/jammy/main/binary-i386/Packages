@@ -871,6 +871,33 @@ Description: Shows Linux System Information with Distribution Logo
  distributions logo or any ascii art of your choice.
 
 Package: net-tools
+Version: 1.60+git20181103.0eebece-1ubuntu5.1
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 844
+Depends: libc6 (>= 2.34), libselinux1 (>= 3.1~)
+Multi-Arch: foreign
+Homepage: http://sourceforge.net/projects/net-tools/
+Priority: 0
+Section: utils
+Filename: pool/main/n/net-tools/net-tools_1.60+git20181103.0eebece-1ubuntu5.1_i386.deb
+Size: 207720
+SHA512: 3bc76a43f1a775f53cf749e7bfb33f7bc29a0c7dd8047f0ba384f657096791adc3341c9856d8a110e1982b2ba6d7aa86a905b77761ab5a824b14a09b8971a2e5
+SHA256: af09d3ce8ddd3b1e844e08f772e51244527484db55b22e8389aa6617fd1b58be
+SHA1: cb1f53d4ad4182fb86f867e4f7fe084cd4ebf46d
+MD5sum: c2b5cd02f187f7540d7b3d2d55e08cf8
+Description: NET-3 networking toolkit
+ This package includes the important tools for controlling the network
+ subsystem of the Linux kernel.  This includes arp, ifconfig, netstat,
+ rarp, nameif and route.  Additionally, this package contains utilities
+ relating to particular network hardware types (plipconfig, slattach,
+ mii-tool) and advanced aspects of IP configuration (iptunnel, ipmaddr).
+ .
+ In the upstream package 'hostname' and friends are included. Those are
+ not installed by this package, since there is a special "hostname*.deb".
+Original-Maintainer: net-tools Team <team+net-tools@tracker.debian.org>
+
+Package: net-tools
 Version: 1.60+git20181103.0eebece-1ubuntu5
 Architecture: i386
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>

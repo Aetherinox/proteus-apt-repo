@@ -503,6 +503,8 @@
         ]},
           {"type":"directory","name":"net-tools","contents":[
             {"type":"file","name":"net-tools_1.60+git20180626.aebd88e-1ubuntu1_amd64.deb"},
+            {"type":"file","name":"net-tools_1.60+git20181103.0eebece-1ubuntu5.1_amd64.deb"},
+            {"type":"file","name":"net-tools_1.60+git20181103.0eebece-1ubuntu5.1_i386.deb"},
             {"type":"file","name":"net-tools_1.60+git20181103.0eebece-1ubuntu5_amd64.deb"},
             {"type":"file","name":"net-tools_1.60+git20181103.0eebece-1ubuntu5_i386.deb"},
             {"type":"file","name":"net-tools_2.10-0.1ubuntu4_amd64.deb"}
@@ -1274,5 +1276,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":216,"files":840}
+  {"type":"report","directories":216,"files":842}
 ]
