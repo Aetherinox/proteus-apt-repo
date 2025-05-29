@@ -86,6 +86,27 @@ Description: maintain Debian packages in a package pool
 
 Package: apt-transport-https
 Source: apt
+Version: 2.4.14
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: APT Development Team <deity@lists.debian.org>
+Installed-Size: 166
+Depends: apt (>= 1.5~alpha4)
+Multi-Arch: foreign
+Priority: 0
+Section: utils
+Filename: pool/main/a/apt/apt-transport-https_2.4.14_all.deb
+Size: 1510
+SHA512: 665473fab5eecd64f39b9baa18ae99b2dbcc08759763a38819c8dfdd73403fed1d10895ceab040c3912f6277edc7ebc2de05934bcf05024cd867b285a9211c3f
+SHA256: a29547cd065f61ac6590f4a126d126d92589b190e6c990f1d0aeb207e36a92cf
+SHA1: db6ea59cbc68bf743ba03f87303a271ee413168f
+MD5sum: 16d22d9623c81573031e96e6f8a67be3
+Description: transitional package for https support
+ This is a dummy transitional package - https support has been moved into
+ the apt package in 1.5. It can be safely removed.
+
+Package: apt-transport-https
+Source: apt
 Version: 2.4.13
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
@@ -120,6 +141,32 @@ SHA1: d4b7774e3afe1ebfe946f8239e9b255c0e16684c
 MD5sum: 97593a78bf9e0c7e1386c10d26537922
 Description: Fetches URLs for specified packages.
  Provides the download URL for a specified package.
+
+Package: apt-utils
+Source: apt
+Version: 2.4.14
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: APT Development Team <deity@lists.debian.org>
+Installed-Size: 792
+Depends: apt (= 2.4.14), libapt-pkg6.0 (>= 2.4.14), libc6 (>= 2.34), libdb5.3, libgcc-s1 (>= 3.3.1), libstdc++6 (>= 11)
+Priority: 0
+Section: utils
+Filename: pool/main/a/apt/apt-utils_2.4.14_amd64.deb
+Size: 210742
+SHA512: 2f61bdd0fe69aa13fd9204d80834d2eddde6f4fe3dc07d54e47a8332df3bd8e7369ce2d0af3078ccc2d1da99a5531f6ac0257d1b67ce231b0e6ad7577a6c9b51
+SHA256: f99c0d60a00447633dd550107ac90a1e6f5d156c19c05d0e262bc1f65433f340
+SHA1: f2362621631274f7b8d5aa73832c5039dd4b2890
+MD5sum: e9afdceb29d9a83cc6060d6658ba4146
+Description: package management related utility programs
+ This package contains some less used commandline utilities related
+ to package management with APT.
+ .
+  * apt-extracttemplates is used by debconf to prompt for configuration
+    questions before installation.
+  * apt-ftparchive is used to create Packages and other index files
+    needed to publish an archive of Debian packages
+  * apt-sortpkgs is a Packages/Sources file normalizer.
 
 Package: apt-utils
 Source: apt
@@ -1818,6 +1865,33 @@ Description: Shows Linux System Information with Distribution Logo
  command line script that collects your Linux system information
  and display it on the terminal next to an image, it could be your
  distributions logo or any ascii art of your choice.
+
+Package: net-tools
+Version: 1.60+git20181103.0eebece-1ubuntu5.4
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 800
+Depends: libc6 (>= 2.34), libselinux1 (>= 3.1~)
+Multi-Arch: foreign
+Homepage: http://sourceforge.net/projects/net-tools/
+Priority: 0
+Section: utils
+Filename: pool/main/n/net-tools/net-tools_1.60+git20181103.0eebece-1ubuntu5.4_amd64.deb
+Size: 204402
+SHA512: e27dcd0520893252fdec1f9c595d834ed60e4d09679985cef79ac5827b26c84c7bb31f78d0d862adb6a062cbd2b317e7cd8afeff8ab12991f504c6d5d848b5cd
+SHA256: c91b28875fad3ee9345cc2f3d6f9b24e19208571f34fae19b4097b92af9aef0c
+SHA1: 4cdf788fb5a97087cb3ee3185e195794fca8c6bd
+MD5sum: d5bdd9b80d225c43b19881b207df61bb
+Description: NET-3 networking toolkit
+ This package includes the important tools for controlling the network
+ subsystem of the Linux kernel.  This includes arp, ifconfig, netstat,
+ rarp, nameif and route.  Additionally, this package contains utilities
+ relating to particular network hardware types (plipconfig, slattach,
+ mii-tool) and advanced aspects of IP configuration (iptunnel, ipmaddr).
+ .
+ In the upstream package 'hostname' and friends are included. Those are
+ not installed by this package, since there is a special "hostname*.deb".
+Original-Maintainer: net-tools Team <team+net-tools@tracker.debian.org>
 
 Package: net-tools
 Version: 1.60+git20181103.0eebece-1ubuntu5.1

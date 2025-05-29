@@ -65,6 +65,27 @@ Description: maintain Debian packages in a package pool
 
 Package: apt-transport-https
 Source: apt
+Version: 2.4.14
+Architecture: all
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: APT Development Team <deity@lists.debian.org>
+Installed-Size: 166
+Depends: apt (>= 1.5~alpha4)
+Multi-Arch: foreign
+Priority: 0
+Section: utils
+Filename: pool/main/a/apt/apt-transport-https_2.4.14_all.deb
+Size: 1510
+SHA512: 665473fab5eecd64f39b9baa18ae99b2dbcc08759763a38819c8dfdd73403fed1d10895ceab040c3912f6277edc7ebc2de05934bcf05024cd867b285a9211c3f
+SHA256: a29547cd065f61ac6590f4a126d126d92589b190e6c990f1d0aeb207e36a92cf
+SHA1: db6ea59cbc68bf743ba03f87303a271ee413168f
+MD5sum: 16d22d9623c81573031e96e6f8a67be3
+Description: transitional package for https support
+ This is a dummy transitional package - https support has been moved into
+ the apt package in 1.5. It can be safely removed.
+
+Package: apt-transport-https
+Source: apt
 Version: 2.4.13
 Architecture: all
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>

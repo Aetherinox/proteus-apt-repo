@@ -184,10 +184,13 @@
           {"type":"directory","name":"apt","contents":[
             {"type":"file","name":"apt-transport-https_2.0.10_all.deb"},
             {"type":"file","name":"apt-transport-https_2.4.13_all.deb"},
+            {"type":"file","name":"apt-transport-https_2.4.14_all.deb"},
             {"type":"file","name":"apt-transport-https_2.7.14build2_all.deb"},
             {"type":"file","name":"apt-utils_2.0.10_amd64.deb"},
             {"type":"file","name":"apt-utils_2.4.13_amd64.deb"},
             {"type":"file","name":"apt-utils_2.4.13_i386.deb"},
+            {"type":"file","name":"apt-utils_2.4.14_amd64.deb"},
+            {"type":"file","name":"apt-utils_2.4.14_i386.deb"},
             {"type":"file","name":"apt-utils_2.7.14build2_amd64.deb"}
         ]},
           {"type":"directory","name":"aptly","contents":[
@@ -505,6 +508,8 @@
             {"type":"file","name":"net-tools_1.60+git20180626.aebd88e-1ubuntu1_amd64.deb"},
             {"type":"file","name":"net-tools_1.60+git20181103.0eebece-1ubuntu5.1_amd64.deb"},
             {"type":"file","name":"net-tools_1.60+git20181103.0eebece-1ubuntu5.1_i386.deb"},
+            {"type":"file","name":"net-tools_1.60+git20181103.0eebece-1ubuntu5.4_amd64.deb"},
+            {"type":"file","name":"net-tools_1.60+git20181103.0eebece-1ubuntu5.4_i386.deb"},
             {"type":"file","name":"net-tools_1.60+git20181103.0eebece-1ubuntu5_amd64.deb"},
             {"type":"file","name":"net-tools_1.60+git20181103.0eebece-1ubuntu5_i386.deb"},
             {"type":"file","name":"net-tools_2.10-0.1ubuntu4_amd64.deb"}
@@ -1277,5 +1282,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":216,"files":843}
+  {"type":"report","directories":216,"files":848}
 ]
