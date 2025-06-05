@@ -227,7 +227,8 @@
             {"type":"file","name":"bash_5.1-6ubuntu1.1_i386.deb"}
         ]},
           {"type":"directory","name":"bitwarden","contents":[
-            {"type":"file","name":"bitwarden_2025.4.2_amd64.deb"}
+            {"type":"file","name":"bitwarden_2025.4.2_amd64.deb"},
+            {"type":"file","name":"bitwarden_2025.5.1_amd64.deb"}
         ]}
       ]},
         {"type":"directory","name":"c","contents":[
@@ -1284,5 +1285,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":216,"files":850}
+  {"type":"report","directories":216,"files":851}
 ]

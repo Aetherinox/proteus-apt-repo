@@ -325,6 +325,27 @@ Description: GNU Bourne Again SHell
 Original-Maintainer: Matthias Klose <doko@debian.org>
 
 Package: bitwarden
+Version: 2025.5.1
+License: GPL-3.0
+Vendor: Bitwarden Inc. <hello@bitwarden.com>
+Architecture: amd64
+Maintainer: Bitwarden Inc. <hello@bitwarden.com>
+Installed-Size: 323352
+Depends: libnotify4, libxtst6, libnss3, libxss1
+Recommends: libappindicator3-1
+Homepage: https://bitwarden.com
+Priority: 0
+Section: utils
+Filename: pool/main/b/bitwarden/bitwarden_2025.5.1_amd64.deb
+Size: 85816448
+SHA512: 406b95fc0efd67699f7f79f4ddff3a1c54fe5766c480bf81f5219328fdba35320f057fac56fd9633126144c4c33fdf62a6872695505f74518eb13fbeb873e445
+SHA256: 5a34ee15fa131e0e1f6e96f063c70ada620c1cee3825daf3b4dcad6a2ce41260
+SHA1: 0999811240dff7916d500640482f1b7e917203f8
+MD5sum: e4e27b91c7d00bfc589d28296d67383f
+Description: A secure and free password manager for all of your devices.
+  A secure and free password manager for all of your devices.
+
+Package: bitwarden
 Version: 2025.4.2
 License: GPL-3.0
 Vendor: Bitwarden Inc. <hello@bitwarden.com>
