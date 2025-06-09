@@ -196,8 +196,12 @@
           {"type":"directory","name":"aptly","contents":[
             {"type":"file","name":"aptly_1.6.1_amd64.deb"},
             {"type":"file","name":"aptly_1.6.1_i386.deb"},
+            {"type":"file","name":"aptly_1.6.2_amd64.deb"},
+            {"type":"file","name":"aptly_1.6.2_i386.deb"},
             {"type":"file","name":"aptly-api_1.6.1_amd64.deb"},
-            {"type":"file","name":"aptly-api_1.6.1_i386.deb"}
+            {"type":"file","name":"aptly-api_1.6.1_i386.deb"},
+            {"type":"file","name":"aptly-api_1.6.2_amd64.deb"},
+            {"type":"file","name":"aptly-api_1.6.2_i386.deb"}
         ]},
           {"type":"directory","name":"apt-move","contents":[
             {"type":"file","name":"apt-move_4.2.27-5ubuntu2_amd64.deb"},
@@ -1285,5 +1289,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":216,"files":851}
+  {"type":"report","directories":216,"files":855}
 ]
