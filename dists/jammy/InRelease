@@ -5,7 +5,7 @@ Origin: Aetherx
 Label: Jammy Jellyfish 22.04 LTS & ZorinOS v17
 Suite: stable
 Codename: jammy
-Date: Tue, 24 Jun 2025 19:55:38 UTC
+Date: Wed, 25 Jun 2025 07:56:44 UTC
 Architectures: amd64 arm64 i386
 Components: main
 Description: Ubuntu 22.04 (Jammy Jellyfish) LTS & ZorinOS v17
@@ -63,17 +63,17 @@ SHA512:
  2c7f1486298971db7900c6a00bd3f38406d35e7f722055f3a522a19d341953a8b463c3b846ee1e76006e707ef58e2992d45f40334baa029427a1234abf909249 161 main/source/Release
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCgAdFiEEdTFUq07Y5lsZuvhpy1xMMM0NQCgFAmhbArsACgkQy1xMMM0N
-QCiBQQ//UyPBqHAZgHiCBxQLpgszHMbyzewy2278PWw4VxxPAWCFkNXvFOZIY4yn
-4v2/Iu4pXu1UAcVm6fWrLayHV+T3O9FbzvsoR5Os6gPUaGan9m2q66Vygxhubr5e
-heYueLElnJiVd0i6P/P23LuRO6IuF2iLrWLmzukrNBvI0mGcI7eeASEvluDkHZAZ
-j4bY2nnLd7WZL0mnxy1OP9wqic95qD2cDib34d9FndIE5pZ69GDMjMiHsW6b74rS
-EwXG1DPKPUjIYd3anmm4pQ9hJbXvfYTJuvqiZktvp4mZm8i9pTln73GPMju/NYHm
-SNdppRBi2ganYQrSwc0yeacaEv+v+2PFHXVzNTBsWnzBfNqR4/JM+lABJgTt6GaY
-aWBCSEpmq9K9EKPcBitlnyCb4OclDN3uIwA9BDyr76FRHi2s39s4NsvjyTGihga+
-8c4Zn7gC/GsGkDWAclt0idJpljrKeDF7fkmK7NHeahmlLJydD96VKYpcuCEY/Muo
-V2GQqbjyfmY82xdXL3DVWicVXZJlwKRAoGNvg162Ek+Oro7exGMEZr31qj7cJgQY
-K9cShf7L3z7SY/0imwOjMWUFUn68B4fxNIH5BZ+m6KSV3s6dgDHc8itkDm5C+Ko+
-qT6SypNav+ZnDW6tgvNe056zSg+pWcSKnsWmbsm+6E5l72eaois=
-=AhjB
+iQIzBAEBCgAdFiEEdTFUq07Y5lsZuvhpy1xMMM0NQCgFAmhbq7wACgkQy1xMMM0N
+QCjGpw//cAWVbpLTfl11iZae4Aqd6AFytqlFUcLNycc0TqZDDtUxg9VaPUQIqXux
+2+PtmyO9hmURAm1fP8UWoKgVX+z/pRS4xJnnZZpHPdyf/S4x1cAWnzawbc+Ax+q6
+xkQr+N5LkptapodbPDP5VOfYhs7i5IXLuKKtTHJoO8xL9CM4ETkM8sXeZA2qxIl7
+/eevMw6R7k+uDvp4oJrkqYNM3sBt2r2583VIU6eCsgqujdUklO2gx5FFTLXrlvON
+kfn2opyYs3cibU5i0G5nQk45hZJvF2W7mwTKRygyK6rkps6lYtegYQRVh65SmStN
+G3bASN3mv1IPqrHTR+dz272Wr7YDMmYrKjGT/ajzw3CO0UpNDoOQFNsecx6m4JrH
+gcHutlevdQ8/jpUkODRG/uzN/88ef/PQxhNfGCQpEqxs1Z3ww+/TVpYhjZONJosm
+doP1VSdvzktkncEPPAyWFzsBsmsmgUY2fJ0OpL21KjaMAOgsDxYw35Sg5aucshz9
+0c02IF3QNrKIk2kH4D7sN7I1bf06P/odD94aVha8V0aUawnH/UFRdBDwAer0/BvE
+uUHfSEm7PrHmVhAxb9cSp3Rza5Ax6gfC0wQvRtHTe/HwCiKmAjUhW4BrAKukO8NJ
+mrJm4/ui6QGT0MG0xBOu4LdAYt/uzrTNfy+Zzb4Zoi4EAaB7O0Y=
+=Z77R
 -----END PGP SIGNATURE-----
