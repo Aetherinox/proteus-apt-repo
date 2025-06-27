@@ -429,6 +429,23 @@ MD5sum: ea8c27c8ecd086c5c64172d4be70fa20
 Description: Disk Usage/Free Utility
 
 Package: firefox
+Version: 140.0.2~build1
+Architecture: i386
+Maintainer: Mozilla <release@mozilla.com>
+Installed-Size: 285395
+Depends: libasound2 (>= 1.0.16), libatk1.0-0 (>= 1.12.4), libc6 (>= 2.18), libcairo-gobject2 (>= 1.10.0), libcairo2 (>= 1.10.0), libdbus-1-3 (>= 1.5.12), libfontconfig1 (>= 2.11), libfreetype6 (>= 2.3.5), libgcc1 (>= 1:4.1.1), libgdk-pixbuf2.0-0 (>= 2.22.0) | libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.37.0), libgtk-3-0 (>= 3.13.7), libpango-1.0-0 (>= 1.14.0), libpangocairo-1.0-0 (>= 1.14.0), libstdc++6 (>= 4.8.1), libx11-6, libx11-xcb1, libxcb-shm0, libxcb1, libxcomposite1 (>= 1:0.3-1), libxcursor1 (>> 1.1.2), libxdamage1 (>= 1:1.1), libxext6, libxfixes3, libxi6, libxrandr2 (>= 2:1.4.0), libxrender1
+Provides: gnome-www-browser, www-browser
+Priority: 0
+Section: utils
+Filename: pool/main/f/firefox/firefox_140.0.2~build1_i386.deb
+Size: 80456264
+SHA512: 1aa6effc083c985c117bf30785805a979ba8ab7aad52cb75e597089357894cbc25a7e25341d29697476d5615b866c72097b4198d5c98b0f63ebe9f8641c12f52
+SHA256: 1672b41bfb3178352883c1f174d974f7fb5c4393bee8e19c3d02f9cc7b21e5bc
+SHA1: 90b0ed423525bb083a9c2895091388c8e5c789bc
+MD5sum: 25f93098edf4941b9c354c8e07c4eaa7
+Description: Mozilla Firefox
+
+Package: firefox
 Version: 140.0.1~build1
 Architecture: i386
 Maintainer: Mozilla <release@mozilla.com>
