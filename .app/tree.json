@@ -1215,7 +1215,9 @@
         ]},
           {"type":"directory","name":"sudo","contents":[
             {"type":"file","name":"sudo_1.9.9-1ubuntu2.4_amd64.deb"},
-            {"type":"file","name":"sudo_1.9.9-1ubuntu2.4_i386.deb"}
+            {"type":"file","name":"sudo_1.9.9-1ubuntu2.4_i386.deb"},
+            {"type":"file","name":"sudo_1.9.9-1ubuntu2.5_amd64.deb"},
+            {"type":"file","name":"sudo_1.9.9-1ubuntu2.5_i386.deb"}
         ]}
       ]},
         {"type":"directory","name":"t","contents":[
@@ -1294,5 +1296,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":216,"files":860}
+  {"type":"report","directories":216,"files":862}
 ]

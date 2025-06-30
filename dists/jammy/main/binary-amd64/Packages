@@ -6828,6 +6828,32 @@ Description: manage the repositories that you install software from (common)
  D-Bus backend.
 
 Package: sudo
+Version: 1.9.9-1ubuntu2.5
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 2508
+Depends: libaudit1 (>= 1:2.2.1), libc6 (>= 2.34), libpam0g (>= 0.99.7.1), libselinux1 (>= 3.1~), zlib1g (>= 1:1.2.0.2), libpam-modules, lsb-base
+Conflicts: sudo-ldap
+Replaces: sudo-ldap
+Homepage: https://www.sudo.ws/
+Priority: 0
+Section: utils
+Filename: pool/main/s/sudo/sudo_1.9.9-1ubuntu2.5_amd64.deb
+Size: 820470
+SHA512: c0945669074608f1eac5c17c38eb814bb550e3a365e30138ae98d1842b7348c6c34bd6c087d5ac4c2057314d16309c3f86fda05341488632ed58b24840533543
+SHA256: 479c1e3247887315cc69dcec0b2a58504c77be3f45448de3a0b0e44b0f4ca775
+SHA1: c9bcae660cc123d6121cc23f590847228bd9b711
+MD5sum: bf8f78e8de7ba503a44a447d69f8924a
+Description: Provide limited super user privileges to specific users
+ Sudo is a program designed to allow a sysadmin to give limited root
+ privileges to users and log root activity.  The basic philosophy is to give
+ as few privileges as possible but still allow people to get their work done.
+ .
+ This version is built with minimal shared library dependencies, use the
+ sudo-ldap package instead if you need LDAP support for sudoers.
+Original-Maintainer: Sudo Maintainers <sudo@packages.debian.org>
+
+Package: sudo
 Version: 1.9.9-1ubuntu2.4
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
