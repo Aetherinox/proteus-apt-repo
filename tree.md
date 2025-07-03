@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `07.03.2025 07:00:01`
+Last generated on `07.03.2025 19:00:00`
 
 <br />
 
@@ -241,7 +241,8 @@ Last generated on `07.03.2025 07:00:01`
 │       │   │   ├── fastfetch_2.43.0_amd64.deb
 │       │   │   ├── fastfetch_2.44.0_amd64.deb
 │       │   │   ├── fastfetch_2.45.0_amd64.deb
-│       │   │   └── fastfetch_2.46.0_amd64.deb
+│       │   │   ├── fastfetch_2.46.0_amd64.deb
+│       │   │   └── fastfetch_2.47.0_amd64.deb
 │       │   ├── firefox
 │       │   │   ├── firefox_138.0.1~build1_i386.deb
 │       │   │   ├── firefox_138.0.3~build1_i386.deb
@@ -1084,12 +1085,9 @@ Last generated on `07.03.2025 07:00:01`
 │               └── zram-tools_0.3.3.1-1_all.deb
 ├── .gitattributes
 ├── .gitignore
-├── nginx-light_1.18.0-6ubuntu14.6_amd64.deb
-├── open-vm-tools_12.3.5-3~ubuntu0.22.04.2_amd64.deb
-├── open-vm-tools_12.3.5-3~ubuntu0.22.04.2_amd64.deb.1
 ├── proteus.sh
 ├── README.md
 └── tree.md
 
-216 directories, 865 files
+216 directories, 863 files
 ```

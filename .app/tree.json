@@ -290,7 +290,8 @@
             {"type":"file","name":"fastfetch_2.43.0_amd64.deb"},
             {"type":"file","name":"fastfetch_2.44.0_amd64.deb"},
             {"type":"file","name":"fastfetch_2.45.0_amd64.deb"},
-            {"type":"file","name":"fastfetch_2.46.0_amd64.deb"}
+            {"type":"file","name":"fastfetch_2.46.0_amd64.deb"},
+            {"type":"file","name":"fastfetch_2.47.0_amd64.deb"}
         ]},
           {"type":"directory","name":"firefox","contents":[
             {"type":"file","name":"firefox_138.0.1~build1_i386.deb"},
@@ -1291,13 +1292,10 @@
   ]},
     {"type":"file","name":".gitattributes"},
     {"type":"file","name":".gitignore"},
-    {"type":"file","name":"nginx-light_1.18.0-6ubuntu14.6_amd64.deb"},
-    {"type":"file","name":"open-vm-tools_12.3.5-3~ubuntu0.22.04.2_amd64.deb"},
-    {"type":"file","name":"open-vm-tools_12.3.5-3~ubuntu0.22.04.2_amd64.deb.1"},
     {"type":"file","name":"proteus.sh"},
     {"type":"file","name":"README.md"},
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":216,"files":865}
+  {"type":"report","directories":216,"files":863}
 ]
