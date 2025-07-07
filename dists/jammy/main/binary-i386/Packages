@@ -672,6 +672,39 @@ Description: easy signing of OpenPGP keys over the local network
 
 Package: gpg
 Source: gnupg2
+Version: 2.2.27-3ubuntu2.4
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 1357
+Depends: gpgconf (= 2.2.27-3ubuntu2.4), libassuan0 (>= 2.5.0), libbz2-1.0, libc6 (>= 2.34), libgcrypt20 (>= 1.9.0), libgpg-error0 (>= 1.42), libreadline8 (>= 6.0), libsqlite3-0 (>= 3.7.15), zlib1g (>= 1:1.1.4)
+Recommends: gnupg (= 2.2.27-3ubuntu2.4)
+Breaks: gnupg (<< 2.1.21-4)
+Replaces: gnupg (<< 2.1.21-4)
+Multi-Arch: foreign
+Homepage: https://www.gnupg.org/
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnupg2/gpg_2.2.27-3ubuntu2.4_i386.deb
+Size: 579900
+SHA512: 8b06c4cf9e86a7bae7a5b70adff86bd2b6f66dd0ef35207c4da615720ebe90fcc442af30ad766c0bbc004bf81cde1bcdc0029afedf1fb348219ee355af3792e6
+SHA256: 329d28ca281697972bfd2f9df2b5985d491c5e99c6e2745a27312db425b4e585
+SHA1: 12f246914849e1411b76c8ae560da5b6cebfaaef
+MD5sum: fbc4994ce11846f03ed16358907da2a5
+Description: GNU Privacy Guard -- minimalist public key operations
+ GnuPG is GNU's tool for secure communication and data storage.
+ It can be used to encrypt data and to create digital signatures.
+ It includes an advanced key management facility and is compliant
+ with the proposed OpenPGP Internet standard as described in RFC4880.
+ .
+ This package contains /usr/bin/gpg itself, and is useful on its own
+ only for public key operations (encryption, signature verification,
+ listing OpenPGP certificates, etc).  If you want full capabilities
+ (including secret key operations, network access, etc), please
+ install the "gnupg" package, which pulls in the full suite of tools.
+Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>
+
+Package: gpg
+Source: gnupg2
 Version: 2.2.27-3ubuntu2.3
 Architecture: i386
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
@@ -705,6 +738,34 @@ Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debi
 
 Package: gpgconf
 Source: gnupg2
+Version: 2.2.27-3ubuntu2.4
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 399
+Depends: libassuan0 (>= 2.5.0), libc6 (>= 2.34), libgcrypt20 (>= 1.9.0), libgpg-error0 (>= 1.42), libreadline8 (>= 6.0)
+Breaks: gnupg (<< 2.1.21-4), gnupg-agent (<< 2.1.21-4)
+Replaces: gnupg (<< 2.1.21-4), gnupg-agent (<< 2.1.21-4)
+Multi-Arch: foreign
+Homepage: https://www.gnupg.org/
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnupg2/gpgconf_2.2.27-3ubuntu2.4_i386.deb
+Size: 138896
+SHA512: b6f3c177436ebe2818e02897edc5b1d94491a468fbe76ed73ad55cd6d0cd22c351b5a2d90c73172093dde249ba2fb8518f69bab34e8e211614ef9968b0fa0542
+SHA256: cffbe825bcc20ae585bdf8f4b3e9f716be0cae7d2ed9b952b811e1b36902434c
+SHA1: 654a834bde16958f02d3e0d4649ccc529f460c48
+MD5sum: d3dd737990feed6b77b93782051cb46e
+Description: GNU privacy guard - core configuration utilities
+ GnuPG is GNU's tool for secure communication and data storage.
+ .
+ This package contains core utilities used by different tools in the
+ suite offered by GnuPG.  It can be used to programmatically edit
+ config files for tools in the GnuPG suite, to launch or terminate
+ per-user daemons (if installed), etc.
+Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>
+
+Package: gpgconf
+Source: gnupg2
 Version: 2.2.27-3ubuntu2.3
 Architecture: i386
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
@@ -729,6 +790,36 @@ Description: GNU privacy guard - core configuration utilities
  suite offered by GnuPG.  It can be used to programmatically edit
  config files for tools in the GnuPG suite, to launch or terminate
  per-user daemons (if installed), etc.
+Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>
+
+Package: gpgv
+Source: gnupg2
+Version: 2.2.27-3ubuntu2.4
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 578
+Depends: libbz2-1.0, libc6 (>= 2.34), libgcrypt20 (>= 1.9.0), libgpg-error0 (>= 1.42), zlib1g (>= 1:1.1.4)
+Suggests: gnupg
+Breaks: gnupg2 (<< 2.0.21-2), gpgv2 (<< 2.1.11-7+exp1), python-debian (<< 0.1.29)
+Replaces: gnupg2 (<< 2.0.21-2), gpgv2 (<< 2.1.11-7+exp1)
+Multi-Arch: foreign
+Homepage: https://www.gnupg.org/
+Priority: 0
+Section: utils
+Filename: pool/main/g/gnupg2/gpgv_2.2.27-3ubuntu2.4_i386.deb
+Size: 236038
+SHA512: 2914d71f6dff8a9d9f2b88da7a5450a6abeccc1de6dff2e8397c47998ac1802899ee396ce2adb15b2b170a6ad7878e54ff6f51deef41e4d78a4620f41ea4f30d
+SHA256: 4588bad75e932ff5542b4fb16227fd016f9f7db512fe9b9d888ecf5b09ccca54
+SHA1: 0a20fb43273734260345375ed45b2c258bd082bc
+MD5sum: bdd7f215925da17917d3cc429c840a1a
+Description: GNU privacy guard - signature verification tool
+ GnuPG is GNU's tool for secure communication and data storage.
+ .
+ gpgv is actually a stripped-down version of gpg which is only able
+ to check signatures. It is somewhat smaller than the fully-blown gpg
+ and uses a different (and simpler) way to check that the public keys
+ used to make the signature are valid. There are no configuration
+ files and only a few options are implemented.
 Original-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org>
 
 Package: gpgv
