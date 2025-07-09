@@ -890,6 +890,42 @@ Description: Tool for updating GeoIP and GeoLite databases
  Legacy binary databases.
 
 Package: git
+Version: 1:2.34.1-1ubuntu1.13
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 18484
+Depends: libc6 (>= 2.34), libcurl3-gnutls (>= 7.56.1), libexpat1 (>= 2.0.1), libpcre2-8-0 (>= 10.34), zlib1g (>= 1:1.2.0), perl, liberror-perl, git-man (>> 1:2.34.1), git-man (<< 1:2.34.1-.)
+Recommends: ca-certificates, patch, less, ssh-client
+Suggests: gettext-base, git-daemon-run | git-daemon-sysvinit, git-doc, git-email, git-gui, gitk, gitweb, git-cvs, git-mediawiki, git-svn
+Breaks: bash-completion (<< 1:1.90-1), cogito (<= 0.18.2+), dgit (<< 5.1~), git-buildpackage (<< 0.6.5), git-el (<< 1:2.32.0~rc2-1~), gitosis (<< 0.2+20090917-7), gitpkg (<< 0.15), guilt (<< 0.33), openssh-client (<< 1:6.8), stgit (<< 0.15), stgit-contrib (<< 0.15)
+Provides: git-completion, git-core
+Multi-Arch: foreign
+Homepage: https://git-scm.com/
+Priority: 0
+Section: utils
+Filename: pool/main/g/git/git_2.34.1-1ubuntu1.13_amd64.deb
+Size: 3166242
+SHA512: 3865412abdd7ef679a99e7bd4f899ccc32498491b224be4ee417bb5727bce57fd93d8f94e18f79d819dbd7fb3763dda9fcea7080b27cc1b388a712ae48e388ba
+SHA256: 1c59b82db8cf52b80fd5ce0c329209789bfb053079723c7368ae8af794e67df7
+SHA1: f3bb6cfe841d30d8e213a832f3de8e25702c4c13
+MD5sum: 069f4df5085b8ac95edadd6e1b28d4a2
+Description: fast, scalable, distributed revision control system
+ Git is popular version control system designed to handle very large
+ projects with speed and efficiency; it is used for many high profile
+ open source projects, most notably the Linux kernel.
+ .
+ Git falls in the category of distributed source code management tools.
+ Every Git working directory is a full-fledged repository with full
+ revision tracking capabilities, not dependent on network access or a
+ central server.
+ .
+ This package provides the git main components with minimal dependencies.
+ Additional functionality, e.g. a graphical user interface and revision
+ tree visualizer, tools for interoperating with other VCS's, or a web
+ interface, is provided as separate git* packages.
+Original-Maintainer: Jonathan Nieder <jrnieder@gmail.com>
+
+Package: git
 Version: 1:2.34.1-1ubuntu1.12
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>

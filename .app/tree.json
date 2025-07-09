@@ -329,6 +329,8 @@
             {"type":"file","name":"git_2.25.1-1ubuntu3.14_amd64.deb"},
             {"type":"file","name":"git_2.34.1-1ubuntu1.12_amd64.deb"},
             {"type":"file","name":"git_2.34.1-1ubuntu1.12_i386.deb"},
+            {"type":"file","name":"git_2.34.1-1ubuntu1.13_amd64.deb"},
+            {"type":"file","name":"git_2.34.1-1ubuntu1.13_i386.deb"},
             {"type":"file","name":"git_2.43.0-1ubuntu7.2_amd64.deb"}
         ]},
           {"type":"directory","name":"github-desktop","contents":[
@@ -1304,5 +1306,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":216,"files":870}
+  {"type":"report","directories":216,"files":872}
 ]
