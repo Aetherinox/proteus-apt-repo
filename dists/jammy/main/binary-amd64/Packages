@@ -870,6 +870,26 @@ Description:
   A private YouTube client
 
 Package: geoipupdate
+Version: 7.1.1-0+maxmind1~jammy
+Architecture: amd64
+Maintainer: William Storey <wstorey@maxmind.com>
+Installed-Size: 6367
+Depends: libc6 (>= 2.34)
+Built-Using: golang-1.24 (= 1.24.5-1longsleep1+focal)
+Homepage: https://github.com/maxmind/geoipupdate
+Priority: 0
+Section: utils
+Filename: pool/main/g/geoipupdate/geoipupdate_7.1.1-0+maxmind1~jammy_amd64.deb
+Size: 2340946
+SHA512: 1b17027b4a88fc7f200463ba0dc04b43953a46ed0b8f4ef1186c515cc40ce3fd1aa6b8d042d067dc291bd916e9617ed6d0c8c5d92988dc28404ae2ab8f1ab04c
+SHA256: 0ed64747f37dc361f446929640323cb92c9be0df379c94e8139c14fbd172ad5b
+SHA1: 0fa8780c8d0adffe7fb7cbaacdb601f0017a7789
+MD5sum: 2dcaeb55d1b03bb3d6a2683a334ebf47
+Description: Tool for updating GeoIP and GeoLite databases
+ The GeoIP Update program performs automatic updates of GeoIP2 and GeoIP
+ Legacy binary databases.
+
+Package: geoipupdate
 Version: 7.1.0-0+maxmind1~jammy
 Architecture: amd64
 Maintainer: William Storey <wstorey@maxmind.com>
@@ -888,6 +908,42 @@ MD5sum: 6bbc601454b4e82d5b27bc8e27cc9d72
 Description: Tool for updating GeoIP and GeoLite databases
  The GeoIP Update program performs automatic updates of GeoIP2 and GeoIP
  Legacy binary databases.
+
+Package: git
+Version: 1:2.34.1-1ubuntu1.14
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 18484
+Depends: libc6 (>= 2.34), libcurl3-gnutls (>= 7.56.1), libexpat1 (>= 2.0.1), libpcre2-8-0 (>= 10.34), zlib1g (>= 1:1.2.0), perl, liberror-perl, git-man (>> 1:2.34.1), git-man (<< 1:2.34.1-.)
+Recommends: ca-certificates, patch, less, ssh-client
+Suggests: gettext-base, git-daemon-run | git-daemon-sysvinit, git-doc, git-email, git-gui, gitk, gitweb, git-cvs, git-mediawiki, git-svn
+Breaks: bash-completion (<< 1:1.90-1), cogito (<= 0.18.2+), dgit (<< 5.1~), git-buildpackage (<< 0.6.5), git-el (<< 1:2.32.0~rc2-1~), gitosis (<< 0.2+20090917-7), gitpkg (<< 0.15), guilt (<< 0.33), openssh-client (<< 1:6.8), stgit (<< 0.15), stgit-contrib (<< 0.15)
+Provides: git-completion, git-core
+Multi-Arch: foreign
+Homepage: https://git-scm.com/
+Priority: 0
+Section: utils
+Filename: pool/main/g/git/git_2.34.1-1ubuntu1.14_amd64.deb
+Size: 3166186
+SHA512: 26f7ae1b7c7e3d4a34e69d8451dfd562b59ffbadb25621ddb543ff6b22337a6786c37b4fe734d8233dd50e7e9afd17a826f37b457b77c63c18b8af2c57bf0904
+SHA256: acb5dd2869b04c992059b58c15aa187230a1928d230f61b07224ecc3fe4b7e30
+SHA1: a2ef7347fb99cd0a29aa51fe82e098fe3f9eddec
+MD5sum: 54c82d2e90422804d39956e0c4bed570
+Description: fast, scalable, distributed revision control system
+ Git is popular version control system designed to handle very large
+ projects with speed and efficiency; it is used for many high profile
+ open source projects, most notably the Linux kernel.
+ .
+ Git falls in the category of distributed source code management tools.
+ Every Git working directory is a full-fledged repository with full
+ revision tracking capabilities, not dependent on network access or a
+ central server.
+ .
+ This package provides the git main components with minimal dependencies.
+ Additional functionality, e.g. a graphical user interface and revision
+ tree visualizer, tools for interoperating with other VCS's, or a web
+ interface, is provided as separate git* packages.
+Original-Maintainer: Jonathan Nieder <jrnieder@gmail.com>
 
 Package: git
 Version: 1:2.34.1-1ubuntu1.13
