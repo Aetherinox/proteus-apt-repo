@@ -599,6 +599,42 @@ MD5sum: 4c3b86185df16d732e95e522041926ed
 Description: Mozilla Firefox
 
 Package: git
+Version: 1:2.34.1-1ubuntu1.15
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 34692
+Depends: libc6 (>= 2.34), libcurl3-gnutls (>= 7.56.1), libexpat1 (>= 2.0.1), libpcre2-8-0 (>= 10.34), zlib1g (>= 1:1.2.0), perl, liberror-perl, git-man (>> 1:2.34.1), git-man (<< 1:2.34.1-.)
+Recommends: ca-certificates, patch, less, ssh-client
+Suggests: gettext-base, git-daemon-run | git-daemon-sysvinit, git-doc, git-email, git-gui, gitk, gitweb, git-cvs, git-mediawiki, git-svn
+Breaks: bash-completion (<< 1:1.90-1), cogito (<= 0.18.2+), dgit (<< 5.1~), git-buildpackage (<< 0.6.5), git-el (<< 1:2.32.0~rc2-1~), gitosis (<< 0.2+20090917-7), gitpkg (<< 0.15), guilt (<< 0.33), openssh-client (<< 1:6.8), stgit (<< 0.15), stgit-contrib (<< 0.15)
+Provides: git-completion, git-core
+Multi-Arch: foreign
+Homepage: https://git-scm.com/
+Priority: 0
+Section: utils
+Filename: pool/main/g/git/git_2.34.1-1ubuntu1.15_i386.deb
+Size: 4196260
+SHA512: b1f6a059a9aa8422e79fe9c0891f9d40b9425c25eab25be52316c687e8bf4035d1b742e0c1ec14d4bbb4486856982fbf1292997346c56bbbdf18d7bf7ffa5563
+SHA256: e51ee3f761cd2a83d86b388a42edc9368aa66b686277004d97837a8378a178c8
+SHA1: 54189740b1574bda71fe74b93d7aee523b096203
+MD5sum: d90ea7c38675112d6ee28e6b69942ba4
+Description: fast, scalable, distributed revision control system
+ Git is popular version control system designed to handle very large
+ projects with speed and efficiency; it is used for many high profile
+ open source projects, most notably the Linux kernel.
+ .
+ Git falls in the category of distributed source code management tools.
+ Every Git working directory is a full-fledged repository with full
+ revision tracking capabilities, not dependent on network access or a
+ central server.
+ .
+ This package provides the git main components with minimal dependencies.
+ Additional functionality, e.g. a graphical user interface and revision
+ tree visualizer, tools for interoperating with other VCS's, or a web
+ interface, is provided as separate git* packages.
+Original-Maintainer: Jonathan Nieder <jrnieder@gmail.com>
+
+Package: git
 Version: 1:2.34.1-1ubuntu1.14
 Architecture: i386
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
