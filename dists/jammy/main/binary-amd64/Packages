@@ -2883,6 +2883,27 @@ Description: nginx web/proxy server (basic version)
  THIRD PARTY MODULES: Echo, GeoIP2
 Original-Maintainer: Debian Nginx Maintainers <pkg-nginx-maintainers@alioth-lists.debian.net>
 
+Package: obsidian
+Version: 1.8.10
+License: UNLICENSED
+Vendor: Dynalist Inc.
+Architecture: amd64
+Maintainer: Dynalist Inc.
+Installed-Size: 293235
+Depends: libgtk-3-0, libnotify4, libnss3, libxss1, libxtst6, xdg-utils, libatspi2.0-0, libuuid1, libsecret-1-0
+Recommends: libappindicator3-1
+Homepage: https://obsidian.md
+Priority: 0
+Section: utils
+Filename: pool/main/o/obsidian/obsidian_1.8.10_amd64.deb
+Size: 80536530
+SHA512: dadf9bf9f44a2bee63224ba150c4d2370079507f676371f8babe9401c9257f0bea29b05219616df40b88c26f83bd65d64c19aa9f4f3d0c4561272c7e9ab19a5d
+SHA256: da19b2755013e9def37271cf04ce7485c03a22fa02b0951e4108884dcd1bd774
+SHA1: edd62fc26b4825af1599774fdec83e9e626e4672
+MD5sum: 76f769c873431b0bd2b3207d11da20ef
+Description: 
+  Obsidian
+
 Package: ocs-url
 Version: 3.1.0-0ubuntu1
 Architecture: amd64
