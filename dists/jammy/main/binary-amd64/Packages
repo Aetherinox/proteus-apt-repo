@@ -1414,6 +1414,37 @@ Description: C implementation of Javascript Object Signing and Encryption standa
    RFC 7638 - JSON Web Key (JWK) Thumbprint
 
 Package: jq
+Version: 1.6-2.1ubuntu3.1
+Architecture: amd64
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 100
+Depends: libjq1 (= 1.6-2.1ubuntu3.1), libc6 (>= 2.34)
+Multi-Arch: foreign
+Homepage: https://github.com/stedolan/jq
+Priority: 0
+Section: utils
+Filename: pool/main/j/jq/jq_1.6-2.1ubuntu3.1_amd64.deb
+Size: 52510
+SHA512: 4b3505982a469d9053d4f056ec7157b89f47b46e6334889e494c33a31684ae3fd9b899ac24f796e3b0bccfc7502ff5a628ebb2ae8ac4d47afdc3355e76c7bc1e
+SHA256: 5e1921f3db82da3dee246bbbb2cc9346cbc14214cfed3f9d1c004753b21da5b4
+SHA1: 89eda864245449a76b6e93e21c1596ad7279bd58
+MD5sum: f2f892ccf09e7818eb384393836d37cd
+Description: lightweight and flexible command-line JSON processor
+ jq is like sed for JSON data – you can use it to slice
+ and filter and map and transform structured data with
+ the same ease that sed, awk, grep and friends let you
+ play with text.
+ .
+ It is written in portable C, and it has minimal runtime
+ dependencies.
+ .
+ jq can mangle the data format that you have into the
+ one that you want with very little effort, and the
+ program to do so is often shorter and simpler than
+ you’d expect.
+Original-Maintainer: ChangZhuo Chen (陳昌倬) <czchen@debian.org>
+
+Package: jq
 Version: 1.6-2.1ubuntu3
 Architecture: amd64
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>

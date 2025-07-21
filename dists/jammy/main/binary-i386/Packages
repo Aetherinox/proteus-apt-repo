@@ -1008,6 +1008,37 @@ Description: networking and traffic control tools
 Original-Maintainer: Alexander Wirt <formorer@debian.org>
 
 Package: jq
+Version: 1.6-2.1ubuntu3.1
+Architecture: i386
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Installed-Size: 99
+Depends: libjq1 (= 1.6-2.1ubuntu3.1), libc6 (>= 2.34)
+Multi-Arch: foreign
+Homepage: https://github.com/stedolan/jq
+Priority: 0
+Section: utils
+Filename: pool/main/j/jq/jq_1.6-2.1ubuntu3.1_i386.deb
+Size: 53700
+SHA512: 2033b7547fac92d70395cc3691c56a76a7c5b397c3aa442063e639b9b5dd27fe62ee0c09fdd939d63e5d3f3b72b75f26255c2c1017adeb63ba13aeb347e7b434
+SHA256: 56c178dc6cb00ff204cfa3ff60cc8f8575e9dc382b0575d2d9ade37fa57b4af3
+SHA1: 01ee8429fa84eaeda1175ea79c0ec1c40c3ca728
+MD5sum: 7739525aae080812b49a884e903c020d
+Description: lightweight and flexible command-line JSON processor
+ jq is like sed for JSON data – you can use it to slice
+ and filter and map and transform structured data with
+ the same ease that sed, awk, grep and friends let you
+ play with text.
+ .
+ It is written in portable C, and it has minimal runtime
+ dependencies.
+ .
+ jq can mangle the data format that you have into the
+ one that you want with very little effort, and the
+ program to do so is often shorter and simpler than
+ you’d expect.
+Original-Maintainer: ChangZhuo Chen (陳昌倬) <czchen@debian.org>
+
+Package: jq
 Version: 1.6-2.1ubuntu3
 Architecture: i386
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>

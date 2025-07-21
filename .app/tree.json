@@ -415,6 +415,8 @@
             {"type":"file","name":"jose_13-1_amd64.deb"}
         ]},
           {"type":"directory","name":"jq","contents":[
+            {"type":"file","name":"jq_1.6-2.1ubuntu3.1_amd64.deb"},
+            {"type":"file","name":"jq_1.6-2.1ubuntu3.1_i386.deb"},
             {"type":"file","name":"jq_1.6-2.1ubuntu3_amd64.deb"},
             {"type":"file","name":"jq_1.6-2.1ubuntu3_i386.deb"}
         ]}
@@ -1314,5 +1316,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":216,"files":880}
+  {"type":"report","directories":216,"files":882}
 ]
