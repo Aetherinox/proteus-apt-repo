@@ -1313,8 +1313,13 @@
     {"type":"file","name":".gitignore"},
     {"type":"file","name":"proteus.sh"},
     {"type":"file","name":"README.md"},
-    {"type":"file","name":"tree.md"}
+    {"type":"file","name":"tree.md"},
+    {"type":"file","name":"wget_1.21.2-2ubuntu1.1_amd64.deb"},
+    {"type":"file","name":"wget_1.21.2-2ubuntu1.1_amd64.deb.1"},
+    {"type":"file","name":"wget_1.21.2-2ubuntu1.1_i386.deb"},
+    {"type":"file","name":"whohas_0.29.1-1.1_all.deb"},
+    {"type":"file","name":"whohas_0.29.1-1.1_all.deb.1"}
   ]}
 ,
-  {"type":"report","directories":216,"files":882}
+  {"type":"report","directories":216,"files":887}
 ]
