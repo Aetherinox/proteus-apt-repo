@@ -1,5 +1,5 @@
 # Repo Tree
-Last generated on `07.22.2025 07:00:00`
+Last generated on `07.22.2025 19:00:00`
 
 <br />
 
@@ -255,6 +255,7 @@ Last generated on `07.22.2025 07:00:00`
 │       │   │   ├── firefox_140.0.2~build1_i386.deb
 │       │   │   ├── firefox_140.0.4~build1_i386.deb
 │       │   │   ├── firefox_140.0~build1_i386.deb
+│       │   │   ├── firefox_141.0~build2_i386.deb
 │       │   │   ├── firefox_1snap1-0ubuntu2_amd64.deb
 │       │   │   └── firefox_1snap1-0ubuntu5_amd64.deb
 │       │   ├── flatpak
@@ -1106,12 +1107,7 @@ Last generated on `07.22.2025 07:00:00`
 ├── .gitignore
 ├── proteus.sh
 ├── README.md
-├── tree.md
-├── wget_1.21.2-2ubuntu1.1_amd64.deb
-├── wget_1.21.2-2ubuntu1.1_amd64.deb.1
-├── wget_1.21.2-2ubuntu1.1_i386.deb
-├── whohas_0.29.1-1.1_all.deb
-└── whohas_0.29.1-1.1_all.deb.1
+└── tree.md
 
-216 directories, 887 files
+216 directories, 883 files
 ```
