@@ -307,6 +307,7 @@
             {"type":"file","name":"firefox_140.0.4~build1_i386.deb"},
             {"type":"file","name":"firefox_140.0~build1_i386.deb"},
             {"type":"file","name":"firefox_141.0.2~build1_i386.deb"},
+            {"type":"file","name":"firefox_141.0.3~build1_i386.deb"},
             {"type":"file","name":"firefox_141.0~build2_i386.deb"},
             {"type":"file","name":"firefox_1snap1-0ubuntu2_amd64.deb"},
             {"type":"file","name":"firefox_1snap1-0ubuntu5_amd64.deb"}
@@ -1319,5 +1320,5 @@
     {"type":"file","name":"tree.md"}
   ]}
 ,
-  {"type":"report","directories":216,"files":885}
+  {"type":"report","directories":216,"files":886}
 ]
