@@ -53,6 +53,7 @@ Time of last package update for each release
 <br />
 
 ## About
+
 This is a Proteus apt repository that is associated to the [Proteus App Manager](https://github.com/Aetherinox/proteus-app-manager). It can however, be added by any user running Ubuntu, ZorinOS, or similar Linux distributions. All packages contained within this repository are automatically updated when developers release new reivisons of their packages. The user simply needs to run `apt update` or `apt-get update` in terminal.
 
 <br />
@@ -84,28 +85,101 @@ If you wish to add the Proteus repo to your list of sources, the command below w
 
 <br />
 
-Open `Terminal` and add the GPG key to your keyring
+### Ubuntu 24.04 & Newer
+
+Download the GPG key and save to `/etc/apt/keyrings/proteus.aetherinox.asc`:
+
+```shell
+# #
+#    Using wget
+# #
+
+wget -q https://github.com/Aetherinox.gpg -O- | \
+  sudo tee /etc/apt/keyrings/proteus.aetherinox.asc > /dev/null
+
+# #
+#    Using curl
+# #
+
+curl -fsSL https://github.com/Aetherinox.gpg | \
+  sudo tee /etc/apt/keyrings/proteus.aetherinox.asc > /dev/null
+```
+
+<br />
+
+Import the GPG key:
+
+```shell
+gpg -n -q --import --import-options import-show /etc/apt/keyrings/proteus.aetherinox.asc | \
+awk '
+/pub/ {
+    getline
+    gsub(/^ +| +$/, "")
+    if ($0 == "BCA07641EE3FCD7BC5585281488D518ABD3DC629")
+        print "\nThe key fingerprint matches (" $0 ").\n"
+    else
+        print "\nVerification failed: the fingerprint (" $0 ") does not match the expected one.\n"
+}'
+```
+
+<br />
+
+Add source information to `/etc/apt/sources.list.d/aetherinox.sources`:
+
+```shell
+sudo tee /etc/apt/sources.list.d/aetherinox.sources > /dev/null <<EOF
+# Aetherinox Github Repository
+Types: deb
+URIs: https://raw.githubusercontent.com/Aetherinox/proteus-apt-repo/main
+Suites: $(lsb_release -cs)
+Components: main
+Signed-By: /etc/apt/keyrings/proteus.aetherinox.asc
+Architectures: $(dpkg --print-architecture)
+EOF
+```
+
+<br />
+<br />
+
+### Ubuntu 23.04 & Older
+
+Download the GPG key and save to `/usr/share/keyrings/aetherinox-proteus-archive.gpg`:
+
 ```bash
-wget -qO - https://github.com/Aetherinox.gpg | sudo gpg --dearmor -o /usr/share/keyrings/aetherinox-proteus-archive.gpg
+wget -qO - https://github.com/Aetherinox.gpg | \
+  sudo gpg --dearmor -o /usr/share/keyrings/aetherinox-proteus-archive.gpg
 ```
 
 <br />
 
-Fetch the repo package list:
+Import the GPG key:
+
 ```shell
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/aetherinox-proteus-archive.gpg] https://raw.githubusercontent.com/Aetherinox/proteus-apt-repo/master $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/aetherinox-proteus-archive.list
+gpg -n -q --import --import-options import-show /usr/share/keyrings/aetherinox-proteus-archive.gpg | \
+awk '
+/pub/ {
+    getline
+    gsub(/^ +| +$/, "")
+    if ($0 == "BCA07641EE3FCD7BC5585281488D518ABD3DC629")
+        print "\nGPG fingerprint matches (" $0 ").\n"
+    else
+        print "\nGPG verification failed: Fingerprint (" $0 ") does not match the expected one.\n"
+}'
 ```
 
 <br />
 
-(Optional): To test if the correct GPG key was added:
+Add source information to: `/etc/apt/sources.list.d/aetherinox-proteus-archive.list`
+
 ```shell
-gpg -n -q --import --import-options import-show /usr/share/keyrings/aetherinox-proteus-archive.gpg | awk '/pub/{getline; gsub(/^ +| +$/,""); if($0 == "BCA07641EE3FCD7BC5585281488D518ABD3DC629") print "\nGPG fingerprint matches ("$0").\n"; else print "\GPG verification failed: Fngerprint ("$0") does not match the expected one.\n"}'
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/aetherinox-proteus-archive.gpg] https://raw.githubusercontent.com/Aetherinox/proteus-apt-repo/master $(lsb_release -cs) main" | \
+  sudo tee /etc/apt/sources.list.d/aetherinox-proteus-archive.list
 ```
 
 <br />
 
 Finally, run in terminal
+
 ```shell
 sudo apt update
 ```
@@ -129,6 +203,7 @@ apt policy <package>
 <br />
 
 An example would be
+
 ```shell
 apt policy ocs-url
 ```
@@ -136,6 +211,7 @@ apt policy ocs-url
 <br />
 
 Which outputs the following:
+
 ```
 ocs-url:
   Installed: 3.1.0-0ubuntu1
@@ -149,6 +225,7 @@ ocs-url:
 <br />
 
 Or you can use
+
 ```shell
 apt-cache showpkg ocs-url
 ```
@@ -156,6 +233,7 @@ apt-cache showpkg ocs-url
 <br />
 
 To see a full list of your registered repos and info about them:
+
 ```shell
 apt-cache policy 
 ```
