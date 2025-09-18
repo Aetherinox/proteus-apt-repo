@@ -205,11 +205,29 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/aethe
 
 <br />
 
-Finally, run in terminal
+### All Users
+
+After you add the GPG key and new source, you can update your packages using the following command:
 
 ```shell
 sudo apt update
 ```
+
+<br />
+
+You should see a list of your available sources, with one of them being this repository:
+
+```shell
+$ sudo apt update
+Hit:1 https://download.docker.com/linux/ubuntu noble InRelease
+Hit:2 http://us.archive.ubuntu.com/ubuntu noble InRelease                      
+➡️ Get:3 https://raw.githubusercontent.com/Aetherinox/proteus-apt-repo/main noble InRelease [5,846 B]
+Hit:4 http://us.archive.ubuntu.com/ubuntu noble-updates InRelease              
+Hit:5 http://security.ubuntu.com/ubuntu noble-security InRelease               
+Hit:6 http://us.archive.ubuntu.com/ubuntu noble-backports InRelease  
+```
+
+<br />
 
 Your new repository is now available to use.
 
