@@ -87,7 +87,15 @@ If you wish to add the Proteus repo to your list of sources, the command below w
 
 ### Ubuntu 24.04 & Newer
 
-Download the GPG key and save to `/etc/apt/keyrings/proteus.aetherinox.asc`:
+<br />
+
+This method will do the following:
+- Download and trust GPG key `Aetherinox.gpg` and save it to your keyring `/etc/apt/keyrings/aetherinox.asc`
+- Add Proteus Apt Repo to `/etc/apt/sources.list.d/aetherinox-proteus.sources`
+
+<br />
+
+Download the GPG key and save to `/etc/apt/keyrings/aetherinox.asc`:
 
 ```shell
 # #
@@ -95,14 +103,14 @@ Download the GPG key and save to `/etc/apt/keyrings/proteus.aetherinox.asc`:
 # #
 
 wget -q https://github.com/Aetherinox.gpg -O- | \
-  sudo tee /etc/apt/keyrings/proteus.aetherinox.asc > /dev/null
+  sudo tee /etc/apt/keyrings/aetherinox.asc > /dev/null
 
 # #
 #    Using curl
 # #
 
 curl -fsSL https://github.com/Aetherinox.gpg | \
-  sudo tee /etc/apt/keyrings/proteus.aetherinox.asc > /dev/null
+  sudo tee /etc/apt/keyrings/aetherinox.asc > /dev/null
 ```
 
 <br />
@@ -110,7 +118,7 @@ curl -fsSL https://github.com/Aetherinox.gpg | \
 Import the GPG key:
 
 ```shell
-gpg -n -q --import --import-options import-show /etc/apt/keyrings/proteus.aetherinox.asc | \
+gpg -n -q --import --import-options import-show /etc/apt/keyrings/aetherinox.asc | \
 awk '
 /pub/ {
     getline
@@ -124,16 +132,16 @@ awk '
 
 <br />
 
-Add source information to `/etc/apt/sources.list.d/aetherinox.sources`:
+Add source information to `/etc/apt/sources.list.d/aetherinox-proteus.sources`:
 
 ```shell
-sudo tee /etc/apt/sources.list.d/aetherinox.sources > /dev/null <<EOF
+sudo tee /etc/apt/sources.list.d/aetherinox-proteus.sources > /dev/null <<EOF
 # Aetherinox Github Repository
 Types: deb
 URIs: https://raw.githubusercontent.com/Aetherinox/proteus-apt-repo/main
 Suites: $(lsb_release -cs)
 Components: main
-Signed-By: /etc/apt/keyrings/proteus.aetherinox.asc
+Signed-By: /etc/apt/keyrings/aetherinox.asc
 Architectures: $(dpkg --print-architecture)
 EOF
 ```
@@ -143,11 +151,30 @@ EOF
 
 ### Ubuntu 23.04 & Older
 
-Download the GPG key and save to `/usr/share/keyrings/aetherinox-proteus-archive.gpg`:
+<br />
+
+This method will do the following:
+- Download and trust GPG key `Aetherinox.gpg` and save it to your keyring `/usr/share/keyrings/aetherinox.gpg`
+- Add Proteus Apt Repo to `/etc/apt/sources.list.d/aetherinox-proteus.list`
+
+<br />
+
+Download the GPG key and save to `/usr/share/keyrings/aetherinox.gpg`:
 
 ```bash
-wget -qO - https://github.com/Aetherinox.gpg | \
-  sudo gpg --dearmor -o /usr/share/keyrings/aetherinox-proteus-archive.gpg
+# #
+#    Using wget
+# #
+
+wget -q https://github.com/Aetherinox.gpg -O- | \
+  sudo gpg --dearmor -o /usr/share/keyrings/aetherinox.gpg
+
+# #
+#    Using curl
+# #
+
+curl -fsSL https://github.com/Aetherinox.gpg | \
+  sudo gpg --batch --yes --dearmor -o /usr/share/keyrings/aetherinox.gpg
 ```
 
 <br />
@@ -155,7 +182,7 @@ wget -qO - https://github.com/Aetherinox.gpg | \
 Import the GPG key:
 
 ```shell
-gpg -n -q --import --import-options import-show /usr/share/keyrings/aetherinox-proteus-archive.gpg | \
+gpg -n -q --import --import-options import-show /usr/share/keyrings/aetherinox.gpg | \
 awk '
 /pub/ {
     getline
@@ -169,11 +196,11 @@ awk '
 
 <br />
 
-Add source information to: `/etc/apt/sources.list.d/aetherinox-proteus-archive.list`
+Add source information to: `/etc/apt/sources.list.d/aetherinox-proteus.list`:
 
 ```shell
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/aetherinox-proteus-archive.gpg] https://raw.githubusercontent.com/Aetherinox/proteus-apt-repo/master $(lsb_release -cs) main" | \
-  sudo tee /etc/apt/sources.list.d/aetherinox-proteus-archive.list
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/aetherinox.gpg] https://raw.githubusercontent.com/Aetherinox/proteus-apt-repo/master $(lsb_release -cs) main" | \
+  sudo tee /etc/apt/sources.list.d/aetherinox-proteus.list
 ```
 
 <br />
